@@ -1,4 +1,4 @@
-package com.aptogther.model.bean;
+package com.aptogether.model.bean;
 
 public class Member {
 	private String id; 		/* 멤버 아이디 */
@@ -7,7 +7,7 @@ public class Member {
 	private String password;/* 패스워드 */
 	private String phone; 	/* 휴대폰번호(String형식) */
 	private String birth; 	/* 날짜형식을 따라갑니다. */
-	private String gender; 	/* 남/여 | 성별 */
+	private String gender; 	/* male / female | 성별 */
 	private String nickname;/* 닉네임 */
 	private String address; /* 주소 */
 	private String profile; /* 프로필 이미지 */
