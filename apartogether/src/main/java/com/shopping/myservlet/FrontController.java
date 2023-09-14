@@ -19,6 +19,7 @@ import com.shopping.utility.MyUtility;
 @WebServlet(
 		urlPatterns = { "/Shopping" }, //컨트롤러 경로 수정 바람.
 		initParams = {  
+				@WebInitParam(name = "txtSetting", value = "/WEB-INF/setting.txt"), 
 				@WebInitParam(name = "todolist", value = "/WEB-INF/todolist.txt")
 		})
 public class FrontController extends HttpServlet {
