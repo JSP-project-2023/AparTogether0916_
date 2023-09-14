@@ -1,4 +1,4 @@
-package com.apartogether.controller.store;
+package com.apartogether.controller.Store;
 
 public class StoreInsertController {
 
