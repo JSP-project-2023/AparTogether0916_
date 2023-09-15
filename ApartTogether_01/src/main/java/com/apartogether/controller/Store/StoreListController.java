@@ -1,4 +1,4 @@
-package com.apartogether.controller.Store;
+package com.apartogether.controller.store;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,7 +10,7 @@ public class StoreListController extends SuperClass {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doGet(request, response);
 		
-		
+		super.gotoPage("store/stList.jsp");
 		
 	}
 
