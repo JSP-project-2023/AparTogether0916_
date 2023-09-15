@@ -30,7 +30,7 @@ public class StoreDao extends SuperDao {
 		pstmt.setString(9, store.getSttime());
 		pstmt.setString(10, store.getStlogo());
 		pstmt.setString(11, store.getRedday());
-
+		
 		cnt = pstmt.executeUpdate();
 		conn.commit();
 		
