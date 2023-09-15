@@ -18,6 +18,12 @@
 		<button type="submit">가게 등록하러 가기</button>
 	</form>
 	
+	<form action="<%=withFormTag%>" method="get">
+		<!-- 아이디 히든으로 들어감. -->
+		<input name="command" type="text" value="storeList">
+		<!-- 가게 고유 번호 -->
+		<button type="submit">가게 목록 보기</button>
+	</form>
 	
 </body>
 </html>

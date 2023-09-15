@@ -23,22 +23,20 @@ public class StoreListController extends SuperClass {
 		StoreDao dao = new StoreDao();
 		
 		try {
-//			int totalCount = dao.GetTotalStoreCount(mode, keyword);
+//			int totalCount = dao.GetTotalStoreCount(mode, keyword); // 키워드 검색 시 mode, keyword 로 조건 검색한 총 결과 개수 count
+			int totalCount = dao.GetTotalStoreCount();
 			String url = super.getUrlInfomation("storeList");
 			boolean isGrid = true;
-//			Paging pageInfo = new Paging(pageNumber, pageSize, totalCount, url, mode, keyword, isGrid);
+			Paging pageInfo = new Paging(pageNumber, pageSize, totalCount, url, mode, keyword, isGrid);
 			
-//			List<Store> storeList = dao.selectAll(pageInfo);
+			List<Store> storeList = dao.selectAll(pageInfo);
+			
+			request.setAttribute("pageInfo", pageInfo);
+			request.setAttribute("storeList", storeList);
+			super.gotoPage("store/StoreList.jsp");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			
 		}
-		
-		
-		
-		super.gotoPage("store/stList.jsp");
-		
 	}
-
 }

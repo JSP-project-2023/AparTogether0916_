@@ -1,7 +1,7 @@
 package com.apartogether.model.bean;
 
 public class Store {
-	private String stno; // 가게 고유 코드
+	private Integer stno; // 가게 고유 코드
 	private String id; // 회원(사업자) 아이디
 	private String stname; // 가게 이름
 	private Integer fee; // 배달비
@@ -19,10 +19,10 @@ public class Store {
 	public Store() {
 	}
 	
-	public String getStno() {
+	public Integer getStno() {
 		return stno;
 	}
-	public void setStno(String stno) {
+	public void setStno(Integer stno) {
 		this.stno = stno;
 	}
 	public String getId() {

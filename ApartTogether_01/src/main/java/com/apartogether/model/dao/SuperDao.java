@@ -7,9 +7,11 @@ public class SuperDao {
 	protected Connection conn = null ;
 	
 	public Connection getConnection() { // step02. 접속 객체 구하기
-		String url = "jdbc:oracle:thin:116.122.37.100:1521:xe" ;
+		String url = "jdbc:oracle:thin:@116.122.37.100:1521:xe" ;
 		String id = "DBICTteam001" ;
 		String password = "ICT1q2w3e4r" ;
+//		String id = "sys as sysdba" ;
+//		String password = "oracle" ;
 		
 		try {
 			this.conn = DriverManager.getConnection(url, id, password) ;

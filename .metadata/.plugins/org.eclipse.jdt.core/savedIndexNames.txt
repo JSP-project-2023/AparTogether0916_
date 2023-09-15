@@ -13,7 +13,6 @@ INDEX VERSION 1.134+C:\Users\user\Desktop\Git\.metadata\.plugins\org.eclipse.jdt
 364501178.index
 1161557395.index
 342600096.index
-504639173.index
 2698605028.index
 2969747505.index
 753639505.index
@@ -34,7 +33,6 @@ INDEX VERSION 1.134+C:\Users\user\Desktop\Git\.metadata\.plugins\org.eclipse.jdt
 688219358.index
 3660783370.index
 4269583183.index
-3486385223.index
 853467202.index
 856896114.index
 2225374066.index
