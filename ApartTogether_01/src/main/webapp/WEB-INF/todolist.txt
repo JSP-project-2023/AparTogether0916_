@@ -1,4 +1,5 @@
 # 구현해야 할 목록들입니다.
 #main 컨트롤러
 home=com.apartogether.controller.HomeController
-StoreList=com.apartogether.controller.Store.StoreListController
+storeList=com.apartogether.controller.Store.StoreListController
+storeInsert=com.apartogether.controller.store.StoreInsertController

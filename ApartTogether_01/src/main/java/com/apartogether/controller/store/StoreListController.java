@@ -23,12 +23,12 @@ public class StoreListController extends SuperClass {
 		StoreDao dao = new StoreDao();
 		
 		try {
-			int totalCount = dao.GetTotalStoreCount(mode, keyword);
-			String url = super.getUrlInfomation("StoreList");
+//			int totalCount = dao.GetTotalStoreCount(mode, keyword);
+			String url = super.getUrlInfomation("storeList");
 			boolean isGrid = true;
-			Paging pageInfo = new Paging(pageNumber, pageSize, totalCount, url, mode, keyword, isGrid);
+//			Paging pageInfo = new Paging(pageNumber, pageSize, totalCount, url, mode, keyword, isGrid);
 			
-			List<Store> storeList = dao.selectAll(pageInfo);
+//			List<Store> storeList = dao.selectAll(pageInfo);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

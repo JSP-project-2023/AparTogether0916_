@@ -15,7 +15,7 @@
 		<table class="table table-borderless">
 			<thead>
 			</thead>
-			<tbody>
+			<tbody> 
 				<%-- from "product_column_size" in settings.txt file --%>
 				<c:set var="colsu"
 					value="3" />
@@ -58,7 +58,7 @@
 								<img class="card-img-top" alt="상품 01" src="./../image/child1.jpg">
 								<div class="card-body"> 
 									<h5 class="card-title">상품 01</h5> 
-									<p class="card-text">이 상품은 좋아요.</p>
+									<p class="card-text">이 상품은 좋아요!</p>
 								</div>
 							</a>
 						</div>	
