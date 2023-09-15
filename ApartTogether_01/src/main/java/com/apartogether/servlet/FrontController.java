@@ -60,6 +60,7 @@ public class FrontController extends HttpServlet {
 		}
 		
 		System.out.println("command is [" + command + "]");
+		System.out.println("command controller is : " + this.todolistMap.get(command));
 		
 		SuperController controller = this.todolistMap.get(command) ;
 		
