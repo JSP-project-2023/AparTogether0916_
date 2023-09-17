@@ -29,9 +29,35 @@
 			$("select[name=areacode1]").focus();
 			return false;
 		}
-		if ($("input[name=areacode2]").val() == "" || $("input[name=areacode3").val()) {
+		if ($("input[name=areacode2]").val() == "" || $("input[name=areacode3]").val() == "") {
 			alert("전화번호는 필수 입니다.");
 			$("input[name=areacode1]").focus();
+			return false;
+		}
+		if ($("input[name=ceofile]").val() == "" || $("input[name=ceofile]").val() == null) {
+			alert("사업자 등록증은 필수 입니다.");
+			$("input[name=ceofile]").focus();
+			return false;
+		}
+		if ($("input[name=stlogo]").val() == "" || $("input[name=stlogo]").val() == null) {
+			alert("가게 로고는 필수 입니다.");
+			$("input[name=stlogo]").focus();
+			return false;
+		}
+		if ($("input[name=fee]").val() == "") {
+			alert("배달비 필수 입니다.");
+			$("input[name=fee]").focus();
+			return false;
+		}
+		if($("input[name=fee]").val() <= '0'){
+			$("input[name=fee]").val("0");
+		}
+		if($("input[name=redday]").val() == ""){
+			$("input[name=redday]").val("휴무일 없음");
+		}
+		if($("input[name=ceono]").val() == ""){
+			alert("사업자 등록번호는 필수 입니다.");
+			$("input[name=ceono]").focus();
 			return false;
 		}
 	}
