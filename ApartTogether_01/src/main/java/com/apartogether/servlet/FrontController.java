@@ -31,8 +31,10 @@ public class FrontController extends HttpServlet {
 	// map for todolist.txt file
 	private Map<String, SuperController> todolistMap = null ;
 	
-	// imageUploadWebPath 변수 : 실제 이미지가 업로드 되는 경로
-	private String imageUploadWebPath ; 
+	// 가게 이미지 업로드 경로변수 
+	private String uploadImage;
+	//이미지 경로 변수
+	ServletContext application = null;
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8"); // 한글 깨짐 방지
@@ -43,15 +45,16 @@ public class FrontController extends HttpServlet {
 		if(command == null) {
 			System.out.println("file upload event invoked");
 			
-			MultipartRequest mr = MyUtility.getMultipartRequest(request, imageUploadWebPath);
+			MultipartRequest mr = MyUtility.getMultipartRequest(request, uploadImage);
+			
+			System.out.println("mr : " + mr);
 			
 			if(mr!=null) {
 				command = mr.getParameter("command") ;
 				
-				if(command.equals("prUpdate")) {
-					MyUtility.deleteOldImageFile(imageUploadWebPath, mr);	
+				if(command.equals("prUpdate")) {//가게 수정시 변경.
+					MyUtility.deleteOldImageFile(uploadImage, mr);	
 				}
-			
 				// file upload object binding in request scope.
 				request.setAttribute("mr", mr); // 승급
 			}else{
@@ -96,11 +99,15 @@ public class FrontController extends HttpServlet {
 		
 		String todolistFile = application.getRealPath(todolist);
 		System.out.println("todolistFile is [" + todolistFile + "]");
-		
-		System.out.println("imageUploadWebPath is [" + imageUploadWebPath + "]");
 				
 		this.todolistMap = MyUtility.getTodolistMap(todolistFile);
 		System.out.println("todolist file element size = [" + todolistMap.size() + "]");
+		
+		//이미지 파일 업로드 경로
+		uploadImage = application.getRealPath("/upload");
+		System.out.println("setting file element size : " + uploadImage);
+	
+	
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

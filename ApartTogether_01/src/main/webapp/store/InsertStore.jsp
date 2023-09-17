@@ -69,7 +69,7 @@
 	<h3>내가게 등록</h3>
 
 	<div><!-- 컨테이너 -->
-		<form action="<%=withFormTag%>" method="get"> <!-- post? get? -->
+		<form action="<%=withFormTag%>" method="get" enctype="multipart/form-data"> <!-- post? get? -->
 		<input type="text" name="command" value="storeInsert">
 		<!-- 회원 아이디 -->
 		<input type="text" value="admin" name="id" placeholder="회원아이디">

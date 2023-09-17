@@ -6,36 +6,40 @@ import javax.servlet.http.HttpServletResponse;
 import com.apartogether.controller.SuperClass;
 import com.apartogether.model.bean.Store;
 import com.apartogether.model.dao.StoreDao;
+import com.oreilly.servlet.MultipartRequest;
 
 public class StoreInsertController extends SuperClass{
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doGet(request, response);
 		
+		MultipartRequest mr = (MultipartRequest)request.getAttribute("mr");
+		
 		Store store = new Store();
 		
+		
 		//가게 전화번호
-		String sttel = String.valueOf(request.getParameter("areacode1")) + "-";
-		sttel += String.valueOf(request.getParameter("areacode2")) + "-";
-		sttel += String.valueOf(request.getParameter("areacode3"));
+		String sttel = String.valueOf(mr.getParameter("areacode1")) + "-";
+		sttel += String.valueOf(mr.getParameter("areacode2")) + "-";
+		sttel += String.valueOf(mr.getParameter("areacode3"));
 		
 		//가게 운영시간
-		String sttime = String.valueOf(request.getParameter("startShopAmPm")) + " ";
-		sttime += String.valueOf(request.getParameter("startShopTime")) + " ~ ";
-		sttime += String.valueOf(request.getParameter("endShopAmPm")) + " ";
-		sttime += String.valueOf(request.getParameter("endShopTime"));
+		String sttime = String.valueOf(mr.getParameter("startShopAmPm")) + " ";
+		sttime += String.valueOf(mr.getParameter("startShopTime")) + " ~ ";
+		sttime += String.valueOf(mr.getParameter("endShopAmPm")) + " ";
+		sttime += String.valueOf(mr.getParameter("endShopTime"));
 		
 		//store 객체에 set. 11개
-		store.setStname(String.valueOf(request.getParameter("stname")));
-		store.setCategory(request.getParameter("category"));
-		store.setStplace(String.valueOf(request.getParameter("stplace")));
+		store.setStname(String.valueOf(mr.getParameter("stname")));
+		store.setCategory(mr.getParameter("category"));
+		store.setStplace(String.valueOf(mr.getParameter("stplace")));
 		store.setSttel(sttel);
-		store.setContent(request.getParameter("content"));
-		store.setCeofile(request.getParameter("ceofile"));
-		store.setStlogo(request.getParameter("stlogo"));
-		store.setFee(Integer.parseInt(request.getParameter("fee")));
-		store.setRedday(request.getParameter("redday"));
-		store.setCeono(request.getParameter("ceono"));
+		store.setContent(mr.getParameter("content"));
+		store.setCeofile(mr.getParameter("ceofile"));
+		store.setStlogo(mr.getParameter("stlogo"));
+		store.setFee(Integer.parseInt(mr.getParameter("fee")));
+		store.setRedday(mr.getParameter("redday"));
+		store.setCeono(mr.getParameter("ceono"));
 		store.setSttime(sttime);
 		
 		
