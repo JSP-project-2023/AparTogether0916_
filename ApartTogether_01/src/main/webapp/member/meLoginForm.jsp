@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ include file="./../common/bootstrap5.jsp" %>
 <%@ include file="./../common/common.jsp" %>
 
     
@@ -48,9 +47,9 @@
 			
 			<!-- contextual class : btn-primary, btn-info, btn-danger -->
 			<button type="submit" class="btn btn-primary">로그인</button> 
-			<a type="button" href="meInsertForm.jsp" class="btn btn-info">회원 가입</a>	
-			<a type="button" href="meFindId.jsp" class="btn btn-info">아이디 찾기</a>	
-			<a type="button" href="meFindPassword.jsp" class="btn btn-info">비밀번호 찾기</a>						
+			<a type="button" href="<%=notWithFormTag%>meInsert" class="btn btn-info">회원 가입</a>	
+			<a type="button" href="<%=notWithFormTag%>meFindId" class="btn btn-info">아이디 찾기</a>	
+			<a type="button" href="<%=notWithFormTag%>meFindPassword" class="btn btn-info">비밀번호 찾기</a>						
 		</form>
 	</div>
 </body>

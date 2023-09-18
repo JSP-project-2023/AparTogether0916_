@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ include file="./../common/bootstrap5.jsp" %>
 <%@ include file="./../common/common.jsp" %>
 
 <!DOCTYPE html>
@@ -76,7 +75,7 @@
   	</script>
   	<style type="text/css">
   		/* box model에 대한 공부가 필요합니다. */
-  		.container{margin-top: 10px;}
+  		.container{margin-top: ;}
   		.input-group{margin: 7px;}
   		.input-group-text{
   			display: block;
@@ -84,7 +83,7 @@
   			margin-right: auto;
   		}
   		#buttonset{margin-top: 15px;}
-  		.radio_membertype{font-size: 1.1rem;} /* 주위 글꼴의 1.1배 */
+  		.radio_membertype{font-size: 0.8rem;} /* 주위 글꼴의 1.1배 */
   	</style>
 </head>
 <body>
@@ -98,10 +97,8 @@
 				<span class="input-group-text col-md-2">회원유형</span>
 				<div class="form-control">
 					<label class="radio-inline radio_membertype"> 
-						&nbsp;<input type="radio" id="membertype1" name="membertype" value="3">일반회원
-					</label>
-					<label class="radio-inline radio_gender"> 
-						&nbsp;<input type="radio" id="membertype2" name="membertype" value="2">사업자
+						&nbsp;<input type="radio" id="membertype1" name="mtype" value="user">일반회원
+						&nbsp;<input type="radio" id="membertype2" name="mtype" value="biz">사업자
 					</label>
 					
 				</div>
