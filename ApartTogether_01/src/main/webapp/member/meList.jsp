@@ -51,9 +51,11 @@
 						</c:otherwise>
 					</c:choose> 
 				
+					<td align="center">${bean.mtype}</td>
+				
 					<td align="center">${bean.id}</td>
 					
-					<td>
+					<td align="center">
 						<a href="<%=notWithFormTag%>meDetail&id=${bean.id}">${bean.name}</a>
 					</td>
 					
