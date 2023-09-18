@@ -9,7 +9,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!-- whologin 변수는 현재 로그인 상태를 알려 주는 변수입니다. -->
-<!-- 미로그인(0) 일반 사용자(1) 관리자(2) -->
+<!-- 미로그인(0) 일반 사용자(1) 사업자(2) 관리자(3)-->
 <c:set var="whologin" value="0"/>
 <c:if test="${not empty sessionScope.loginfo}">
 	<c:if test="${sessionScope.loginfo.mtype == 'admin'}">
