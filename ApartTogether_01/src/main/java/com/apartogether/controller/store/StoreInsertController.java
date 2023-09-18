@@ -10,13 +10,12 @@ import com.oreilly.servlet.MultipartRequest;
 
 public class StoreInsertController extends SuperClass{
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		super.doGet(request, response);
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		super.doPost(request, response);
 		
 		MultipartRequest mr = (MultipartRequest)request.getAttribute("mr");
 		
 		Store store = new Store();
-		
 		
 		//가게 전화번호
 		String sttel = String.valueOf(mr.getParameter("areacode1")) + "-";
@@ -35,8 +34,8 @@ public class StoreInsertController extends SuperClass{
 		store.setStplace(String.valueOf(mr.getParameter("stplace")));
 		store.setSttel(sttel);
 		store.setContent(mr.getParameter("content"));
-		store.setCeofile(mr.getParameter("ceofile"));
-		store.setStlogo(mr.getParameter("stlogo"));
+		store.setCeofile(mr.getFilesystemName("ceofile"));
+		store.setStlogo(mr.getFilesystemName("stlogo")); 
 		store.setFee(Integer.parseInt(mr.getParameter("fee")));
 		store.setRedday(mr.getParameter("redday"));
 		store.setCeono(mr.getParameter("ceono"));
@@ -60,7 +59,7 @@ public class StoreInsertController extends SuperClass{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		//등록후 메인으로 이동
 		//super.gotoPage("common/home.jsp");
 	}

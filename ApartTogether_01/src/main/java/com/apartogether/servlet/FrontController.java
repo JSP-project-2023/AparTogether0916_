@@ -41,13 +41,15 @@ public class FrontController extends HttpServlet {
 		
 		// command Parameter : 컨트롤러 분기를 위한 핵심 파라미터 
 		String command = request.getParameter("command") ;
+		System.out.println("이것은 커맨드 입니다."  + command);
 		
 		if(command == null) {
+			
 			System.out.println("file upload event invoked");
 			
 			MultipartRequest mr = MyUtility.getMultipartRequest(request, uploadImage);
 			
-			System.out.println("mr : " + mr);
+			System.out.println("이것은 mr : " + mr);
 			
 			if(mr!=null) {
 				command = mr.getParameter("command") ;
