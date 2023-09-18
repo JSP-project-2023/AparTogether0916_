@@ -32,6 +32,7 @@
   		#buttonset{margin-top: 15px;}
   		.radio_gender{font-size: 1.1rem;}
   		.radio_mtype{font-size: 1.1rem;} /* 주위 글꼴의 1.1배 */
+  		.small_image{width:50px;height:50px;margin:2px;border-radius:5px;}
   	</style>
 </head>
 <body>
@@ -59,7 +60,7 @@
 			<div class="input-group">
 				<span class="input-group-text">아이디</span>
 				<input disabled="disabled" class="form-control" type="text" id="fakeid" name="fakeid" value="${bean.id}">				
-				<input type="text" id="id" name="id" value="${bean.id}">
+				<input type="text" id="id" name="id" value="${bean.id}" hidden>
 			</div>
 			<div class="input-group"> 
 				<span class="input-group-text">이름</span>
@@ -72,13 +73,15 @@
 			</div>
 			<div class="input-group">
 				<span class="input-group-text col-md-2">프로필사진</span>
-				<input class="form-control" type="file" id="profile" name="profile" value="${bean.profile }">
+				<img class="card-img-top  small_image rounded" alt="${bean.name}" 
+					         src="upload/${bean.profile}"  >
+				<input class="form-control" type="file" id="profile" name="profile" value="${bean.profile}">
 			</div>
 			
-			<div class="input-group">
+			<!-- <div class="input-group">
 				<span class="input-group-text">비밀 번호</span>
 				<input class="form-control" type="password" id="password" name="password">				
-			</div>
+			</div> -->
 			
 			<div class="input-group">
 				<span class="input-group-text">성별</span>
