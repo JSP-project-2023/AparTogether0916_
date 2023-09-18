@@ -12,14 +12,17 @@
 <!-- 미로그인(0) 일반 사용자(1) 관리자(2) -->
 <c:set var="whologin" value="0"/>
 <c:if test="${not empty sessionScope.loginfo}">
-	<c:if test="${sessionScope.loginfo.id == 'admin'}">
+	<c:if test="${sessionScope.loginfo.mtype == 'admin'}">
+		<c:set var="whologin" value="3"/>
+	</c:if>
+	<c:if test="${sessionScope.loginfo.mtype == 'biz'}">
 		<c:set var="whologin" value="2"/>
 	</c:if>
-	<c:if test="${sessionScope.loginfo.id != 'admin'}">
+	<c:if test="${sessionScope.loginfo.mtype == 'user'}">
 		<c:set var="whologin" value="1"/>
 	</c:if>
 </c:if>
-
+whologin : ${whologin}
 <%
 	// appName : 애플리케이션 이름(프로젝트 이름_Teacher)
 	String appName = request.getContextPath();
@@ -54,13 +57,14 @@
 <body>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">쇼핑몰</a>
+			<a class="navbar-brand" href="<%=notWithFormTag%>home">아파투게더</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="collapsibleNavbar">
 				<ul class="navbar-nav">
+				
 					<li class="nav-item">
 						<c:if test="${whologin eq 0}">
 							<a class="nav-link" href="#">미로그인</a>
@@ -70,63 +74,65 @@
 						</c:if>
 					</li>
 					
-					<!-- member section -->
+					<!-- store section -->
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown">회원</a>
+							data-bs-toggle="dropdown">가게</a>
 						<ul class="dropdown-menu">
-							<c:if test="${whologin eq 0}">
-								<li><a class="dropdown-item" href="<%=notWithFormTag%>meInsert">회원 가입</a></li>								
-								<li><a class="dropdown-item" href="<%=notWithFormTag%>meLogin">로그인</a></li>
-							</c:if>		
-							<c:if test="${whologin ne 0}">				
-								<li><a class="dropdown-item" href="#">정보 수정</a></li>
-								<li><a class="dropdown-item" href="<%=notWithFormTag%>meLogout">로그 아웃</a></li>
-								<li><a class="dropdown-item" href="<%=notWithFormTag%>meDetail&id=${sessionScope.loginfo.id}">상세 보기</a></li>
-								<li><a class="dropdown-item" href="#">탈퇴하기</a></li>
-							</c:if>
-							<c:if test="${whologin eq 2}">
-								<li><a class="dropdown-item" href="<%=notWithFormTag%>meList">목록 보기</a></li>
+								<!-- 비로그인,일반회원,사업자,관리자 공통항목 -->
+								<li><a class="dropdown-item" href="#">가게목록</a></li>
+							<c:if test="${whologin eq 2}">	
+								<!-- 사업자(2) -->			
+								<li><a class="dropdown-item" href="#">내 가게 목록</a></li>
+								<li><a class="dropdown-item" href="#">접수현황</a></li>
 							</c:if>
 						</ul>
 					</li>
 					
-					<!-- board section -->
+					<!-- 주문 section -->
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown">게시물</a>
+							data-bs-toggle="dropdown">주문</a>
 						<ul class="dropdown-menu">
-							<c:if test="${whologin ne 0}">
-								<li><a class="dropdown-item" href="<%=notWithFormTag%>boInsert">게시물 등록</a></li>
+								<!-- 비로그인,일반회원,사업자,관리자 공통항목 -->
+								<li><a class="dropdown-item" href="#">모집중인 주문</a></li>
+							<c:if test="${whologin eq 2}">	
+								<!-- 사업자(2) -->			
+								<li><a class="dropdown-item" href="#">주문내역</a></li>
 							</c:if>
-							<li><a class="dropdown-item" href="<%=notWithFormTag%>boList">목록 보기</a></li>
 						</ul>
 					</li>
 					
-					<!-- product section -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown">상품</a>
-						<ul class="dropdown-menu">
-							<c:if test="${whologin eq 2}">
-								<li><a class="dropdown-item" href="<%=notWithFormTag%>prInsert">상품 등록</a></li>
-							</c:if>
-							<li><a class="dropdown-item" href="<%=notWithFormTag%>prList">목록 보기</a></li>
-						</ul>
-					</li>		
+				
+					<!-- 비로그인 : 로그인, 회원가입 -->
+					<!-- 일반회원 : 김이박님, 마이페이지, 로그아웃 -->
+					<!-- 사업자 : 김이박사장님, 마이페이지, 로그아웃 -->
+					<!-- 관리자 : 관리자님, 회원목록, 로그아웃 -->
 					
-					<!-- view section -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown">데이터 보기</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a class="dropdown-item" href="<%=notWithFormTag%>vwList">목록 보기
-								</a>
-							</li>
-						</ul>
-					</li>	
-					
+					<c:if test="${whologin eq 0}">
+							<!-- 비로그인(0) -->
+							<a class="nav-link" href="<%=notWithFormTag%>meLogin">로그인</a>
+							<a class="nav-link" href="<%=notWithFormTag%>meInsert">회원가입</a>
+					</c:if>
+					<c:if test="${whologin eq 1}">
+							<!-- 일반회원(1) -->
+							<a class="nav-link" href="#">${sessionScope.loginfo.name}님</a>
+							<a class="nav-link" href="<%=notWithFormTag%>meDetail&id=${sessionScope.loginfo.id}">마이페이지</a>
+							<a class="nav-link" href="<%=notWithFormTag%>meLogout">로그아웃</a>
+					</c:if>
+					<c:if test="${whologin eq 2}">
+							<!-- 사업자(2) -->
+							<a class="nav-link" href="#">${sessionScope.loginfo.name}사장님</a>
+							<a class="nav-link" href="<%=notWithFormTag%>meDetail&id=${sessionScope.loginfo.id}">마이페이지</a>
+							<a class="nav-link" href="<%=notWithFormTag%>meLogout">로그아웃</a>
+					</c:if>
+					<c:if test="${whologin eq 3}">
+							<!-- 관리자(3) -->
+							<a class="nav-link" href="#">${sessionScope.loginfo.name}주인님</a>
+							<a class="nav-link" href="<%=notWithFormTag%>meList">회원목록</a>
+							<a class="nav-link" href="<%=notWithFormTag%>meLogout">로그아웃</a>
+					</c:if>
+						
 				</ul>
 			</div>
 		</div>
@@ -136,7 +142,7 @@
 		<%-- 사용자에게 주의/경고/오류 등을 알려 주기 위한 Alert Box --%>
 		<div class="alert alert-danger alert-dismissible">
 	    	<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-	    	<strong>경고 메시지</strong> ${sessionScope.alertMessage}
+	    	<strong>경고 메세지</strong> ${sessionScope.alertMessage}
 	  	</div>
 	</c:if>
 	<%-- 보여준 Alert Box를 session 영역에서 제거합니다. --%>
