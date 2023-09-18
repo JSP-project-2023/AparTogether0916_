@@ -1,6 +1,6 @@
 package com.apartogether.utility;
 
-public class Paging {
+public class PagingStore {
 	// 페이징을 위한 클래스
 	private int totalCount = 0 ; // 테이블에 들어 있는 총 행의 개수
 	private int totalPage = 0 ; // 전체 페이지 수
@@ -19,11 +19,12 @@ public class Paging {
 	private String pagingStatus = "" ; // 상단 우측의 현재 페이지 현황(예시 : 총 295건[12/30])
 	
 	private String mode = "" ; // 검색 모드(예시 : 작성자, 글제목 등등)
-	private String keyword = "" ; // 검색할 단어	
+	private String keyword = "" ; // 검색할 단어	(가게명)
+	private String category = "" ; // 검색할 단어	(카테고리)
 	
 	private String flowParameter = "" ; // 페이지 이동시 같이 수반되는 파라미터 리스트
 	
-	public Paging(String _pageNumber, String _pageSize, int totalCount, String url, String mode, String keyword, boolean isGrid) {
+	public PagingStore(String _pageNumber, String _pageSize, int totalCount, String url, String mode, String keyword, String category, boolean isGrid) {
 		if(_pageNumber==null || _pageNumber.equals("null") || _pageNumber.equals("")) {
 			_pageNumber = "1";
 		}
@@ -32,7 +33,7 @@ public class Paging {
 		// isGrid=true이면 상품 목록 보기, false이면 일반 형식(회원, 게시물 목록 등등)
 		if(_pageSize==null || _pageSize.equals("null") || _pageSize.equals("")) {
 			if(isGrid) { // 격자 형식으로 보기
-				_pageSize = "6"; // 2행 3열의 격자 구조				
+				_pageSize = "4"; // 2행 3열의 격자 구조				
 			}else {
 				_pageSize = "10";
 			}
@@ -45,6 +46,9 @@ public class Paging {
 		// "all"이면 전체 검색
 		this.mode = mode==null ? "all" : mode ;
 		this.keyword = keyword==null ? "" : keyword ;
+		this.category = category==null ? "" : category ;
+		//////////////////////////////
+		System.out.println("mode : " + mode + "caaaategory : " + category);
 		
 		double _totalPage = Math.ceil((double)totalCount/pageSize) ;
 		totalPage = (int)_totalPage ;
@@ -56,7 +60,7 @@ public class Paging {
 		
 		beginPage = (pageNumber - 1) / pageCount * pageCount + 1 ;
 		
-		endPage = beginPage + pageCount - 1 ;		
+		endPage = beginPage + pageCount - 1 ;
 		if(endPage > totalPage) {endPage = totalPage;}
 		
 		this.pagingStatus = "총 " + totalCount + "건[" + pageNumber + "/" + totalPage + "]" ;
@@ -66,6 +70,7 @@ public class Paging {
 		this.flowParameter += "&pageSize=" + pageSize ;
 		this.flowParameter += "&mode=" + mode ;
 		this.flowParameter += "&keyword=" + keyword ;
+		this.flowParameter += "&category=" + category ;
 		
 		this.pagingHtml = this.getMakePagingHtml() ;
 	}	
@@ -84,10 +89,10 @@ public class Paging {
 		for(int i = beginPage ; i <= endPage ; i++) {
 			
 			if(i == pageNumber) {
-				// active 속성으로 활성화시키고, 빨간 색으로 진하게 표현하기
+				// active 속성으로 활성화시키고, 흰색으로 진하게 표현하기
 				html += "<li class=\"page-item active\">";
 				html += "<a class=\"page-link\" href=\"#\">";
-				html += "<b><font color='red'>" + i + "</font></b>" ;
+				html += "<b><font color='white'>" + i + "</font></b>" ;
 				html += "</a></li>";
 				
 			}else {
@@ -119,11 +124,22 @@ public class Paging {
 		result += "&pageSize=" + this.pageSize;
 		result += "&mode=" + this.mode;
 		result += "&keyword=" + this.keyword;
+		result += "&category=" + this.category;
 		result += "'>" ;
 		result += caption ;
 		result += "</a></li>";
 		
 		return result ;
+	}
+	
+	
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public int getTotalCount() {
@@ -262,9 +278,10 @@ public class Paging {
 		imsi += "pagingStatus=" + pagingStatus  + "<br/>";
 		imsi += "mode=" + mode  + "<br/>";
 		imsi += "keyword=" + keyword  + "<br/>";
+		imsi += "category=" + category + "<br/>";
 		imsi += "flowParameter=" + flowParameter  + "<br/>";
 		imsi += "<br/><br/>";
-		imsi += "pagingHtml=" + pagingHtml  + "<br/>";		
+		imsi += "pagingHtml=" + pagingHtml  + "<br/>";
 		return imsi ;
 	}	
 	

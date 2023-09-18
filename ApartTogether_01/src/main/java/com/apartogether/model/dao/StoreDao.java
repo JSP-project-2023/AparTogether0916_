@@ -7,22 +7,72 @@ import java.util.List;
 
 import com.apartogether.model.bean.Store;
 import com.apartogether.utility.Paging;
+import com.apartogether.utility.PagingStore;
 
 public class StoreDao extends SuperDao {
 
-	public List<Store> selectAll(Paging pageInfo) throws Exception {
+//	public List<Store> selectAll(Paging pageInfo2) throws Exception {
+//		/* TopN 구문 사용해서 페이징 처리된 목록 반환 */
+//		
+//		/* 페이징 처리할 부분 ranking 으로 순서 정렬 */
+//		String sql = "select stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, redday, btime ";
+//		sql += " from (select stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, redday, btime, ";
+//		sql += " rank() over(order by stno desc) as ranking from store ";
+//		
+//		/* 키워드 검색 */
+//		String mode = pageInfo2.getMode();
+//		String keyword = pageInfo2.getKeyword();
+//		
+//		if (mode==null || mode.equals("all") || keyword==null || keyword.equals("all")) {
+//		} else {
+//			sql += " where " + mode + " like '%" + keyword + "%'";
+//		}
+//		
+//		sql += " ) where ranking between ? and ?";
+//		
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//		conn = super.getConnection();
+//		
+//		pstmt = conn.prepareStatement(sql);
+//		
+//		/* 보여줄 처음, 마지막 값 설정 */
+//		pstmt.setInt(1, pageInfo2.getBeginRow());
+//		pstmt.setInt(2, pageInfo2.getEndRow());
+//		
+//		rs = pstmt.executeQuery();
+//		
+//		List<Store> storeAllList = new ArrayList<Store>();
+//		
+//		while (rs.next()) {
+//			storeAllList.add(getBeanData(rs));
+//		}
+//		
+//		return storeAllList;
+//	}
+	
+	public List<Store> selectAll(PagingStore pageInfo) throws Exception {
 		/* TopN 구문 사용해서 페이징 처리된 목록 반환 */
 		
 		/* 페이징 처리할 부분 ranking 으로 순서 정렬 */
 		String sql = "select stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, redday, btime ";
 		sql += " from (select stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, redday, btime, ";
-		sql += " rank() over(order by stno desc) as ranking from store) ";
-		
-		sql += " where ranking between ? and ?";
+		sql += " rank() over(order by stno desc) as ranking from store ";
 		
 		/* 키워드 검색 */
 		String mode = pageInfo.getMode();
 		String keyword = pageInfo.getKeyword();
+		String category = pageInfo.getCategory();
+		System.out.println("StoreDaooooooo mode : " + mode + " / keyword : " + keyword + " cate : " + category);
+		
+		if (mode==null || mode.equals("all") || keyword==null || keyword.equals("all")) {
+		} else if (mode.equals("category")){
+			sql += " where " + mode + " like '%" + category + "%'";
+		} else {
+			sql += " where " + mode + " like '%" + keyword + "%'";
+		}
+		
+		sql += " ) where ranking between ? and ?";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -69,24 +119,27 @@ public class StoreDao extends SuperDao {
 	}
 
 	/* 불러올 가게 몇 개 인지 카운팅 */
-	public int GetTotalStoreCount(String mode, String keyword) throws Exception {
+	public int GetTotalStoreCount(String mode, String keyword, String categoryItem) throws Exception {
 		int cnt = -1; // 카운팅 담을 변수
 		
+		System.out.println("mode : " + mode + " / keyword : " + keyword);
 		String sql = "select count(*) as cnt from store";
 		
-		if (mode == null || mode.equals("all")) { // 전체 검색 일때는 조건 부여 x
+		if (mode == null || mode.equals("all") || keyword == null || keyword.equals("all")) { // 전체 검색 일때는 조건 부여 x
+		} else if (mode.equals("category")){
+			sql += " where " + mode + " like '%" + categoryItem + "%'";
 		} else {
-			sql += " where " + mode + "like '%" + keyword + "%'";
+			sql += " where " + mode + " like '%" + keyword + "%'";
 		}
 		
-		conn = super.getConnection();
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		System.out.println(sql);
 		
-		pstmt = conn.prepareStatement(sql);
-		pstmt.executeQuery();
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
 		
 		if (rs.next()) {
+			System.out.println("rs next");
 			cnt = rs.getInt("cnt");
 		}
 		
@@ -94,30 +147,7 @@ public class StoreDao extends SuperDao {
 		if(pstmt!=null) {pstmt.close();}
 		if(conn!=null) {conn.close();}
 		
+		System.out.println("cnt : " + cnt);
 		return cnt;
 	}
-
-	public int GetTotalStoreCount() throws Exception {
-		int cnt = -1; // 카운팅 담을 변수
-		
-		String sql = "select count(*) as cnt from store";
-		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		conn = super.getConnection();
-		
-		pstmt = conn.prepareStatement(sql);
-		rs = pstmt.executeQuery();
-		
-		if (rs.next()) {
-			cnt = rs.getInt("cnt");
-		}
-		
-		if(rs!=null) {rs.close();}
-		if(pstmt!=null) {pstmt.close();}
-		if(conn!=null) {conn.close();}
-		
-		return cnt;
-	}
-	
 }
