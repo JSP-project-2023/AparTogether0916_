@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ include file="./../common/bootstrap5.jsp" %>
+
 <%@ include file="./../common/common.jsp" %>
 
 <%@ page import="com.apartogether.model.dao.MemberDao" %>
