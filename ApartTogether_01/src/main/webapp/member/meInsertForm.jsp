@@ -14,7 +14,8 @@
   	  		$('#birth').datepicker({dateFormat: "yy/mm/dd"});   	  	 	
   		});
   		
-  		function validCheck(){/* form validation check */
+  		function validCheck(){ /* form validation check */
+  			console.log('validCheck() function called');
   			var id = $('#id').val();
   			if(id.length < 4 || id.length > 10){
   				swal('아이디는 4자리 이상 10자리 이하로 입력해 주세요.');
@@ -90,7 +91,7 @@
 	<div class="container">
 		<h2>회원 가입</h2>
 		<p>회원 가입하는 페이지 입니다.</p>
-		<form action="<%=withFormTag%>" method="post">
+		<form action="<%=withFormTag%>" method="post"  onsubmit="return validCheck();">
 			<input type="hidden" name="command" value="meInsert">
 			
 			<div class="input-group">
