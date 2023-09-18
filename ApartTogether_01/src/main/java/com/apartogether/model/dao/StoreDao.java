@@ -16,7 +16,8 @@ public class StoreDao extends SuperDao {
 		String sql = " insert into store(stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime , stlogo, redday, btime)";
 		sql += " values(seqstore.nextval, 'soon', ?,?,?,?, ?,?,?,?,?, ?,?,40)";
 
-		conn = super.getConnection(); conn.setAutoCommit(false);
+		conn = super.getConnection();
+		conn.setAutoCommit(false);
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setString(1, store.getStname());

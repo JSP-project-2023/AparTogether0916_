@@ -11,7 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.PageContext;
 
 import com.apartogether.controller.SuperController;
 import com.apartogether.utility.MyUtility;
@@ -103,8 +102,6 @@ public class FrontController extends HttpServlet {
 		System.out.println("todolist file element size = [" + todolistMap.size() + "]");
 		
 		//이미지 파일 업로드 경로
-		String u = this.getClass().getResource("").getPath();
-		System.out.println("U 경로 : " + u);
 		uploadImage = application.getRealPath("upload");
 		System.out.println("imageUploadWebPath is [" + uploadImage + "]");
 	

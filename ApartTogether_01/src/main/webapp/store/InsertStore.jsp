@@ -6,69 +6,17 @@
 <head>
 <meta charset="UTF-8">
 
-
-<script type="text/javascript">
-	function validation(){
-		if ($("input[name=stname]").val() == "") {
-			alert("가게 이름은 필수 입니다.");
-			$("input[name=stname]").focus();
-			return false;
-		}
-		if ($("select[name=category]").val() == "-") {
-			alert("카테고리 선택은 필수 입니다.");
-			$("input[name=category]").focus();
-			return false;
-		}
-		if ($("input[name=stplace]").val() == "") {
-			alert("가게 위치는 필수 입니다.");
-			$("input[name=stplace]").focus();
-			return false;
-		}
-		if ($("select[name=areacode1]").val() == "-") {
-			alert("전화번호는 필수 입니다.");
-			$("select[name=areacode1]").focus();
-			return false;
-		}
-		if ($("input[name=areacode2]").val() == "" || $("input[name=areacode3]").val() == "") {
-			alert("전화번호는 필수 입니다.");
-			$("input[name=areacode1]").focus();
-			return false;
-		}
-		if ($("input[name=ceofile]").val() == "" || $("input[name=ceofile]").val() == null) {
-			alert("사업자 등록증은 필수 입니다.");
-			$("input[name=ceofile]").focus();
-			return false;
-		}
-		if ($("input[name=stlogo]").val() == "" || $("input[name=stlogo]").val() == null) {
-			alert("가게 로고는 필수 입니다.");
-			$("input[name=stlogo]").focus();
-			return false;
-		}
-		if ($("input[name=fee]").val() == "") {
-			alert("배달비 필수 입니다.");
-			$("input[name=fee]").focus();
-			return false;
-		}
-		if($("input[name=fee]").val() <= '0'){
-			$("input[name=fee]").val("0");
-		}
-		if($("input[name=redday]").val() == ""){
-			$("input[name=redday]").val("휴무일 없음");
-		}
-		if($("input[name=ceono]").val() == ""){
-			alert("사업자 등록번호는 필수 입니다.");
-			$("input[name=ceono]").focus();
-			return false;
-		}
-	}
-	
-</script>
+<!-- 자바 스크립트 파일 불러오기 -->
+<script src="./storeJS/s.js"></script>
+<!-- css파일 불러오기 -->
+<link rel="stylesheet" href="./storeCSS/InsertStore.css" type="text/css">
 <title>가게 등록 페이지 입니다.</title>
 </head>
 <body>
-	<h3>내가게 등록</h3>
+		<strong class="title">내가게 등록</strong>
 
-	<div><!-- 컨테이너 -->
+	<hr>
+	<div class="container1"><!-- 컨테이너 -->
 		<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data"> <!-- post? get? -->
 		<input type="text" name="command" value="storeInsert">
 		<!-- 회원 아이디 -->
@@ -76,7 +24,11 @@
 		<!-- 가게 고유번호-->
 		<input type="text" value="가게 고유번호(시퀀스)" name="stno" placeholder="회원아이디"><br>
 		
+		<div id="ctname">
 			가게이름 <input name="stname" type="text"><br>
+		</div>
+		
+		<div id="category">
 			카테고리
 			<select name="category" id="category">
 				<option value="-">--선택--
@@ -89,10 +41,16 @@
 				<option value="피자">피자
 				<option value="카페">카페
 			</select><br>
-	
+		</div>
+			
+		<div id="stplace">
 			<%--주소 api사용하여 주소지 받아옴.--%>
 			가게위치<input name="stplace" type="text"><br>
-			
+		</div>
+		
+		<div id="storeNumber">
+		
+		</div>
 			가게 전화번호
 			<select name="areacode1">
 				<option value="-">-선택-</option>
@@ -105,9 +63,17 @@
 			</select>
 			-<input name="areacode2" type="number">
 			-<input name="areacode3" type="number"><br>
+		
 			
+		<div id="content">
 			가게 소개 <textarea name="content" rows="2" cols="10"></textarea><br>
+		</div>
+		
+		<div id="ceofile">
 			사업자 등록증<input name="ceofile" type="file"><br>
+		</div>
+		
+		<div id="shoptime">
 			가게운영시간
 				<!-- 시작시간 -->
 				<select name="startShopAmPm">
@@ -174,16 +140,31 @@
 					<option value="12:30">12:30</option>
 				</select>
 			<br>
+		</div>
 			
+		<div id="stlogo">
 			가게로고<input name="stlogo" type="file"><br>
+		</div>
+		
+		<div id="fee">
 			배달비<input name="fee" type="number"><br>
+		</div>
+		
+		<div id="redday">
 			휴무일<input name="redday" type="text"><br>
+		</div>
+		
+		<div id="ceono">
 			사업자 등록번호<input name="ceono" type="text"><br>
+		</div>
 			
+		<div id="buttons">
 			<button type="submit" onclick="return validation()">등록</button>
 			<a type="button" href="./../common/home.jsp">취소</a>
 			<!-- 초기화 하기전에 컨펌창 출력 -->
 			<button type="reset">초기화</button>
+		</div>
+			
 		</form>	
 	</div>
 </body>

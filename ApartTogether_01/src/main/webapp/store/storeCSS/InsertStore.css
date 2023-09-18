@@ -1,1 +1,24 @@
 @charset "UTF-8";
+
+
+.title {
+	margin-top: 10px;
+	margin-left: 25%;
+	font-size: 30px;
+	
+}
+hr {
+	width: 50%;
+	margin: 1vh auto;
+	
+}
+input {
+	border-radius: 5px;
+	border: 1px solid black;
+}
+
+#ctname, #category, #stplace{
+	margin-top: 15px;
+	margin-left: 15%;
+}
+
