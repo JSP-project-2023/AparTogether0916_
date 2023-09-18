@@ -37,6 +37,8 @@
 	//out.print("notWithFormTag : " + notWithFormTag + "<br/>") ;
 %>	
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,6 +50,58 @@
 	<script src="/js/sweetalert.js"></script>
 	<style type="text/css">
 		.alert-dismissible{margin: 10px;}
+		
+	/*[st] css버튼 set */
+		/* [st] button-18 */
+          .button-18 {
+            align-items: center;
+            background-color: #d8e4d2;
+            border: 0;
+            border-radius: 100px;
+            box-sizing: border-box;
+            color: #6f726e;
+            cursor: pointer;
+            display: inline-flex;
+            font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            justify-content: center;
+            line-height: 20px;
+            max-width: 480px;
+            min-height: 40px;
+            min-width: 0px;
+            overflow: hidden;
+            padding: 0px;
+            padding-left: 10px;
+            padding-right: 10px;
+            text-align: center;
+            touch-action: manipulation;
+            transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+            user-select: none;
+            -webkit-user-select: none;
+            vertical-align: middle;
+          }
+
+          .button-18:hover,
+          .button-18:focus { 
+            background-color: #8e998c;
+            color: #ffffff;
+          }
+
+          .button-18:active {
+            background: #09223b;
+            color: rgb(255, 255, 255, .7);
+          }
+
+          .button-18:disabled { 
+            cursor: not-allowed;
+            background: rgba(0, 0, 0, .08);
+            color: rgba(0, 0, 0, .3);
+          }
+  		/* [ed] button-18 */
+		
+	/*[ed] css버튼 set */
+		
 	</style>
 </head>
 

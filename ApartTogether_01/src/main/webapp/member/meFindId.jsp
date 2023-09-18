@@ -26,6 +26,17 @@
   		}
   		#buttonset{margin-top: 15px;}
   		.radio_membertype{font-size: 0.8rem;} /* 주위 글꼴의 1.1배 */
+  		
+  		.flex-container {
+ 			display: flex;
+		}
+  	
+  		.flex-container > div {
+ 			background-color: #f1f1f1;
+  			margin: 10px;
+  			padding: 20px;
+	 		font-size: 30px;
+  		}
   	</style>
 
 </head>
@@ -50,7 +61,7 @@
 				<span class="input-group-text col-md-2">생일</span>
 				<input class="form-control" type="datetime" id="birth" name="birth" placeholder="YYYY/MM/DD">				
 			</div>
-			<button type="submit" class="btn btn-primary col-xs-6 col-sm-4 col-lg-2"> ID 확인 </button> 
+			<button type="submit" class="btn button-18 col-xs-6 col-sm-4 col-lg-2"> ID 확인 </button> 
 <!-- 
 			인증번호 및 물음 미구현
 			[st] 인증번호 전송
@@ -82,7 +93,7 @@
 
       					Modal footer
       					<div class="modal-footer">
-					        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">확인</button>
+					        <button type="submit" class="btn btn-danger " data-bs-dismiss="modal">확인</button>
       					</div>
 
 				    </div>
