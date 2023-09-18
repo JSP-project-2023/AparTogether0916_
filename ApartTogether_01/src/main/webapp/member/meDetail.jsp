@@ -10,6 +10,7 @@
 	<style type="text/css">
 		.container{margin:10px;}
 		#backButton{margin: auto; }
+		.small_image{width:100px;height:100px;margin:2px;border-radius:5px;}
 	</style>
 </head>
 <body>
@@ -39,7 +40,11 @@
 				</tr>
 				<tr>
 					<td align="center">프로필 사진</td>
-					<td>${requestScope.bean.profile}</td>
+					<td>
+						<img class="card-img-top  small_image rounded" alt="${bean.name}" 
+					         src="upload/${bean.profile}"  >
+					         ${requestScope.bean.profile}
+					</td>
 				</tr>
 				
 				<tr>

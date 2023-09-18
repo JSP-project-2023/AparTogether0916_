@@ -156,8 +156,8 @@ public class MemberDao extends SuperDao {
 		// Bean 객체 정보를 이용하여 데이터 베이스에 추가합니다.
 		int cnt = -1 ;
 
-		String sql = " insert into members(id, mtype, name, password, birth, gender, address, profile) " ;
-		sql += " values(					?,	   ?,	 ?,		   ?,	  ?, 	  ?,	   ?,	    ?) " ; 
+		String sql = " insert into members(id, mtype, name, password, phone, birth, gender, nickname, address, profile) " ;
+		sql += " values(					?,	   ?,	 ?,	       ?,	  ?,     ?,	     ?, 	   ?,	    ?,	     ?) " ; 
 		
 		PreparedStatement pstmt = null ;
 		
@@ -169,11 +169,13 @@ public class MemberDao extends SuperDao {
 		pstmt.setString(1, bean.getId());
 		pstmt.setString(2, bean.getMtype());
 		pstmt.setString(3, bean.getName());
-		pstmt.setString(4, bean.getPassword());		
-		pstmt.setString(5, bean.getBirth());
-		pstmt.setString(6, bean.getGender());
-		pstmt.setString(7, bean.getAddress());
-		pstmt.setString(8, bean.getProfile());
+		pstmt.setString(4, bean.getPassword());
+		pstmt.setString(5, bean.getPhone());
+		pstmt.setString(6, bean.getBirth());
+		pstmt.setString(7, bean.getGender());
+		pstmt.setString(8, bean.getNickname());
+		pstmt.setString(9, bean.getAddress());
+		pstmt.setString(10, bean.getProfile());
 		
 		cnt = pstmt.executeUpdate() ; 
 		conn.commit();

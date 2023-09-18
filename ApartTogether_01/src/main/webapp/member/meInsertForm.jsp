@@ -56,9 +56,9 @@
   			}
 
   			var phone = $('#phone').val();  			
-  			if(phone.length < 8 || name.length > 12){  				
-  				$('#name').focus();
-  				swal('이름은 9자리 이상 11자리 이하로 입력해 주세요.');
+  			if(phone.length < 9 || phone.length > 11){  				
+  				$('#phone').focus();
+  				swal('전화번호는 9자리 이상 11자리 이하로 입력해 주세요.');
   				return false ;
   			}
   			
