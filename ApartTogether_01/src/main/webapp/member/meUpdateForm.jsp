@@ -15,8 +15,8 @@
 	<script type="text/javascript">
   		$(document).ready(function(){
   			/* value 속성의 값이 일치하는 항목에 대하여 체크 on 시킵니다. */
-	  	  	$('input[value="<%=request.getParameter("gender")%>"]').attr('checked', true);
-  			
+	  	  	$('input[value="${bean.gender}"]').attr('checked', true);
+  			$('input[value="${bean.mtype}"]').attr('checked', true);
 	  	  	
   		});
   	</script>
@@ -30,7 +30,8 @@
   			margin-right: auto;
   		}
   		#buttonset{margin-top: 15px;}
-  		.radio_membertype{font-size: 1.1rem;} /* 주위 글꼴의 1.1배 */
+  		.radio_gender{font-size: 1.1rem;}
+  		.radio_mtype{font-size: 1.1rem;} /* 주위 글꼴의 1.1배 */
   	</style>
 </head>
 <body>
@@ -42,14 +43,14 @@
 			<div class="input-group">
 				<span class="input-group-text">회원유형</span>
 				<div class="form-control">
-					<label class="radio-inline radio_membertype"> 
-						&nbsp;<input type="radio" id="membertype1" name="membertype" value="1">일반회원
+					<label class="radio-inline radio_mtype"> 
+						&nbsp;<input type="radio" id="mtype1" name="mtype" value="user">일반회원
 					</label>
-					<label class="radio-inline radio_membertype"> 
-						&nbsp;<input type="radio" id="membertype2" name="membertype" value="2">사업자
+					<label class="radio-inline radio_mtype"> 
+						&nbsp;<input type="radio" id="mtype2" name="mtype" value="biz">사업자
 					</label>
-					<label class="radio-inline radio_membertype"> 
-						&nbsp;<input type="radio" id="membertype3" name="membertype" value="3">관리자
+					<label class="radio-inline radio_mtype"> 
+						&nbsp;<input type="radio" id="mtype3" name="mtype" value="admin">관리자
 					</label>
 				</div>
 			</div>
@@ -57,21 +58,21 @@
 		
 			<div class="input-group">
 				<span class="input-group-text">아이디</span>
-				<input disabled="disabled" class="form-control" type="text" id="fakeid" name="fakeid" value="<%=request.getParameter("id")%>">				
-				<input type="text" id="id" name="id" value="<%=request.getParameter("id")%>">
+				<input disabled="disabled" class="form-control" type="text" id="fakeid" name="fakeid" value="${bean.id}">				
+				<input type="text" id="id" name="id" value="${bean.id}">
 			</div>
 			<div class="input-group"> 
 				<span class="input-group-text">이름</span>
-				<input class="form-control" type="text" id="name" name="name" value="<%=request.getParameter("name")%>">				
+				<input class="form-control" type="text" id="name" name="name" value="${bean.name}">				
 			</div>
 			
 			<div class="input-group">
 				<span class="input-group-text col-md-2">닉네임</span>
-				<input class="form-control" type="text" id="nickname" name="nickname" value="<%=request.getParameter("nickname")%>">				
+				<input class="form-control" type="text" id="nickname" name="nickname" value="${bean.nickname }">				
 			</div>
 			<div class="input-group">
 				<span class="input-group-text col-md-2">프로필사진</span>
-				<input class="form-control" type="file" id="profile" name="profile" value="<%=request.getParameter("profile")%>">
+				<input class="form-control" type="file" id="profile" name="profile" value="${bean.profile }">
 			</div>
 			
 			<div class="input-group">
@@ -92,18 +93,18 @@
 			</div>
 			<div class="input-group">
 				<span class="input-group-text">전화번호</span>
-				<input class="form-control" type="text" id="address" name="address" value="<%=request.getParameter("phone")%>">			
+				<input class="form-control" type="text" id="address" name="address" value="${bean.phone }">			
 			</div>
 			
 			
 			<div class="input-group">
 				<span class="input-group-text">생일</span>
-				<input class="form-control" type="datetime" id="birth" name="birth" value="<%=request.getParameter("birth")%>">			
+				<input class="form-control" type="datetime" id="birth" name="birth" value="${bean.birth }">			
 			</div> 
 			
 			<div class="input-group">
 				<span class="input-group-text">주소</span>
-				<input class="form-control" type="text" id="address" name="address" value="<%=request.getParameter("address")%>">			
+				<input class="form-control" type="text" id="address" name="address" value="${bean.address }">			
 			</div>
 			
 			

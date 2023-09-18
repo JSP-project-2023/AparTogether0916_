@@ -7,3 +7,4 @@ meLogin=com.apartogether.controller.member.MemberLoginController
 meLogout=com.apartogether.controller.member.MemberLogoutController
 meDetail=com.apartogether.controller.member.MemberDetailController
 meList=com.apartogether.controller.member.MemberListController
+meUpdate=com.apartogether.controller.member.MemberUpdateController
