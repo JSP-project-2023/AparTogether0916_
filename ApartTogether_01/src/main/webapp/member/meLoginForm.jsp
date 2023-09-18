@@ -25,6 +25,16 @@
   			}
 		}
 	</script>
+	<style type="text/css">
+	.container{margin-top: ;}
+	.input-group{margin: 7px;}
+  	.input-group-text{
+  		display: block;
+  		margin-left: auto;
+  		margin-right: auto;
+  	}
+  	#buttonset{margin-top: 15px;}
+	</style>
 </head>
 <body>
 	<br/>
@@ -33,15 +43,17 @@
 		<p>로그인을 위한 페이지입니다.</p>
 		<form action="<%=withFormTag%>" method="post">
 			<input type="hidden" name="command" value="meLogin"> 
-			<div> 
-				<label for="id" class="form-label">아이디 :</label> 
+			
+			<div class="input-group">
+				<span class="input-group-text col-md-2">아이디 🔒</span>
 				<input type="text" class="form-control" id="id" name="id" 
 					placeholder="아이디를 입력해 주세요."
 					data-bs-toggle="tooltip" title="아이디는 3글자 이상 10글자 이하이어야 합니다."
 					data-bs-placement="top">
 			</div>
-			<div>
-				<label for="password" class="form-label">비밀 번호 :</label> 
+			
+			<div class="input-group">
+				<span class="input-group-text col-md-2">비밀번호 🔑</span>
 				<input class="form-control" type="password" id="password" name="password">
 			</div>
 			
