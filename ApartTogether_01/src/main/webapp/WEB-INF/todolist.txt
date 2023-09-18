@@ -4,3 +4,4 @@ home=com.apartogether.controller.HomeController
 # member 회원(biz / user / admin)
 meInsert=com.apartogether.controller.member.MemberInsertController
 meLogin=com.apartogether.controller.member.MemberLoginController
+meLogout=com.apartogether.controller.member.MemberLogoutController

@@ -105,8 +105,8 @@ public class MemberDao extends SuperDao {
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
 		
-		String sql = " select * from members" ;
-		sql += " where id = ? and password = ?" ;
+		String sql = " select * from members " ;
+		sql += " where id = ? and password = ? " ;
 		
 		conn = super.getConnection() ; // 단계 02		
 		pstmt = conn.prepareStatement(sql) ; // 단계 03

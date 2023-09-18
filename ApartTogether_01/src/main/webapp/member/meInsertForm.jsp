@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ include file="./../common/bootstrap5.jsp" %>
 <%@ include file="./../common/common.jsp" %>
 
 <!DOCTYPE html>
@@ -98,8 +97,8 @@
 				<span class="input-group-text col-md-2">회원유형</span>
 				<div class="form-control">
 					<label class="radio-inline radio_membertype"> 
-						&nbsp;<input type="radio" id="membertype1" name="membertype" value="3">일반회원
-						&nbsp;<input type="radio" id="membertype2" name="membertype" value="2">사업자
+						&nbsp;<input type="radio" id="membertype1" name="mtype" value="user">일반회원
+						&nbsp;<input type="radio" id="membertype2" name="mtype" value="biz">사업자
 					</label>
 					
 				</div>
