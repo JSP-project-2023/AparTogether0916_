@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.PageContext;
 
 import com.apartogether.controller.SuperController;
 import com.apartogether.utility.MyUtility;
@@ -41,15 +42,12 @@ public class FrontController extends HttpServlet {
 		
 		// command Parameter : 컨트롤러 분기를 위한 핵심 파라미터 
 		String command = request.getParameter("command") ;
-		System.out.println("이것은 커맨드 입니다."  + command);
 		
 		if(command == null) {
 			
 			System.out.println("file upload event invoked");
 			
 			MultipartRequest mr = MyUtility.getMultipartRequest(request, uploadImage);
-			
-			System.out.println("이것은 mr : " + mr);
 			
 			if(mr!=null) {
 				command = mr.getParameter("command") ;
@@ -98,7 +96,6 @@ public class FrontController extends HttpServlet {
 		
 		ServletContext application = config.getServletContext() ;
 		
-		
 		String todolistFile = application.getRealPath(todolist);
 		System.out.println("todolistFile is [" + todolistFile + "]");
 				
@@ -106,9 +103,10 @@ public class FrontController extends HttpServlet {
 		System.out.println("todolist file element size = [" + todolistMap.size() + "]");
 		
 		//이미지 파일 업로드 경로
-		uploadImage = application.getRealPath("/upload");
-		System.out.println("setting file element size : " + uploadImage);
-	
+		String u = this.getClass().getResource("").getPath();
+		System.out.println("U 경로 : " + u);
+		uploadImage = application.getRealPath("upload");
+		System.out.println("imageUploadWebPath is [" + uploadImage + "]");
 	
 	}
 
