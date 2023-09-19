@@ -16,17 +16,20 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class MyUtility {
 	
-	public static void deleteOldProfileImageFile(String webPath, MultipartRequest mr) {		
-		// 상품 수정시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
-		String deleteImages = mr.getParameter("deleteProfile") ;
-		if(deleteImages != null) {
-			String deleteFile = webPath + "/" + deleteImages ;
-			File target = new File(deleteFile) ;
-			if(target.delete()) {
-				System.out.println(deleteFile + " file delete success"); 
+	public static void deleteOldProfileImageFile(String webPath, MultipartRequest mr) {
+		System.out.println("profile : " + mr.getFilesystemName("profile"));
+		System.out.println("deleteProfile : " + mr.getParameter("deleteProfile"));
+		// 회원정보 수정시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
+		if(mr.getFilesystemName("profile")!= null){ // 회원정보 수정에서 프로필사진을 선택한 경우(not null)에만 delete 실행
+			String deleteImages = mr.getParameter("deleteProfile") ;
+			if(deleteImages != null) {
+				String deleteFile = webPath + "/" + deleteImages ;
+				File target = new File(deleteFile) ;
+				if(target.delete()) {
+					System.out.println(deleteFile + " file delete success"); 
+				}
 			}
 		}
-		
 	}
 	
 	public static void deleteOldImageFile(String webPath, MultipartRequest mr) {		

@@ -40,13 +40,12 @@ private final String PREFIX = "member/";
 		bean.setName(mr.getParameter("name"));
 		bean.setNickname(mr.getParameter("nickname"));
 		
-		if(mr.getFilesystemName("profile")!=null) {
-			bean.setProfile(mr.getFilesystemName("profile"));
+		// 회원정보 수정시 프로필사진을 건드리지 안으면(선택하지 않으면) 기존 사진을 유지한다.
+		if(mr.getFilesystemName("profile")==null) {
+			bean.setProfile(mr.getParameter("deleteProfile"));
 		}else {
-			bean.setProfile(mr.getFilesystemName("DefaultProfile"));
+			bean.setProfile(mr.getFilesystemName("profile"));
 		}
-		
-		
 		
 		bean.setPassword(mr.getParameter("password"));
 		bean.setGender(mr.getParameter("gender"));
