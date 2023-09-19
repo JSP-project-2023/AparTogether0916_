@@ -235,37 +235,37 @@
 									<!-- 카테고리 별 색상 부여 -->
 									<c:choose>
 										<c:when test="${myStoreList.category eq '양식'}">
-											<span class="badge rounded-pill" style='background-color:#FFA9C8;'>
+											<span class="badge rounded-pill" style='background-color:#51CEA1;'>
 												${myStoreList.category}
 											</span>
 										</c:when>
 										
 										<c:when test="${myStoreList.category eq '한식'}">
-											<span class="badge rounded-pill" style='background-color:#8EAAF1;'>
-												${myStoreList.category}
-											</span>
-										</c:when>
-										
-										<c:when test="${myStoreList.category eq '중식'}">
-											<span class="badge rounded-pill" style='background-color:#FF6B3D;'>
-												${myStoreList.category}
-											</span>
-										</c:when>
-										
-										<c:when test="${myStoreList.category eq '일식'}">
 											<span class="badge rounded-pill" style='background-color:#72CCFF;'>
 												${myStoreList.category}
 											</span>
 										</c:when>
 										
+										<c:when test="${myStoreList.category eq '중식'}">
+											<span class="badge rounded-pill" style='background-color:#FF4E4E;'>
+												${myStoreList.category}
+											</span>
+										</c:when>
+										
+										<c:when test="${myStoreList.category eq '일식'}">
+											<span class="badge rounded-pill" style='background-color:#359EFF;'>
+												${myStoreList.category}
+											</span>
+										</c:when>
+										
 										<c:when test="${myStoreList.category eq '피자'}">
-											<span class="badge rounded-pill" style='background-color:#FF4D97;'>
+											<span class="badge rounded-pill" style='background-color:#FFAB2E;'>
 												${myStoreList.category}
 											</span>
 										</c:when>
 										
 										<c:when test="${myStoreList.category eq '치킨'}">
-											<span class="badge rounded-pill" style='background-color:#CAB7FF;'>
+											<span class="badge rounded-pill" style='background-color:#FF9CBA;'>
 												${myStoreList.category}
 											</span>
 										</c:when>
@@ -277,7 +277,7 @@
 										</c:when>
 										
 										<c:when test="${myStoreList.category eq '카페'}">
-											<span class="badge rounded-pill" style='background-color:#7FCC7E;'>
+											<span class="badge rounded-pill" style='background-color:#C18F61;'>
 												${myStoreList.category}
 											</span>
 										</c:when>
@@ -297,6 +297,10 @@
 										
 										<a id="deleteAnchor" class="btn btn-outline-danger" onclick="deleteStore(${myStoreList.stno});">
 											삭제
+										</a>
+										
+										<a id="deleteAnchor" class="btn btn-outline-success" href="<%=notWithFormTag%>orderHistory&stno=${myStoreList.stno}" onclick="">
+											주문이력
 										</a>
 									</div>
 								</div> <!-- card-body -->

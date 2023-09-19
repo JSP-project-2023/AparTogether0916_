@@ -17,8 +17,10 @@
 		<form action="<%=withFormTag%>" method="post">
 			<input type="hidden" name="command" value="menuInsert">
 			
-			
-			
+			<!-- 가게 번호 -->
+			<input type="text" name="stno" value="${requestScope.storeInfo.stno}" disabled="disabled"><br>
+			메뉴 이름 <input type="text" name="menuname" id="menuname"><br>
+			가격 <input type="text" name="price" id="price"><br>
 			
 			
 		</form>

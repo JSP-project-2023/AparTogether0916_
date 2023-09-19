@@ -134,7 +134,7 @@
 							data-bs-toggle="dropdown">가게</a>
 						<ul class="dropdown-menu">
 							<li>
-								<a class="dropdown-item" href="<%=notWithFormTag%>myStoreList&id=${sessionScope.logInfoId}">내 가게 보기
+								<a class="dropdown-item" href="<%=notWithFormTag%>myStoreList&id=soon">내 가게 보기
 								</a>
 							</li>
 						</ul>

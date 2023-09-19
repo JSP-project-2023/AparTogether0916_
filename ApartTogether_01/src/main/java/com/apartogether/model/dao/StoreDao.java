@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.apartogether.model.bean.Store;
-import com.apartogether.utility.Paging;
 import com.apartogether.utility.PagingStore;
 
 public class StoreDao extends SuperDao {

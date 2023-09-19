@@ -9,7 +9,6 @@ import com.apartogether.controller.SuperClass;
 import com.apartogether.model.bean.Store;
 import com.apartogether.model.dao.StoreDao;
 import com.apartogether.utility.PagingStore;
-import com.apartogether.utility.Paging;
 
 public class StoreListController extends SuperClass {
 	@Override
