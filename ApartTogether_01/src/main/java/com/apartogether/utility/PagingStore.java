@@ -55,7 +55,7 @@ public class PagingStore {
 		
 		beginRow = (pageNumber - 1) * pageSize + 1 ;
 		
-		endRow = pageNumber * pageSize ;
+		endRow = pageNumber * pageSize ; //이부분 수정
 		if(endRow > totalCount) {endRow = totalCount;}
 		
 		beginPage = (pageNumber - 1) / pageCount * pageCount + 1 ;
