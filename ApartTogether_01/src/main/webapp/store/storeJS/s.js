@@ -68,16 +68,31 @@ function validation(){
 		//가게 로고 유효성 검사
 		var stlogo = $('input[name=stlogo]').val();
 		var isCheck = false;
-			for(var i=0 ; i < imgCheck.length ; i++){
-				if(stlogo.endsWith(imgCheck[i])){
-					isCheck = true;
-					break;	
-				}
+		for(var i=0 ; i < imgCheck.length ; i++){
+			if(stlogo.endsWith(imgCheck[i])){
+				isCheck = true;
+				break;	
 			}
-			if(isCheck == false){
-				alert('이미지의 확장자는 png 또는 jpg 형식이어야 합니다.');
-				return false ;
-			}
+		}
+		if(isCheck == false){
+			alert('이미지의 확장자는 png 또는 jpg 형식이어야 합니다.');
+			return false ;
+		}
+		//번호 유효성 검사
+		var areacode1= $("input[name=areacode1]").val();
+		var areacode2= $("input[name=areacode2]").val();
+		
+		if(areacode1 < 0){
+			alert("숫자만 입력가능합니다.")
+			$("input[name=areacode1]").focus();
+			return false;
+		}
+		if(areacode2 < 0){
+			alert("숫자만 입력가능합니다.");
+			$("input[name=areacode2]").focus();
+			return false;
+		}
+			
 	}
 
 $(document).ready(function() {

@@ -17,8 +17,18 @@ input {
 	border: 1px solid black;
 }
 
-#ctname, #category, #stplace{
-	margin-top: 15px;
-	margin-left: 15%;
+#ctname, #category, #stplace , #storeNumber, #content, #ceofile, #shoptime, #stlogo, #fee, #redday, #ceono, #buttons{
+	margin-top: 20px;
+	margin-left: 25%;
 }
-
+#stplace2{
+	margin-top: 20px;
+}
+.snumber{
+	width: 60px;
+}
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}

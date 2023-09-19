@@ -22,19 +22,18 @@
 	<hr>
 	<div class="container1"><!-- 컨테이너 -->
 		<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data"> <!-- post? get? -->
-		<input type="text" name="command" value="storeInsert">
+		<input type="hidden" name="command" value="storeInsert">
 		<!-- 회원 아이디 -->
-		<input type="text" value="admin" name="id" placeholder="회원아이디">
+		<input type="hidden" value="admin" name="id" placeholder="회원아이디">
 		<!-- 가게 고유번호-->
-		<input type="text" value="가게 고유번호(시퀀스)" name="stno" placeholder="회원아이디"><br>
+		<input type="hidden" value="가게 고유번호(시퀀스)" name="stno" placeholder="회원아이디"><br>
 		
 		<div id="ctname">
 			가게이름 <input name="stname" type="text"><br>
 		</div>
 		
 		<div id="category">
-			카테고리
-			<select name="category" id="category">
+		카테고리 <select name="category">
 				<option value="-">--선택--
 				<option value="양식">양식
 				<option value="중식">중식
@@ -54,8 +53,6 @@
 		</div>
 		
 		<div id="storeNumber">
-		
-		</div>
 			가게 전화번호
 			<select name="areacode1">
 				<option value="-">-선택-</option>
@@ -66,16 +63,16 @@
 				<option value="041">041</option>
 				<option value="513">513</option>
 			</select>
-			-<input name="areacode2" type="number">
-			-<input name="areacode3" type="number"><br>
-		
+			- <input class="snumber" name="areacode2" type="number" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+			- <input class="snumber" name="areacode3" type="number" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"><br>
+		</div>
 			
 		<div id="content">
 			가게 소개 <textarea name="content" rows="2" cols="10"></textarea><br>
 		</div>
 		
 		<div id="ceofile">
-			사업자 등록증<input name="ceofile" type="file"><br>
+			사업자 등록증 <input name="ceofile" type="file"><br>
 		</div>
 		
 		<div id="shoptime">
@@ -150,19 +147,19 @@
 		</div>
 			
 		<div id="stlogo">
-			가게로고<input name="stlogo" type="file"><br>
+			가게로고 <input name="stlogo" type="file">파일</input><br>
 		</div>
 		
 		<div id="fee">
-			배달비<input name="fee" type="number"><br>
+			배달비 <input name="fee" type="number"><br>
 		</div>
 		
 		<div id="redday">
-			휴무일<input name="redday" type="text"><br>
+			휴무일 <input name="redday" type="text"><br>
 		</div>
 		
 		<div id="ceono">
-			사업자 등록번호<input name="ceono" type="text"><br>
+			사업자 등록번호 <input name="ceono" type="text"><br>
 		</div>
 			
 		<div id="buttons">
