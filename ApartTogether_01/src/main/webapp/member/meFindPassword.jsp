@@ -47,17 +47,18 @@
             cursor: pointer;
             display: inline-flex;
             font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-            font-size: 22px;
+            font-size: 16px;
             font-weight: 600;
             justify-content: center;
             line-height: 20px;
-            max-width: 900px;
+            /* max-width: 900px; */
+            width: 450px;
             min-height: 50px;
-            min-width: 0px;
+            /* min-width: 0px; */
             overflow: hidden;
             padding: 0px;
-            padding-left: 190px;
-            padding-right: 190px;
+            /* padding-left: 230px; */
+            /* padding-right: 230px; */
             text-align: center;
             touch-action: manipulation;
             transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
@@ -95,22 +96,22 @@
 			<input type="hidden" name="command" value="meFindPassword">
 			<div class="col-lg-3"></div>
 			
-			<div class="col-lg-6">
+			<div class="col-lg-6" align="center">
 				<div class="input-group">
-					<span class="input-group-text col-md-2">이름</span>
+					<span class="input-group-text col-md-3">이름</span>
 					<input class="form-control" type="text" id="name" name="name" placeholder="이름을 입력해 주세요."
 						data-bs-toggle="tooltip" title="등록하신 이름을 입력하세요"
 						data-bs-placement="top">
 				</div>
 				<div class="input-group">
-					<span class="input-group-text col-md-2">ID</span>
+					<span class="input-group-text col-md-3">ID</span>
 					<input class="form-control" type="text" id="id" name="id" placeholder="아이디를 입력해주세요">				
 				</div>
 				<div class="input-group">
-					<span class="input-group-text col-md-2">생일(임시)</span>
+					<span class="input-group-text col-md-3">생일(임시)</span>
 					<input class="form-control" type="datetime" id="birth" name="birth" placeholder="YYYY/MM/DD">				
 				</div>
-				<button type="submit" class="btn button-18 col-xs-6 col-sm-4 col-lg-2"> Password 확인 </button>
+				<button type="submit" class="btn button-18 col-xs-6 col-sm-4 col-lg-2" > Password 확인</button>
 			</div>
 			<div class="col-lg-3"></div> 
 <!-- 

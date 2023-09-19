@@ -58,7 +58,8 @@
 	</style>
 </head>
 
-<body>
+<body background="http://localhost:5214/ApartTogether_01
+	/image/background3.png"> <!-- 백그라운드 이미지 설정하기 -->
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">쇼핑몰</a>

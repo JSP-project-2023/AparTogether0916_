@@ -87,11 +87,12 @@
   			margin-right: auto;
 	  	}
   		#buttonset{margin-top: 15px;}
-  		.radio_membertype{
+  		.radio-inline{
   			cursor: pointer;
   			justify-content: center;
+  			margin-left: auto;
+  			margin-right: auto;
   		}
-  		
   		
   		/* [st] button-18 */
           .button-18 {
@@ -138,13 +139,15 @@
             background: rgba(0, 0, 0, .08);
             color: rgba(0, 0, 0, .3);
           }
-          .button-99 {
+		/* [ed] button-18 */
+        
+          .button-99 {/* 무색 투명 버튼 */
          	cursor: pointer;
          	font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
             font-size: 12px;
             font-weight: 600;
           }
-  	/* [ed] button-18 */
+  	
   	
   	
   	</style>
@@ -165,6 +168,7 @@
 						<label class="radio-inline radio_membertype"> 
 							&nbsp;<input type="radio" id="membertype" name="mtype" value="user"> 🙋‍♀️ ‍일반회원
 						</label>
+						 |
 						<label class="radio-inline radio_membertype"> 
 							&nbsp;<input type="radio" id="membertype" name="mtype" value="biz"> 👨‍💼 사업자
 						</label>
@@ -192,10 +196,11 @@
 					<span class="input-group-text col-md-3">성별</span>
 					<div class="form-control">
 						<label class="radio-inline radio_gender"> 
-							&nbsp;<input type="radio" id="gender1" name="gender" value="male">남자
+							&nbsp;<input type="radio" id="gender1" name="gender" value="male"> 👦 남자
 						</label>
+						 |
 						<label class="radio-inline radio_gender"> 
-							&nbsp;<input type="radio" id="gender2" name="gender" value="female">여자
+							&nbsp;<input type="radio" id="gender2" name="gender" value="female"> 👧 여자
 						</label>
 					</div>
 				</div>
