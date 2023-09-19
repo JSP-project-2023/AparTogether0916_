@@ -52,7 +52,7 @@ public class FrontController extends HttpServlet {
 			if(mr!=null) {
 				command = mr.getParameter("command") ;
 				
-				if(command.equals("prUpdate")) {//가게 수정시 변경.
+				if(command.equals("storeUpdate")) {//가게 수정시 변경.
 					MyUtility.deleteOldImageFile(uploadImage, mr);	
 				}
 				// file upload object binding in request scope.

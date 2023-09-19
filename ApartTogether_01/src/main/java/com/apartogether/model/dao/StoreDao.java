@@ -1,6 +1,7 @@
 package com.apartogether.model.dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.apartogether.model.bean.Store;
@@ -43,4 +44,51 @@ public class StoreDao extends SuperDao {
 		}
 		return cnt;
 	}
+	
+	//스토어 수정하기 위한 1개 가게 조회
+	public Store getStorebyId(String id, String stno) throws Exception {
+		Store bean = new Store();
+		
+		String sql = "select * from store where id=? and stno=? ";
+		
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, id);
+		pstmt.setString(2, stno);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		
+		if(rs.next()) {
+			bean.setStno(rs.getString("stno"));
+			bean.setId(rs.getString("id"));
+			bean.setStname(rs.getString("stname"));
+			bean.setFee(rs.getInt("fee"));
+			bean.setCategory(rs.getString("category"));
+			bean.setStplace(rs.getString("stplace"));
+			bean.setSttel(rs.getString("sttel"));
+			bean.setContent(rs.getString("content"));
+			bean.setCeofile(rs.getString("ceofile"));
+			bean.setCeono(rs.getString("ceono"));
+			bean.setSttime(rs.getString("sttime"));
+			bean.setStlogo(rs.getString("stlogo"));
+			bean.setRedday(rs.getString("redday"));
+		}
+		
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if(conn != null) {
+			conn.close();
+		}
+
+		return bean;
+	}
+
+	
+	
 }
