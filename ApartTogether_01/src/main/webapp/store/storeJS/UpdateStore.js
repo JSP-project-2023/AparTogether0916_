@@ -106,19 +106,75 @@ $(document).ready(function() {
 	});
 	
 	//가게 카테고리 selected
-	const el = document.getElementsByName('category');
-	const len = el.options.length;
-	const str = document.getElementsByName('selectedCategory').values;
-	console.log(el);
-	console.log(len);
-	conseol.log(str);
+	var el = document.getElementById('categoryFood');
+	var len = el.options.length;
+	var str = document.getElementById('selectedCategory').value;
 	
 	for (let i = 0; i < len; i++) {
-		//select box의 option value가 입력 받은 value의 값과 일치할 경우 selected
 		if (el.options[i].value == str) {
-			el.options[i].selected = true;
+			$("#categoryFood").val(str).prop("selected", true);
 		}
 	}
+	
+	//가게 전화번호
+	var el = document.getElementById('choiceNumber');
+	var len = el.options.length;
+	var str = document.getElementById('firstNumber').value;
+	
+	for (let i = 0; i < len; i++) {
+		if (el.options[i].value == str) {
+			$("#choiceNumber").val(str).prop("selected", true);
+		}
+	}
+	
+	/*가게운영시간 코드 시작*/
+	
+	//시작시간 Am or Pm
+	var el = document.getElementById('startShopAmPm');
+	var len = el.options.length;
+	var str = document.getElementById('startAmPm').value;
+	
+	for (let i = 0; i < len; i++) {
+		if (el.options[i].value == str) {
+			$("#startShopAmPm").val(str).prop("selected", true);
+		}
+	}
+	
+	//시작 시간
+	var el = document.getElementById('startTimeB');
+	var len = el.options.length;
+	var str = document.getElementById('startTime').value;
+	
+	for (let i = 0; i < len; i++) {
+		if (el.options[i].value == str) {
+			$("#startTimeB").val(str).prop("selected", true);
+		}
+	}
+	
+	//종료시간 Am or Pm
+	var el = document.getElementById('endShopAmPm');
+	var len = el.options.length;
+	var str = document.getElementById('endAmPm').value;
+	
+	for (let i = 0; i < len; i++) {
+		if (el.options[i].value == str) {
+			$("#endShopAmPm").val(str).prop("selected", true);
+		}
+	}
+	
+	//종료시간
+	var el = document.getElementById('endTimeB');
+	var len = el.options.length;
+	var str = document.getElementById('endTime').value;
+	
+	for (let i = 0; i < len; i++) {
+		if (el.options[i].value == str) {
+			$("#endTimeB").val(str).prop("selected", true);
+		}
+	}
+	
+	
+	
 	
 	
 });

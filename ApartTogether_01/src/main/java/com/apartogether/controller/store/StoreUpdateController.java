@@ -29,7 +29,16 @@ public class StoreUpdateController extends SuperClass{
 		StoreDao dao = new StoreDao();
 				
 		Store bean = dao.getStorebyId(id, stno);
-				
+		
+		//가게 전화번호
+		String[] sttel = bean.getSttel().split("-");
+		
+		//가게 운영시간 split
+		String str = bean.getSttime().replace("~", " ");
+		String[] sttime = str.split("\\s+");
+		
+		request.setAttribute("sttime", sttime);
+		request.setAttribute("sttel", sttel);
 		request.setAttribute("bean", bean);
 		request.setAttribute("id", id);
 		

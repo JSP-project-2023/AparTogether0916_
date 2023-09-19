@@ -33,8 +33,8 @@
 			가게이름 <input name="stname" type="text" value="${bean.stname}"><br>
 		</div>
 		<div id="category">
-		<input name=selectedCategory type="text" value="${bean.category}">
-		카테고리 <select name="category">
+		<input name=selectedCategory id="selectedCategory" type="text" value="${bean.category}">
+		카테고리 <select name="category" id="categoryFood">
 				<option value="-">--선택--
 				<option value="양식">양식
 				<option value="중식">중식
@@ -55,7 +55,8 @@
 		
 		<div id="storeNumber">
 			가게 전화번호
-			<select name="areacode1">
+			<input type="hidden" id="firstNumber" value="${sttel[0]}">
+			<select name="areacode1" id="choiceNumber">
 				<option value="-">-선택-</option>
 				<option value="010">010</option>
 				<option value="02">02</option>
@@ -64,8 +65,8 @@
 				<option value="041">041</option>
 				<option value="513">513</option>
 			</select>
-			- <input class="snumber" name="areacode2" type="number" value="" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-			- <input class="snumber" name="areacode3" type="number" value="" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"><br>
+			- <input class="snumber" value="${sttel[1]}" name="areacode2" type="number" value="" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+			- <input class="snumber" value="${sttel[2]}" name="areacode3" type="number" value="" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"><br>
 		</div>
 			
 		<div id="content">
@@ -80,11 +81,16 @@
 		<div id="shoptime">
 			가게운영시간
 				<!-- 시작시간 -->
-				<select name="startShopAmPm">
+				<input type="text" id="startAmPm" value="${sttime[0]}">
+				<input type="text" id="startTime" value="${sttime[1]}">
+				<input type="text" id="endAmPm" value="${sttime[2]}">
+				<input type="text" id="endTime" value="${sttime[3]}">
+				
+				<select name="startShopAmPm" id="startShopAmPm">
 					<option value="am">오전</option>
 					<option value="pm">오후</option>
 				</select>
-				<select name="startShopTime">
+				<select name="startShopTime" id="startTimeB">
 					<option value="00:00">00:00</option>
 					<option value="00:30">00:30</option>
 					<option value="01:00">01:00</option>
@@ -113,11 +119,11 @@
 					<option value="12:30">12:30</option>
 				</select> ~
 				<!-- 종료시간 -->
-				<select name="endShopAmPm">
+				<select name="endShopAmPm" id="endShopAmPm">
 					<option value="am">오전</option>
 					<option value="pm">오후</option>
 				</select>
-				<select name="endShopTime">
+				<select name="endShopTime" id="endTimeB">
 					<option value="00:00">00:00</option>
 					<option value="00:30">00:30</option>
 					<option value="01:00">01:00</option>
