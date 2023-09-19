@@ -107,6 +107,9 @@
 	
 	.mainTitle {
 		font-weight: bolder;
+	}
+	
+	.myAddress {
 		margin-bottom: 2.5rem;
 	}
 	
@@ -157,14 +160,13 @@
 <body>
 	<div class="container">
 		<h2 class="mainTitle">우리 동네 맛집 리스트</h2>
-<%-- 		<p>현재 주소 | </p> --%>
+		<p class="myAddress">내 현재 주소 | ${sessionScope.loginfo.address}</p>
 
-		${requestScope.pageInfo}
 		<table class="table table-borderless setSpace">
 			<thead>
 			</thead>
 			<tbody> 
-				<c:set var="colsu" value="2" />
+				<c:set var="colsu" value="3" />
 				<tr>
 					<td colspan="${colsu}" align="center">
 						<div class="row">
@@ -278,17 +280,18 @@
 										배달팁 : <fmt:formatNumber value="${storeList.fee}" pattern="#,###"></fmt:formatNumber>원
 									</p>
 									
-<%-- 									<c:if test="${whologin == 2}"> --%>
+<!-- 									admin 또는 사업자일경우 본인 가게에만 버튼 노출 -->
+									<c:if test="${sessionScope.loginfo.id == 'admin' || sessionScope.loginfo.id == storeList.id}">
 										<div id="buttonList" class="buttonList">
 											<a id="updateAnchor" class="btn btn-outline-primary" href="<%=notWithFormTag%>storeUpdate&stno=${storeList.stno}${requestScope.pageInfo.flowParameter}">
-												수정 
+												수정
 											</a>
 											
 											<a id="deleteAnchor" class="btn btn-outline-danger" href="#">
 												삭제
 											</a>
 										</div>
-<%-- 									</c:if> --%>
+									</c:if>
 								</div> <!-- card-body -->
 								
 							</a>
@@ -301,8 +304,6 @@
 			</tbody>
 		</table>
 		${requestScope.pageInfo.pagingHtml}
-		<br>
-		${requestScope.pageInfo.flowParameter}
 	</div>
 </body>
 </html>
