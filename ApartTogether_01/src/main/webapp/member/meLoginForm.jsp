@@ -24,6 +24,15 @@
   				return false ; /* false이면 이벤트 전파 방지 */
   			}
 		}
+		/* [st] popup 창으로 열기 */
+		function popup(){
+            var url = "<%=notWithFormTag%>meFindId";
+            var name = "popup test";
+            var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+            window.open(url, name, option);
+        }
+		/* [ed] popup 창으로 열기 */
+		
 	</script>
 	<style type="text/css">
 	.container{margin-top: ;}
@@ -57,7 +66,7 @@
             cursor: pointer;
             display: inline-flex;
             font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 600;
             justify-content: center;
             line-height: 20px;
@@ -110,7 +119,7 @@
 	<h2><br/>로그인 페이지</h2>
 	<div class="container row" >
 		<div class="col-lg-3">[포인터].col-lg-3</div>
-		<div class="col-lg-6" align="center">[포인터].col-lg-6			<div>
+		<div class="col-lg-6" align="center">[포인터].col-lg-6<div>
 			<p>로그인을 위한 페이지입니다.</p>
 			<p>혹은 로고?</p>
 			</div>
@@ -135,10 +144,13 @@
 					<a type="button" href="<%=notWithFormTag%>meFindId" class="btn button-99">아이디 찾기</a>
 					|	
 					<a type="button" href="<%=notWithFormTag%>meFindPassword" class="btn button-99">비밀번호 찾기</a>
+					||
+					<a type="popup" href="javascript:popup()" class="btn button-99">아이디 찾기(popup test)</a>
+					|	
 				</div>
 			</form>
 			</div>
-			<div class="col-lg-3">[포인터].col-lg-2</div>
+			<div class="col-lg-3">[포인터].col-lg-3</div>
 	</div>
 </body>
 </html>

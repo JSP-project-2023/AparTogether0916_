@@ -88,11 +88,11 @@
 </head>
 <body>
 	<div class="container">
-		<h2><b>아이디 찾기</b></h2>
-		<p>회원 가입하는 페이지 입니다.</p>
+		<h2><b>패스워드 찾기</b></h2>
+		<p>하기 정보를 입력해주세요.</p>
 		
 		<form action="<%=withFormTag%>" method="post">
-			<input type="hidden" name="command" value="meFindId">
+			<input type="hidden" name="command" value="meFindPassword">
 			<div class="col-lg-3"></div>
 			
 			<div class="col-lg-6">
@@ -103,14 +103,14 @@
 						data-bs-placement="top">
 				</div>
 				<div class="input-group">
-					<span class="input-group-text col-md-2">전화번호</span>
-					<input class="form-control" type="text" id="phone" name="phone" placeholder="000-0000-0000">				
+					<span class="input-group-text col-md-2">ID</span>
+					<input class="form-control" type="text" id="id" name="id" placeholder="아이디를 입력해주세요">				
 				</div>
 				<div class="input-group">
-					<span class="input-group-text col-md-2">생일</span>
+					<span class="input-group-text col-md-2">생일(임시)</span>
 					<input class="form-control" type="datetime" id="birth" name="birth" placeholder="YYYY/MM/DD">				
 				</div>
-				<button type="submit" class="btn button-18 col-xs-6 col-sm-4 col-lg-2"> ID 확인 </button>
+				<button type="submit" class="btn button-18 col-xs-6 col-sm-4 col-lg-2"> Password 확인 </button>
 			</div>
 			<div class="col-lg-3"></div> 
 <!-- 

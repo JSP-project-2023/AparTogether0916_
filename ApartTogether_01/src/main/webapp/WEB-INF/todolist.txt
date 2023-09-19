@@ -6,4 +6,4 @@ meInsert=com.apartogether.controller.member.MemberInsertController
 meLogin=com.apartogether.controller.member.MemberLoginController
 meLogout=com.apartogether.controller.member.MemberLogoutController
 meFindId=com.apartogether.controller.member.MemberFindIdController
-#meFindPassword=com.apartogether.controller.member.MemberFindPasswordController
+meFindPassword=com.apartogether.controller.member.MemberFindPasswordController

@@ -129,7 +129,7 @@ public class MemberDao extends SuperDao {
 		return bean ;
 	}
 	
-	/* [getDataByPk] name, phone, birth값으로 member(id) 조회 */
+	/* [findID] name, phone, birth값으로 member(id) 조회 */
 	public Member findId(String name, String phone, String birth) throws Exception {		
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
@@ -159,6 +159,35 @@ public class MemberDao extends SuperDao {
 		return bean ;
 	}
 	
+	/* [findPassword] name, phone, birth값으로 member(id) 조회 */
+	public Member findPassword(String name, String id, String birth) throws Exception {		
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
+		
+		String sql = " select * from members " ;
+		sql += " where name = ? and id = ? and birth = ? " ;
+		
+		conn = super.getConnection() ; // 단계 02		
+		pstmt = conn.prepareStatement(sql) ; // 단계 03
+		
+		pstmt.setString(1, name);
+		pstmt.setString(2, id);
+		pstmt.setString(3, birth);
+		
+		rs = pstmt.executeQuery() ; // 단계 04-01
+		
+		Member bean = null ;
+		if(rs.next()) { // 1건이 조회됨
+			bean = getBeanData(rs); 
+		}
+		
+		// 단계 05
+		if(rs != null) {rs.close();}
+		if(pstmt != null) {pstmt.close();}
+		if(conn != null) {conn.close();}
+		
+		return bean ;
+	}
 	
 	
 	
