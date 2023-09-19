@@ -99,7 +99,7 @@
 			</div>
 			<div class="input-group">
 				<span class="input-group-text">전화번호</span>
-				<input class="form-control" type="text" id="address" name="address" value="${requestScope.bean.phone }">			
+				<input class="form-control" type="text" id="phone" name="phone" value="${requestScope.bean.phone }">			
 			</div>
 			
 			
