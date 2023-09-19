@@ -3,3 +3,4 @@
 home=com.apartogether.controller.HomeController
 storeList=com.apartogether.controller.store.StoreListController
 storeInsert=com.apartogether.controller.store.StoreInsertController
+myStoreList=com.apartogether.controller.store.MyStoreListController

@@ -25,6 +25,7 @@
 		<button type="submit">가게 목록 보기</button>
 	</form>
 	
+	
 </body>
 </html>
  

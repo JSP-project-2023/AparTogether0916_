@@ -54,7 +54,7 @@
 <body>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">쇼핑몰</a>
+			<a class="navbar-brand" href="<%=notWithFormTag%>home">쇼핑몰</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
 				<span class="navbar-toggler-icon"></span>
@@ -122,6 +122,19 @@
 						<ul class="dropdown-menu">
 							<li>
 								<a class="dropdown-item" href="<%=notWithFormTag%>vwList">목록 보기
+								</a>
+							</li>
+						</ul>
+					</li>	
+					
+					
+					<!-- Store section -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" role="button"
+							data-bs-toggle="dropdown">가게</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a class="dropdown-item" href="<%=notWithFormTag%>myStoreList&id=${sessionScope.logInfoId}">내 가게 보기
 								</a>
 							</li>
 						</ul>
