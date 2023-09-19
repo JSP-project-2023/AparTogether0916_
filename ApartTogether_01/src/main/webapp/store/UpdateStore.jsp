@@ -4,17 +4,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 	<!-- 자바 스크립트 파일 불러오기 -->
-	<script src="./storeJS/s.js"></script>
+	<script src="${pageContext.request.contextPath}/store/storeJS/UpdateStore.js"></script>
 	<!-- 주소 입력api -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!-- css파일 불러오기 -->
-	<link rel="stylesheet" href="./storeCSS/InsertStore.css" type="text/css">
-<title>가게 정보 수정</title>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/store/storeCSS/InsertStore.css" type="text/css">
+	
+	<title>가게 정보 수정</title>
 	</head>
 	<body>
-	
 	
 	<!-- hidden으로 사용자 아이디 받아옴. 가게 아이디 히든으로 받아옴. -->
 	<strong class="title">내가게 수정</strong>
@@ -32,6 +33,7 @@
 			가게이름 <input name="stname" type="text" value="${bean.stname}"><br>
 		</div>
 		<div id="category">
+		<input name=selectedCategory type="text" value="${bean.category}">
 		카테고리 <select name="category">
 				<option value="-">--선택--
 				<option value="양식">양식
@@ -71,7 +73,8 @@
 		</div>
 		
 		<div id="ceofile">
-			사업자 등록증 <input name="ceofile" type="file" value="${bean.ceofile}"><br>
+			사업자 등록증 <input name="ceofile" type="file"><br>
+			<input name="ceofileUpdate" type="text" value="${bean.ceofile}">
 		</div>
 		
 		<div id="shoptime">
@@ -146,7 +149,9 @@
 		</div>
 			
 		<div id="stlogo">
-			가게로고 <input name="stlogo" type="file" value="${bean.stlogo}"><br>
+			가게로고 <input name="stlogo" type="file"/>
+					<input name="stlogoUpdate" type="text" value="${bean.stlogo}">
+			<br>
 		</div>
 		
 		<div id="fee">
@@ -162,10 +167,9 @@
 		</div>
 			
 		<div id="buttons">
-			<button type="submit" onclick="return validation()">등록</button>
+			<button type="submit" onclick="return validation()">수정</button>
 			<a type="button" href="./../common/home.jsp">취소</a>
 			<!-- 초기화 하기전에 컨펌창 출력 -->
-			<button type="reset">초기화</button>
 		</div>
 			
 		</form>	

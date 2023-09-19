@@ -7,13 +7,11 @@
 <meta charset="UTF-8">
 
 <!-- 자바 스크립트 파일 불러오기 -->
-<script src="./storeJS/s.js"></script>
-
+<script src="${pageContext.request.contextPath}/store/storeJS/s.js"></script>
 <!-- 주소 입력api -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
 <!-- css파일 불러오기 -->
-<link rel="stylesheet" href="./storeCSS/InsertStore.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/store/storeCSS/InsertStore.css" type="text/css">
 <title>가게 등록 페이지 입니다.</title>
 </head>
 <body>
@@ -147,7 +145,7 @@
 		</div>
 			
 		<div id="stlogo">
-			가게로고 <input name="stlogo" type="file">파일</input><br>
+			가게로고 <input name="stlogo" type="file"><br>
 		</div>
 		
 		<div id="fee">
