@@ -39,7 +39,15 @@ private final String PREFIX = "member/";
 		bean.setMtype(mr.getParameter("mtype"));
 		bean.setName(mr.getParameter("name"));
 		bean.setNickname(mr.getParameter("nickname"));
-		bean.setProfile(mr.getFilesystemName("profile"));
+		
+		if(mr.getFilesystemName("profile")!=null) {
+			bean.setProfile(mr.getFilesystemName("profile"));
+		}else {
+			bean.setProfile(mr.getFilesystemName("DefaultProfile"));
+		}
+		
+		
+		
 		bean.setPassword(mr.getParameter("password"));
 		bean.setGender(mr.getParameter("gender"));
 		bean.setPhone(mr.getParameter("phone"));

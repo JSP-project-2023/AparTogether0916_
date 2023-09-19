@@ -19,11 +19,14 @@ public class MyUtility {
 	public static void deleteOldProfileImageFile(String webPath, MultipartRequest mr) {		
 		// 상품 수정시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
 		String deleteImages = mr.getParameter("deleteProfile") ;
-		String deleteFile = webPath + "/" + deleteImages ;
-		File target = new File(deleteFile) ;
-		if(target.delete()) {
-			System.out.println(deleteFile + " file delete success"); 
+		if(deleteImages != null) {
+			String deleteFile = webPath + "/" + deleteImages ;
+			File target = new File(deleteFile) ;
+			if(target.delete()) {
+				System.out.println(deleteFile + " file delete success"); 
+			}
 		}
+		
 	}
 	
 	public static void deleteOldImageFile(String webPath, MultipartRequest mr) {		
