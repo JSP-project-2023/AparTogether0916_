@@ -178,4 +178,19 @@ public class StoreDao extends SuperDao {
 		
 		return cnt;
 	}
+
+	public int deleteStore(int stno) throws Exception {
+		String sql = "delete from store where stno = ?";
+		int cnt = -1;
+		
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, stno);
+		cnt = pstmt.executeUpdate();
+
+		if(pstmt!=null) {pstmt.close();}
+		if(conn!=null) {conn.close();}
+		
+		return cnt;
+	}
 }

@@ -23,6 +23,7 @@ public class MyStoreListController extends SuperClass {
 		String category = request.getParameter("categoryList"); // 카테고리 선택했을 때
 		
 		String id = request.getParameter("id");
+		
 		System.out.println("id : " + id);
 		StoreDao dao = new StoreDao();
 		

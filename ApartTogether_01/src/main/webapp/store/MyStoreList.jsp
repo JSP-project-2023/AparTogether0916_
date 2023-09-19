@@ -42,7 +42,6 @@
 			}
 		}
 		
-		
 		/*  검색 방법 바꿀 때  */
 		$('#mode').change(function() {
 			if ($(this).val() == 'all') {
@@ -89,6 +88,13 @@
 			$('#categoryList').attr('disabled', false);
 		}
 	});
+	
+	/*  가게 삭제 시 confirm 창 노출 - Yes 클릭 시 Delete 실행  */
+	function deleteStore(storeno) {
+		if (confirm('내 가게를 삭제하면 모든 가게 정보가 지워집니다.\n삭제하시겠습니까?')) {
+			location.href='<%=notWithFormTag%>storeDelete&stno=' + storeno + '&id=${sessionScope.logInfoId}';
+		}
+	}
 	
 	/*  전체 선택 버튼 클릭  */
 	function searchAll() {
@@ -177,7 +183,6 @@
 							<div class="col-sm-10">
 								<form name="myform" action="<%=withFormTag%>" method="get">
 									<input type="hidden" name="command" value="myStoreList">
-									<input type="hidden" name="id" value="${sessionScope.logInfoId}">
 									<div class="row">
 										<div class="col-sm-12">
 											
@@ -290,7 +295,7 @@
 											수정
 										</a>
 										
-										<a id="deleteAnchor" class="btn btn-outline-danger" href="#">
+										<a id="deleteAnchor" class="btn btn-outline-danger" onclick="deleteStore(${myStoreList.stno});">
 											삭제
 										</a>
 									</div>

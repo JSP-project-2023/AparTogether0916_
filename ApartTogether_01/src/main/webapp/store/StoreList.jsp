@@ -70,7 +70,7 @@
 			$('#keyword').attr('disabled', true);
 			$('#categoryList').attr('disabled', true);
 			
-		/*  가게명으로 검색 시 카테고리 검색 드롭박스 안보이게  */
+	 	/*	  가게명으로 검색 시 카테고리 검색 드롭박스 안보이게  */
 		} else if ($('#mode').val() == 'stname') {
 			$('#categoryList').addClass('notShow');
 			$('#keyword').removeClass('notShow');
@@ -85,6 +85,14 @@
 			$('#categoryList').attr('disabled', false);
 		}
 	});
+	
+	/*  가게 삭제 시 confirm 창 노출 - Yes 클릭 시 Delete 실행  */
+	function deleteStore(storeno) {
+		if (confirm('내 가게를 삭제하면 모든 가게 정보가 지워집니다.\n삭제하시겠습니까?')) {
+			location.href='<%=notWithFormTag%>storeDelete&stno=' + storeno;
+		}
+	}
+	
 	
 	/*  전체 선택 버튼 클릭  */
 	function searchAll() {
@@ -275,23 +283,25 @@
 									</c:choose>
 									
 									<h5 class="card-title text_dark">${storeList.stname}</h5>
+									<input type="text" name="stno" value="${storeList.stno}">
+									
 									<p class="card-text text_dark">
 										배달 시간 : ${storeList.btime}분 <br>
 										배달팁 : <fmt:formatNumber value="${storeList.fee}" pattern="#,###"></fmt:formatNumber>원
 									</p>
 									
 <!-- 									admin 또는 사업자일경우 본인 가게에만 버튼 노출 -->
-									<c:if test="${sessionScope.loginfo.id == 'admin' || sessionScope.loginfo.id == storeList.id}">
+<%-- 									<c:if test="${sessionScope.loginfo.id == 'admin' || sessionScope.loginfo.id == storeList.id}"> --%>
 										<div id="buttonList" class="buttonList">
-											<a id="updateAnchor" class="btn btn-outline-primary" href="<%=notWithFormTag%>storeUpdate&stno=${storeList.stno}${requestScope.pageInfo.flowParameter}">
+											<a id="updateAnchor" class="btn btn-outline-primary" href="">
 												수정
 											</a>
 											
-											<a id="deleteAnchor" class="btn btn-outline-danger" href="#">
+											<a id="deleteAnchor" class="btn btn-outline-danger" onclick="deleteStore(${storeList.stno});">
 												삭제
 											</a>
 										</div>
-									</c:if>
+<%-- 									</c:if> --%>
 								</div> <!-- card-body -->
 								
 							</a>

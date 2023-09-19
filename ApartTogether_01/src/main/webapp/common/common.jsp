@@ -146,7 +146,7 @@
 	</nav>
 	
 	<c:if test="${not empty sessionScope.alertMessage}">
-		<%-- 사용자에게 주의/경고/오류 등을 알려 주기 위한 Alert Box --%>
+		<%-- 주의/경고/오류 메세지 --%>
 		<div class="alert alert-danger alert-dismissible">
 	    	<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
 	    	<strong>경고 메시지</strong> ${sessionScope.alertMessage}
@@ -154,5 +154,18 @@
 	</c:if>
 	<%-- 보여준 Alert Box를 session 영역에서 제거합니다. --%>
 	<c:remove var="alertMessage" scope="session"/> 
+	
+	
+	<%-- 성공 메세지 --%>
+	<c:if test="${not empty sessionScope.successAlertMsg}">
+		<div class="alert alert-success alert-dismissible">
+	    	<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+	    	<strong>성공!</strong> ${sessionScope.successAlertMsg}
+	  	</div>
+	</c:if>
+	<%-- 보여준 Alert Box를 session 영역에서 제거합니다. --%>
+	<c:remove var="successAlertMsg" scope="session"/>
+	
+	
 </body>
 </html>
