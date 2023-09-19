@@ -1,3 +1,3 @@
-# setting.txt
+#  setting.txt
 uploadPath=upload
 #product_list_column_size=4
