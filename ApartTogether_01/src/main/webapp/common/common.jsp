@@ -58,11 +58,10 @@
 	</style>
 </head>
 
-<body background="http://localhost:5214/ApartTogether_01
-	/image/background3.png"> <!-- 백그라운드 이미지 설정하기 -->
+<body>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">쇼핑몰</a>
+			<a class="navbar-brand" href="<%=notWithFormTag%>home">로고~~~~</a><!-- 홈으로 가기 추가  -->
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
 				<span class="navbar-toggler-icon"></span>

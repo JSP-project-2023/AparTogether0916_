@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ include file="./../common/common.jsp" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,18 +64,15 @@
             -webkit-user-select: none;
             vertical-align: middle;
           }
-
           .button-18:hover,
           .button-18:focus { 
             background-color: #8e998c;
             color: #ffffff;
           }
-
           .button-18:active {
             background: #09223b;
             color: rgb(255, 255, 255, .7);
           }
-
           .button-18:disabled { 
             cursor: not-allowed;
             background: rgba(0, 0, 0, .08);
@@ -85,7 +80,6 @@
           }
   		
   	</style>
-
 </head>
 <body>
 	<div class="container">
@@ -95,7 +89,7 @@
 		<form action="<%=withFormTag%>" method="post">
 			<input type="hidden" name="command" value="meFindPassword">
 			<div class="col-lg-3"></div>
-			
+
 			<div class="col-lg-6" align="center">
 				<div class="input-group">
 					<span class="input-group-text col-md-3">이름</span>
@@ -120,12 +114,10 @@
 			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
 				인증 번호 전송
 			</button>
-
 			The Modal
 			<div class="modal" id="myModal">
   				<div class="modal-dialog">
     				<div class="modal-content">
-
       					Modal Header
       					<div class="modal-header">
       					
@@ -140,14 +132,11 @@
 								<span class="input-group-text col-md-4"> 인증번호 </span>
 									<input class="form-control" type="text" id="name" name="name">				
 							</div>
-
       					</div>
-
       					Modal footer
       					<div class="modal-footer">
 					        <button type="submit" class="btn btn-danger " data-bs-dismiss="modal">확인</button>
       					</div>
-
 				    </div>
   				</div>
 			</div>

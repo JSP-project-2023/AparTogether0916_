@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ include file="./../common/common.jsp" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +36,6 @@
   			
   			var regex = /^[a-z]\S{4,11}$/; /* 정규 표현식 */
   			var result = regex.test(password) ;
-
   			if(result == false){
   				swal('비밀 번호의 첫글자는 반드시 소문자이어야 합니다.');  				
   				return false ;
@@ -54,7 +51,6 @@
   				swal('성별은 반드시 선택이 되어야 합니다.');
   				return false ; 
   			}
-
   			var phone = $('#phone').val();  			
   			if(phone.length < 8 || name.length > 12){  				
   				$('#name').focus();
@@ -122,18 +118,15 @@
             -webkit-user-select: none;
             vertical-align: middle;
           }
-
           .button-18:hover,
           .button-18:focus { 
             background-color: #8e998c;
             color: #ffffff;
           }
-
           .button-18:active {
             background: #09223b;
             color: rgb(255, 255, 255, .7);
           }
-
           .button-18:disabled { 
             cursor: not-allowed;
             background: rgba(0, 0, 0, .08);
