@@ -11,7 +11,7 @@ import com.apartogether.utility.Paging;
 
 public class MemberDao extends SuperDao {
 	
-	public int deleteData(String id)  throws Exception{ // 수정중입니다. remark없애야함
+	public int deleteData(String id)  throws Exception{ 
 		// MemberDeleteController.doGet에서 사용합니다.
 		// id 회원이 탈퇴합니다.
 		int cnt = -1 ;
