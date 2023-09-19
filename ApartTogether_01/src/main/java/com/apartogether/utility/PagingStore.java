@@ -70,7 +70,7 @@ public class PagingStore {
 		this.flowParameter += "&pageSize=" + pageSize ;
 		this.flowParameter += "&mode=" + mode ;
 		this.flowParameter += "&keyword=" + keyword ;
-		this.flowParameter += "&category=" + category ;
+		this.flowParameter += "&categoryList=" + category ;
 		
 		this.pagingHtml = this.getMakePagingHtml() ;
 	}	
@@ -124,7 +124,7 @@ public class PagingStore {
 		result += "&pageSize=" + this.pageSize;
 		result += "&mode=" + this.mode;
 		result += "&keyword=" + this.keyword;
-		result += "&category=" + this.category;
+		result += "&categoryList=" + this.category;
 		result += "'>" ;
 		result += caption ;
 		result += "</a></li>";
