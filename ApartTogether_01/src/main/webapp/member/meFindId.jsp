@@ -85,7 +85,8 @@
   	</style>
 
 </head>
-<body>
+<body background="http://localhost:5214/ApartTogether_01
+	/image/background3.png">
 	<div class="container">
 		<h2><b>아이디 찾기</b></h2>
 		<p>회원 가입하는 페이지 입니다.</p>

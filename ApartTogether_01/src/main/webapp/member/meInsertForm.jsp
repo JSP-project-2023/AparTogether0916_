@@ -145,7 +145,8 @@
   	
   	</style>
 </head>
-<body>
+<body background="http://localhost:5214/ApartTogether_01
+	/image/background3.png">
 	<div class="container row">
 		<div class="col-lg-2">col-lg-2</div>
 		<div class="col-lg-8">
@@ -183,7 +184,7 @@
 				</div>
 				<div class="input-group">
 					<span class="input-group-text col-md-3">닉네임</span>
-					<input class="form-control" type="text" id="nickname" name="nickname" placeholder="닉네임">				
+					<input class="form-control" type="text" id="nickname" name="nickname" placeholder="닉네임 / 공란 시 랜덤한 아이디가 생성!">				
 				</div>
 				<div class="input-group">
 					<span class="input-group-text col-md-3">성별</span>
@@ -207,7 +208,11 @@
 				</div>
 				<div class="input-group">
 					<span class="input-group-text col-md-3">주소</span>
-					<input class="form-control" type="text" id="address" name="address" placeholder="주소">				
+					<input class="form-control" type="text" id="address" name="address" placeholder="ex) 경기 성남시 분당구 판교로198번길">				
+				</div>
+				<div class="input-group">
+					<span class="input-group-text col-md-3">상세 주소</span>
+					<input class="form-control" type="text" id="address_detail" name="address_detail" placeholder="상세 주소를 입력하세요">				
 				</div>
 				<div class="input-group">
 					<span class="input-group-text col-md-3">프로필사진</span>
@@ -232,7 +237,7 @@ window.onload = function(){
         new daum.Postcode({
             oncomplete: function(data) { //선택시 입력값 세팅
                 document.getElementById("address").value = data.address; /* 불러온 주소 넣기 */
-                document.querySelector("input[name=address]").focus(); /* 주소(name=address)로 포커싱 | 추후 다른걸로도 가능 */
+                document.querySelector("input[name=address_detail]").focus(); /* 주소(name=address_detail)로 포커싱 */
             }
         }).open();
     });

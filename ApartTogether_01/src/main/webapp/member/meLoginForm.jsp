@@ -114,7 +114,8 @@
   	
 	</style>
 </head>
-<body background="./../image/background3.png">
+<body background="http://localhost:5214/ApartTogether_01
+	/image/background3.png">
 	<br/>
 	<h2><br/>로그인 페이지</h2>
 	<div class="container row" >
