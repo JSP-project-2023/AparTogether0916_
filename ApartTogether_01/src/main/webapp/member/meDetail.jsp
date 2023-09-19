@@ -76,7 +76,7 @@
 				<!-- 일반회원(1),사업자(2)이면 비밀번호재설정, 정보수정, 탈퇴하기 버튼 보이기 -->	
 				<!-- 관리자(3)이면 이 부분이 보이지 않습니다. -->		
 				<a type="button" href="meFindPassword.jsp" class="btn btn-info">비밀번호재설정</a>
-				<a type="button" href="<%=notWithFormTag%>meUpdate&id=${bean.id}${requestScope.pageInfo.flowParameter}" class="btn btn-info">회원정보 수정</a>
+				<a type="button" href="<%=notWithFormTag%>meUpdate&id=${bean.id}" class="btn btn-info">회원정보 수정</a>
 				<%-- <%=notWithFormTag%>prUpdate&pnum=${bean.pnum}${requestScope.pageInfo.flowParameter} --%>
 				
 				<a type="button" href="<%=notWithFormTag%>meDelete&id=${sessionScope.loginfo.id}" class="btn btn-info">회원탈퇴하기</a>

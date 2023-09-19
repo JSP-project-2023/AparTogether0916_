@@ -11,6 +11,35 @@ import com.apartogether.utility.Paging;
 
 public class MemberDao extends SuperDao {
 	
+	public int UpdateData(Member bean) throws Exception{
+		System.out.println("상품 수정 빈 :\n" + bean);
+		PreparedStatement pstmt = null;
+		String sql = " update members set mtype = ? , name = ? ,  phone = ? , birth = ? , gender = ? , nickname = ? , address = ? , profile = ? ";
+		sql += " where pnum = ? " ;
+		int cnt = -1 ;
+		
+		conn = super.getConnection();
+		conn.setAutoCommit(false);
+		pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, bean.getMtype());
+		pstmt.setString(2, bean.getName());
+		pstmt.setString(3, bean.getPhone());
+		pstmt.setString(4, bean.getBirth());
+		pstmt.setString(5, bean.getGender());
+		pstmt.setString(6, bean.getNickname());
+		pstmt.setString(7, bean.getAddress());
+		pstmt.setString(8, bean.getProfile());
+		
+		cnt = pstmt.executeUpdate();
+		conn.commit();
+		
+		if(pstmt != null) {pstmt.close();}
+		if(conn != null) {conn.close();}
+		
+		return cnt;
+	}
+	
 	public int deleteData(String id)  throws Exception{ 
 		// MemberDeleteController.doGet에서 사용합니다.
 		// id 회원이 탈퇴합니다.
@@ -236,6 +265,8 @@ public class MemberDao extends SuperDao {
 		
 		return lists;
 	}
+
+
 
 
 

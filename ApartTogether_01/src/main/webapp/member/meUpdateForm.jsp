@@ -64,24 +64,24 @@
 			</div>
 			<div class="input-group"> 
 				<span class="input-group-text">이름</span>
-				<input class="form-control" type="text" id="name" name="name" value="${bean.name}">				
+				<input class="form-control" type="text" id="name" name="name" value="${requestScope.bean.name}">				
 			</div>
 			
 			<div class="input-group">
 				<span class="input-group-text col-md-2">닉네임</span>
-				<input class="form-control" type="text" id="nickname" name="nickname" value="${bean.nickname }">				
+				<input class="form-control" type="text" id="nickname" name="nickname" value="${requestScope.bean.nickname }">				
 			</div>
 			<div class="input-group">
 				<span class="input-group-text col-md-2">프로필사진</span>
-				<img class="card-img-top  small_image rounded" alt="${bean.name}" 
-					         src="upload/${bean.profile}"  >
-				<input class="form-control" type="file" id="profile" name="profile" value="${bean.profile}">
+				<img class="card-img-top  small_image rounded" alt="${requestScope.bean.name}" 
+					         src="upload/${requestScope.bean.profile}"  >
+				<input class="form-control" type="file" id="profile" name="profile" value="${requestScope.bean.profile}">
 			</div>
 			
-			<!-- <div class="input-group">
+			<div class="input-group" hidden>
 				<span class="input-group-text">비밀 번호</span>
-				<input class="form-control" type="password" id="password" name="password">				
-			</div> -->
+				<input class="form-control" type="password" id="password" name="password"  value="${requestScope.bean.password}">				
+			</div>
 			
 			<div class="input-group">
 				<span class="input-group-text">성별</span>
@@ -96,23 +96,20 @@
 			</div>
 			<div class="input-group">
 				<span class="input-group-text">전화번호</span>
-				<input class="form-control" type="text" id="address" name="address" value="${bean.phone }">			
+				<input class="form-control" type="text" id="address" name="address" value="${requestScope.bean.phone }">			
 			</div>
 			
 			
 			<div class="input-group">
 				<span class="input-group-text">생일</span>
-				<input class="form-control" type="datetime" id="birth" name="birth" value="${bean.birth }">			
+				<input class="form-control" type="datetime" id="birth" name="birth" value="${requestScope.bean.birth }">			
 			</div> 
 			
 			<div class="input-group">
 				<span class="input-group-text">주소</span>
-				<input class="form-control" type="text" id="address" name="address" value="${bean.address }">			
+				<input class="form-control" type="text" id="address" name="address" value="${requestScope.bean.address }">			
 			</div>
 			
-			
-			
-					
 			<div id="buttonset" class="input-group">
 				<button type="submit" class="btn btn-primary">수정</button>
 				&nbsp;&nbsp;&nbsp;

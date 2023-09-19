@@ -48,7 +48,7 @@ public class FrontController extends HttpServlet {
 			if(mr!=null) {
 				command = mr.getParameter("command") ;
 				
-				if(command.equals("prUpdate")) {
+				if(command.equals("meUpdate")) {
 					MyUtility.deleteOldImageFile(imageUploadWebPath, mr);	
 				}
 			

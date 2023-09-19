@@ -31,10 +31,33 @@ private final String PREFIX = "member/";
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception { // 작성중입니다.
 		super.doPost(request, response);
 		
+		MultipartRequest mr = (MultipartRequest)request.getAttribute("mr") ;
 		
+		Member bean = new Member();
+		
+		bean.setId(mr.getParameter("id"));
+		bean.setMtype(mr.getParameter("mtype"));
+		bean.setName(mr.getParameter("name"));
+		bean.setNickname(mr.getParameter("nickname"));
+		bean.setProfile(mr.getFilesystemName("profile"));
+		bean.setPassword(mr.getParameter("password"));
+		bean.setGender(mr.getParameter("gender"));
+		bean.setPhone(mr.getParameter("phone"));
+		bean.setBirth(mr.getParameter("birth"));
+		bean.setAddress(mr.getParameter("address"));
+		
+		MemberDao dao = new MemberDao();
 		int cnt = -1;
 		try {
+			cnt = dao.UpdateData(bean);
 			
+			if(cnt == -1) {
+				super.gotoPage(PREFIX + "meUpdateForm.jsp");
+			}else {
+				new MemberDetailController().doGet(request, response);
+//				String gotopage = super.getUrlInformation("meDetail");
+//				response.sendRedirect(gotopage);
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
