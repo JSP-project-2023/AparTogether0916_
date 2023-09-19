@@ -32,7 +32,9 @@ public class MemberInsertController extends SuperClass {
 		bean.setGender(request.getParameter("gender"));
 		bean.setNickname(request.getParameter("nickname"));
 		bean.setAddress(request.getParameter("address"));
-		bean.setProfile(request.getParameter("profile"));
+		bean.setProfile(request.getParameter("profile")); 
+		// profile 문자열만 DB에 입력되고 파일업로드는 안되는 문제있음. 
+		// image 폴더에 이미 들어있는 사진과 같은 이름이면 표시되지만 그 외는 안뜸
 		
 		MemberDao dao = new MemberDao() ;
 		int cnt = -1 ;
