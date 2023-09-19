@@ -54,9 +54,10 @@ private final String PREFIX = "member/";
 			if(cnt == -1) {
 				super.gotoPage(PREFIX + "meUpdateForm.jsp");
 			}else {
-				new MemberDetailController().doGet(request, response);
-//				String gotopage = super.getUrlInformation("meDetail");
-//				response.sendRedirect(gotopage);
+//				new MemberDetailController().doGet(request, response);
+				String gotopage = super.getUrlInfomation("meDetail");
+				gotopage += "&id=" + mr.getParameter("id");
+				response.sendRedirect(gotopage);
 			}
 			
 		} catch (Exception e) {

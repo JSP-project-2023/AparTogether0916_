@@ -15,7 +15,7 @@ public class MemberDao extends SuperDao {
 		System.out.println("상품 수정 빈 :\n" + bean);
 		PreparedStatement pstmt = null;
 		String sql = " update members set mtype = ? , name = ? ,  phone = ? , birth = ? , gender = ? , nickname = ? , address = ? , profile = ? ";
-		sql += " where pnum = ? " ;
+		sql += " where id = ? " ;
 		int cnt = -1 ;
 		
 		conn = super.getConnection();
@@ -30,6 +30,8 @@ public class MemberDao extends SuperDao {
 		pstmt.setString(6, bean.getNickname());
 		pstmt.setString(7, bean.getAddress());
 		pstmt.setString(8, bean.getProfile());
+
+		pstmt.setString(9, bean.getId());
 		
 		cnt = pstmt.executeUpdate();
 		conn.commit();

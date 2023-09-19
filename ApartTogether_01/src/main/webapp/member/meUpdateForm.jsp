@@ -41,6 +41,8 @@
 		<p>특정 회원에 대하여 정보를 수정하는 페이지 입니다.</p>
 		<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data">
 		
+			<input type="hidden" name="command" value="meUpdate">
+			
 			<div class="input-group">
 				<span class="input-group-text">회원유형</span>
 				<div class="form-control">
@@ -59,8 +61,8 @@
 		
 			<div class="input-group">
 				<span class="input-group-text">아이디</span>
-				<input disabled="disabled" class="form-control" type="text" id="fakeid" name="fakeid" value="${bean.id}">				
-				<input type="text" id="id" name="id" value="${bean.id}" hidden>
+				<input disabled="disabled" class="form-control" type="text" id="fakeid" name="fakeid" value="${requestScope.bean.id}">				
+				<input type="text" id="id" name="id" value="${requestScope.bean.id}" hidden>
 			</div>
 			<div class="input-group"> 
 				<span class="input-group-text">이름</span>
@@ -76,6 +78,7 @@
 				<img class="card-img-top  small_image rounded" alt="${requestScope.bean.name}" 
 					         src="upload/${requestScope.bean.profile}"  >
 				<input class="form-control" type="file" id="profile" name="profile" value="${requestScope.bean.profile}">
+				<input type="text" name="deleteProfile" value="${requestScope.bean.profile}">
 			</div>
 			
 			<div class="input-group" hidden>
