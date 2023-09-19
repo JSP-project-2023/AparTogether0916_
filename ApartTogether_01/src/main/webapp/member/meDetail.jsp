@@ -79,7 +79,7 @@
 				<a type="button" href="<%=notWithFormTag%>meUpdate&id=${bean.id}${requestScope.pageInfo.flowParameter}" class="btn btn-info">회원정보 수정</a>
 				<%-- <%=notWithFormTag%>prUpdate&pnum=${bean.pnum}${requestScope.pageInfo.flowParameter} --%>
 				
-				<a type="button" href="#" class="btn btn-info">회원탈퇴하기</a>
+				<a type="button" href="<%=notWithFormTag%>meDelete&id=${sessionScope.loginfo.id}" class="btn btn-info">회원탈퇴하기</a>
 			</c:if>	
 		</div>
 		

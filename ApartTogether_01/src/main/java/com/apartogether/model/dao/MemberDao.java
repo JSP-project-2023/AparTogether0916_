@@ -17,33 +17,17 @@ public class MemberDao extends SuperDao {
 		int cnt = -1 ;
 		String sql = "" ;
 		Member bean = this.getDataByPrimaryKey(id);
-		String remark = MyUtility.getCurrentTime() + " " + bean.getName() + "(아이디 : " + id + ")님이 탈퇴를 하였습니다." ;
 		PreparedStatement pstmt = null;
  		
 		conn = super.getConnection();
 		conn.setAutoCommit(false);
 		
-		// step01 : 게시물 테이블의 remark 칼럼 업데이트
-		sql = " update boards set remark = ? where id = ? " ;
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, remark);
-		pstmt.setString(2, id);
-		cnt = pstmt.executeUpdate();
-		if(pstmt!=null) {pstmt.close();}
-		
-		// step02 : 주문 테이블의 remark 칼럼 업데이트
-		sql = " update orders set remark = ? where id = ? " ;
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, remark);
-		pstmt.setString(2, id);
-		cnt = pstmt.executeUpdate();
-		if(pstmt!=null) {pstmt.close();}
-		
-		// step03 : 회원 테이블의 id 행을 삭제
+		// 회원 테이블의 id 행을 삭제
 		sql = " delete from members where id = ? " ;
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, id);
 		cnt = pstmt.executeUpdate();
+		
 		if(pstmt!=null) {pstmt.close();}
 		
 		conn.commit();
