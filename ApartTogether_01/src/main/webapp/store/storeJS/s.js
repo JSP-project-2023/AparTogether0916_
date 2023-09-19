@@ -50,18 +50,12 @@ function validation(){
 			$("input[name=ceono]").focus();
 			return false;
 		}
-		//파일 확장자 유효성 검사, 추후 수정 해야됨.
+		//사업자 등록증 유효성 검사
 		var ceofile = $('input[name=ceofile]').val();
-		var stlogo = $('input[name=stlogo]').val();
-		
 		var isCheck = false;
 			const imgCheck = ['.png', '.jpg'];
 			for(var i=0 ; i < imgCheck.length ; i++){
 				if(ceofile.endsWith(imgCheck[i])){
-					isCheck = true;
-					break;	
-				}
-				if(stlogo.endsWith(imgCheck[i])){
 					isCheck = true;
 					break;	
 				}
@@ -71,5 +65,28 @@ function validation(){
 				alert('이미지의 확장자는 png 또는 jpg 형식이어야 합니다.');
 				return false ;
 			}
-		
+		//가게 로고 유효성 검사
+		var stlogo = $('input[name=stlogo]').val();
+		var isCheck = false;
+			for(var i=0 ; i < imgCheck.length ; i++){
+				if(stlogo.endsWith(imgCheck[i])){
+					isCheck = true;
+					break;	
+				}
+			}
+			if(isCheck == false){
+				alert('이미지의 확장자는 png 또는 jpg 형식이어야 합니다.');
+				return false ;
+			}
 	}
+
+$(document).ready(function() {
+	document.getElementById("stplace1").addEventListener("click", function() {
+		new daum.Postcode({
+			oncomplete: function(data) {
+				document.getElementById("stplace1").value=data.address;
+				document.getElementById("stplace2").focus();
+			}
+		}).open()
+	});
+});

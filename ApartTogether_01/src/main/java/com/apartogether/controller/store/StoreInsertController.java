@@ -28,10 +28,14 @@ public class StoreInsertController extends SuperClass{
 		sttime += String.valueOf(mr.getParameter("endShopAmPm")) + " ";
 		sttime += String.valueOf(mr.getParameter("endShopTime"));
 		
+		//가게 주소
+		String stplace = String.valueOf(mr.getParameter("stplace1")) + " ";
+		stplace += String.valueOf(mr.getParameter("stplace2"));
+		
 		//store 객체에 set. 11개
 		store.setStname(String.valueOf(mr.getParameter("stname")));
 		store.setCategory(mr.getParameter("category"));
-		store.setStplace(String.valueOf(mr.getParameter("stplace")));
+		store.setStplace(stplace);
 		store.setSttel(sttel);
 		store.setContent(mr.getParameter("content"));
 		store.setCeofile(mr.getFilesystemName("ceofile"));

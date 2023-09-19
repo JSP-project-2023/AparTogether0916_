@@ -8,6 +8,10 @@
 
 <!-- 자바 스크립트 파일 불러오기 -->
 <script src="./storeJS/s.js"></script>
+
+<!-- 주소 입력api -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <!-- css파일 불러오기 -->
 <link rel="stylesheet" href="./storeCSS/InsertStore.css" type="text/css">
 <title>가게 등록 페이지 입니다.</title>
@@ -45,7 +49,8 @@
 			
 		<div id="stplace">
 			<%--주소 api사용하여 주소지 받아옴.--%>
-			가게위치<input name="stplace" type="text"><br>
+			가게주소 <input id="stplace1" name="stplace1" type="text"><br>
+		가게상세 주소 <input id="stplace2" name="stplace2" type="text"><br>
 		</div>
 		
 		<div id="storeNumber">
@@ -102,6 +107,7 @@
 					<option value="09:00">09:00</option>
 					<option value="09:30">09:30</option>
 					<option value="10:00">10:00</option>
+					<option value="10:30">10:30</option>
 					<option value="11:30">11:00</option>
 					<option value="11:30">11:30</option>
 					<option value="12:00">12:00</option>
@@ -134,6 +140,7 @@
 					<option value="09:00">09:00</option>
 					<option value="09:30">09:30</option>
 					<option value="10:00">10:00</option>
+					<option value="10:30">10:30</option>
 					<option value="11:30">11:00</option>
 					<option value="11:30">11:30</option>
 					<option value="12:00">12:00</option>

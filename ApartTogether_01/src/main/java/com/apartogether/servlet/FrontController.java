@@ -1,5 +1,6 @@
 package com.apartogether.servlet;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
@@ -103,6 +104,15 @@ public class FrontController extends HttpServlet {
 		
 		//이미지 파일 업로드 경로
 		uploadImage = application.getRealPath("upload");
+		File file = new File(uploadImage);
+		
+		//파일 유효성 검사 후, 존재하지 않으면 디렉터리 생성
+		if(!file.exists()) {
+			if(!file.isDirectory()) {
+				System.out.println("디렉토리가 존재하지 않아 생성합니다.");
+				file.mkdir();
+			}
+		}
 		System.out.println("imageUploadWebPath is [" + uploadImage + "]");
 	
 	}
