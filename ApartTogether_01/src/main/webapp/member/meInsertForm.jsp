@@ -8,6 +8,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>아파투게더:회원가입</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	
 	<script type="text/javascript">
   		$(document).ready(function(){
   	  		/* $('#birth').datepicker(); */
@@ -15,7 +17,7 @@
   		});
   		
   		function validCheck(){ /* form validation check */
-  			console.log('validCheck() function called');
+  			console.log('!!!!validCheck() function called');
   			var id = $('#id').val();
   			if(id.length < 4 || id.length > 10){
   				swal('아이디는 4자리 이상 10자리 이하로 입력해 주세요.');
@@ -147,8 +149,9 @@
 				<span class="input-group-text col-md-2">주소</span>
 				<input class="form-control" type="text" id="address" name="address">				
 			</div>	
+			
 			<div id="buttonset" class="input-group">
-				<button type="submit" class="btn btn-primary" onclick="return validCheck();"> 
+				<button type="submit" class="btn btn-primary" > 
 					등록
 				</button>
 				&nbsp;&nbsp;&nbsp;

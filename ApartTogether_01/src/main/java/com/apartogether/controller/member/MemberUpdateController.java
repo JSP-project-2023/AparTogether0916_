@@ -40,7 +40,7 @@ private final String PREFIX = "member/";
 		bean.setName(mr.getParameter("name"));
 		bean.setNickname(mr.getParameter("nickname"));
 		
-		// 회원정보 수정시 프로필사진을 건드리지 안으면(선택하지 않으면) 기존 사진을 유지한다.
+		// 회원정보 수정시 프로필사진을 새 파일로 선택했을 때만 갱신한다. 건드리지않았으면 기존 사진을 유지한다.
 		if(mr.getFilesystemName("profile")==null) {
 			bean.setProfile(mr.getParameter("deleteProfile"));
 		}else {
@@ -61,7 +61,6 @@ private final String PREFIX = "member/";
 			if(cnt == -1) {
 				super.gotoPage(PREFIX + "meUpdateForm.jsp");
 			}else {
-//				new MemberDetailController().doGet(request, response);
 				String gotopage = super.getUrlInfomation("meDetail");
 				gotopage += "&id=" + mr.getParameter("id");
 				response.sendRedirect(gotopage);
@@ -70,6 +69,5 @@ private final String PREFIX = "member/";
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 }
