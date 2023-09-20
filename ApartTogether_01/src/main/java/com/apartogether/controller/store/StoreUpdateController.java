@@ -28,7 +28,9 @@ public class StoreUpdateController extends SuperClass{
 		request.getParameter("areacode2");
 		request.getParameter("areacode3");
 		
-		request.getParameter("cotent");
+		//TODO ?
+		
+		request.getParameter("content");
 		request.getParameter("ceofile");
 		
 		//가게 오픈, 마감시간
