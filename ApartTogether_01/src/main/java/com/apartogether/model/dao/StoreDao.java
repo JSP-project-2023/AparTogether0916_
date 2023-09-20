@@ -2,7 +2,7 @@ package com.apartogether.model.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-<<<<<<< HEAD
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +10,8 @@ import com.apartogether.model.bean.Store;
 import com.apartogether.utility.PagingStore;
 
 public class StoreDao extends SuperDao {
-
+	int cnt = -1;
+	
 	public List<Store> selectAll(PagingStore pageInfo) throws Exception {
 		/* TopN 구문 사용해서 페이징 처리된 목록 반환 */
 		
@@ -54,13 +55,7 @@ public class StoreDao extends SuperDao {
 		
 		return storeAllList;
 	}
-=======
-import java.sql.SQLException;
-
-import com.apartogether.model.bean.Store;
-
-public class StoreDao extends SuperDao {
-	int cnt = -1;
+	
 	
 	//스토어 등록 메소드
 	public int Insertstore(Store store) throws SQLException {
@@ -114,7 +109,7 @@ public class StoreDao extends SuperDao {
 		
 		
 		if(rs.next()) {
-			bean.setStno(rs.getString("stno"));
+			bean.setStno(rs.getInt("stno"));
 			bean.setId(rs.getString("id"));
 			bean.setStname(rs.getString("stname"));
 			bean.setFee(rs.getInt("fee"));
@@ -142,8 +137,6 @@ public class StoreDao extends SuperDao {
 		return bean;
 	}
 
-	
->>>>>>> lleebs
 	
 	public List<Store> selectAll(PagingStore pageInfo, String id) throws Exception {
 		/* TopN 구문 사용해서 페이징 처리된 목록 반환 */
