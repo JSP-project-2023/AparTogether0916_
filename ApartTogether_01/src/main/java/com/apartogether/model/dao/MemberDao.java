@@ -340,31 +340,31 @@ public class MemberDao extends SuperDao {
 		return bean;
 	}
 
-	public int UpdatePassword(String id, String oldPassword, String newPassword) throws Exception {
-		// 회원 비밀번호 재설정
-		// MemberResetPasswordController.doPost에서 사용합니다.
-		System.out.println("비밀번호 재설정 빈 id : " + id + ", 기존비밀번호 : " + oldPassword + ", 새 비밀번호 : " + newPassword );
-		PreparedStatement pstmt = null;
-		int cnt = -1 ;
-		conn = super.getConnection() ;
-		conn.setAutoCommit(false);
-		
-		// step01 : id와 기존비밀번호(oldPassword)를 올바르게 입력했는지 확인합니다.
-		String sql = " select password from members ";
-		sql += " where id = ? " ;
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, id);
-		
-		
-		// step02 : 새 비밀번호(newPassword)를 DB에 업데이트합니다.
-		String sql = " update members set password = ? ";
-		sql += " where id = ? " ;
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, id);
-		cnt = pstmt.executeUpdate() ;
-		
-		return cnt ;
-	}
+//	public int UpdatePassword(String id, String oldPassword, String newPassword) throws Exception {
+//		// 회원 비밀번호 재설정
+//		// MemberResetPasswordController.doPost에서 사용합니다.
+//		System.out.println("비밀번호 재설정 빈 id : " + id + ", 기존비밀번호 : " + oldPassword + ", 새 비밀번호 : " + newPassword );
+//		PreparedStatement pstmt = null;
+//		int cnt = -1 ;
+//		conn = super.getConnection() ;
+//		conn.setAutoCommit(false);
+//		
+//		// step01 : id와 기존비밀번호(oldPassword)를 올바르게 입력했는지 확인합니다.
+//		String sql = " select password from members ";
+//		sql += " where id = ? " ;
+//		pstmt = conn.prepareStatement(sql);
+//		pstmt.setString(1, id);
+//		
+//		
+//		// step02 : 새 비밀번호(newPassword)를 DB에 업데이트합니다.
+//		String sql = " update members set password = ? ";
+//		sql += " where id = ? " ;
+//		pstmt = conn.prepareStatement(sql);
+//		pstmt.setString(1, id);
+//		cnt = pstmt.executeUpdate() ;
+//		
+//		return cnt ;
+//	}
 
 
 
