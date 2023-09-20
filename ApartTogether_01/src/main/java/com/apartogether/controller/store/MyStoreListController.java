@@ -34,6 +34,7 @@ public class MyStoreListController extends SuperClass {
 			boolean isGrid = true;
 			PagingStore pageInfo = new PagingStore(pageNumber, pageSize, myTotalCount, url, mode, storeName, category, isGrid);
 			
+//			id 변수로 값 전달
 			List<Store> myStoreList = dao.selectAll(pageInfo, id);
 			
 			request.setAttribute("pageInfo", pageInfo);

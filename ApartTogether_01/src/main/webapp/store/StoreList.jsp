@@ -294,7 +294,11 @@
 <%-- 									<c:if test="${sessionScope.loginfo.id == 'admin' || sessionScope.loginfo.id == storeList.id}"> --%>
 										<div id="buttonList" class="buttonList">
 											<a id="updateAnchor" class="btn btn-outline-primary" href="">
-												수정
+												가게수정
+											</a>
+											
+											<a id="updateAnchor" class="btn btn-outline-primary" href="<%=notWithFormTag%>menuInsert&stno=${storeList.stno}">
+												메뉴등록
 											</a>
 											
 											<a id="deleteAnchor" class="btn btn-outline-danger" onclick="deleteStore(${storeList.stno});">

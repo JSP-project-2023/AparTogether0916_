@@ -12,50 +12,6 @@ import com.apartogether.utility.PagingStore;
 public class StoreDao extends SuperDao {
 	int cnt = -1;
 	
-	public List<Store> selectAll(PagingStore pageInfo) throws Exception {
-		/* TopN 구문 사용해서 페이징 처리된 목록 반환 */
-		
-		/* 페이징 처리할 부분 ranking 으로 순서 정렬 */
-		String sql = "select stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, redday, btime ";
-		sql += " from (select stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, redday, btime, ";
-		sql += " rank() over(order by stno desc) as ranking from store ";
-		
-		/* 키워드 검색 */
-		String mode = pageInfo.getMode();
-		String keyword = pageInfo.getKeyword();
-		String category = pageInfo.getCategory();
-		System.out.println("StoreDaooooooo mode : " + mode + " / keyword : " + keyword + " cate : " + category);
-		
-		if (mode==null || mode.equals("all") || keyword==null || keyword.equals("all")) {
-		} else if (mode.equals("category")){
-			sql += " where " + mode + " like '%" + category + "%'";
-		} else {
-			sql += " where " + mode + " like '%" + keyword + "%'";
-		}
-		
-		sql += " ) where ranking between ? and ?";
-		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		conn = super.getConnection();
-		
-		pstmt = conn.prepareStatement(sql);
-		
-		/* 보여줄 처음, 마지막 값 설정 */
-		pstmt.setInt(1, pageInfo.getBeginRow());
-		pstmt.setInt(2, pageInfo.getEndRow());
-		
-		rs = pstmt.executeQuery();
-		
-		List<Store> storeAllList = new ArrayList<Store>();
-		
-		while (rs.next()) {
-			storeAllList.add(getBeanData(rs));
-		}
-		
-		return storeAllList;
-	}
-	
 	
 	//스토어 등록 메소드
 	public int Insertstore(Store store) throws SQLException {
@@ -136,8 +92,55 @@ public class StoreDao extends SuperDao {
 
 		return bean;
 	}
-
 	
+//	전체 가게 리스트 목록 화면에 출력 (페이징 처리, mode / keyword 검색 기능) - 이리수
+	public List<Store> selectAll(PagingStore pageInfo) throws Exception {
+		/* TopN 구문 사용해서 페이징 처리된 목록 반환 */
+		
+		/* 페이징 처리할 부분 ranking 으로 순서 정렬 */
+		String sql = "select stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, redday, btime ";
+		sql += " from (select stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, redday, btime, ";
+		sql += " rank() over(order by stno desc) as ranking from store ";
+		
+		/* 키워드 검색 */
+		String mode = pageInfo.getMode();
+		String keyword = pageInfo.getKeyword();
+		String category = pageInfo.getCategory();
+		System.out.println("StoreDao!!!! mode : " + mode + " / keyword : " + keyword + " cate : " + category); // 어떤 값으로 검색했는지 확인
+		
+		if (mode==null || mode.equals("all") || keyword==null || keyword.equals("all")) {
+		} else if (mode.equals("category")){
+			sql += " where " + mode + " like '%" + category + "%'";
+		} else {
+			sql += " where " + mode + " like '%" + keyword + "%'";
+		}
+		
+//		페이징 처리
+		sql += " ) where ranking between ? and ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		conn = super.getConnection();
+		
+		pstmt = conn.prepareStatement(sql);
+		
+		/* 보여줄 처음, 마지막 값 설정 */
+		pstmt.setInt(1, pageInfo.getBeginRow());
+		pstmt.setInt(2, pageInfo.getEndRow());
+		
+		rs = pstmt.executeQuery();
+		
+		List<Store> storeAllList = new ArrayList<Store>();
+		
+		while (rs.next()) {
+			storeAllList.add(getBeanData(rs));
+		}
+		
+		return storeAllList;
+	}
+	
+	
+//	개인별 가게 리스트 목록 화면에 출력 (id 매개변수, 페이징 처리, mode / keyword 검색 기능) - 이리수
 	public List<Store> selectAll(PagingStore pageInfo, String id) throws Exception {
 		/* TopN 구문 사용해서 페이징 처리된 목록 반환 */
 		
@@ -182,7 +185,7 @@ public class StoreDao extends SuperDao {
 		return storeAllList;
 	}
 	
-	
+//	store에 bean 한개 값 셋팅해서 Store 객체로 리턴
 	private Store getBeanData(ResultSet rs) throws Exception {
 		Store storeBean = new Store();
 		
@@ -208,7 +211,7 @@ public class StoreDao extends SuperDao {
 
 	/* 불러올 가게 몇 개 인지 카운팅 */
 	public int GetTotalStoreCount(String mode, String keyword, String categoryItem) throws Exception {
-		int cnt = -1; // 카운팅 담을 변수
+		cnt = -1; // 카운팅 담을 변수
 		
 		String sql = "select count(*) as cnt from store";
 		
@@ -233,9 +236,10 @@ public class StoreDao extends SuperDao {
 		
 		return cnt;
 	}
-
+	
+//	내가 등록한 가게가 몇개인지 카운딩
 	public int GetMyTotalStoreCount(String mode, String keyword, String categoryItem, String id) throws Exception {
-		int cnt = -1; // 카운팅 담을 변수
+		cnt = -1; // 카운팅 담을 변수
 		
 		String sql = "select count(*) as cnt from store where id=?";
 		
@@ -261,10 +265,11 @@ public class StoreDao extends SuperDao {
 		
 		return cnt;
 	}
-
+	
+//	가게 1개 삭제
 	public int deleteStore(int stno) throws Exception {
 		String sql = "delete from store where stno = ?";
-		int cnt = -1;
+		cnt = -1;
 		
 		conn = super.getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);
