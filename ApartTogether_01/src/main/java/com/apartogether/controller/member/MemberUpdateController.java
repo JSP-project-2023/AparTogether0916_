@@ -38,20 +38,32 @@ private final String PREFIX = "member/";
 		bean.setId(mr.getParameter("id"));
 		
 		String oldmtype =  mr.getParameter("oldmtype"); // 수정 전에 회원이 사업자였는지 확인하기 위해 기존mtype값을 가져온다.
-		bean.setMtype(mr.getParameter("mtype")); //
+		String mtype =  mr.getParameter("mtype"); // 회원이 회원정보수정 페이지에서 선택한 회원유형을 가져옵니다.
 		
-		if(oldmtype == "biz") { // 수정 전에 사업자 였음
-			// 사업자를 그대로 유지하면 알럿창(수정완료)띄우고 마이페이지로 이동
-			// 사업자가 일반회원으로 변경한 거면 컨펌창(내가게 다 사라집니다)
-			// 컨펌창 yes 알럿창(수정완료)띄우고 마이페이지로 이동
-			// 컨펌창 no 일반회원으로 유지
-		}else if(oldmtype == "user") { // 수정 전에 일반회원 이었음
-			// 일반회원을 그대로 유지하면 알럿창(수정완료)띄우고 마이페이지로 이동
-			// 일반회원이 사업자로 변경한 거면 컨펌창(내가게 추가하실래요?)
-			// 컨펌창 yes '내 가게등록 페이지'로 이동
-			// 컨펌창 no 마이페이지로 이동
-		}
-			
+//		if(oldmtype == "biz") { // 수정 전에 사업자 였음
+//			if(mtype == "biz") {
+//				//alert("수정 완료되었습니다.");
+//				// 사업자를 그대로 유지하면 알럿창(수정완료)띄우고 마이페이지로 이동
+//				bean.setMtype(mr.getParameter("mtype"));
+//			}else if(mtype == "user") {
+//				// 사업자가 일반회원으로 변경한 거면 컨펌창(내가게 다 사라집니다)
+//				// 컨펌창 yes 알럿창(수정완료)띄우고 마이페이지로 이동
+//				// 컨펌창 no 사업자로 유지
+//				bean.setMtype(oldmtype);
+//			}
+//		}else if(oldmtype == "user") { // 수정 전에 일반회원 이었음
+//			if(mtype == "user") {
+//				// 일반회원을 그대로 유지하면 알럿창(수정완료)띄우고 마이페이지로 이동
+//				bean.setMtype(mr.getParameter("mtype"));
+//			}else if(mtype == "biz") {
+//				// 일반회원이 사업자로 변경한 거면 컨펌창(내가게 등록하러 가시겠습니까?)
+//				// 컨펌창 yes '내 가게등록 페이지'로 이동
+//				// 컨펌창 no 마이페이지로 이동
+//				bean.setMtype(mr.getParameter("mtype"));
+//			}
+//		}
+		
+		bean.setMtype(mr.getParameter("mtype")); // 컨펌창 결과에 따라 달라질 수 있습니다.
 		
 		
 		bean.setName(mr.getParameter("name"));
