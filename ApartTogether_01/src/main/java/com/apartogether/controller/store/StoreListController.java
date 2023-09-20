@@ -1,7 +1,10 @@
 package com.apartogether.controller.store;
 
+<<<<<<< HEAD
 import java.util.List;
 
+=======
+>>>>>>> lleebs
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
