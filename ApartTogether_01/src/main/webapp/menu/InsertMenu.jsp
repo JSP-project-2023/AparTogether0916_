@@ -18,11 +18,17 @@
 			<input type="hidden" name="command" value="menuInsert">
 			
 			<!-- 가게 번호 -->
-			<input type="text" name="stno" value="${requestScope.storeInfo.stno}" disabled="disabled"><br>
+			가게 번호 <input type="text" name="stno" value="${requestScope.storeInfo.stno}" disabled="disabled"><br>
 			메뉴 이름 <input type="text" name="menuname" id="menuname"><br>
 			가격 <input type="text" name="price" id="price"><br>
+			메뉴 이미지 <input type="file" name="menuimage" id="menuimage"><br>
+			메뉴 상세 설명 <textarea rows="5" cols="50"></textarea>
 			
 			
+			<button type="submit">등록</button>
+			<a type="button" href="history.back();">취소</a>
+			<!-- 초기화 하기전에 컨펌창 출력 -->
+			<button type="reset">초기화</button>
 		</form>
 	</div>
 </body>
