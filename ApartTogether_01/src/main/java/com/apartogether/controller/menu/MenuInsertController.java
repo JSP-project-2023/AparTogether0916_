@@ -10,6 +10,10 @@ public class MenuInsertController extends SuperClass {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
 //		메뉴 등록 폼으로 이동할 때
 		super.doGet(request, response);
+		
+		int stno = Integer.parseInt(request.getParameter("stno"));
+		
+		request.setAttribute("stno", stno);
 		super.gotoPage("menu/InsertMenu.jsp");
 		
 	}

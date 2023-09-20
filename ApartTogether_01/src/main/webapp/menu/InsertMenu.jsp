@@ -7,6 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Menu Insert</title>
+
+<!-- 자바 스크립트 파일 불러오기 -->
+<script src="${pageContext.request.contextPath}/store/storeJS/s.js"></script>
+<!-- 주소 입력api -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<!-- css파일 불러오기 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/store/storeCSS/InsertStore.css" type="text/css">
+
 </head>
 <body>
 	<div class="container">
@@ -24,7 +32,7 @@
 			메뉴 이미지 <input type="file" name="menuimage" id="menuimage"><br>
 			메뉴 상세 설명 <textarea rows="5" cols="50"></textarea>
 			
-			
+			<br>
 			<button type="submit">등록</button>
 			<a type="button" href="history.back();">취소</a>
 			<!-- 초기화 하기전에 컨펌창 출력 -->
