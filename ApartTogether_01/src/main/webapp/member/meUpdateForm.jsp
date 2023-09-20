@@ -78,10 +78,10 @@
 				<img class="card-img-top  small_image rounded" alt="${requestScope.bean.name}" 
 					         src="upload/${requestScope.bean.profile}"  >
 				<input class="form-control" type="file" id="profile" name="profile" value="${requestScope.bean.profile}">
-				<input type="text" name="deleteProfile" value="${requestScope.bean.profile}">
+				<input type="text" name="deleteProfile" value="${requestScope.bean.profile}" hidden>
 			</div>
 			
-			<div class="input-group" hidden>
+			<div class="input-group" >
 				<span class="input-group-text">비밀 번호</span>
 				<input class="form-control" type="password" id="password" name="password"  value="${requestScope.bean.password}">				
 			</div>
