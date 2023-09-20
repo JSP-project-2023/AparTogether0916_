@@ -10,8 +10,8 @@
 <body>
 	샘플
 	<%=request.getContextPath()%>
-	
 	<form action="<%=withFormTag%>" method="get">
+<<<<<<< HEAD
 		<!-- 아이디 히든으로 들어감. -->
 		<input name="command" type="text" value="storeInsert">
 		<!-- 가게 고유 번호 -->
@@ -26,6 +26,13 @@
 	</form>
 	
 	
+=======
+	<input name="command" value="storeUpdate">
+	<input name="id" value="soon">
+	<input name="stno" value="82">
+	<button type="submit">제출</button>
+</form>
+>>>>>>> lleebs
 </body>
 </html>
  

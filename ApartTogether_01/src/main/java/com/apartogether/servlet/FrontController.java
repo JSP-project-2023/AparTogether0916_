@@ -1,5 +1,6 @@
 package com.apartogether.servlet;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
@@ -31,8 +32,10 @@ public class FrontController extends HttpServlet {
 	// map for todolist.txt file
 	private Map<String, SuperController> todolistMap = null ;
 	
-	// imageUploadWebPath 변수 : 실제 이미지가 업로드 되는 경로
-	private String imageUploadWebPath ; 
+	// 가게 이미지 업로드 경로변수 
+	private String uploadImage;
+	//이미지 경로 변수
+	ServletContext application = null;
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8"); // 한글 깨짐 방지
@@ -41,17 +44,17 @@ public class FrontController extends HttpServlet {
 		String command = request.getParameter("command") ;
 		
 		if(command == null) {
+			
 			System.out.println("file upload event invoked");
 			
-			MultipartRequest mr = MyUtility.getMultipartRequest(request, imageUploadWebPath);
+			MultipartRequest mr = MyUtility.getMultipartRequest(request, uploadImage);
 			
 			if(mr!=null) {
 				command = mr.getParameter("command") ;
 				
-				if(command.equals("prUpdate")) {
-					MyUtility.deleteOldImageFile(imageUploadWebPath, mr);	
+				if(command.equals("storeUpdate")) {//가게 수정시 변경.
+					MyUtility.deleteOldImageFile(uploadImage, mr);	
 				}
-			
 				// file upload object binding in request scope.
 				request.setAttribute("mr", mr); // 승급
 			}else{
@@ -60,6 +63,7 @@ public class FrontController extends HttpServlet {
 		}
 		
 		System.out.println("command is [" + command + "]");
+		System.out.println("command controller is : " + this.todolistMap.get(command));
 		
 		SuperController controller = this.todolistMap.get(command) ;
 		
@@ -92,14 +96,25 @@ public class FrontController extends HttpServlet {
 		
 		ServletContext application = config.getServletContext() ;
 		
-		
 		String todolistFile = application.getRealPath(todolist);
 		System.out.println("todolistFile is [" + todolistFile + "]");
-		
-		System.out.println("imageUploadWebPath is [" + imageUploadWebPath + "]");
 				
 		this.todolistMap = MyUtility.getTodolistMap(todolistFile);
 		System.out.println("todolist file element size = [" + todolistMap.size() + "]");
+		
+		//이미지 파일 업로드 경로
+		uploadImage = application.getRealPath("upload");
+		File file = new File(uploadImage);
+		
+		//파일 유효성 검사 후, 존재하지 않으면 디렉터리 생성
+		if(!file.exists()) {
+			if(!file.isDirectory()) {
+				System.out.println("디렉토리가 존재하지 않아 생성합니다.");
+				file.mkdir();
+			}
+		}
+		System.out.println("imageUploadWebPath is [" + uploadImage + "]");
+	
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

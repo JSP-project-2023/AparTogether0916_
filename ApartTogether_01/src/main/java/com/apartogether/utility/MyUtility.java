@@ -66,7 +66,7 @@ public class MyUtility {
 			System.out.println(command + "/" + className);
 			
 			try {
-				Class<?> handleClass = Class.forName(className) ;
+				Class<?> handleClass = Class.forName(className);
 				SuperController instance = (SuperController)handleClass.newInstance() ;
 				
 				map.put(command, instance) ;
@@ -101,8 +101,7 @@ public class MyUtility {
 			}
 		}
 		
-		System.out.println("prop.toString()");
-		System.out.println(prop.toString());
+		System.out.println("prop.toString() : " + prop.toString());
 		
 		return prop;
 	}

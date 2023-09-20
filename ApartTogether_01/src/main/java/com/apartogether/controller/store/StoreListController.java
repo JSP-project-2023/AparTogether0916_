@@ -6,15 +6,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.apartogether.controller.SuperClass;
+<<<<<<< HEAD
 import com.apartogether.model.bean.Store;
 import com.apartogether.model.dao.StoreDao;
 import com.apartogether.utility.PagingStore;
+=======
+>>>>>>> lleebs
 
 public class StoreListController extends SuperClass {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doGet(request, response);
 		
+<<<<<<< HEAD
 		String pageNumber = request.getParameter("pageNumber") ;
 		String pageSize = request.getParameter("pageSize") ;
 		String mode = request.getParameter("mode") ;
@@ -42,3 +46,10 @@ public class StoreListController extends SuperClass {
 		}
 	}
 }
+=======
+		super.gotoPage("store/stList.jsp");
+		
+	}
+
+}
+>>>>>>> lleebs

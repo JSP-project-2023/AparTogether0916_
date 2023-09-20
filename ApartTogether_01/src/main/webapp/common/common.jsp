@@ -54,7 +54,11 @@
 <body>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<div class="container-fluid">
+<<<<<<< HEAD
 			<a class="navbar-brand" href="<%=notWithFormTag%>home">쇼핑몰</a>
+=======
+			<a class="navbar-brand" href="#">아파투게더</a>
+>>>>>>> lleebs
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
 				<span class="navbar-toggler-icon"></span>
