@@ -16,7 +16,7 @@
   		$(document).ready(function(){
   			/* value 속성의 값이 일치하는 항목에 대하여 체크 on 시킵니다. */
 	  	  	$('input[value="${bean.gender}"]').attr('checked', true);
-  			/* $('input[value="${bean.mtype}"]').attr('checked', true); */
+  			$('input[value="${bean.mtype}"]').attr('checked', true);
 	  	  	
   		});
   		function validCheck(){ /* form validation check */
@@ -47,25 +47,18 @@
 		<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data">
 		
 			<input type="hidden" name="command" value="meUpdate">
-			<input type="hidden" name="mtype" value="${requestScope.bean.mtype}">
+			<%-- <input type="hidden" name="mtype" value="${requestScope.bean.mtype}"> --%>
+			<input type="hidden" name="oldmtype" value="${requestScope.bean.mtype}">
 			
 			<div class="input-group">
 				<span class="input-group-text">회원유형</span><!-- 수정불가항목 -->
 				<div class="form-control" >
-					<c:choose>
-						<c:when test="${requestScope.bean.mtype == 'user' }">
-							<span>일반회원</span>
-						</c:when>
-						<c:when test="${requestScope.bean.mtype == 'biz' }">
-							<span>사업자</span>
-						</c:when>
-						<c:when test="${requestScope.bean.mtype == 'admin' }">
-							<span>관리자</span>
-						</c:when>
-						<c:otherwise>
-							<span>멤버유형 정보가 올바르지 않습니다.(user, biz, admin)</span>
-						</c:otherwise>
-					</c:choose>
+					<label class="radio-inline radio_mtype"> 
+						&nbsp;<input type="radio" id="mtype1" name="mtype" value="user">일반회원
+					</label>
+					<label class="radio-inline radio_mtype"> 
+						&nbsp;<input type="radio" id="mtype2" name="mtype" value="biz">사업자
+					</label>
 				</div>
 			</div>
 		
