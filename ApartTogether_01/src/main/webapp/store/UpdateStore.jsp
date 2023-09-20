@@ -23,7 +23,7 @@
 	<hr>
 	<div class="container1"><!-- 컨테이너 -->
 		<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data"> <!-- post? get? -->
-		<input type="hidden" name="command" value="${requestScope.id}">
+		<input type="hidden" name="command" value="storeUpdate">
 		<!-- 회원 아이디 -->
 		<input type="hidden" value="${requestScope.id}" name="id" placeholder="회원아이디">
 		<!-- 가게 고유번호-->
@@ -49,8 +49,8 @@
 			
 		<div id="stplace">
 			<%--주소 api사용하여 주소지 받아옴.--%>
-			가게주소 <input id="stplace1" name="stplace1" type="text" value="${bean.stplace}"><br>
-		가게상세 주소 <input id="stplace2" name="stplace2" type="text"><br> <!-- 상세 주소 컬럼 생성 후 삽입 -->
+			가게주소 <input id="stplace1" name="stplace1" type="text" value="${staddr[0]}"><br>
+		가게상세 주소 <input id="stplace2" name="stplace2" type="text" value="${staddr[1]}"><br> <!-- 상세 주소 컬럼 생성 후 삽입 -->
 		</div>
 		
 		<div id="storeNumber">
