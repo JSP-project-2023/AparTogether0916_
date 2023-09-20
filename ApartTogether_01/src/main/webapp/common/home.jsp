@@ -13,7 +13,7 @@
 	<form action="<%=withFormTag%>" method="get">
 	<input name="command" value="storeUpdate">
 	<input name="id" value="soon">
-	<input name="stno" value="82">
+	<input name="stno" value="1">
 	<button type="submit">제출</button>
 </form>
 </body>

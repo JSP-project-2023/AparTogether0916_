@@ -1,6 +1,8 @@
 package com.apartogether.model.bean;
 
 public class Store {
+	
+	//TODO 가게 고유 코드 Integer로 변경
 	private String stno; // 가게 고유 코드
 	private String id; // 회원(사업자) 아이디
 	private String stname; // 가게 이름

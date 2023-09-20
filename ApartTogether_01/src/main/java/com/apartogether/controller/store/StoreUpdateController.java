@@ -16,8 +16,7 @@ public class StoreUpdateController extends SuperClass{
 		MultipartRequest mr = (MultipartRequest)request.getAttribute("mr");
 		
 		Store bean = new Store();
-		//회원 아이디
-		//회원 가게를 가져옴.
+		StoreDao dao = new StoreDao();
 		
 		//번호
 		String sttel = mr.getParameter("areacode1") + "-";
@@ -34,8 +33,9 @@ public class StoreUpdateController extends SuperClass{
 		sttime += mr.getParameter("endShopAmPm") + " ";
 		sttime += mr.getParameter("endShopTime");
 		
-		
 		//TODO: 다오를 통해 업데이트
+		bean.setId(mr.getParameter("id"));
+		bean.setStno(mr.getParameter("stno"));
 		bean.setStname(mr.getParameter("stname"));
 		bean.setCategory(mr.getParameter("category"));
 		//주소
@@ -44,22 +44,36 @@ public class StoreUpdateController extends SuperClass{
 		bean.setSttel(sttel);
 		
 		bean.setContent(mr.getParameter("content"));
-		bean.setCeofile(mr.getParameter("ceofile"));
+		bean.setCeofile(mr.getFilesystemName("ceofile"));
 
 		//가게 오픈, 마감시간
 		bean.setSttime(sttime);
 		
-		bean.setStlogo(mr.getParameter("stlogo"));
+		bean.setStlogo(mr.getFilesystemName("stlogo"));
 		bean.setFee(Integer.parseInt(mr.getParameter("fee")));
 		bean.setRedday(mr.getParameter("redday"));
 		bean.setCeono(mr.getParameter("ceono"));
-
-		//TODO: 업데이트 후 알럿 창
-		super.setAlertMessage("수정이 완료되었습니다.");
 		
-		//TODO: 업데이트 후 가게 상세화면으로 이동
-		//컨트롤러? goto?
+		int cnt = -1;
 		
+		//가게 정보 업데이트
+		try {
+			cnt = dao.UpdateStore(bean);
+			if (cnt == -1) {
+				System.out.println("실패");
+			}else {
+				System.out.println("성공");
+				//TODO: 업데이트 후 알럿 창
+				super.setAlertMessage("수정이 완료되었습니다.");
+				
+				//TODO: 업데이트 후 가게 상세화면으로 이동
+				//컨트롤러? goto?
+				super.gotoPage("common/home.jsp");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	@Override
@@ -76,14 +90,11 @@ public class StoreUpdateController extends SuperClass{
 				
 		Store bean = dao.getStorebyId(id, stno);
 		
-		//가게 전화번호
-		String[] sttel = bean.getSttel().split("-");
-		
 		//가게 주소
 		String[] staddr = bean.getStplace().split("Δ");
-		for(String i: staddr) {
-			System.out.println(i);
-		}
+		
+		//가게 전화번호
+		String[] sttel = bean.getSttel().split("-");
 		
 		
 		//가게 운영시간 split

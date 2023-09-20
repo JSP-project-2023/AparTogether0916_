@@ -25,16 +25,16 @@ function validation(){
 			$("input[name=areacode1]").focus();
 			return false;
 		}
-		if ($("input[name=ceofile]").val() == "" || $("input[name=ceofile]").val() == null) {
+		/*if ($("input[name=ceofile]").val() == "" || $("input[name=ceofile]").val() == null) {
 			alert("사업자 등록증은 필수 입니다.");
 			$("input[name=ceofile]").focus();
 			return false;
-		}
-		if ($("input[name=stlogo]").val() == "" || $("input[name=stlogo]").val() == null) {
+		}*/
+		/*if ($("input[name=stlogo]").val() == "" || $("input[name=stlogo]").val() == null) {
 			alert("가게 로고는 필수 입니다.");
 			$("input[name=stlogo]").focus();
 			return false;
-		}
+		}*/
 		if ($("input[name=fee]").val() == "") {
 			alert("배달비 필수 입니다.");
 			$("input[name=fee]").focus();
@@ -56,7 +56,7 @@ function validation(){
 		var isCheck = false;
 			const imgCheck = ['.png', '.jpg'];
 			for(var i=0 ; i < imgCheck.length ; i++){
-				if(ceofile.endsWith(imgCheck[i])){
+				if(ceofile.endsWith(imgCheck[i]) || ceofile == ""){
 					isCheck = true;
 					break;	
 				}
@@ -70,7 +70,7 @@ function validation(){
 		var stlogo = $('input[name=stlogo]').val();
 		var isCheck = false;
 		for(var i=0 ; i < imgCheck.length ; i++){
-			if(stlogo.endsWith(imgCheck[i])){
+			if(stlogo.endsWith(imgCheck[i]) || ceofile == ""){
 				isCheck = true;
 				break;	
 			}

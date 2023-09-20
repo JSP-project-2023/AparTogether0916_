@@ -19,9 +19,8 @@ public class MyUtility {
 		// 상품 수정시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
 		String[] deleteImages = 
 			{
-					mr.getParameter("deleteImage01"),
-					mr.getParameter("deleteImage02"),
-					mr.getParameter("deleteImage03")
+					mr.getParameter("ceofileUpdate"),
+					mr.getParameter("stlogoUpdate")
 			};
 		
 		for(String delFile : deleteImages) {
@@ -128,5 +127,18 @@ public class MyUtility {
 		
 		return map;
 	}
+	
+	//파일 삭제 메소드
+	public static void deleteFile(String oldFile, String newFile, MultipartRequest mr, String uploadImage) {
+		 if(newFile != null || !newFile.equals("")) { //해결못함 ㅠㅠ
+			System.out.println("newFileeeee" + newFile);
+			System.out.println("실행1");
+			MyUtility.deleteOldImageFile(uploadImage, mr);
+		} else {
+			System.out.println();
+		}
+	}
+	
+	
 
 }

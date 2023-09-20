@@ -59,7 +59,6 @@ public class StoreDao extends SuperDao {
 		
 		ResultSet rs = pstmt.executeQuery();
 		
-		
 		if(rs.next()) {
 			bean.setStno(rs.getString("stno"));
 			bean.setId(rs.getString("id"));
@@ -89,6 +88,40 @@ public class StoreDao extends SuperDao {
 		return bean;
 	}
 
-	
-	
+	//가게 업데이트
+	public int UpdateStore(Store bean) throws SQLException {
+		System.out.println("들어온 객체 : " + bean);
+		
+		int cnt = 0;
+		String sql ="update store set stname=?, fee=?, category=?, stplace=?, sttel=?, content=?, ceofile=?, ceono=?, sttime=?, stlogo=?, redday=?, btime=40 ";
+		sql += "where id=? and stno=? ";
+		conn = super.getConnection();
+		conn.setAutoCommit(false);
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, bean.getStname());
+		pstmt.setInt(2, bean.getFee());
+		pstmt.setString(3, bean.getCategory());
+		pstmt.setString(4, bean.getStplace());
+		pstmt.setString(5, bean.getSttel());
+		pstmt.setString(6, bean.getContent());
+		pstmt.setString(7, bean.getCeofile());
+		pstmt.setString(8, bean.getCeono());
+		pstmt.setString(9, bean.getSttime());
+		pstmt.setString(10, bean.getStlogo());
+		pstmt.setString(11, bean.getRedday());
+		pstmt.setString(12, bean.getId());
+		pstmt.setString(13, bean.getStno());
+		
+		cnt = pstmt.executeUpdate();
+		conn.commit();
+		
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if(conn != null) {
+			conn.close();
+		}
+		return cnt;
+	}
 }

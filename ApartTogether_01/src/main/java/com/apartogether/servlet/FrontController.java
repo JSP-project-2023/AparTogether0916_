@@ -53,7 +53,20 @@ public class FrontController extends HttpServlet {
 				command = mr.getParameter("command") ;
 				
 				if(command.equals("storeUpdate")) {//가게 수정시 변경.
-					MyUtility.deleteOldImageFile(uploadImage, mr);	
+					//TODO 옛날 파일 있으면 삭제X, 파일을 교체했다면 삭제하고 업로드
+					//사업자 등록증
+					String oldFile = mr.getParameter("ceofileUpdate");
+					String newFile = mr.getFilesystemName("ceofile");
+					System.out.println("newFile is " + newFile);
+					System.out.println("oldFile is " + oldFile);
+					//파일삭제 유효성 검사
+					MyUtility.deleteFile(oldFile, newFile, mr, uploadImage);
+					
+					//가게 로고
+					oldFile = mr.getParameter("stlogoUpdate");
+					newFile = mr.getFilesystemName("stlogo");
+					//파일삭제 유효성 검사
+					MyUtility.deleteFile(oldFile, newFile, mr, uploadImage);	
 				}
 				// file upload object binding in request scope.
 				request.setAttribute("mr", mr); // 승급
