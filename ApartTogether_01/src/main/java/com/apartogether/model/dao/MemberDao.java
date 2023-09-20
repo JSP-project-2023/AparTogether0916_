@@ -201,6 +201,8 @@ public class MemberDao extends SuperDao {
 		bean.setNickname(rs.getString("nickname"));	/* 닉네임 */		
 		bean.setAddress(rs.getString("address"));	/* 주소 */
 		bean.setProfile(rs.getString("profile"));	/* 프로필 이미지 */
+		bean.setPasswordquest(rs.getString("passwordquest"));   /* 비밀번호 질문 */
+		bean.setPasswordanswer(rs.getString("passwordanswer"));   /* 비밀번호 답변 */
 		
 		return bean;
 	}
@@ -212,8 +214,8 @@ public class MemberDao extends SuperDao {
 		// Bean 객체 정보를 이용하여 데이터 베이스에 추가합니다.
 		int cnt = -1 ;
 
-		String sql = " insert into members(id, mtype, name, password, phone, birth, gender, nickname, address, profile) " ;
-		sql += " values(					?,	   ?,	 ?,	       ?,	  ?,     ?,	     ?, 	   ?,	    ?,	     ?) " ; 
+		String sql = " insert into members(id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest) " ;
+		sql += " values(					?,	   ?,	 ?,	       ?,	  ?,     ?,	     ?, 	   ?,	    ?,	     ?,              ?,             ?) " ; 
 		
 		PreparedStatement pstmt = null ;
 		
@@ -232,6 +234,8 @@ public class MemberDao extends SuperDao {
 		pstmt.setString(8, bean.getNickname());
 		pstmt.setString(9, bean.getAddress());
 		pstmt.setString(10, bean.getProfile());
+		pstmt.setString(11, bean.getPasswordanswer());
+		pstmt.setString(12, bean.getPasswordquest());
 		
 		cnt = pstmt.executeUpdate() ; 
 		conn.commit();
@@ -339,36 +343,6 @@ public class MemberDao extends SuperDao {
 
 		return bean;
 	}
-
-//	public int UpdatePassword(String id, String oldPassword, String newPassword) throws Exception {
-//		// 회원 비밀번호 재설정
-//		// MemberResetPasswordController.doPost에서 사용합니다.
-//		System.out.println("비밀번호 재설정 빈 id : " + id + ", 기존비밀번호 : " + oldPassword + ", 새 비밀번호 : " + newPassword );
-//		PreparedStatement pstmt = null;
-//		int cnt = -1 ;
-//		conn = super.getConnection() ;
-//		conn.setAutoCommit(false);
-//		
-//		// step01 : id와 기존비밀번호(oldPassword)를 올바르게 입력했는지 확인합니다.
-//		String sql = " select password from members ";
-//		sql += " where id = ? " ;
-//		pstmt = conn.prepareStatement(sql);
-//		pstmt.setString(1, id);
-//		
-//		
-//		// step02 : 새 비밀번호(newPassword)를 DB에 업데이트합니다.
-//		String sql = " update members set password = ? ";
-//		sql += " where id = ? " ;
-//		pstmt = conn.prepareStatement(sql);
-//		pstmt.setString(1, id);
-//		cnt = pstmt.executeUpdate() ;
-//		
-//		return cnt ;
-//	}
-
-
-
-
 
 
 

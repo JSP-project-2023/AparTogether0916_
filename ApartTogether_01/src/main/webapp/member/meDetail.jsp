@@ -23,7 +23,22 @@
 			
 				<tr>
 					<td align="center">회원유형</td>
-					<td>${requestScope.bean.mtype}</td>
+					<td>
+						<c:choose>
+							<c:when test="${requestScope.bean.mtype == 'user' }">
+								<span>일반회원</span>
+							</c:when>
+							<c:when test="${requestScope.bean.mtype == 'biz' }">
+								<span>사업자</span>
+							</c:when>
+							<c:when test="${requestScope.bean.mtype == 'admin' }">
+								<span>관리자</span>
+							</c:when>
+							<c:otherwise>
+								<span>멤버유형 정보가 올바르지 않습니다.(user, biz, admin)</span>
+							</c:otherwise>
+						</c:choose>
+					</td>
 				</tr>
 				<tr>
 					<td align="center">아이디</td>
@@ -41,9 +56,9 @@
 				<tr>
 					<td align="center">프로필 사진</td>
 					<td>
-						<img class="card-img-top  small_image rounded" alt="${bean.name}" 
-					         src="upload/${bean.profile}"  >
-					         ${requestScope.bean.profile}
+						<img class="card-img-top  small_image rounded" alt="${requestScope.bean.profile}" 
+					         src="upload/${requestScope.bean.profile}"  >
+					         
 					</td>
 				</tr>
 				

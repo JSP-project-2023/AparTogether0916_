@@ -93,7 +93,7 @@
 	<div class="container">
 		<h2>회원 가입</h2>
 		<p>회원 가입하는 페이지 입니다.</p>
-		<form action="<%=withFormTag%>" method="post"  onsubmit="return validCheck();">
+		<form action="<%=withFormTag%>" method="post"   onsubmit="return validCheck();">
 			<input type="hidden" name="command" value="meInsert">
 			
 			<div class="input-group">
@@ -124,7 +124,8 @@
 			</div>
 			<div class="input-group">
 				<span class="input-group-text col-md-2">비밀 번호</span>
-				<input class="form-control" type="password" id="password" name="password">				
+				<%-- 최대길이(maxlength)를 12로 설정하여 12자리가 넘으면 더이상 입력이 되지 않습니다. --%>
+				<input class="form-control" type="password" id="password" name="password" maxlength='12'>				
 			</div>
 			<div class="input-group">
 				<span class="input-group-text col-md-2">성별</span>

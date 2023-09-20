@@ -11,21 +11,22 @@ public class Member {
 	private String nickname;/* 닉네임 */
 	private String address; /* 주소 */
 	private String profile; /* 프로필 이미지 */
+	private String passwordquest; /* 비밀번호 질문 */
+	private String passwordanswer; /* 비밀번호 답변 */
+	
 	
 	/* 생성자 */
 	public Member() {
 	} 
 	
-	
-	
-	@Override /* toString */
+	@Override
 	public String toString() {
 		return "Member [id=" + id + ", mtype=" + mtype + ", name=" + name + ", password=" + password + ", phone="
 				+ phone + ", birth=" + birth + ", gender=" + gender + ", nickname=" + nickname + ", address=" + address
-				+ ", profile=" + profile + "]";
+				+ ", profile=" + profile + ", passwordquest=" + passwordquest + ", passwordanswer=" + passwordanswer
+				+ "]";
 	}
-
-
+	
 	/* [st.] getter&setter */	
 	public String getId() {
 		return id;
@@ -87,11 +88,27 @@ public class Member {
 	public void setProfile(String profile) {
 		this.profile = profile;
 	}
+	public String getPasswordquest() {
+		return passwordquest;
+	}
+	public void setPasswordquest(String passwordquest) {
+		this.passwordquest = passwordquest;
+	}
+	public String getPasswordanswer() {
+		return passwordanswer;
+	}
+	public void setPasswordanswer(String passwordanswer) {
+		this.passwordanswer = passwordanswer;
+	}
 	/* [ed.] getter&setter */
 	
 	
 	
 	
+	
+
+
+
 	public Member(String id, String mtype, String name, String password, String phone, String birth, String gender,
 			String nickname, String address, String profile) {
 		super();

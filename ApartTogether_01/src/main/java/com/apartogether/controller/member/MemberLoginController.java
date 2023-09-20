@@ -41,6 +41,8 @@ public class MemberLoginController extends SuperClass{
 			super.gotoPage(PREFIX + "meLoginForm.jsp");
 			
 		}else { // 로그인 성공
+			System.out.println("로그인성공");
+			
 			// session 영역에 나의 로그인 정보를 저장합니다.
 			super.session.setAttribute("loginfo", bean);
 			

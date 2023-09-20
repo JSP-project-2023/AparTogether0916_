@@ -42,7 +42,7 @@
 			</div>
 			<div>
 				<label for="password" class="form-label">비밀 번호 :</label> 
-				<input class="form-control" type="password" id="password" name="password">
+				<input class="form-control" type="password" id="password" name="password" maxlength='12'>
 			</div>
 			
 			<!-- contextual class : btn-primary, btn-info, btn-danger -->

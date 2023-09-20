@@ -16,9 +16,14 @@
   		$(document).ready(function(){
   			/* value 속성의 값이 일치하는 항목에 대하여 체크 on 시킵니다. */
 	  	  	$('input[value="${bean.gender}"]').attr('checked', true);
-  			$('input[value="${bean.mtype}"]').attr('checked', true);
+  			/* $('input[value="${bean.mtype}"]').attr('checked', true); */
 	  	  	
   		});
+  		function validCheck(){ /* form validation check */
+  			console.log('!!!!validCheck() function called');
+  			// 필수 항목(id, name, ) 중 미입력 항목이 존재하는지 체크합니다.
+  			var id = $('#id').val();
+  		}
   	</script>
   	<style type="text/css">
   		/* box model에 대한 공부가 필요합니다. */
@@ -42,25 +47,30 @@
 		<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data">
 		
 			<input type="hidden" name="command" value="meUpdate">
+			<input type="hidden" name="mtype" value="${requestScope.bean.mtype}">
 			
 			<div class="input-group">
-				<span class="input-group-text">회원유형</span>
-				<div class="form-control">
-					<label class="radio-inline radio_mtype"> 
-						&nbsp;<input type="radio" id="mtype1" name="mtype" value="user">일반회원
-					</label>
-					<label class="radio-inline radio_mtype"> 
-						&nbsp;<input type="radio" id="mtype2" name="mtype" value="biz">사업자
-					</label>
-					<label class="radio-inline radio_mtype"> 
-						&nbsp;<input type="radio" id="mtype3" name="mtype" value="admin">관리자
-					</label>
+				<span class="input-group-text">회원유형</span><!-- 수정불가항목 -->
+				<div class="form-control" >
+					<c:choose>
+						<c:when test="${requestScope.bean.mtype == 'user' }">
+							<span>일반회원</span>
+						</c:when>
+						<c:when test="${requestScope.bean.mtype == 'biz' }">
+							<span>사업자</span>
+						</c:when>
+						<c:when test="${requestScope.bean.mtype == 'admin' }">
+							<span>관리자</span>
+						</c:when>
+						<c:otherwise>
+							<span>멤버유형 정보가 올바르지 않습니다.(user, biz, admin)</span>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		
-		
 			<div class="input-group">
-				<span class="input-group-text">아이디</span>
+				<span class="input-group-text">아이디</span><!-- 수정불가항목 -->
 				<input disabled="disabled" class="form-control" type="text" id="fakeid" name="fakeid" value="${requestScope.bean.id}">				
 				<input type="text" id="id" name="id" value="${requestScope.bean.id}" hidden>
 			</div>
@@ -75,15 +85,15 @@
 			</div>
 			<div class="input-group">
 				<span class="input-group-text col-md-2">프로필사진</span>
-				<img class="card-img-top  small_image rounded" alt="${requestScope.bean.name}" 
+				<img class="card-img-top  small_image rounded" alt="${requestScope.bean.profile}" 
 					         src="upload/${requestScope.bean.profile}"  >
-				<input class="form-control" type="file" id="profile" name="profile" value="${requestScope.bean.profile}">
+				<input class="form-control" type="file" id="profile" name="profile"  ">
 				<input type="text" name="deleteProfile" value="${requestScope.bean.profile}" hidden>
 			</div>
 			
 			<div class="input-group" >
 				<span class="input-group-text">비밀 번호</span>
-				<input class="form-control" type="password" id="password" name="password"  value="${requestScope.bean.password}">				
+				<input class="form-control" type="password" id="password" name="password"  value="${requestScope.bean.password}">		
 			</div>
 			
 			<div class="input-group">
@@ -114,7 +124,7 @@
 			</div>
 			
 			<div id="buttonset" class="input-group">
-				<button type="submit" class="btn btn-primary">수정</button>
+				<button type="submit" class="btn btn-primary" onclick="return validCheck();">수정</button>
 				&nbsp;&nbsp;&nbsp;
 				<button type="reset" class="btn btn-primary">초기화</button>				
 			</div>
