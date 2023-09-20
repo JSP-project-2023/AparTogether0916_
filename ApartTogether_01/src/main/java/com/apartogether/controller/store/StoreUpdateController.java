@@ -12,6 +12,42 @@ public class StoreUpdateController extends SuperClass{
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doPost(request, response);
 		
+		Store bean = new Store();
+		
+		
+		//TODO: 다오를 통해 업데이트
+		request.getParameter("stname");
+		request.getParameter("category");
+		
+		//주소
+		request.getParameter("stplace1");
+		request.getParameter("stplace2");
+		
+		//번호
+		request.getParameter("areacode1");
+		request.getParameter("areacode2");
+		request.getParameter("areacode3");
+		
+		request.getParameter("cotent");
+		request.getParameter("ceofile");
+		
+		//가게 오픈, 마감시간
+		request.getParameter("startShopAmPm");
+		request.getParameter("startShopTime");
+		request.getParameter("endShopAmPm");
+		request.getParameter("endShopTime");
+		
+		request.getParameter("stlogo");
+		request.getParameter("fee");
+		request.getParameter("redday");
+		request.getParameter("ceono");
+
+		
+		
+		//TODO: 업데이트 후 알럿 창
+		super.setAlertMessage("수정이 완료되었습니다.");
+		
+		//TODO: 업데이트 후 가게 상세화면으로 이동
 		
 		
 		

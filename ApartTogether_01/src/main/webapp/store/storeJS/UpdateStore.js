@@ -1,3 +1,4 @@
+//유효성 검사
 function validation(){
 		if ($("input[name=stname]").val() == "") {
 			alert("가게 이름은 필수 입니다.");
@@ -96,6 +97,7 @@ function validation(){
 	}
 
 $(document).ready(function() {
+	//주소 api
 	document.getElementById("stplace1").addEventListener("click", function() {
 		new daum.Postcode({
 			oncomplete: function(data) {
@@ -107,74 +109,47 @@ $(document).ready(function() {
 	
 	//가게 카테고리 selected
 	var el = document.getElementById('categoryFood');
-	var len = el.options.length;
 	var str = document.getElementById('selectedCategory').value;
-	
-	for (let i = 0; i < len; i++) {
-		if (el.options[i].value == str) {
-			$("#categoryFood").val(str).prop("selected", true);
-		}
-	}
+	selectedBox(el, str);
 	
 	//가게 전화번호
 	var el = document.getElementById('choiceNumber');
-	var len = el.options.length;
 	var str = document.getElementById('firstNumber').value;
-	
-	for (let i = 0; i < len; i++) {
-		if (el.options[i].value == str) {
-			$("#choiceNumber").val(str).prop("selected", true);
-		}
-	}
+	selectedBox(el, str);
 	
 	/*가게운영시간 코드 시작*/
 	
 	//시작시간 Am or Pm
 	var el = document.getElementById('startShopAmPm');
-	var len = el.options.length;
 	var str = document.getElementById('startAmPm').value;
-	
-	for (let i = 0; i < len; i++) {
-		if (el.options[i].value == str) {
-			$("#startShopAmPm").val(str).prop("selected", true);
-		}
-	}
+	selectedBox(el, str);
 	
 	//시작 시간
 	var el = document.getElementById('startTimeB');
-	var len = el.options.length;
 	var str = document.getElementById('startTime').value;
+	selectedBox(el, str);
 	
-	for (let i = 0; i < len; i++) {
-		if (el.options[i].value == str) {
-			$("#startTimeB").val(str).prop("selected", true);
-		}
-	}
 	
 	//종료시간 Am or Pm
 	var el = document.getElementById('endShopAmPm');
-	var len = el.options.length;
 	var str = document.getElementById('endAmPm').value;
+	selectedBox(el, str);
 	
-	for (let i = 0; i < len; i++) {
-		if (el.options[i].value == str) {
-			$("#endShopAmPm").val(str).prop("selected", true);
-		}
-	}
 	
 	//종료시간
 	var el = document.getElementById('endTimeB');
-	var len = el.options.length;
 	var str = document.getElementById('endTime').value;
+	selectedBox(el, str);
 	
+	/*가게운영시간 코드 종료*/
+});
+
+// select 조건 찾는 함수
+function selectedBox(el , str){
+	var len = el.options.length;
 	for (let i = 0; i < len; i++) {
 		if (el.options[i].value == str) {
-			$("#endTimeB").val(str).prop("selected", true);
+			el.options[i].selected = true;
 		}
-	}
-	
-	
-	
-	
-	
-});
+	}	
+}

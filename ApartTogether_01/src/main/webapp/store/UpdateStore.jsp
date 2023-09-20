@@ -33,7 +33,7 @@
 			가게이름 <input name="stname" type="text" value="${bean.stname}"><br>
 		</div>
 		<div id="category">
-		<input name=selectedCategory id="selectedCategory" type="text" value="${bean.category}">
+		<input name=selectedCategory id="selectedCategory" type="hidden" value="${bean.category}">
 		카테고리 <select name="category" id="categoryFood">
 				<option value="-">--선택--
 				<option value="양식">양식
@@ -81,10 +81,10 @@
 		<div id="shoptime">
 			가게운영시간
 				<!-- 시작시간 -->
-				<input type="text" id="startAmPm" value="${sttime[0]}">
-				<input type="text" id="startTime" value="${sttime[1]}">
-				<input type="text" id="endAmPm" value="${sttime[2]}">
-				<input type="text" id="endTime" value="${sttime[3]}">
+				<input type="hidden" id="startAmPm" value="${sttime[0]}">
+				<input type="hidden" id="startTime" value="${sttime[1]}">
+				<input type="hidden" id="endAmPm" value="${sttime[2]}">
+				<input type="hidden" id="endTime" value="${sttime[3]}">
 				
 				<select name="startShopAmPm" id="startShopAmPm">
 					<option value="am">오전</option>
