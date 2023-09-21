@@ -7,11 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.apartogether.model.bean.Store;
-<<<<<<< HEAD
 import com.apartogether.utility.PagingStore;
-=======
 import com.oreilly.servlet.MultipartRequest;
->>>>>>> lleebs
 
 public class StoreDao extends SuperDao {
 	int cnt = -1;
@@ -188,7 +185,7 @@ public class StoreDao extends SuperDao {
 		return storeAllList;
 	}
 	
-//	store에 bean 한개 값 셋팅해서 Store 객체로 리턴
+//	store에 bean 한개 값 셋팅해서 Store 객체로 리턴 - 이리수
 	private Store getBeanData(ResultSet rs) throws Exception {
 		Store storeBean = new Store();
 		
@@ -212,8 +209,7 @@ public class StoreDao extends SuperDao {
 		return storeBean;
 	}
 
-<<<<<<< HEAD
-	/* 불러올 가게 몇 개 인지 카운팅 */
+//	 불러올 가게 몇 개 인지 카운팅  - 이리수
 	public int GetTotalStoreCount(String mode, String keyword, String categoryItem) throws Exception {
 		cnt = -1; // 카운팅 담을 변수
 		
@@ -241,7 +237,7 @@ public class StoreDao extends SuperDao {
 		return cnt;
 	}
 	
-//	내가 등록한 가게가 몇개인지 카운딩
+//	내가 등록한 가게가 몇개인지 카운딩 - 이리수
 	public int GetMyTotalStoreCount(String mode, String keyword, String categoryItem, String id) throws Exception {
 		cnt = -1; // 카운팅 담을 변수
 		
@@ -284,7 +280,8 @@ public class StoreDao extends SuperDao {
 		if(conn!=null) {conn.close();}
 		
 		return cnt;
-=======
+	}
+	
 	//가게 업데이트
 	public int UpdateStore(Store bean) throws SQLException {
 		System.out.println("들어온 객체 : " + bean);
@@ -332,6 +329,5 @@ public class StoreDao extends SuperDao {
 			// 등록된 파일을 리턴
 			return newfileName;
 		}	
->>>>>>> lleebs
 	}
 }

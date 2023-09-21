@@ -27,15 +27,15 @@ public class StoreListController extends SuperClass {
 		
 		try {
 			int totalCount = dao.GetTotalStoreCount(mode, storeName, category); // 키워드 검색 시 mode, keyword 로 조건 검색한 총 결과 개수 count
-			String url = super.getUrlInfomation("storeList"); // 전체 가게 리스트 목록
+			String url = super.getUrlInfomation("stList"); // 전체 가게 리스트 목록
 			boolean isGrid = true;
 			PagingStore pageInfo = new PagingStore(pageNumber, pageSize, totalCount, url, mode, storeName, category, isGrid);
 			
 //			id 조건 없이 모든 가게 리스트 불러오기
-			List<Store> storeList = dao.selectAll(pageInfo);
+			List<Store> stList = dao.selectAll(pageInfo);
 			
 			request.setAttribute("pageInfo", pageInfo);
-			request.setAttribute("storeList", storeList);
+			request.setAttribute("storeList", stList);
 			super.gotoPage("store/StoreList.jsp");
 			
 		} catch (Exception e) {

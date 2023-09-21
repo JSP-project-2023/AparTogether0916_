@@ -2,17 +2,10 @@
 #main 컨트롤러
 home=com.apartogether.controller.HomeController
 #Store
-<<<<<<< HEAD
-storeList=com.apartogether.controller.store.StoreListController
-storeInsert=com.apartogether.controller.store.StoreInsertController
-storeUpdate=com.apartogether.controller.store.StoreUpdateController
-storeDelete=com.apartogether.controller.store.StoreDeleteController
-myStoreList=com.apartogether.controller.store.MyStoreListController
-#Munu
-menuInsert=com.apartogether.controller.menu.MenuInsertController
-=======
 stList=com.apartogether.controller.store.StoreListController
 stInsert=com.apartogether.controller.store.StoreInsertController
 stUpdate=com.apartogether.controller.store.StoreUpdateController
 stDetail=com.apartogether.controller.store.StoreDetailController
->>>>>>> lleebs
+myStoreList=com.apartogether.controller.store.MyStoreListController
+#Munu
+menuInsert=com.apartogether.controller.menu.MenuInsertController
