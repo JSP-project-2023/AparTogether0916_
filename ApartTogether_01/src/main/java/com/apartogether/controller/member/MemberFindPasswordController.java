@@ -53,5 +53,4 @@ private final String PREFIX = "member/" ;
 		
 	}
 	
-
 }

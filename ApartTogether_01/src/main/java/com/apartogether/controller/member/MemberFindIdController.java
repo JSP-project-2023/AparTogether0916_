@@ -54,17 +54,4 @@ public class MemberFindIdController extends SuperClass{
 		
 		
 	}
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
