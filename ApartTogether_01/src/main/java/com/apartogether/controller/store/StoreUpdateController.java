@@ -3,6 +3,7 @@ package com.apartogether.controller.store;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.apartogether.controller.HomeController;
 import com.apartogether.controller.SuperClass;
 import com.apartogether.model.bean.Store;
 import com.apartogether.model.dao.StoreDao;
@@ -76,7 +77,7 @@ public class StoreUpdateController extends SuperClass{
 				
 				//TODO: 업데이트 후 가게 상세화면으로 이동
 				//컨트롤러? goto?
-				super.gotoPage("common/home.jsp");
+				new HomeController().doGet(request, response);
 			}
 			
 		} catch (Exception e) {
@@ -87,8 +88,6 @@ public class StoreUpdateController extends SuperClass{
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doGet(request, response);
-		//수정 버튼으로 update폼으로 이동
-		
 		//아아디 가져옴.
 		String id = request.getParameter("id");
 		//가게 고유번호 가져옴
