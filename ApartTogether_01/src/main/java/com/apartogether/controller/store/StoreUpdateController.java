@@ -35,7 +35,7 @@ public class StoreUpdateController extends SuperClass{
 		
 		//TODO: 다오를 통해 업데이트 
 		bean.setId(mr.getParameter("id"));
-		bean.setStno(mr.getParameter("stno"));
+		bean.setStno(Integer.parseInt(mr.getParameter("stno")));
 		bean.setStname(mr.getParameter("stname"));
 		bean.setCategory(mr.getParameter("category"));
 		//주소
@@ -92,7 +92,7 @@ public class StoreUpdateController extends SuperClass{
 		//아아디 가져옴.
 		String id = request.getParameter("id");
 		//가게 고유번호 가져옴
-		String stno = request.getParameter("stno");
+		int stno = Integer.parseInt(request.getParameter("stno"));
 				
 		StoreDao dao = new StoreDao();
 				

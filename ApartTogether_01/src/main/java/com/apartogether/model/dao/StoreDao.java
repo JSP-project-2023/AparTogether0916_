@@ -47,7 +47,7 @@ public class StoreDao extends SuperDao {
 	}
 	
 	//스토어 수정하기 위한 1개 가게 조회
-	public Store getStorebyId(String id, String stno) throws Exception {
+	public Store getStorebyId(String id, int stno) throws Exception {
 		Store bean = new Store();
 		
 		String sql = "select * from store where id=? and stno=? ";
@@ -56,12 +56,12 @@ public class StoreDao extends SuperDao {
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setString(1, id);
-		pstmt.setString(2, stno);
+		pstmt.setInt(2, stno);
 		
 		ResultSet rs = pstmt.executeQuery();
 		
 		if(rs.next()) {
-			bean.setStno(rs.getString("stno"));
+			bean.setStno(rs.getInt("stno"));
 			bean.setId(rs.getString("id"));
 			bean.setStname(rs.getString("stname"));
 			bean.setFee(rs.getInt("fee"));
@@ -112,7 +112,7 @@ public class StoreDao extends SuperDao {
 		pstmt.setString(10, bean.getStlogo());
 		pstmt.setString(11, bean.getRedday());
 		pstmt.setString(12, bean.getId());
-		pstmt.setString(13, bean.getStno());
+		pstmt.setInt(13, bean.getStno());
 		
 		cnt = pstmt.executeUpdate();
 		conn.commit();

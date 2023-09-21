@@ -5,4 +5,4 @@ home=com.apartogether.controller.HomeController
 stList=com.apartogether.controller.store.StoreListController
 stInsert=com.apartogether.controller.store.StoreInsertController
 stUpdate=com.apartogether.controller.store.StoreUpdateController
-stDetail=com.apartogether.controller.store.StoreUpdateController
+stDetail=com.apartogether.controller.store.StoreDetailController
