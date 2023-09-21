@@ -6,6 +6,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>아파투게더:회원가입</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	
 	<script type="text/javascript">
 	
   		$(document).ready(function(){
@@ -13,7 +15,7 @@
   	  		$('#birth').datepicker({dateFormat: "yy/mm/dd"});
   	  		
   		});
-  		
+    
   		/* [st] 비밀번호 표시 창 */
   		function viewPassword() {
 			var x = document.getElementById("password");
@@ -23,11 +25,10 @@
   			} else {
     			x.type = "password";
   			}
-		}
+		  }
   		/* [ed] 비밀번호 표시 창 */
-  		
-  		
-  		/* [st] focusout 유효성 검사 */
+    
+    	/* [st] focusout 유효성 검사 */
 		document.getElementById("id").addEventListener("onfocusout", function(){
 			var id = $('#id').val();
 	  		if(id.length < 2 || id.length > 18){
@@ -56,9 +57,10 @@
 			}
 		});
 		/* [ed] focusout  유효성 검사 */
-  		
-  		/* [st] submit 유효성 검사 */
-		function validCheck(){/* form validation check */
+
+    /* [st] submit 유효성 검사 */
+      function validCheck(){ /* form validation check */
+  			console.log('!!!!validCheck() function called');
   			var id = $('#id').val();
   			if(id.length < 2 || id.length > 18){
   				alert('아이디는 2자리 이상 18자리 이하로 입력해 주세요.');
@@ -94,14 +96,14 @@
   				return false ;
   			} */
   			
-			var radioList = $('input[type="radio"]:checked') ;
+			  var radioList = $('input[type="radio"]:checked') ;
   			if(radioList.length == 0){
   				alert('성별은 반드시 선택이 되어야 합니다.');
   				return false ; 
   			}
   			var phone = $('#phone').val();  			
   			if(phone.length < 7 || phone.length > 12){  				
-  				$('#name').focus();
+  				$('#phone').focus();
   				alert('번호는 8자리 이상 11자리 이하로 입력해 주세요.');
   				return false ;
   			}
@@ -204,6 +206,7 @@
   	
   	</style>
 </head>
+
 <body background="http://localhost:5214/ApartTogether_01
 	/image/background3.png">
 	<div class="container row">
@@ -216,25 +219,25 @@
 				
 				<div class="input-group" align="center">
 					<span class="input-group-text col-md-3">회원유형</span>
-					
 					<div class="form-control">
 						<label class="radio-inline radio_membertype"> 
 							&nbsp;<input type="radio" id="membertype" name="mtype" value="user"> 🙋‍♀️ ‍일반회원
 						</label>
-						 |
 						<label class="radio-inline radio_membertype">
 							&nbsp;<input type="radio" id="membertype" name="mtype" value="biz"> 👨‍💼 사업자
 						</label>
 					</div>
-					
 				</div>
+        
 				<div class="input-group">
 					<span class="input-group-text col-md-3">아이디</span>
 					<input class="form-control" type="text" id="id" name="id" placeholder="아이디">				
 				</div>
+        
 				<div class="input-group">
 					<span class="input-group-text col-md-3">비밀번호</span>
-					<input class="form-control" type="password" id="password" name="password" placeholder="비밀번호">
+          <%-- 최대길이(maxlength)를 12로 설정하여 12자리가 넘으면 더이상 입력이 되지 않습니다. --%>
+					<input class="form-control" type="password" id="password" name="password" maxlength='12' placeholder="비밀번호" >
 					<span class="input-group-text col-md-3">
 						<label class="radio-inline">
 							<input class="form-check-input" type="checkbox" onclick="viewPassword()">🔒👀
@@ -245,24 +248,26 @@
 				<div class="input-group">
 					<span class="input-group-text col-md-3">이름
 						<select name="job">
-					<option>-- 선택해 주세요.
-					<option value="의사">의사
-					<option value="판사" selected="selected">판사
-					<option value="변호사">변호사
-					<option value="검사">검사			
-				</select>
-					
+              <option>-- 선택해 주세요.
+              <option value="의사">의사
+              <option value="판사" selected="selected">판사
+              <option value="변호사">변호사
+              <option value="검사">검사			
+            </select>
 					</span>
 					<input class="form-control" type="text" id="name" name="name" placeholder="이름">				
 				</div>
+        
 				<div class="input-group">
 					<span class="input-group-text col-md-3">이름</span>
 					<input class="form-control" type="text" id="name" name="name" placeholder="이름">				
 				</div>
+        
 				<div class="input-group">
 					<span class="input-group-text col-md-3">닉네임</span>
 					<input class="form-control" type="text" id="nickname" name="nickname" placeholder="닉네임 / 공란 시 랜덤한 아이디가 생성!">				
 				</div>
+        
 				<div class="input-group">
 					<span class="input-group-text col-md-3">성별</span>
 					<div class="form-control" align="center">
@@ -275,34 +280,42 @@
 						</label>
 					</div>
 				</div>
+        
 				<div class="input-group row" align="center">
 					<span class="input-group-text col-md-3">전화번호</span>
 					<input class="form-control" type="text" id="phone" name="phone" placeholder="ex) 01045671234">
 				</div>
+        
 				<div class="input-group">
 					<span class="input-group-text col-md-3">생일</span>
 					<input class="form-control" type="datetime" id="birth" name="birth" placeholder="YYYY/MM/DD">				
 				</div>
+        
 				<div class="input-group">
 					<span class="input-group-text col-md-3">주소</span>
 					<input class="form-control" type="text" id="address" name="address" placeholder="ex) 경기 성남시 분당구 판교로198번길">				
 				</div>
+        
 				<div class="input-group">
 					<span class="input-group-text col-md-3">상세 주소</span>
 					<input class="form-control" type="text" id="address_detail" name="address_detail" placeholder="상세 주소를 입력하세요">				
 				</div>
+        
 				<div class="input-group">
 					<span class="input-group-text col-md-3">프로필사진</span>
 					<input class="form-control" type="file" id="profile" name="profile" placeholder=".jpg, .png 파일을 올려주세요">
 				</div>	
+        
 				<div id="buttonset" class="input-group">
 					<button type="submit" class="btn button-18" onclick="return validCheck();"> 
 						등록
 					</button>
 				</div>
+        
 			</form>
 		</div><!-- col-lg-8 -->
 		<div class="col-lg-2">col-lg-2</div>
+
 	</div>
 </body>
  <!-- [st] 다음(카카오) 주소 검색 스크립트 -->

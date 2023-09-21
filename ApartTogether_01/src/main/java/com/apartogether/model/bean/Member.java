@@ -27,6 +27,7 @@ public class Member {
 	}
 
 	/* [st.] getter&setter */
+
 	public String getId() {
 		return id;
 	}
@@ -122,9 +123,14 @@ public class Member {
 	public void setPasswordquest(String passwordquest) {
 		this.passwordquest = passwordquest;
 	}
+
 	/* [ed.] getter&setter */
 
 	
+	
+
+
+
 	public Member(String id, String mtype, String name, String password, String phone, String birth, String gender,
 			String nickname, String address, String profile, String passwordanswer, String passwordquest) {
 		super();

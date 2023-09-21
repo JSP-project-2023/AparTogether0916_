@@ -124,6 +124,7 @@
 			<p>로그인을 위한 페이지입니다.</p>
 			<p>혹은 로고?</p>
 			</div>
+
 			<form action="<%=withFormTag%>" method="post">
 				<input type="hidden" name="command" value="meLogin"> 
 				
@@ -150,6 +151,7 @@
 					|	
 				</div>
 			</form>
+
 			</div>
 			<div class="col-lg-3">[포인터].col-lg-3</div>
 	</div>

@@ -20,14 +20,19 @@ import com.oreilly.servlet.MultipartRequest;
 @WebServlet(
 		urlPatterns = { "/Apartogether" }, //컨트롤러 경로 수정 바람.
 		initParams = {  
+				@WebInitParam(name = "txtSetting", value = "/WEB-INF/setting.txt"), 
 				@WebInitParam(name = "todolist", value = "/WEB-INF/todolist.txt")
 		})
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	// 초기화 파라미터 관련 변수
+	private String txtSetting = null ;
 	private String todolist = null ;
 
+	// map for setting.txt file
+	private Map<String, String> settingMap = null ;
+		
 	// map for todolist.txt file
 	private Map<String, SuperController> todolistMap = null ;
 	
@@ -48,10 +53,14 @@ public class FrontController extends HttpServlet {
 			if(mr!=null) {
 				command = mr.getParameter("command") ;
 				
-				if(command.equals("prUpdate")) {
-					MyUtility.deleteOldImageFile(imageUploadWebPath, mr);	
+				if(command.equals("meUpdate")) {
+					MyUtility.deleteOldProfileImageFile(imageUploadWebPath, mr);	
 				}
-			
+				
+				if(command.equals("prUpdate")) {
+					MyUtility.deleteOldImageFile(imageUploadWebPath, mr);
+				}
+				
 				// file upload object binding in request scope.
 				request.setAttribute("mr", mr); // 승급
 			}else{
@@ -86,16 +95,32 @@ public class FrontController extends HttpServlet {
 	}	
 	
 	public void init(ServletConfig config) throws ServletException {
+		// 프로그램에서 서블렛 호출 시 최초에 호출되는 메서드입니다.
+		this.txtSetting = config.getInitParameter("txtSetting");
+		System.out.println("FrontController.init :: txtSetting is [" + this.txtSetting + "]");
 		
 		this.todolist = config.getInitParameter("todolist");
 		System.out.println("todolist is [" + this.todolist + "]"); 	
 		
 		ServletContext application = config.getServletContext() ;
 		
+		String txtSettingFile = application.getRealPath(txtSetting);
+		System.out.println("txtSettingFile is [" + txtSettingFile + "]");
 		
 		String todolistFile = application.getRealPath(todolist);
 		System.out.println("todolistFile is [" + todolistFile + "]");
 		
+		this.settingMap = MyUtility.getSettingMap(txtSettingFile);
+		System.out.println("setting file element size = [" + settingMap.size() + "]");
+		
+		application.setAttribute("map", this.settingMap);
+		
+		// in setting.txt 파일 내의 uploadPath = upload 항목 참조 요망
+		// 이미지 업로드 경로를 	변수에 저장합니다.
+		String imsiPath =  settingMap.get("uploadPath");
+		if(imsiPath==null) {imsiPath = "image";}
+		
+		imageUploadWebPath =  application.getRealPath(imsiPath);
 		System.out.println("imageUploadWebPath is [" + imageUploadWebPath + "]");
 				
 		this.todolistMap = MyUtility.getTodolistMap(todolistFile);
