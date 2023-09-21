@@ -16,13 +16,14 @@
 <!-- 추후 작업 예정 -->
 
 <c:if test="${not empty sessionScope.loginfo}">
-   <c:if test="${sessionScope.loginfo.mtype == 'admin'}">
+	<c:set var="whologin" value="0"/><!-- 미로그인 상태 0번-->
+   <c:if test="${sessionScope.loginfo.mtype == 'admin'}"><!-- 관리자 1번-->
       <c:set var="whologin" value="1"/>
    </c:if>
-   <c:if test="${sessionScope.loginfo.mtype == 'biz'}">
+   <c:if test="${sessionScope.loginfo.mtype == 'biz'}"><!-- 사업자 2번 -->
       <c:set var="whologin" value="2"/>
    </c:if>
-   <c:if test="${sessionScope.loginfo.mtype == 'user'}">
+   <c:if test="${sessionScope.loginfo.mtype == 'user'}"><!-- 일반회원 3번 -->
       <c:set var="whologin" value="3"/>
    </c:if>
 </c:if>
@@ -90,7 +91,7 @@
                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
-               <ul class="navbar-nav">   
+               <ul class="navbar-nav">  
                   <!-- member section -->
                   <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" role="button"
@@ -136,12 +137,18 @@
                         <li>
                            <a class="dropdown-item" href="<%=notWithFormTag%>vwList">투표</a>                           
                         </li>
-                        <c:if test="${whologin eq 1}">
+                        <c:if test="${whologin eq 1}"> <!-- 관리자 -->
                            <li><a class="dropdown-item" href="<%=notWithFormTag%>prInsert">투표 등록</a></li>
                         </c:if>
                      </ul>
                   </li>
-                  <c:if test="${whologin eq 0 }">
+                  
+                  <c:if test="${whologin eq 0}">
+								<li><a class="dropdown-item" href="<%=notWithFormTag%>meInsert">회원 가입</a></li>								
+								<li><a class="dropdown-item" href="<%=notWithFormTag%>meLogin">로그인</a></li>
+					</c:if>
+					
+                  <c:if test="${whologin eq 3 }"><!-- 일반사용자 -->
                      <li class = " tips">
                         <a class = "small-tip" id = "behind">${sessionScope.name} 님</a>
                      </li>
@@ -152,7 +159,7 @@
                         <a class = "small-tip" href="<%=notWithFormTag%>vwList"> 회원 가입</a>
                      </li>
                   </c:if>
-                  <c:if test="${whologin eq 1 }">
+                  <c:if test="${whologin eq 1 }"><!-- 관리자 -->
                      <li class = "tips">
                         <a class = "  small-tip">주인님 ! </a>
                      </li>
@@ -163,7 +170,7 @@
                         <a class = "small-tip" href="<%=notWithFormTag%>vwList"> 로그아웃</a>
                      </li>
                   </c:if>
-                  <c:if test="${whologin eq 2 }">
+                  <c:if test="${whologin eq 2 }"> <!-- 사업자 biz -->
                      <li class = "tips">
                         <a class = "small-tip">${sessionScope.name} 사장님 </a>
                      </li>
@@ -173,7 +180,7 @@
                      <li class = "tips">
                         <a class = "small-tip" href="<%=notWithFormTag%>vwList"> 로그아웃</a>
                      </li>
-                  </c:if><c:if test="${whologin eq 3 }">
+                  </c:if><c:if test="${whologin eq 3 }"> <!-- 일반사용자 -->
                      <li class = "tips">
                         <a class = "small-tip">${sessionScope.name}님 </a>
                      </li>
@@ -184,6 +191,8 @@
                         <a class = "small-tip" href="<%=notWithFormTag%>vwList"> 로그아웃</a>
                      </li>
                   </c:if>
+                  
+                  
                   
                   
                   
