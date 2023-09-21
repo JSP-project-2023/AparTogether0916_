@@ -17,6 +17,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 public class MyUtility {
 
 	public static void moveFolderProfileImage(String webPathFrom, String webPathTo, MultipartRequest mr) {
+		// FrontController.doProcess에서 사용합니다.
 		// 회원정보 수정시 webPathFrom폴더로 업로드한 프로필이미지를
 		// webPathTo폴더로 이동시킵니다.
 		String profileFileName = mr.getFilesystemName("profile"));
@@ -32,6 +33,7 @@ public class MyUtility {
 	}
 	
 	public static void deleteOldProfileImageFile(String webPath, MultipartRequest mr) {
+		// FrontController.doProcess에서 사용합니다.
 		System.out.println("profile : " + mr.getFilesystemName("profile"));
 		System.out.println("deleteProfile : " + mr.getParameter("deleteProfile"));
 		// 회원정보 수정시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
