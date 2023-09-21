@@ -73,6 +73,9 @@ public class FrontController extends HttpServlet {
 					MyUtility.deleteFile(oldFile, newFile, mr, uploadImage);	
 				}
 
+				// MultipartRequest를 또하나 만드는 방법 대신
+				// uploadImage경로(/uploadStoreImage)로 일단 업로드 한 후 
+				// uploadImageProfile경로(/uploadProfileImage)로 파일이동 시키는 방법을 사용합니다.
 				if(command.equals("meUpdate")) { // 회원정보 수정
 					MyUtility.deleteOldProfileImageFile(uploadImageProfile, mr);
 					MyUtility.moveFolderProfileImage(uploadImage, uploadImageProfile, mr);
