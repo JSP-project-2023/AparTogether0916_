@@ -290,17 +290,15 @@
 									</p>
 									
 <!-- 								수정, 삭제 버튼 항상 노출 -->
+									<%-- 링크 추후 확인 필요 --%>
 									<div id="buttonList" class="buttonList">
 										<a id="updateAnchor" class="btn btn-outline-primary" href="<%=notWithFormTag%>storeUpdate&stno=${myStoreList.stno}${requestScope.pageInfo.flowParameter}">
-											수정
+											가게수정
 										</a>
 										
-										<a id="deleteAnchor" class="btn btn-outline-danger" onclick="deleteStore(${myStoreList.stno});">
-											삭제
-										</a>
-										
-										<a id="deleteAnchor" class="btn btn-outline-success" href="<%=notWithFormTag%>orderHistory&stno=${myStoreList.stno}" onclick="">
-											주문이력
+										<%-- 링크 추후 확인 필요 --%>
+										<a id="deleteAnchor" class="btn btn-outline-success" onclick="deleteStore(${myStoreList.stno});">
+											메뉴수정
 										</a>
 									</div>
 								</div> <!-- card-body -->

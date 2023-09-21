@@ -120,12 +120,7 @@
 	.myAddress {
 		margin-bottom: 2.5rem;
 	}
-	
-	.setSpace {
-		boarder-collapse: seperate;
-		boarder-spacing: 0 30px;
-	}
-	
+
 	.searchbar {
 		margin: 20 auto;
 		
@@ -170,7 +165,7 @@
 		<h2 class="mainTitle">우리 동네 맛집 리스트</h2>
 		<p class="myAddress">내 현재 주소 | ${sessionScope.loginfo.address}</p>
 
-		<table class="table table-borderless setSpace">
+		<table class="table table-borderless">
 			<thead>
 			</thead>
 			<tbody> 
@@ -289,27 +284,6 @@
 										배달 시간 : ${storeList.btime}분 <br>
 										배달팁 : <fmt:formatNumber value="${storeList.fee}" pattern="#,###"></fmt:formatNumber>원
 									</p>
-									
-<!-- 									admin 또는 사업자일경우 본인 가게에만 버튼 노출 -->
-<%-- 									<c:if test="${sessionScope.loginfo.id == 'admin' || sessionScope.loginfo.id == storeList.id}"> --%>
-										<div id="buttonList" class="buttonList">
-											<a id="updateAnchor" class="btn btn-outline-primary" href="">
-												가게수정
-											</a>
-											
-											<a id="updateAnchor" class="btn btn-outline-primary" href="<%=notWithFormTag%>menuInsert&stno=${storeList.stno}">
-												메뉴등록
-											</a>
-											
-											<a id="deleteAnchor" class="btn btn-outline-danger" onclick="deleteStore(${storeList.stno});">
-												삭제
-											</a>
-										
-											<a id="deleteAnchor" class="btn btn-outline-success" href="<%=notWithFormTag%>orderHistory&stno=${storeList.stno}" onclick="">
-												주문이력
-											</a>
-										</div>
-<%-- 									</c:if> --%>
 								</div> <!-- card-body -->
 								
 							</a>
