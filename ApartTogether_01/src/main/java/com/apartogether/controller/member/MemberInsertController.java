@@ -34,7 +34,7 @@ public class MemberInsertController extends SuperClass {
 		bean.setNickname(request.getParameter("nickname"));
 		/* bean.setNickname(MemberDao.nName()); //동작 확인완료! */
 		
-		if (bean.getNickname() != "") { /* 아놔 ㅋㅋㅋ null값이 아닌 ""값을 가진다.ㅋㅋㅋ */
+		if (bean.getNickname() != "") { /* null값이 아닌 ""값을 가진다. */
 			bean.setNickname(request.getParameter("nickname"));
 			setAlertMessage(bean.getName() + "님 환영합니다!");
 		} else {
@@ -45,6 +45,9 @@ public class MemberInsertController extends SuperClass {
 		bean.setAddress(request.getParameter("address") + " "
 				+ request.getParameter("address_detail"));/* 주소(카카오API값) + 상세주소(사용자가 입력하는값) */
 		bean.setProfile(request.getParameter("profile"));
+		bean.setPasswordanswer(request.getParameter("passwordanswer"));
+		bean.setPasswordquest(request.getParameter("passwordquest"));
+		
 		
 		MemberDao dao = new MemberDao() ;
 		int cnt = -1 ;

@@ -188,20 +188,21 @@ public class MemberDao extends SuperDao {
 		return bean;
 	}
 
-	/* [findPassword] name, phone, birth값으로 member(id) 조회 */
-	public Member findPassword(String name, String id, String birth) throws Exception {
+	/* #수정예정 [findPassword] name, passwordanswer, passwordquest값으로 member(password) 조회 */
+	public Member findPassword(String name, String id, String passwordanswer, String passwordquest) throws Exception {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		String sql = " select * from members ";
-		sql += " where name = ? and id = ? and birth = ? ";
+		sql += " where name = ? and id = ? and passwordanswer = ? and passwordquest = ? ";
 
 		conn = super.getConnection(); // 단계 02
 		pstmt = conn.prepareStatement(sql); // 단계 03
 
 		pstmt.setString(1, name);
 		pstmt.setString(2, id);
-		pstmt.setString(3, birth);
+		pstmt.setString(3, passwordanswer);
+		pstmt.setString(4, passwordquest);
 
 		rs = pstmt.executeQuery(); // 단계 04-01
 
@@ -238,6 +239,8 @@ public class MemberDao extends SuperDao {
 		bean.setNickname(rs.getString("nickname")); /* 닉네임 */
 		bean.setAddress(rs.getString("address")); /* 주소 */
 		bean.setProfile(rs.getString("profile")); /* 프로필 이미지 */
+		bean.setPasswordanswer(rs.getString("passwordanswer")); /* 패스워드 질문, 답변 */
+		bean.setPasswordquest(rs.getString("passwordquest")); /* 패스워드 질문, 질문란 */
 
 		return bean;
 	}
@@ -249,8 +252,8 @@ public class MemberDao extends SuperDao {
 		// Bean 객체 정보를 이용하여 데이터 베이스에 추가합니다.
 		int cnt = -1;
 
-		String sql = " insert into members(id, mtype, name, password, birth, gender, nickname, address, profile) ";
-		sql += " values(					?,	   ?,	 ?,		   ?,	  ?, 	  ?, 		?,	   	 ?,	      ?) ";
+		String sql = " insert into members(id, mtype, name, password, birth, gender, nickname, address, profile, passwordanswer, passwordquest) ";
+		sql += " values(					?,	   ?,	 ?,		   ?,	  ?, 	  ?, 		?,	   	 ?,	      ?,			  ?,			 ?) ";
 
 		PreparedStatement pstmt = null;
 
@@ -268,6 +271,8 @@ public class MemberDao extends SuperDao {
 		pstmt.setString(7, bean.getNickname());
 		pstmt.setString(8, bean.getAddress());
 		pstmt.setString(9, bean.getProfile());
+		pstmt.setString(10, bean.getPasswordanswer());
+		pstmt.setString(11, bean.getPasswordquest());
 
 		cnt = pstmt.executeUpdate();
 		conn.commit();

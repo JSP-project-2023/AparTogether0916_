@@ -103,8 +103,16 @@
 					<input class="form-control" type="text" id="id" name="id" placeholder="아이디를 입력해주세요">				
 				</div>
 				<div class="input-group">
-					<span class="input-group-text col-md-3">생일(임시)</span>
-					<input class="form-control" type="datetime" id="birth" name="birth" placeholder="YYYY/MM/DD">				
+					<span class="input-group-text col-md-3">패스워드 질문</span>
+					<select name="passwordquest" class="passwordquest">
+						<option>-- 선택해 주세요.
+						<option value="초등학교 이름은">초등학교 이름은?
+						<option value="아버지 성함은">아버지 성함은?
+						<option value="내가 좋아하는 동물은">내가 좋아하는 동물은?
+						<option value="내 애완동물의 이름은">내 애완동물의 이름은?
+					</select>
+					
+					<input class="form-control" type="text" id="passwordanswer" name="passwordanswer" placeholder="답변">				
 				</div>
 				<button type="submit" class="btn button-18 col-xs-6 col-sm-4 col-lg-2" > Password 확인</button>
 			</div>

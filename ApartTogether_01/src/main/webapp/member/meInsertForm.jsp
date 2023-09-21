@@ -14,6 +14,7 @@
   	  		
   		});
   		
+  		
   		/* [st] 비밀번호 표시 창 */
   		function viewPassword() {
 			var x = document.getElementById("password");
@@ -25,37 +26,6 @@
   			}
 		}
   		/* [ed] 비밀번호 표시 창 */
-  		
-  		
-  		/* [st] focusout 유효성 검사 */
-		document.getElementById("id").addEventListener("onfocusout", function(){
-			var id = $('#id').val();
-	  		if(id.length < 2 || id.length > 18){
-	  			alert('아이디는 2자리 이상 18자리 이하로 입력해 주세요.');
-	  		}
-		});
-		
-		document.getElementById("password").addEventListener("onfocusout", function(){
-			var password = $('#password').val();  			
-			if(password.length < 5 || password.length > 20){
-				alert('비밀 번호는 5자리 이상 20자리 이하로 입력해 주세요.');
-			}
-		});
-		
-		document.getElementById("name").addEventListener("onfocusout", function(){
-			var name = $('#name').val();  			
-			if(name.length < 2 || name.length > 15){  				
-				alert('이름은 2자리 이상 15자리 이하로 입력해 주세요.');
-	  		}
-		});
-		
-		document.getElementById("phone").addEventListener("onfocusout", function(){
-			var phone = $('#phone').val();  			
-			if(phone.length < 7 || phone.length > 12){  				
-				alert('번호는 8자리 이상 11자리 이하로 입력해 주세요.');
-			}
-		});
-		/* [ed] focusout  유효성 검사 */
   		
   		/* [st] submit 유효성 검사 */
 		function validCheck(){/* form validation check */
@@ -148,6 +118,13 @@
   			margin-right: auto;
   			size: 19px;
   		}
+  		.form-select {
+  			cursor: pointer;
+  			justify-content: center;
+  			margin-left: auto;
+  			margin-right: auto;
+  			size: 3px;
+  		}
   		
   		/* [st] button-18 */
           .button-18 {
@@ -199,6 +176,7 @@
             font-size: 12px;
             font-weight: 600;
           }
+          
   		
   	
   	
@@ -215,7 +193,7 @@
 				<input type="hidden" name="command" value="meInsert">
 				
 				<div class="input-group" align="center">
-					<span class="input-group-text col-md-3">회원유형</span>
+					<span class="input-group-text col-md-3">회원유형 <font color="red">*</font></span>
 					
 					<div class="form-control">
 						<label class="radio-inline radio_membertype"> 
@@ -229,11 +207,11 @@
 					
 				</div>
 				<div class="input-group">
-					<span class="input-group-text col-md-3">아이디</span>
+					<span class="input-group-text col-md-3">아이디 <font color="red">*</font></span>
 					<input class="form-control" type="text" id="id" name="id" placeholder="아이디">				
 				</div>
 				<div class="input-group">
-					<span class="input-group-text col-md-3">비밀번호</span>
+					<span class="input-group-text col-md-3">비밀번호 <font color="red">*</font></span>
 					<input class="form-control" type="password" id="password" name="password" placeholder="비밀번호">
 					<span class="input-group-text col-md-3">
 						<label class="radio-inline">
@@ -241,30 +219,29 @@
 						</label>
 					</span>
 				</div>
-				
 				<div class="input-group">
-					<span class="input-group-text col-md-3">이름
-						<select name="job">
-					<option>-- 선택해 주세요.
-					<option value="의사">의사
-					<option value="판사" selected="selected">판사
-					<option value="변호사">변호사
-					<option value="검사">검사			
-				</select>
-					
-					</span>
+					<span class="input-group-text col-md-4">패스워드 질문 <font color="red">*</font></span>
+					<select class="form-select" name="passwordquest" class="passwordquest">
+						<option>-- 선택해 주세요.
+						<option value="초등학교 이름은">초등학교 이름은?
+						<option value="아버지 성함은">아버지 성함은?
+						<option value="내가 좋아하는 동물은">내가 좋아하는 동물은?
+						<option value="내 애완동물의 이름은">내 애완동물의 이름은?
+					</select>
+				</div>
+				<div class="input-group">
+					<input class="form-control" type="text" id="passwordanswer" name="passwordanswer" placeholder="답변">	
+				</div>
+				<div class="input-group">
+					<span class="input-group-text col-md-3">이름 <font color="red">*</font></span>
 					<input class="form-control" type="text" id="name" name="name" placeholder="이름">				
 				</div>
 				<div class="input-group">
-					<span class="input-group-text col-md-3">이름</span>
-					<input class="form-control" type="text" id="name" name="name" placeholder="이름">				
-				</div>
-				<div class="input-group">
-					<span class="input-group-text col-md-3">닉네임</span>
+					<span class="input-group-text col-md-3">닉네임 <font color="red">*</font></span>
 					<input class="form-control" type="text" id="nickname" name="nickname" placeholder="닉네임 / 공란 시 랜덤한 아이디가 생성!">				
 				</div>
 				<div class="input-group">
-					<span class="input-group-text col-md-3">성별</span>
+					<span class="input-group-text col-md-3">성별 <font color="red">*</font></span>
 					<div class="form-control" align="center">
 						<label class="radio-inline radio_gender"> 
 							&nbsp;<input type="radio" id="gender1" name="gender" value="male"> 👦 남자 
@@ -276,19 +253,19 @@
 					</div>
 				</div>
 				<div class="input-group row" align="center">
-					<span class="input-group-text col-md-3">전화번호</span>
+					<span class="input-group-text col-md-3">전화번호 <font color="red">*</font></span>
 					<input class="form-control" type="text" id="phone" name="phone" placeholder="ex) 01045671234">
 				</div>
 				<div class="input-group">
-					<span class="input-group-text col-md-3">생일</span>
+					<span class="input-group-text col-md-3">생일 <font color="red">*</font></span>
 					<input class="form-control" type="datetime" id="birth" name="birth" placeholder="YYYY/MM/DD">				
 				</div>
 				<div class="input-group">
-					<span class="input-group-text col-md-3">주소</span>
+					<span class="input-group-text col-md-3">주소 <font color="red">*</font></span>
 					<input class="form-control" type="text" id="address" name="address" placeholder="ex) 경기 성남시 분당구 판교로198번길">				
 				</div>
 				<div class="input-group">
-					<span class="input-group-text col-md-3">상세 주소</span>
+					<span class="input-group-text col-md-3">상세 주소 <font color="red">*</font></span>
 					<input class="form-control" type="text" id="address_detail" name="address_detail" placeholder="상세 주소를 입력하세요">				
 				</div>
 				<div class="input-group">
@@ -322,11 +299,42 @@ window.onload = function(){ /* 창이 켜졌을때 로드되는 function들 */
     <!-- [ed] 다음(카카오) 주소 검색 스크립트 -->
     
     <!-- [st] 유효성검사 스크립트 해당 입력창 outfocusing 되었을 때 -->
-     
+    
     
     <!-- [ed] 유효성검사 스크립트 해당 입력창 outfocusing 되었을 때 -->
     
 }
+
+/* [st] focusout 유효성 검사 */
+document.getElementById("id").addEventListener("focusout", function(){
+	var id = $('#id').val();
+		if(id.length < 2 || id.length > 18){
+			alert('아이디는 2자리 이상 18자리 이하로 입력해 주세요.');
+		}
+		event.target.removeEventListener(event.type, arguments.callee);
+});
+document.getElementById("password").addEventListener("focusout", function(){
+	var password = $('#password').val();  			
+	if(password.length < 5 || password.length > 20){
+		alert('비밀 번호는 5자리 이상 20자리 이하로 입력해 주세요.');
+	}
+	event.target.removeEventListener(event.type, arguments.callee);
+});
+document.getElementById("name").addEventListener("focusout", function(){
+	var name = $('#name').val();  			
+	if(name.length < 2 || name.length > 15){  				
+		alert('이름은 2자리 이상 15자리 이하로 입력해 주세요.');
+	}
+	event.target.removeEventListener(event.type, arguments.callee);
+});
+document.getElementById("phone").addEventListener("focusout", function(){
+	var phone = $('#phone').val();  			
+	if(phone.length < 7 || phone.length > 12){  				
+		alert('번호는 8자리 이상 11자리 이하로 입력해 주세요.');
+	}
+	event.target.removeEventListener(event.type, arguments.callee);
+});
+/* [ed] focusout  유효성 검사 */
 
 </script>
 
