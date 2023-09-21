@@ -31,14 +31,14 @@ private final String PREFIX = "member/";
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception { // 작성중입니다.
 		super.doPost(request, response);
 		
-		MultipartRequest mr = (MultipartRequest)request.getAttribute("mr") ;
+		MultipartRequest mrProfileImage = (MultipartRequest)request.getAttribute("mrProfileImage") ;
 		
 		Member bean = new Member();
 		
-		bean.setId(mr.getParameter("id"));
+		bean.setId(mrProfileImage.getParameter("id"));
 		
-		String oldmtype =  mr.getParameter("oldmtype"); // 수정 전에 회원이 사업자였는지 확인하기 위해 기존mtype값을 가져온다.
-		String mtype =  mr.getParameter("mtype"); // 회원이 회원정보수정 페이지에서 선택한 회원유형을 가져옵니다.
+		String oldmtype =  mrProfileImage.getParameter("oldmtype"); // 수정 전에 회원이 사업자였는지 확인하기 위해 기존mtype값을 가져온다.
+		String mtype =  mrProfileImage.getParameter("mtype"); // 회원이 회원정보수정 페이지에서 선택한 회원유형을 가져옵니다.
 		
 //		if(oldmtype == "biz") { // 수정 전에 사업자 였음
 //			if(mtype == "biz") {
@@ -63,24 +63,24 @@ private final String PREFIX = "member/";
 //			}
 //		}
 		
-		bean.setMtype(mr.getParameter("mtype")); // 컨펌창 결과에 따라 달라질 수 있습니다.
+		bean.setMtype(mrProfileImage.getParameter("mtype")); // 컨펌창 결과에 따라 달라질 수 있습니다.
 		
 		
-		bean.setName(mr.getParameter("name"));
-		bean.setNickname(mr.getParameter("nickname"));
+		bean.setName(mrProfileImage.getParameter("name"));
+		bean.setNickname(mrProfileImage.getParameter("nickname"));
 		
 		// 회원정보 수정시 프로필사진을 새 파일로 선택했을 때만 갱신한다. 건드리지않았으면 기존 사진을 유지한다.
-		if(mr.getFilesystemName("profile")==null) {
-			bean.setProfile(mr.getParameter("deleteProfile"));
+		if(mrProfileImage.getFilesystemName("profile")==null) {
+			bean.setProfile(mrProfileImage.getParameter("deleteProfile"));
 		}else {
-			bean.setProfile(mr.getFilesystemName("profile"));
+			bean.setProfile(mrProfileImage.getFilesystemName("profile"));
 		}
 		
-		bean.setPassword(mr.getParameter("password"));
-		bean.setGender(mr.getParameter("gender"));
-		bean.setPhone(mr.getParameter("phone"));
-		bean.setBirth(mr.getParameter("birth"));
-		bean.setAddress(mr.getParameter("address"));
+		bean.setPassword(mrProfileImage.getParameter("password"));
+		bean.setGender(mrProfileImage.getParameter("gender"));
+		bean.setPhone(mrProfileImage.getParameter("phone"));
+		bean.setBirth(mrProfileImage.getParameter("birth"));
+		bean.setAddress(mrProfileImage.getParameter("address"));
 		
 		MemberDao dao = new MemberDao();
 		int cnt = -1;
@@ -91,7 +91,7 @@ private final String PREFIX = "member/";
 				super.gotoPage(PREFIX + "meUpdateForm.jsp");
 			}else { // DB 업데이트 성공
 				String gotopage = super.getUrlInfomation("meDetail");
-				gotopage += "&id=" + mr.getParameter("id");
+				gotopage += "&id=" + mrProfileImage.getParameter("id");
 				response.sendRedirect(gotopage);
 			}
 			
