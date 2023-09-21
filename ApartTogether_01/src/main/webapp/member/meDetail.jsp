@@ -80,7 +80,7 @@
 					<td align="center">프로필 사진</td>
 					<td>
 						<img class="card-img-top  small_image rounded" alt="${requestScope.bean.profile}" 
-					         src="upload/${requestScope.bean.profile}"  >
+					         src="uploadProfileImage/${requestScope.bean.profile}"  >
 					         
 					</td>
 				</tr>

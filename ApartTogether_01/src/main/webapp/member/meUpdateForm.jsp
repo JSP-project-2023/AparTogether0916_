@@ -83,7 +83,7 @@
 	<div class="container">
 		<h2>회원 정보 수정</h2>
 		<p>특정 회원에 대하여 정보를 수정하는 페이지 입니다.</p>
-		<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data" onsubmit="mtypeChangeCheck()">
+		<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data" >
 		
 			<input type="hidden" name="command" value="meUpdate">
 			<%-- <input type="hidden" name="mtype" value="${requestScope.bean.mtype}"> --%>
@@ -118,7 +118,7 @@
 			<div class="input-group">
 				<span class="input-group-text col-md-2">프로필사진</span>
 				<img class="card-img-top  small_image rounded" alt="${requestScope.bean.profile}" 
-					         src="upload/${requestScope.bean.profile}"  >
+					         src="uploadProfileImage/${requestScope.bean.profile}"  >
 				<input class="form-control" type="file" id="profile" name="profile"  ">
 				<input type="text" name="deleteProfile" value="${requestScope.bean.profile}" hidden>
 			</div>

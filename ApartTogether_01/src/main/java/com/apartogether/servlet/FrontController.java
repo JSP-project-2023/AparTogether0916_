@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.apartogether.controller.SuperController;
 import com.apartogether.utility.MyUtility;
 import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 
 @WebServlet(
@@ -51,36 +52,46 @@ public class FrontController extends HttpServlet {
 		if(command == null) {
 			System.out.println("file upload event invoked");
 			
-			MultipartRequest mr = MyUtility.getMultipartRequest(request, uploadImage);
+//			MultipartRequest mr = MyUtility.getMultipartRequest(request, uploadImage);
+//			
+//			if(mr!=null) {
+//				System.out.println("mr확인합니다");
+//				command = mr.getParameter("command") ;
+//				
+//				if(command.equals("stUpdate")) {//가게 수정시 변경.
+//					//TODO 옛날 파일 있으면 삭제X, 파일을 교체했다면 삭제하고 업로드
+//					//사업자 등록증
+//					String oldFile = mr.getParameter("ceofileUpdate");
+//					String newFile = mr.getFilesystemName("ceofile");
+//					//파일삭제 유효성 검사
+//					MyUtility.deleteFile(oldFile, newFile, mr, uploadImage);
+//					
+//					//가게 로고
+//					oldFile = mr.getParameter("stlogoUpdate");
+//					newFile = mr.getFilesystemName("stlogo");
+//					//파일삭제 유효성 검사
+//					MyUtility.deleteFile(oldFile, newFile, mr, uploadImage);	
+//				}
+//				
+//				// file upload object binding in request scope.
+//				request.setAttribute("mr", mr); // 승급
+//			}else{
+//				System.out.println("MultipartRequest object is null");
+//			}
 			
-			if(mr!=null) {
-				command = mr.getParameter("command") ;
-				
-				if(command.equals("stUpdate")) {//가게 수정시 변경.
-					//TODO 옛날 파일 있으면 삭제X, 파일을 교체했다면 삭제하고 업로드
-					//사업자 등록증
-					String oldFile = mr.getParameter("ceofileUpdate");
-					String newFile = mr.getFilesystemName("ceofile");
-					//파일삭제 유효성 검사
-					MyUtility.deleteFile(oldFile, newFile, mr, uploadImage);
-					
-					//가게 로고
-					oldFile = mr.getParameter("stlogoUpdate");
-					newFile = mr.getFilesystemName("stlogo");
-					//파일삭제 유효성 검사
-					MyUtility.deleteFile(oldFile, newFile, mr, uploadImage);	
-				}
-				
-				// file upload object binding in request scope.
-				request.setAttribute("mr", mr); // 승급
-			}else{
-				System.out.println("MultipartRequest object is null");
-			}
-			
-			
+			// 문제<심각> : 위에서 mr 객체를 생성한 다음 mrProfileImage을 생성할 수 가 없다. 
+			// 챗gpt에서는 둘다 같은 request를 사용하고 있어서라고 한다.
+			// request를 mr에서 사용하고 있으니 mrProfileImage은 사용할 수 없다고.
 			// 프로필이미지용 MultipartRequest 입니다.
-			MultipartRequest mrProfileImage = MyUtility.getMultipartRequest2(request, uploadImageProfile); // 회원수정 시 프로필이미지 업로드용입니다.
-			
+			MultipartRequest mrProfileImage = MyUtility.getMultipartRequest(request, uploadImageProfile);// 회원수정 시 프로필이미지 업로드용입니다.
+
+//			MultipartRequest mrProfileImage = new MultipartRequest(
+//					request, 
+//					uploadImageProfile, 
+//					10 * 1024 *1024 ,
+//					"UTF-8",
+//					new DefaultFileRenamePolicy()) ;// 회원수정 시 프로필이미지 업로드용입니다.
+
 			if(mrProfileImage!=null) {
 				command = mrProfileImage.getParameter("command") ;
 				
@@ -151,7 +162,7 @@ public class FrontController extends HttpServlet {
 		System.out.println("imageUploadWebPath is [" + uploadImage + "]");
 		
 		
-		// 이미지 파일 업로드 경로 :: 프로필이미지 저장용 경로입니다. /uploadProfileImage
+		// 이미지 파일 업로드 경로 :: 프로필이미지 저장용 경로입니다. 폴더이름은 /uploadProfileImage 입니다.
 		uploadImageProfile = application.getRealPath("uploadProfileImage");
 		File fileProfile = new File(uploadImageProfile);
 		

@@ -52,23 +52,7 @@ public class MyUtility {
 		return mr ;
 	}	
 	
-	public static MultipartRequest getMultipartRequest2(HttpServletRequest request, String uploadPath) {
-		// 이미지 업로드에 필요한 멀티 파트 객체를 생성하여 반환 합니다.
-		MultipartRequest mr = null ;
-		int maxPostSize = 10 * 1024 *1024 ;
-		String ENCODING = "UTF-8" ;		
-		try {
-			mr = new MultipartRequest(
-					request, 
-					uploadPath, 
-					maxPostSize,
-					ENCODING,
-					new DefaultFileRenamePolicy()) ;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}		
-		return mr ;
-	}	
+	
 	
 	public static Map<String, SuperController> getTodolistMap(String filename) {
 		Map<String, SuperController> map = new HashMap<String, SuperController>();
