@@ -15,13 +15,28 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class MyUtility {
+
+	public static void moveFolderProfileImage(String webPathFrom, String webPathTo, MultipartRequest mr) {
+		// 회원정보 수정시 webPathFrom폴더로 업로드한 프로필이미지를
+		// webPathTo폴더로 이동시킵니다.
+		String profileFileName = mr.getFilesystemName("profile"));
+		File file = new File(webPathFrom + "/"+ profileFileName);
+	        File fileToMove = new File(webPathTo + "/"+ profileFileName);
+		System.out.println("move profile From : " + webPathFrom + "/"+ profileFileName);
+		System.out.println("move profile To : " + webPathTo + "/"+ profileFileName);
+		
+	        boolean success = file.renameTo(fileToMove); // rename이동에 성공하면 true, 실패하면 false를 반환합니다. 타켓파일이 없을 때 false입니다.
+	        if (!success) { // 
+	            System.out.println("Failed to rename to " + fileToMove);
+	        }
+	}
 	
-	public static void deleteOldProfileImageFile(String webPath, MultipartRequest mrProfileImage) {
-		System.out.println("profile : " + mrProfileImage.getFilesystemName("profile"));
-		System.out.println("deleteProfile : " + mrProfileImage.getParameter("deleteProfile"));
+	public static void deleteOldProfileImageFile(String webPath, MultipartRequest mr) {
+		System.out.println("profile : " + mr.getFilesystemName("profile"));
+		System.out.println("deleteProfile : " + mr.getParameter("deleteProfile"));
 		// 회원정보 수정시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
-		if(mrProfileImage.getFilesystemName("profile")!= null){ // 회원정보 수정에서 프로필사진을 선택한 경우(not null)에만 delete 실행
-			String deleteImages = mrProfileImage.getParameter("deleteProfile") ;
+		if(mr.getFilesystemName("profile")!= null){ // 회원정보 수정에서 프로필사진을 선택한 경우(not null)에만 delete 실행
+			String deleteImages = mr.getParameter("deleteProfile") ;
 			if(deleteImages != null) {
 				String deleteFile = webPath + "/" + deleteImages ;
 				File target = new File(deleteFile) ;
