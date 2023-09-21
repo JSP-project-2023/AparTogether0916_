@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="./../common/common.jsp"%>
 <%
-	session.setAttribute("logInfoId", "kimkim");
-	session.setAttribute("logInfoName", "김정우");
+	session.setAttribute("logInfoId", "uiui");
+	session.setAttribute("logInfoName", "김오잉");
 %>
 <!DOCTYPE html>
 <html>
@@ -92,7 +92,7 @@
 	/*  가게 삭제 시 confirm 창 노출 - Yes 클릭 시 Delete 실행  */
 	function deleteStore(storeno) {
 		if (confirm('내 가게를 삭제하면 모든 가게 정보가 지워집니다.\n삭제하시겠습니까?')) {
-			location.href='<%=notWithFormTag%>storeDelete&stno=' + storeno + '&id=${sessionScope.logInfoId}';
+			location.href='<%=notWithFormTag%>stDelete&stno=' + storeno + '&id=${sessionScope.logInfoId}';
 		}
 	}
 	
@@ -299,6 +299,10 @@
 										<%-- 링크 추후 확인 필요 --%>
 										<a id="deleteAnchor" class="btn btn-outline-success" onclick="deleteStore(${myStoreList.stno});">
 											메뉴수정
+										</a>
+										
+										<a id="deleteAnchor" class="btn btn-outline-danger" onclick="deleteStore(${myStoreList.stno});">
+											삭제
 										</a>
 									</div>
 								</div> <!-- card-body -->

@@ -22,7 +22,7 @@
 		<!-- 아이디 히든으로 들어감. -->
 		<input name="command" type="text" value="myStoreList">
 		<input name="id" type="text" value="uiui">
-		<button type="submit">가게 목록 보기</button>
+		<button type="submit">내 가게 보기</button>
 	</form>
 	
 	<form action="<%=withFormTag%>" method="get" target="_blank">

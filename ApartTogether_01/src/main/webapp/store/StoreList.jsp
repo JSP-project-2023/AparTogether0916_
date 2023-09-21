@@ -86,14 +86,6 @@
 		}
 	});
 	
-	/*  가게 삭제 시 confirm 창 노출 - Yes 클릭 시 Delete 실행  */
-	function deleteStore(storeno) {
-		if (confirm('내 가게를 삭제하면 모든 가게 정보가 지워집니다.\n삭제하시겠습니까?')) {
-			location.href='<%=notWithFormTag%>storeDelete&stno=' + storeno;
-		}
-	}
-	
-	
 	/*  전체 선택 버튼 클릭  */
 	function searchAll() {
 		location.href='<%=notWithFormTag%>storeList';
