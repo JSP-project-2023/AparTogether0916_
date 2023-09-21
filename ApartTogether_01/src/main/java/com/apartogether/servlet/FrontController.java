@@ -114,7 +114,7 @@ public class FrontController extends HttpServlet {
 		System.out.println("todolist file element size = [" + todolistMap.size() + "]");
 		
 		//이미지 파일 업로드 경로
-		uploadImage = application.getRealPath("upload");
+		uploadImage = application.getRealPath("uploadStoreImage");
 		File file = new File(uploadImage);
 		
 		//파일 유효성 검사 후, 존재하지 않으면 디렉터리 생성

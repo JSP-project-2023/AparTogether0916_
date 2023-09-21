@@ -131,8 +131,6 @@ public class MyUtility {
 	//파일 삭제 메소드
 	public static void deleteFile(String oldFile, String newFile, MultipartRequest mr, String uploadImage) {
 		 if(newFile != null) { //새로운 파일이 있다면 해당 항목을 삭제
-			System.out.println("newFileeeee" + newFile);
-			System.out.println("oldFileeeee" + oldFile);
 			System.out.println("실행1");
 			MyUtility.deleteImageFile(oldFile, uploadImage, mr);
 		}
