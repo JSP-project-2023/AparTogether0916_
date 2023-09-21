@@ -18,32 +18,31 @@ public class RoomDao extends SuperDao{
 		ResultSet rs = null;
 		
 		
-		String sql = "SELECT roomno, ordertime, roomname, orderplace, stname, category, COUNT(*) AS row_count ";
-		sql += "FROM ( ";
+		String sql = "SELECT roomno, ordertime, roomname, orderplace, stname, category, row_count ";
+		sql += " FROM ( ";
 		sql += "  SELECT ro.roomno, ro.ordertime, ro.roomname, ro.orderplace, st.stname, st.category, ";
-		sql += "  ROW_NUMBER() OVER (ORDER BY ro.roomno DESC) AS ranking ";
+		sql += "  ROW_NUMBER() OVER (ORDER BY ro.roomno DESC) AS ranking ,";
+		sql += " COUNT(rs.roomno) AS row_count ";
 		sql += "  FROM room ro ";
 		sql += "  INNER JOIN store st ON ro.stno = st.stno ";
-		sql += "INNER JOIN room_status rs ON ro.roomno = rs.roomno ";
-		sql += "WHERE rs.ready = 'ready'  ";
+		sql += " INNER JOIN room_status rs ON ro.roomno = rs.roomno ";
 		String mode = pageInfo.getMode();
 		String keyword = pageInfo.getKeyword();
 
 		// 모드 및 키워드 이용 검색 하기
 		if (mode != null && !mode.equals("all")) { // 괄호 열기
 		    if (mode.equals("category")) {
-		        sql += " and st." + mode + " LIKE '%" + keyword + "%' ";
+		        sql += " where st." + mode + " LIKE '%" + keyword + "%' ";
 		    }  else if (mode.equals("stname")) {
-		        sql += " and st." + mode + " LIKE '%" + keyword + "%' ";
+		        sql += " where st." + mode + " LIKE '%" + keyword + "%' ";
 		    } else if (mode.equals("orderplace")) {
-		        sql += " and ro." + mode + " LIKE '%" + keyword + "%' ";
+		        sql += " where ro." + mode + " LIKE '%" + keyword + "%' ";
 		    }
 		} 
 
-	
+		sql += "GROUP BY ro.roomno, ro.ordertime, ro.roomname, ro.orderplace, st.stname, st.category";
 		sql += ") ";
 		sql += "WHERE ranking BETWEEN ? AND ? ";
-		sql += "GROUP BY roomno, ordertime, roomname, orderplace, stname, category ";
 		sql += "ORDER BY roomno DESC ";
 
 		

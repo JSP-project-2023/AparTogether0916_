@@ -5,13 +5,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.apartogether.model.bean.Member;
+
 
 // 하위 컨트롤러 들이 공통적으로 사용하는 기능들을 여기에 명시합니다.
 public class SuperClass implements SuperController{
 	private HttpServletRequest request ; 
 	private HttpServletResponse response ; 
 	protected HttpSession session ;
-
+	protected Member loginfo = null;
 	
 	public void youNeededLogin() {
 		// 미로그인시 로그인 페이지로 이동시킵니다.
