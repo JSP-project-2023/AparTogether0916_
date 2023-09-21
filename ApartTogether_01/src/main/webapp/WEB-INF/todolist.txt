@@ -12,3 +12,7 @@ meList=com.apartogether.controller.member.MemberListController
 meUpdate=com.apartogether.controller.member.MemberUpdateController
 meDelete=com.apartogether.controller.member.MemberDeleteController
 meResetPassword=com.apartogether.controller.member.MemberResetPasswordController
+#room 컨트롤러
+roList=com.apartogether.controller.room.RoomListController
+#order 컨트롤러
+myorList=com.apartogether.controller.order.MyOrderListCont

@@ -26,6 +26,7 @@ public class SuperClass implements SuperController{
 		this.response = response ;
 		this.session = request.getSession() ;
 		
+		this.loginfo = (Member)session.getAttribute("loginfo") ;
 	}
 
 	@Override
@@ -33,13 +34,14 @@ public class SuperClass implements SuperController{
 		this.request = request ;
 		this.response = response ;
 		this.session = request.getSession() ;
-	}	
+
+		this.loginfo = (Member)session.getAttribute("loginfo") ;
+	}
 	
 	public String getUrlInfomation(String todoCommmand) {
 		// todoCommmand : todolist.txt 파일에 명시에 커맨드 이름
 		// command 이름을 사용하여 FullName 웹 주소 형식으로 반환해 줍니다.
 		String appName = this.request.getContextPath() ;
-		/* String mappingName = "/Shopping" ; */
 		String mappingName = "/Apartogether" ;
 		
 		String text = appName + mappingName + "?command=" + todoCommmand ;
