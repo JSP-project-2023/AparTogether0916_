@@ -83,22 +83,6 @@ public class FrontController extends HttpServlet {
 			}else{
 				System.out.println("MultipartRequest object is null");
 			}
-			
-			
-
-			if(mrProfileImage!=null) {
-				command = mrProfileImage.getParameter("command") ;
-				
-				
-				
-				
-				// file upload object binding in request scope.
-				request.setAttribute("mrProfileImage", mrProfileImage); // 승급 :: 프로필이미지
-			}else{
-				System.out.println("프로필용 MultipartRequest object is null");
-			}
-			
-			
 		}
 		
 		System.out.println("command is [" + command + "]");
