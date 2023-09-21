@@ -11,10 +11,9 @@
 
 <!-- whologin 변수는 현재 로그인 상태를 알려 주는 변수입니다. -->
 <!-- 미로그인(0)  관리자 (1) 사업자 (2) 일반회원 (3) -->
-
-
 <!-- 추후 작업 예정 -->
-
+<c:set var="whologin" value="0"/>
+<c:set var="whologin_id" value="${sessionScope.loginfo.id}"/>
 <c:if test="${not empty sessionScope.loginfo}">
    <c:if test="${sessionScope.loginfo.mtype == 'admin'}">
       <c:set var="whologin" value="1"/>
@@ -143,13 +142,13 @@
                   </li>
                   <c:if test="${whologin eq 0 }">
                      <li class = " tips">
-                        <a class = "small-tip" id = "behind">${sessionScope.name} 님</a>
+                        <a class = "small-tip" id = "behind">${sessionScope.loginfo.name} 님</a>
                      </li>
                      <li class = "tips">
-                        <a class = "small-tip" href="<%=notWithFormTag%>vwList"> 로그인</a>
+                        <a class = "small-tip" href="<%=notWithFormTag%>meLogin"> 로그인</a>
                      </li>
                      <li class = "tips">
-                        <a class = "small-tip" href="<%=notWithFormTag%>vwList"> 회원 가입</a>
+                        <a class = "small-tip" href="<%=notWithFormTag%>meInsert"> 회원 가입</a>
                      </li>
                   </c:if>
                   <c:if test="${whologin eq 1 }">
@@ -157,31 +156,31 @@
                         <a class = "  small-tip">주인님 ! </a>
                      </li>
                      <li class = "tips">
-                        <a class = "small-tip" href="<%=notWithFormTag%>vwList"> 회원 목록</a>
+                        <a class = "small-tip" href="<%=notWithFormTag%>meList"> 회원 목록</a>
                      </li>
                      <li class = "tips">
-                        <a class = "small-tip" href="<%=notWithFormTag%>vwList"> 로그아웃</a>
+                        <a class = "small-tip" href="<%=notWithFormTag%>meLogout"> 로그아웃</a>
                      </li>
                   </c:if>
                   <c:if test="${whologin eq 2 }">
                      <li class = "tips">
-                        <a class = "small-tip">${sessionScope.name} 사장님 </a>
+                        <a class = "small-tip">${sessionScope.loginfo.name} 사장님 </a>
                      </li>
                      <li class = "tips">
-                        <a class = "small-tip" href="<%=notWithFormTag%>vwList"> 마이페이지</a>
+                        <a class = "small-tip" href="<%=notWithFormTag%>meDetail&id=${sessionScope.loginfo.id}"> 마이페이지</a>
                      </li>
                      <li class = "tips">
-                        <a class = "small-tip" href="<%=notWithFormTag%>vwList"> 로그아웃</a>
+                        <a class = "small-tip" href="<%=notWithFormTag%>meLogout"> 로그아웃</a>
                      </li>
                   </c:if><c:if test="${whologin eq 3 }">
                      <li class = "tips">
-                        <a class = "small-tip">${sessionScope.name}님 </a>
+                        <a class = "small-tip">${sessionScope.loginfo.name}님 </a>
                      </li>
                      <li class = "tips">
-                        <a class = "small-tip" href="<%=notWithFormTag%>vwList"> 마이페이지</a>
+                        <a class = "small-tip" href="<%=notWithFormTag%>meDetail&id=${sessionScope.loginfo.id}"> 마이페이지</a>
                      </li>
                      <li class = "tips">
-                        <a class = "small-tip" href="<%=notWithFormTag%>vwList"> 로그아웃</a>
+                        <a class = "small-tip" href="<%=notWithFormTag%>meLogout"> 로그아웃</a>
                      </li>
                   </c:if>
                   

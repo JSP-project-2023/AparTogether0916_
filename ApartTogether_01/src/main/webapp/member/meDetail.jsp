@@ -16,10 +16,14 @@
 <body>
 	<div class="container">
 		<h2>${requestScope.bean.name}님의 회원 정보</h2>
+			세션id : ${whologin_id}
+			파라id : ${requestScope.bean.id }
+			<c:if test="${whologin_id == requestScope.bean.id}">
+				alert
+			</c:if>
 		<table class="table">
 			<thead></thead>
 			<tbody>
-			
 			
 				<tr>
 					<td align="center">회원유형</td>
@@ -87,9 +91,9 @@
 		</table>
 		
 		<div  align="center">
-			<c:if test="${whologin ne 3}">	
-				<!-- 일반회원(1),사업자(2)이면 비밀번호재설정, 정보수정, 탈퇴하기 버튼 보이기 -->	
-				<!-- 관리자(3)이면 이 부분이 보이지 않습니다. -->		
+			<c:if test="${whologin ne 1}">	
+				<!-- 일반회원(3),사업자(2)이면 비밀번호재설정, 정보수정, 탈퇴하기 버튼 보이기 -->	
+				<!-- 관리자(1)이면 이 부분이 보이지 않습니다. -->		
 				<%-- 이 줄은 삭제 예정입니다. <a type="button" href="<%=notWithFormTag%>meResetPassword&id=${bean.id}" class="btn btn-info">비밀번호재설정</a> --%>
 				<a type="button" href="<%=notWithFormTag%>meUpdate&id=${bean.id}" class="btn btn-info">회원정보 수정</a>
 				<a type="button" href="<%=notWithFormTag%>meDelete&id=${sessionScope.loginfo.id}" class="btn btn-info">회원탈퇴하기</a>

@@ -25,40 +25,43 @@
   			var id = $('#id').val();
   		}
   		
-  		// mtype에 따라 알럿창, 컨펌창 후 마이페이지 또는 내 가게 등록 화면으로 이동
-  		var oldmtype = $('#oldmtype').val();
-  		var mtype = $('#mtype').val();
-  		if(oldmtype == "biz") { // 수정 전에 사업자 였음
-			if(mtype == "biz") {
-				alert("수정 완료되었습니다.");
-				// 사업자를 그대로 유지하면 알럿창(수정완료)띄우고 마이페이지로 이동
-				//bean.setMtype(mr.getParameter("mtype"));
-			}else if(mtype == "user") {
-				// 사업자가 일반회원으로 변경한 거면 컨펌창(내가게 다 사라집니다)
-				var returnValue1 = confirm("내가 등록한 가게 정보가 모두 사라집니다. 수정하시겠습니까?");
-				if(returnValue1 == true){
-					// 컨펌창 yes 알럿창(수정완료)띄우고 마이페이지로 이동
-				}else{
-					// 컨펌창 no 사업자로 유지
-				}
-				//bean.setMtype(oldmtype);
-			}
-		}else if(oldmtype == "user") { // 수정 전에 일반회원 이었음
-			if(mtype == "user") {
-				alert("수정 완료되었습니다.");
-				// 일반회원을 그대로 유지하면 알럿창(수정완료)띄우고 마이페이지로 이동
-				//bean.setMtype(mr.getParameter("mtype"));
-			}else if(mtype == "biz") {
-				// 일반회원이 사업자로 변경한 거면 컨펌창(내가게 등록하러 가시겠습니까?)
-				var returnValue2 = confirm("수정완료되었습니다. 내 가게를 등록하러 가시겠습니까?");
-				if(returnValue1 == true){
-					// 컨펌창 yes '내 가게등록 페이지'로 이동
-				}else{
-					// 컨펌창 no 마이페이지로 이동
-				}
-				//bean.setMtype(mr.getParameter("mtype"));
-			}
-		}
+  		function mtypeChangeCheck(){
+  			// mtype에 따라 알럿창, 컨펌창 후 마이페이지 또는 내 가게 등록 화면으로 이동
+  	  		var oldmtype = $('#oldmtype').val();
+  	  		var mtype = $('#mtype').val();
+  	  		if(oldmtype == "biz") { // 수정 전에 사업자 였음
+  				if(mtype == "biz") {
+  					alert("수정 완료되었습니다.");
+  					// 사업자를 그대로 유지하면 알럿창(수정완료)띄우고 마이페이지로 이동
+  					//bean.setMtype(mr.getParameter("mtype"));
+  				}else if(mtype == "user") {
+  					// 사업자가 일반회원으로 변경한 거면 컨펌창(내가게 다 사라집니다)
+  					var returnValue1 = confirm("내가 등록한 가게 정보가 모두 사라집니다. 수정하시겠습니까?");
+  					if(returnValue1 == true){
+  						// 컨펌창 yes 알럿창(수정완료)띄우고 마이페이지로 이동
+  					}else{
+  						// 컨펌창 no 사업자로 유지
+  					}
+  					//bean.setMtype(oldmtype);
+  				}
+  			}else if(oldmtype == "user") { // 수정 전에 일반회원 이었음
+  				if(mtype == "user") {
+  					alert("수정 완료되었습니다.");
+  					// 일반회원을 그대로 유지하면 알럿창(수정완료)띄우고 마이페이지로 이동
+  					//bean.setMtype(mr.getParameter("mtype"));
+  				}else if(mtype == "biz") {
+  					// 일반회원이 사업자로 변경한 거면 컨펌창(내가게 등록하러 가시겠습니까?)
+  					var returnValue2 = confirm("수정완료되었습니다. 내 가게를 등록하러 가시겠습니까?");
+  					if(returnValue1 == true){
+  						// 컨펌창 yes '내 가게등록 페이지'로 이동
+  					}else{
+  						// 컨펌창 no 마이페이지로 이동
+  					}
+  					//bean.setMtype(mr.getParameter("mtype"));
+  				}
+  			}
+  		}
+  		
   		
   	</script>
   	<style type="text/css">
@@ -80,7 +83,7 @@
 	<div class="container">
 		<h2>회원 정보 수정</h2>
 		<p>특정 회원에 대하여 정보를 수정하는 페이지 입니다.</p>
-		<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data">
+		<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data" onsubmit="mtypeChangeCheck()">
 		
 			<input type="hidden" name="command" value="meUpdate">
 			<%-- <input type="hidden" name="mtype" value="${requestScope.bean.mtype}"> --%>
@@ -153,7 +156,7 @@
 			</div>
 			
 			<div id="buttonset" class="input-group">
-				<button type="submit" class="btn btn-primary" onclick="return validCheck();">수정</button>
+				<button type="submit" class="btn btn-primary" onclick="mtypeChangeCheck()">수정</button>
 				&nbsp;&nbsp;&nbsp;
 				<button type="reset" class="btn btn-primary">초기화</button>				
 			</div>
