@@ -52,6 +52,91 @@ public class FrontController extends HttpServlet {
 		if(command == null) {
 			System.out.println("file upload event invoked");
 			
+			MultipartRequest mr = MyUtility.getMultipartRequest(request, uploadImage);
+			
+			if(mr!=null) {
+				System.out.println("mr확인합니다");
+				command = mr.getParameter("command") ;
+				
+				if(command.equals("stUpdate")) {//가게 수정시 변경.
+					//TODO 옛날 파일 있으면 삭제X, 파일을 교체했다면 삭제하고 업로드
+					//사업자 등록증
+					String oldFile = mr.getParameter("ceofileUpdate");
+					String newFile = mr.getFilesystemName("ceofile");
+					//파일삭제 유효성 검사
+					MyUtility.deleteFile(oldFile, newFile, mr, uploadImage);
+					
+					//가게 로고
+					oldFile = mr.getParameter("stlogoUpdate");
+					newFile = mr.getFilesystemName("stlogo");
+					//파일삭제 유효성 검사
+					MyUtility.deleteFile(oldFile, newFile, mr, uploadImage);	
+				}
+
+				if(command.equals("meUpdate")) { // 회원정보 수정
+					MyUtility.deleteOldProfileImageFile(uploadImageProfile, mr);
+					MyUtility.moveFolderProfileImage(uploadImageProfile, mr);
+				}
+				
+				// file upload object binding in request scope.
+				request.setAttribute("mr", mr); // 승급
+			}else{
+				System.out.println("MultipartRequest object is null");
+			}
+			
+			
+
+			if(mrProfileImage!=null) {
+				command = mrProfileImage.getParameter("command") ;
+				
+				
+				
+				
+				// file upload object binding in request scope.
+				request.setAttribute("mrProfileImage", mrProfileImage); // 승급 :: 프로필이미지
+			}else{
+				System.out.println("프로필용 MultipartRequest object is null");
+			}
+			
+			
+		}
+		
+		System.out.println("command is [" + command + "]");
+		
+		SuperController controller = this.todolistMap.get(command) ;
+		
+		if (controller != null) {
+			String method = request.getMethod() ;
+		
+			try {
+				if(method.equalsIgnoreCase("get")) {
+					System.out.println(this.getClass() + " get method called");
+					controller.doGet(request, response);
+					
+				}else {
+					System.out.println(this.getClass() + " post method called");
+					controller.doPost(request, response);
+				}				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
+
+		}else {
+			System.out.println("request command is not found");
+		}
+	
+	}	
+	
+	// 백업용 아래444
+	protected void doProcess444(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8"); // 한글 깨짐 방지
+		
+		// command Parameter : 컨트롤러 분기를 위한 핵심 파라미터 
+		String command = request.getParameter("command") ;
+		
+		if(command == null) {
+			System.out.println("file upload event invoked");
+			
 //			MultipartRequest mr = MyUtility.getMultipartRequest(request, uploadImage);
 //			
 //			if(mr!=null) {
