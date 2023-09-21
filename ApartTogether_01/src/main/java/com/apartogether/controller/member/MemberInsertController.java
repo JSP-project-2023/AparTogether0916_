@@ -32,6 +32,7 @@ public class MemberInsertController extends SuperClass {
 		bean.setGender(request.getParameter("gender"));
 		/* [st] 닉네임 랜덤 생성 */
 		bean.setNickname(request.getParameter("nickname"));
+
 		/* bean.setNickname(MemberDao.nName()); //동작 확인완료! */
 		
 		if (bean.getNickname() != "") { /* null값이 아닌 ""값을 가진다. */
@@ -48,6 +49,10 @@ public class MemberInsertController extends SuperClass {
 		bean.setPasswordanswer(request.getParameter("passwordanswer"));
 		bean.setPasswordquest(request.getParameter("passwordquest"));
 		
+		// 회원가입할 때 profile 파일이름이 문자열만 DB에 입력되고 파일업로드는 안되는 문제있음. 
+		// image 폴더에 이미 들어있는 사진과 같은 이름이면 표시되지만 그 외는 안뜸
+		// MemberUpdateController처럼 MultipartRequest로 이미지파일까지 /upload에 업로드되도록 수정해야 할 지 고민
+
 		
 		MemberDao dao = new MemberDao() ;
 		int cnt = -1 ;
