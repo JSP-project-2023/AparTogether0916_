@@ -6,3 +6,4 @@ stList=com.apartogether.controller.store.StoreListController
 stInsert=com.apartogether.controller.store.StoreInsertController
 stUpdate=com.apartogether.controller.store.StoreUpdateController
 stDetail=com.apartogether.controller.store.StoreDetailController
+stOrDetail=com.apartogether.controller.store.StoreOrderDetailController
