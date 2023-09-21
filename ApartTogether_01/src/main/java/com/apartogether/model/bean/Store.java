@@ -1,7 +1,13 @@
 package com.apartogether.model.bean;
 
 public class Store {
+<<<<<<< HEAD
 	private Integer stno; // 가게 고유 코드
+=======
+	
+	//TODO 가게 고유 코드 Integer로 변경
+	private int stno; // 가게 고유 코드
+>>>>>>> lleebs
 	private String id; // 회원(사업자) 아이디
 	private String stname; // 가게 이름
 	private Integer fee; // 배달비
@@ -19,10 +25,22 @@ public class Store {
 	public Store() {
 	}
 	
+<<<<<<< HEAD
 	public Integer getStno() {
 		return stno;
 	}
 	public void setStno(Integer stno) {
+=======<<<<<<< HEAD
+	public Integer getStno() {
+		return stno;
+	}
+	public void setStno(Integer stno) {
+=======
+	public int getStno() {
+		return stno;
+	}
+	public void setStno(int stno) {
+>>>>>>> lleebs
 		this.stno = stno;
 	}
 	public String getId() {

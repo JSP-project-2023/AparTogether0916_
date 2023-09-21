@@ -25,16 +25,16 @@ function validation(){
 			$("input[name=areacode1]").focus();
 			return false;
 		}
-		if ($("input[name=ceofile]").val() == "" || $("input[name=ceofile]").val() == null) {
+		/*if ($("input[name=ceofile]").val() == "" || $("input[name=ceofile]").val() == null) {
 			alert("사업자 등록증은 필수 입니다.");
 			$("input[name=ceofile]").focus();
 			return false;
-		}
-		if ($("input[name=stlogo]").val() == "" || $("input[name=stlogo]").val() == null) {
+		}*/
+		/*if ($("input[name=stlogo]").val() == "" || $("input[name=stlogo]").val() == null) {
 			alert("가게 로고는 필수 입니다.");
 			$("input[name=stlogo]").focus();
 			return false;
-		}
+		}*/
 		if ($("input[name=fee]").val() == "") {
 			alert("배달비 필수 입니다.");
 			$("input[name=fee]").focus();
@@ -56,27 +56,27 @@ function validation(){
 		var isCheck = false;
 			const imgCheck = ['.png', '.jpg'];
 			for(var i=0 ; i < imgCheck.length ; i++){
-				if(ceofile.endsWith(imgCheck[i])){
+				if(ceofile.endsWith(imgCheck[i]) || ceofile == ""){
 					isCheck = true;
 					break;	
 				}
 			}
 			
 			if(isCheck == false){
-				alert('이미지의 확장자는 png 또는 jpg 형식이어야 합니다.');
+				alert('이미지의 확장자는 png 또는 jpg 형식이어야 합니다.1');
 				return false ;
 			}
 		//가게 로고 유효성 검사
 		var stlogo = $('input[name=stlogo]').val();
 		var isCheck = false;
 		for(var i=0 ; i < imgCheck.length ; i++){
-			if(stlogo.endsWith(imgCheck[i])){
+			if(stlogo.endsWith(imgCheck[i]) || stlogo == ""){
 				isCheck = true;
 				break;	
 			}
 		}
 		if(isCheck == false){
-			alert('이미지의 확장자는 png 또는 jpg 형식이어야 합니다.');
+			alert('이미지의 확장자는 png 또는 jpg 형식이어야 합니다.2');
 			return false ;
 		}
 		//번호 유효성 검사

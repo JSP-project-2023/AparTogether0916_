@@ -41,7 +41,6 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
 	<!-- 이 파일은 모든 문서에서 공용으로 참조할 파일입니다.  -->
 	<!-- 자바 관련 변수 및 패키지 임포트, 네비게이션 바, jstl 등등 -->
 	<!-- for sweet alert -->

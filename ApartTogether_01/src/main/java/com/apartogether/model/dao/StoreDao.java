@@ -7,7 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.apartogether.model.bean.Store;
+<<<<<<< HEAD
 import com.apartogether.utility.PagingStore;
+=======
+import com.oreilly.servlet.MultipartRequest;
+>>>>>>> lleebs
 
 public class StoreDao extends SuperDao {
 	int cnt = -1;
@@ -50,7 +54,7 @@ public class StoreDao extends SuperDao {
 	}
 	
 	//스토어 수정하기 위한 1개 가게 조회
-	public Store getStorebyId(String id, String stno) throws Exception {
+	public Store getStorebyId(String id, int stno) throws Exception {
 		Store bean = new Store();
 		
 		String sql = "select * from store where id=? and stno=? ";
@@ -59,10 +63,9 @@ public class StoreDao extends SuperDao {
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setString(1, id);
-		pstmt.setString(2, stno);
+		pstmt.setInt(2, stno);
 		
 		ResultSet rs = pstmt.executeQuery();
-		
 		
 		if(rs.next()) {
 			bean.setStno(rs.getInt("stno"));
@@ -209,6 +212,7 @@ public class StoreDao extends SuperDao {
 		return storeBean;
 	}
 
+<<<<<<< HEAD
 	/* 불러올 가게 몇 개 인지 카운팅 */
 	public int GetTotalStoreCount(String mode, String keyword, String categoryItem) throws Exception {
 		cnt = -1; // 카운팅 담을 변수
@@ -280,5 +284,54 @@ public class StoreDao extends SuperDao {
 		if(conn!=null) {conn.close();}
 		
 		return cnt;
+=======
+	//가게 업데이트
+	public int UpdateStore(Store bean) throws SQLException {
+		System.out.println("들어온 객체 : " + bean);
+		
+		int cnt = 0;
+		String sql ="update store set stname=?, fee=?, category=?, stplace=?, sttel=?, content=?, ceofile=?, ceono=?, sttime=?, stlogo=?, redday=?, btime=40 ";
+		sql += "where id=? and stno=? ";
+		conn = super.getConnection();
+		conn.setAutoCommit(false);
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, bean.getStname());
+		pstmt.setInt(2, bean.getFee());
+		pstmt.setString(3, bean.getCategory());
+		pstmt.setString(4, bean.getStplace());
+		pstmt.setString(5, bean.getSttel());
+		pstmt.setString(6, bean.getContent());
+		pstmt.setString(7, bean.getCeofile());
+		pstmt.setString(8, bean.getCeono());
+		pstmt.setString(9, bean.getSttime());
+		pstmt.setString(10, bean.getStlogo());
+		pstmt.setString(11, bean.getRedday());
+		pstmt.setString(12, bean.getId());
+		pstmt.setInt(13, bean.getStno());
+		
+		cnt = pstmt.executeUpdate();
+		conn.commit();
+		
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if(conn != null) {
+			conn.close();
+		}
+		return cnt;
+	}
+	
+	//파일 교체 메소드
+	public String changeFile(String newfileName, String oldfileName) {
+		// 새로 등록된 사진이 없다면
+		if (newfileName == null) {
+			// 옛날 파일을 리턴
+			return oldfileName;
+		} else {
+			// 등록된 파일을 리턴
+			return newfileName;
+		}	
+>>>>>>> lleebs
 	}
 }

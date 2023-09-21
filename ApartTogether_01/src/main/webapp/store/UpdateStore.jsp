@@ -23,11 +23,11 @@
 	<hr>
 	<div class="container1"><!-- 컨테이너 -->
 		<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data"> <!-- post? get? -->
-		<input type="hidden" name="command" value="storeUpdate">
+		<input type="hidden" name="command" value="stUpdate">
 		<!-- 회원 아이디 -->
 		<input type="hidden" value="${requestScope.id}" name="id" placeholder="회원아이디">
 		<!-- 가게 고유번호-->
-		<input type="text" value="${bean.stno}" name="stno" placeholder="회원아이디"><br>
+		<input type="text" value="${bean.stno}" name="stno" placeholder="가게고유번호"><br>
 		
 		<div id="ctname">
 			가게이름 <input name="stname" type="text" value="${bean.stname}"><br>
@@ -180,7 +180,5 @@
 			
 		</form>	
 	</div>
-		
-		
 	</body>
 </html>
