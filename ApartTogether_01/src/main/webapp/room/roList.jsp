@@ -24,6 +24,7 @@
 	
 	<script type="text/javascript">
 		$(document).ready(function(){
+			/* 모드 검색기록 남겨두기 */
 			var optionList = $('#mode option');
 			for(var i=0 ; i<optionList.length ; i++){
 				if(optionList[i].value == '${requestScope.pageInfo.mode}'){
@@ -31,6 +32,7 @@
 				}	
 			}
 			
+			/* 키워드 검색 기록 남겨두기 */
 			$('#keyword').val('${requestScope.pageInfo.keyword}');
 			
 			$("#mode").change(function(){				 
@@ -48,6 +50,7 @@
 		}
 		
 		
+		
 	</script>
 </head>
 <body >
@@ -62,8 +65,8 @@
 					<th>가게 이름</th>
 					<th>주문 장소</th>
 					<th>제목</th>
-					<th>주문 시간</th>		
-				
+					<th>주문 시간</th>
+					<th>참가자 수</th>		
 				</tr>
 			</thead>
 			<tbody>
@@ -80,7 +83,7 @@
 												<option value="all" selected="selected">--- 선택해 주세요 ---
 												<option value="category">카테고리
 												<option value="stname">가게이름
-												<option value="place">주문장소
+												<option value="orderplace">주문장소
 												
 												
 											</select>
@@ -100,7 +103,7 @@
 				<c:forEach var="bean" items="${requestScope.roomlist}">	
 				<tr>
 						<td>${bean.roomno}</td>
-						
+						<!-- 카테고리 별 뱃지 색깔을 다르게 하기 위한 if 문 -->
 						<c:if test="${bean.category eq '양식' }">
 							<td><span class="badge rounded-pill custom_red"> ${bean.category} </span></td>
 						</c:if>
@@ -128,7 +131,8 @@
 						<td>${bean.stname}</td>
 						<td>${bean.place}</td>
 						<td><a href="<%=notWithFormTag%>roDetail&roomno=${bean.roomno}">${bean.roomname}</a></td>
-						<td>${bean.ordertime}</td>		
+						<td>${bean.ordertime}</td>	
+						<td>${bean.row_count }</td>	
 				</tr>
 				</c:forEach>
 			</tbody>

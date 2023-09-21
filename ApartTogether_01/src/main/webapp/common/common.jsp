@@ -11,7 +11,7 @@
 
 <!-- whologin 변수는 현재 로그인 상태를 알려 주는 변수입니다. -->
 <!-- 미로그인(0)  관리자 (1) 사업자 (2) 일반회원 (3) -->
-<c:set var="whologin" value="3"/>
+
 
 <!-- 추후 작업 예정 -->
 
@@ -25,7 +25,7 @@
 	<c:if test="${sessionScope.loginfo.mtype == 'user'}">
 		<c:set var="whologin" value="3"/>
 	</c:if>
-</c:if>
+</c:if> 
 
 <%
 	// appName : 애플리케이션 이름(프로젝트 이름_Teacher)
@@ -79,7 +79,8 @@
 </head>
 
 <body>
-	
+	name=${sessionScope.loginfo.name}
+	type=${sessionScope.loginfo.mtype}
 	<header id = "margin">
 		<nav class="navbar navbar-expand-sm  ">
 			<div class="container-fluid">

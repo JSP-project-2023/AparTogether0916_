@@ -8,8 +8,15 @@ public class Room {
 	private String roomname;
 	private String place;
 	private String category;
+	private int row_count;
 	
 	
+	public int getRow_count() {
+		return row_count;
+	}
+	public void setRow_count(int row_count) {
+		this.row_count = row_count;
+	}
 	public String getCategory() {
 		return category;
 	}
@@ -50,7 +57,7 @@ public class Room {
 	@Override
 	public String toString() {
 		return "Room [roomno=" + roomno + ", stname=" + stname + ", ordertime=" + ordertime + ", roomname=" + roomname
-				+ ", place=" + place + ", category=" + category + "]";
+				+ ", place=" + place + ", category=" + category + ", row_count=" + row_count + "]";
 	}
 
 	

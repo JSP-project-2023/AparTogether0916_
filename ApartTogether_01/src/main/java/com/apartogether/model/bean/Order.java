@@ -8,7 +8,7 @@ public class Order {
 	private String menuname;
 	private String stlogo;
 	private int qty;
-	private int totalprice;
+	private int price;
 	
 	
 	public int getOrderno() {
@@ -47,16 +47,16 @@ public class Order {
 	public void setQty(int qty) {
 		this.qty = qty;
 	}
-	public int getTotalprice() {
-		return totalprice;
+	public int getPrice() {
+		return price;
 	}
-	public void setTotalprice(int totalprice) {
-		this.totalprice = totalprice;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	@Override
 	public String toString() {
 		return "Order [orderno=" + orderno + ", ordertime=" + ordertime + ", stname=" + stname + ", menuname="
-				+ menuname + ", stlogo=" + stlogo + ", qty=" + qty + ", totalprice=" + totalprice + "]";
+				+ menuname + ", stlogo=" + stlogo + ", qty=" + qty + ", price=" + price + "]";
 	}
 	
 	

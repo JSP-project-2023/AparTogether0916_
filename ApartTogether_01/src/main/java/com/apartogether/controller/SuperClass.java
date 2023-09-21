@@ -8,14 +8,17 @@ import javax.servlet.http.HttpSession;
 import com.apartogether.model.bean.Member;
 
 
+
+
+
+
 // 하위 컨트롤러 들이 공통적으로 사용하는 기능들을 여기에 명시합니다.
 public class SuperClass implements SuperController{
 	private HttpServletRequest request ; 
 	private HttpServletResponse response ; 
 	protected HttpSession session ;
-	
+
 	protected Member loginfo = null ; // 로그인 여부를 파악하는 변수
-	
 	
 	
 	public void youNeededLogin() {
@@ -31,6 +34,7 @@ public class SuperClass implements SuperController{
 		this.response = response ;
 		this.session = request.getSession() ;
 		
+		this.loginfo = (Member)session.getAttribute("loginfo") ;
 	}
 
 	@Override
@@ -38,6 +42,8 @@ public class SuperClass implements SuperController{
 		this.request = request ;
 		this.response = response ;
 		this.session = request.getSession() ;
+		
+		this.loginfo = (Member)session.getAttribute("loginfo") ;
 	}	
 	
 	public String getUrlInfomation(String todoCommmand) {

@@ -11,18 +11,44 @@ public class Member {
 	private String nickname;/* 닉네임 */
 	private String address; /* 주소 */
 	private String profile; /* 프로필 이미지 */
-	
+	private String passwordanswer;
+	private String passwordquest;
 	/* 생성자 */
 	public Member() {
 	} 
 	
 	
 	
-	@Override /* toString */
+	public String getPasswordanswer() {
+		return passwordanswer;
+	}
+
+
+
+	public void setPasswordanswer(String passwordanswer) {
+		this.passwordanswer = passwordanswer;
+	}
+
+
+
+	public String getPasswordquest() {
+		return passwordquest;
+	}
+
+
+
+	public void setPasswordquest(String passwordquest) {
+		this.passwordquest = passwordquest;
+	}
+
+
+
+	@Override
 	public String toString() {
 		return "Member [id=" + id + ", mtype=" + mtype + ", name=" + name + ", password=" + password + ", phone="
 				+ phone + ", birth=" + birth + ", gender=" + gender + ", nickname=" + nickname + ", address=" + address
-				+ ", profile=" + profile + "]";
+				+ ", profile=" + profile + ", passwordanswer=" + passwordanswer + ", passwordquest=" + passwordquest
+				+ "]";
 	}
 
 

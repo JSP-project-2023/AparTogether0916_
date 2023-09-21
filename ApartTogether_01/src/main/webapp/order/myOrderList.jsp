@@ -23,7 +23,6 @@
 					<th>메뉴 이름</th>
 					<th>주문 수량</th>
 					<th>결재 금액</th>		
-					
 				</tr>
 			</thead>
 			<tbody>
@@ -43,16 +42,12 @@
 				<c:forEach var="bean" items="${requestScope.orderList}">
 				<tr>
 					<td>${bean.orderno}</td>
-					<td>${bean.orderdate}</td>
-					<td>${bean.stname}</td>
+					<td>${bean.ordertime}</td>
+					<td>${bean.stlogo}<br/>${bean.stname}</td>
 					<td>${bean.menuname}</td>
 					<td>${bean.qty}</td>
-					<td>${bean.totalprice}</td>
-					<td>
-						<a href="<%=notWithFormTag%>orDetail&orderno=${bean.orderno}">
-							상세 보기
-						</a>						
-					</td>
+					<td>${bean.price}</td>
+					
 				</tr>					
 				</c:forEach>
 		

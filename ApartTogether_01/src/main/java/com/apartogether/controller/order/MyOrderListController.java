@@ -15,13 +15,13 @@ public class MyOrderListController extends SuperClass{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doGet(request, response);
 		
-		
-		
 		OrderDao dao = new OrderDao();
 		try {
+			
 			List<Order> orderList = dao.GetHistory(super.loginfo.getId());
+
 			if(orderList.size()==0) {
-				super.setAlertMessage("이전 결제 내역이 존재하지 않습니다.");
+				super.setAlertMessage("이전 주문 내역이 존재하지 않습니다.");
 				new RoomListController().doGet(request, response);
 				
 			}else {

@@ -17,6 +17,7 @@ public class OrderDao extends SuperDao{
 		sql +=" from (personal pe inner join menu me on pe.menuno = me.menuno) ";
 		sql +=" inner join store st on me.stno = st.stno ";
 		sql +=" inner join room ro on ro.roomno = pe.roomno where pe.id = ?";
+		sql +=" order by orderno desc";
 		
 		
 		conn = super.getConnection();
@@ -47,7 +48,7 @@ public class OrderDao extends SuperDao{
 		bean.setQty(rs.getInt("qty"));
 		bean.setStlogo(rs.getString("stlogo"));
 		bean.setStname(rs.getString("stname"));
-		bean.setTotalprice(rs.getInt("price")*rs.getInt("qty"));
+		bean.setPrice(rs.getInt("price"));
 			
 		return bean;
 	}
