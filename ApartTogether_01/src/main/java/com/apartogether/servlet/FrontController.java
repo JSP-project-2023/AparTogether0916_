@@ -52,7 +52,7 @@ public class FrontController extends HttpServlet {
 			if(mr!=null) {
 				command = mr.getParameter("command") ;
 				
-				if(command.equals("storeUpdate")) {//가게 수정시 변경.
+				if(command.equals("stUpdate")) {//가게 수정시 변경.
 					//TODO 옛날 파일 있으면 삭제X, 파일을 교체했다면 삭제하고 업로드
 					//사업자 등록증
 					String oldFile = mr.getParameter("ceofileUpdate");

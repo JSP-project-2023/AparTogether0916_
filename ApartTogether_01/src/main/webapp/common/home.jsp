@@ -10,11 +10,11 @@
 <body>
 	샘플
 	<%=request.getContextPath()%>
-	<form action="<%=withFormTag%>" method="get">
-	<input name="command" value="storeUpdate">
+	<form action="<%=withFormTag%>" method="get" target="_blank">
+	<input name="command" value="stUpdate">
 	<input name="id" value="soon">
 	<input name="stno" value="1">
-	<button type="submit">제출</button>
+	<button type="submit">수정</button>
 </form>
 </body>
 </html>

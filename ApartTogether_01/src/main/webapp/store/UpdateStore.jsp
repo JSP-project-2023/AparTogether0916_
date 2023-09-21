@@ -23,7 +23,7 @@
 	<hr>
 	<div class="container1"><!-- 컨테이너 -->
 		<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data"> <!-- post? get? -->
-		<input type="hidden" name="command" value="storeUpdate">
+		<input type="hidden" name="command" value="stUpdate">
 		<!-- 회원 아이디 -->
 		<input type="hidden" value="${requestScope.id}" name="id" placeholder="회원아이디">
 		<!-- 가게 고유번호-->
