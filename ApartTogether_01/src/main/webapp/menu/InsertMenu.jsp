@@ -19,7 +19,7 @@
 <body>
 	<div class="container">
 		<!-- 내 가게 이름 나오게 -->
-		<h3>메뉴 등록 (${requestScope.myStore.stname})</h3>
+		<h3>${requestScope.stname}  메뉴 등록</h3>
 		<p>아래 항목을 입력해 메뉴를 등록해보세요.</p>
 		
 		<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data">

@@ -18,8 +18,10 @@ public class MenuInsertController extends SuperClass {
 		
 //		어떤 가게 메뉴 추가할지 stno로 구분
 		int stno = Integer.parseInt(request.getParameter("stno"));
+		String stname = request.getParameter("stname");
 		
 		request.setAttribute("stno", stno);
+		request.setAttribute("stname", stname);
 		super.gotoPage("menu/InsertMenu.jsp");
 	}
 	

@@ -292,12 +292,12 @@
 <!-- 								수정, 삭제 버튼 항상 노출 -->
 									<%-- 링크 추후 확인 필요 --%>
 									<div id="buttonList" class="buttonList">
-										<a id="updateAnchor" class="btn btn-outline-primary" href="<%=notWithFormTag%>storeUpdate&stno=${myStoreList.stno}${requestScope.pageInfo.flowParameter}">
+										<a id="updateAnchor" class="btn btn-outline-primary" href="<%=notWithFormTag%>stUpdate&id=${myStoreList.id}&stno=${myStoreList.stno}${requestScope.pageInfo.flowParameter}">
 											가게수정
 										</a>
 										
 										<%-- 링크 추후 확인 필요 --%>
-										<a id="deleteAnchor" class="btn btn-outline-success" onclick="deleteStore(${myStoreList.stno});">
+										<a id="deleteAnchor" class="btn btn-outline-success" href="<%=notWithFormTag%>menuInsert&stno=${myStoreList.stno}&stname=${myStoreList.stname}">
 											메뉴수정
 										</a>
 										

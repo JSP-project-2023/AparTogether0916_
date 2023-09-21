@@ -10,3 +10,4 @@ stDelete=com.apartogether.controller.store.StoreDeleteController
 myStoreList=com.apartogether.controller.store.MyStoreListController
 #Munu
 menuInsert=com.apartogether.controller.menu.MenuInsertController
+menuUpdate=com.apartogether.controller.menu.MenuUpdateController
