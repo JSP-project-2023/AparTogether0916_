@@ -57,8 +57,6 @@ public class FrontController extends HttpServlet {
 					//사업자 등록증
 					String oldFile = mr.getParameter("ceofileUpdate");
 					String newFile = mr.getFilesystemName("ceofile");
-					System.out.println("newFile is " + newFile);
-					System.out.println("oldFile is " + oldFile);
 					//파일삭제 유효성 검사
 					MyUtility.deleteFile(oldFile, newFile, mr, uploadImage);
 					

@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.apartogether.model.bean.Store;
+import com.oreilly.servlet.MultipartRequest;
 
 public class StoreDao extends SuperDao {
 	int cnt = -1;
@@ -123,5 +124,17 @@ public class StoreDao extends SuperDao {
 			conn.close();
 		}
 		return cnt;
+	}
+	
+	//파일 교체 메소드
+	public String changeFile(String newfileName, String oldfileName) {
+		// 새로 등록된 사진이 없다면
+		if (newfileName == null) {
+			// 옛날 파일을 리턴
+			return oldfileName;
+		} else {
+			// 등록된 파일을 리턴
+			return newfileName;
+		}	
 	}
 }

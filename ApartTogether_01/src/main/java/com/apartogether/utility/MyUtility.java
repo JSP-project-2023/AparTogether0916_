@@ -130,15 +130,24 @@ public class MyUtility {
 	
 	//파일 삭제 메소드
 	public static void deleteFile(String oldFile, String newFile, MultipartRequest mr, String uploadImage) {
-		 if(newFile != null || !newFile.equals("")) { //해결못함 ㅠㅠ
+		 if(newFile != null) { //새로운 파일이 있다면 해당 항목을 삭제
 			System.out.println("newFileeeee" + newFile);
+			System.out.println("oldFileeeee" + oldFile);
 			System.out.println("실행1");
-			MyUtility.deleteOldImageFile(uploadImage, mr);
-		} else {
-			System.out.println();
+			MyUtility.deleteImageFile(oldFile, uploadImage, mr);
 		}
 	}
-	
-	
+
+	private static void deleteImageFile(String oldFile, String uploadImage, MultipartRequest mr) {
+		// 옛날 파일을 삭제하는 메소드
+		if (oldFile != null) {
+			String deleteFile = uploadImage + "/" + oldFile;
+			File target = new File(deleteFile);
+			if (target.delete()) {
+				System.out.println(deleteFile + " file delete success");
+			}
+		}
+		
+	}
 
 }

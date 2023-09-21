@@ -33,7 +33,7 @@ public class StoreUpdateController extends SuperClass{
 		sttime += mr.getParameter("endShopAmPm") + " ";
 		sttime += mr.getParameter("endShopTime");
 		
-		//TODO: 다오를 통해 업데이트
+		//TODO: 다오를 통해 업데이트 
 		bean.setId(mr.getParameter("id"));
 		bean.setStno(mr.getParameter("stno"));
 		bean.setStname(mr.getParameter("stname"));
@@ -44,12 +44,20 @@ public class StoreUpdateController extends SuperClass{
 		bean.setSttel(sttel);
 		
 		bean.setContent(mr.getParameter("content"));
-		bean.setCeofile(mr.getFilesystemName("ceofile"));
-
+		
+		//사업자 등록증, 새로운 파일 등록여부
+		String ceofile = dao.changeFile(mr.getFilesystemName("ceofile"), mr.getParameter("ceofileUpdate"));
+		//가게 로고, 새로운 파일 등록여부
+		String stlogofile = dao.changeFile(mr.getFilesystemName("stlogo"), mr.getParameter("stlogoUpdate"));
+		
+		//TODO dao의 changFile을 값을 bean.set()에 넣어줌.
+		bean.setCeofile(ceofile);
+		bean.setStlogo(stlogofile);
+		
+		
 		//가게 오픈, 마감시간
 		bean.setSttime(sttime);
 		
-		bean.setStlogo(mr.getFilesystemName("stlogo"));
 		bean.setFee(Integer.parseInt(mr.getParameter("fee")));
 		bean.setRedday(mr.getParameter("redday"));
 		bean.setCeono(mr.getParameter("ceono"));

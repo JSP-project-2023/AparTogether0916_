@@ -63,20 +63,20 @@ function validation(){
 			}
 			
 			if(isCheck == false){
-				alert('이미지의 확장자는 png 또는 jpg 형식이어야 합니다.');
+				alert('이미지의 확장자는 png 또는 jpg 형식이어야 합니다.1');
 				return false ;
 			}
 		//가게 로고 유효성 검사
 		var stlogo = $('input[name=stlogo]').val();
 		var isCheck = false;
 		for(var i=0 ; i < imgCheck.length ; i++){
-			if(stlogo.endsWith(imgCheck[i]) || ceofile == ""){
+			if(stlogo.endsWith(imgCheck[i]) || stlogo == ""){
 				isCheck = true;
 				break;	
 			}
 		}
 		if(isCheck == false){
-			alert('이미지의 확장자는 png 또는 jpg 형식이어야 합니다.');
+			alert('이미지의 확장자는 png 또는 jpg 형식이어야 합니다.2');
 			return false ;
 		}
 		//번호 유효성 검사
