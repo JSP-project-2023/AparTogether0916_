@@ -40,6 +40,8 @@ whologin : ${whologin}
 	//out.print("notWithFormTag : " + notWithFormTag + "<br/>") ;
 %>	
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,13 +53,20 @@ whologin : ${whologin}
 	<script src="/js/sweetalert.js"></script>
 	<style type="text/css">
 		.alert-dismissible{margin: 10px;}
+		
+	/*[st] css버튼 set */
+	
+	/*[ed] css버튼 set */
+		
 	</style>
 </head>
 
 <body>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="<%=notWithFormTag%>home">아파투게더</a>
+
+			<a class="navbar-brand" href="<%=notWithFormTag%>home">로고~~~~</a><!-- 홈으로 가기 추가  -->
+
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
 				<span class="navbar-toggler-icon"></span>

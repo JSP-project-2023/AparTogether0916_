@@ -30,13 +30,26 @@ public class MemberInsertController extends SuperClass {
 		bean.setPhone(request.getParameter("phone"));
 		bean.setBirth(request.getParameter("birth"));
 		bean.setGender(request.getParameter("gender"));
+		/* [st] 닉네임 랜덤 생성 */
 		bean.setNickname(request.getParameter("nickname"));
-		bean.setAddress(request.getParameter("address"));
+
+		/* bean.setNickname(MemberDao.nName()); //동작 확인완료! */
 		
-		bean.setProfile(request.getParameter("profile")); 
-		// profile 문자열만 DB에 입력되고 파일업로드는 안되는 문제있음. 
+		if (bean.getNickname() != "") { /* 아놔 ㅋㅋㅋ null값이 아닌 ""값을 가진다.ㅋㅋㅋ */
+			bean.setNickname(request.getParameter("nickname"));
+			setAlertMessage(bean.getName() + "님 환영합니다!");
+		} else {
+			bean.setNickname(MemberDao.RandomName());
+			setAlertMessage(bean.getNickname() + " 으로 닉네임이 랜덤 생성되었습니다. 환영합니다!");
+		}
+		/* [ed] 닉네임 랜덤 생성 */
+		bean.setAddress(request.getParameter("address") + " "
+				+ request.getParameter("address_detail"));/* 주소(카카오API값) + 상세주소(사용자가 입력하는값) */
+		bean.setProfile(request.getParameter("profile"));
+    // 회원가입할 때 profile 파일이름이 문자열만 DB에 입력되고 파일업로드는 안되는 문제있음. 
 		// image 폴더에 이미 들어있는 사진과 같은 이름이면 표시되지만 그 외는 안뜸
-		// MemberUpdateController처럼 MultipartRequest로 이미지 업로드 구현해야 할 지 고민
+		// MemberUpdateController처럼 MultipartRequest로 이미지파일까지 /upload에 업로드되도록 수정해야 할 지 고민
+
 		
 		MemberDao dao = new MemberDao() ;
 		int cnt = -1 ;
