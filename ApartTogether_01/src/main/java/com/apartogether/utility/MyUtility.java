@@ -20,20 +20,22 @@ public class MyUtility {
 		// FrontController.doProcess에서 사용합니다.
 		// 회원정보 수정시 webPathFrom폴더로 업로드한 프로필이미지를
 		// webPathTo폴더로 이동시킵니다.
-		String profileFileName = mr.getFilesystemName("profile"));
+		String profileFileName = mr.getFilesystemName("profile");
 		File file = new File(webPathFrom + "/"+ profileFileName);
 	        File fileToMove = new File(webPathTo + "/"+ profileFileName);
 		System.out.println("move profile From : " + webPathFrom + "/"+ profileFileName);
 		System.out.println("move profile To : " + webPathTo + "/"+ profileFileName);
 		
 	        boolean success = file.renameTo(fileToMove); // rename이동에 성공하면 true, 실패하면 false를 반환합니다. 타켓파일이 없을 때 false입니다.
-	        if (!success) { // 
+	        if (!success) { // 실패
 	            System.out.println("Failed to rename to " + fileToMove);
+	        }else { // 성공
+	        	System.out.println("Succeed to rename to " + fileToMove);
 	        }
 	}
 	
 	public static void deleteOldProfileImageFile(String webPath, MultipartRequest mr) {
-		// FrontController.doProcess에서 사용합니다.
+		// FrontController.doProcess에서 사용합니다.(meUpdateForm.jsp)
 		System.out.println("profile : " + mr.getFilesystemName("profile"));
 		System.out.println("deleteProfile : " + mr.getParameter("deleteProfile"));
 		// 회원정보 수정시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
@@ -46,6 +48,8 @@ public class MyUtility {
 					System.out.println(deleteFile + " file delete success"); 
 				}
 			}
+		}else { // meUpdateForm에서 profile을 선택한 값이 없는 경우(mr.getFilesystemName("profile") == null)
+			System.out.println("meUpdate : 프로필이미지에 변동이 없으므로 파일을 그대로 유지합니다.");
 		}
 	}
 	
