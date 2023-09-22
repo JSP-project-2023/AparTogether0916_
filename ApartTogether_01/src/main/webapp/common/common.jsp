@@ -169,7 +169,7 @@ String notWithFormTag = appName + mappingName + "?command=";
 										<a class="dropdown-item" href="<%=notWithFormTag%>myStoreList&id=${sessionScope.loginfo.id}">내 가게 관리</a>
 									</li>
 									<li>
-										<a class="dropdown-item" href="#">메뉴 관리(href : null)</a>
+										<a class="dropdown-item" href="<%=notWithFormTag%>menuManage">메뉴 관리</a>
 									</li>
 								</c:if>
 							</ul>

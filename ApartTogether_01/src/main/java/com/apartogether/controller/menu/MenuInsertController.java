@@ -39,7 +39,7 @@ public class MenuInsertController extends SuperClass {
 		menu.setMenuname(mr.getParameter("menuname"));
 		menu.setPrice(Integer.parseInt(mr.getParameter("price")));
 		menu.setMenuimage(mr.getFilesystemName("menuimage"));
-		menu.setMenudetail(mr.getParameter("menudetail"));
+		menu.setMenudetail(mr.getParameter("menudetail") + "\n" + mr.getParameter("detailPlus")); // 메뉴 설명 + 재료 | 기본옵션
 		
 		MenuDao dao = new MenuDao();
 		int cnt = -1;

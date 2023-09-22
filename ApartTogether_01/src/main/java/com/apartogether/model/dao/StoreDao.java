@@ -136,6 +136,16 @@ public class StoreDao extends SuperDao {
 			storeAllList.add(getBeanData(rs));
 		}
 		
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if(conn != null) {
+			conn.close();
+		}
+		
 		return storeAllList;
 	}
 	
@@ -182,8 +192,48 @@ public class StoreDao extends SuperDao {
 			storeAllList.add(getBeanData(rs));
 		}
 		
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if(conn != null) {
+			conn.close();
+		}
+		
 		return storeAllList;
 	}
+	
+	
+//	현재 로그인한 id로만 내 가게 리스트 리턴 => MenuManage - 이리수
+	public List<Store> selectAll(String id) throws Exception {
+		String sql = "select * from store where id=?";
+		
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, id);
+		ResultSet rs = pstmt.executeQuery();
+		
+		List<Store> stList = new ArrayList<Store>();
+		
+		while	(rs.next()) {
+			stList.add(this.getBeanData(rs));
+		}
+		
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if(conn != null) {
+			conn.close();
+		}
+		
+		return stList;
+	}
+	
 	
 //	store에 bean 한개 값 셋팅해서 Store 객체로 리턴 - 이리수
 	private Store getBeanData(ResultSet rs) throws Exception {

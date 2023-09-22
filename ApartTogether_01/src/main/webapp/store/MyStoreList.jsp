@@ -299,6 +299,10 @@
 											메뉴수정
 										</a>
 										
+										<a id="deleteAnchor" class="btn btn-outline-success" href="<%=notWithFormTag%>menuInsert&stno=${myStoreList.stno}&stname=${myStoreList.stname}">
+											메뉴등록(임시)
+										</a>
+										
 										<a id="deleteAnchor" class="btn btn-outline-danger" onclick="deleteStore(${myStoreList.stno});">
 											삭제
 										</a>
