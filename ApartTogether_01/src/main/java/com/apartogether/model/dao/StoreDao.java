@@ -208,7 +208,7 @@ public class StoreDao extends SuperDao {
 	
 //	현재 로그인한 id로만 내 가게 리스트 리턴 => MenuManage - 이리수
 	public List<Store> selectAll(String id) throws Exception {
-		String sql = "select * from store where id=?";
+		String sql = "select * from store where id=? order by stno";
 		
 		conn = super.getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);
