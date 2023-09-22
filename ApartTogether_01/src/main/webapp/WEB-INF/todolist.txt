@@ -15,6 +15,7 @@ meResetPassword=com.apartogether.controller.member.MemberResetPasswordController
 #room 컨트롤러
 roList=com.apartogether.controller.room.RoomListController
 roWishList=com.apartogether.controller.room.RoomWishListController
+roDetail=com.apartogether.controller.room.RoomDetailController
 #order 컨트롤러
 myorList=com.apartogether.controller.order.MyOrderListController
 myOrDetail=com.apartogether.controller.order.MyOrderDetailController
