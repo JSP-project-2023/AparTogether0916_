@@ -17,12 +17,9 @@
 		<table class="table table-hover">
 			<thead class="table-dark">
 				<tr>
-					<th>주문 번호</th>
 					<th>주문 일자</th>
 					<th>가게 이름</th>
-					<th>메뉴 이름</th>
-					<th>주문 수량</th>
-					<th>결재 금액</th>		
+					<th>상세 보기</th>		
 				</tr>
 			</thead>
 			<tbody>
@@ -41,12 +38,9 @@
 				</tr>
 				<c:forEach var="bean" items="${requestScope.orderList}">
 				<tr>
-					<td>${bean.orderno}</td>
 					<td>${bean.ordertime}</td>
 					<td>${bean.stlogo}<br/>${bean.stname}</td>
-					<td>${bean.menuname}</td>
-					<td>${bean.qty}</td>
-					<td>${bean.price * bean.qty}</td>
+					<td><a href="<%=notWithFormTag%>myOrDetail&roomno=${bean.roomno}">상세 보기</a></td>
 					
 				</tr>					
 				</c:forEach>

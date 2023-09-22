@@ -1,19 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <%@ include file="./../common/common.jsp" %>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
+
+<%int total_price = 0; %>
 </head>
+															
 <body>
-	
-	
+
 	<div class="container">
-		<h2> ¹æ Àå¹Ù±¸´Ï ¸ñ·Ï ÆäÀÌÁö</h2>
-			<p> ¹æÀåÀÌ Àå¹Ù±¸´Ï ¸ñ·ÏÀ» °¡°Ô·Î Àü¼ÛÇÏ±âÀü ÆäÀÌÁö</p>
+		<h2> ë°© ì¥ë°”êµ¬ë‹ˆ ëª©ë¡ í˜ì´ì§€</h2>
+			<p> ë°©ì¥ì´ ì¥ë°”êµ¬ë‹ˆ ëª©ë¡ì„ ê°€ê²Œë¡œ ì „ì†¡í•˜ê¸°ì „ í˜ì´ì§€</p>
 			<table class="table table-hover">
 				<tbody>
 					<tr>
@@ -32,17 +34,16 @@
 						<c:forEach var="bean" items="${requestScope.wishList}">
 							<tr>
 								<td>
-									<c:if test="${bean.name eq sessionScope.loginfo.name}">
-										³» ÁÖ¹®
+									<c:if test="${bean.id eq sessionScope.loginfo.id}">
+										ë‚´ ì£¼ë¬¸
 									</c:if>
-									<c:if test="${bean.name ne sessionScope.loginfo.name}">
-										${bean.name}
+									<c:if test="${bean.id ne sessionScope.loginfo.id}">
+										${bean.nickname}ë‹˜ì˜ ì£¼ë¬¸
 									</c:if>
 								</td>	
 								
 								<td>${bean.menuname}</td>
 								<td>${bean.qty}</td>
-								<td>${bean.price * bean.qty}</td>
 								
 							</tr>					
 						</c:forEach>
@@ -53,7 +54,9 @@
 			</table>	
 			<br/>
 			
-			<h2>¹è´Şºñ : ${requestScope.wishList.fee}</h2>	 
+			<h2>ë°°ë‹¬ë¹„ : ${requestScope.wishList.fee}</h2>	 
+			
+			
 		</div>	 
 </body>
 </html>

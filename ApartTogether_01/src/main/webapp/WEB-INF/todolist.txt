@@ -17,3 +17,4 @@ roList=com.apartogether.controller.room.RoomListController
 roWishList=com.apartogether.controller.room.RoomWishListController
 #order 컨트롤러
 myorList=com.apartogether.controller.order.MyOrderListController
+myOrDetail=com.apartogether.controller.order.MyOrderDetailController

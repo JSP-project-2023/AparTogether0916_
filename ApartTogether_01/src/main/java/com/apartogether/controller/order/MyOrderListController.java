@@ -16,6 +16,8 @@ public class MyOrderListController extends SuperClass{
 		super.doGet(request, response);
 		
 		OrderDao dao = new OrderDao();
+		
+		
 		try {
 			
 			List<Order> orderList = dao.GetHistory(super.loginfo.getId());
