@@ -6,9 +6,7 @@ stList=com.apartogether.controller.store.StoreListController
 stInsert=com.apartogether.controller.store.StoreInsertController
 stUpdate=com.apartogether.controller.store.StoreUpdateController
 stDetail=com.apartogether.controller.store.StoreDetailController
-<<<<<<< HEAD
-stOrDetail=com.apartogether.controller.store.StoreMenuDetailController
-=======
+stMuDetail=com.apartogether.controller.store.StoreMenuDetailController
 stDelete=com.apartogether.controller.store.StoreDeleteController
 myStoreList=com.apartogether.controller.store.MyStoreListController
 #Munu
@@ -25,5 +23,4 @@ meDetail=com.apartogether.controller.member.MemberDetailController
 meList=com.apartogether.controller.member.MemberListController
 meUpdate=com.apartogether.controller.member.MemberUpdateController
 meDelete=com.apartogether.controller.member.MemberDeleteController
-meResetPassword=com.apartogether.controller.member.MemberResetPasswordController
->>>>>>> origin/LISU_member
+#meResetPassword=com.apartogether.controller.member.MemberResetPasswordController

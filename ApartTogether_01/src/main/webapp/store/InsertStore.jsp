@@ -64,7 +64,8 @@
 			- <input class="snumber" name="areacode2" type="number" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 			- <input class="snumber" name="areacode3" type="number" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"><br>
 		</div>
-			
+		
+		<%//TODO 가게 소개 20글자로 제한.%>
 		<div id="content">
 			가게 소개 <textarea name="content" rows="2" cols="10"></textarea><br>
 		</div>

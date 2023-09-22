@@ -368,6 +368,55 @@ public class StoreDao extends SuperDao {
 		}
 		return cnt;
 	}
+	//가게 메뉴에서 보기 위한 가게 조회
+	public Store getStorebyStno(int stno) throws Exception {
+		Store bean = new Store();
+
+		String sql = "select * from store where stno=? ";
+
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setInt(1, stno);
+
+		ResultSet rs = pstmt.executeQuery();
+
+		if (rs.next()) {
+			bean.setStno(rs.getInt("stno"));
+			bean.setId(rs.getString("id"));
+			bean.setStname(rs.getString("stname"));
+			bean.setFee(rs.getInt("fee"));
+			bean.setCategory(rs.getString("category"));
+			bean.setStplace(rs.getString("stplace"));
+			bean.setSttel(rs.getString("sttel"));
+			bean.setContent(nullChecking(rs.getString("content")));
+			bean.setCeofile(rs.getString("ceofile"));
+			bean.setCeono(rs.getString("ceono"));
+			bean.setSttime(rs.getString("sttime"));
+			bean.setStlogo(rs.getString("stlogo"));
+			bean.setRedday(nullChecking(rs.getString("redday")));
+			bean.setBtime(rs.getInt("btime"));
+
+		}
+
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+		return bean;
+	}
+	//null값 반환 방지
+	private String nullChecking(String string) {
+		if(string == null) {
+			string = "　";
+		}
+		return string;
+	}
 	
 	//파일 교체 메소드
 	public String changeFile(String newfileName, String oldfileName) {

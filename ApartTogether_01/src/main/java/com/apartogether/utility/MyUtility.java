@@ -36,6 +36,7 @@ public class MyUtility {
 	}
 	
 	public static MultipartRequest getMultipartRequest(HttpServletRequest request, String uploadPath) {
+		System.out.println("업로드 경로 : "+ uploadPath);
 		// 이미지 업로드에 필요한 멀티 파트 객체를 생성하여 반환 합니다.
 		MultipartRequest mr = null ;
 		int maxPostSize = 10 * 1024 *1024 ;
@@ -75,7 +76,6 @@ public class MyUtility {
 				e.printStackTrace();
 			}
 		}
-		
 		return map;
 	}	
 	
@@ -100,7 +100,6 @@ public class MyUtility {
 				e2.printStackTrace();
 			}
 		}
-		
 		System.out.println("prop.toString() : " + prop.toString());
 		
 		return prop;
@@ -125,7 +124,6 @@ public class MyUtility {
 				e.printStackTrace();
 			}
 		}
-		
 		return map;
 	}
 	
@@ -146,11 +144,9 @@ public class MyUtility {
 				System.out.println(deleteFile + " file delete success");
 			}
 		}
-		
 	}
 
 	public static void deleteOldProfileImageFile(String uploadImage, MultipartRequest mr) {
 		
 	}
-
 }

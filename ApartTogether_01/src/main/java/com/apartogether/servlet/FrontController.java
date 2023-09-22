@@ -19,7 +19,7 @@ import com.oreilly.servlet.MultipartRequest;
 
 
 @WebServlet(
-		urlPatterns = { "/Apartogether" }, //컨트롤러 경로 수정 바람.
+		urlPatterns = { "/Apartogether" },
 		initParams = {  
 				@WebInitParam(name = "todolist", value = "/WEB-INF/todolist.txt")
 		})
@@ -27,12 +27,8 @@ public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	// 초기화 파라미터 관련 변수
-	private String txtSetting = null ;
 	private String todolist = null ;
 
-	// map for setting.txt file
-	private Map<String, String> settingMap = null ;
-		
 	// map for todolist.txt file
 	private Map<String, SuperController> todolistMap = null ;
 	
@@ -71,7 +67,7 @@ public class FrontController extends HttpServlet {
 					MyUtility.deleteFile(oldFile, newFile, mr, uploadImage);	
 				}
 				if(command.equals("meUpdate")) {
-//					 구현 안됨
+					//구현 안됨
 					MyUtility.deleteOldProfileImageFile(uploadImage, mr);
 				}
 				
@@ -121,19 +117,13 @@ public class FrontController extends HttpServlet {
 		
 		String todolistFile = application.getRealPath(todolist); // 실제 위치한 전체 경로 (C드라이브 부터)
 		System.out.println("todolistFile is [" + todolistFile + "]");
-		
 				
 		this.todolistMap = MyUtility.getTodolistMap(todolistFile); // todolist 읽어서 Map에 저장 (String, Controller) 
 		System.out.println("todolist file element size = [" + todolistMap.size() + "]");
 		
 		//이미지 파일 업로드 경로
-<<<<<<< HEAD
 		uploadImage = application.getRealPath("uploadStoreImage");
 		File file = new File(uploadImage);
-=======
-		uploadImage = application.getRealPath("upload"); // upload 폴더의 실제 경로
-		File file = new File(uploadImage); // file 객체 생성 (upload 폴더 경로)
->>>>>>> origin/LISU_member
 		
 		//파일 유효성 검사 후, 존재하지 않으면 디렉터리 생성
 		if(!file.exists()) {

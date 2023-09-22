@@ -65,6 +65,6 @@ public class StoreInsertController extends SuperClass{
 		}
 
 		//등록후 메인으로 이동
-		//super.gotoPage("common/home.jsp");
+		super.gotoPage("common/home.jsp");
 	}
 }

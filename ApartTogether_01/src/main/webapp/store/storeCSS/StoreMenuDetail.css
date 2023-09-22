@@ -3,10 +3,11 @@ body{
 	overflow: auto;
 }
 #stname{
-	position: relative;
+
 	font-weight: bold;
 	font-size: 60px;
-	left: 100px;
+	position: relative;
+	left: 50px;
 	bottom: 50px;
 }
 /*주문버튼*/
@@ -112,5 +113,11 @@ body{
 #menu-price{
 	font-size: 30px;
 	font-weight: bold;
+}
+.rounded-pill{
+	font-size: 20px;
+	position: relative;
+	bottom: 65px;
+	left: 30px;
 }
 
