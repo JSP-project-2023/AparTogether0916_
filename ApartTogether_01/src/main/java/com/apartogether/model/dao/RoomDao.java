@@ -84,8 +84,7 @@ public class RoomDao extends SuperDao{
 	public int GetTotalRecordCount() throws Exception {
 		// 테이블의 총 행개수를 구합니다.
 		String sql = " select count(*) as cnt from room ro" ;
-		sql += " inner join room_status rs on ro.rommno = rs.roomno";
-		sql += " where rs.ready = 'ready'";
+		
 		
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
@@ -115,16 +114,15 @@ public class RoomDao extends SuperDao{
 		// 테이블의 총 행개수를 구합니다.
 		String sql = " select count(*) as cnt from room ro" ;
 		sql += " inner join store st ON ro.stno = st.stno";
-		sql += " inner join room_status rs on ro.roomno = rs.roomno";
-		sql += " where rs.ready = 'ready'";
+
 		
 		if (mode != null && !mode.equals("all")) { // 괄호 열기
 		    if (mode.equals("category")) {
-		        sql += " and st." + mode + " LIKE '%" + keyword + "%' ";
+		        sql += " where st." + mode + " LIKE '%" + keyword + "%' ";
 		    }  else if (mode.equals("stname")) {
-		        sql += " and st." + mode + " LIKE '%" + keyword + "%' ";
+		        sql += " where st." + mode + " LIKE '%" + keyword + "%' ";
 		    } else if (mode.equals("orderplace")) {
-		        sql += " and ro." + mode + " LIKE '%" + keyword + "%' ";
+		        sql += " where ro." + mode + " LIKE '%" + keyword + "%' ";
 		    }
 		} 
 		

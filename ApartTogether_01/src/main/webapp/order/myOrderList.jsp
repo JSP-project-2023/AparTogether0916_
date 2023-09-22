@@ -46,7 +46,7 @@
 					<td>${bean.stlogo}<br/>${bean.stname}</td>
 					<td>${bean.menuname}</td>
 					<td>${bean.qty}</td>
-					<td>${bean.price}</td>
+					<td>${bean.price * bean.qty}</td>
 					
 				</tr>					
 				</c:forEach>
