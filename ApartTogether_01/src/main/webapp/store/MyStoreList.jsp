@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="./../common/common.jsp"%>
-<%
-	session.setAttribute("logInfoId", "uiui");
-	session.setAttribute("logInfoName", "김오잉");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,7 +88,7 @@
 	/*  가게 삭제 시 confirm 창 노출 - Yes 클릭 시 Delete 실행  */
 	function deleteStore(storeno) {
 		if (confirm('내 가게를 삭제하면 모든 가게 정보가 지워집니다.\n삭제하시겠습니까?')) {
-			location.href='<%=notWithFormTag%>stDelete&stno=' + storeno + '&id=${sessionScope.logInfoId}';
+			location.href='<%=notWithFormTag%>stDelete&stno=' + storeno + '&id=${sessionScope.loginfo.id}';
 		}
 	}
 	
@@ -169,7 +165,7 @@
 </head>
 <body>
 	<div class="container">
-		<h2 class="mainTitle">${sessionScope.logInfoName}님의 가게 리스트</h2>
+		<h2 class="mainTitle">${sessionScope.loginfo.name}님의 가게 리스트</h2>
 
 		<table class="table table-borderless setSpace">
 			<thead>
@@ -228,6 +224,7 @@
 					</c:if>
 					<td>
 						<div class="card" style="width: 19rem;">
+							<%-- 사용자가 볼 Detail 화면 링크 --%>
 							<a class="removeUnderLine" href=""> <%-- <%=notWithFormTag%>storeDetail&stno=${myStoreList.stno}${requestScope.pageInfo.flowParameter} --%>
 								<img class="card-img-top" alt="${myStoreList.stname}" src="upload/${myStoreList.stlogo}">
 								
