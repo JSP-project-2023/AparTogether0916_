@@ -35,9 +35,9 @@ public class MenuDao extends SuperDao {
 		return cnt;
 	}
 	
-//	전체 메뉴 가져오기 - stno 해당하는 값 찾아서
+//	전체 메뉴 가져오기
 	public List<Menu> selectAll(int stno) throws Exception {
-		String sql = "select * from menu where stno=? order by menuno";
+		String sql = "select * from menu where stno=?";
 		
 		conn = super.getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -57,7 +57,7 @@ public class MenuDao extends SuperDao {
 		return menuList;
 	}
 	
-	//	bean에 하나씩 값 셋팅
+//	bean에 하나씩 값 셋팅
 	private Menu getBeanData(ResultSet rs) throws Exception {
 		Menu menuBean = new Menu();
 		
@@ -68,7 +68,6 @@ public class MenuDao extends SuperDao {
 		menuBean.setPrice(rs.getInt("price"));
 		menuBean.setStno(rs.getInt("stno"));
 		
-		System.out.println(menuBean);
 		return menuBean;
 	}
 }
