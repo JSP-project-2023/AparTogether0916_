@@ -223,7 +223,7 @@
 		<div class="col-lg-8">
 			<h2>회원 가입</h2>
 			<p>회원 가입하는 페이지 입니다.</p>
-			<form action="<%=withFormTag%>" method="post">
+			<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="command" value="meInsert">
 				
 				<div class="input-group" align="center">
