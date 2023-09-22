@@ -1,5 +1,7 @@
 package com.apartogether.controller.member;
 
+import java.sql.SQLIntegrityConstraintViolationException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -65,7 +67,13 @@ public class MemberInsertController extends SuperClass {
 			}else { // 가입 성공
 				new MemberLoginController().doPost(request, response);
 			}
-		} catch (Exception e) {
+		} catch (SQLIntegrityConstraintViolationException e) { /* member - pk(id)중복 발생 시  */
+			e.printStackTrace();
+			System.out.println("pk중복 발생");
+			bean.setNickname("");
+			setAlertMessage(" 해당 아이디는 중복입니다.");
+			new MemberInsertController().doGet(request, response);/* 회원가입창으로 넘어감 */
+			} catch (Exception e) {
 			e.printStackTrace();
 			new MemberInsertController().doGet(request, response);
 		}

@@ -89,7 +89,7 @@
 	/image/background3.png">
 	<div class="container">
 		<h2><b>아이디 찾기</b></h2>
-		<p>회원 가입하는 페이지 입니다.</p>
+		<p>하기 정보를 입력해주세요.</p>
 		
 		<form action="<%=withFormTag%>" method="post">
 			<input type="hidden" name="command" value="meFindId">
@@ -113,8 +113,8 @@
 				<button type="submit" class="btn button-18 col-xs-6 col-sm-4 col-lg-2"> ID 확인 </button>
 			</div>
 			<div class="col-lg-3"></div> 
-<!-- 
-			인증번호 및 물음 미구현
+
+			<!-- 인증번호 및 물음 미구현
 			[st] 인증번호 전송
 			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
 				인증 번호 전송
@@ -126,8 +126,6 @@
       					Modal Header
       					<div class="modal-header">
       					
-        					<h3 class="modal-title">인증 번호 전송 완료!</h3>
-        						<button type="button" class="btn-close" data-bs-dismiss="modal" onclick="return validCheck();"></button>
       						</div>
 						
 						
@@ -146,7 +144,7 @@
   				</div>
 			</div>
 			[ed] 인증번호 전송
--->
+ -->
 		</form>
 	</div>
 </body>

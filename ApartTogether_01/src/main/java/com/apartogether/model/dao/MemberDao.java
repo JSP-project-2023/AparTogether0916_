@@ -2,6 +2,7 @@ package com.apartogether.model.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLIntegrityConstraintViolationException; /*pk값 중복처리일 경우 Exception 처리 */
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -307,7 +308,7 @@ public class MemberDao extends SuperDao {
 		conn = super.getConnection() ;
 		conn.setAutoCommit(false);
 		pstmt = conn.prepareStatement(sql);
-
+		
 		pstmt.setString(1, bean.getId());
 		pstmt.setString(2, bean.getMtype());
 		pstmt.setString(3, bean.getName());
@@ -320,7 +321,7 @@ public class MemberDao extends SuperDao {
 		pstmt.setString(10, bean.getProfile());
 		pstmt.setString(11, bean.getPasswordanswer());
 		pstmt.setString(12, bean.getPasswordquest());
-		
+			
 		cnt = pstmt.executeUpdate() ; 
 
 		conn.commit();

@@ -25,10 +25,16 @@
   			}
 		}
 		/* [st] popup 창으로 열기 */
-		function popup(){
+		function popupfindID(){
             var url = "<%=notWithFormTag%>meFindId";
             var name = "popup test";
-            var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+            var option = "width = 700, height = 500, top = 100, left = 200, location = no"
+            window.open(url, name, option);
+        }
+		function popupfindPW(){
+            var url = "<%=notWithFormTag%>meFindPassword";
+            var name = "popup test";
+            var option = "width = 700, height = 590, top = 100, left = 200, location = no"
             window.open(url, name, option);
         }
 		/* [ed] popup 창으로 열기 */
@@ -143,12 +149,9 @@
 					<button type="submit" class="btn button-wrapper button-18" >로그인</button><br/><br/>
 					<a type="button" href="<%=notWithFormTag%>meInsert" class="btn button-99">회원 가입</a>
 					|
-					<a type="button" href="<%=notWithFormTag%>meFindId" class="btn button-99">아이디 찾기</a>
+					<a type="popup" href="javascript:popupfindID()" class="btn button-99">아이디 찾기</a>
 					|	
-					<a type="button" href="<%=notWithFormTag%>meFindPassword" class="btn button-99">비밀번호 찾기</a>
-					||
-					<a type="popup" href="javascript:popup()" class="btn button-99">아이디 찾기(popup test)</a>
-					|	
+					<a type="popup" href="javascript:popupfindPW()" class="btn button-99">비밀번호 찾기</a>
 				</div>
 			</form>
 
