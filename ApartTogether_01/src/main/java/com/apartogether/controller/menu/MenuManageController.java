@@ -16,7 +16,10 @@ import com.apartogether.model.dao.StoreDao;
 
 public class MenuManageController extends SuperClass {
 	Member biz = null;
+//	List<List<Object>> obj = new ArrayList<List<Object>>();
 	List<Object> obj = new ArrayList<Object>();
+	List<Store> myStoreList = new ArrayList<Store>();
+	List<Menu> myMenuList = new ArrayList<Menu>();
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -27,9 +30,13 @@ public class MenuManageController extends SuperClass {
 		System.out.println("biz : " + biz);
 		
 		StoreDao stdao = new StoreDao();
+		MenuDao meDao = new MenuDao();
+		
 		
 		try {
-			List<Store> myStoreList = stdao.selectAll(id);
+			
+			myStoreList = stdao.selectAll(id);
+			myMenuList = meDao.selectAll(8);
 			
 			if (myStoreList.size() == 0) {
 				super.setAlertMessage("등록된 가게가 없습니다. 가게 등록 후 이용해주세요");
@@ -37,8 +44,14 @@ public class MenuManageController extends SuperClass {
 				
 			} else {
 				obj.add(myStoreList);
+				obj.add(myMenuList);
 				System.out.println("obj size : " + obj.size());
-				request.setAttribute("myStoreList", myStoreList);
+				System.out.println("obj[0] : " + obj.get(0));
+				System.out.println("obj[1] : " + obj.get(1));
+				
+				
+//				request.setAttribute("myStoreList", myStoreList);
+				request.setAttribute("obj", obj);
 				super.gotoPage("menu/MenuManage.jsp");
 			}
 			

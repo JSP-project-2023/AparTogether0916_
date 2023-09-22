@@ -21,12 +21,14 @@
 	<p>가게 선택 후 버튼을 클릭하여 메뉴를 관리하세요</p>
 	<div class="container">
 		<form action="<%=withFormTag%>" method="post">
+			<c:set var="myStoreList" value="${requestScope.obj.get(0)"/>
+			
 			<input type="hidden" name="command" value="menuManage">
-			<input type="hidden" name="bizid" value="${requestScope.myStoreList[0].id}">
-			<br>${requestScope.myStoreList}
+<%-- 			<input type="hidden" name="bizid" value="${requestScope.myStoreList[0].id}"> --%>
+<%-- 			<br>${requestScope.obj[1]} --%>
 			<select name="stno">
 				<option value="-1">가게를 선택해주세요
-				<c:forEach var="myStList" items="${requestScope.myStoreList}">
+				<c:forEach var="myStList" items="${myStoreList}">
 					<option value="${myStList.stno}">${myStList.stname}
 				</c:forEach>
 			</select>
@@ -36,7 +38,7 @@
 		</form>
 	</div>
 	
-	<c:if test="${requestScope.myMenuList ne null}">
+	<c:if test="${requestScope.myMenuList[1] ne null}">
 		<div class="menu-container">
 			<!-- 메뉴1개 들어가야될 공간 시작-->
 			<c:forEach var="menuList" items="${requestScope.myMenuList}">
