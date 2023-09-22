@@ -18,28 +18,14 @@ public class MenuManageController extends SuperClass {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doGet(request, response);
 		
-		Member biz = (Member) session.getAttribute("loginfo");
-		String id = biz.getId();
-		
-		System.out.println("biz : " + biz);
-		
-		StoreDao stdao = new StoreDao();
-		
 		try {
-			List<Store> myStoreList = stdao.selectAll(id);
-			
-			if (myStoreList.size() == 0) {
-				super.setAlertMessage("등록된 가게가 없습니다. 가게 등록 후 이용해주세요");
-				new HomeController().doGet(request, response);
-				
-			} else {
-				request.setAttribute("myStoreList", myStoreList);
-				super.gotoPage("menu/MenuManage.jsp");
-			}
+			this.dddd(request, response);
+			super.gotoPage("menu/MenuManage.jsp");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
 	
 	@Override
@@ -57,12 +43,34 @@ public class MenuManageController extends SuperClass {
 				return;
 				
 			} else {
+				this.dddd(request, response);
+				
 				List<Menu> menuList = meDao.selectAll(stno); // stno 해당하는 값 찾아서 전체 메뉴 가져오기
 				request.setAttribute("myMenuList", menuList);
 				super.gotoPage("menu/MenuManage.jsp");
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+	
+	private void dddd (HttpServletRequest request, HttpServletResponse response) throws Exception {
+		Member biz = (Member) session.getAttribute("loginfo");
+		String id = biz.getId();
+		System.out.println("리퀘스트 메소드 : " + request.getMethod());
+		System.out.println("biz : " + biz);
+		
+		StoreDao stdao = new StoreDao();
+		
+		List<Store> myStoreList = stdao.selectAll(id);
+		
+		if (myStoreList.size() == 0) {
+			super.setAlertMessage("등록된 가게가 없습니다. 가게 등록 후 이용해주세요");
+			new HomeController().doGet(request, response);
+			
+		} else {
+			request.setAttribute("myStoreList", myStoreList);
 		}
 	}
 }

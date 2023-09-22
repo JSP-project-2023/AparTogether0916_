@@ -28,7 +28,7 @@
 			<!-- 가게 번호 -->
 			<input type="hidden" name="stno" value="${requestScope.stno}">
 			메뉴 이름 <input type="text" name="menuname" id="menuname"><br>
-			가격 <input type="text" name="price" id="price"><br>
+			가격 <input type="number" name="price" id="price"><br>
 			메뉴 이미지 <input type="file" name="menuimage" id="menuimage"><br>
 			메뉴 설명 <textarea name="menudetail" rows="5" cols="50"></textarea><br>
 			재료 | 기본옵션 <textarea name="detailPlus" rows="5" cols="50"></textarea>

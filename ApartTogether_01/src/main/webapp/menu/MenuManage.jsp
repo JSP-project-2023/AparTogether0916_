@@ -13,6 +13,28 @@
 	}
 </style>
 
+<script type="text/javascript">
+// 	가게별 전체 메뉴 리스트 출력
+	function allMenu(stno) {
+		$.ajax({
+			url: '<%=notWithFormTag%>menuManage',
+			type:'post',
+			data:'text',
+			
+			
+			
+			
+		});
+		
+		
+		
+		
+	}
+	
+	
+	
+</script>
+
 <title>메뉴 관리</title>
 </head>
 <body>
@@ -23,6 +45,7 @@
 		<form action="<%=withFormTag%>" method="post">
 			<input type="hidden" name="command" value="menuManage">
 			
+			
 			<select name="stno">
 				<option value="-1">가게를 선택해주세요
 				<c:forEach var="myStList" items="${requestScope.myStoreList}">
@@ -30,6 +53,7 @@
 				</c:forEach>
 			</select>
 			
+<%-- 			<button type="submit" onclick="allMenu(${myStList.stno});">가게 선택</button> --%>
 			<button type="submit">가게 선택</button>
 			<br>
 		</form>
