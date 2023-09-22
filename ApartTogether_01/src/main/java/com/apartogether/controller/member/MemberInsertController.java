@@ -34,21 +34,32 @@ public class MemberInsertController extends SuperClass {
 		bean.setBirth(mr.getParameter("birth"));
 		bean.setGender(mr.getParameter("gender"));
 		/* [st] 닉네임 랜덤 생성 */
-		bean.setNickname(mr.getParameter("nickname"));
+		//bean.setNickname(mr.getParameter("nickname"));
 
 		/* bean.setNickname(MemberDao.nName()); //동작 확인완료! */
 		
-		if (bean.getNickname() != "") { /* null값이 아닌 ""값을 가진다. */
-			bean.setNickname(mr.getParameter("nickname"));
-			setAlertMessage(bean.getName() + "님 환영합니다!");
-		} else {
+		// meInsertForm에서 멀티파트로 바꿨기 때문에 닉네임 생성부분을 수정했습니다.
+		// 수정내용 : != 를 .equels()식으로 수정했습니다. // 정상작동 확인했습니다.
+		if(mr.getParameter("nickname").equals("") ) {
 			bean.setNickname(MemberDao.RandomName());
 			setAlertMessage(bean.getNickname() + " 으로 닉네임이 랜덤 생성되었습니다. 환영합니다!");
+		}else  {
+			bean.setNickname(mr.getParameter("nickname"));
+			setAlertMessage(bean.getName() + "님 환영합니다!");
 		}
+			
+		
+//		if (mr.getParameter("nickname") != "") { /* null값이 아닌 ""값을 가진다. */
+//			bean.setNickname(mr.getParameter("nickname"));
+//			setAlertMessage(bean.getName() + "님 환영합니다!");
+//		} else {
+//			bean.setNickname(MemberDao.RandomName());
+//			setAlertMessage(bean.getNickname() + " 으로 닉네임이 랜덤 생성되었습니다. 환영합니다!");
+//		}
 		/* [ed] 닉네임 랜덤 생성 */
 		bean.setAddress(mr.getParameter("address") + " "
 				+ mr.getParameter("address_detail"));/* 주소(카카오API값) + 상세주소(사용자가 입력하는값) */
-		bean.setProfile(mr.getParameter("profile"));
+		bean.setProfile(mr.getFilesystemName("profile"));
 		bean.setPasswordanswer(mr.getParameter("passwordanswer"));
 		bean.setPasswordquest(mr.getParameter("passwordquest"));
 		

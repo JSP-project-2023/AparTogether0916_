@@ -102,7 +102,6 @@
 			<p>특정 회원에 대하여 정보를 수정하는 페이지 입니다.</p>
 			<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data" onsubmit="mtypeChangeCheck()">
 			
-<<<<<<< HEAD
 				<input type="hidden" name="command" value="meUpdate">
 				<%-- <input type="hidden" name="mtype" value="${requestScope.bean.mtype}"> --%>
 				<input type="hidden" id="oldmtype" name="oldmtype" value="${requestScope.bean.mtype}">
@@ -119,36 +118,8 @@
 							&nbsp;<input type="radio" id="mtype2" name="mtype" value="biz">사업자
 						</label>
 					</div>
-=======
-			<div class="input-group">
-				<span class="input-group-text col-md-2">닉네임</span>
-				<input class="form-control" type="text" id="nickname" name="nickname" value="${requestScope.bean.nickname }">				
-			</div>
-			<div class="input-group">
-				<span class="input-group-text col-md-2">프로필사진</span>
-				<img class="card-img-top  small_image rounded" alt="${requestScope.bean.profile}" 
-					         src="upload/${requestScope.bean.profile}"  >
-				<input class="form-control" type="file" id="profile" name="profile">
-				<input type="text" name="deleteProfile" value="${requestScope.bean.profile}" hidden>
-			</div>
-			
-			<div class="input-group" >
-				<span class="input-group-text">비밀 번호</span>
-				<input class="form-control" type="password" id="password" name="password" value="${requestScope.bean.password}">		
-			</div>
-			
-			<div class="input-group">
-				<span class="input-group-text">성별</span>
-				<div class="form-control">
-					<label class="radio-inline radio_gender"> 
-						&nbsp;<input type="radio" id="gender1" name="gender" value="male">남자
-					</label>
-					<label class="radio-inline radio_gender"> 
-						&nbsp;<input type="radio" id="gender2" name="gender" value="female">여자
-					</label>
->>>>>>> member_merge01
-				</div>
-			
+				</div>	
+
 				<div class="input-group">
 					<span class="input-group-text">아이디</span><!-- 수정불가항목 -->
 					<input disabled="disabled" class="form-control" type="text" id="fakeid" name="fakeid" value="${requestScope.bean.id}">				

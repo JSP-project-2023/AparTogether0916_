@@ -81,6 +81,10 @@ public class FrontController extends HttpServlet {
 					MyUtility.moveFolderProfileImage(uploadImage, uploadImageProfile, mr);
 				}
 				
+				if(command.equals("meInsert")) { // 회원가입
+					MyUtility.moveFolderProfileImage(uploadImage, uploadImageProfile, mr);
+				}
+				
 				// file upload object binding in request scope.
 				request.setAttribute("mr", mr); // 승급
 			}else{

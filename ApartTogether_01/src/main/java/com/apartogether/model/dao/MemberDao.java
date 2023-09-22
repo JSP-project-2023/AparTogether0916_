@@ -18,7 +18,7 @@ public class MemberDao extends SuperDao {
     // 회원정보 수정에 사용합니다. MemberUpdateController
 		System.out.println("상품 수정 빈 :\n" + bean);
 		PreparedStatement pstmt = null;
-		String sql = " update members set mtype = ? , name = ? ,  phone = ? , birth = ? , gender = ? , nickname = ? , address = ? , profile = ? , passwordanswer = ? , passwordquest = ? " ;
+		String sql = " update members set mtype = ? , name = ? ,  phone = ? , birth = ? , gender = ? , nickname = ? , address = ? , profile = ? , passwordanswer = ? , passwordquest = ?, password = ? " ;
 		sql += " where id = ? " ;
 		int cnt = -1 ;
 		
@@ -36,7 +36,8 @@ public class MemberDao extends SuperDao {
 		pstmt.setString(8, bean.getProfile());
 		pstmt.setString(9, bean.getPasswordanswer());
 		pstmt.setString(10, bean.getPasswordquest());
-		pstmt.setString(11, bean.getId());
+		pstmt.setString(11, bean.getPassword());
+		pstmt.setString(12, bean.getId());
 		
 		cnt = pstmt.executeUpdate();
 		conn.commit();
@@ -294,7 +295,7 @@ public class MemberDao extends SuperDao {
 
 	/* [InsertData] Member bean에 기록한 다음, 반환해 줍니다. */
 	public int InsertData(Member bean) throws Exception {
-		System.out.println(bean);
+		System.out.println("MD.InsertData : " + bean);
 
 		// Bean 객체 정보를 이용하여 데이터 베이스에 추가합니다.
 
