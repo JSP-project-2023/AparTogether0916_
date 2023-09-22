@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>vInsert title here</title>
+<title>Insert title here</title>
 </head>
 <body>
 <%
