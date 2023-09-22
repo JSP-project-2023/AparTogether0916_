@@ -9,7 +9,6 @@
 	<title>가게 주문 상세 화면</title>
 	</head>
 <body>
-	
 	<div class="store-container">
 	<div class="store-info">
 	<div class="store-body">

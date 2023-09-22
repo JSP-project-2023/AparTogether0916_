@@ -23,6 +23,11 @@
 		<input name="stno" value="1">
 		<button type="submit">상세보기</button>
 	</form>
+	
+	<form action="">
+		<input name="command" value="stDetail">
+	</form>
+	
 </body>
 </html>
  
