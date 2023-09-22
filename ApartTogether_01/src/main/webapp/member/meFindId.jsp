@@ -89,7 +89,7 @@
 	/image/background3.png">
 	<div class="container">
 		<h2><b>아이디 찾기</b></h2>
-		<p>회원 가입하는 페이지 입니다.</p>
+		<p>하기 정보를 입력해주세요.</p>
 		
 		<form action="<%=withFormTag%>" method="post">
 			<input type="hidden" name="command" value="meFindId">

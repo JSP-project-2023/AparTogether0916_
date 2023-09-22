@@ -30,6 +30,7 @@ public class MemberFindIdController extends SuperClass{
 		
 		MemberDao dao = new MemberDao() ;
 		Member bean = null ;
+		String gotopage = "gotopageID";/* meFindResult.jsp에서 출력값, 분기처리를 위한 변수 */
 		
 		try {
 			bean = dao.findId(name, phone, birth);
@@ -43,6 +44,7 @@ public class MemberFindIdController extends SuperClass{
 			}else { // 로그인 성공
 				request.setAttribute("bean", bean) ;
 				// session 영역에 나의 로그인 정보를 저장합니다.
+				request.setAttribute("gotopage", gotopage);/* meFindResult.jsp에서 출력값, 분기처리를 위한 변수 */
 				String result = bean.getId();
 				request.setAttribute("result", result);
 				super.setAlertMessage(bean.getName() + "님의 로그인 id는 " + result + " 입니다.") ;
