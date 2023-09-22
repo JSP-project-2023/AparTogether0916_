@@ -75,9 +75,6 @@ public class FrontController extends HttpServlet {
 					MyUtility.deleteOldProfileImageFile(uploadImage, mr);
 				}
 				
-//				if(command.equals("prUpdate")) {
-//					MyUtility.deleteOldImageFile(imageUploadWebPath, mr);
-//				}
 				// file upload object binding in request scope.
 				request.setAttribute("mr", mr); // 승급
 			}else{
