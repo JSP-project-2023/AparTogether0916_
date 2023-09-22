@@ -17,7 +17,6 @@
 		<button type="submit">가게 목록 보기</button>
 	</form>
 	
-<%-- 	<a class="dropdown-item" href="<%=notWithFormTag%>myStoreList&id=uiui">내 가게 보기 --%>
 	<form action="<%=withFormTag%>" method="get">
 		<!-- 아이디 히든으로 들어감. -->
 		<input name="command" type="text" value="myStoreList">

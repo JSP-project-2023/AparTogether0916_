@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Menu Insert</title>
+<title>메뉴 등록</title>
 
 <!-- 자바 스크립트 파일 불러오기 -->
 <script src="${pageContext.request.contextPath}/menu/menuJS/s.js"></script>

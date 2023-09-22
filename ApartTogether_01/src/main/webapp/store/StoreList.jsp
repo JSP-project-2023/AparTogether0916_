@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Store List</title>
+<title>가게 목록</title>
 <script type="text/javascript">
 
 	$(document).ready(function(){

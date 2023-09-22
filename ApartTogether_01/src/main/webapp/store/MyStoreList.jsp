@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>mystoreList</title>
+<title>내 가게 보기</title>
 <script type="text/javascript">
 
 	$(document).ready(function(){
@@ -297,7 +297,8 @@
 										</a>
 										
 										<%-- 링크 추후 확인 필요 --%>
-										<a id="deleteAnchor" class="btn btn-outline-success" href="<%=notWithFormTag%>menuInsert&stno=${myStoreList.stno}&stname=${myStoreList.stname}">
+										<a id="deleteAnchor" class="btn btn-outline-success" href="#">
+<%-- 										<%=notWithFormTag%>menuInsert&stno=${myStoreList.stno}&stname=${myStoreList.stname} --%>
 											메뉴수정
 										</a>
 										

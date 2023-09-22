@@ -21,7 +21,6 @@ import com.oreilly.servlet.MultipartRequest;
 @WebServlet(
 		urlPatterns = { "/Apartogether" }, //컨트롤러 경로 수정 바람.
 		initParams = {  
-				@WebInitParam(name = "txtSetting", value = "/WEB-INF/setting.txt"), 
 				@WebInitParam(name = "todolist", value = "/WEB-INF/todolist.txt")
 		})
 public class FrontController extends HttpServlet {
@@ -57,7 +56,6 @@ public class FrontController extends HttpServlet {
 			if(mr!=null) {
 				command = mr.getParameter("command") ;
 				
-<<<<<<< HEAD
 				if(command.equals("stUpdate")) {//가게 수정시 변경.
 					// 옛날 파일 있으면 삭제X, 파일을 교체했다면 삭제하고 업로드
 					//사업자 등록증
@@ -72,16 +70,14 @@ public class FrontController extends HttpServlet {
 					//파일삭제 유효성 검사
 					MyUtility.deleteFile(oldFile, newFile, mr, uploadImage);	
 				}
-=======
 				if(command.equals("meUpdate")) {
-					MyUtility.deleteOldProfileImageFile(imageUploadWebPath, mr);	
+//					 구현 안됨
+					MyUtility.deleteOldProfileImageFile(uploadImage, mr);
 				}
 				
-				if(command.equals("prUpdate")) {
-					MyUtility.deleteOldImageFile(imageUploadWebPath, mr);
-				}
-				
->>>>>>> member_merge01
+//				if(command.equals("prUpdate")) {
+//					MyUtility.deleteOldImageFile(imageUploadWebPath, mr);
+//				}
 				// file upload object binding in request scope.
 				request.setAttribute("mr", mr); // 승급
 			}else{
@@ -118,37 +114,14 @@ public class FrontController extends HttpServlet {
 	
 	public void init(ServletConfig config) throws ServletException {
 		// 프로그램에서 서블렛 호출 시 최초에 호출되는 메서드입니다.
-		this.txtSetting = config.getInitParameter("txtSetting");
-		System.out.println("FrontController.init :: txtSetting is [" + this.txtSetting + "]");
-		
 		this.todolist = config.getInitParameter("todolist"); // 프로젝트 내 todolist 위치한 경로 (WEB-INF)
 		System.out.println("todolist is [" + this.todolist + "]"); 	
 		
 		ServletContext application = config.getServletContext() ; // application Scope 사용위해 선언
 		
-<<<<<<< HEAD
 		String todolistFile = application.getRealPath(todolist); // 실제 위치한 전체 경로 (C드라이브 부터)
 		System.out.println("todolistFile is [" + todolistFile + "]");
-=======
-		String txtSettingFile = application.getRealPath(txtSetting);
-		System.out.println("txtSettingFile is [" + txtSettingFile + "]");
 		
-		String todolistFile = application.getRealPath(todolist);
-		System.out.println("todolistFile is [" + todolistFile + "]");
-		
-		this.settingMap = MyUtility.getSettingMap(txtSettingFile);
-		System.out.println("setting file element size = [" + settingMap.size() + "]");
-		
-		application.setAttribute("map", this.settingMap);
-		
-		// in setting.txt 파일 내의 uploadPath = upload 항목 참조 요망
-		// 이미지 업로드 경로를 	변수에 저장합니다.
-		String imsiPath =  settingMap.get("uploadPath");
-		if(imsiPath==null) {imsiPath = "image";}
-		
-		imageUploadWebPath =  application.getRealPath(imsiPath);
-		System.out.println("imageUploadWebPath is [" + imageUploadWebPath + "]");
->>>>>>> member_merge01
 				
 		this.todolistMap = MyUtility.getTodolistMap(todolistFile); // todolist 읽어서 Map에 저장 (String, Controller) 
 		System.out.println("todolist file element size = [" + todolistMap.size() + "]");
