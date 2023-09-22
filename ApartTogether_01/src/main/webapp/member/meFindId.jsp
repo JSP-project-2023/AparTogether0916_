@@ -114,8 +114,9 @@
 			</div>
 			<div class="col-lg-3"></div> 
 
-			<!-- [st] 인증번호 전송 -->
-			<button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+			<!-- 인증번호 및 물음 미구현
+			[st] 인증번호 전송
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
 				인증 번호 전송
 			</button>
 			The Modal
@@ -125,8 +126,6 @@
       					Modal Header
       					<div class="modal-header">
       					
-        					<h3 class="modal-title">인증 번호 전송 완료!</h3>
-        						<button type="button" class="btn-close" data-bs-dismiss="modal" onclick="return validCheck();"></button>
       						</div>
 						
 						
@@ -144,8 +143,8 @@
 				    </div>
   				</div>
 			</div>
-			<!-- [ed] 인증번호 전송 -->
-
+			[ed] 인증번호 전송
+ -->
 		</form>
 	</div>
 </body>

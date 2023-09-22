@@ -128,19 +128,21 @@ String notWithFormTag = appName + mappingName + "?command=";
 	color: grey;
 	font-family: 'Nanum Gothic';
 	padding-bottom: 19px;
-	vertical-align: middle;
-	display: block;
-    padding: auto;
-    font-weight: 600;
+	vertical-align: middle
+	justify-content: center;
+	position: relative;
+	cursor: pointer;
+	
 }
-
 
 .tips {
 	margin-top: 75px;
 	margin-left: 70px;
+	text-align: center;
+	vertical-align: middle
+	justify-content: center;
 	position: relative;
 	cursor: pointer;
-	font-weight: 600;
 	
 }
 </style>
@@ -265,5 +267,9 @@ String notWithFormTag = appName + mappingName + "?command=";
 	<%-- 보여준 Alert Box를 session 영역에서 제거합니다. --%>
 	<c:remove var="alertMessage" scope="session" />
 	<!--[ed] AlertBox - danger(red) -->
+	
+	
+	
+	
 </body>
 </html>

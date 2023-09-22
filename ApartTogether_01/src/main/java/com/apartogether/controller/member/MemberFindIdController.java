@@ -44,8 +44,9 @@ public class MemberFindIdController extends SuperClass{
 				request.setAttribute("bean", bean) ;
 				// session 영역에 나의 로그인 정보를 저장합니다.
 				String result = bean.getId();
+				request.setAttribute("result", result);
 				super.setAlertMessage(bean.getName() + "님의 로그인 id는 " + result + " 입니다.") ;
-				super.gotoPage(PREFIX + "meFindId.jsp");
+				super.gotoPage(PREFIX + "meFindResult.jsp");
 			}
 			
 		} catch (Exception e) {
