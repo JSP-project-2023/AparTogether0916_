@@ -1,6 +1,7 @@
 package com.apartogether.model.bean;
 
 public class Store {
+//	private Integer stno; // 가게 고유 코드
 	
 	//TODO 가게 고유 코드 Integer로 변경
 	private int stno; // 가게 고유 코드

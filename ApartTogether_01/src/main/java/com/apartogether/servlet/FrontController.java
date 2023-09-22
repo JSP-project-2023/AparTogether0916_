@@ -27,8 +27,12 @@ public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	// 초기화 파라미터 관련 변수
+	private String txtSetting = null ;
 	private String todolist = null ;
 
+	// map for setting.txt file
+	private Map<String, String> settingMap = null ;
+		
 	// map for todolist.txt file
 	private Map<String, SuperController> todolistMap = null ;
 	
@@ -41,7 +45,7 @@ public class FrontController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8"); // 한글 깨짐 방지
 		
 		// command Parameter : 컨트롤러 분기를 위한 핵심 파라미터 
-		String command = request.getParameter("command") ;
+		String command = request.getParameter("command") ; // input command에 적혀진 value값 불러오기
 		
 		if(command == null) {
 			
@@ -53,7 +57,7 @@ public class FrontController extends HttpServlet {
 				command = mr.getParameter("command") ;
 				
 				if(command.equals("stUpdate")) {//가게 수정시 변경.
-					//TODO 옛날 파일 있으면 삭제X, 파일을 교체했다면 삭제하고 업로드
+					// 옛날 파일 있으면 삭제X, 파일을 교체했다면 삭제하고 업로드
 					//사업자 등록증
 					String oldFile = mr.getParameter("ceofileUpdate");
 					String newFile = mr.getFilesystemName("ceofile");
@@ -66,6 +70,14 @@ public class FrontController extends HttpServlet {
 					//파일삭제 유효성 검사
 					MyUtility.deleteFile(oldFile, newFile, mr, uploadImage);	
 				}
+				if(command.equals("meUpdate")) {
+//					 구현 안됨
+					MyUtility.deleteOldProfileImageFile(uploadImage, mr);
+				}
+				
+//				if(command.equals("prUpdate")) {
+//					MyUtility.deleteOldImageFile(imageUploadWebPath, mr);
+//				}
 				// file upload object binding in request scope.
 				request.setAttribute("mr", mr); // 승급
 			}else{
@@ -101,21 +113,27 @@ public class FrontController extends HttpServlet {
 	}	
 	
 	public void init(ServletConfig config) throws ServletException {
-		
-		this.todolist = config.getInitParameter("todolist");
+		// 프로그램에서 서블렛 호출 시 최초에 호출되는 메서드입니다.
+		this.todolist = config.getInitParameter("todolist"); // 프로젝트 내 todolist 위치한 경로 (WEB-INF)
 		System.out.println("todolist is [" + this.todolist + "]"); 	
 		
-		ServletContext application = config.getServletContext() ;
+		ServletContext application = config.getServletContext() ; // application Scope 사용위해 선언
 		
-		String todolistFile = application.getRealPath(todolist);
+		String todolistFile = application.getRealPath(todolist); // 실제 위치한 전체 경로 (C드라이브 부터)
 		System.out.println("todolistFile is [" + todolistFile + "]");
+		
 				
-		this.todolistMap = MyUtility.getTodolistMap(todolistFile);
+		this.todolistMap = MyUtility.getTodolistMap(todolistFile); // todolist 읽어서 Map에 저장 (String, Controller) 
 		System.out.println("todolist file element size = [" + todolistMap.size() + "]");
 		
 		//이미지 파일 업로드 경로
+<<<<<<< HEAD
 		uploadImage = application.getRealPath("uploadStoreImage");
 		File file = new File(uploadImage);
+=======
+		uploadImage = application.getRealPath("upload"); // upload 폴더의 실제 경로
+		File file = new File(uploadImage); // file 객체 생성 (upload 폴더 경로)
+>>>>>>> origin/LISU_member
 		
 		//파일 유효성 검사 후, 존재하지 않으면 디렉터리 생성
 		if(!file.exists()) {

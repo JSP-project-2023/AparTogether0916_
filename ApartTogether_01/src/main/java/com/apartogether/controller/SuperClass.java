@@ -39,7 +39,7 @@ public class SuperClass implements SuperController{
 		// todoCommmand : todolist.txt 파일에 명시에 커맨드 이름
 		// command 이름을 사용하여 FullName 웹 주소 형식으로 반환해 줍니다.
 		String appName = this.request.getContextPath() ;
-		String mappingName = "/Shopping" ;
+		String mappingName = "/Apartogether" ;
 		
 		String text = appName + mappingName + "?command=" + todoCommmand ;
 		return text ;
@@ -59,6 +59,11 @@ public class SuperClass implements SuperController{
 		// session 영역에서 "alertMessage"라는 이름으로 사용자에게 주의/오류/경고 문구 등을 띄워 줍니다.
 		// in common.jsp 파일 하단 참조
 		session.setAttribute("alertMessage", message);
+	}	 
+	
+	public void setSuccessAlertMessage(String message) {
+		// 성공 알럿
+		session.setAttribute("successAlertMsg", message);
 	}	 
 	
 	public void gotoPage(String gotoPage) {
