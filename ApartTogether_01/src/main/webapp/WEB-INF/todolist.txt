@@ -1,6 +1,7 @@
 # 구현해야 할 목록들입니다.
 #main 컨트롤러
 home=com.apartogether.controller.HomeController
+<<<<<<< HEAD
 #Store
 stList=com.apartogether.controller.store.StoreListController
 stInsert=com.apartogether.controller.store.StoreInsertController
@@ -11,3 +12,16 @@ myStoreList=com.apartogether.controller.store.MyStoreListController
 #Munu
 menuInsert=com.apartogether.controller.menu.MenuInsertController
 menuUpdate=com.apartogether.controller.menu.MenuUpdateController
+=======
+# member 회원(biz / user / admin)
+meInsert=com.apartogether.controller.member.MemberInsertController
+meLogin=com.apartogether.controller.member.MemberLoginController
+meLogout=com.apartogether.controller.member.MemberLogoutController
+meFindId=com.apartogether.controller.member.MemberFindIdController
+meFindPassword=com.apartogether.controller.member.MemberFindPasswordController
+meDetail=com.apartogether.controller.member.MemberDetailController
+meList=com.apartogether.controller.member.MemberListController
+meUpdate=com.apartogether.controller.member.MemberUpdateController
+meDelete=com.apartogether.controller.member.MemberDeleteController
+meResetPassword=com.apartogether.controller.member.MemberResetPasswordController
+>>>>>>> member_merge01
