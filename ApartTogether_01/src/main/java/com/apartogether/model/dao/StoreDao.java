@@ -3,12 +3,11 @@ package com.apartogether.model.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
+import com.apartogether.model.bean.Menu;
 import com.apartogether.model.bean.Store;
 import com.apartogether.utility.PagingStore;
-import com.oreilly.servlet.MultipartRequest;
 
 public class StoreDao extends SuperDao {
 	int cnt = -1;
@@ -387,7 +386,7 @@ public class StoreDao extends SuperDao {
 			bean.setStname(rs.getString("stname"));
 			bean.setFee(rs.getInt("fee"));
 			bean.setCategory(rs.getString("category"));
-			bean.setStplace(rs.getString("stplace"));
+			bean.setStplace(splitAddr(rs.getString("stplace")));
 			bean.setSttel(rs.getString("sttel"));
 			bean.setContent(nullChecking(rs.getString("content")));
 			bean.setCeofile(rs.getString("ceofile"));
@@ -410,6 +409,11 @@ public class StoreDao extends SuperDao {
 		}
 		return bean;
 	}
+	//주소 분리 메소드
+	private String splitAddr(String address) {
+		return address.replace("Δ", " ");
+	}
+	
 	//null값 반환 방지
 	private String nullChecking(String string) {
 		if(string == null) {
@@ -428,5 +432,49 @@ public class StoreDao extends SuperDao {
 			// 등록된 파일을 리턴
 			return newfileName;
 		}	
+	}
+	
+	//가게번호로 가게 메뉴 목록을 가져옴.
+	public List<Menu> getMenubyStno(int stno) throws SQLException {
+		String sql = " select * from menu where stno=? order by menuno";
+		
+		List<Menu> lists = new ArrayList<Menu>();
+		Menu bean = null;
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setInt(1, stno);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			bean = getMenuData(rs);
+			lists.add(bean);
+		}
+		
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+		return lists;
+	}
+	
+	//가게 객체로 변환
+	private Menu getMenuData(ResultSet rs) throws SQLException {
+		Menu bean = new Menu();
+		
+		bean.setMenuno(rs.getInt("menuno"));
+		bean.setStno(rs.getInt("stno"));
+		bean.setMenuname(rs.getString("menuname"));
+		bean.setPrice(rs.getInt("price"));
+		bean.setMenuimage(rs.getString("menuimage"));
+		bean.setMenudetail(rs.getString("menudetail"));
+	
+		return bean;
 	}
 }

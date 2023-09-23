@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 
 <!-- 자바 스크립트 파일 불러오기 -->
-<script src="${pageContext.request.contextPath}/store/storeJS/s.js"></script>
+<script src="${pageContext.request.contextPath}/store/storeJS/InsertStoreJS.js"></script>
 <!-- 주소 입력api -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- css파일 불러오기 -->
@@ -27,7 +27,7 @@
 		<input type="hidden" value="가게 고유번호(시퀀스)" name="stno" placeholder="회원아이디"><br>
 		
 		<div id="ctname">
-			가게이름 <input name="stname" type="text"><br>
+			가게 이름 <input name="stname" type="text" placeholder="가게 이름"><br>
 		</div>
 		
 		<div id="category">
@@ -46,8 +46,8 @@
 			
 		<div id="stplace">
 			<%--주소 api사용하여 주소지 받아옴.--%>
-			가게주소 <input id="stplace1" name="stplace1" type="text"><br>
-		가게상세 주소 <input id="stplace2" name="stplace2" type="text"><br>
+			가게 주소 <input id="stplace1" name="stplace1" type="text" placeholder="가게 주소"><br>
+		가게 상세 주소 <input id="stplace2" name="stplace2" type="text" placeholder="가게 상세 주소"><br>
 		</div>
 		
 		<div id="storeNumber">
@@ -67,7 +67,7 @@
 		
 		<%//TODO 가게 소개 20글자로 제한.%>
 		<div id="content">
-			가게 소개 <textarea name="content" rows="2" cols="10"></textarea><br>
+			가게 소개 <textarea name="content" rows="2" cols="20" maxlength="20" placeholder="가게소개를 입력해주세요."></textarea><br>
 		</div>
 		
 		<div id="ceofile">
@@ -75,7 +75,7 @@
 		</div>
 		
 		<div id="shoptime">
-			가게운영시간
+			가게 운영시간
 				<!-- 시작시간 -->
 				<select name="startShopAmPm">
 					<option value="am">오전</option>
@@ -146,19 +146,20 @@
 		</div>
 			
 		<div id="stlogo">
+			<span id="recommend-logo-size"> * 권장 크기 : 360*360 </span><br>
 			가게로고 <input name="stlogo" type="file"><br>
 		</div>
 		
 		<div id="fee">
-			배달비 <input name="fee" type="number"><br>
+			배달비 <input name="fee" type="number" placeholder="배달비"><br>
 		</div>
 		
 		<div id="redday">
-			휴무일 <input name="redday" type="text"><br>
+			휴무일 <input name="redday" type="text" placeholder="예시) 매주 월요일"><br>
 		</div>
 		
 		<div id="ceono">
-			사업자 등록번호 <input name="ceono" type="text"><br>
+			사업자 등록번호 <input name="ceono" type="text" placeholder="사업자 등록번호"><br>
 		</div>
 			
 		<div id="buttons">

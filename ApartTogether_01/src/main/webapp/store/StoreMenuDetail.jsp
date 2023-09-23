@@ -87,19 +87,20 @@
 	<hr style="margin-top: 100px;" size="10px">
 		<div class="menu-container">
 		<!-- 메뉴1개 들어가야될 공간 시작-->
-		<div class="one-menu-box"> 
-			<div class="memu-img">
-				<img alt="이미지" src="${pageContext.request.contextPath}/uploadStoreImage/스크린샷1.png" border="1px">
-			</div>
-			<div class="menu-details">
-				<span id="menu-title">수제돈정식 (등심1 + 치즈1 + 치킨1)</span>
-				<span id="menu-exp">수제 돈까스 모둠 (양이 많아요)</span>
-				<span id="menu-igrnt">등심1장 + 치즈1장 + 치킨1장</span>
-				<span id="menu-price">12,900원</span>
-			</div>
-		</div>			
-		<!-- 메뉴 들어가야될 공간 끝 -->
-		
+			<c:forEach var="menubean" items="${requestScope.menuBean}">
+				<div class="one-menu-box">
+					<div class="memu-img">
+						<img alt="이미지" src="${pageContext.request.contextPath}/uploadStoreImage/${menubean.menuimage}" border="1px">
+					</div>
+					<div class="menu-details">
+						<span id="menu-title">${menubean.menuname}</span> 
+						<span id="menu-exp">${menubean.menudetail}</span>
+						<span id="menu-igrnt">${menubean.menudetail}</span>
+						<span id="menu-price">${menubean.price}원</span>
+					</div>
+				</div>
+			</c:forEach>
+			<!-- 메뉴 들어가야될 공간 끝 -->
 		</div>
 	</div>
 	

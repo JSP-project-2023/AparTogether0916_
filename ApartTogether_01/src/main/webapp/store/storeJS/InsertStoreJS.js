@@ -50,6 +50,7 @@ function validation(){
 			$("input[name=ceono]").focus();
 			return false;
 		}
+		
 		//사업자 등록증 유효성 검사
 		var ceofile = $('input[name=ceofile]').val();
 		var isCheck = false;
@@ -92,7 +93,6 @@ function validation(){
 			$("input[name=areacode2]").focus();
 			return false;
 		}
-			
 	}
 
 $(document).ready(function() {
