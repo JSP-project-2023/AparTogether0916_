@@ -13,28 +13,6 @@
 	}
 </style>
 
-<script type="text/javascript">
-// 	가게별 전체 메뉴 리스트 출력
-	function allMenu(stno) {
-		$.ajax({
-			url: '<%=notWithFormTag%>menuManage',
-			type:'post',
-			data:'text',
-			
-			
-			
-			
-		});
-		
-		
-		
-		
-	}
-	
-	
-	
-</script>
-
 <title>메뉴 관리</title>
 </head>
 <body>
@@ -45,7 +23,6 @@
 		<form action="<%=withFormTag%>" method="post">
 			<input type="hidden" name="command" value="menuManage">
 			
-			
 			<select name="stno">
 				<option value="-1">가게를 선택해주세요
 				<c:forEach var="myStList" items="${requestScope.myStoreList}">
@@ -53,26 +30,38 @@
 				</c:forEach>
 			</select>
 			
-<%-- 			<button type="submit" onclick="allMenu(${myStList.stno});">가게 선택</button> --%>
 			<button type="submit">가게 선택</button>
 			<br>
 		</form>
 	</div>
 	
+	<!-- 해당 가게에 등록된 메뉴가 있다면 리스트로 출력 -->
 	<c:if test="${requestScope.myMenuList ne null}">
 		<div class="menu-container">
 			<!-- 메뉴1개 들어가야될 공간 시작-->
-			<input type="hidden" name="bizid" value="${requestScope.myStoreList.id}">
+			<div class="menu-control">
+				<form action="" method="get">
+					<input type="hidden" name="command" value="menuInsert">
+					<input type="hidden" name="stno" value="${requestScope.getStno}">
+					<button type="submit">메뉴 추가</button>
+				</form>
+			</div>
+			
 			<c:forEach var="menuList" items="${requestScope.myMenuList}">
 				<div class="one-menu-box"> 
 					<div class="memu-img">
 						<img alt="이미지" src="${pageContext.request.contextPath}/upload/${menuList.menuimage}" border="1px">
 					</div>
+					
 					<div class="menu-details">
-						<span id="menu-title">${menuList.menuname}</span>
-						<span id="menu-exp">${menuList.menudetail}</span>
-<%-- 						<span id="menu-igrnt">${menuList.}</span> --%>
-						<span id="menu-price">${menuList.price}</span>
+						<span id="menu-title">${menuList.menuname}</span> <!-- 메뉴 이름 -->
+						<span id="menu-exp">${menuList.menudetail}</span> <!-- 메뉴 설명 -->
+						<span id="menu-price">${menuList.price}</span> <!-- 가격 -->
+					</div>
+					
+					<div class="menu-control">
+						<button>수정</button>
+						<button>삭제</button>
 					</div>
 				</div>
 			</c:forEach>

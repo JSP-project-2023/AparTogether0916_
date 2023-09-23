@@ -254,8 +254,6 @@ public class StoreDao extends SuperDao {
 		storeBean.setSttel(rs.getString("sttel")); // 가게 전화번호
 		storeBean.setSttime(rs.getString("sttime")); // 가게 운영 시간
 		
-		System.out.println(storeBean);
-		
 		return storeBean;
 	}
 

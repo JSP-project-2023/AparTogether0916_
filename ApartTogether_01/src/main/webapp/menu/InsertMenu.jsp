@@ -35,7 +35,7 @@
 			
 			<br>
 			<button type="submit">등록</button>
-			<a type="button" href="<%=notWithFormTag%>home">취소</a>
+			<button type="button" onclick="history.go(-1)">취소</button>
 			<!-- 초기화 하기전에 컨펌창 출력 -->
 			<button type="reset">초기화</button>
 		</form>

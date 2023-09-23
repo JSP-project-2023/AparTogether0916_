@@ -10,6 +10,7 @@ import com.apartogether.model.bean.Menu;
 public class MenuDao extends SuperDao {
 	int cnt = -1;
 	
+//	메뉴 등록 - 이리수
 	public int InsertMenu(Menu menu) throws Exception {
 		System.out.println("InsertMenu()에 들어온 객체 : " + menu);
 		
@@ -35,7 +36,7 @@ public class MenuDao extends SuperDao {
 		return cnt;
 	}
 	
-//	전체 메뉴 가져오기
+//	전체 메뉴 가져오기 - 이리수
 	public List<Menu> selectAll(int stno) throws Exception {
 		String sql = "select * from menu where stno=?";
 		
@@ -57,7 +58,7 @@ public class MenuDao extends SuperDao {
 		return menuList;
 	}
 	
-//	bean에 하나씩 값 셋팅
+//	bean에 하나씩 값 셋팅 - 이리수
 	private Menu getBeanData(ResultSet rs) throws Exception {
 		Menu menuBean = new Menu();
 		
