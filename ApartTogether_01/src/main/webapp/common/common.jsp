@@ -44,23 +44,56 @@ String notWithFormTag = appName + mappingName + "?command=";
 <!-- for sweet alert -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
 	rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
 	rel="stylesheet">
 <script src="/js/sweetalert.js"></script>
 <style type="text/css">
+
+@font-face {
+    font-family: 'Giants-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Giants-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+ 	font-family: 'NanumSquareNeo-Variable';
+}
+
+.dropdown-toggle {
+	font-family: Giants-Bold;
+	font-weight: 400;
+}
+
+
 .alert-dismissible {
 	margin: 10px;
 }
 
 .navbar {
-	font-family: "Black Han Sans";
 	text-align: center;
 }
 
@@ -74,6 +107,7 @@ String notWithFormTag = appName + mappingName + "?command=";
 }
 
 .navbar-brand {
+	font-family: "Black Han Sans";
 	margin-right: 150px;
 }
 
@@ -103,7 +137,7 @@ String notWithFormTag = appName + mappingName + "?command=";
 
 .dropdown-item {
 	font-size: 20px;
-	font-family: 'Nanum Gothic';
+/* 	font-family: 'Nanum Gothic'; */
 	text-align: left;
 }
 
@@ -119,12 +153,12 @@ String notWithFormTag = appName + mappingName + "?command=";
 	font-size: 25px;
 	text-decoration: none;
 	color: grey;
-	font-family: 'Nanum Gothic';
+/* 	font-family: 'Nanum Gothic'; */
 	padding-bottom: 19px;
 	vertical-align: middle;
 	display: block;
     padding: auto;
-    font-weight: 600;
+    font-weight: normal;
 }
 
 
