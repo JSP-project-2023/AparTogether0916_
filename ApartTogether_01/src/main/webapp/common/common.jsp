@@ -42,7 +42,8 @@ String notWithFormTag = appName + mappingName + "?command=";
 <!-- 이 파일은 모든 문서에서 공용으로 참조할 파일입니다.  -->
 <!-- 자바 관련 변수 및 패키지 임포트, 네비게이션 바, jstl 등등 -->
 <!-- for sweet alert -->
-
+<!-- css파일 불러오기 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/common.css" type="text/css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,238 +56,124 @@ String notWithFormTag = appName + mappingName + "?command=";
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
 	rel="stylesheet">
+
+
 <script src="/js/sweetalert.js"></script>
-<style type="text/css">
-
-@font-face {
-    font-family: 'Giants-Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Giants-Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'NanumSquareNeo-Variable';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
-* {
- 	font-family: 'NanumSquareNeo-Variable';
-}
-
-.dropdown-toggle {
-	font-family: Giants-Bold;
-	font-weight: 400;
-}
 
 
-.alert-dismissible {
-	margin: 10px;
-}
-
-.navbar {
-	text-align: center;
-}
-
-.bigsize {
-	font-size: 80px;
-	margin-right: 150px;
-	text-decoration: none;
-	color: black;
-	margin-top: 10px
-	
-}
-
-.navbar-brand {
-	font-family: "Black Han Sans";
-	margin-right: 150px;
-}
-
-.nav-item {
-	font-size: 45px;
-	margin-top: 15px;
-	margin-right: 30px;
-	font-family: 'Nanum Gothic';
-	font-weight: bold;
-	text-align: center;
-}
-
-#margin {
-	margin: 50px;
-	margin-left: 150px;
-	margin-right: 150px;
-}
-
-.body {
-	align-content: center
-}
-
-.navbar-logo {
-	margin-right: 25px;
-	font-size: 15px
-}
-
-.dropdown-item {
-	font-size: 20px;
-/* 	font-family: 'Nanum Gothic'; */
-	text-align: left;
-}
-
-#small {
-	margin-top: -16px;
-}
-
-#behind {
-	display: none;
-}
-
-.small-tip {
-	font-size: 25px;
-	text-decoration: none;
-	color: grey;
-/* 	font-family: 'Nanum Gothic'; */
-	padding-bottom: 19px;
-	vertical-align: middle;
-	display: block;
-    padding: auto;
-    font-weight: normal;
-}
-
-
-.tips {
-	margin-top: 75px;
-	margin-left: 70px;
-	position: relative;
-	cursor: pointer;
-	font-weight: 600;
-	
-}
-</style>
 </head>
 
 <body>
 	type=${sessionScope.loginfo.mtype}
-	<header id="margin">
-		<nav class="navbar navbar-expand-lg">
-			<div class="container-fluid">
-				<a class="navbar-logo" href="#">로고 이미지</a> <a
-					class=" navbar-brand bigsize" href="<%=notWithFormTag%>home">APTogether</a>
-				
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				
-				<div class="collapse navbar-collapse" id="collapsibleNavbar">
-					<ul class="navbar-nav">
-						
-						<!-- member section -->
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">가게</a>
-							
-							<ul class="dropdown-menu">
-								<li>
-									<a class="dropdown-item"href="<%=notWithFormTag%>stList">가게 목록</a>
-								</li>
-
-								<c:if test="${whologin eq 2}">
-									<li>
-										<a class="dropdown-item" href="<%=notWithFormTag%>myStoreList&id=${sessionScope.loginfo.id}">내 가게 관리</a>
-									</li>
-									<li>
-										<a class="dropdown-item" href="<%=notWithFormTag%>menuManage">메뉴 관리</a>
-									</li>
-								</c:if>
-							</ul>
-						</li>
-						
-						<!-- board section -->
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">주문</a>
-							<ul class="dropdown-menu">
-								<c:if test="${whologin ne 0}">
-									<li><a class="dropdown-item"
-										href="<%=notWithFormTag%>myorList">주문내역</a></li>
-								</c:if>
-								<li><a class="dropdown-item"
-									href="<%=notWithFormTag%>roList">모집 중인 주문</a></li>
-							</ul></li>
-
-						<!-- product section -->
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown">이벤트</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item"
-									href="<%=notWithFormTag%>prList">이벤트(href : null)</a></li>
-								<c:if test="${whologin eq 1}">
-									<li><a class="dropdown-item"
-										href="<%=notWithFormTag%>prInsert">이벤트 등록(href : null)</a></li>
-								</c:if>
-							</ul></li>
-
-						<!-- view section -->
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown">커뮤니티</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item"
-									href="<%=notWithFormTag%>vwList">투표(href : null)</a></li>
-								<c:if test="${whologin eq 1}">
-									<li><a class="dropdown-item"
-										href="<%=notWithFormTag%>prInsert">투표 등록(href : null)</a></li>
-								</c:if>
-							</ul></li>
-							
-						<!-- [st] 로그인 섹션 -->							
-						<c:if test="${whologin eq null }">
-							<li class="tips"><a class="small-tip"
-								href="<%=notWithFormTag%>meLogin">로그인</a></li>
-							<li class="tips"><a class="small-tip"
-								href="<%=notWithFormTag%>meInsert">회원 가입</a></li>
-
-						</c:if>
-						
-						<c:if test="${whologin eq 1 }">
-							<li class="tips"><a class="small-tip">주인님 !</a></li>
-							<li class="tips"><a class="small-tip"
-								href="<%=notWithFormTag%>meList">회원 목록</a></li>
-							<li class="tips"><a class="small-tip"
-								href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
-						</c:if>
-						
-						<c:if test="${whologin eq 2 }">
-							<li class="tips"><a class="small-tip">${sessionScope.loginfo.name}
-									사장님 </a></li>
-							<li class="tips"><a class="small-tip"
-								href="<%=notWithFormTag%>meDetail">마이페이지</a></li>
-							<li class="tips"><a class="small-tip"
-								href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
-						</c:if>
-						<c:if test="${whologin eq 3 }">
-							<li class="tips"><a class="small-tip">${sessionScope.loginfo.name}님
-							</a></li>
-							<li class="tips"><a class="small-tip"
-								href="<%=notWithFormTag%>meDetail">마이페이지</a></li>
-							<li class="tips"><a class="small-tip"
-								href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
-						</c:if>
-						<!-- [ed] 로그인 섹션 -->
-					</ul>
-				</div>
+	
+	<header>
+		<nav class="navbar">
+		
+		<!-- 로고 이미지 -->
+			<div class="navbar-logo">
+				<a href="<%=notWithFormTag%>home"><img alt="logoImg" src="${pageContext.request.contextPath}/image/logo.jpg"></a>
 			</div>
+			
+			<!-- 드롭박스 목록 -->
+			<ul class="navbar-nav">
+			
+				<!-- 가게 -->
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">가게</a>
+					
+					<ul class="dropdown-menu">
+						<li>
+							<a class="dropdown-item"href="<%=notWithFormTag%>stList">가게 목록</a>
+						</li>
+
+						<c:if test="${whologin eq 2}">
+							<li>
+								<a class="dropdown-item" href="<%=notWithFormTag%>myStoreList&id=${sessionScope.loginfo.id}">내 가게 관리</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="<%=notWithFormTag%>menuManage">메뉴 관리</a>
+							</li>
+						</c:if>
+					</ul>
+				</li>
+				
+				<!-- 주문 -->
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">주문</a>
+					<ul class="dropdown-menu">
+						<c:if test="${whologin ne 0}">
+							<li><a class="dropdown-item"
+								href="<%=notWithFormTag%>myorList">주문내역(href : null)</a></li>
+						</c:if>
+						<li><a class="dropdown-item"
+							href="<%=notWithFormTag%>roList">모집 중인 주문(href : null)</a></li>
+					</ul></li>
+
+				<!-- 이벤트 -->
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" role="button"
+					data-bs-toggle="dropdown">이벤트</a>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item"
+							href="<%=notWithFormTag%>prList">이벤트(href : null)</a></li>
+						<c:if test="${whologin eq 1}">
+							<li><a class="dropdown-item"
+								href="<%=notWithFormTag%>prInsert">이벤트 등록(href : null)</a></li>
+						</c:if>
+					</ul></li>
+
+				<!-- 투표게시판 -->
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" role="button"
+					data-bs-toggle="dropdown">커뮤니티</a>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item"
+							href="<%=notWithFormTag%>vwList">투표(href : null)</a></li>
+						<c:if test="${whologin eq 1}">
+							<li><a class="dropdown-item"
+								href="<%=notWithFormTag%>prInsert">투표 등록(href : null)</a></li>
+						</c:if>
+					</ul></li>
+					
+				<!-- [st] 로그인 섹션 -->							
+				<c:if test="${whologin eq null }">
+					<li class="tips"><a class="small-tip"
+						href="<%=notWithFormTag%>meLogin">로그인</a></li>
+					<li class="tips"><a class="small-tip"
+						href="<%=notWithFormTag%>meInsert">회원 가입</a></li>
+
+				</c:if>
+				
+				<c:if test="${whologin eq 1 }">
+					<li class="tips"><a class="small-tip">주인님 !</a></li>
+					<li class="tips"><a class="small-tip"
+						href="<%=notWithFormTag%>meList">회원 목록</a></li>
+					<li class="tips"><a class="small-tip"
+						href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
+				</c:if>
+				
+				<c:if test="${whologin eq 2 }">
+					<li class="tips"><a class="small-tip">${sessionScope.loginfo.name}
+							사장님 </a></li>
+					<li class="tips"><a class="small-tip"
+						href="<%=notWithFormTag%>meDetail">마이페이지</a></li>
+					<li class="tips"><a class="small-tip"
+						href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
+				</c:if>
+				<c:if test="${whologin eq 3 }">
+					<li class="tips"><a class="small-tip">${sessionScope.loginfo.name}님
+					</a></li>
+					<li class="tips"><a class="small-tip"
+						href="<%=notWithFormTag%>meDetail">마이페이지</a></li>
+					<li class="tips"><a class="small-tip"
+						href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
+				</c:if>
+			</ul>
 		</nav>
-		<hr id="small" />
 	</header>
+	
+	
+	
 	<!--[st] AlertBox - danger(red) -->
 	<c:if test="${not empty sessionScope.alertMessage}">
 		<%-- 주의/경고/오류 메세지 --%>
