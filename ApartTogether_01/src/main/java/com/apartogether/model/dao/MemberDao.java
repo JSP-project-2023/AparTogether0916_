@@ -411,16 +411,13 @@ public class MemberDao extends SuperDao {
 	public List<Member> getSameProfileName(String profile) throws Exception {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String dProfile = profile ;
-		System.out.println(">>>dProfile : " + dProfile);
-	
 		
 		String sql = " select * from members ";
 		sql += " where profile = ?";
 
 		conn = super.getConnection();
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, dProfile);
+		pstmt.setString(1, profile);
 		
 		rs = pstmt.executeQuery();
 

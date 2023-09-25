@@ -8,7 +8,7 @@
   
 </head>
 <body>
-	샘플
+	HOME입니다.
 	<%=request.getContextPath()%>
 	
 </body>

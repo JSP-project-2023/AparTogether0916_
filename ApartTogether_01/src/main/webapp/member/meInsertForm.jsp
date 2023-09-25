@@ -30,7 +30,6 @@
   		
     /* [st] submit 유효성 검사 */
     function validCheck(){ /* form validation check */
-    	alert("내가 보이나요");
     	var member01 = $('input[type="radio"]:checked').val() ;
 		if(member01 == null){
 			alert('일반회원 / 사업자 는 반드시 선택이 되어야 합니다.');
@@ -110,6 +109,20 @@
   		
   	}
 	/* [ed] 유효성 검사 */
+	
+	
+	function mtypeCheck(){
+  			// mtype을 사업자로 선택하면 컨펌창 후 메인화면 또는 내 가게 등록 화면으로 이동
+  			var mtype = $('input[name="mtype"]:checked').val();
+  	  		if(mtype == "biz"){
+	  	  		var returnValue1 = confirm("회원가입이 완료되었습니다.\n내 가게를 등록하러 가시겠습니까?");
+					if(returnValue1 == true){// 컨펌창 yes : 내 가게 등록화면으로 이동
+						$('#gotoStoreInsert').val("yes");
+					}else{// 컨펌창 no 사업자로 유지
+						$('#gotoStoreInsert').val("no");
+					}
+  	  		}
+  		}
 </script>
 
 <script	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
@@ -229,8 +242,9 @@
 		<div class="col-lg-8">
 			<h2>회원 가입</h2>
 			<p>회원 가입하는 페이지 입니다.</p>
-			<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data">
+			<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data" onsubmit="mtypeCheck()">
 				<input type="hidden" name="command" value="meInsert">
+				<input type="hidden" id="gotoStoreInsert" name="gotoStoreInsert" value="no">
 
 				<div class="input-group" align="center">
 					<span class="input-group-text col-md-3">회원유형 <font
