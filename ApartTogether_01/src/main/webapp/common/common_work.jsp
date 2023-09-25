@@ -60,7 +60,7 @@ String notWithFormTag = appName + mappingName + "?command=";
 
 <body>
 	<header class="header">
-		<nav class="navbar">
+		<nav class="navbar_hole">
 			<div class="navbar_logo">
 <%-- 				<a class="navbar-logo" href="<%=notWithFormTag%>home"> --%>
 				<a class="navbar-logo" href="${pageContext.request.contextPath}/common/common_work.jsp">

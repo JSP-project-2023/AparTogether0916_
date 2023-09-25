@@ -5,10 +5,19 @@
 	padding:0;
 }
 
+body {
+	border-bottom: 1px solid #cdcdcd;
+}
+
 .header {
-	margin: 50px;
-	margin-left: 150px;
-	margin-right: 150px;
+	margin: 30px 150px 20px 150px; /*top right bottom left*/
+}
+
+.navbar_hole {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .navbar_menu {
@@ -61,6 +70,7 @@ a {
 	width: fit-content;
 	border: 1px solid #cdcdcd;
 	border-radius: 10px;
+	background-color: #fff;
 }
 
 .navbar_menu .subnavbar_menu a {
