@@ -9,7 +9,7 @@
 	white-space: nowrap;
 }
 .container-menu{
-	visibility: hidden;
+	/*visibility: hidden;*/
 	position: absolute;
 	display: flex;
 	transform: translate(-50%, -400px);
@@ -77,12 +77,11 @@ tr:hover{
 
 /*월별 판매량 css*/
 .container-month{
-	/*visibility: hidden;*/
+	visibility: hidden;
 	position: absolute;
 	display: flex;
 	transform: translate(-50%, -400px);
 	left: 50%;
 	top: 30em;
 	flex-direction: column;
-	background-color: red;
 }
