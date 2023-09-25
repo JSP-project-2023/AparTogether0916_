@@ -226,7 +226,7 @@
 					<td>
 						<div class="card" style="width: 19rem;">
 							<%-- 사용자가 볼 Detail 화면 링크 --%>
-							<a class="removeUnderLine" href=""> <%-- <%=notWithFormTag%>storeDetail&stno=${myStoreList.stno}${requestScope.pageInfo.flowParameter} --%>
+							<a class="removeUnderLine" href="<%=notWithFormTag%>stMuDetail&stno=${myStoreList.stno}">
 								<img class="card-img-top" alt="${myStoreList.stname}" src="upload/${myStoreList.stlogo}">
 								
 								<div class="card-body">

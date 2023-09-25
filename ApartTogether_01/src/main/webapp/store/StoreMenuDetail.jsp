@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%-- <%@ include file="./../common/common.jsp"%> --%>
-<<<<<<< HEAD
-=======
 <%@ include file="/common/bootstrap5.jsp"%>
 <!-- 추후 삭제 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -10,31 +8,23 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
->>>>>>> origin/lleebs
 <!DOCTYPE html>
 <html>
 	<head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/store/storeCSS/StoreMenuDetail.css" type="text/css">
+	
+	<%-- 사용자용 가게 정보 + 메뉴 detail 화면 --%>
 	<title>가게 주문 상세 화면</title>
 	</head>
 <body>
-<<<<<<< HEAD
-=======
 
 	<%--가게명 변수--%>
 	<c:set var="bean" value="${requestScope.bean}"/>
->>>>>>> origin/lleebs
 	<div class="store-container">
 	<div class="store-info">
 	<div class="store-body">
 	<!-- 뱃지 카테고리 들어갈 부분. -->
-<<<<<<< HEAD
-	<span id="stname">가게명</span>
-		<div class="store-content">
-			<div class="store-img">
-				<img alt="이미지" src="${pageContext.request.contextPath}/uploadStoreImage/스크린샷1.png" border="1px">
-=======
 	<c:if test="${bean.category eq '양식'}">
 		<span class="badge rounded-pill" style="background-color: #51CEA1">양식</span>
 	</c:if>
@@ -64,7 +54,6 @@
 		<div class="store-content">
 			<div class="store-img">
 				<img alt="이미지" src="${pageContext.request.contextPath}/uploadStoreImage/${bean.stlogo}" border="1px">
->>>>>>> origin/lleebs
 			</div>
 			<div class="store-box">
 				<div class="store-maininfo">
@@ -79,16 +68,6 @@
 						<span class="store-intro-span title-bold">사업자등록번호</span>
 					</div>
 					<div class="store-subinfo">
-<<<<<<< HEAD
-						<span class="store-delivery-span">3000원</span>
-						<span class="store-delivery-span">40분</span>
-						<span class="store-intro-span">경양식 돈까스</span>
-						<span class="store-intro-span">오후 09:00 ~ 오전 08:00</span>
-						<span class="store-intro-span">일요일</span>
-						<span class="store-intro-span">서울 서초구 서초대로 38 삼성아파트 22동 201호</span>
-						<span class="store-intro-span">010-2544-5698</span>
-						<span class="store-intro-span">787-454-11235</span>
-=======
 						<span class="store-delivery-span">${bean.fee}원</span>
 						<span class="store-delivery-span">${bean.btime}분</span>
 						<span class="store-intro-span">${bean.content}</span>
@@ -97,7 +76,6 @@
 						<span class="store-intro-span">${bean.stplace}</span>
 						<span class="store-intro-span">${bean.sttel}</span>
 						<span class="store-intro-span">${bean.ceono}</span>
->>>>>>> origin/lleebs
 					</div>
 				</div>
 				<div class="order-button">
@@ -108,24 +86,6 @@
 	</div>
 	</div>
 	
-<<<<<<< HEAD
-	<hr style="margin-top: 100px;">
-		<div class="menu-container">
-		<!-- 메뉴1개 들어가야될 공간 시작-->
-		<div class="one-menu-box"> 
-			<div class="memu-img">
-				<img alt="이미지" src="${pageContext.request.contextPath}/uploadStoreImage/스크린샷1.png" border="1px">
-			</div>
-			<div class="menu-details">
-				<span id="menu-title">수제돈정식 (등심1 + 치즈1 + 치킨1)</span>
-				<span id="menu-exp">수제 돈까스 모둠 (양이 많아요)</span>
-				<span id="menu-igrnt">등심1장 + 치즈1장 + 치킨1장</span>
-				<span id="menu-price">12,900원</span>
-			</div>
-		</div>			
-		<!-- 메뉴 들어가야될 공간 끝 -->
-		
-=======
 	<hr style="margin-top: 100px;" size="10px">
 		<div class="menu-container">
 		<!-- 메뉴1개 들어가야될 공간 시작-->
@@ -143,7 +103,6 @@
 				</div>
 			</c:forEach>
 			<!-- 메뉴 들어가야될 공간 끝 -->
->>>>>>> origin/lleebs
 		</div>
 	</div>
 	

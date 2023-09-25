@@ -27,17 +27,8 @@ public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	// 초기화 파라미터 관련 변수
-<<<<<<< HEAD
-//	private String txtSetting = null ;
 	private String todolist = null ;
 
-	// map for setting.txt file
-//	private Map<String, String> settingMap = null ;
-		
-=======
-	private String todolist = null ;
-
->>>>>>> origin/lleebs
 	// map for todolist.txt file
 	private Map<String, SuperController> todolistMap = null ;
 	
@@ -74,7 +65,6 @@ public class FrontController extends HttpServlet {
 					newFile = mr.getFilesystemName("stlogo");
 					//파일삭제 유효성 검사
 					MyUtility.deleteFile(oldFile, newFile, mr, uploadImage);	
-<<<<<<< HEAD
 					
 //				회원 수정
 				} else if(command.equals("meUpdate")) {
@@ -85,12 +75,6 @@ public class FrontController extends HttpServlet {
 					String newFile = mr.getFilesystemName("menuimage");
 					
 					MyUtility.deleteFile(oldFile, newFile, mr, uploadImage);
-=======
-				}
-				if(command.equals("meUpdate")) {
-					//구현 안됨
-					MyUtility.deleteOldProfileImageFile(uploadImage, mr);
->>>>>>> origin/lleebs
 				}
 				
 				// file upload object binding in request scope.

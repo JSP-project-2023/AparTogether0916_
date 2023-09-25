@@ -210,7 +210,7 @@ function addStore() {
 					</c:if>
 					<td>
 						<div class="card" style="width: 19rem;">
-							<a class="removeUnderLine" href="<%=notWithFormTag%>storeMenuDetail"> <%-- <%=notWithFormTag%>storeDetail&stno=${storeList.stno}${requestScope.pageInfo.flowParameter} --%>
+							<a class="removeUnderLine" href="<%=notWithFormTag%>stMuDetail&stno=${storeList.stno}">
 								<img class="card-img-top" alt="${storeList.stname}" src="upload/${storeList.stlogo}">
 								
 								<div class="card-body">

@@ -74,11 +74,5 @@ public class StoreInsertController extends SuperClass{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
-=======
-
-		//등록후 메인으로 이동
-		super.gotoPage("common/home.jsp");
->>>>>>> origin/lleebs
 	}
 }
