@@ -89,7 +89,8 @@ public class StoreDao extends SuperDao {
 		if(conn != null) {
 			conn.close();
 		}
-
+		
+		System.out.println(bean);
 		return bean;
 	}
 	

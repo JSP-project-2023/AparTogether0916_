@@ -8,10 +8,8 @@
 <meta charset="UTF-8">
 <title>메뉴 등록</title>
 
-<!-- 자바 스크립트 파일 불러오기 -->
-<script src="${pageContext.request.contextPath}/menu/menuJS/s.js"></script>
-<!-- 주소 입력api -->
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<!-- 자바 스크립트 파일 불러오기 --> <!-- 유효성 검사 Validation -->
+<script src="${pageContext.request.contextPath}/menu/menuJS/InsertMenu.js"></script>
 <!-- css파일 불러오기 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/menu/menuCSS/InsertMenu.css" type="text/css">
 
@@ -19,7 +17,7 @@
 <body>
 	<div class="container">
 		<!-- 내 가게 이름 출력 -->
-		<h3>${requestScope.stname}가게  메뉴 등록</h3>
+		<h3>[${requestScope.stname}] 가게  메뉴 등록</h3>
 		<p>아래 항목을 입력해 메뉴를 등록해보세요.</p>
 		
 		<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data">
@@ -34,8 +32,8 @@
 			재료 | 기본옵션 <textarea name="detailPlus" rows="5" cols="50"></textarea>
 			
 			<br>
-			<button type="submit">등록</button>
-			<button type="button" onclick="history.go(-1)">취소</button>
+			<button type="submit" onclick="return validation()">등록</button>
+			<button type="button" onclick="history.go(-1)">취소</button> <!-- 이전 화면 그대로 이동 -->
 			<!-- 초기화 하기전에 컨펌창 출력 -->
 			<button type="reset">초기화</button>
 		</form>

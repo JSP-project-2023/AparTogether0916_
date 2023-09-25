@@ -16,24 +16,24 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class MyUtility {
 	
-	public static void deleteOldImageFile(String webPath, MultipartRequest mr) {		
-		// 상품 수정시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
-		String[] deleteImages = 
-			{
-					mr.getParameter("ceofileUpdate"),
-					mr.getParameter("stlogoUpdate")
-			};
-		
-		for(String delFile : deleteImages) {
-			if(delFile != null) {
-				String deleteFile = webPath + "/" + delFile ;
-				File target = new File(deleteFile) ;
-				if(target.delete()) {
-					System.out.println(deleteFile + " file delete success"); 
-				}
-			}
-		}
-	}
+//	public static void deleteOldImageFile(String webPath, MultipartRequest mr) {		
+//		// 상품 수정시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
+//		String[] deleteImages = 
+//			{
+//					mr.getParameter("ceofileUpdate"),
+//					mr.getParameter("stlogoUpdate")
+//			};
+//		
+//		for(String delFile : deleteImages) {
+//			if(delFile != null) {
+//				String deleteFile = webPath + "/" + delFile ;
+//				File target = new File(deleteFile) ;
+//				if(target.delete()) {
+//					System.out.println(deleteFile + " file delete success");
+//				}
+//			}
+//		}
+//	}
 	
 	public static MultipartRequest getMultipartRequest(HttpServletRequest request, String uploadPath) {
 		// 이미지 업로드에 필요한 멀티 파트 객체를 생성하여 반환 합니다.
@@ -105,35 +105,35 @@ public class MyUtility {
 		
 		return prop;
 	}
-
-	public static Map<String, String> getSettingMap(String webSettingName) {
-		// webSettingName 파일을 이용하여 자바의 Map 형식으로 반환해 줍니다.
-		Map<String, String> map = new HashMap<String, String>();
-		Properties prop = null ;
-		prop = getPropertiesData(webSettingName) ;
-		
-		Enumeration<Object> keys = prop.keys() ;
-		while(keys.hasMoreElements()) {
-			String key = keys.nextElement().toString() ;
-			String value = prop.getProperty(key) ;
-			
-			//map.put(key, value) ;
-			
-			try { // 한글 깨짐 문제 해결
-				map.put(key, new String(value.getBytes("ISO-8859-1"), "UTF-8")) ;
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return map;
-	}
-	
+//
+//	public static Map<String, String> getSettingMap(String webSettingName) {
+//		// webSettingName 파일을 이용하여 자바의 Map 형식으로 반환해 줍니다.
+//		Map<String, String> map = new HashMap<String, String>();
+//		Properties prop = null ;
+//		prop = getPropertiesData(webSettingName) ;
+//		
+//		Enumeration<Object> keys = prop.keys() ;
+//		while(keys.hasMoreElements()) {
+//			String key = keys.nextElement().toString() ;
+//			String value = prop.getProperty(key) ;
+//			
+//			//map.put(key, value) ;
+//			
+//			try { // 한글 깨짐 문제 해결
+//				map.put(key, new String(value.getBytes("ISO-8859-1"), "UTF-8")) ;
+//			} catch (UnsupportedEncodingException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		
+//		return map;
+//	}
+//	
 	//파일 삭제 메소드
 	public static void deleteFile(String oldFile, String newFile, MultipartRequest mr, String uploadImage) {
 		 if(newFile != null) { //새로운 파일이 있다면 해당 항목을 삭제
-			System.out.println("newFileeeee" + newFile);
-			System.out.println("oldFileeeee" + oldFile);
+			System.out.println("newFileeeee : " + newFile);
+			System.out.println("oldFileeeee : " + oldFile);
 			System.out.println("실행1");
 			MyUtility.deleteImageFile(oldFile, uploadImage, mr);
 		}

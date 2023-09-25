@@ -50,7 +50,7 @@ public class MenuInsertController extends SuperClass {
 		menu.setMenuname(mr.getParameter("menuname"));
 		menu.setPrice(Integer.parseInt(mr.getParameter("price")));
 		menu.setMenuimage(mr.getFilesystemName("menuimage"));
-		menu.setMenudetail(mr.getParameter("menudetail") + "\n" + mr.getParameter("detailPlus")); // 메뉴 설명 + 재료 | 기본옵션
+		menu.setMenudetail(mr.getParameter("menudetail") + "Δ" + mr.getParameter("detailPlus")); // 메뉴 설명 + 재료 | 기본옵션
 		
 		MenuDao dao = new MenuDao();
 		int cnt = -1;
@@ -68,9 +68,9 @@ public class MenuInsertController extends SuperClass {
 			} else {
 //				성공 메세지 출력
 				super.setSuccessAlertMessage("메뉴 등록 성공");
-				request.setAttribute("", Integer.parseInt(mr.getParameter("stno")));
+//				request.setAttribute("", Integer.parseInt(mr.getParameter("stno")));
 //				가게 상세 화면으로 이동 예정
-				new StoreListController().doGet(request, response);
+				new MenuManageController().doGet(request, response);
 			}
 			
 		} catch (Exception e) {

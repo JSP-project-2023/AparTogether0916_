@@ -69,7 +69,7 @@ String notWithFormTag = appName + mappingName + "?command=";
 	<header id="margin">
 		<nav class="navbar navbar-expand-lg">
 			<div class="container-fluid">
-				<a class="navbar-logo" href="#"><img alt="logoIMG" src="${pageContext.request.contextPath}/image/logo.jpg"></a> 
+				<a class="navbar-logo" href="<%=notWithFormTag%>home"><img alt="logoIMG" src="${pageContext.request.contextPath}/image/logo.jpg"></a> 
 <%-- 					<a>class=" navbar-brand bigsize" href="<%=notWithFormTag%>home">APTogether</a> --%>
 				
 				<button class="navbar-toggler" type="button"

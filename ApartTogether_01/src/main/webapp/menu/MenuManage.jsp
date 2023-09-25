@@ -7,6 +7,21 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/store/storeCSS/StoreMenuDetail.css" type="text/css">
 
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		var optionList = $('#keyword option');
+		console.log(optionList.length);
+		
+		for (var i = 0; i < optionList.length; i++) {
+			if(optionList[i].value == '${requestScope.getStno}') {
+				optionList[i].selected = true;
+			}
+		}
+	});
+
+</script>
+
 <style type="text/css">
 	.menu-container {
 		margin-bottom: 150px;
@@ -23,7 +38,7 @@
 		<form action="<%=withFormTag%>" method="post">
 			<input type="hidden" name="command" value="menuManage">
 			
-			<select name="stno">
+			<select name="stno" id="keyword">
 				<option value="-1">가게를 선택해주세요
 				<c:forEach var="myStList" items="${requestScope.myStoreList}">
 					<option value="${myStList.stno}">${myStList.stname}
@@ -60,8 +75,8 @@
 					</div>
 					
 					<div class="menu-control">
-						<button>수정</button>
-						<button>삭제</button>
+						<a href="<%=notWithFormTag%>menuUpdate&id=${sessionScope.loginfo.id}&stno=${menuList.stno}&menuno=${menuList.menuno}">수정</a>
+						<a href="<%=notWithFormTag%>menuDelete&stno=${menuList.stno}">삭제</a>
 					</div>
 				</div>
 			</c:forEach>
