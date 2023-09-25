@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/store/storeCSS/StoreSalesCSS.css" type="text/css">
-<!-- 차트 스크립트 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<script src="${pageContext.request.contextPath}/store/storeJS/StoreSalesJS.js"></script>
+
 <meta charset="UTF-8">
 <title>가게 매출 내역</title>
 </head>
@@ -48,8 +47,7 @@
 				<span><strong>총 판매금액</strong> : 5,5000<strong>원</strong></span>
 			</div>
 		</div>
-		
-		
+				
 		<!-- 월별 판매량 그래프 -->
 		<div class="container-month">
 			<span class="title">판매 현황</span>
@@ -61,9 +59,12 @@
 				</div>
 			</div>
 			<hr>
+			<!-- 그래프 영역 -->
+			<div>
+	  			<canvas id="myChart"></canvas>
+			</div>
 		</div>
-		
-		<!-- 그래프 영역 -->
-		<canvas id="chart" width="300" height="250"></canvas>
 	</body>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+	<script src="${pageContext.request.contextPath}/store/storeJS/StoreSalesChart.js"></script>
 </html>
