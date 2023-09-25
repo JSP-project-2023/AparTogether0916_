@@ -3,10 +3,18 @@ body{
 	overflow: auto;
 }
 #stname{
+<<<<<<< HEAD
 	position: relative;
 	font-weight: bold;
 	font-size: 60px;
 	left: 100px;
+=======
+
+	font-weight: bold;
+	font-size: 60px;
+	position: relative;
+	left: 50px;
+>>>>>>> origin/lleebs
 	bottom: 50px;
 }
 /*주문버튼*/
@@ -113,4 +121,13 @@ body{
 	font-size: 30px;
 	font-weight: bold;
 }
+<<<<<<< HEAD
+=======
+.rounded-pill{
+	font-size: 20px;
+	position: relative;
+	bottom: 65px;
+	left: 30px;
+}
+>>>>>>> origin/lleebs
 

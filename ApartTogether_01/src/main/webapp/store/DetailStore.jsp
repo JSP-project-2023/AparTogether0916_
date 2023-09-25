@@ -6,8 +6,6 @@
 <head>
 
 <meta charset="UTF-8">
-	<!-- 자바 스크립트 파일 불러오기 -->
-	<script src="${pageContext.request.contextPath}/store/storeJS/InsertStore.js"></script>
 	<!-- 주소 입력api -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!-- css파일 불러오기 -->
