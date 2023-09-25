@@ -17,9 +17,31 @@ public class Combo01 {
 	private String ready;
 	private String menuImage;
 	private String menuDetail;
+	private int menuno;
 	
 	
 	
+	
+	public int getMenuno() {
+		return menuno;
+	}
+
+
+
+
+
+
+
+	public void setMenuno(int menuno) {
+		this.menuno = menuno;
+	}
+
+
+
+
+
+
+
 	public String getMenuImage() {
 		return menuImage;
 	}
@@ -74,7 +96,7 @@ public class Combo01 {
 				+ ", totalmenu=" + totalmenu + ", orderplace=" + orderplace + ", stname=" + stname + ", fee=" + fee
 				+ ", roomname=" + roomname + ", price=" + price + ", personalprice=" + personalprice + ", id=" + id
 				+ ", allprice=" + allprice + ", ready=" + ready + ", menuImage=" + menuImage + ", menuDetail="
-				+ menuDetail + "]";
+				+ menuDetail + ", menuno=" + menuno + "]";
 	}
 
 

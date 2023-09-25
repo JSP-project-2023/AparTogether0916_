@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="./../common/common.jsp" %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,84 +10,42 @@
     <style type="text/css">
         .container { margin-top: 10px; }
         tr { opacity: 0.7; }
+        .qty{width: 25px;}
     </style>
-    <script>
-    	$(document).ready(function(){
-    	
-var price = '${bean.price}';
-			
-			$('#qty').innerWidth($('.minus').innerWidth() - 3);
-			$('#totalprice').text('0') ; /* 최초 시작시 금액을 0으로 설정 */
-			
-			/* attr() 함수는 속성(attribute)을 읽거나 쓰기 위한 함수 */
-			$('.small_image').click(function(){
-				$('.active_image').attr('src', $(this).attr('src')) ;
-			});
-			
-			$('.plus').click(function(){  /* 사용자가 + 버튼을 클릭함 */
-				var qty = $('#qty').val();
-				if(qty == maxPurchaseSize){
-					alert('최대 ' + maxPurchaseSize + '개 까지만 주문이 가능합니다.');
-					return ; /* 더이상 진행하지 않도록 할께요. */
-				}
-				/* Number 객체는 Integer.parseInt()와 동일한 효과 */
-				var newQty = Number(qty) + 1 ;
-				if(qty == ''){
-					$('#qty').val('1');
-				}else{
-					$('#qty').val(newQty) ;
-				}
-				var amount = newQty*price ;
-				$('#totalprice').text(amount.toLocaleString()) ;
-			});
-			 
-			$('.minus').click(function(){ /* 사용자가 - 버튼을 클릭함 */
-				var qty = $('#qty').val();
-				if(qty == '0'){
-					alert('최소 1개 이상 구매하셔야 합니다.');
-					return ;
-				}
-				
-				var newQty = Number(qty) - 1 ;
-				if(qty == ''){
-					$('#qty').val('');
-					$('#totalprice').text('0') ;
-				}else{
-					$('#qty').val(newQty) ;
-					
-					var amount = newQty*price ;
-					$('#totalprice').text(amount.toLocaleString()) ;
-				}				
-			});
-			
-			$('#qty').blur(function(){ /* 수량 입력란이 포커스를 잃을 때 */
-				var qty = $('#qty').val();
-			
-				if(qty == '' || isNaN(qty) == true){
-					alert('0이상' + maxPurchaseSize + '이하의 숫자만 가능합니다.' );
-					$('#qty').val('0');
-					$('#qty').focus();
-					return ;
-				}
-				
-				if(isNaN(qty) == false){
-					var newQty = Number(qty) ;
-					if(newQty < 0 || newQty > maxPurchaseSize){
-						alert('0이상' + maxPurchaseSize + '이하의 숫자만 가능합니다.' );
-						$('#qty').val('0');
-						$('#qty').focus();
-						return ;
-					}
-				}
-    		
-    		
-    		
-    	})
-    	
-    	
     
-    
-    </script>
+  
+   <script>
+
+
+   
+   
+   function updateQuantity(menuId, change) {
+	    var qtyInput = document.getElementById(menuId + 'qty');
+	    var qty = parseInt(qtyInput.value, 10);
+
+	    if (isNaN(qty)) {
+	        qty = 0;
+	    }
+
+	    qty += change;
+
+	    if (qty < 0) {
+	        qty = 0;
+	    }
+
+	    qtyInput.value = qty;
+
+	    var priceElement = document.getElementById(menuId + 'price');
+	    var price = parseFloat(priceElement.textContent.replace(/[^0-9.-]+/g, ''));
+	    var amount = qty * price;
+
+	    var totalpriceElement = document.getElementById(menuId + 'totalprice');
+	    totalpriceElement.textContent = amount.toLocaleString();
+	}
+
+
+	</script>
+
 </head>
 <body>
     <div class="container mt-3">
@@ -141,24 +100,67 @@ var price = '${bean.price}';
           
           <h4>메뉴 목록</h4>
            <table class="table table-hover">
-          
-	          <c:forEach items="${requestScope.lists4}" var="bean">
-	          <tr> 
-	                    <td>${bean.menuImage}</td>
-	                    <td>${bean.menuname}</td> 
-	                    <td>${bean.menuDetail}</td> 
-	                    <td>${bean.price}</td>   
-	                    <td></td>
-	          </tr>
+          <tr>
+          	<th>Menu Image</th>
+          	<th>Menu Name</th>
+          	<th>Menu Description</th>
+          	<th>Menu Price</th>
+          	<th>Quantity</th>
+          	<th>Total Price</th>          
+          </tr>
 	        
-	          
-	          </c:forEach>
-             
-           
-          </table>
+		<c:forEach items="${requestScope.lists4}" var="bean">
+		    <tr> 
+		    	
+		        <td>${bean.menuImage}</td>
+		        <td>${bean.menuname}</td> 
+		        <td>${bean.menuDetail}</td> 
+		        <td id = "${bean.menuno}price" >${bean.price}원</td>   
+		       
+			        <td>
+			         	<form action="<%=withFormTag%>" method="post">
+			            <ul class="pagination">
+			                <!-- - 버튼 -->
+			                <li class="page-item">
+			                    <a class="page-link ${bean.menuno}minus" href="#" onclick="updateQuantity('${bean.menuno}', -1)"> - </a>
+			                </li>
+			               
+				                <li class="page-item">
+				                    <a class="page-link" href="#" data-bs-toggle="popover" data-bs-trigger="hover"
+				                       data-bs-content="기존 카트에 품목이 이미 존재하면 수량을 누적합니다." data-bs-title="${bean.menuno}qty">
+				                        <input type="text" disabled="disabled" name="qty" id="${bean.menuno}qty" class="qty" value="0">
+				                    </a>
+				                    <input type="hidden" name="command" value="orInsert">
+			        				<input type="hidden" name="menuno" value="${bean.menuno}">
+				                </li>
+				                <!-- + 버튼 -->
+				                <li class="page-item">
+				                    <a class="page-link ${bean.menuno}plus" href="#" onclick="updateQuantity('${bean.menuno}', 1)"> + </a>
+				                </li>
+			            </ul>
+			            
+			            	<button type="submit">메뉴 담기</button>
+			            </form>
+			        </td>
+			        <td>
+			        	 <p>
+			              <span class="totalprice" id="${bean.menuno}totalprice">0</span>원
+			            </p>
+			        </td>
+			        <td>
+			        
+			        	
+			        	
+			        
+			        </td>
+		        
+		    </tr>
+		</c:forEach>
+
+	</table>
           <a class="bigFont" href="<%=notWithFormTag%>roReady">레디</a>
           <button type="button" class="btn">주문 확정</button>
-        ${requestScope.pageInfo.pagingHtml}
+        ${requestScope.pageInfo.pagingHtml}                  
     </div>
 </body>
 </html>

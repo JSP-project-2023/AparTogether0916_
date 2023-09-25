@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="./../common/bootstrap5.jsp"%>
+
 <%@ include file="./../common/common.jsp"%>
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
 					님의 주문 상세 내역
 				</h2>
 				<p>
-					${sessionScope.loginfo.name} 고객님이 ${order.ordertime}에 
+					${sessionScope.loginfo.name} 고객님이
 					구매하신 상품에 대한 세부 결제 내역입니다.
 				</p>
 				

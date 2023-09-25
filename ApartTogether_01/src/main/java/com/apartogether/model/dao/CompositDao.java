@@ -244,7 +244,7 @@ public class CompositDao extends SuperDao {
 
 	public List<Combo01> getAllMenu(Integer roomno) throws Exception{
 		
-		String sql = "select menuname , menuimage, menudetail, price  ";
+		String sql = "select menuname , menuimage, menudetail, price, menuno  ";
 		sql +=" from menu  ";
 		sql +=" inner join store st on menu.stno = st.stno";
 		sql +=" inner join room ro on st.stno = ro.stno";
@@ -276,6 +276,7 @@ public class CompositDao extends SuperDao {
 		bean.setMenuImage(rs.getString("menuimage"));
 		bean.setMenuDetail(rs.getString("menudetail"));
 		bean.setPrice(rs.getInt("price"));
+		bean.setMenuno(rs.getInt("menuno"));
 		return bean;
 	}
 

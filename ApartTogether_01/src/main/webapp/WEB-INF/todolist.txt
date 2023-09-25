@@ -19,3 +19,4 @@ roDetail=com.apartogether.controller.room.RoomDetailController
 #order 컨트롤러
 myorList=com.apartogether.controller.order.MyOrderListController
 myOrDetail=com.apartogether.controller.order.MyOrderDetailController
+orInsert=com.apartogether.controller.order.OrderInsertController

@@ -27,8 +27,14 @@ public class RoomDetailController extends SuperClass {
 		List<Combo01> lists3 =null;
 		List<Combo01> lists4 =null;
 		
+		if(super.loginfo==null) {
+			super.youNeededLogin(); 
+			return ;
+		}
+		
 		try {
 			lists = dao.View01(roomno,super.loginfo.getId());
+			
 			bean = dao.getPrice(roomno,super.loginfo.getId());
 			request.setAttribute("lists", lists);
 			request.setAttribute("bean", bean) ;
@@ -52,6 +58,14 @@ public class RoomDetailController extends SuperClass {
 		}
 	}
 	
+	
+	@Override
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		super.doPost(request, response);
+		
+		// 제작중
+		super.gotoPage("room/roDetail.jsp");
+	}
 	}
 	
 

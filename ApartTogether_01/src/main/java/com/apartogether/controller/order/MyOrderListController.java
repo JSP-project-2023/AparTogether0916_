@@ -16,7 +16,10 @@ public class MyOrderListController extends SuperClass{
 		super.doGet(request, response);
 		
 		OrderDao dao = new OrderDao();
-		
+		if(super.loginfo==null) {
+			super.youNeededLogin(); 
+			return ;
+		}
 		
 		try {
 			
