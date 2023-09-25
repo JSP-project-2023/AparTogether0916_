@@ -285,7 +285,11 @@ public class MemberDao extends SuperDao {
 		bean.setBirth(String.valueOf(rs.getDate("birth")));
 		bean.setGender(rs.getString("gender")); /* male / female | 성별 */
 		bean.setNickname(rs.getString("nickname")); /* 닉네임 */
+		
+		
 		bean.setAddress(rs.getString("address")); /* 주소 */
+		
+		
 		bean.setProfile(rs.getString("profile")); /* 프로필 이미지 */
 		bean.setPasswordanswer(rs.getString("passwordanswer")); /* 패스워드 질문, 답변 */
 		bean.setPasswordquest(rs.getString("passwordquest")); /* 패스워드 질문, 질문란 */

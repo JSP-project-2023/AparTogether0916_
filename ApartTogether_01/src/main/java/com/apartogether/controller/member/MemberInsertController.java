@@ -46,8 +46,10 @@ public class MemberInsertController extends SuperClass {
 			setAlertMessage(bean.getName() + "님 환영합니다!");
 		}/* [ed] 닉네임 랜덤 생성 */
 		
-		bean.setAddress(mr.getParameter("address") + " "
+		bean.setAddress(mr.getParameter("address") + "Δ"
 				+ mr.getParameter("address_detail"));/* 주소(카카오API값) + 상세주소(사용자가 입력하는값) */
+//		bean.setAddress(mr.getParameter("address") + " "
+//				+ mr.getParameter("address_detail"));/* 주소(카카오API값) + 상세주소(사용자가 입력하는값) */
 		bean.setProfile(mr.getFilesystemName("profile"));
 		bean.setPasswordanswer(mr.getParameter("passwordanswer"));
 		bean.setPasswordquest(mr.getParameter("passwordquest"));

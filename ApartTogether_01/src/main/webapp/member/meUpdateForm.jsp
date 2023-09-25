@@ -288,9 +288,12 @@
 				
 				<div class="input-group">
 					<span class="input-group-text col-md-2">주소</span>
-					<input class="form-control" type="text" id="address" name="address" value="${requestScope.bean.address }">			
+					<input class="form-control" type="text" id="address" name="address" value="${addressSet[0] }">			
 				</div>
-				
+				<div class="input-group">
+					<span class="input-group-text col-md-2">주소</span>
+					<input class="form-control" type="text" id="address_detail" name="address_detail" value="${addressSet[1] }">			
+				</div>
 				
 				
 				<div class="input-group">
@@ -322,4 +325,24 @@
 	
 	</div>
 </body>
+
+<!-- [st] 다음(카카오) 주소 검색 스크립트 -->
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+window.onload = function(){ /* 창이 켜졌을때 로드되는 function들 */
+	<!-- [st] 다음(카카오) 주소 검색 스크립트 -->
+    document.getElementById("address").addEventListener("click", function(){ /* id 가 "address_kakao" 주소입력칸을 클릭하면 */
+        /* 카카오 지도 발생 */
+        new daum.Postcode({
+            oncomplete: function(data) { //선택시 입력값 세팅
+                document.getElementById("address").value = data.address; /* 불러온 주소 넣기 */
+                document.querySelector("input[name=address_detail]").focus(); /* 주소(name=address_detail)로 포커싱 */
+            }
+        }).open();
+    });
+}
+</script>
+<!-- [ed] 다음(카카오) 주소 검색 스크립트 -->
+
 </html>

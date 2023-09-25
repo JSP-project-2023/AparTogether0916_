@@ -217,7 +217,11 @@
 					</tr>
 					<tr>
 						<th align="center"  class="tableHead">주소</th>
-						<td>${requestScope.bean.address}</td>
+						<td>${addressSet[0]}</td>
+					</tr>
+					<tr>
+						<th align="center"  class="tableHead">상세주소</th>
+						<td>${addressSet[1]}</td>
 					</tr>
 					<tr>
 						<th align="center"  class="tableHead">비밀번호 질문</th>
