@@ -40,6 +40,10 @@
 	font-weight: bolder;
 }
 
+.subTitle {
+	margin-bottom: 2.5rem;
+}
+
 .navbar {
 	text-align: center;
 	align-items: center;
