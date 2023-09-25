@@ -22,7 +22,13 @@ public class StoreSalesController extends SuperClass{
 		//가게 누적 매출 데이터 가져오기
 		lists = dao.getcumSales(stno);
 		
+		for(SaleMenu i : lists) {
+			System.out.println(i);
+		}
+		
 		request.setAttribute("bean", lists);
+		
+		//가게 점주는 추후 세션에서 받아옴 
 		
 		super.gotoPage("store/StoreSales.jsp");
 	}

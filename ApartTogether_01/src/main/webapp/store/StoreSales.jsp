@@ -13,7 +13,7 @@
 <title>가게 매출 내역</title>
 </head>
 	<body>
-		<!-- 메뉴 별 판매량 -->
+		<!-- 메뉴 별 판매량 시작 -->
 		<div class="container-menu" id="menu-target">
 			<span class="title">매출 현황</span>
 			<div class="sale-header">
@@ -35,12 +35,14 @@
 					</thead>
 					<tbody>
 					<!-- 메뉴 반복문 -->
+					<c:set value="0" var="total_sales"/>
 					<c:forEach var="bean" items="${requestScope.bean}">
 						<tr class="one-menu">
-							<td class="menu-name">로제 파스타</td>
-							<td class="menu-qty" align="center">2개</td>
-							<td class="menu-price" align="center">15,000원</td>
+							<td class="menu-name">${bean.menuname}</td>
+							<td class="menu-qty" align="center">${bean.cumqty}개</td>
+							<td class="menu-price" align="center"><fmt:formatNumber pattern="###,###,###" value="${bean.cumsale}"/>원</td>
 						</tr>
+						<c:set value="${total_sales = bean.cumsale + total_sales}" var="total_sales"/>
 					<!-- 메뉴 반복문 -->
 					</c:forEach>
 					</tbody>
@@ -48,11 +50,11 @@
 			</div>
 			
 			<div class="sale-footer">
-				<span><strong>총 판매금액</strong> : 5,5000<strong>원</strong></span>
+				<span><strong>총 판매금액</strong> : <fmt:formatNumber pattern="###,###,###" value="${total_sales}"/><strong>원</strong></span>
 			</div>
 		</div>
-				
-		<!-- 월별 판매량 그래프 -->
+		<!-- 메뉴 별 판매량 끝 -->		
+		<!-- 월별 판매량 그래프 시작 -->
 		<div class="container-month" id="month-target">
 			<span class="title">매출 현황</span>
 			<div class="sale-header">
@@ -72,6 +74,7 @@
 			</div>
 			<!-- 그래프 영역 끝-->
 		</div>
+		<!-- 월별 판매량 그래프 -->
 	</body>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 	<script src="${pageContext.request.contextPath}/store/storeJS/StoreSalesChart.js"></script>
