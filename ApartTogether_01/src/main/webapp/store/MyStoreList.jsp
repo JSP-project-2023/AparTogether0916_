@@ -110,11 +110,7 @@
 		margin-top: 50px;
 		
 	}
-	
-	.mainTitle {
-		font-weight: bolder;
-	}
-	
+
 	.myAddress {
 		margin-bottom: 2.5rem;
 	}
@@ -149,10 +145,6 @@
 	.card-title {
 		font-weight: 600;
 		margin: 10px auto;
-	}
-	
-	.card-text {
-		
 	}
 	
 	.buttonList {

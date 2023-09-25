@@ -103,10 +103,6 @@ function addStore() {
 		
 	}
 	
-	.mainTitle {
-		font-weight: bolder;
-	}
-	
 	.myAddress {
 		margin-bottom: 2.5rem;
 	}

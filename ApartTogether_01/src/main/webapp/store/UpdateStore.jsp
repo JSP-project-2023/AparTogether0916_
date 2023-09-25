@@ -18,7 +18,7 @@
 	<body>
 	
 	<!-- hidden으로 사용자 아이디 받아옴. 가게 아이디 히든으로 받아옴. -->
-	<strong class="title">내가게 수정</strong>
+	<strong class="title">내 가게 수정</strong>
 	<c:set var="bean" value="${requestScope.bean}"/>
 	<hr>
 	<div class="container1"><!-- 컨테이너 -->
@@ -30,7 +30,7 @@
 		<input type="text" value="${bean.stno}" name="stno" placeholder="가게고유번호"><br>
 		
 		<div id="ctname">
-			가게이름 <input name="stname" type="text" value="${bean.stname}"><br>
+			<div class="UpdateItem">가게이름</div> <input name="stname" type="text" value="${bean.stname}"><br>
 		</div>
 		<div id="category">
 		<input name=selectedCategory id="selectedCategory" type="hidden" value="${bean.category}">
