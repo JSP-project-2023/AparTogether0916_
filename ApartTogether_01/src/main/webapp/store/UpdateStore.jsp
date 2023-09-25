@@ -174,10 +174,9 @@
 			
 		<div id="buttons">
 			<button type="submit" onclick="return validation()">수정</button>
-			<a type="button" href="./../common/home.jsp">취소</a>
+			<button type="button" onclick="history.go(-1)">취소</button>
 			<!-- 초기화 하기전에 컨펌창 출력 -->
 		</div>
-			
 		</form>	
 	</div>
 	</body>

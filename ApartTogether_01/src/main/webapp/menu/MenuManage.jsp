@@ -19,6 +19,12 @@
 			}
 		}
 	});
+	
+	function deleteMenu(menuno) {
+		if (confirm('해당 메뉴를 삭제하시겠습니까?')) {
+			location.href='<%=notWithFormTag%>menuDelete&menuno=' + menuno;
+		}
+	}
 
 </script>
 
@@ -76,7 +82,7 @@
 					
 					<div class="menu-control">
 						<a href="<%=notWithFormTag%>menuUpdate&id=${sessionScope.loginfo.id}&stno=${menuList.stno}&menuno=${menuList.menuno}">수정</a>
-						<a href="<%=notWithFormTag%>menuDelete&stno=${menuList.stno}">삭제</a>
+						<a onclick="deleteMenu(${menuList.menuno});">삭제</a>
 					</div>
 				</div>
 			</c:forEach>

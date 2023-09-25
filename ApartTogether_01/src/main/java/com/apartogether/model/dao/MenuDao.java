@@ -134,4 +134,19 @@ public class MenuDao extends SuperDao {
 			return newFileName;
 		}
 	}
+
+	public int DeleteMenu(int menuno) throws Exception {
+		String sql = "delete from menu where menuno=?";
+		
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, menuno);
+		
+		cnt = pstmt.executeUpdate();
+		
+		if (pstmt!=null) {pstmt.close();}
+		if (conn!=null) {conn.close();}
+		
+		return cnt;
+	}
 }

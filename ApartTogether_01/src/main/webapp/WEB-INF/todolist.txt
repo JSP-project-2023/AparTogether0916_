@@ -11,6 +11,7 @@ myStoreList=com.apartogether.controller.store.MyStoreListController
 #Munu
 menuInsert=com.apartogether.controller.menu.MenuInsertController
 menuUpdate=com.apartogether.controller.menu.MenuUpdateController
+menuDelete=com.apartogether.controller.menu.MenuDeleteController
 menuManage=com.apartogether.controller.menu.MenuManageController
 # member 회원(biz / user / admin)
 meInsert=com.apartogether.controller.member.MemberInsertController

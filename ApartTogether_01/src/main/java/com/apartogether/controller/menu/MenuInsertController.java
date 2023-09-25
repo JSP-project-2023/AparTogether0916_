@@ -68,8 +68,6 @@ public class MenuInsertController extends SuperClass {
 			} else {
 //				성공 메세지 출력
 				super.setSuccessAlertMessage("메뉴 등록 성공");
-//				request.setAttribute("", Integer.parseInt(mr.getParameter("stno")));
-//				가게 상세 화면으로 이동 예정
 				new MenuManageController().doGet(request, response);
 			}
 			

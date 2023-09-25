@@ -94,12 +94,12 @@
 	
 	/*  전체 선택 버튼 클릭  */
 	function searchAll() {
-		location.href='<%=notWithFormTag%>storeList';
+		location.href='<%=notWithFormTag%>myStoreList&id=${sessionScope.loginfo.id}';
 	}
 	
 	/*  가게 등록 버튼 클릭  */
-	function writeForm() {
-		location.href='<%=notWithFormTag%>stInsert';
+	function addStore() {
+		location.href='<%=notWithFormTag%>stInsert&id=${sessionScope.loginfo.id}';
 	}
 	
 </script>
@@ -179,6 +179,7 @@
 							<div class="col-sm-10">
 								<form name="myform" action="<%=withFormTag%>" method="get">
 									<input type="hidden" name="command" value="myStoreList">
+									<input type="hidden" name="id" value="${sessionScope.loginfo.id}">
 									<div class="row">
 										<div class="col-sm-12">
 											
@@ -206,7 +207,7 @@
 											
 											<button type="button" class="btn btn-warning form-control-sm" onclick="searchAll();">전체 검색</button>
 											
-											<button type="button" class="btn btn-info form-control-sm" onclick="writeForm();">내 가게 등록</button>
+											<button type="button" class="btn btn-info form-control-sm" onclick="addStore();">내 가게 등록</button>
 											
 											<span class="label label-default">${requestScope.pageInfo.pagingStatus}</span>
 										</div>
@@ -291,16 +292,6 @@
 									<div id="buttonList" class="buttonList">
 										<a id="updateAnchor" class="btn btn-outline-primary" href="<%=notWithFormTag%>stUpdate&id=${myStoreList.id}&stno=${myStoreList.stno}${requestScope.pageInfo.flowParameter}">
 											가게수정
-										</a>
-										
-										<%-- 링크 추후 확인 필요 --%>
-										<a id="deleteAnchor" class="btn btn-outline-success" href="#">
-<%-- 										<%=notWithFormTag%>menuInsert&stno=${myStoreList.stno}&stname=${myStoreList.stname} --%>
-											메뉴수정
-										</a>
-										
-										<a id="deleteAnchor" class="btn btn-outline-success" href="<%=notWithFormTag%>menuInsert&stno=${myStoreList.stno}&stname=${myStoreList.stname}">
-											메뉴등록(임시)
 										</a>
 										
 										<a id="deleteAnchor" class="btn btn-outline-danger" onclick="deleteStore(${myStoreList.stno});">

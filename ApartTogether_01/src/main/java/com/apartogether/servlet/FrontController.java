@@ -72,8 +72,6 @@ public class FrontController extends HttpServlet {
 					
 //				회원 수정
 				} else if(command.equals("meUpdate")) {
-//					 구현 안됨
-					MyUtility.deleteOldProfileImageFile(uploadImage, mr);
 					
 //				메뉴 수정
 				} else if (command.equals("menuUpdate")) {

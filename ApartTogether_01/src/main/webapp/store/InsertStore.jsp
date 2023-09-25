@@ -19,10 +19,10 @@
 
 	<hr>
 	<div class="container1"><!-- 컨테이너 -->
-		<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data"> <!-- post? get? -->
+		<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="command" value="stInsert">
 		<!-- 회원 아이디 -->
-		<input type="hidden" value="admin" name="id" placeholder="회원아이디">
+		<input type="hidden" value="${sessionScope.loginfo.id}" name="id" placeholder="회원아이디">
 		<!-- 가게 고유번호-->
 		<input type="hidden" value="가게 고유번호(시퀀스)" name="stno" placeholder="회원아이디"><br>
 		
@@ -152,6 +152,10 @@
 			배달비 <input name="fee" type="number"><br>
 		</div>
 		
+		<div id="btime">
+			배달시간(분) <input name="btime" type="number"><br>
+		</div>
+		
 		<div id="redday">
 			휴무일 <input name="redday" type="text"><br>
 		</div>
@@ -162,7 +166,7 @@
 			
 		<div id="buttons">
 			<button type="submit" onclick="return validation()">등록</button>
-			<a type="button" href="./../common/home.jsp">취소</a>
+			<button type="button" onclick="history.go(-1)">취소</button>
 			<!-- 초기화 하기전에 컨펌창 출력 -->
 			<button type="reset">초기화</button>
 		</div>
