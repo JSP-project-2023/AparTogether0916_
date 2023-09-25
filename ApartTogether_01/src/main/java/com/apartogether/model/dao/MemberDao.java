@@ -408,5 +408,36 @@ public class MemberDao extends SuperDao {
 	}
 	/* [ed] 아이디 랜덤 생성 */
 
+	// 지우려는 프로필이미지를 혹시 사용하는 사람이 있는지-> 몇명인지 반환합니다.
+	// 회원수정에서 프로필이미지 수정에 사용합니다. 
+	// MyUtility.deleteOldProfileImageFile에서 사용합니다.
+	public List<Member> getSameProfileName(String profile) throws Exception {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String dProfile = profile ;
+		System.out.println(">>>dProfile : " + dProfile);
+	
+		
+		String sql = " select * from members ";
+		sql += " where profile = ?";
 
+		conn = super.getConnection();
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, dProfile);
+		
+		rs = pstmt.executeQuery();
+
+		List<Member> lists = new ArrayList<Member>();
+		
+
+		while (rs.next()) {
+			lists.add(getBeanData(rs));
+		}
+
+		if (rs != null) {rs.close();}
+		if (pstmt != null) {pstmt.close();}
+		if (conn != null) {conn.close();}
+
+		return lists;
+	}
 }

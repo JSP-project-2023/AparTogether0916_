@@ -5,12 +5,15 @@ import java.io.FileInputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.apartogether.controller.SuperController;
+import com.apartogether.model.bean.Member;
+import com.apartogether.model.dao.MemberDao;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -29,28 +32,64 @@ public class MyUtility {
 	        boolean success = file.renameTo(fileToMove); // rename이동에 성공하면 true, 실패하면 false를 반환합니다. 타켓파일이 없을 때 false입니다.
 	        if (!success) { // 실패
 	            System.out.println("!!Failed to rename to " + fileToMove); //
+	            //uploadStoreImage폴더에 남아있는 프로필이미지(쓰레기파일이 된)를 삭제합니다.
+	            deleteTrashProfile(webPathFrom, mr);
 	        }else { // 성공
 	        	System.out.println("!!Succeed to rename to " + fileToMove);
 	        }
 	}
 	
-	public static void deleteOldProfileImageFile(String webPath, MultipartRequest mr) {
-		// FrontController.doProcess에서 사용합니다.(meUpdateForm.jsp)
-		System.out.println("profile : " + mr.getFilesystemName("profile"));
-		System.out.println("deleteProfile : " + mr.getParameter("deleteProfile"));
-		// 회원정보 수정시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
-		if(mr.getFilesystemName("profile")!= null){ // 회원정보 수정에서 프로필사진을 선택한 경우(not null)에만 delete 실행
-			String deleteImages = mr.getParameter("deleteProfile") ;
-			if(deleteImages != null) {
-				String deleteFile = webPath + "/" + deleteImages ;
-				File target = new File(deleteFile) ;
-				if(target.delete()) {
-					System.out.println(deleteFile + " file delete success"); 
-				}
+	public static void deleteTrashProfile(String webPath, MultipartRequest mr){
+		// 회원수정 중 프로필이미지의 폴더이동에 실패하여 
+		// 쓰레기파일이 된 프로필이미지파일을 uploadStoreImage폴더에서 삭제합니다.
+		String deleteImages = mr.getFilesystemName("profile") ;
+		if(deleteImages != null) {
+			String deleteFile = webPath + "/" + deleteImages ;
+			File target = new File(deleteFile) ;
+			if(target.delete()) {
+				System.out.println("SUCCESS Delete Trash file" + deleteFile ); 
+			}else {
+				System.out.println("FAILED Delete Trash file" + deleteFile ); 
 			}
-		}else { // meUpdateForm에서 profile을 선택한 값이 없는 경우(mr.getFilesystemName("profile") == null)
-			System.out.println("meUpdate : 프로필이미지에 변동이 없으므로 파일을 그대로 유지합니다.");
 		}
+	}
+	
+	public static void deleteOldProfileImageFile(String webPath, MultipartRequest mr){
+		// FrontController.doProcess에서 사용합니다.(meUpdateForm.jsp)
+		// 회원정보 수정시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
+		// 같은 파일명을 사용하는 다른 사람이 있으면 삭제하지 않습니다.
+		//System.out.println("profile : " + mr.getFilesystemName("profile"));
+		//System.out.println("deleteProfile : " + mr.getParameter("deleteProfile"));
+	
+		String deleteProfile = mr.getParameter("deleteProfile") ;
+		MemberDao dao = new MemberDao();
+		
+		List<Member> lists = null;
+		try {
+			lists = dao.getSameProfileName(deleteProfile); // 삭제하려는 파일을 사용중인 회원목록을 불러옵니다.
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(lists.size() > 1) { // 같은 파일명을 사용하는 사람이 있으면(lists.size()가 2 이상이면)사진을 삭제하지 않는다.
+			System.out.println("동일한 파일명을 사용하는 다른 회원이 "+(lists.size()-1)+"명 있습니다. 기존 프로필사진을 삭제하지 않습니다.");
+		}else { // 같은 파일명을 사용하는 사람이 없으면(lists.size()가 1 이하이면) 사진을 삭제한다.
+			System.out.println("동일한 파일명을 사용하는 다른 회원이 없습니다. 기존 프로필사진을 삭제합니다.");
+			// 회원정보 수정에서 프로필사진을 선택한 경우(not null)에만 delete 실행
+			if(mr.getFilesystemName("profile")!= null){ 
+				String deleteImages = mr.getParameter("deleteProfile") ;
+				if(deleteImages != null) {
+					String deleteFile = webPath + "/" + deleteImages ;
+					File target = new File(deleteFile) ;
+					if(target.delete()) {
+						System.out.println(deleteFile + " file delete success"); 
+					}
+				}
+			}else { // meUpdateForm에서 profile을 선택한 값이 없는 경우(mr.getFilesystemName("profile") == null)
+				System.out.println("meUpdate : 프로필이미지에 변동이 없으므로 파일을 그대로 유지합니다.");
+			}
+		}
+		
+		
 	}
 	
 
