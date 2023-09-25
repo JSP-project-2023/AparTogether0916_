@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 import com.apartogether.model.bean.Menu;
+import com.apartogether.model.bean.SaleMenu;
 import com.apartogether.model.bean.Store;
 import com.apartogether.utility.PagingStore;
 
@@ -476,5 +477,35 @@ public class StoreDao extends SuperDao {
 		bean.setMenudetail(rs.getString("menudetail"));
 	
 		return bean;
+	}
+	
+	//누적 판매 메뉴 가져오기.
+	public List<SaleMenu> getcumSales(int stno) throws SQLException {
+		List<SaleMenu> lists = new ArrayList<SaleMenu>();
+		SaleMenu bean = null;
+		
+		String sql="select store.stname as stname, sales.menuname as menuname, sum(sales.qty) as qty, sum(sales.menuono) as menuono from store inner join (select menu.stno, menu.menuname ,sale.qty, sale.menuono from menu join(select * from personal p inner join room r "
+				+ "on p.roomno=r.roomno) sale "
+				+ "on menu.menuno=sale.menuno "
+				+ "where menu.stno=?) sales "
+				+ "on store.stno=sales.stno "
+				+ "group by sales.menuname, stname ";
+		
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, stno);
+		ResultSet rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			bean = new SaleMenu();
+			
+			bean.setStname(rs.getString("stname"));
+			bean.setMenuname(rs.getString("menuname"));
+			bean.setCumqty(rs.getInt("qty"));
+			bean.setCumsale(rs.getInt("menuono"));
+			
+			lists.add(bean);
+		}
+		return lists;
 	}
 }
