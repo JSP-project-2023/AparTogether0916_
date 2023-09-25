@@ -17,7 +17,6 @@
 	});
 </script>
 <style type="text/css">
-/* box model에 대한 공부가 필요합니다. */
 .container {
 	margin-top:;
 }
@@ -142,38 +141,6 @@
 					class="btn button-18 col-xs-6 col-sm-4 col-lg-2">ID 확인</button>
 			</div>
 			<div class="col-lg-3"></div>
-
-			<!-- 인증번호 및 물음 미구현
-			[st] 인증번호 전송
-			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-				인증 번호 전송
-			</button>
-			The Modal
-			<div class="modal" id="myModal">
-  				<div class="modal-dialog">
-    				<div class="modal-content">
-      					Modal Header
-      					<div class="modal-header">
-      					
-      						</div>
-						
-						
-      					Modal body
-      					<div class="modal-body">
-							<div class="input-group">
-								<span class="input-group-text col-md-4"> 인증번호 </span>
-									<input class="form-control" type="text" id="name" name="name">				
-							</div>
-      					</div>
-      					Modal footer
-      					<div class="modal-footer">
-					        <button type="submit" class="btn btn-danger " data-bs-dismiss="modal">확인</button>
-      					</div>
-				    </div>
-  				</div>
-			</div>
-			[ed] 인증번호 전송
- -->
 		</form>
 	</div>
 </body>
