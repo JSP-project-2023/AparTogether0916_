@@ -15,7 +15,8 @@
 <title>가게 등록 페이지 입니다.</title>
 </head>
 <body>
-		<strong class="title">내가게 등록</strong>
+	<div class="container">
+	<span class="title">내가게 등록</span>
 
 	<hr>
 	<div class="container1"><!-- 컨테이너 -->
@@ -24,14 +25,16 @@
 		<!-- 회원 아이디 -->
 		<input type="hidden" value="admin" name="id" placeholder="회원아이디">
 		<!-- 가게 고유번호-->
-		<input type="hidden" value="가게 고유번호(시퀀스)" name="stno" placeholder="회원아이디"><br>
+		<input type="hidden" value="가게 고유번호(시퀀스)" name="stno" placeholder="회원아이디">
 		
 		<div id="ctname">
-			가게 이름 <input name="stname" type="text" placeholder="가게 이름"><br>
+			<span>가게 이름</span>
+			<input name="stname" type="text" placeholder="가게 이름">
 		</div>
 		
 		<div id="category">
-		카테고리 <select name="category">
+		<span>카테고리</span>
+				<select name="category">
 				<option value="-">--선택--
 				<option value="양식">양식
 				<option value="중식">중식
@@ -41,17 +44,17 @@
 				<option value="치킨">치킨
 				<option value="피자">피자
 				<option value="카페">카페
-			</select><br>
+			</select>
 		</div>
 			
 		<div id="stplace">
 			<%--주소 api사용하여 주소지 받아옴.--%>
-			가게 주소 <input id="stplace1" name="stplace1" type="text" placeholder="가게 주소"><br>
-		가게 상세 주소 <input id="stplace2" name="stplace2" type="text" placeholder="가게 상세 주소"><br>
+			<span>가게 주소</span><input id="stplace1" name="stplace1" type="text" placeholder="가게 주소">
+		 	<span>가게 상세 주소</span><input id="stplace2" name="stplace2" type="text" placeholder="가게 상세 주소">
 		</div>
 		
 		<div id="storeNumber">
-			가게 전화번호
+			<span>가게 전화번호</span>
 			<select name="areacode1">
 				<option value="-">-선택-</option>
 				<option value="010">010</option>
@@ -62,20 +65,20 @@
 				<option value="513">513</option>
 			</select>
 			- <input class="snumber" name="areacode2" type="number" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-			- <input class="snumber" name="areacode3" type="number" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"><br>
+			- <input class="snumber" name="areacode3" type="number" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 		</div>
 		
 		<%//TODO 가게 소개 20글자로 제한.%>
 		<div id="content">
-			가게 소개 <textarea name="content" rows="2" cols="20" maxlength="20" placeholder="가게소개를 입력해주세요."></textarea><br>
+			<span>가게 소개</span><textarea name="content" rows="2" cols="20" maxlength="20" placeholder="가게소개를 입력해주세요."></textarea>
 		</div>
 		
 		<div id="ceofile">
-			사업자 등록증 <input name="ceofile" type="file"><br>
+			<span>사업자 등록증</span><input name="ceofile" class="imagefile" type="file">
 		</div>
 		
 		<div id="shoptime">
-			가게 운영시간
+			<span>가게 운영시간</span>
 				<!-- 시작시간 -->
 				<select name="startShopAmPm">
 					<option value="am">오전</option>
@@ -142,24 +145,26 @@
 					<option value="12:00">12:00</option>
 					<option value="12:30">12:30</option>
 				</select>
-			<br>
 		</div>
 			
 		<div id="stlogo">
-			<span id="recommend-logo-size"> * 권장 크기 : 360*360 </span><br>
-			가게로고 <input name="stlogo" type="file"><br>
+			<span id="recommend-logo-size"> * 권장 크기 : 360*360 </span>
+			가게로고 <input name="stlogo" class="imagefile" type="file">
 		</div>
 		
 		<div id="fee">
-			배달비 <input name="fee" type="number" placeholder="배달비"><br>
+			<span>배달비</span>
+			<input name="fee" type="number" placeholder="배달비">
 		</div>
 		
 		<div id="redday">
-			휴무일 <input name="redday" type="text" placeholder="예시) 매주 월요일"><br>
+			<span>휴무일</span>
+			<input name="redday" type="text" placeholder="예시) 매주 월요일">
 		</div>
 		
 		<div id="ceono">
-			사업자 등록번호 <input name="ceono" type="text" placeholder="사업자 등록번호"><br>
+			<span>사업자 등록번호</span>
+			<input name="ceono" type="text" placeholder="사업자 등록번호">
 		</div>
 			
 		<div id="buttons">
@@ -170,6 +175,7 @@
 		</div>
 			
 		</form>	
+	</div>
 	</div>
 </body>
 </html>
