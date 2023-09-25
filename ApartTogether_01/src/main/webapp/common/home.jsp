@@ -31,12 +31,14 @@
 <!-- 		<button type="submit">수정</button> -->
 <!-- 	</form> -->
 	
+<<<<<<< HEAD
 <%-- 	<form action="<%=withFormTag%>" method="get" target="_blank"> --%>
 <!-- 		<input name="command" value="stDetail"> -->
 <!-- 		<input name="id" value="seller"> -->
 <!-- 		<input name="stno" value="1"> -->
 <!-- 		<button type="submit">상세보기</button> -->
 <!-- 	</form> -->
+=======
 	<form action="<%=withFormTag%>" method="get" target="_blank">
 		<input name="command" value="stDetail">
 		<input name="id" value="seller">
@@ -51,5 +53,6 @@
 		<button type="submit">가게 메뉴 상세보기</button>
 	</form>
 	
+>>>>>>> origin/lleebs
 </body>
 </html>
