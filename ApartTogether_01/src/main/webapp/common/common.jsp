@@ -33,128 +33,44 @@ String withFormTag = appName + mappingName;
 
 // form 태그가 아닌 영역에서 사용할 변수
 String notWithFormTag = appName + mappingName + "?command=";
-
-//out.print("프로젝트 이름 : " + appName + "<br/>") ;
-//out.print("mappingName : " + mappingName + "<br/>") ;
-//out.print("withFormTag : " + withFormTag + "<br/>") ;
-//out.print("notWithFormTag : " + notWithFormTag + "<br/>") ;
 %>
-
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <!-- 이 파일은 모든 문서에서 공용으로 참조할 파일입니다.  -->
 <!-- 자바 관련 변수 및 패키지 임포트, 네비게이션 바, jstl 등등 -->
 <!-- for sweet alert -->
-
+<!-- css파일 불러오기 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/common.css" type="text/css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
 	rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
 	rel="stylesheet">
+
+
 <script src="/js/sweetalert.js"></script>
-<style type="text/css">
-.alert-dismissible {
-	margin: 10px;
-}
 
-.navbar {
-	font-family: "Black Han Sans";
-	text-align: center;
-}
 
-.bigsize {
-	font-size: 80px;
-	margin-right: 150px;
-	text-decoration: none;
-	color: black;
-	margin-top: 10px
-	
-}
-
-.navbar-brand {
-	margin-right: 150px;
-}
-
-.nav-item {
-	font-size: 45px;
-	margin-top: 15px;
-	margin-right: 30px;
-	font-family: 'Nanum Gothic';
-	font-weight: bold;
-	text-align: center;
-}
-
-#margin {
-	margin: 50px;
-	margin-left: 150px;
-	margin-right: 150px;
-}
-
-.body {
-	align-content: center
-}
-
-.navbar-logo {
-	margin-right: 25px;
-	font-size: 15px
-}
-
-.dropdown-item {
-	font-size: 20px;
-	font-family: 'Nanum Gothic';
-	text-align: left;
-}
-
-#small {
-	margin-top: -16px;
-}
-
-#behind {
-	display: none;
-}
-
-.small-tip {
-	font-size: 25px;
-	text-decoration: none;
-	color: grey;
-	font-family: 'Nanum Gothic';
-	padding-bottom: 19px;
-	vertical-align: middle
-	justify-content: center;
-	position: relative;
-	cursor: pointer;
-	
-}
-
-.tips {
-	margin-top: 75px;
-	margin-left: 70px;
-	text-align: center;
-	vertical-align: middle
-	justify-content: center;
-	position: relative;
-	cursor: pointer;
-	
-}
-</style>
 </head>
 
 <body>
 	type=${sessionScope.loginfo.mtype}
+	
 	<header id="margin">
 		<nav class="navbar navbar-expand-lg">
 			<div class="container-fluid">
-				<a class="navbar-logo" href="#">로고 이미지</a> <a
-					class=" navbar-brand bigsize" href="<%=notWithFormTag%>home">APTogether</a>
+				<a class="navbar-logo" href="<%=notWithFormTag%>home"><img alt="logoIMG" src="${pageContext.request.contextPath}/image/logo.png"></a> 
+<%-- 					<a>class=" navbar-brand bigsize" href="<%=notWithFormTag%>home">APTogether</a> --%>
 				
 				<button class="navbar-toggler" type="button"
 					data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
@@ -164,35 +80,39 @@ String notWithFormTag = appName + mappingName + "?command=";
 				<div class="collapse navbar-collapse" id="collapsibleNavbar">
 					<ul class="navbar-nav">
 						
-						<!-- member section -->
+						<!-- Store section -->
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">가게</a>
-								<ul class="dropdown-menu">
+							
+							<ul class="dropdown-menu">
+								<li>
+									<a class="dropdown-item"href="<%=notWithFormTag%>stList">가게 목록</a>
+								</li>
+
+								<c:if test="${whologin eq 2}">
 									<li>
-										<a class="dropdown-item"href="<%=notWithFormTag%>meInsert">가게 목록(href : null)</a>
+										<a class="dropdown-item" href="<%=notWithFormTag%>myStoreList&id=${sessionScope.loginfo.id}">내 가게 관리</a>
 									</li>
 									<li>
-										<a class="dropdown-item" href="<%=notWithFormTag%>meLogin">내 가게 보기(href : null)</a>
+										<a class="dropdown-item" href="<%=notWithFormTag%>menuManage">메뉴 관리</a>
 									</li>
-									<li>
-										<a class="dropdown-item" href="<%=notWithFormTag%>meLogin">접수 현황(href : null)</a>
-									</li>
-								</ul>
+								</c:if>
+							</ul>
 						</li>
 						
-						<!-- board section -->
+						<!-- Order section -->
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">주문</a>
 							<ul class="dropdown-menu">
 								<c:if test="${whologin ne 0}">
 									<li><a class="dropdown-item"
-										href="<%=notWithFormTag%>myorList">주문내역</a></li>
+										href="<%=notWithFormTag%>myorList">주문내역(href : null)</a></li>
 								</c:if>
 								<li><a class="dropdown-item"
-									href="<%=notWithFormTag%>roList">모집 중인 주문</a></li>
+									href="<%=notWithFormTag%>roList">모집 중인 주문(href : null)</a></li>
 							</ul></li>
 
-						<!-- product section -->
+						<!-- Event section -->
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" role="button"
 							data-bs-toggle="dropdown">이벤트</a>
@@ -205,7 +125,7 @@ String notWithFormTag = appName + mappingName + "?command=";
 								</c:if>
 							</ul></li>
 
-						<!-- view section -->
+						<!-- Community section -->
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" role="button"
 							data-bs-toggle="dropdown">커뮤니티</a>
@@ -224,6 +144,7 @@ String notWithFormTag = appName + mappingName + "?command=";
 								href="<%=notWithFormTag%>meLogin">로그인</a></li>
 							<li class="tips"><a class="small-tip"
 								href="<%=notWithFormTag%>meInsert">회원 가입</a></li>
+
 						</c:if>
 						
 						<c:if test="${whologin eq 1 }">
@@ -233,6 +154,7 @@ String notWithFormTag = appName + mappingName + "?command=";
 							<li class="tips"><a class="small-tip"
 								href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
 						</c:if>
+						
 						<c:if test="${whologin eq 2 }">
 							<li class="tips"><a class="small-tip">${sessionScope.loginfo.name}
 									사장님 </a></li>
@@ -256,9 +178,12 @@ String notWithFormTag = appName + mappingName + "?command=";
 		</nav>
 		<hr id="small" />
 	</header>
+	
+	
+	
 	<!--[st] AlertBox - danger(red) -->
 	<c:if test="${not empty sessionScope.alertMessage}">
-		<%-- 사용자에게 주의/경고/오류 등을 알려 주기 위한 Alert Box --%>
+		<%-- 주의/경고/오류 메세지 --%>
 		<div class="alert alert-danger alert-dismissible">
 			<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
 			<strong>경고 메시지</strong> ${sessionScope.alertMessage}
@@ -269,7 +194,15 @@ String notWithFormTag = appName + mappingName + "?command=";
 	<!--[ed] AlertBox - danger(red) -->
 	
 	
-	
+	<%-- 성공 메세지 --%>
+	<c:if test="${not empty sessionScope.successAlertMsg}">
+		<div class="alert alert-success alert-dismissible">
+	    	<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+	    	<strong>성공!</strong> ${sessionScope.successAlertMsg}
+	  	</div>
+	</c:if>
+	<%-- 보여준 Alert Box를 session 영역에서 제거합니다. --%>
+	<c:remove var="successAlertMsg" scope="session"/>
 	
 </body>
 </html>
