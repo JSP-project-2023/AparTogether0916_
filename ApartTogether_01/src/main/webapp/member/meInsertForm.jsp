@@ -89,20 +89,16 @@
   			return false ;
   		}
   		
-  		
-  		// meInsertForm에서 Mulripart로 수정하면서 주소 부분이 오류나는 것 같습니다.(9/22)
-  		// 일단 주석처리해 놓았습니다.
   	 	var address = $('#address').val();
   		var address_detail = $('#address_detail').val();
-  
-    	/* var check_address = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|0-9|a-z|A-Z]{1,100}/; // 한글체크 + 2~10자까지
+    	var check_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|0-9|a-z|A-Z]{1,100}/; // 한글체크 + 2~10자까지
   		var resultad = check_kor.test(address);
   		var resultadd = check_kor.test(address_detail);
   		if(resultad == false || resultadd == false){  				
   			$('#address').focus();
   			alert('주소 및 상세 주소를 입력해주세요');
   			return false ;
-  		}  */
+  		}  
   		
 		
   		

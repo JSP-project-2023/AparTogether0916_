@@ -8,8 +8,9 @@
 	<meta charset="UTF-8">
 	<title>아파투게더:마이페이지</title>
 	<style type="text/css">
-		.table{}
-		.container{margin:10px;}
+		.table{ }
+		.tableHead{text-align: center; }
+		.container{margin:10px; width: 100%}
 		#backButton{margin: auto; }
 		.small_image{width:100px;height:100px;margin:2px;border-radius:5px;}
 	</style>
@@ -147,7 +148,7 @@
 				<thead></thead>
 				<tbody>
 					<tr>
-						<td align="center">회원유형</td>
+						<th align="center" class="tableHead">회원유형</th>
 						<td>
 							<c:choose>
 								<c:when test="${requestScope.bean.mtype == 'user' }">
@@ -166,20 +167,20 @@
 						</td>
 					</tr>
 					<tr>
-						<td align="center">아이디</td>
+						<th align="center"  class="tableHead">아이디</th>
 						<td>${requestScope.bean.id}</td>
 					</tr>
 					
 					<tr>
-						<td align="center">이름</td>
+						<th align="center"  class="tableHead">이름</th>
 						<td>${requestScope.bean.name}</td>
 					</tr>
 					<tr>
-						<td align="center">닉네임</td>
+						<th align="center"  class="tableHead">닉네임</th>
 						<td>${requestScope.bean.nickname}</td>
 					</tr>
 					<tr>
-						<td align="center">프로필 사진</td>
+						<th align="center"  class="tableHead">프로필 사진</th>
 						<td>
 							<%-- profile가 null인 상태라면 기본이미지(default.jpg)를 보여줍니다. --%>
 							<c:if test="${requestScope.bean.profile == null}">
@@ -195,7 +196,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td align="center">성별</td>
+						<th align="center"  class="tableHead">성별</th>
 						<c:if test="${requestScope.bean.gender eq 'male'}">
 							<td>남자</td>
 						</c:if>
@@ -207,33 +208,34 @@
 						</c:if>	
 					</tr>
 					<tr>
-						<td align="center">전화번호</td>
+						<th align="center"  class="tableHead">전화번호</th>
 						<td>${requestScope.bean.phone}</td>
 					</tr>
 					<tr>
-						<td align="center">생일</td>
+						<th align="center"  class="tableHead">생일</th>
 						<td>${requestScope.bean.birth}</td>
 					</tr>
 					<tr>
-						<td align="center">주소</td>
+						<th align="center"  class="tableHead">주소</th>
 						<td>${requestScope.bean.address}</td>
 					</tr>
 					<tr>
-						<td align="center">비밀번호 질문</td>
+						<th align="center"  class="tableHead">비밀번호 질문</th>
 						<td>${requestScope.bean.passwordquest}</td>
 					</tr>
 					<tr>
-						<td align="center">비밀번호 답변</td>
+						<th align="center"  class="tableHead">비밀번호 답변</th>
 						<td>${requestScope.bean.passwordanswer}</td>
 					</tr>
 				</tbody>
 			</table>
 			
+			
 			<div  align="center">
 				<c:if test="${whologin ne 1}">	
 					<!-- 일반회원(3),사업자(2)에게만 정보수정, 탈퇴하기 버튼 보이기 -->
-					<a type="button" href="<%=notWithFormTag%>meUpdate&id=${bean.id}" class="btn btn-info">회원정보 수정</a>
-					<a type="button" href="<%=notWithFormTag%>meDelete&id=${sessionScope.loginfo.id}" class="btn btn-info">회원탈퇴하기</a>
+					<a type="button" href="<%=notWithFormTag%>meUpdate&id=${bean.id}" class="btn button-18 "  style=" padding-left:50px; padding-right:50px">회원정보 수정</a>
+					<a type="button" href="<%=notWithFormTag%>meDelete&id=${sessionScope.loginfo.id}" class="btn button-18 "  style=" padding-left:50px; padding-right:50px">회원탈퇴하기</a>
 				</c:if>	
 			</div>
 			
