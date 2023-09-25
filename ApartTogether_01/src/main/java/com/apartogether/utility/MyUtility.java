@@ -26,16 +26,16 @@ public class MyUtility {
 		String profileFileName = mr.getFilesystemName("profile");
 		File file = new File(webPathFrom + "/"+ profileFileName);
 	    File fileToMove = new File(webPathTo + "/"+ profileFileName);
-		System.out.println("!!Move profile From : " + webPathFrom + "/"+ profileFileName);
-		System.out.println("!!Move profile To : " + webPathTo + "/"+ profileFileName);
+		//System.out.println("Move profile From : " + webPathFrom + "/"+ profileFileName);
+		//System.out.println("Move profile To : " + webPathTo + "/"+ profileFileName);
 		
 	        boolean success = file.renameTo(fileToMove); // rename이동에 성공하면 true, 실패하면 false를 반환합니다. 타켓파일이 없을 때 false입니다.
 	        if (!success) { // 실패
-	            System.out.println("!!Failed to rename to " + fileToMove); //
+	            System.out.println("Failed to rename to " + fileToMove); //
 	            //uploadStoreImage폴더에 남아있는 프로필이미지(쓰레기파일이 된)를 삭제합니다.
 	            deleteTrashProfile(webPathFrom, mr);
 	        }else { // 성공
-	        	System.out.println("!!Succeed to rename to " + fileToMove);
+	        	System.out.println("Succeed to rename to " + fileToMove);
 	        }
 	}
 	

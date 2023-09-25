@@ -298,9 +298,6 @@ public class MemberDao extends SuperDao {
 		System.out.println("MD.InsertData : " + bean);
 
 		// Bean 객체 정보를 이용하여 데이터 베이스에 추가합니다.
-
-		
-
 		String sql = " insert into members(id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest) " ;
 		sql += " values(					?,	   ?,	 ?,	       ?,	  ?,     ?,	     ?, 	   ?,	    ?,	     ?,              ?,             ?) " ; 
 		int cnt = -1 ;
