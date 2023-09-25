@@ -5,12 +5,12 @@
 	padding:0;
 }
 
-body {
+.header_underline {
 	border-bottom: 1px solid #cdcdcd;
 }
 
 .header {
-	margin: 30px 150px 20px 150px; /*top right bottom left*/
+	margin: 30px 150px 30px 150px; /*top right bottom left*/
 }
 
 .navbar_hole {
@@ -28,6 +28,7 @@ body {
 ul, li {
 	list-style: none;
 	padding-left: 0;
+	margin-bottom: 0;
 }
 
 a {
@@ -49,7 +50,7 @@ a {
 
 .navbar_menu > li > a {
 	display:block;
-	padding:0 15px;
+	padding:5px 15px;
 	height:40px;
 	line-height:40px;
 	color:#333;

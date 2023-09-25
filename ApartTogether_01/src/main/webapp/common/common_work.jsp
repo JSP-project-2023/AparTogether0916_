@@ -39,8 +39,8 @@ String notWithFormTag = appName + mappingName + "?command=";
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/header.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/common.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/header.css" type="text/css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,115 +59,117 @@ String notWithFormTag = appName + mappingName + "?command=";
 </head>
 
 <body>
-	<header class="header">
-		<nav class="navbar_hole">
-			<div class="navbar_logo">
-<%-- 				<a class="navbar-logo" href="<%=notWithFormTag%>home"> --%>
-				<a class="navbar-logo" href="${pageContext.request.contextPath}/common/common_work.jsp">
-					<img alt="logoIMG" src="${pageContext.request.contextPath}/image/logo.png">
-				</a>
-				
-			</div>
-			
-			<!-- Store section -->
-			<ul class="navbar_menu">
-				<li class="">
-					<a class="" href="#" role="button" data-bs-toggle="dropdown">가게</a>
+	<div class="header_underline">
+		<header class="header">
+			<nav class="navbar_hole">
+				<div class="navbar_logo">
+	<%-- 				<a class="navbar-logo" href="<%=notWithFormTag%>home"> --%>
+					<a class="navbar-logo" href="${pageContext.request.contextPath}/common/common_work.jsp">
+						<img width="150px" alt="logoIMG" src="${pageContext.request.contextPath}/image/logo.png">
+					</a>
 					
-					<ul class="subnavbar_menu">
-						<li>
-							<a class="" href="<%=notWithFormTag%>stList">가게 목록</a>
-						</li>
-	
-<%-- 						<c:if test="${whologin eq 2}"> --%>
-							<li>
-								<a class="" href="<%=notWithFormTag%>myStoreList&id=${sessionScope.loginfo.id}">내 가게 관리</a>
-							</li>
-							<li>
-								<a class="" href="<%=notWithFormTag%>menuManage">메뉴 관리</a>
-							</li>
-<%-- 						</c:if> --%>
-					</ul>
-				</li>
+				</div>
 				
-				<!-- Order section -->
-				<li class="">
-					<a class="" href="#" role="button" data-bs-toggle="dropdown">주문</a>
-					<ul class="subnavbar_menu">
-<%-- 						<c:if test="${whologin ne 0}"> --%>
-							<li>
-								<a class="" href="<%=notWithFormTag%>myorList">주문내역(href : null)</a>
-							</li>
-<%-- 						</c:if> --%>
-						<li>
-							<a class="" href="<%=notWithFormTag%>roList">모집 중인 주문(href : null)</a>
-						</li>
-					</ul>
-				</li>
-				
-				<!-- Event section -->
-				<li class="">
-					<a class="" href="#" role="button" data-bs-toggle="dropdown">이벤트</a>
-					<ul class="subnavbar_menu">
-						<li>
-							<a class="" href="<%=notWithFormTag%>prList">이벤트(href : null)</a>
-						</li>
-<%-- 						<c:if test="${whologin eq 1}"> --%>
-							<li>
-								<a class="" href="<%=notWithFormTag%>prInsert">이벤트 등록(href : null)</a>
-							</li>
-<%-- 						</c:if> --%>
-					</ul>
-				</li>
-				
-				<!-- Community section -->
-				<li class="">
-					<a class="" href="#" role="button" data-bs-toggle="dropdown">커뮤니티</a>
-					<ul class="subnavbar_menu">
-						<li>
-							<a class="" href="<%=notWithFormTag%>vwList">투표(href : null)</a>
-						</li>
-<%-- 						<c:if test="${whologin eq 1}"> --%>
-							<li>
-								<a class="" href="<%=notWithFormTag%>prInsert">투표 등록(href : null)</a>
-							</li>
-<%-- 						</c:if> --%>
-					</ul>
-				</li>
-			</ul>
-			
-			<ul class="navbar_member">
-				<!-- [st] 로그인 섹션 -->							
-				<c:if test="${whologin eq null }">
+				<!-- Store section -->
+				<ul class="navbar_menu">
 					<li class="">
-						<a class="" href="<%=notWithFormTag%>meLogin">로그인</a>
+						<a class="" href="#" role="button" data-bs-toggle="dropdown">가게</a>
+						
+						<ul class="subnavbar_menu">
+							<li>
+								<a class="" href="<%=notWithFormTag%>stList">가게 목록</a>
+							</li>
+		
+	<%-- 						<c:if test="${whologin eq 2}"> --%>
+								<li>
+									<a class="" href="<%=notWithFormTag%>myStoreList&id=${sessionScope.loginfo.id}">내 가게 관리</a>
+								</li>
+								<li>
+									<a class="" href="<%=notWithFormTag%>menuManage">메뉴 관리</a>
+								</li>
+	<%-- 						</c:if> --%>
+						</ul>
 					</li>
+					
+					<!-- Order section -->
 					<li class="">
-						<a class="" href="<%=notWithFormTag%>meInsert">회원 가입</a>
+						<a class="" href="#" role="button" data-bs-toggle="dropdown">주문</a>
+						<ul class="subnavbar_menu">
+	<%-- 						<c:if test="${whologin ne 0}"> --%>
+								<li>
+									<a class="" href="<%=notWithFormTag%>myorList">주문내역(href : null)</a>
+								</li>
+	<%-- 						</c:if> --%>
+							<li>
+								<a class="" href="<%=notWithFormTag%>roList">모집 중인 주문(href : null)</a>
+							</li>
+						</ul>
 					</li>
-				</c:if>
+					
+					<!-- Event section -->
+					<li class="">
+						<a class="" href="#" role="button" data-bs-toggle="dropdown">이벤트</a>
+						<ul class="subnavbar_menu">
+							<li>
+								<a class="" href="<%=notWithFormTag%>prList">이벤트(href : null)</a>
+							</li>
+	<%-- 						<c:if test="${whologin eq 1}"> --%>
+								<li>
+									<a class="" href="<%=notWithFormTag%>prInsert">이벤트 등록(href : null)</a>
+								</li>
+	<%-- 						</c:if> --%>
+						</ul>
+					</li>
+					
+					<!-- Community section -->
+					<li class="">
+						<a class="" href="#" role="button" data-bs-toggle="dropdown">커뮤니티</a>
+						<ul class="subnavbar_menu">
+							<li>
+								<a class="" href="<%=notWithFormTag%>vwList">투표(href : null)</a>
+							</li>
+	<%-- 						<c:if test="${whologin eq 1}"> --%>
+								<li>
+									<a class="" href="<%=notWithFormTag%>prInsert">투표 등록(href : null)</a>
+								</li>
+	<%-- 						</c:if> --%>
+						</ul>
+					</li>
+				</ul>
 				
-				<c:if test="${whologin eq 1 }">
-					<li class=""><a class="">주인님 !</a></li>
-					<li class=""><a class="" href="<%=notWithFormTag%>meList">회원 목록</a></li>
-					<li class=""><a class="" href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
-				</c:if>
-				
-				<c:if test="${whologin eq 2 }">
-					<li class=""><a class="">${sessionScope.loginfo.name} 사장님 </a></li>
-					<li class=""><a class="" href="<%=notWithFormTag%>meDetail">마이페이지</a></li>
-					<li class=""><a class="" href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
-				</c:if>
-				
-				<c:if test="${whologin eq 3 }">
-					<li class=""><a class="">${sessionScope.loginfo.name}님</a></li>
-					<li class=""><a class="" href="<%=notWithFormTag%>meDetail">마이페이지</a></li>
-					<li class=""><a class="" href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
-				</c:if>
-				
-				<!-- [ed] 로그인 섹션 -->
-			</ul>
-		</nav>
-	</header>
+				<ul class="navbar_member">
+					<!-- [st] 로그인 섹션 -->							
+					<c:if test="${whologin eq null }">
+						<li class="">
+							<a class="" href="<%=notWithFormTag%>meLogin">로그인</a>
+						</li>
+						<li class="">
+							<a class="" href="<%=notWithFormTag%>meInsert">회원 가입</a>
+						</li>
+					</c:if>
+					
+					<c:if test="${whologin eq 1 }">
+						<li class=""><a class="">주인님 !</a></li>
+						<li class=""><a class="" href="<%=notWithFormTag%>meList">회원 목록</a></li>
+						<li class=""><a class="" href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
+					</c:if>
+					
+					<c:if test="${whologin eq 2 }">
+						<li class=""><a class="">${sessionScope.loginfo.name} 사장님 </a></li>
+						<li class=""><a class="" href="<%=notWithFormTag%>meDetail">마이페이지</a></li>
+						<li class=""><a class="" href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
+					</c:if>
+					
+					<c:if test="${whologin eq 3 }">
+						<li class=""><a class="">${sessionScope.loginfo.name}님</a></li>
+						<li class=""><a class="" href="<%=notWithFormTag%>meDetail">마이페이지</a></li>
+						<li class=""><a class="" href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
+					</c:if>
+					
+					<!-- [ed] 로그인 섹션 -->
+				</ul>
+			</nav>
+		</header>
+	</div>
 </body>
 </html>

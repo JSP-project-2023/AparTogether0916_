@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 @font-face {
     font-family: 'Giants-Bold';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2') format('woff2');
@@ -39,71 +38,6 @@
 	margin-bottom: 2.5rem;
 }
 
-/*.dropdown-toggle {*/
-/*	font-size: 1.6rem;*/
-/*}*/
-
-/*.navbar {*/
-/*	text-align: center;*/
-/*	align-items: center;*/
-/*	max-height: 15rem;*/
-/*}*/
-
-/*.navbar-brand {*/
-/*	font-family: "Black Han Sans";*/
-/*	margin-right: 150px;*/
-/*	font-size: 3rem;*/
-/*}*/
-
-/*.nav-item {*/
-/*	font-size: 45px;*/
-/*	margin-top: auto;*/
-/*	margin-right: auto;*/
-/*	font-family: 'Nanum Gothic';*/
-/*	font-weight: bold;*/
-/*	text-align: center;*/
-/*	align-items: center;*/
-/*	padding: 1.4rem;*/
-/*	}*/
-/*.dropdown-item {*/
-/* 	font-size: 20px; */
-/* 	font-family: 'Nanum Gothic'; */
-/*	font-size: 1.2rem;*/
-/*	text-align: left;*/
-/*	color: #555555;*/
-/*	background: #ffffff;*/
-/*}*/
-/*.navbar-logo {*/
-/*	margin-right: 25px;*/
-/*	font-size: 15px*/
-/*}*/
-/*.small-tip {*/
-/* 	font-size: 25px; */
-/*	font-size: 1.3rem;*/
-/*	text-decoration: none;*/
-/*	color: grey;*/
-/* 	font-family: 'Nanum Gothic'; */
-/*	padding-bottom: 19px;*/
-/*	align-items: center;*/
-/*	display: block;*/
-/*    padding: 1.4rem;*/
-/*    font-weight: normal;*/
-/*}*/
-
-/*.tips {*/
-/*	margin-top: auto;*/
-/*	margin-left: auto;*/
-/*	position: relative;*/
-/*	cursor: pointer;*/
-/*	font-weight: 600;*/
-/*	align-items: center;*/
-/*}*/
-
-/*#margin {*/
-/*	margin: 50px;*/
-/*	margin-left: 150px;*/
-/*	margin-right: 150px;*/
-/*}*/
 
 .body {
 	align-content: center
@@ -116,4 +50,3 @@
 #behind {
 	display: none;
 }
-
