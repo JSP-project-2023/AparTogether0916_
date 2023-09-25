@@ -17,7 +17,7 @@
    <script>
 
 
-   
+   var qty = 0;
    
    function updateQuantity(menuId, change) {
 	    var qtyInput = document.getElementById(menuId + 'qty');
@@ -41,6 +41,7 @@
 
 	    var totalpriceElement = document.getElementById(menuId + 'totalprice');
 	    totalpriceElement.textContent = amount.toLocaleString();
+	    console.log(qtyInput);
 	}
 
 
@@ -73,6 +74,7 @@
             <c:forEach items="${requestScope.lists}" var="bean">
                 <tr>
                     <td>${bean.roomno}</td>
+                    <c:set var="roomno" value="${bean.roomno}"></c:set>
                     <td>${bean.menuname}</td>
                     <td>${bean.price}</td>
                     <td>${bean.qty}</td>
@@ -128,10 +130,14 @@
 				                <li class="page-item">
 				                    <a class="page-link" href="#" data-bs-toggle="popover" data-bs-trigger="hover"
 				                       data-bs-content="기존 카트에 품목이 이미 존재하면 수량을 누적합니다." data-bs-title="${bean.menuno}qty">
-				                        <input type="text" disabled="disabled" name="qty" id="${bean.menuno}qty" class="qty" value="0">
+				                        <input type="text"  name="qty" id="${bean.menuno}qty" class="qty" value="0">
+
+				                        <input type="hidden" name="command" value="orInsert">
+				        				<input type="hidden" name="menuno" value="${bean.menuno}">
+				        				<input type="hidden" name="roomno" value ='<c:out value="${roomno}"/>'>
 				                    </a>
-				                    <input type="hidden" name="command" value="orInsert">
-			        				<input type="hidden" name="menuno" value="${bean.menuno}">
+				                   
+			        				
 				                </li>
 				                <!-- + 버튼 -->
 				                <li class="page-item">

@@ -58,15 +58,14 @@ public class RoomDetailController extends SuperClass {
 		}
 	}
 	
-	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doPost(request, response);
 		
-		// 제작중
-		super.gotoPage("room/roDetail.jsp");
+		super.gotoPage("room/roomList.jsp");
 	}
-	}
+	
+}
 	
 
 		

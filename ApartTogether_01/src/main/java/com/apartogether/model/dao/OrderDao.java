@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.apartogether.model.bean.Order;
+import com.apartogether.model.bean.Personal;
 import com.apartogether.model.cart.CartItem;
 
 
@@ -112,6 +113,38 @@ public class OrderDao extends SuperDao{
 		item.setPrice(rs.getInt("price"));
 		item.setQty(rs.getInt("qty"));
 		return item;
+	}
+
+	public int InsertData(Personal bean) throws Exception{
+		System.out.println(bean); 
+		
+		String sql = " insert into personal(orderno, menuno, roomno, id, qty, menuono, ) " ;
+		sql += " select seqorderno.next(), ?,  ?, ?, ?, me.price* ? " ;
+		sql += " from  personal pe ";
+		sql += " inner join menu me on pe.menuno = me.menuno ";
+		sql += " where menuno = ?";
+		int cnt = -1 ;
+		PreparedStatement pstmt = null ;
+		
+		conn = super.getConnection() ;
+		conn.setAutoCommit(false);
+
+		pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setInt(1, bean.getMenuno());
+		pstmt.setInt(2, bean.getRoomno());
+		pstmt.setString(3, bean.getId());
+		pstmt.setInt(4, bean.getQty());
+		pstmt.setInt(5, bean.getQty());
+		pstmt.setInt(6, bean.getMenuno());
+		cnt = pstmt.executeUpdate() ;
+
+		conn.commit();
+		
+		if(pstmt != null) {pstmt.close();}
+		if(conn != null) {conn.close();}
+		
+		return cnt ;
 	}
 
 	
