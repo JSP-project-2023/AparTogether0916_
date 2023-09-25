@@ -47,7 +47,7 @@ String notWithFormTag = appName + mappingName + "?command=";
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+
 <!-- 이 파일은 모든 문서에서 공용으로 참조할 파일입니다.  -->
 <!-- 자바 관련 변수 및 패키지 임포트, 네비게이션 바, jstl 등등 -->
 <!-- for sweet alert -->
@@ -156,7 +156,7 @@ String notWithFormTag = appName + mappingName + "?command=";
       <nav class="navbar navbar-expand-lg">
          <div class="container-fluid">
             <a class="navbar-logo" href="#">로고 이미지</a>
-            <a class=" navbar-brand bigsize" href="<%=notWithFormTag%>home">APTogether</a>
+            <%-- <a class=" navbar-brand bigsize" href="<%=notWithFormTag%>home">A*</a> --%>
             <button class="navbar-toggler" type="button"
                data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                <span class="navbar-toggler-icon"></span>

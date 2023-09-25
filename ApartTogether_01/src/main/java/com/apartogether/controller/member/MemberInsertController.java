@@ -25,6 +25,7 @@ public class MemberInsertController extends SuperClass {
 		super.doPost(request, response);
 		MultipartRequest mr = (MultipartRequest)request.getAttribute("mr") ;
 		Member bean = new Member();
+		MemberDao dao = new MemberDao() ;
 		
 		bean.setId(mr.getParameter("id"));
 		bean.setMtype(mr.getParameter("mtype"));
@@ -48,15 +49,12 @@ public class MemberInsertController extends SuperClass {
 		bean.setAddress(mr.getParameter("address") + " "
 				+ mr.getParameter("address_detail"));/* 주소(카카오API값) + 상세주소(사용자가 입력하는값) */
 		bean.setProfile(mr.getFilesystemName("profile"));
-
-		
 		bean.setPasswordanswer(mr.getParameter("passwordanswer"));
 		bean.setPasswordquest(mr.getParameter("passwordquest"));
 		
 		// gotoStoreInsert : 회원타입을 사업자로 선택한 경우 <내 가게 등록 화면>으로 이동할지 묻는 컨펌창의 결과를 저장합니다.(yes/no)
 		String gotoStoreInsert = mr.getParameter("gotoStoreInsert"); //  yes이면 <내 가게 등록 화면>으로 이동합니다.
 		
-		MemberDao dao = new MemberDao() ;
 		int cnt = -1 ;
 		try {
 			cnt = dao.InsertData(bean) ;
@@ -67,7 +65,7 @@ public class MemberInsertController extends SuperClass {
 				if(gotoStoreInsert.equals("yes")) {//  yes이면 <내 가게 등록 화면>으로 이동합니다.
 					// 임시로 meList으로 가게 해두었습니다. 나중에 꼭 수정해주세요. @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 					new MemberLoginController().doPost(request, response);
-					String gotopage = super.getUrlInfomation("meList"); 
+					String gotopage = super.getUrlInfomation("stInsert"); 
 //					gotopage += "&id=" + mr.getParameter("id");
 					response.sendRedirect(gotopage);
 					// 자동로그인이 되는지 꼭 확인해 주세요.@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

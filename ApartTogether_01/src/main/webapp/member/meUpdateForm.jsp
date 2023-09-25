@@ -32,25 +32,26 @@
   	  		
   	  		if(oldmtype == "biz") { // 수정 전에 사업자 였음
   				if(mtype == "biz") { // 사업자를 그대로 유지하면 알럿창(수정완료)띄우고 마이페이지로 이동
-  					alert('수정완료');
+  					//alert('수정완료');
   				}else if(mtype == "user") { // 사업자가 일반회원으로 변경한 거면 컨펌창(내가게 다 사라집니다)
   					var returnValue1 = confirm("내가 등록한 가게 정보가 모두 사라집니다. \n정말 일반회원으로 변경하시겠습니까?");
   					if(returnValue1 == true){// 컨펌창 yes 알럿창(수정완료)띄우고 마이페이지로 이동
-  						alert('회원유형이 사업자로 변경되었습니다.');
+  						$('#changeBizToUser').val("yes");
+  						//alert('회원유형이 사업자로 변경되었습니다.');
   					}else{// 컨펌창 no 사업자로 유지
-  						alert('회원유형을 사업자로 유지합니다.');
+  						//alert('회원유형을 사업자로 유지합니다.');
   						$('#changeBizToUser').val("no"); // Set the value of #yesorno to "no"
   					}
   				}
   			}else if(oldmtype == "user") { // 수정 전에 일반회원 이었음
   				if(mtype == "user") { // 일반회원을 그대로 유지하면 알럿창(수정완료)띄우고 마이페이지로 이동
-  					
-  					alert('수정완료');
+  					//alert('수정완료');
   				}else if(mtype == "biz") { // 일반회원이 사업자로 변경한 거면 컨펌창(내가게 등록하러 가시겠습니까?)
   					var returnValue2 = confirm("회원유형이 사업자로 변경되었습니다. \n내 가게를 등록하러 가시겠습니까?");
   					if(returnValue2 == true){ // 컨펌창 yes '내 가게등록 페이지'로 이동
   						$('#gotoStoreInsert').val("yes");
   					}else{ // 컨펌창 no 마이페이지로 이동
+  						$('#gotoStoreInsert').val("no");
   					}
   				}
   			}
@@ -72,6 +73,109 @@
   		.radio_mtype{font-size: 1.1rem;} /* 주위 글꼴의 1.1배 */
   		.small_image{width:50px;height:50px;margin:2px;border-radius:5px;}
   	</style>
+  	<style type="text/css">
+		.container {margin-top:;}
+		
+		.input-group {
+			margin: 7px;
+			max-width: 1280px;
+			min-width: 0px;
+		}
+		
+		.input-group-text {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		#buttonset {
+			margin-top: 15px;
+		}
+		
+		.radio-inline {
+			cursor: pointer;
+			justify-content: center;
+			margin-left: auto;
+			margin-right: auto;
+			font-size: 1.2em;
+		}
+		
+		.form-check-input {
+			cursor: pointer;
+			justify-content: center;
+			margin-left: auto;
+			margin-right: auto;
+			size: 19px;
+		}
+		
+		.form-select {
+			cursor: pointer;
+			justify-content: center;
+			margin-left: auto;
+			margin-right: auto;
+			size: 3px;
+		}
+		
+		/* [st] button-18 */
+		.button-18 {
+			align-items: center;
+			background-color: #d8e4d2;
+			border: 0;
+			box-sizing: border-box;
+			color: #6f726e;
+			cursor: pointer;
+			display: inline-flex;
+			font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,
+				"Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans",
+				Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji",
+				"Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+			font-size: 20px;
+			font-weight: 600;
+			justify-content: center;
+			line-height: 20px;
+			max-width: 1100px;
+			min-height: 50px;
+			min-width: 0px;
+			overflow: hidden;
+			padding: 0px;
+			padding-left: 200px;
+			padding-right: 200px;
+			text-align: center;
+			touch-action: manipulation;
+			transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+				box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s
+				cubic-bezier(0.4, 0, 0.2, 1) 0s;
+			user-select: none;
+			-webkit-user-select: none;
+			vertical-align: middle;
+		}
+		
+		.button-18:hover, .button-18:focus {
+			background-color: #8e998c;
+			color: #ffffff;
+		}
+		
+		.button-18:active {
+			background: #09223b;
+			color: rgb(255, 255, 255, .7);
+		}
+		
+		.button-18:disabled {
+			cursor: not-allowed;
+			background: rgba(0, 0, 0, .08);
+			color: rgba(0, 0, 0, .3);
+		}
+		/* [ed] button-18 */
+		.button-99 { /* 무색 투명 버튼 */
+			cursor: pointer;
+			font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,
+				"Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans",
+				Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji",
+				"Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+			font-size: 12px;
+			font-weight: 600;
+		}
+</style>
 </head>
 <body>
 	<div class="container">
@@ -110,7 +214,7 @@
 				<input type="hidden" id="gotoStoreInsert" name="gotoStoreInsert" value="no">
 				
 				<div class="input-group">
-					<span class="input-group-text">회원유형</span><!-- 수정불가항목 -->
+					<span class="input-group-text col-md-2">회원유형</span><!-- 수정불가항목 -->
 					<div class="form-control" >
 						<label class="radio-inline radio_mtype"> 
 							&nbsp;<input type="radio" id="mtype1" name="mtype" value="user">일반회원
@@ -122,12 +226,12 @@
 				</div>	
 
 				<div class="input-group">
-					<span class="input-group-text">아이디</span><!-- 수정불가항목 -->
+					<span class="input-group-text col-md-2">아이디</span><!-- 수정불가항목 -->
 					<input disabled="disabled" class="form-control" type="text" id="fakeid" name="fakeid" value="${requestScope.bean.id}">				
 					<input type="text" id="id" name="id" value="${requestScope.bean.id}" hidden>
 				</div>
 				<div class="input-group"> 
-					<span class="input-group-text">이름</span>
+					<span class="input-group-text col-md-2">이름</span>
 					<input class="form-control" type="text" id="name" name="name" value="${requestScope.bean.name}">				
 				</div>
 				
@@ -147,20 +251,21 @@
 						<img class="card-img-top  small_image rounded" alt="${requestScope.bean.profile}" 
 				         src="uploadProfileImage/${requestScope.bean.profile}"  >
 					</c:if>
-					
-					<img class="card-img-top  small_image rounded" alt="${requestScope.bean.profile}" 
-						         src="uploadProfileImage/${requestScope.bean.profile}"  >
+					<br>
+					<%-- <img class="card-img-top  small_image rounded" alt="${requestScope.bean.profile}" 
+						         src="uploadProfileImage/${requestScope.bean.profile}"  > --%>
+				
 					<input class="form-control" type="file" id="profile" name="profile"  ">
 					<input type="text" name="deleteProfile" value="${requestScope.bean.profile}" hidden>
 				</div>
 				
 				<div class="input-group" >
-					<span class="input-group-text">비밀 번호</span>
+					<span class="input-group-text col-md-2">비밀 번호</span>
 					<input class="form-control" type="password" id="password" name="password"  value="${requestScope.bean.password}">		
 				</div>
 				
 				<div class="input-group">
-					<span class="input-group-text">성별</span>
+					<span class="input-group-text col-md-2">성별</span>
 					<div class="form-control">
 						<label class="radio-inline radio_gender"> 
 							&nbsp;<input type="radio" id="gender1" name="gender" value="male">남자
@@ -171,50 +276,50 @@
 					</div>
 				</div>
 				<div class="input-group">
-					<span class="input-group-text">전화번호</span>
+					<span class="input-group-text col-md-2">전화번호</span>
 					<input class="form-control" type="text" id="phone" name="phone" value="${requestScope.bean.phone }">			
 				</div>
 				
 				
 				<div class="input-group">
-					<span class="input-group-text">생일</span>
+					<span class="input-group-text col-md-2">생일</span>
 					<input class="form-control" type="datetime" id="birth" name="birth" value="${requestScope.bean.birth }">			
 				</div> 
 				
 				<div class="input-group">
-					<span class="input-group-text">주소</span>
+					<span class="input-group-text col-md-2">주소</span>
 					<input class="form-control" type="text" id="address" name="address" value="${requestScope.bean.address }">			
 				</div>
 				
+				
+				
 				<div class="input-group">
-					<span class="input-group-text">비밀번호 질문</span>
+					<span class="input-group-text col-md-2">비밀번호 질문</span>
 					<input disabled="disabled" class="form-control" type="text" id="fakepasswordquest" name="fakepasswordquest" value="${requestScope.bean.passwordquest}">			
 					<input class="form-control" type="text" id="passwordquest" name="passwordquest" value="${requestScope.bean.passwordquest}" hidden>			
 				
 				</div>
 				
 				<div class="input-group">
-					<span class="input-group-text">비밀번호 답변</span>
+					<span class="input-group-text col-md-2">비밀번호 답변</span>
 					<input class="form-control" type="text" id="passwordanswer" name="passwordanswer" value="${requestScope.bean.passwordanswer }">			
 				</div>
-				
-				<button type="submit" class="btn btn-primary" onclick="return validCheck();">수정</button>
-				<button type="reset" class="btn btn-primary">초기화</button>	
-				
+			
+			
+				<div style="text-align: center;">
+				<button  type="submit" class="btn button-18 "  style=" padding-left:50px; padding-right:50px" 
+						 onclick="return validCheck();">수정</button>
+				<button type="reset" class="btn button-18 " style="padding-left:50px; padding-right:50px"  >
+						초기화</button>
+				</div>
 			
 			</form>
-			
 		</c:if>
 		
-		<div id="backButton">
-			<button type="button" class="btn btn-primary" onclick="history.back();">
-				돌아 가기
-			</button>
+	 	<div id="backButton">
+			<button type="button"  class="btn btn-info" onclick="history.back();">돌아 가기</button>
 		</div>
 	
-		
-	
-		
 	</div>
 </body>
 </html>

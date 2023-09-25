@@ -405,10 +405,10 @@ public class MemberDao extends SuperDao {
 	}
 	/* [ed] 아이디 랜덤 생성 */
 
-	// 지우려는 프로필이미지를 혹시 사용하는 사람이 있는지-> 몇명인지 반환합니다.
-	// 회원수정에서 프로필이미지 수정에 사용합니다. 
-	// MyUtility.deleteOldProfileImageFile에서 사용합니다.
+	
 	public List<Member> getSameProfileName(String profile) throws Exception {
+		// 회원수정에서 삭제하려는 프로필이미지를 혹시 사용하는 사람이 있는지 명단을 반환합니다.
+		// MyUtility.deleteOldProfileImageFile에서 사용합니다.
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		

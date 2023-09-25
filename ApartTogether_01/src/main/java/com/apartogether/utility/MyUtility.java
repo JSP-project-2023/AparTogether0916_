@@ -21,26 +21,22 @@ public class MyUtility {
 
 	public static void moveFolderProfileImage(String webPathFrom, String webPathTo, MultipartRequest mr) {
 		// FrontController.doProcess에서 사용합니다.
-		// 회원정보 수정시 webPathFrom폴더로 업로드한 프로필이미지를
-		// webPathTo폴더로 이동시킵니다.
+		// <회원정보 수정>시 webPathFrom폴더로 업로드한 프로필이미지를 webPathTo폴더로 이동시킵니다.
 		String profileFileName = mr.getFilesystemName("profile");
 		File file = new File(webPathFrom + "/"+ profileFileName);
 	    File fileToMove = new File(webPathTo + "/"+ profileFileName);
-		//System.out.println("Move profile From : " + webPathFrom + "/"+ profileFileName);
-		//System.out.println("Move profile To : " + webPathTo + "/"+ profileFileName);
-		
-	        boolean success = file.renameTo(fileToMove); // rename이동에 성공하면 true, 실패하면 false를 반환합니다. 타켓파일이 없을 때 false입니다.
-	        if (!success) { // 실패
-	            System.out.println("Failed to rename to " + fileToMove); //
-	            //uploadStoreImage폴더에 남아있는 프로필이미지(쓰레기파일이 된)를 삭제합니다.
-	            deleteTrashProfile(webPathFrom, mr);
-	        }else { // 성공
-	        	System.out.println("Succeed to rename to " + fileToMove);
-	        }
+	    
+        boolean success = file.renameTo(fileToMove); // rename이동에 성공하면 true, 실패하면 false를 반환합니다. 타켓파일이 없을 때 false입니다.
+        if (!success) { // 실패
+            System.out.println("Failed to rename to " + fileToMove);
+            deleteTrashProfile(webPathFrom, mr);  //uploadStoreImage폴더에 남아있는 프로필이미지(쓰레기파일이 된)를 삭제합니다.
+        }else { // 성공
+        	System.out.println("Succeed to rename to " + fileToMove);
+        }
 	}
 	
 	public static void deleteTrashProfile(String webPath, MultipartRequest mr){
-		// 회원수정 중 프로필이미지의 폴더이동에 실패하여 
+		// <회원정보 수정> 중 프로필이미지의 폴더이동에 실패하여 
 		// 쓰레기파일이 된 프로필이미지파일을 uploadStoreImage폴더에서 삭제합니다.
 		String deleteImages = mr.getFilesystemName("profile") ;
 		if(deleteImages != null) {
@@ -55,21 +51,15 @@ public class MyUtility {
 	}
 	
 	public static void deleteOldProfileImageFile(String webPath, MultipartRequest mr){
-		// FrontController.doProcess에서 사용합니다.(meUpdateForm.jsp)
-		// 회원정보 수정시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
-		// 같은 파일명을 사용하는 다른 사람이 있으면 삭제하지 않습니다.
-		//System.out.println("profile : " + mr.getFilesystemName("profile"));
-		//System.out.println("deleteProfile : " + mr.getParameter("deleteProfile"));
-	
+		// <회원정보 수정>시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
+		// 단, 같은 파일명을 사용하는 다른 사람이 있으면 삭제하지 않습니다.
 		String deleteProfile = mr.getParameter("deleteProfile") ;
 		MemberDao dao = new MemberDao();
 		
 		List<Member> lists = null;
 		try {
 			lists = dao.getSameProfileName(deleteProfile); // 삭제하려는 파일을 사용중인 회원목록을 불러옵니다.
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		} catch (Exception e) {e.printStackTrace();}
 		if(lists.size() > 1) { // 같은 파일명을 사용하는 사람이 있으면(lists.size()가 2 이상이면)사진을 삭제하지 않는다.
 			System.out.println("동일한 파일명을 사용하는 다른 회원이 "+(lists.size()-1)+"명 있습니다. 기존 프로필사진을 삭제하지 않습니다.");
 		}else { // 같은 파일명을 사용하는 사람이 없으면(lists.size()가 1 이하이면) 사진을 삭제한다.
@@ -88,11 +78,7 @@ public class MyUtility {
 				System.out.println("meUpdate : 프로필이미지에 변동이 없으므로 파일을 그대로 유지합니다.");
 			}
 		}
-		
-		
 	}
-	
-
 	
 	public static MultipartRequest getMultipartRequest(HttpServletRequest request, String uploadPath) {
 		// 이미지 업로드에 필요한 멀티 파트 객체를 생성하여 반환 합니다.

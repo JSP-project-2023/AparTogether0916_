@@ -8,10 +8,114 @@
 	<meta charset="UTF-8">
 	<title>아파투게더:마이페이지</title>
 	<style type="text/css">
+		.table{}
 		.container{margin:10px;}
 		#backButton{margin: auto; }
 		.small_image{width:100px;height:100px;margin:2px;border-radius:5px;}
 	</style>
+	  	<style type="text/css">
+		.container {margin-top:;}
+		
+		.input-group {
+			margin: 7px;
+			max-width: 1280px;
+			min-width: 0px;
+		}
+		
+		.input-group-text {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		#buttonset {
+			margin-top: 15px;
+		}
+		
+		.radio-inline {
+			cursor: pointer;
+			justify-content: center;
+			margin-left: auto;
+			margin-right: auto;
+			font-size: 1.2em;
+		}
+		
+		.form-check-input {
+			cursor: pointer;
+			justify-content: center;
+			margin-left: auto;
+			margin-right: auto;
+			size: 19px;
+		}
+		
+		.form-select {
+			cursor: pointer;
+			justify-content: center;
+			margin-left: auto;
+			margin-right: auto;
+			size: 3px;
+		}
+		
+		/* [st] button-18 */
+		.button-18 {
+			align-items: center;
+			background-color: #d8e4d2;
+			border: 0;
+			box-sizing: border-box;
+			color: #6f726e;
+			cursor: pointer;
+			display: inline-flex;
+			font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,
+				"Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans",
+				Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji",
+				"Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+			font-size: 20px;
+			font-weight: 600;
+			justify-content: center;
+			line-height: 20px;
+			max-width: 1100px;
+			min-height: 50px;
+			min-width: 0px;
+			overflow: hidden;
+			padding: 0px;
+			padding-left: 200px;
+			padding-right: 200px;
+			text-align: center;
+			touch-action: manipulation;
+			transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+				box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s
+				cubic-bezier(0.4, 0, 0.2, 1) 0s;
+			user-select: none;
+			-webkit-user-select: none;
+			vertical-align: middle;
+		}
+		
+		.button-18:hover, .button-18:focus {
+			background-color: #8e998c;
+			color: #ffffff;
+		}
+		
+		.button-18:active {
+			background: #09223b;
+			color: rgb(255, 255, 255, .7);
+		}
+		
+		.button-18:disabled {
+			cursor: not-allowed;
+			background: rgba(0, 0, 0, .08);
+			color: rgba(0, 0, 0, .3);
+		}
+		/* [ed] button-18 */
+		.button-99 { /* 무색 투명 버튼 */
+			cursor: pointer;
+			font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,
+				"Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans",
+				Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji",
+				"Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+			font-size: 12px;
+			font-weight: 600;
+		}
+</style>
 </head>
 <body>
 	<div class="container">
@@ -127,9 +231,7 @@
 			
 			<div  align="center">
 				<c:if test="${whologin ne 1}">	
-					<!-- 일반회원(3),사업자(2)이면 비밀번호재설정, 정보수정, 탈퇴하기 버튼 보이기 -->	
-					<!-- 관리자(1)이면 이 부분이 보이지 않습니다. -->		
-					<%-- 이 줄은 삭제 예정입니다. <a type="button" href="<%=notWithFormTag%>meResetPassword&id=${bean.id}" class="btn btn-info">비밀번호재설정</a> --%>
+					<!-- 일반회원(3),사업자(2)에게만 정보수정, 탈퇴하기 버튼 보이기 -->
 					<a type="button" href="<%=notWithFormTag%>meUpdate&id=${bean.id}" class="btn btn-info">회원정보 수정</a>
 					<a type="button" href="<%=notWithFormTag%>meDelete&id=${sessionScope.loginfo.id}" class="btn btn-info">회원탈퇴하기</a>
 				</c:if>	

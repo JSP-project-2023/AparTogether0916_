@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
+  <title>아파투게더:홈</title>
 </head>
 <body>
 	HOME입니다.

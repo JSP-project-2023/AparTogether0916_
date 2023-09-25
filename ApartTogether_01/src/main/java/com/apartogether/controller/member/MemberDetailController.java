@@ -13,10 +13,7 @@ public class MemberDetailController extends SuperClass {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doGet(request, response);
 		
-//		String wid = session.getParameter("whologin_id"); 
-//		System.out.println("whologin_id : "+ wid);
 		String id = request.getParameter("id");
-//		System.out.println("here : "+ id);
 		MemberDao dao = new MemberDao();
 		Member bean = null;
 		
