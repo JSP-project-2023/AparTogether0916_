@@ -18,7 +18,7 @@ public class MemberDao extends SuperDao {
     // 회원정보 수정에 사용합니다. MemberUpdateController
 		System.out.println("상품 수정 빈 :\n" + bean);
 		PreparedStatement pstmt = null;
-		String sql = " update members set mtype = ? , name = ? ,  phone = ? , birth = ? , gender = ? , nickname = ? , address = ? , profile = ? , passwordanswer = ? , passwordquest = ? " ;
+		String sql = " update members set mtype = ? , name = ? ,  phone = ? , birth = ? , gender = ? , nickname = ? , address = ? , profile = ? , passwordanswer = ? , passwordquest = ?, password = ? " ;
 		sql += " where id = ? " ;
 		int cnt = -1 ;
 		
@@ -36,7 +36,8 @@ public class MemberDao extends SuperDao {
 		pstmt.setString(8, bean.getProfile());
 		pstmt.setString(9, bean.getPasswordanswer());
 		pstmt.setString(10, bean.getPasswordquest());
-		pstmt.setString(11, bean.getId());
+		pstmt.setString(11, bean.getPassword());
+		pstmt.setString(12, bean.getId());
 		
 		cnt = pstmt.executeUpdate();
 		conn.commit();
@@ -294,12 +295,9 @@ public class MemberDao extends SuperDao {
 
 	/* [InsertData] Member bean에 기록한 다음, 반환해 줍니다. */
 	public int InsertData(Member bean) throws Exception {
-		System.out.println(bean);
+		System.out.println("MD.InsertData : " + bean);
 
 		// Bean 객체 정보를 이용하여 데이터 베이스에 추가합니다.
-
-		
-
 		String sql = " insert into members(id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest) " ;
 		sql += " values(					?,	   ?,	 ?,	       ?,	  ?,     ?,	     ?, 	   ?,	    ?,	     ?,              ?,             ?) " ; 
 		int cnt = -1 ;
@@ -407,5 +405,33 @@ public class MemberDao extends SuperDao {
 	}
 	/* [ed] 아이디 랜덤 생성 */
 
+	
+	public List<Member> getSameProfileName(String profile) throws Exception {
+		// 회원수정에서 삭제하려는 프로필이미지를 혹시 사용하는 사람이 있는지 명단을 반환합니다.
+		// MyUtility.deleteOldProfileImageFile에서 사용합니다.
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = " select * from members ";
+		sql += " where profile = ?";
 
+		conn = super.getConnection();
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, profile);
+		
+		rs = pstmt.executeQuery();
+
+		List<Member> lists = new ArrayList<Member>();
+		
+
+		while (rs.next()) {
+			lists.add(getBeanData(rs));
+		}
+
+		if (rs != null) {rs.close();}
+		if (pstmt != null) {pstmt.close();}
+		if (conn != null) {conn.close();}
+
+		return lists;
+	}
 }

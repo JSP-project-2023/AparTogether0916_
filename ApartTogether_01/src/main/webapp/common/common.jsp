@@ -3,13 +3,15 @@
 <%@ include file="/common/bootstrap5.jsp"%>
 <%@page import="java.util.*"%>
 
-
 <%-- jstl을 위한 태그 라이브러리 선언 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!-- [st] whologin 변수는 현재 로그인 상태를 알려 주는 변수입니다.  미로그인(0)  관리자 (1) 사업자 (2) 일반회원 (3) -->
+<!-- 추후 작업 예정 -->
+<c:set var="whologin" value="0" />
+<c:set var="whologin_id" value="${sessionScope.loginfo.id}"/>
 <c:if test="${not empty sessionScope.loginfo}">
 	<c:set var="whologin" value="0" />
 	<c:if test="${sessionScope.loginfo.mtype == 'admin'}">
@@ -178,9 +180,7 @@ String notWithFormTag = appName + mappingName + "?command=";
 		</nav>
 		<hr id="small" />
 	</header>
-	
-	
-	
+
 	<!--[st] AlertBox - danger(red) -->
 	<c:if test="${not empty sessionScope.alertMessage}">
 		<%-- 주의/경고/오류 메세지 --%>
@@ -203,6 +203,6 @@ String notWithFormTag = appName + mappingName + "?command=";
 	</c:if>
 	<%-- 보여준 Alert Box를 session 영역에서 제거합니다. --%>
 	<c:remove var="successAlertMsg" scope="session"/>
-	
+
 </body>
 </html>

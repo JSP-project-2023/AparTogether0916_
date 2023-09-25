@@ -30,7 +30,6 @@
   		
     /* [st] submit 유효성 검사 */
     function validCheck(){ /* form validation check */
-    	
     	var member01 = $('input[type="radio"]:checked').val() ;
 		if(member01 == null){
 			alert('일반회원 / 사업자 는 반드시 선택이 되어야 합니다.');
@@ -90,22 +89,40 @@
   			return false ;
   		}
   		
-  		var address = $('#address').val();
+  		
+  		// meInsertForm에서 Mulripart로 수정하면서 주소 부분이 오류나는 것 같습니다.(9/22)
+  		// 일단 주석처리해 놓았습니다.
+  	 	var address = $('#address').val();
   		var address_detail = $('#address_detail').val();
-    	var check_address = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|0-9|a-z|A-Z]{1,100}/; // 한글체크 + 2~10자까지
+  
+    	/* var check_address = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|0-9|a-z|A-Z]{1,100}/; // 한글체크 + 2~10자까지
   		var resultad = check_kor.test(address);
   		var resultadd = check_kor.test(address_detail);
   		if(resultad == false || resultadd == false){  				
   			$('#address').focus();
   			alert('주소 및 상세 주소를 입력해주세요');
   			return false ;
-  		}
+  		}  */
   		
 		
   		
   		
   	}
 	/* [ed] 유효성 검사 */
+	
+	
+	function mtypeCheck(){
+  			// mtype을 사업자로 선택하면 컨펌창 후 메인화면 또는 내 가게 등록 화면으로 이동
+  			var mtype = $('input[name="mtype"]:checked').val();
+  	  		if(mtype == "biz"){
+	  	  		var returnValue1 = confirm("회원가입이 완료되었습니다.\n내 가게를 등록하러 가시겠습니까?");
+					if(returnValue1 == true){// 컨펌창 yes : 내 가게 등록화면으로 이동
+						$('#gotoStoreInsert').val("yes");
+					}else{// 컨펌창 no 사업자로 유지
+						$('#gotoStoreInsert').val("no");
+					}
+  	  		}
+  		}
 </script>
 
 <script	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
@@ -225,8 +242,9 @@
 		<div class="col-lg-8">
 			<h2>회원 가입</h2>
 			<p>회원 가입하는 페이지 입니다.</p>
-			<form action="<%=withFormTag%>" method="post">
+			<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data" onsubmit="mtypeCheck()">
 				<input type="hidden" name="command" value="meInsert">
+				<input type="hidden" id="gotoStoreInsert" name="gotoStoreInsert" value="no">
 
 				<div class="input-group" align="center">
 					<span class="input-group-text col-md-3">회원유형 <font
