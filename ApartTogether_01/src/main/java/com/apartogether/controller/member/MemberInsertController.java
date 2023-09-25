@@ -48,6 +48,8 @@ public class MemberInsertController extends SuperClass {
 		bean.setAddress(mr.getParameter("address") + " "
 				+ mr.getParameter("address_detail"));/* 주소(카카오API값) + 상세주소(사용자가 입력하는값) */
 		bean.setProfile(mr.getFilesystemName("profile"));
+
+		
 		bean.setPasswordanswer(mr.getParameter("passwordanswer"));
 		bean.setPasswordquest(mr.getParameter("passwordquest"));
 		

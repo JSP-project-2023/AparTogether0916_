@@ -78,7 +78,6 @@ private final String PREFIX = "member/";
 					// <가게등록페이지>로 이동합니다.
 					// 임시로 home으로 가게 해두었습니다. 나중에 꼭 수정해주세요. //////////////////////////
 					String gotopage = super.getUrlInfomation("home"); 
-//					String gotopage = super.getUrlInfomation("insertStore"); 
 //					gotopage += "&id=" + mr.getParameter("id");
 					response.sendRedirect(gotopage);
 				}else if(gotoStoreInsert.equals("no")) {

@@ -137,6 +137,17 @@
 				</div>
 				<div class="input-group">
 					<span class="input-group-text col-md-2">프로필사진</span>
+					
+					<%-- profile가 null인 상태라면 기본이미지(default.jpg)를 보여줍니다. --%>
+					<c:if test="${requestScope.bean.profile == null}">
+						<img class="card-img-top  small_image rounded" alt="기본이미지" 
+						src="./../upload/defaultprofile.jpg"  >
+					</c:if>
+					<c:if test="${requestScope.bean.profile != null}">
+						<img class="card-img-top  small_image rounded" alt="${requestScope.bean.profile}" 
+				         src="uploadProfileImage/${requestScope.bean.profile}"  >
+					</c:if>
+					
 					<img class="card-img-top  small_image rounded" alt="${requestScope.bean.profile}" 
 						         src="uploadProfileImage/${requestScope.bean.profile}"  >
 					<input class="form-control" type="file" id="profile" name="profile"  ">
