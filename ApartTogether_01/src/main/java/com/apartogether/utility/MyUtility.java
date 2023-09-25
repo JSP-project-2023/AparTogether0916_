@@ -22,15 +22,15 @@ public class MyUtility {
 		// webPathTo폴더로 이동시킵니다.
 		String profileFileName = mr.getFilesystemName("profile");
 		File file = new File(webPathFrom + "/"+ profileFileName);
-	        File fileToMove = new File(webPathTo + "/"+ profileFileName);
-		System.out.println("move profile From : " + webPathFrom + "/"+ profileFileName);
-		System.out.println("move profile To : " + webPathTo + "/"+ profileFileName);
+	    File fileToMove = new File(webPathTo + "/"+ profileFileName);
+		System.out.println("!!Move profile From : " + webPathFrom + "/"+ profileFileName);
+		System.out.println("!!Move profile To : " + webPathTo + "/"+ profileFileName);
 		
 	        boolean success = file.renameTo(fileToMove); // rename이동에 성공하면 true, 실패하면 false를 반환합니다. 타켓파일이 없을 때 false입니다.
 	        if (!success) { // 실패
-	            System.out.println("Failed to rename to " + fileToMove);
+	            System.out.println("!!Failed to rename to " + fileToMove); //
 	        }else { // 성공
-	        	System.out.println("Succeed to rename to " + fileToMove);
+	        	System.out.println("!!Succeed to rename to " + fileToMove);
 	        }
 	}
 	

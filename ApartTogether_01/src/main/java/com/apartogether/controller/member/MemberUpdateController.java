@@ -56,8 +56,9 @@ private final String PREFIX = "member/";
 		
 		if(mr.getFilesystemName("profile")==null) { // 회원정보 수정시 프로필사진 선택했을 때만 갱신한다.
 			bean.setProfile(mr.getParameter("deleteProfile"));
-		}else { // 회원정보 수정시 프로필사진을 안 건드렸으면 그대로 유지한다.
-			bean.setProfile(mr.getFilesystemName("profile"));
+		}else { // 회원정보 수정시 프로필사진을 안 건드렸으면 그대로 유지한다. 
+			// 파일명은(회원아이디_파일이름.png)식으로 저장합니다.
+			bean.setProfile(mr.getParameter("id") + "_" +mr.getFilesystemName("profile"));
 		}
 		bean.setPassword(mr.getParameter("password"));
 		bean.setGender(mr.getParameter("gender"));
@@ -78,8 +79,10 @@ private final String PREFIX = "member/";
 				//마이페이지로 갈것인가, 가게등록페이지로 갈것인가? 
 				if(gotoStoreInsert.equals("yes")) {
 					// <가게등록페이지>로 이동합니다.
-					// 임시로 home으로 가게 해두었습니다. 나중에 수정해주세요.
+					// 임시로 home으로 가게 해두었습니다. 나중에 꼭 수정해주세요. //////////////////////////
 					String gotopage = super.getUrlInfomation("home"); 
+//					String gotopage = super.getUrlInfomation("insertStore"); 
+//					gotopage += "&id=" + mr.getParameter("id");
 					response.sendRedirect(gotopage);
 				}else if(gotoStoreInsert.equals("no")) {
 					// 마이페이지로 이동합니다.

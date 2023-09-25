@@ -184,17 +184,12 @@
 				<div class="input-group">
 					<span class="input-group-text">비밀번호 답변</span>
 					<input class="form-control" type="text" id="passwordanswer" name="passwordanswer" value="${requestScope.bean.passwordanswer }">			
-					
 				</div>
 				
 				<button type="submit" class="btn btn-primary" onclick="return validCheck();">수정</button>
 				<button type="reset" class="btn btn-primary">초기화</button>	
 				
-				<!-- <div id="buttonset" class="input-group">
-					<button type="submit" class="btn btn-primary" onclick="return validCheck();">수정</button>
-					
-					<button type="reset" class="btn btn-primary">초기화</button>				
-				</div> -->
+			
 			</form>
 			
 		</c:if>
