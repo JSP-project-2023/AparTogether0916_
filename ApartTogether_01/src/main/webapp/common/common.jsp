@@ -10,7 +10,7 @@
 
 <!-- [st] whologin 변수는 현재 로그인 상태를 알려 주는 변수입니다.  미로그인(0)  관리자 (1) 사업자 (2) 일반회원 (3) -->
 <!-- 추후 작업 예정 -->
-<c:set var="whologin" value="0" />
+<c:set var="whologin" value="0"/>
 <c:set var="whologin_id" value="${sessionScope.loginfo.id}"/>
 <c:if test="${not empty sessionScope.loginfo}">
 	<c:set var="whologin" value="0" />
@@ -141,12 +141,11 @@ String notWithFormTag = appName + mappingName + "?command=";
 							</ul></li>
 							
 						<!-- [st] 로그인 섹션 -->							
-						<c:if test="${whologin eq null }">
+						<c:if test="${whologin eq 0 }">
 							<li class="tips"><a class="small-tip"
 								href="<%=notWithFormTag%>meLogin">로그인</a></li>
 							<li class="tips"><a class="small-tip"
 								href="<%=notWithFormTag%>meInsert">회원 가입</a></li>
-
 						</c:if>
 						
 						<c:if test="${whologin eq 1 }">
