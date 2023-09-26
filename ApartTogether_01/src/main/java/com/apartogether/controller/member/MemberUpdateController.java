@@ -55,7 +55,7 @@ private final String PREFIX = "member/";
 					setAlertMessage("사장님! 수정 완료되었습니다.");
 				}else if(mtype.equals("user")) { // 사업자가 일반회원으로 변경
 					if(changeBizToUser.equals("yes")){// 컨펌창 yes 
-						// !!내 가게를 모두 삭제합니다. 
+						// deleteStore(); //내 가게를 삭제하는 작업이 필요합니다.
 						setAlertMessage("회원유형이 사업자에서 일반회원으로 변경되었습니다.");
 					}else{// 컨펌창 no 사업자로 유지
 						setAlertMessage("회원유형을 사업자로 유지합니다.");

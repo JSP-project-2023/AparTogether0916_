@@ -20,9 +20,6 @@
 	  	  	
   		});
   		function validCheck(){ /* form validation check */
-  			console.log('!!!!validCheck() function called');
-  			// 필수 항목(id, name, ) 중 미입력 항목이 존재하는지 체크합니다.
-  			var id = $('#id').val();
   		}
   		
   		function mtypeChangeCheck(){

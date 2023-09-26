@@ -53,8 +53,8 @@
 					<tr>
 						<td colspan="10" align="right">${requestScope.pageInfo.pagingStatus}</td>
 					</tr>
-					
-					<c:set var="cnt" value="0"/>
+					 
+					<c:set var="cnt" value="0"/><%-- cnt는  --%>
 					<c:forEach var="bean" items="${datalist}">
 						<c:choose>
 							<c:when test="${bean.mtype eq 'user'}">

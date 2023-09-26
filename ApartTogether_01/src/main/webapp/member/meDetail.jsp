@@ -242,6 +242,7 @@
 					<a type="button" href="<%=notWithFormTag%>meDelete&id=${sessionScope.loginfo.id}" class="btn button-18 "  style=" padding-left:50px; padding-right:50px">회원탈퇴하기</a>
 				</c:if>	
 			</div>
+		
 			
 		</c:if>
 	

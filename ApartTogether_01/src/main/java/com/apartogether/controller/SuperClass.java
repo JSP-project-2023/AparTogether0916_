@@ -61,6 +61,10 @@ public class SuperClass implements SuperController{
 		// in common.jsp 파일 하단 참조
 		session.setAttribute("alertMessage", message);
 	}	 
+	public void setSuccessAlertMessage(String message) {
+		// 성공 알럿
+		session.setAttribute("successAlertMsg", message);
+	}
 	
 	public void gotoPage(String gotoPage) {
 		if(this.request == null) {
