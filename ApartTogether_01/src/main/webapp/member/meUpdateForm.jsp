@@ -251,11 +251,11 @@
 		
 		<%-- accessMeUpdate : 회원정보수정 페이지 열람 가능 여부를 저장하는 변수입니다. 0(열람불가), 1(열람가능) --%>
 		<c:set var="accessMeUpdate" value="0"/>
-		<c:if test="${whologin_id != requestScope.bean.id}">
+		<c:if test="${sessionScope.loginfo.id != requestScope.bean.id}">
 			<%-- 일반회원, 사업자 : 다른 사람의 회원정보수정 페이지를 열람할 수 없습니다. --%>
 			<c:set var="accessMeUpdate" value="0"/>
 		</c:if>
-		<c:if test="${whologin_id == requestScope.bean.id}">
+		<c:if test="${sessionScope.loginfo.id == requestScope.bean.id}">
 			<%-- 일반회원, 사업자 : 본인의 회원정보수정 페이지만 열람할 수 있습니다. --%>
 			<c:set var="accessMeUpdate" value="1"/>
 		</c:if>
