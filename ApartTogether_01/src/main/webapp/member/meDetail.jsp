@@ -14,7 +14,7 @@
 		#backButton{margin: auto; }
 		.small_image{width:100px;height:100px;margin:2px;border-radius:5px;}
 	</style>
-	  	<style type="text/css">
+  	<style type="text/css">
 		.container {margin-top:;}
 		
 		.input-group {
@@ -121,7 +121,6 @@
 <body>
 	<div class="container">
 	
-	
 		<%-- accessMeDetail : 마이페이지 열람 가능 여부를 저장하는 변수입니다. 0(열람불가), 1(열람가능) --%>
 		<c:set var="accessMeDetail" value="0"/>
 		<c:if test="${whologin_id != requestScope.bean.id}">
@@ -212,8 +211,9 @@
 						<td>${requestScope.bean.phone}</td>
 					</tr>
 					<tr>
-						<th align="center"  class="tableHead">생일</th>
-						<td>${requestScope.bean.birth}</td>
+						<th align="center"  class="tableHead" >생일</th>
+						<td >${requestScope.birthSet[0]}/${requestScope.birthSet[1]}/${requestScope.birthSet[2]}</td>
+						<%-- <td >${requestScope.bean.birth}</td> --%>
 					</tr>
 					<tr>
 						<th align="center"  class="tableHead">주소</th>

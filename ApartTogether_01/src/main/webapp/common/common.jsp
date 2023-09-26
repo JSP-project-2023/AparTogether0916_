@@ -170,7 +170,7 @@ String notWithFormTag = appName + mappingName + "?command=";
                      <ul class="dropdown-menu">
                            <li><a class="dropdown-item" href="<%=notWithFormTag%>meInsert">가게목록(href : null)</a></li>                        
                            <c:if test="${whologin eq 2 }">
-                              <li><a class="dropdown-item" href="<%=notWithFormTag%>meLogin">내 가게 보기(href : null)</a></li>
+                              <li><a class="dropdown-item" href="<%=notWithFormTag%>myStoreList">내 가게 보기</a></li>
                               <li><a class="dropdown-item" href="<%=notWithFormTag%>meLogin">접수 현황(href : null)</a></li>
                            </c:if>
                      </ul>

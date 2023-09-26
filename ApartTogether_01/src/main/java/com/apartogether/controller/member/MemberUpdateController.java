@@ -24,8 +24,12 @@ private final String PREFIX = "member/";
 		request.setAttribute("bean", bean);
 		System.out.println(bean.toString());
 		
-		String[] addressSet = bean.getAddress().split("Δ");// Δ를 기준으로 주소를 나눈다.
+		// Δ를 기준으로 주소를 나눈다.
+		String[] addressSet = bean.getAddress().split("Δ");
 		request.setAttribute("addressSet", addressSet);
+		// -를 기준으로 생일을 나눈다.
+		String[] birthSet = bean.getBirth().split("-");
+		request.setAttribute("birthSet", birthSet);
 		
 		super.gotoPage(PREFIX + "meUpdateForm.jsp"); 
 		
