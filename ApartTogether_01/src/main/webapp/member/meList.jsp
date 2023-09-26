@@ -11,6 +11,7 @@
 	<style type="text/css">
 		.container{margin-top: 10px;}
 		tr{opacity: 0.7;}
+		.small_image{width:50px;height:50px;margin:2px;border-radius:5px;}
 	</style>	
 </head>
 <body>
@@ -50,9 +51,10 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td colspan="10" align="right">${requestScope.pageInfo.pagingStatus}</td>		
+						<td colspan="10" align="right">${requestScope.pageInfo.pagingStatus}</td>
 					</tr>
 					
+					<c:set var="cnt" value="0"/>
 					<c:forEach var="bean" items="${datalist}">
 						<c:choose>
 							<c:when test="${bean.mtype eq 'user'}">
@@ -66,31 +68,52 @@
 							</c:otherwise>
 						</c:choose> 
 					
-						<td align="center">${bean.mtype}</td>
+						<td align="center" class=" col-md-1">${bean.mtype}</td>
 					
-						<td align="center">${bean.id}</td>
+						<td align="center"  class=" col-md-1">${bean.id}</td>
 						
-						<td align="center">
+						<td align="center" class=" col-md-1">
 							<a href="<%=notWithFormTag%>meDetail&id=${bean.id}">${bean.name}</a>
 						</td>
 						
-						<td align="center">${bean.nickname}</td>
+						<td align="center" class=" col-md-1">${bean.nickname}</td>
 						
-						<td align="center">${bean.profile}</td>
+						<td align="center" class=" col-md-1">
+							<%-- profile가 null인 상태라면 기본이미지(default.jpg)를 보여줍니다. --%>
+							<c:if test="${bean.profile == null}">
+								<img class="card-img-top  small_image rounded" alt="기본이미지" 
+								src="image/defaultProfile.jpeg"  >
+							</c:if>
+							<c:if test="${bean.profile != null}">
+								<img class="card-img-top  small_image rounded" alt="${bean.profile}" 
+						         src="uploadProfileImage/${bean.profile}"  >
+							</c:if>
+						</td>
 						
-						<td>${bean.password}</td>
-					
-						<c:if test="${bean.gender eq 'male'}">
-							<td>남자</td>
-						</c:if>
-						<c:if test="${bean.gender eq 'female'}">
-							<td>여자</td>
-						</c:if>	
+						<td class=" col-md-1">${bean.password}</td>
 						
-						<td>${bean.phone}</td>
-						<td>${bean.birth}</td>
-						<td>${bean.address}</td>					
+						<td  class=" col-md-1">
+							<c:if test="${bean.gender eq 'male'}">남자</c:if>
+							<c:if test="${bean.gender eq 'female'}">여자</c:if>	
+							<c:if test="${bean.gender == null}">X</c:if>	
+						</td>
+						
+						<td class=" col-md-1">
+							<c:if test="${bean.phone == null }">X</c:if>
+							<c:if test="${bean.phone != null }">${bean.phone}</c:if>
+						</td>
+						<td class=" col-md-1">
+							<c:if test="${bean.birth == null }">X</c:if>
+							<c:if test="${bean.birth == 'null' }">X</c:if>
+							<c:if test="${bean.birth != 'null' }">${bean.birth}</c:if>
+						</td>
+						<td class=" col-md-2">
+							<c:if test="${bean.address == ' ' }">X</c:if>
+							<%-- <c:if test="${bean.address != ' ' }">${bean.address}</c:if> --%>
+							<c:if test="${bean.address != ' ' }">${requestScope.addressSetList[cnt]['firstPart']} ${requestScope.addressSetList[cnt]['secondPart']}</c:if>
+						</td>					
 					</tr>
+					<c:set var="cnt" value="${cnt +1}"/>
 					</c:forEach>
 					
 				</tbody>

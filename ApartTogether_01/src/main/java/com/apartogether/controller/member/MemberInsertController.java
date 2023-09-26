@@ -66,7 +66,7 @@ public class MemberInsertController extends SuperClass {
 			}else { // 가입 성공
 				if(gotoStoreInsert.equals("yes")) {//  yes이면 <내 가게 등록 화면>으로 이동합니다.
 					// 임시로 meList으로 가게 해두었습니다. 나중에 꼭 수정해주세요. @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-					new MemberLoginController().doPost(request, response);
+					// 자동로그인기능 여기 추가하세요
 					String gotopage = super.getUrlInfomation("stInsert"); 
 //					gotopage += "&id=" + mr.getParameter("id");
 					response.sendRedirect(gotopage);

@@ -1,6 +1,9 @@
 package com.apartogether.controller.member;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,7 +33,26 @@ public class MemberListController extends SuperClass{
 			Paging pageInfo = new Paging(pageNumber, pageSize, totalCount, url, mode, keyword, isGrid);
 			
 			List<Member> lists = dao.selectAll(pageInfo);
+			List<Map<String, String>> addressSetList = new ArrayList<>();
 			
+			for(Member bean : lists) {
+				// Δ를 기준으로 주소를 나눈다.
+				String[] addressSet = bean.getAddress().split("Δ");
+				
+				 if (addressSet.length >= 2) {
+			        Map<String, String> addressMap = new HashMap<>();
+			        addressMap.put("firstPart", addressSet[0]);
+			        addressMap.put("secondPart", addressSet[1]);
+			        addressSetList.add(addressMap);
+			    }else {
+			    	Map<String, String> addressMap = new HashMap<>();
+			        addressMap.put("firstPart", addressSet[0]);
+			        addressMap.put("secondPart", "");
+			        addressSetList.add(addressMap);
+			    }
+			}
+			
+			request.setAttribute("addressSetList", addressSetList);
 			request.setAttribute("datalist", lists);
 			
 			//페이징관련 정보를 바인딩

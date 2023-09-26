@@ -182,10 +182,10 @@
 					<tr>
 						<th align="center"  class="tableHead">프로필 사진</th>
 						<td>
-							<%-- profile가 null인 상태라면 기본이미지(default.jpg)를 보여줍니다. --%>
+							<%-- profile가 null인 상태라면 기본이미지(defaultProfile.jpeg)를 보여줍니다. --%>
 							<c:if test="${requestScope.bean.profile == null}">
 								<img class="card-img-top  small_image rounded" alt="기본이미지" 
-								src="./../upload/defaultprofile.jpg"  >
+								src="image/defaultProfile.jpeg"  >
 							</c:if>
 							<c:if test="${requestScope.bean.profile != null}">
 								<img class="card-img-top  small_image rounded" alt="${requestScope.bean.profile}" 
@@ -217,11 +217,11 @@
 					</tr>
 					<tr>
 						<th align="center"  class="tableHead">주소</th>
-						<td>${addressSet[0]}</td>
+						<td>${requestScope.addressSet[0]}</td>
 					</tr>
 					<tr>
 						<th align="center"  class="tableHead">상세주소</th>
-						<td>${addressSet[1]}</td>
+						<td>${requestScope.addressSet[1]}</td>
 					</tr>
 					<tr>
 						<th align="center"  class="tableHead">비밀번호 질문</th>
