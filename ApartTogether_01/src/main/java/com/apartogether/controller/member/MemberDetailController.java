@@ -19,7 +19,6 @@ public class MemberDetailController extends SuperClass {
 		
 		try {
 			bean = dao.getDataByPrimaryKey(id);
-			System.out.println(bean.toString());
 			
 			// Δ를 기준으로 주소를 나눈다.
 			String[] addressSet = bean.getAddress().split("Δ");
