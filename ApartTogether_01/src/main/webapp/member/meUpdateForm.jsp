@@ -17,8 +17,8 @@
   			/* value 속성의 값이 일치하는 항목에 대하여 체크 on 시킵니다. */
 	  	  	$('input[value="${bean.gender}"]').attr('checked', true);
   			$('input[value="${bean.mtype}"]').attr('checked', true);
-  			var pqnum = 0;
-  			switch("${bean.passwordquest}"){
+  			var pqnum = 0; // pqnum : Num for PasswordQuest
+  			switch("${bean.passwordquest}"){ //passwordquest를 위한 테이블을 만드는 대신 직접 입력합니다.
   				case "초등학교 이름은": pqnum = 1 ; break;
   				case "아버지 성함은": pqnum = 2 ; break;
   				case "내가 좋아하는 동물은": pqnum = 3 ; break;
@@ -26,9 +26,6 @@
   				default: pqnum = 0;
   			} 
   			$('select[name="passwordquest"] option').eq(pqnum).prop('selected', true); 
-  			//$('option').eq("${bean.passwordquest}").attr('selected', true);
-  			//console.log(">>${bean.passwordquest}<<");
-	  	  	
   		});
   		/* [st] submit 유효성 검사 */
   	    function validCheck(){ /* form validation check */

@@ -58,7 +58,7 @@ private final String PREFIX = "member/";
 		// [ST] 컨펌창 결과 처리
 		if(oldmtype.equals("biz")) { // 수정 전에 사업자 이었음
 				if(mtype.equals("biz")) { // 사업자를 그대로 유지
-					setAlertMessage("사장님! 수정 완료되었습니다.");
+					super.setSuccessAlertMessage("사장님! 수정 완료되었습니다.");
 				}else if(mtype.equals("user")) { // 사업자가 일반회원으로 변경
 					if(changeBizToUser.equals("yes")){// 컨펌창 yes 
 						// deleteStore(); //내 가게를 삭제하는 작업이 필요합니다.
@@ -69,7 +69,7 @@ private final String PREFIX = "member/";
 				}
 			}else if(oldmtype.equals("user")) { // 수정 전에 일반회원 이었음
 				if(mtype.equals("user")) { // 일반회원을 그대로 유지하면 알럿창(수정완료)띄우고 마이페이지로 이동
-					setAlertMessage("회원님! 수정 완료되었습니다.");
+					super.setSuccessAlertMessage("회원님! 수정 완료되었습니다.");
 				}else if(mtype.equals("biz")) { // 일반회원이 사업자로 변경한 거면 컨펌창(내가게 등록하러 가시겠습니까?)
 					if(gotoStoreInsert.equals("yes")){ // 컨펌창 yes '내 가게등록 페이지'로 이동
 					}else{ // 컨펌창 no 마이페이지로 이동
