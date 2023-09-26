@@ -450,7 +450,7 @@ public class MemberDao extends SuperDao {
 		conn = super.getConnection();
 		conn.setAutoCommit(false);
 		
-		// STORE테이블에서 id가 같은 가게들을 모두 지웁니다.
+		// STORE테이블에서 id가 회원id와 일치하는 가게들을 모두 지웁니다.
 		sql = " delete from store where id = ? " ;
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, id);
