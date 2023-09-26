@@ -18,12 +18,27 @@
 	<title>가게 상세 정보</title>
 	</head>
 <body>
+	<script type="text/javascript">
+		$('#store-body').on('mousewheel',function(e){ 
+		    var wheel = e.originalEvent.wheelDelta; 
+		
+		    if(wheel>0){ 
+		      //스크롤 올릴때 
+		      $('#orderBtn').html("올림..");
+		 
+		    } else { 
+		      //스크롤  내릴때 
+		       $('#orderBtn').html("내림..");
+		        } 
+		  });
+	</script>
+	
 	
 	<%--가게명 변수--%>
 	<c:set var="bean" value="${requestScope.bean}"/>
 	<div class="store-container">
 	<div class="store-info">
-	<div class="store-body">
+	<div class="store-body" id="store-body">
 	<!-- 뱃지 카테고리 들어갈 부분. -->
 	<c:if test="${bean.category eq '양식'}">
 		<span class="badge rounded-pill" style="background-color: #51CEA1">양식</span>
@@ -89,7 +104,7 @@
 	</div>
 	
 	<hr style="margin-top: 100px;" size="10px">
-		<div class="menu-container">
+		<div class="menu-container" id="menu-container">
 		<!-- 메뉴1개 들어가야될 공간 시작-->
 			<c:forEach var="menubean" items="${requestScope.menuBean}">
 				<div class="one-menu-box">
@@ -107,6 +122,6 @@
 		</div>
 	</div>
 	
-	<button class="floatingOrderbtn" id="orderBtn">주문</button>
+	<button class="orderBtn" id="orderBtn">주문</button>
 </body>
 </html>
