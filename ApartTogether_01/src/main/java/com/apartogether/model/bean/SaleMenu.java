@@ -6,11 +6,12 @@ public class SaleMenu {
 	private int cumqty;
 	private int cumsale;
 	private String stname;
+	private int saleDate;
 	
-
 	@Override
 	public String toString() {
-		return "SaleMenu [menuname=" + menuname + ", cumqty=" + cumqty + ", cumsale=" + cumsale + "]";
+		return "SaleMenu [menuname=" + menuname + ", cumqty=" + cumqty + ", cumsale=" + cumsale + ", stname=" + stname
+				+ ", saleDate=" + saleDate + "]";
 	}
 	
 	public String getMenuname() {
@@ -37,6 +38,14 @@ public class SaleMenu {
 
 	public void setStname(String stname) {
 		this.stname = stname;
+	}
+
+	public int getSaleDate() {
+		return saleDate;
+	}
+
+	public void setSaleDate(int saleDate) {
+		this.saleDate = saleDate;
 	}
 	
 }

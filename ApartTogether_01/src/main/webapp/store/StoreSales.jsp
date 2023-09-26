@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- 추후 삭제 -->
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ include file="./../common/common.jsp" %>   
+
 <!DOCTYPE html>
 <html>
 <head>
+<!-- 추후삭제 -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.js"></script>	
 <link rel="stylesheet" href="${pageContext.request.contextPath}/store/storeCSS/StoreSalesCSS.css" type="text/css">
 <script src="${pageContext.request.contextPath}/store/storeJS/StoreSales.js"></script>
 <meta charset="UTF-8">
@@ -50,7 +50,7 @@
 			</div>
 			
 			<div class="sale-footer">
-				<span><strong>총 판매금액</strong> : <fmt:formatNumber pattern="###,###,###" value="${total_sales}"/><strong>원</strong></span>
+				<span><strong>누적 판매 금액</strong> : <fmt:formatNumber pattern="###,###,###" value="${total_sales}"/><strong>원</strong></span>
 			</div>
 		</div>
 		<!-- 메뉴 별 판매량 끝 -->		
@@ -65,12 +65,20 @@
 				</div>
 			</div>
 			<hr>
+			
+			<!-- 1월부터 12월 데이터 -->
+			<c:forEach var="sales" items="${requestScope.sales}" varStatus="status">
+				<input type="hidden" name="${sales.key}" value="${sales.value}"/>
+				<!-- 총 합계 -->
+				<c:set var="thisyearSell" value="${thisyearSell = thisyearSell + sales.value}"/>
+			</c:forEach>
+			
 			<!-- 그래프 영역 -->
-			<div>
+			<div id="chart-area">
 	  			<canvas id="myChart"></canvas>
 			</div>
 			<div class="sale-footer">
-				<span><strong>올해 매출</strong> : 550,000,000<strong>원</strong></span>
+				<span><strong>올해 매출</strong> : <fmt:formatNumber pattern="###,###,###" value="${thisyearSell}"/><strong>원</strong></span>
 			</div>
 			<!-- 그래프 영역 끝-->
 		</div>

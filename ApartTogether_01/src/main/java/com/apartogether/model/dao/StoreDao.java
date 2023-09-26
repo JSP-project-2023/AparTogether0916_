@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 import com.apartogether.model.bean.Menu;
+import com.apartogether.model.bean.OrderLog;
 import com.apartogether.model.bean.SaleMenu;
 import com.apartogether.model.bean.Store;
 import com.apartogether.utility.PagingStore;
@@ -479,17 +480,52 @@ public class StoreDao extends SuperDao {
 		return bean;
 	}
 	
-	//누적 판매 메뉴 가져오기.
+	//매출현황 데이터 가져오기.
 	public List<SaleMenu> getcumSales(int stno) throws SQLException {
 		List<SaleMenu> lists = new ArrayList<SaleMenu>();
 		SaleMenu bean = null;
 		
-		String sql="select store.stname as stname, sales.menuname as menuname, sum(sales.qty) as qty, sum(sales.menuono) as menuono from store inner join (select menu.stno, menu.menuname ,sale.qty, sale.menuono from menu join(select * from personal p inner join room r "
-				+ "on p.roomno=r.roomno) sale "
-				+ "on menu.menuno=sale.menuno "
-				+ "where menu.stno=?) sales "
-				+ "on store.stno=sales.stno "
-				+ "group by sales.menuname, stname ";
+		String sql="select menu.menuname as menuname, sum(a.qty) as qty , sum(a.qty*menu.price) as total "
+				+ "from menu inner join(select * from room inner join personal on room.roomno=personal.roomno where room.stno=?) a "
+				+ "on menu.stno=a.stno and menu.menuno=a.menuno "
+				+ "group by menu.menuname ";
+		
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, stno);
+		ResultSet rs = pstmt.executeQuery();
+		
+		//메뉴 판매
+		while(rs.next()) {
+			bean = new SaleMenu();
+			
+			bean.setMenuname(rs.getString("menuname"));
+			bean.setCumqty(rs.getInt("qty"));
+			bean.setCumsale(rs.getInt("total"));		
+			lists.add(bean);
+		}
+		
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+		
+		return lists;
+	}
+	
+	//날짜별 판매량 가져오는 메소드
+	public Map<String, Integer> getSalePrice(int stno) throws SQLException{
+		Map<String, Integer> saleMonth = new HashMap<String, Integer>();
+		
+		String sql = "select sum(a.qty*menu.price) as total, to_char(a.ordertime, 'yy/mm') as ordertime "
+				+ "from menu inner join(select * from room inner join personal on room.roomno=personal.roomno where room.stno=?) a "
+				+ "on menu.stno=a.stno and menu.menuno=a.menuno "
+				+ "group by to_char(a.ordertime, 'yy/mm')";
 		
 		conn = super.getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -497,15 +533,81 @@ public class StoreDao extends SuperDao {
 		ResultSet rs = pstmt.executeQuery();
 		
 		while(rs.next()) {
-			bean = new SaleMenu();
+			saleMonth.put(rs.getString("ordertime"), rs.getInt("total"));
+		}
+		
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+		
+		return saleMonth;
+	}
+
+	public List<OrderLog> getOrderLog(int stno) throws SQLException {
+		String sql = "select menu.menuname, a.orderplace, a.ordertime, a.qty, (a.qty*menu.price) as total , a.orderno "
+				+ "		from menu inner join (select * from room inner join personal "
+				+ "		on room.roomno=personal.roomno) a "
+				+ "		on menu.menuno=a.menuno "
+				+ "		where menu.stno=? "
+				+ "		order by a.orderno desc";
+		
+		OrderLog log = null;
+		List<OrderLog> lists = new ArrayList<OrderLog>();
+		
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, stno);
+		ResultSet rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			log = new OrderLog();
 			
-			bean.setStname(rs.getString("stname"));
-			bean.setMenuname(rs.getString("menuname"));
-			bean.setCumqty(rs.getInt("qty"));
-			bean.setCumsale(rs.getInt("menuono"));
+			log.setOrderno(rs.getInt("orderno"));
+			log.setMenuname(rs.getString("menuname"));
+			log.setAddr(rs.getString("orderplace"));
+			log.setOrdertime(rs.getString("ordertime"));
+			log.setQty(rs.getInt("qty"));
+			log.setSellprice(rs.getInt("total"));
 			
-			lists.add(bean);
+			lists.add(log);
+		}
+		
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
 		}
 		return lists;
 	}
+
+	public int getTotalOrderCount(int stno) throws SQLException {
+		int cnt = 0;
+		
+		String sql="select count(*) as cnt "
+				+ "from menu inner join (select * from room inner join personal "
+				+ "on room.roomno=personal.roomno) a "
+				+ "on menu.menuno=a.menuno "
+				+ "where menu.stno=? ";
+		
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, stno);
+		ResultSet rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			cnt = rs.getInt("cnt");
+		}
+		
+		return cnt;
+	}	
 }
