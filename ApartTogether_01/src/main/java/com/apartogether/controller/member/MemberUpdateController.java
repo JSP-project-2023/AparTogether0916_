@@ -40,12 +40,14 @@ private final String PREFIX = "member/";
 		
 		MultipartRequest mr = (MultipartRequest)request.getAttribute("mr") ;
 		Member bean = new Member();
+		MemberDao dao = new MemberDao();
 		
 		// gotoStoreInsert : 일반회원에서 사업자로 변경하는 경우 <가게등록페이지>로 갈 것인지 묻는 컴펌창의 결과를 저장합니다. .
 		String gotoStoreInsert = mr.getParameter("gotoStoreInsert"); 
 		// changeBizToUser : 사업자에서 일반회원으로 변경하려는 경우 컨펌창의 결과(true/false)에 따라 ("yes"/"no")의 값을 가집니다. .
 		String changeBizToUser = mr.getParameter("changeBizToUser"); 
 		if(changeBizToUser.equals("yes")) {
+			dao.deleteAllMyStore(mr.getParameter("id"));// 사업자가 가지고 있던 가게들을 모두 삭제합니다.
 			bean.setMtype(mr.getParameter("mtype")); // 일반회원으로 변경해줍니다.
 		}else if(changeBizToUser.equals("no")) {
 			bean.setMtype(mr.getParameter("oldmtype")); //  사업자로 유지합니다.
@@ -93,7 +95,7 @@ private final String PREFIX = "member/";
 		bean.setPasswordquest(mr.getParameter("passwordquest"));
 		bean.setPasswordanswer(mr.getParameter("passwordanswer"));
 		
-		MemberDao dao = new MemberDao();
+		
 		int cnt = -1;
 		try {
 			cnt = dao.UpdateData(bean); // DB에 업데이트합니다.
@@ -101,11 +103,10 @@ private final String PREFIX = "member/";
 			if(cnt == -1) { // DB 업데이트 실패
 				super.gotoPage(PREFIX + "meUpdateForm.jsp");
 			}else { // DB 업데이트 성공
-				//마이페이지로 갈것인가, 가게등록페이지로 갈것인가? 
+				// gotoStoreInsert값에 따라 마이페이지로 갈것인가, 가게등록페이지로 갈것인가? 
 				if(gotoStoreInsert.equals("yes")) { // <가게등록페이지>로 이동합니다.
 					// 임시로 home으로 가게 해두었습니다. 나중에 꼭 수정해주세요. //////////////////////////
 					String gotopage = super.getUrlInfomation("stInsert"); 
-//					gotopage += "&id=" + mr.getParameter("id");
 					response.sendRedirect(gotopage);
 				}else if(gotoStoreInsert.equals("no")) { // 마이페이지로 이동합니다.
 					String gotopage = super.getUrlInfomation("meDetail");

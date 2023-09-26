@@ -17,6 +17,17 @@
   			/* value 속성의 값이 일치하는 항목에 대하여 체크 on 시킵니다. */
 	  	  	$('input[value="${bean.gender}"]').attr('checked', true);
   			$('input[value="${bean.mtype}"]').attr('checked', true);
+  			var pqnum = 0;
+  			switch("${bean.passwordquest}"){
+  				case "초등학교 이름은": pqnum = 1 ; break;
+  				case "아버지 성함은": pqnum = 2 ; break;
+  				case "내가 좋아하는 동물은": pqnum = 3 ; break;
+  				case "내 애완동물의 이름은": pqnum = 4 ; break;
+  				default: pqnum = 0;
+  			} 
+  			$('select[name="passwordquest"] option').eq(pqnum).prop('selected', true); 
+  			//$('option').eq("${bean.passwordquest}").attr('selected', true);
+  			//console.log(">>${bean.passwordquest}<<");
 	  	  	
   		});
   		/* [st] submit 유효성 검사 */
@@ -139,7 +150,7 @@
   		#buttonset{margin-top: 15px;}
   		.radio_gender{font-size: 1.1rem;}
   		.radio_mtype{font-size: 1.1rem;} /* 주위 글꼴의 1.1배 */
-  		.small_image{width:50px;height:50px;margin:2px;border-radius:5px;}
+  		.small_image{width:100px;height:100px;margin:2px;border-radius:5px;}
   	</style>
   	<style type="text/css">
 		.container {margin-top:;}
@@ -282,7 +293,7 @@
 				<input type="hidden" id="gotoStoreInsert" name="gotoStoreInsert" value="no">
 				
 				<div class="input-group">
-					<span class="input-group-text col-md-2">회원유형</span><!-- 수정불가항목 -->
+					<span class="input-group-text col-md-2">회원유형<font color="red">*</font></span>
 					<div class="form-control" >
 						<label class="radio-inline radio_mtype"> 
 							&nbsp;<input type="radio" id="mtype1" name="mtype" value="user">일반회원
@@ -299,12 +310,12 @@
 					<input type="text" id="id" name="id" value="${requestScope.bean.id}" hidden>
 				</div>
 				<div class="input-group"> 
-					<span class="input-group-text col-md-2">이름</span>
+					<span class="input-group-text col-md-2">이름<font color="red">*</font></span>
 					<input class="form-control" type="text" id="name" name="name" value="${requestScope.bean.name}">				
 				</div>
 				
 				<div class="input-group">
-					<span class="input-group-text col-md-2">닉네임</span>
+					<span class="input-group-text col-md-2">닉네임<font color="red">*</font></span>
 					<input class="form-control" type="text" id="nickname" name="nickname" value="${requestScope.bean.nickname }">				
 				</div>
 				<div class="input-group">
@@ -328,12 +339,12 @@
 				</div>
 				
 				<div class="input-group" >
-					<span class="input-group-text col-md-2">비밀 번호</span>
+					<span class="input-group-text col-md-2">비밀 번호<font color="red">*</font></span>
 					<input class="form-control" type="password" id="password" name="password"  value="${requestScope.bean.password}">		
 				</div>
 				
 				<div class="input-group">
-					<span class="input-group-text col-md-2">성별</span>
+					<span class="input-group-text col-md-2">성별<font color="red">*</font></span>
 					<div class="form-control">
 						<label class="radio-inline radio_gender"> 
 							&nbsp;<input type="radio" id="gender1" name="gender" value="male">남자
@@ -344,31 +355,37 @@
 					</div>
 				</div>
 				<div class="input-group">
-					<span class="input-group-text col-md-2">전화번호</span>
+					<span class="input-group-text col-md-2">전화번호<font color="red">*</font></span>
 					<input class="form-control" type="text" id="phone" name="phone" value="${requestScope.bean.phone }">			
 				</div>
 				
 				
 				<div class="input-group">
-					<span class="input-group-text col-md-2">생일</span>
+					<span class="input-group-text col-md-2">생일<font color="red">*</font></span>
 					<input class="form-control" type="datetime" id="birth" name="birth" value="${requestScope.birthSet[0]}/${requestScope.birthSet[1]}/${requestScope.birthSet[2]}">			
 				</div> 
 				
 				<div class="input-group">
-					<span class="input-group-text col-md-2">주소</span>
+					<span class="input-group-text col-md-2">주소<font color="red">*</font></span>
 					<input class="form-control" type="text" id="address" name="address" value="${addressSet[0] }">			
 				</div>
 				<div class="input-group">
-					<span class="input-group-text col-md-2">주소</span>
+					<span class="input-group-text col-md-2">상세주소<font color="red">*</font></span>
 					<input class="form-control" type="text" id="address_detail" name="address_detail" value="${addressSet[1] }">			
 				</div>
 				
 				
 				<div class="input-group">
-					<span class="input-group-text col-md-2">비밀번호 질문</span>
-					<input disabled="disabled" class="form-control" type="text" id="fakepasswordquest" name="fakepasswordquest" value="${requestScope.bean.passwordquest}">			
-					<input class="form-control" type="text" id="passwordquest" name="passwordquest" value="${requestScope.bean.passwordquest}" hidden>			
-				
+					<span class="input-group-text col-md-2">비밀번호 질문<font color="red">*</font></span>
+					<%-- <input disabled="disabled" class="form-control" type="text" id="fakepasswordquest" name="fakepasswordquest" value="${requestScope.bean.passwordquest}">			
+					<input class="form-control" type="text" id="passwordquest" name="passwordquest" value="${requestScope.bean.passwordquest}" hidden>	 --%>		
+					<select class="form-select"	id="passwordquest" name="passwordquest" class="passwordquest">
+						<option value="-" selected>-- 선택해 주세요.
+						<option value="초등학교 이름은">초등학교 이름은?
+						<option value="아버지 성함은">아버지 성함은?
+						<option value="내가 좋아하는 동물은">내가 좋아하는 동물은?
+						<option value="내 애완동물의 이름은">내 애완동물의 이름은?
+					</select>
 				</div>
 				
 				<div class="input-group">
@@ -388,7 +405,7 @@
 		</c:if>
 		
 	 	<div id="backButton">
-			<button type="button"  class="btn btn-info" onclick="history.back();">돌아 가기</button>
+			<button type="button" class="btn button-18 " style=" padding-left:20px; padding-right:20px" onclick="history.back();">돌아 가기</button>
 		</div>
 	
 	</div>
