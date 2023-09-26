@@ -40,16 +40,87 @@
 	margin-bottom: 4rem;
 	font-size: 1.1rem;
 }
-
-
 .body {
 	align-content: center
 }
 
-#small {
-	margin-top: -16px;
+/*small button 크기 (추가, 수정, 삭제)*/
+.sm_ctlbtn { /*div - a*/
+	width: 60px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 10px;
 }
 
-#behind {
-	display: none;
+/*small button 색상 (추가, 수정, 삭제)*/
+.insert_smbtn {
+	border: 1px solid #008dff;
 }
+.insert_smbtn > a {
+	color: #008dff;
+}
+.update_smbtn {
+	border: 1px solid #00ad07;
+}
+.update_smbtn > a {
+	color: #00ad07;
+}
+.delete_smbtn {
+	border: 1px solid #ff1414;
+}
+.delete_smbtn > a {
+	color: #ff1414 !important;
+}
+
+
+/*big button 크기 (추가, 수정, 삭제)*/
+.big_ctlbtn { /*button*/
+	width: 180px;
+    height: 50px;
+    font-size: 1rem;
+    border: 0;
+}
+
+/*big button 색상 (추가, 수정, 삭제)*/
+.insert_bigbtn {
+	background-color: #008dff;
+	color: #fff;
+}
+.insert_bigbtn:hover {
+	background-color: #0032dd;
+	color: #fff;
+}
+.update_bigbtn {
+	background-color: #00ad07;
+	color: #fff;
+}
+.update_bigbtn:hover {
+	background-color: #006404;
+	color: #fff;
+}
+.delete_bigbtn {
+	background-color: #ff1414;
+	color: #fff;
+}
+.delete_bigbtn:hover {
+	background-color: #ff1414;
+	color: #fff;
+}
+.select_bigbtn {
+	background-color: #ffd181;
+	color: #000000;
+}
+.select_bigbtn:hover {
+	background-color: #ffa100;
+	color: #000000;
+}
+.order_bigbtn {
+	background-color: #7BD7FF;
+	color: #000000;
+}
+.order_bigbtn:hover {
+	background-color: #00a0e6;
+	color: #000000;
+}
+

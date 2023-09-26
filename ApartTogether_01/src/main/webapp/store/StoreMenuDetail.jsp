@@ -81,7 +81,7 @@
 					</div>
 				</div>
 				<div class="order-button">
-					<button>주문하기</button>
+					<button class="big_ctlbtn order_bigbtn">주문하기</button>
 				</div>
 			</div>
 		</div>
@@ -107,6 +107,6 @@
 		</div>
 	</div>
 	
-	<button id="orderBtn">주문</button>
+	<button class="floatingOrderbtn" id="orderBtn">주문</button>
 </body>
 </html>

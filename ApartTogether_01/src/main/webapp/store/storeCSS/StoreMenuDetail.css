@@ -75,27 +75,28 @@ body{
 	margin-top: 10px;
 	width: 300px;
 	height: 50px;
-	border-radius: 5px;
+/*	border-radius: 5px;*/
 	border: none;
-	background-color: #7BD7FF;
 	font-size: 18px;
 }
 .order-button > button:hover, #orderBtn:hover{
-	background-color: rgb(0, 160, 230);
+/*	background-color: #00a0e6;*/
 }
 
 /*메뉴 부분 css*/
 .menu-container{
 	display: flex;
 	flex-direction: column;
+	margin-bottom: 150px;
+	margin-top: 70px;
 }
 .one-menu-box{
-	margin-top: 95px;
 	display: flex;
 	flex-direction: row;
+	padding: 40px 0;
 }
 .one-menu-box:hover{
-	background-color: rgb(213, 213, 213);
+	background-color: #f7f7f7;
 }
 .memu-img > img {
 	margin-left: 50px;
@@ -105,8 +106,12 @@ body{
 .menu-details{
 	display: flex;
 	flex-direction: column;
-	margin-left: 50px;
+	margin: 0 50px;
 }
+.menu-details > span {
+	margin-bottom: 15px;
+}
+
 #menu-title{
 	font-size: 25px;
 	font-weight: bold;
