@@ -24,6 +24,9 @@ private final String PREFIX = "member/";
 		request.setAttribute("bean", bean);
 		System.out.println(bean.toString());
 		
+		String[] addressSet = bean.getAddress().split("Δ");// Δ를 기준으로 주소를 나눈다.
+		request.setAttribute("addressSet", addressSet);
+		
 		super.gotoPage(PREFIX + "meUpdateForm.jsp"); 
 		
 	}
@@ -82,7 +85,7 @@ private final String PREFIX = "member/";
 		bean.setGender(mr.getParameter("gender"));
 		bean.setPhone(mr.getParameter("phone"));
 		bean.setBirth(mr.getParameter("birth"));
-		bean.setAddress(mr.getParameter("address"));
+		bean.setAddress(mr.getParameter("address")+"Δ"+mr.getParameter("address_detail"));
 		bean.setPasswordquest(mr.getParameter("passwordquest"));
 		bean.setPasswordanswer(mr.getParameter("passwordanswer"));
 		
