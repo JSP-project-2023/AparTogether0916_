@@ -320,5 +320,10 @@ String notWithFormTag = appName + mappingName + "?command=";
 	</c:if>
 	<%-- 보여준 Alert Box를 session 영역에서 제거합니다. --%>
 	<c:remove var="successAlertMsg" scope="session"/>
+	
+<!-- 	<footer> -->
+<!-- 		<div class="footerArea">Copyright 2023 AparTogether All Rights Reserved.</div> -->
+<!-- 	</footer> -->
+
 </body>
 </html>

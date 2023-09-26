@@ -26,6 +26,24 @@
  	font-size: 1rem;
 }
 
+footer {
+	background-color: #373737;
+    width: 100%;
+    min-height: 150px;
+    position: relative;
+    transform: translateY(0%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footerArea {
+	width: 100%;
+    margin-left: 90px;
+    font-size: 0.8rem;
+    color: #fff;
+}
+
 .alert-dismissible {
 	margin: 10px;
 }
