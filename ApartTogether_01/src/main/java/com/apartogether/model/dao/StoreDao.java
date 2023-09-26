@@ -449,6 +449,18 @@ public class StoreDao extends SuperDao {
 		
 		while(rs.next()) {
 			bean = getMenuData(rs);
+			
+			String detail = bean.getMenudetail();
+			String str[] = null;
+			
+//			메뉴 설명 구분자 처리
+			if (detail.indexOf("Δ") < 0) { // 구분자가 없으면 그래도 입력
+				bean.setMenudetail(detail);
+			} else {
+				str = detail.split("Δ");
+				bean.setMenudetail(str[0] + "<br>" + str[1]); // 화면에 보여줄 때는 한 칸에 다 넣기
+			}
+			
 			lists.add(bean);
 		}
 		

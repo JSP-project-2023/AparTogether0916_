@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%-- <%@ include file="./../common/common.jsp"%> --%>
-<%@ include file="/common/bootstrap5.jsp"%>
+<%@ include file="/common/common.jsp"%>
 <!-- 추후 삭제 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -15,10 +15,10 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/store/storeCSS/StoreMenuDetail.css" type="text/css">
 	
 	<%-- 사용자용 가게 정보 + 메뉴 detail 화면 --%>
-	<title>가게 주문 상세 화면</title>
+	<title>가게 상세 정보</title>
 	</head>
 <body>
-
+	
 	<%--가게명 변수--%>
 	<c:set var="bean" value="${requestScope.bean}"/>
 	<div class="store-container">
@@ -51,6 +51,8 @@
 	</c:if>
 	
 	<span id="stname">${bean.stname}</span>
+	
+	
 		<div class="store-content">
 			<div class="store-img">
 				<img alt="이미지" src="${pageContext.request.contextPath}/uploadStoreImage/${bean.stlogo}" border="1px">
@@ -95,9 +97,8 @@
 						<img alt="이미지" src="${pageContext.request.contextPath}/uploadStoreImage/${menubean.menuimage}" border="1px">
 					</div>
 					<div class="menu-details">
-						<span id="menu-title">${menubean.menuname}</span> 
+						<span id="menu-title">${menubean.menuname}</span>
 						<span id="menu-exp">${menubean.menudetail}</span>
-						<span id="menu-igrnt">${menubean.menudetail}</span>
 						<span id="menu-price">${menubean.price}원</span>
 					</div>
 				</div>

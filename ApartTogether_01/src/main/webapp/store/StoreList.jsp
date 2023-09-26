@@ -146,7 +146,7 @@ function addStore() {
 		<h2 class="mainTitle">우리 동네 맛집 리스트</h2>
 		
 		<c:if test="${sessionScope.loginfo ne null}">
-			<p class="myAddress">내 현재 주소 | ${sessionScope.loginfo.address}</p>
+			<p class="subTitle">내 현재 주소 | ${sessionScope.loginfo.address}</p>
 		</c:if>
 
 		<table class="table table-borderless">
@@ -163,14 +163,13 @@ function addStore() {
 										<div class="col-sm-12">
 											
 											<select class="form-control-sm" id="mode" name="mode">
-												<option value="all" selected="selected">--- 선택해 주세요 ---
+												<option value="all" selected="selected">선택해 주세요
 												<option value="stname">가게명
 												<option value="category">카테고리
 											</select> 
 											
 											<select class="form-control-sm" id="categoryList" name="categoryList">
-												<option value="all" selected="selected">--- 카테고리 리스트
-													---
+												<option value="all" selected="selected">카테고리 리스트
 												<option value="양식">양식
 												<option value="중식">중식
 												<option value="일식">일식

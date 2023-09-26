@@ -4,10 +4,10 @@ body{
 }
 #stname{
 	font-weight: bold;
-	font-size: 60px;
+	font-size: 2.5rem;
 	position: relative;
-	left: 50px;
-	bottom: 50px;
+	left: 20px;
+	bottom: 40px;
 }
 /*주문버튼*/
 #orderBtn{
@@ -46,7 +46,7 @@ body{
 	width: 360px;
 }
 .store-delivery-span{
-	font-size: 30px;
+	font-size: 25px;
 }
 .title-bold{
 	font-weight: bold;
@@ -63,6 +63,7 @@ body{
 }
 .store-subinfo > .store-intro-span{
 	font-size: 20px;
+	margin-bottom: 5px;
 }
 .store-box{
 	margin-left: 50px;
@@ -77,6 +78,7 @@ body{
 	border-radius: 5px;
 	border: none;
 	background-color: #7BD7FF;
+	font-size: 18px;
 }
 .order-button > button:hover, #orderBtn:hover{
 	background-color: rgb(0, 160, 230);
@@ -116,6 +118,6 @@ body{
 .rounded-pill{
 	font-size: 20px;
 	position: relative;
-	bottom: 65px;
-	left: 30px;
+	bottom: 45px;
+	left: 0px;
 }

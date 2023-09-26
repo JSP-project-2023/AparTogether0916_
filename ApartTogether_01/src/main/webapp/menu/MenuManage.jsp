@@ -40,7 +40,7 @@
 	<div class="container">
 		<!-- stno, stname -->
 		<h2 class="mainTitle">${sessionScope.loginfo.name} 사장님의 가게 메뉴 관리</h2>
-		<p>가게 선택 후 버튼을 클릭하여 메뉴를 관리하세요</p>
+		<p class="subTitle">가게 선택 후 버튼을 클릭하여 메뉴를 관리하세요</p>
 		<div class="container">
 			<form action="<%=withFormTag%>" method="post">
 				<input type="hidden" name="command" value="menuManage">

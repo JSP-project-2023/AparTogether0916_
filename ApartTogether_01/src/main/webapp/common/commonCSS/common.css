@@ -23,6 +23,7 @@
 
 * { /* 별도 지정 없는 태그 기본 font */
  	font-family: 'NanumSquareNeo-Variable';
+ 	font-size: 1rem;
 }
 
 .alert-dismissible {
@@ -30,12 +31,14 @@
 }
 
 .mainTitle {
-	margin: 5rem 0 2rem;
+	margin: 6rem 0 3rem;
+	font-size: 2rem;
 	font-weight: bolder;
 }
 
 .subTitle {
-	margin-bottom: 2.5rem;
+	margin-bottom: 4rem;
+	font-size: 1.1rem;
 }
 
 

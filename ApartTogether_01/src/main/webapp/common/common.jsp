@@ -75,7 +75,6 @@ String notWithFormTag = appName + mappingName + "?command=";
 					<a class="navbar-logo" href="<%=notWithFormTag%>home">
 						<img width="150px" alt="logoIMG" src="${pageContext.request.contextPath}/image/logo.png">
 					</a>
-					
 				</div>
 				
 				<!-- Store section -->
