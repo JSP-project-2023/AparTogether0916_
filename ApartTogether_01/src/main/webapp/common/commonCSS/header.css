@@ -144,6 +144,7 @@ a {
 	}
 	
 	.ham_bg {
+		z-index: 1; 
 		background-color: #f3f3f3;
 		min-width: fit-content;
 		max-width: 500px;
