@@ -109,7 +109,7 @@ public class StoreDao extends SuperDao {
 		String category = pageInfo.getCategory();
 		System.out.println("StoreDao!!!! mode : " + mode + " / keyword : " + keyword + " cate : " + category); // 어떤 값으로 검색했는지 확인
 		
-		if (mode==null || mode.equals("all") || keyword==null || keyword.equals("all")) {
+		if (mode==null || mode.equals("all") || keyword==null || keyword.equals("all") || category==null || category.equals("all")) {
 		} else if (mode.equals("category")){
 			sql += " where " + mode + " like '%" + category + "%'";
 		} else {
@@ -165,7 +165,7 @@ public class StoreDao extends SuperDao {
 		String keyword = pageInfo.getKeyword();
 		String category = pageInfo.getCategory();
 		
-		if (mode==null || mode.equals("all") || keyword==null || keyword.equals("all")) {
+		if (mode==null || mode.equals("all") || keyword==null || keyword.equals("all") || category==null || category.equals("all")) {
 		} else if (mode.equals("category")){
 			sql += " and " + mode + " like '%" + category + "%'";
 		} else {
@@ -264,8 +264,10 @@ public class StoreDao extends SuperDao {
 		
 		String sql = "select count(*) as cnt from store";
 		
-		if (mode == null || mode.equals("all") || keyword == null || keyword.equals("all")) { // 전체 검색 일때는 조건 부여 x
-		} else if (mode.equals("category")){
+		if (mode == null || mode.equals("all") || keyword == null || keyword.equals("all") || categoryItem == null || categoryItem.equals("all")) { // 전체 검색 일때는 조건 부여 x
+			System.out.println("alll!!!!");
+		} else if (!(categoryItem == null || categoryItem.equals("all")) && mode.equals("category")){
+			System.out.println("not all");
 			sql += " where " + mode + " like '%" + categoryItem + "%'";
 		} else {
 			sql += " where " + mode + " like '%" + keyword + "%'";
@@ -292,8 +294,10 @@ public class StoreDao extends SuperDao {
 		
 		String sql = "select count(*) as cnt from store where id=?";
 		
-		if (mode == null || mode.equals("all") || keyword == null || keyword.equals("all")) { // 전체 검색 일때는 조건 부여 x
-		} else if (mode.equals("category")){
+		if (mode == null || mode.equals("all") || keyword == null || keyword.equals("all") || categoryItem == null || categoryItem.equals("all")) { // 전체 검색 일때는 조건 부여 x
+			System.out.println("alll!!!!");
+		} else if (!(categoryItem == null || categoryItem.equals("all")) && mode.equals("category")){
+			System.out.println("not all");
 			sql += " and " + mode + " like '%" + categoryItem + "%'";
 		} else {
 			sql += " and " + mode + " like '%" + keyword + "%'";
