@@ -79,7 +79,7 @@ public class MemberDao extends SuperDao {
 
 		String sql = " select id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest ";
 		sql += " from ";
-		sql += " (select id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest, rank() over(order by id asc)
+		sql += " (select id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest, rank() over(order by id asc) ";
 		sql += " from members) ";
 		sql += " where ranking between ? and ? ";
 
