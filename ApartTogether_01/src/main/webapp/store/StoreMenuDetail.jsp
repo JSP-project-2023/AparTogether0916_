@@ -1,17 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
 <%-- <%@ include file="./../common/common.jsp"%> --%>
 <%@ include file="/common/common.jsp"%>
-<!-- 추후 삭제 -->
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
-=======
-<%@ include file="./../common/common.jsp" %>   
->>>>>>> origin/lleebs
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -22,22 +12,7 @@
 	<title>가게 상세 정보</title>
 	</head>
 <body>
-	<script type="text/javascript">
-		$('#store-body').on('mousewheel',function(e){ 
-		    var wheel = e.originalEvent.wheelDelta;
-		
-		    if(wheel>0){ 
-		      //스크롤 올릴때 
-		      $('#orderBtn').html("올림..");
-		 
-		    } else { 
-		      //스크롤  내릴때 
-		       $('#orderBtn').html("내림..");
-		        } 
-		  });
-	</script>
-	
-	
+
 	<%--가게명 변수--%>
 	<c:set var="bean" value="${requestScope.bean}"/>
 	<div class="store-container">
