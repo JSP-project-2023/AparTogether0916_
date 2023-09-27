@@ -73,7 +73,7 @@ public class MemberDao extends SuperDao {
 		return cnt ;
 	}
   
-/* [selectAll(pageinfo를 위함)] TopN 구문을 사용하여 페이징 처리된 게시물 목록을 반환합니다. */
+	/* [selectAll(pageinfo를 위함)] TopN 구문을 사용하여 페이징 처리된 게시물 목록을 반환합니다. */
 	public List<Member> selectAll(Paging pageInfo) throws Exception {
 
 		PreparedStatement pstmt = null;
@@ -111,9 +111,9 @@ public class MemberDao extends SuperDao {
 
 		return lists;
 	}
-	
+	/* [selectAll(pageinfo를 위함)] TopN 구문을 사용하여 페이징 처리된 게시물 목록을 반환합니다. */
 	public List<Member> selectAll(PagingMember pageInfo) throws Exception {
-
+		// <회원목록> 페이지에서 사용합니다.
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
@@ -148,7 +148,7 @@ public class MemberDao extends SuperDao {
 		// [ED] 검색옵션(mode)에 따른 sql문장 처리 : 반드시 GetTotalRecordCount()과 같게 맞춰주세요.
 		sql += " ) ";
 		sql += " where ranking between ? and ? ";
-		System.out.println(sql);
+		
 		conn = super.getConnection();
 
 		pstmt = conn.prepareStatement(sql);

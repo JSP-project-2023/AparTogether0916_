@@ -27,3 +27,5 @@ myStoreList=com.apartogether.controller.store.MyStoreListController
 # 커뮤니티(vote)
 #voteAdd=com.apartogether.controller.vote.VoteAddController
 #voteBoard=com.apartogether.controller.vote.VoteController
+#voteInsert=com.apartogether.controller.vote.VoteInsertController
+voteList=com.apartogether.controller.vote.VoteListController
