@@ -9,6 +9,7 @@ import com.apartogether.model.bean.Menu;
 import com.apartogether.model.bean.OrderLog;
 import com.apartogether.model.bean.SaleMenu;
 import com.apartogether.model.bean.Store;
+import com.apartogether.utility.Paging;
 import com.apartogether.utility.PagingStore;
 
 public class StoreDao extends SuperDao {
@@ -549,47 +550,6 @@ public class StoreDao extends SuperDao {
 		return saleMonth;
 	}
 
-	public List<OrderLog> getOrderLog(int stno) throws SQLException {
-		String sql = "select menu.menuname, a.orderplace, a.ordertime, a.qty, (a.qty*menu.price) as total , a.orderno "
-				+ "		from menu inner join (select * from room inner join personal "
-				+ "		on room.roomno=personal.roomno) a "
-				+ "		on menu.menuno=a.menuno "
-				+ "		where menu.stno=? "
-				+ "		order by a.orderno desc";
-		
-		OrderLog log = null;
-		List<OrderLog> lists = new ArrayList<OrderLog>();
-		
-		conn = super.getConnection();
-		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, stno);
-		ResultSet rs = pstmt.executeQuery();
-		
-		while(rs.next()) {
-			log = new OrderLog();
-			
-			log.setOrderno(rs.getInt("orderno"));
-			log.setMenuname(rs.getString("menuname"));
-			log.setAddr(rs.getString("orderplace"));
-			log.setOrdertime(rs.getString("ordertime"));
-			log.setQty(rs.getInt("qty"));
-			log.setSellprice(rs.getInt("total"));
-			
-			lists.add(log);
-		}
-		
-		if (rs != null) {
-			rs.close();
-		}
-		if (pstmt != null) {
-			pstmt.close();
-		}
-		if (conn != null) {
-			conn.close();
-		}
-		return lists;
-	}
-
 	public int getTotalOrderCount(int stno) throws SQLException {
 		int cnt = 0;
 		
@@ -608,6 +568,64 @@ public class StoreDao extends SuperDao {
 			cnt = rs.getInt("cnt");
 		}
 		
+		
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
 		return cnt;
+	}
+	
+	//페이징을 통해 데이터 베이스에서 가져옴.
+	public List<OrderLog> getSelectAll(Paging pageInfo) throws SQLException {
+		List<OrderLog> lists = new ArrayList<OrderLog>();
+		OrderLog bean = null;
+		
+		String sql="select ranking, menu.menuname, a.orderplace, a.ordertime, a.qty, (a.qty*menu.price) as total , a.orderno "
+				+ "from menu inner join (select orderno, ordertime, qty, orderplace, menuno, rank() over(order by orderno desc) as ranking "
+				+ "from room inner join personal "
+				+ "on room.roomno=personal.roomno "
+				+ "where stno=?) a "
+				+ "on menu.menuno=a.menuno "
+				+ "where ranking between ? and ?";
+		
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setInt(1, pageInfo.getStno());
+		pstmt.setInt(2, pageInfo.getBeginRow());
+		pstmt.setInt(3, pageInfo.getEndRow());
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			bean = new OrderLog();
+			
+			bean.setMenuname(rs.getString("menuname"));
+			bean.setAddr(rs.getString("orderplace"));
+			bean.setOrdertime(rs.getString("ordertime"));
+			bean.setQty(rs.getInt("qty"));
+			bean.setSellprice(rs.getInt("total"));
+			bean.setOrderno(rs.getInt("orderno"));
+			
+			lists.add(bean);
+		}
+		
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+
+		return lists;
 	}	
 }

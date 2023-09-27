@@ -42,9 +42,6 @@
 											${fn:substring(bean.addr, 0, 7)}...
 								</c:if>
 							</td>
-						
-							
-							
 							<td align="center">${bean.ordertime}</td>
 							<td align="center">${bean.qty}</td>
 							<td align="center">${bean.sellprice}원</td>
@@ -58,6 +55,8 @@
 				</div>
 			</div>
 		</div>
-		<!-- 주문내역 끝 -->		
+		<!-- 주문내역 끝 -->
+		<!-- 툴팁 스크립트 -->
+		<script src="${pageContext.request.contextPath}/store/storeJS/StoreOrderLogJS.js"></script>
 	</body>
 </html>

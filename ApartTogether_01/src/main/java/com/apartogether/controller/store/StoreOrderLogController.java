@@ -17,22 +17,23 @@ public class StoreOrderLogController extends SuperClass{
 		
 		String pageNumber = request.getParameter("pageNumber");
 		String pageSize = request.getParameter("pageSize");
-		String mode = request.getParameter("mode");
-		String keyword = request.getParameter("keyword");
-		
+
+		//stno 무조건 받아야됨.
 		int stno = Integer.parseInt(request.getParameter("stno"));
 		StoreDao dao = new StoreDao();
 		
-		List<OrderLog> lists = dao.getOrderLog(stno);
-		
+		String url = super.getUrlInfomation("stOrLog");
 		//페이지 사이즈
 		int totalCount = dao.getTotalOrderCount(stno);
-		String url = super.getUrlInfomation("stOrLog");
 		boolean isGrid = false;
 		
-		Paging pageInfo = new Paging(pageNumber, pageSize, totalCount, url, mode, keyword, isGrid);
+		Paging pageInfo = new Paging(pageNumber, pageSize, totalCount, url, stno, isGrid);
 		
-		request.setAttribute("bean", lists);
+		/* List<OrderLog> lists = dao.getOrderLog(stno); */
+		
+		List<OrderLog> orderlist = dao.getSelectAll(pageInfo);
+		
+		request.setAttribute("bean", orderlist);
 		request.setAttribute("pageInfo", pageInfo);
 		
 		super.gotoPage("store/StoreOrderLog.jsp");
