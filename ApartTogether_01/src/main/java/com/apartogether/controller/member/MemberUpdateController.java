@@ -66,6 +66,7 @@ private final String PREFIX = "member/";
 				bean.setMtype(mr.getParameter("mtype"));
 				super.setSuccessAlertMessage("회원님! 수정 완료되었습니다.");
 			}else if(mtype.equals("biz")) { // 일반회원->사업자
+				bean.setMtype(mr.getParameter("mtype"));
 				if(gotoStoreInsert.equals("yes")){ // 컨펌창 yes '내 가게등록 페이지'로 이동
 				}else{ // 컨펌창 no 마이페이지로 이동
 					setAlertMessage("회원유형이 일반회원에서 사업자로 변경되었습니다.");
@@ -98,6 +99,8 @@ private final String PREFIX = "member/";
 			if(cnt == -1) { // DB 업데이트 실패
 				super.gotoPage(PREFIX + "meUpdateForm.jsp");
 			}else { // DB 업데이트 성공
+				// session 영역에 나의 로그인 정보를 갱신합니다.
+				super.session.setAttribute("loginfo", bean);
 				// gotoStoreInsert값에 따라 마이페이지로 갈것인가, 가게등록페이지로 갈것인가? 
 				if(gotoStoreInsert.equals("yes")) { // <가게등록페이지>로 이동합니다.
 					// 임시로 home으로 가게 해두었습니다. 나중에 꼭 수정해주세요. //////////////////////////
