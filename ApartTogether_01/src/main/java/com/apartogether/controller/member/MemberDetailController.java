@@ -20,6 +20,13 @@ public class MemberDetailController extends SuperClass {
 		try {
 			bean = dao.getDataByPrimaryKey(id);
 			
+			// Δ를 기준으로 주소를 나눈다.
+			String[] addressSet = bean.getAddress().split("Δ");
+			request.setAttribute("addressSet", addressSet);
+			// -를 기준으로 생일을 나눈다.
+			String[] birthSet = bean.getBirth().split("-");
+			request.setAttribute("birthSet", birthSet);
+			
 			if(bean == null) {
 				super.setAlertMessage("잘못된 회원 정보입니다.");
 				super.gotoPage("common/home.jsp");

@@ -60,6 +60,10 @@ public class SuperClass implements SuperController{
 		// in common.jsp 파일 하단 참조
 		session.setAttribute("alertMessage", message);
 	}	 
+	public void setSuccessAlertMessage(String message) {
+		// 성공 알럿
+		session.setAttribute("successAlertMsg", message);
+	}
 	
 	public void setSuccessAlertMessage(String message) {
 		// 성공 알럿
@@ -80,5 +84,11 @@ public class SuperClass implements SuperController{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void setConfirmMessage(String message) {
+		// session 영역에서 "ConfirmMessage"라는 이름으로 사용자에게 의사를 묻습니다.
+		// in common.jsp 파일 상단 참조
+		session.setAttribute("confirmMessage", message);
 	}
 }

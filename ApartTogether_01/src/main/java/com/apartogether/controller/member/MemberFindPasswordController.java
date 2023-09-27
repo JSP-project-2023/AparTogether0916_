@@ -29,7 +29,7 @@ private final String PREFIX = "member/" ;
 		
 		MemberDao dao = new MemberDao() ;
 		Member bean = null ;
-		
+		String gotopage = "gotopagePW";/* meFindResult.jsp에서 출력값, 분기처리를 위한 변수 */
 		try {
 			bean = dao.findPassword(name, id, passwordanswer, passwordquest);
 			
@@ -42,9 +42,10 @@ private final String PREFIX = "member/" ;
 			}else { // 로그인 성공
 				request.setAttribute("bean", bean) ;
 				// session 영역에 나의 로그인 정보를 저장합니다.
+				request.setAttribute("gotopage", gotopage);/* meFindResult.jsp에서 출력값, 분기처리를 위한 변수 */
 				String result = bean.getPassword();
-				super.setAlertMessage(bean.getId() + "님의 로그인 패스워드는 [ " + result + " ] 입니다.") ;
-				super.gotoPage(PREFIX + "meLoginForm.jsp");
+				/* super.setAlertMessage(bean.getId() + "님의 로그인 패스워드는 [ " + result + " ] 입니다."); */
+				super.gotoPage(PREFIX + "meFindResult.jsp");
 			}
 			
 		} catch (Exception e) {

@@ -9,6 +9,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>아파투게더</title>
+=======
+<title>홈화면:환영합니다!</title>
+>>>>>>> origin/member_merge03
 <style>
 @import	url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"); /* 스크롤 관련 */
 
@@ -47,9 +50,27 @@
 	color: black;
 }
 .item {max-height: 1080px;}
+<<<<<<< HEAD
 .scroll-container .item:nth-child(1) { flex-grow: 1; font-size: 2rem;}
 .scroll-container .item:nth-child(2) { flex-grow: 3; font-size: 1rem; margin-left: 2rem;}
 .scroll-container .item:nth-child(3) { flex-grow: 1; font-size: 2rem;}
+=======
+.scroll-container .item:nth-child(1) { flex-grow: 1; font-size: 2rem; 
+	animation-duration: 1s; animation-name: slidein;}
+.scroll-container .item:nth-child(2) { flex-grow: 3; font-size: 1rem; margin-left: 2rem;}
+.scroll-container .item:nth-child(3) { flex-grow: 1; font-size: 2rem;}
+@keyframes slidein {
+  from {
+    margin-right: 100%;
+    width: 300%
+  }
+
+  to {
+    margin-right: 0%;
+    width: 100%;
+  }
+}
+>>>>>>> origin/member_merge03
 
 .scroll-area:nth-of-type(1) {
 	/* background: #49b293; */
@@ -82,24 +103,42 @@
 
 	<div class="scroll scroll-container">
 		<div class="scroll-area">
+<<<<<<< HEAD
 			<div class="item">높아만 지는! <u>배달비</u> </br>어떻게 해야 할까요?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
 			<div class="item">배달하는 곳을 한곳으로!</br> apartogether와 함께 하세요!</div>
 			<div class="item" align="center">예쁜그림 ㅎㅎ&nbsp;&nbsp;&nbsp;&nbsp;</div>
+=======
+			<div class="item">높아만 지는 <u>배달비</u> </br>어떻게 해야 할까요?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			<div class="item">배달하는 곳을 한곳으로!</br> apartogether와 함께 하세요!</div>
+			<div class="item" align="center"><img alt="CoinnWallet" src="${pageContext.request.contextPath}/image/CoinnWallet.png">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+>>>>>>> origin/member_merge03
 		</div>
 		<div class="scroll-area">
 			<div class="item"><del>혼자내는 배달비!</del><Strong><br/>배달비 / 사람수만큼 절약</Strong></div>
 			<div class="item">함께하는 사람이 많을수록 더욱 싸게! 배달비 절감!</div>
+<<<<<<< HEAD
 			<div class="item">오토바이 굴러가는 이미지</div>
+=======
+			<div class="item" align="right"><img alt="CoinnWallet" src="${pageContext.request.contextPath}/image/Male_In_Shir.png">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+>>>>>>> origin/member_merge03
 		</div>
 		<div class="scroll-area">
 			<div class="item">test1</div>
 			<div class="item">test2</div>
+<<<<<<< HEAD
 			<div class="item">test3</div>
+=======
+			<div class="item" align="right"><img alt="CoinnWallet" src="${pageContext.request.contextPath}/image/Scene_3.png">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+>>>>>>> origin/member_merge03
 		</div>
 		<div class="scroll-area">
 			<div class="item">test1</div>
 			<div class="item">test2</div>
+<<<<<<< HEAD
 			<div class="item">test3</div>
+=======
+			<div class="item" align="right"><img alt="CoinnWallet" src="${pageContext.request.contextPath}/image/Scene_4.png">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+>>>>>>> origin/member_merge03
 		</div>
 	</div>
 </body>
