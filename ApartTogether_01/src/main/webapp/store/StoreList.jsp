@@ -9,104 +9,98 @@
 <title>가게 목록</title>
 <script type="text/javascript">
 
-	$(document).ready(function(){
-		
-		/*  페이징 - 가게명, 카테고리 mode 선택  */
-		var modeOption = $('#mode option');
-		
-		for (var i=0; i<modeOption.length; i++) {
-			if (modeOption[i].value == '${requestScope.pageInfo.mode}') {
-				modeOption[i].selected = true;
-				
-				$('#categoryList').addClass('notShow');
-				$('#keyword').removeClass('notShow');
-				/*  검색했던 가게명 input에 값 유지  */
-				$('#keyword').val('${requestScope.pageInfo.keyword}');
-				$('#keyword').attr('disabled', false);
-			}
-		}
-		
-		/*  페이징 - 카테고리 리스트에 값 유지  */
-		var cateOption = $('#categoryList option');
-		
-		for (var i=0; i<cateOption.length; i++) {
-			if (cateOption[i].value == '${requestScope.pageInfo.category}') {
-				cateOption[i].selected = true;
-				
-				$('#keyword').addClass('notShow');
-				$('#categoryList').removeClass('notShow');
-				$('#categoryList').attr('disabled', false);
-			}
-		}
-		
-		
-		/*  검색 방법 바꿀 때  */
-		$('#mode').change(function() {
-			if ($(this).val() == 'all') {
-				$('#keyword').val('');
-				$('#keyword').attr('disabled', true);
-				$('#categoryList').attr('disabled', true);
-				
-			/*  가게명으로 검색 시 카테고리 검색 드롭박스 안보이게  */
-			} else if ($(this).val() == 'stname') {
-				$('#keyword').val('');
-				$('#categoryList').addClass('notShow');
-				$('#keyword').removeClass('notShow');
-				$('#keyword').attr('disabled', false);
+$(document).ready(function(){
+	
+	/*  페이징 - 가게명, 카테고리 mode 선택  */
+	var modeOption = $('#mode option');
+	
+	for (var i=0; i<modeOption.length; i++) {
+		if (modeOption[i].value == '${requestScope.pageInfo.mode}') {
+			modeOption[i].selected = true;
 			
-			/*  카테고리로 검색 시 가게명 검색 input 박스 안보이게  */
-			} else if ($(this).val() == 'category') {
-				console.log('category change');
-				
-				$('#keyword').val('');
-				$('#keyword').addClass('notShow');
-				$('#categoryList').removeClass('notShow');
-				$('#categoryList').attr('disabled', false);
-			}
-		});
-
-		/*  화면 진입 시 셋팅  */
-		if ($('#mode').val() == 'all' || $('#mode').val() == '') {
-			$('#keyword').attr('disabled', true);
-			$('#categoryList').attr('disabled', true);
-			
-	 	/*	  가게명으로 검색 시 카테고리 검색 드롭박스 안보이게  */
-		} else if ($('#mode').val() == 'stname') {
 			$('#categoryList').addClass('notShow');
 			$('#keyword').removeClass('notShow');
+			/*  검색했던 가게명 input에 값 유지  */
+			$('#keyword').val('${requestScope.pageInfo.keyword}');
 			$('#keyword').attr('disabled', false);
-		
-		/*  카테고리로 검색 시 가게명 검색 input 박스 안보이게  */
-		} else if ($('#mode').val() == 'category') {
-			console.log('category change');
+		}
+	}
+	
+	/*  페이징 - 카테고리 리스트에 값 유지  */
+	var cateOption = $('#categoryList option');
+	
+	for (var i=0; i<cateOption.length; i++) {
+		if (cateOption[i].value == '${requestScope.pageInfo.category}') {
+			cateOption[i].selected = true;
 			
 			$('#keyword').addClass('notShow');
 			$('#categoryList').removeClass('notShow');
 			$('#categoryList').attr('disabled', false);
 		}
+	}
+	
+	
+	/*  검색 방법 바꿀 때  */
+	$('#mode').change(function() {
+		if ($(this).val() == 'all') {
+			$('#keyword').val('');
+			$('#keyword').attr('disabled', true);
+			$('#categoryList').attr('disabled', true);
+			
+		/*  가게명으로 검색 시 카테고리 검색 드롭박스 안보이게  */
+		} else if ($(this).val() == 'stname') {
+			$('#keyword').val('');
+			$('#categoryList').addClass('notShow');
+			$('#keyword').removeClass('notShow');
+			$('#keyword').attr('disabled', false);
+		
+		/*  카테고리로 검색 시 가게명 검색 input 박스 안보이게  */
+		} else if ($(this).val() == 'category') {
+			console.log('category change');
+			
+			$('#keyword').val('');
+			$('#keyword').addClass('notShow');
+			$('#categoryList').removeClass('notShow');
+			$('#categoryList').attr('disabled', false);
+		}
 	});
-	
-	/*  전체 선택 버튼 클릭  */
-	function searchAll() {
-		location.href='<%=notWithFormTag%>storeList';
-	}
-	
-	/*  가게 등록 버튼 클릭  */
-	function writeForm() {
-		location.href='<%=notWithFormTag%>storeInsert';
-	}
-	
-</script>
 
+	/*  화면 진입 시 셋팅  */
+	if ($('#mode').val() == 'all' || $('#mode').val() == '') {
+		$('#keyword').attr('disabled', true);
+		$('#categoryList').attr('disabled', true);
+		
+ 	/*	  가게명으로 검색 시 카테고리 검색 드롭박스 안보이게  */
+	} else if ($('#mode').val() == 'stname') {
+		$('#categoryList').addClass('notShow');
+		$('#keyword').removeClass('notShow');
+		$('#keyword').attr('disabled', false);
+	
+	/*  카테고리로 검색 시 가게명 검색 input 박스 안보이게  */
+	} else if ($('#mode').val() == 'category') {
+		console.log('category change');
+		
+		$('#keyword').addClass('notShow');
+		$('#categoryList').removeClass('notShow');
+		$('#categoryList').attr('disabled', false);
+	}
+});
+
+/*  전체 선택 버튼 클릭  */
+function searchAll() {
+	location.href='<%=notWithFormTag%>stList';
+}
+
+/*  가게 등록 버튼 클릭  */
+function addStore() {
+	location.href='<%=notWithFormTag%>stInsert&id=${sessionScope.loginfo.id}';
+}
+</script>
 
 <style type="text/css">
 	.container {
 		margin-top: 50px;
 		
-	}
-	
-	.mainTitle {
-		font-weight: bolder;
 	}
 	
 	.myAddress {
@@ -140,14 +134,9 @@
 		margin: 10px auto;
 	}
 	
-	.card-text {
-		
-	}
-	
 	.buttonList {
 		margin: 15px auto;
 	}
-	
 </style>
 
 
@@ -155,32 +144,32 @@
 <body>
 	<div class="container">
 		<h2 class="mainTitle">우리 동네 맛집 리스트</h2>
-		<p class="myAddress">내 현재 주소 | ${sessionScope.loginfo.address}</p>
+		
+		<c:if test="${sessionScope.loginfo ne null}">
+			<p class="subTitle">내 현재 주소 | ${sessionScope.loginfo.address}</p>
+		</c:if>
 
 		<table class="table table-borderless">
-			<thead>
-			</thead>
 			<tbody> 
-				<c:set var="colsu" value="3" />
+				<c:set var="colsu" value="3"/>
 				<tr>
 					<td colspan="${colsu}" align="center">
 						<div class="row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-10">
 								<form name="myform" action="<%=withFormTag%>" method="get">
-									<input type="hidden" name="command" value="storeList">
+									<input type="hidden" name="command" value="stList">
 									<div class="row">
 										<div class="col-sm-12">
 											
 											<select class="form-control-sm" id="mode" name="mode">
-												<option value="all" selected="selected">--- 선택해 주세요 ---
+												<option value="all" selected="selected">선택해 주세요
 												<option value="stname">가게명
 												<option value="category">카테고리
 											</select> 
 											
 											<select class="form-control-sm" id="categoryList" name="categoryList">
-												<option value="all" selected="selected">--- 카테고리 리스트
-													---
+												<option value="all" selected="selected">카테고리 리스트
 												<option value="양식">양식
 												<option value="중식">중식
 												<option value="일식">일식
@@ -192,11 +181,13 @@
 											</select>
 											
 											<input class="form-control-sm" type="text" name="keyword" id="keyword" placeholder="키워드 입력">
-											<button type="submit" class="btn btn-warning form-control-sm" onclick="">검색</button>
+											<button type="submit" class="btn btn-warning form-control-sm">검색</button>
 											
 											<button type="button" class="btn btn-warning form-control-sm" onclick="searchAll();">전체 검색</button>
 											
-											<button type="button" class="btn btn-info form-control-sm" onclick="writeForm();">내 가게 등록</button>
+											<c:if test="${sessionScope.loginfo.mtype eq 'biz'}">
+												<button type="button" class="btn btn-info form-control-sm" onclick="addStore();">내 가게 등록</button>
+											</c:if>
 											
 											<span class="label label-default">${requestScope.pageInfo.pagingStatus}</span>
 										</div>
@@ -214,7 +205,7 @@
 					</c:if>
 					<td>
 						<div class="card" style="width: 19rem;">
-							<a class="removeUnderLine" href=""> <%-- <%=notWithFormTag%>storeDetail&stno=${storeList.stno}${requestScope.pageInfo.flowParameter} --%>
+							<a class="removeUnderLine" href="<%=notWithFormTag%>stMuDetail&stno=${storeList.stno}">
 								<img class="card-img-top" alt="${storeList.stname}" src="upload/${storeList.stlogo}">
 								
 								<div class="card-body">
@@ -287,7 +278,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		${requestScope.pageInfo.pagingHtml}
+		${requestScope.pageInfo.pagingHtml}	
 	</div>
 </body>
 </html>

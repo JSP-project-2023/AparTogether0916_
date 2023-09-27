@@ -6,8 +6,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.apartogether.controller.SuperClass;
 import com.apartogether.controller.store.MyStoreListController;
 import com.apartogether.controller.store.StoreListController;
+import com.apartogether.model.bean.Member;
 import com.apartogether.model.bean.Menu;
+import com.apartogether.model.bean.Store;
 import com.apartogether.model.dao.MenuDao;
+import com.apartogether.model.dao.StoreDao;
 import com.oreilly.servlet.MultipartRequest;
 
 public class MenuInsertController extends SuperClass {
@@ -16,9 +19,17 @@ public class MenuInsertController extends SuperClass {
 //		메뉴 등록 폼으로 이동할 때
 		super.doGet(request, response);
 		
+		Member biz = (Member) session.getAttribute("loginfo");
+		String id = biz.getId();
+		
 //		어떤 가게 메뉴 추가할지 stno로 구분
 		int stno = Integer.parseInt(request.getParameter("stno"));
-		String stname = request.getParameter("stname");
+		
+//		가게 정보 가져오기
+		StoreDao dao = new StoreDao();
+		Store stBean = dao.getStorebyId(id, stno);
+
+		String stname = stBean.getStname();
 		
 		request.setAttribute("stno", stno);
 		request.setAttribute("stname", stname);
@@ -39,7 +50,7 @@ public class MenuInsertController extends SuperClass {
 		menu.setMenuname(mr.getParameter("menuname"));
 		menu.setPrice(Integer.parseInt(mr.getParameter("price")));
 		menu.setMenuimage(mr.getFilesystemName("menuimage"));
-		menu.setMenudetail(mr.getParameter("menudetail") + "\n" + mr.getParameter("detailPlus")); // 메뉴 설명 + 재료 | 기본옵션
+		menu.setMenudetail(mr.getParameter("menudetail") + "Δ" + mr.getParameter("detailPlus")); // 메뉴 설명 + 재료 | 기본옵션
 		
 		MenuDao dao = new MenuDao();
 		int cnt = -1;
@@ -57,9 +68,7 @@ public class MenuInsertController extends SuperClass {
 			} else {
 //				성공 메세지 출력
 				super.setSuccessAlertMessage("메뉴 등록 성공");
-				request.setAttribute("", Integer.parseInt(mr.getParameter("stno")));
-//				가게 상세 화면으로 이동 예정
-				new StoreListController().doGet(request, response);
+				new MenuManageController().doGet(request, response);
 			}
 			
 		} catch (Exception e) {

@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+
+@font-face {
+    font-family: 'Giants-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Giants-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* { /* 별도 지정 없는 태그 기본 font */
+ 	font-family: 'NanumSquareNeo-Variable';
+}
+
+.dropdown-toggle {
+	font-size: 1.6rem;
+}
+
+
+.alert-dismissible {
+	margin: 10px;
+}
+
+.navbar {
+	text-align: center;
+}
+
+/* .bigsize { */
+/* 	font-size: 80px; */
+/* 	margin-right: 150px; */
+/* 	text-decoration: none; */
+/* 	color: black; */
+/* 	margin-top: 10px */
+	
+/* } */
+
+.navbar-brand {
+	font-family: "Black Han Sans";
+	margin-right: 150px;
+	font-size: 3rem;
+}
+
+.nav-item {
+	font-size: 45px;
+	margin-top: 15px;
+	margin-right: 30px;
+	font-family: 'Nanum Gothic';
+	font-weight: bold;
+	text-align: center;
+}
+
+#margin {
+	margin: 50px;
+	margin-left: 150px;
+	margin-right: 150px;
+}
+
+.body {
+	align-content: center
+}
+
+.navbar-logo {
+	margin-right: 25px;
+	font-size: 15px
+}
+
+.dropdown-item {
+/* 	font-size: 20px; */
+/* 	font-family: 'Nanum Gothic'; */
+	font-size: 1.2rem;
+	text-align: left;
+	color: #555555;
+}
+
+#small {
+	margin-top: -16px;
+}
+
+#behind {
+	display: none;
+}
+
+.small-tip {
+/* 	font-size: 25px; */
+	font-size: 1.3rem;
+	text-decoration: none;
+	color: grey;
+/* 	font-family: 'Nanum Gothic'; */
+	padding-bottom: 19px;
+	vertical-align: middle;
+	display: block;
+    padding: auto;
+    font-weight: normal;
+}
+
+
+.tips {
+	margin-top: 75px;
+	margin-left: 70px;
+	position: relative;
+	cursor: pointer;
+	font-weight: 600;
+	
+}

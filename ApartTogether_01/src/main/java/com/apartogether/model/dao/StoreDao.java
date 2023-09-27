@@ -20,25 +20,26 @@ public class StoreDao extends SuperDao {
 	public int Insertstore(Store store) throws SQLException {
 		System.out.println("Insertstore()에 들어온 객체 : " + store);
 		
-		//가게 고유코드, id는 추후 가져오는 걸로... BTIME 1-16분 임의로 넣을것
 		String sql = " insert into store(stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime , stlogo, redday, btime)";
-		sql += " values(seqstore.nextval, 'soon', ?,?,?,?, ?,?,?,?,?, ?,?,40)";
+		sql += " values(seqstore.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 		conn = super.getConnection();
 		conn.setAutoCommit(false);
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
-		pstmt.setString(1, store.getStname());
-		pstmt.setInt(2, store.getFee());
-		pstmt.setString(3, store.getCategory());
-		pstmt.setString(4, store.getStplace());
-		pstmt.setString(5, store.getSttel());
-		pstmt.setString(6, store.getContent());
-		pstmt.setString(7, store.getCeofile());
-		pstmt.setString(8, store.getCeono());
-		pstmt.setString(9, store.getSttime());
-		pstmt.setString(10, store.getStlogo());
-		pstmt.setString(11, store.getRedday());
+		pstmt.setString(1, store.getId());
+		pstmt.setString(2, store.getStname());
+		pstmt.setInt(3, store.getFee());
+		pstmt.setString(4, store.getCategory());
+		pstmt.setString(5, store.getStplace());
+		pstmt.setString(6, store.getSttel());
+		pstmt.setString(7, store.getContent());
+		pstmt.setString(8, store.getCeofile());
+		pstmt.setString(9, store.getCeono());
+		pstmt.setString(10, store.getSttime());
+		pstmt.setString(11, store.getStlogo());
+		pstmt.setString(12, store.getRedday());
+		pstmt.setInt(13, store.getBtime());
 		
 		cnt = pstmt.executeUpdate();
 		conn.commit();
@@ -91,7 +92,8 @@ public class StoreDao extends SuperDao {
 		if(conn != null) {
 			conn.close();
 		}
-
+		
+		System.out.println(bean);
 		return bean;
 	}
 	
@@ -110,7 +112,7 @@ public class StoreDao extends SuperDao {
 		String category = pageInfo.getCategory();
 		System.out.println("StoreDao!!!! mode : " + mode + " / keyword : " + keyword + " cate : " + category); // 어떤 값으로 검색했는지 확인
 		
-		if (mode==null || mode.equals("all") || keyword==null || keyword.equals("all")) {
+		if (mode==null || mode.equals("all") || keyword==null || keyword.equals("all") || category==null || category.equals("all")) {
 		} else if (mode.equals("category")){
 			sql += " where " + mode + " like '%" + category + "%'";
 		} else {
@@ -166,7 +168,7 @@ public class StoreDao extends SuperDao {
 		String keyword = pageInfo.getKeyword();
 		String category = pageInfo.getCategory();
 		
-		if (mode==null || mode.equals("all") || keyword==null || keyword.equals("all")) {
+		if (mode==null || mode.equals("all") || keyword==null || keyword.equals("all") || category==null || category.equals("all")) {
 		} else if (mode.equals("category")){
 			sql += " and " + mode + " like '%" + category + "%'";
 		} else {
@@ -256,8 +258,6 @@ public class StoreDao extends SuperDao {
 		storeBean.setSttel(rs.getString("sttel")); // 가게 전화번호
 		storeBean.setSttime(rs.getString("sttime")); // 가게 운영 시간
 		
-		System.out.println(storeBean);
-		
 		return storeBean;
 	}
 
@@ -267,8 +267,10 @@ public class StoreDao extends SuperDao {
 		
 		String sql = "select count(*) as cnt from store";
 		
-		if (mode == null || mode.equals("all") || keyword == null || keyword.equals("all")) { // 전체 검색 일때는 조건 부여 x
-		} else if (mode.equals("category")){
+		if (mode == null || mode.equals("all") || keyword == null || keyword.equals("all") || categoryItem == null || categoryItem.equals("all")) { // 전체 검색 일때는 조건 부여 x
+			System.out.println("alll!!!!");
+		} else if (!(categoryItem == null || categoryItem.equals("all")) && mode.equals("category")){
+			System.out.println("not all");
 			sql += " where " + mode + " like '%" + categoryItem + "%'";
 		} else {
 			sql += " where " + mode + " like '%" + keyword + "%'";
@@ -295,8 +297,10 @@ public class StoreDao extends SuperDao {
 		
 		String sql = "select count(*) as cnt from store where id=?";
 		
-		if (mode == null || mode.equals("all") || keyword == null || keyword.equals("all")) { // 전체 검색 일때는 조건 부여 x
-		} else if (mode.equals("category")){
+		if (mode == null || mode.equals("all") || keyword == null || keyword.equals("all") || categoryItem == null || categoryItem.equals("all")) { // 전체 검색 일때는 조건 부여 x
+			System.out.println("alll!!!!");
+		} else if (!(categoryItem == null || categoryItem.equals("all")) && mode.equals("category")){
+			System.out.println("not all");
 			sql += " and " + mode + " like '%" + categoryItem + "%'";
 		} else {
 			sql += " and " + mode + " like '%" + keyword + "%'";
@@ -452,6 +456,18 @@ public class StoreDao extends SuperDao {
 		
 		while(rs.next()) {
 			bean = getMenuData(rs);
+			
+			String detail = bean.getMenudetail();
+			String str[] = null;
+			
+//			메뉴 설명 구분자 처리
+			if (detail.indexOf("Δ") < 0) { // 구분자가 없으면 그래도 입력
+				bean.setMenudetail(detail);
+			} else {
+				str = detail.split("Δ");
+				bean.setMenudetail(str[0] + "<br>" + str[1]); // 화면에 보여줄 때는 한 칸에 다 넣기
+			}
+			
 			lists.add(bean);
 		}
 		

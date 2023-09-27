@@ -10,6 +10,13 @@ import com.oreilly.servlet.MultipartRequest;
 
 public class StoreInsertController extends SuperClass{
 	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		super.doGet(request, response);
+		
+		super.gotoPage("store/InsertStore.jsp");
+	}
+	
+	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doPost(request, response);
 		
@@ -32,7 +39,8 @@ public class StoreInsertController extends SuperClass{
 		String stplace = String.valueOf(mr.getParameter("stplace1")) + "Δ";
 		stplace += String.valueOf(mr.getParameter("stplace2"));
 		
-		//store 객체에 set. 11개
+		//store 객체에 set. 13개
+		store.setId(mr.getParameter("id"));
 		store.setStname(String.valueOf(mr.getParameter("stname")));
 		store.setCategory(mr.getParameter("category"));
 		store.setStplace(stplace);
@@ -44,6 +52,7 @@ public class StoreInsertController extends SuperClass{
 		store.setRedday(mr.getParameter("redday"));
 		store.setCeono(mr.getParameter("ceono"));
 		store.setSttime(sttime);
+		store.setBtime(Integer.parseInt(mr.getParameter("btime")));
 		
 		
 		StoreDao dao = new StoreDao();
@@ -54,17 +63,16 @@ public class StoreInsertController extends SuperClass{
 			cnt = dao.Insertstore(store);
 			
 			if (cnt == -1) {
-				System.out.println("가입 실패");
+				super.setAlertMessage("가게 등록에 실패하였습니다.");
+				new MyStoreListController().doGet(request, response);
 			}
 			else {
-				System.out.println("가입성공");
+				super.setSuccessAlertMessage("가게 등록이 완료되었습니다.");
+				new MyStoreListController().doGet(request, response);
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		//등록후 메인으로 이동
-		super.gotoPage("common/home.jsp");
 	}
 }

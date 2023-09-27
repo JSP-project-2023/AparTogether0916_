@@ -10,7 +10,7 @@
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!-- css파일 불러오기 -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/store/storeCSS/InsertStore.css" type="text/css">
-	
+	<%-- 사업자용 가게 정보 detail 화면 --%>
 	<title>가게 정보 수정</title>
 	</head>
 	<body>
@@ -82,7 +82,7 @@
 		</div>
 			
 		<div id="buttons">
-			<a type="button" href="${pageContext.request.contextPath}/common/home.jsp">취소</a>
+			<button type="button" onclick="history.go(-1)">메뉴 추가하기</button>
 			<button type="button">메뉴 추가하기</button>
 			<!-- 초기화 하기전에 컨펌창 출력 -->
 		</div>

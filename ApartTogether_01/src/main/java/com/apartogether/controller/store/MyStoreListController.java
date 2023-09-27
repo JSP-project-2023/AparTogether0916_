@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.apartogether.controller.SuperClass;
+import com.apartogether.model.bean.Member;
 import com.apartogether.model.bean.Store;
 import com.apartogether.model.dao.StoreDao;
 import com.apartogether.utility.PagingStore;
@@ -21,10 +22,16 @@ public class MyStoreListController extends SuperClass {
 		
 		String storeName = request.getParameter("keyword"); // 가게명 검색했을 때
 		String category = request.getParameter("categoryList"); // 카테고리 선택했을 때
+		String id = null;
 		
-		String id = request.getParameter("id");
+		if (request.getParameter("id") == null || request.getParameter("id").equals(null)) {
+			Member mem = (Member) session.getAttribute("loginfo");
+			id = mem.getId();
+			
+		} else {
+			id = request.getParameter("id");
+		}
 		
-		System.out.println("id : " + id);
 		StoreDao dao = new StoreDao();
 		
 		try {

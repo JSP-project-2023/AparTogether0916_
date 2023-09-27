@@ -14,6 +14,7 @@ stOrLog=com.apartogether.controller.store.StoreOrderLogController
 #Munu
 menuInsert=com.apartogether.controller.menu.MenuInsertController
 menuUpdate=com.apartogether.controller.menu.MenuUpdateController
+menuDelete=com.apartogether.controller.menu.MenuDeleteController
 menuManage=com.apartogether.controller.menu.MenuManageController
 # member 회원(biz / user / admin)
 meInsert=com.apartogether.controller.member.MemberInsertController
@@ -43,3 +44,6 @@ myOrDetail=com.apartogether.controller.order.MyOrderDetailController
 orInsert=com.apartogether.controller.order.OrderInsertController
 orDelete=com.apartogether.controller.order.OrderDeleteController
 orConfirm=com.apartogether.controller.order.OrderConfirmController
+# 커뮤니티(vote)
+#voteAdd=com.apartogether.controller.vote.VoteAddController
+#voteBoard=com.apartogether.controller.vote.VoteController

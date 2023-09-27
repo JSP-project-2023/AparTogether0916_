@@ -1,69 +1,118 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="/common/common.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@ include file="/common/common.jsp"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-   <style type="text/css">
-  	#container{margin-left: 150px; margin-right: 150px;}
-	.carousel{ margin: 0 auto; width: 80%; height: 700px;}
-	.d-block{height: 700px;}
-   </style>
-	
-  <title>아파~투게터</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>아파투게더::환영합니다!</title>
+<style>
+@import	url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"); /* 스크롤 관련 */
+
+.scroll::-webkit-scrollbar {
+	display: none;
+	scroll-behavior: smooth
+}
+
+.scroll-container, .scroll-area {
+	max-width: 2560px;
+	height: 700px;
+	/* font-size: 60px; */
+}
+
+.scroll-container {
+	overflow: auto;
+	scroll-snap-type: y mandatory;
+}
+
+.scroll-area {
+	scroll-snap-align: start;
+}
+
+.scroll-container, .scroll-area {
+	margin: auto;
+}
+
+.scroll-area { /* 스크롤 내용 부분 css */
+	display: flex;
+	margin: 110px;
+	flex-direction: column;
+	flex-wrap: wrap;
+	/* align-content: flex-start; */
+	padding: 3rem;
+	/* justify-content: flex-start; */
+	color: black;
+}
+.item {max-height: 1080px;}
+.scroll-container .item:nth-child(1) { flex-grow: 1; font-size: 2rem; 
+	animation-duration: 1s; animation-name: slidein;}
+.scroll-container .item:nth-child(2) { flex-grow: 3; font-size: 1rem; margin-left: 2rem;}
+.scroll-container .item:nth-child(3) { flex-grow: 1; font-size: 2rem;}
+@keyframes slidein {
+  from {
+    margin-right: 100%;
+    width: 300%
+  }
+
+  to {
+    margin-right: 0%;
+    width: 100%;
+  }
+}
+
+.scroll-area:nth-of-type(1) {
+	/* background: #49b293; */
+	background-image: url(${pageContext.request.contextPath}/image/background3.png);
+	background-size: cover;
+}
+
+.scroll-area:nth-of-type(2) {
+	/* background: #c94e4b; */
+	background-image: url(${pageContext.request.contextPath}/image/background3.png);
+	background-size: cover;
+}
+
+.scroll-area:nth-of-type(3) {
+	/* background: #4cc1be; */
+	background-image: url(${pageContext.request.contextPath}/image/background3.png);
+	background-size: cover;
+}
+
+.scroll-area:nth-of-type(4) {
+	/* background: #8360A6; */
+	background-image: url(${pageContext.request.contextPath}/image/background3.png);
+	background-size: cover;
+}
+
+</style>
 </head>
 <body>
-	샘플
-	<%=request.getContextPath()%>
-	
-	<form action="<%=withFormTag%>" method="get">
-		<!-- 아이디 히든으로 들어감. -->
-		<input name="command" type="text" value="stList">
-		<button type="submit">가게 목록 보기</button>
-	</form>
-	
-	<form action="<%=withFormTag%>" method="get">
-		<!-- 아이디 히든으로 들어감. -->
-		<input name="command" type="text" value="myStoreList">
-		<input name="id" type="text" value="uiui">
-		<button type="submit">내 가게 보기</button>
-	</form>
-	
-	<form action="<%=withFormTag%>" method="get" target="_blank">
-		<input name="command" value="stUpdate">
-		<input name="id" value="seller">
-		<input name="stno" value="1">
-		<button type="submit">수정</button>
-	</form>
-	
-	<form action="<%=withFormTag%>" method="get" target="_blank">
-		<input name="command" value="stDetail">
-		<input name="id" value="seller">
-		<input name="stno" value="1">
-		<button type="submit">상세보기</button>
-	</form>
-	
-	<form action="<%=withFormTag%>" method="get" target="_blank">
-		<input name="command" value="stMuDetail">
-		<input name="stno" value="1">
-		<%-- 실제로는 가게 넘버만 넘어가면 됨--%>
-		<button type="submit">가게 메뉴 상세보기</button>
-	</form>
-	
-	<form action="<%=withFormTag%>" method="get" target="_blank">
-		<input name="command" value="stSales">
-		<input name="stno" value="1">
-		<%-- 실제로는 가게 넘버만 넘어가면 됨--%>
-		<button type="submit">매출현황</button>
-	</form>
-	
-	<form action="<%=withFormTag%>" method="get" target="_blank">
-		<input name="command" value="stOrLog">
-		<input name="stno" value="1">
-		<%-- 실제로는 가게 넘버만 넘어가면 됨--%>
-		<button type="submit">주문내역</button>
-	</form>
+	<div class="support-scrollsnap"></div>
 
+	<div class="scroll scroll-container">
+		<div class="scroll-area">
+			<div class="item">높아만 지는 <u>배달비</u> </br>어떻게 해야 할까요?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			<div class="item">배달하는 곳을 한곳으로!</br> apartogether와 함께 하세요!</div>
+			<div class="item" align="center"><img alt="CoinnWallet" src="${pageContext.request.contextPath}/image/CoinnWallet.png">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</div>
+		<div class="scroll-area">
+			<div class="item"><del>혼자내는 배달비!</del><Strong><br/>배달비 / 사람수만큼 절약</Strong></div>
+			<div class="item">함께하는 사람이 많을수록 더욱 싸게! 배달비 절감!</div>
+			<div class="item" align="right"><img alt="CoinnWallet" src="${pageContext.request.contextPath}/image/Male_In_Shir.png">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</div>
+		<div class="scroll-area">
+			<div class="item">test1</div>
+			<div class="item">test2</div>
+			<div class="item" align="right"><img alt="CoinnWallet" src="${pageContext.request.contextPath}/image/Scene_3.png">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</div>
+		<div class="scroll-area">
+			<div class="item">test1</div>
+			<div class="item">test2</div>
+			<div class="item" align="right"><img alt="CoinnWallet" src="${pageContext.request.contextPath}/image/Scene_4.png">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</div>
+	</div>
 </body>
 </html>

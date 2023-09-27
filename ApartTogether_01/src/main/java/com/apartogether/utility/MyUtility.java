@@ -2,35 +2,79 @@ package com.apartogether.utility;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.UnsupportedEncodingException;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.apartogether.controller.SuperController;
+import com.apartogether.model.bean.Member;
+import com.apartogether.model.dao.MemberDao;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class MyUtility {
+
+	public static void moveFolderProfileImage(String webPathFrom, String webPathTo, MultipartRequest mr) {
+		// FrontController.doProcess에서 사용합니다.
+		// <회원정보 수정>시 webPathFrom폴더로 업로드한 프로필이미지를 webPathTo폴더로 이동시킵니다.
+		String profileFileName = mr.getFilesystemName("profile");
+		File file = new File(webPathFrom + "/"+ profileFileName);
+	    File fileToMove = new File(webPathTo + "/"+ profileFileName);
+	    
+        boolean success = file.renameTo(fileToMove); // rename이동에 성공하면 true, 실패하면 false를 반환합니다. 타켓파일이 없을 때 false입니다.
+        if (!success) { // 실패
+            System.out.println("Failed to rename to " + fileToMove);
+            deleteTrashProfile(webPathFrom, mr);  //uploadStoreImage폴더에 남아있는 프로필이미지(쓰레기파일이 된)를 삭제합니다.
+        }else { // 성공
+        	System.out.println("Succeed to rename to " + fileToMove);
+        }
+	}
 	
-	public static void deleteOldImageFile(String webPath, MultipartRequest mr) {		
-		// 상품 수정시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
-		String[] deleteImages = 
-			{
-					mr.getParameter("ceofileUpdate"),
-					mr.getParameter("stlogoUpdate")
-			};
+	public static void deleteTrashProfile(String webPath, MultipartRequest mr){
+		// <회원정보 수정> 중 프로필이미지의 폴더이동에 실패하여 
+		// 쓰레기파일이 된 프로필이미지파일을 uploadStoreImage폴더에서 삭제합니다.
+		String deleteImages = mr.getFilesystemName("profile") ;
+		if(deleteImages != null) {
+			String deleteFile = webPath + "/" + deleteImages ;
+			File target = new File(deleteFile) ;
+			if(target.delete()) {
+				System.out.println("SUCCESS Delete Trash file" + deleteFile ); 
+			}else {
+				System.out.println("FAILED Delete Trash file" + deleteFile ); 
+			}
+		}
+	}
+	
+	public static void deleteOldProfileImageFile(String webPath, MultipartRequest mr){
+		// <회원정보 수정>시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
+		// 단, 같은 파일명을 사용하는 다른 사람이 있으면 삭제하지 않습니다.
+		String deleteProfile = mr.getParameter("deleteProfile") ;
+		MemberDao dao = new MemberDao();
 		
-		for(String delFile : deleteImages) {
-			if(delFile != null) {
-				String deleteFile = webPath + "/" + delFile ;
-				File target = new File(deleteFile) ;
-				if(target.delete()) {
-					System.out.println(deleteFile + " file delete success"); 
+		List<Member> lists = null;
+		try {
+			lists = dao.getSameProfileName(deleteProfile); // 삭제하려는 파일을 사용중인 회원목록을 불러옵니다.
+		} catch (Exception e) {e.printStackTrace();}
+		if(lists.size() > 1) { // 같은 파일명을 사용하는 사람이 있으면(lists.size()가 2 이상이면)사진을 삭제하지 않는다.
+			System.out.println("동일한 파일명을 사용하는 다른 회원이 "+(lists.size()-1)+"명 있습니다. 기존 프로필사진을 삭제하지 않습니다.");
+		}else { // 같은 파일명을 사용하는 사람이 없으면(lists.size()가 1 이하이면) 사진을 삭제한다.
+			System.out.println("동일한 파일명을 사용하는 다른 회원이 없습니다. 기존 프로필사진을 삭제합니다.");
+			// 회원정보 수정에서 프로필사진을 선택한 경우(not null)에만 delete 실행
+			if(mr.getFilesystemName("profile")!= null){ 
+				String deleteImages = mr.getParameter("deleteProfile") ;
+				if(deleteImages != null) {
+					String deleteFile = webPath + "/" + deleteImages ;
+					File target = new File(deleteFile) ;
+					if(target.delete()) {
+						System.out.println(deleteFile + " file delete success"); 
+					}
 				}
+			}else { // meUpdateForm에서 profile을 선택한 값이 없는 경우(mr.getFilesystemName("profile") == null)
+				System.out.println("meUpdate : 프로필이미지에 변동이 없으므로 파일을 그대로 유지합니다.");
 			}
 		}
 	}
@@ -50,7 +94,7 @@ public class MyUtility {
 					new DefaultFileRenamePolicy()) ;
 		} catch (Exception e) {
 			e.printStackTrace();
-		}		
+		}
 		return mr ;
 	}	
 	
@@ -105,28 +149,6 @@ public class MyUtility {
 		return prop;
 	}
 
-	public static Map<String, String> getSettingMap(String webSettingName) {
-		// webSettingName 파일을 이용하여 자바의 Map 형식으로 반환해 줍니다.
-		Map<String, String> map = new HashMap<String, String>();
-		Properties prop = null ;
-		prop = getPropertiesData(webSettingName) ;
-		
-		Enumeration<Object> keys = prop.keys() ;
-		while(keys.hasMoreElements()) {
-			String key = keys.nextElement().toString() ;
-			String value = prop.getProperty(key) ;
-			
-			//map.put(key, value) ;
-			
-			try { // 한글 깨짐 문제 해결
-				map.put(key, new String(value.getBytes("ISO-8859-1"), "UTF-8")) ;
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
-		}
-		return map;
-	}
-	
 	//파일 삭제 메소드
 	public static void deleteFile(String oldFile, String newFile, MultipartRequest mr, String uploadImage) {
 		 if(newFile != null) { //새로운 파일이 있다면 해당 항목을 삭제
@@ -144,9 +166,5 @@ public class MyUtility {
 				System.out.println(deleteFile + " file delete success");
 			}
 		}
-	}
-
-	public static void deleteOldProfileImageFile(String uploadImage, MultipartRequest mr) {
-		
 	}
 }

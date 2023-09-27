@@ -94,12 +94,12 @@
 	
 	/*  전체 선택 버튼 클릭  */
 	function searchAll() {
-		location.href='<%=notWithFormTag%>storeList';
+		location.href='<%=notWithFormTag%>myStoreList&id=${sessionScope.loginfo.id}';
 	}
 	
 	/*  가게 등록 버튼 클릭  */
-	function writeForm() {
-		location.href='<%=notWithFormTag%>storeInsert';
+	function addStore() {
+		location.href='<%=notWithFormTag%>stInsert&id=${sessionScope.loginfo.id}';
 	}
 	
 </script>
@@ -110,11 +110,7 @@
 		margin-top: 50px;
 		
 	}
-	
-	.mainTitle {
-		font-weight: bolder;
-	}
-	
+
 	.myAddress {
 		margin-bottom: 2.5rem;
 	}
@@ -151,10 +147,6 @@
 		margin: 10px auto;
 	}
 	
-	.card-text {
-		
-	}
-	
 	.buttonList {
 		margin: 15px auto;
 	}
@@ -166,6 +158,7 @@
 <body>
 	<div class="container">
 		<h2 class="mainTitle">${sessionScope.loginfo.name}님의 가게 리스트</h2>
+<!-- 		<p class="subTitle"></p> -->
 
 		<table class="table table-borderless setSpace">
 			<thead>
@@ -179,18 +172,18 @@
 							<div class="col-sm-10">
 								<form name="myform" action="<%=withFormTag%>" method="get">
 									<input type="hidden" name="command" value="myStoreList">
+									<input type="hidden" name="id" value="${sessionScope.loginfo.id}">
 									<div class="row">
 										<div class="col-sm-12">
 											
 											<select class="form-control-sm" id="mode" name="mode">
-												<option value="all" selected="selected">--- 선택해 주세요 ---
+												<option value="all" selected="selected">선택해 주세요
 												<option value="stname">가게명
 												<option value="category">카테고리
 											</select> 
 											
 											<select class="form-control-sm" id="categoryList" name="categoryList">
-												<option value="all" selected="selected">--- 카테고리 리스트
-													---
+												<option value="all" selected="selected">카테고리 리스트
 												<option value="양식">양식
 												<option value="중식">중식
 												<option value="일식">일식
@@ -206,7 +199,7 @@
 											
 											<button type="button" class="btn btn-warning form-control-sm" onclick="searchAll();">전체 검색</button>
 											
-											<button type="button" class="btn btn-info form-control-sm" onclick="writeForm();">내 가게 등록</button>
+											<button type="button" class="btn btn-info form-control-sm" onclick="addStore();">내 가게 등록</button>
 											
 											<span class="label label-default">${requestScope.pageInfo.pagingStatus}</span>
 										</div>
@@ -225,7 +218,7 @@
 					<td>
 						<div class="card" style="width: 19rem;">
 							<%-- 사용자가 볼 Detail 화면 링크 --%>
-							<a class="removeUnderLine" href=""> <%-- <%=notWithFormTag%>storeDetail&stno=${myStoreList.stno}${requestScope.pageInfo.flowParameter} --%>
+							<a class="removeUnderLine" href="<%=notWithFormTag%>stMuDetail&stno=${myStoreList.stno}">
 								<img class="card-img-top" alt="${myStoreList.stname}" src="upload/${myStoreList.stlogo}">
 								
 								<div class="card-body">
@@ -291,16 +284,6 @@
 									<div id="buttonList" class="buttonList">
 										<a id="updateAnchor" class="btn btn-outline-primary" href="<%=notWithFormTag%>stUpdate&id=${myStoreList.id}&stno=${myStoreList.stno}${requestScope.pageInfo.flowParameter}">
 											가게수정
-										</a>
-										
-										<%-- 링크 추후 확인 필요 --%>
-										<a id="deleteAnchor" class="btn btn-outline-success" href="#">
-<%-- 										<%=notWithFormTag%>menuInsert&stno=${myStoreList.stno}&stname=${myStoreList.stname} --%>
-											메뉴수정
-										</a>
-										
-										<a id="deleteAnchor" class="btn btn-outline-success" href="<%=notWithFormTag%>menuInsert&stno=${myStoreList.stno}&stname=${myStoreList.stname}">
-											메뉴등록(임시)
 										</a>
 										
 										<a id="deleteAnchor" class="btn btn-outline-danger" onclick="deleteStore(${myStoreList.stno});">

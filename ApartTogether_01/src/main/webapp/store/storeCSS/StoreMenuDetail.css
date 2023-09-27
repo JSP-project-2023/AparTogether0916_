@@ -3,12 +3,11 @@ body{
 	overflow: auto;
 }
 #stname{
-
 	font-weight: bold;
-	font-size: 60px;
+	font-size: 2.5rem;
 	position: relative;
-	left: 50px;
-	bottom: 50px;
+	left: 20px;
+	bottom: 40px;
 }
 /*주문버튼*/
 #orderBtn{
@@ -16,11 +15,15 @@ body{
 	bottom: 70px;
 	right: 70px;
 	border-radius: 50%;
-	width: 100px;
-	height: 100px;
-	font-size: 25px;
-	background-color: #7BD7FF;
+	width: 70px;
+	height: 70px;
+	font-size: 17px;
+	background-color: #c4edff;
+	box-shadow: 0 0 0 1px #dadcdf, 0 4px 8px 0 rgba(0,0,0,.3);
 	border: none;
+}
+#orderBtn:hover{
+	background-color: #83d9ff;
 }
 .store-container{
 	position: absolute;
@@ -47,7 +50,7 @@ body{
 	width: 360px;
 }
 .store-delivery-span{
-	font-size: 30px;
+	font-size: 25px;
 }
 .title-bold{
 	font-weight: bold;
@@ -64,6 +67,7 @@ body{
 }
 .store-subinfo > .store-intro-span{
 	font-size: 20px;
+	margin-bottom: 5px;
 }
 .store-box{
 	margin-left: 50px;
@@ -75,26 +79,25 @@ body{
 	margin-top: 10px;
 	width: 300px;
 	height: 50px;
-	border-radius: 5px;
+/*	border-radius: 5px;*/
 	border: none;
-	background-color: #7BD7FF;
-}
-.order-button > button:hover, #orderBtn:hover{
-	background-color: rgb(0, 160, 230);
+	font-size: 18px;
 }
 
 /*메뉴 부분 css*/
 .menu-container{
 	display: flex;
 	flex-direction: column;
+	margin-bottom: 150px;
+	margin-top: 70px;
 }
 .one-menu-box{
-	margin-top: 95px;
 	display: flex;
 	flex-direction: row;
+	padding: 40px 0;
 }
 .one-menu-box:hover{
-	background-color: rgb(213, 213, 213);
+	background-color: #f7f7f7;
 }
 .memu-img > img {
 	margin-left: 50px;
@@ -104,8 +107,12 @@ body{
 .menu-details{
 	display: flex;
 	flex-direction: column;
-	margin-left: 50px;
+	margin: 0 50px;
 }
+.menu-details > span {
+	margin-bottom: 15px;
+}
+
 #menu-title{
 	font-size: 25px;
 	font-weight: bold;
@@ -117,7 +124,6 @@ body{
 .rounded-pill{
 	font-size: 20px;
 	position: relative;
-	bottom: 65px;
-	left: 30px;
+	bottom: 45px;
+	left: 0px;
 }
-

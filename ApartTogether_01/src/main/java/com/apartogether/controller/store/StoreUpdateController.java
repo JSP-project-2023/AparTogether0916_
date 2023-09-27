@@ -69,22 +69,17 @@ public class StoreUpdateController extends SuperClass{
 		try {
 			cnt = dao.UpdateStore(bean);
 			if (cnt == -1) {
-				System.out.println("실패");
+				super.setAlertMessage("가게 수정에 실패하였습니다.");
 			}else {
-				System.out.println("성공");
-				//TODO: 업데이트 후 알럿 창
-				super.setAlertMessage("수정이 완료되었습니다.");
-				
+				super.setSuccessAlertMessage("가게 수정이 완료되었습니다.");
 				//TODO: 업데이트 후 가게 상세화면으로 이동
-				//컨트롤러? goto?
-				new HomeController().doGet(request, response);
+				new MyStoreListController().doGet(request, response);
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
+	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doGet(request, response);

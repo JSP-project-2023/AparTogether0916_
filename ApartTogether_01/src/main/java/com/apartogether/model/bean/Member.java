@@ -107,10 +107,6 @@ public class Member {
 		this.profile = profile;
 	}
 	/* [ed.] getter&setter */
-	
-	
-	
-	
 	public Member(String id, String mtype, String name, String password, String phone, String birth, String gender,
 			String nickname, String address, String profile) {
 		super();

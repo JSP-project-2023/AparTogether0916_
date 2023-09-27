@@ -2,6 +2,7 @@ package com.apartogether.model.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLIntegrityConstraintViolationException; /*pk값 중복처리일 경우 Exception 처리 */
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,7 +18,7 @@ public class MemberDao extends SuperDao {
     // 회원정보 수정에 사용합니다. MemberUpdateController
 		System.out.println("상품 수정 빈 :\n" + bean);
 		PreparedStatement pstmt = null;
-		String sql = " update members set mtype = ? , name = ? ,  phone = ? , birth = ? , gender = ? , nickname = ? , address = ? , profile = ? , passwordanswer = ? , passwordquest = ? " ;
+		String sql = " update members set mtype = ? , name = ? ,  phone = ? , birth = ? , gender = ? , nickname = ? , address = ? , profile = ? , passwordanswer = ? , passwordquest = ?, password = ? " ;
 		sql += " where id = ? " ;
 		int cnt = -1 ;
 
@@ -35,8 +36,8 @@ public class MemberDao extends SuperDao {
 		pstmt.setString(8, bean.getProfile());
 		pstmt.setString(9, bean.getPasswordanswer());
 		pstmt.setString(10, bean.getPasswordquest());
-		pstmt.setString(11, bean.getId());
-
+		pstmt.setString(11, bean.getPassword());
+		pstmt.setString(12, bean.getId());
 		cnt = pstmt.executeUpdate();
 		conn.commit();
 
@@ -78,7 +79,7 @@ public class MemberDao extends SuperDao {
 
 		String sql = " select id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest ";
 		sql += " from ";
-		sql += " (select id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest, rank() over(order by name asc) as ranking ";
+		sql += " (select id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest, rank() over(order by id asc)
 		sql += " from members) ";
 		sql += " where ranking between ? and ? ";
 
@@ -289,12 +290,9 @@ public class MemberDao extends SuperDao {
 	
 	/* [InsertData] Member bean에 기록한 다음, 반환해 줍니다. */
 	public int InsertData(Member bean) throws Exception {
-		System.out.println(bean); 
-		
+		System.out.println("MD.InsertData : " + bean);
+
 		// Bean 객체 정보를 이용하여 데이터 베이스에 추가합니다.
-
-
-
 		String sql = " insert into members(id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest) " ;
 		sql += " values(					?,	   ?,	 ?,	       ?,	  ?,     ?,	     ?, 	   ?,	    ?,	     ?,              ?,             ?) " ;
 		int cnt = -1 ;
@@ -303,7 +301,7 @@ public class MemberDao extends SuperDao {
 		conn = super.getConnection() ;
 		conn.setAutoCommit(false);
 		pstmt = conn.prepareStatement(sql);
-
+		
 		pstmt.setString(1, bean.getId());
 		pstmt.setString(2, bean.getMtype());
 		pstmt.setString(3, bean.getName());
@@ -393,5 +391,59 @@ public class MemberDao extends SuperDao {
 	}
 	/* [ed] 아이디 랜덤 생성 */
 
+	
+	public List<Member> getSameProfileName(String profile) throws Exception {
+		// 회원수정에서 삭제하려는 프로필이미지를 혹시 사용하는 사람이 있는지 명단을 반환합니다.
+		// MyUtility.deleteOldProfileImageFile에서 사용합니다.
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = " select * from members ";
+		sql += " where profile = ?";
+
+		conn = super.getConnection();
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, profile);
+		
+		rs = pstmt.executeQuery();
+
+		List<Member> lists = new ArrayList<Member>();
+		
+
+		while (rs.next()) {
+			lists.add(getBeanData(rs));
+		}
+
+		if (rs != null) {rs.close();}
+		if (pstmt != null) {pstmt.close();}
+		if (conn != null) {conn.close();}
+
+		return lists;
+	}
+
+	public int deleteAllMyStore(String id) throws Exception{
+		// id회원이 가지고 있는 모든 가게들을 삭제한다.
+		// 회원탈퇴 시, 회원수정 시(사업자->일반회원 변경) 사용합니다.
+		// 성격 상 추후 StoreDao로 옮기는 게 나을 수도 있겠습니다.
+		int cnt = -1 ;
+		String sql = "" ;
+		PreparedStatement pstmt = null;
+ 		
+		conn = super.getConnection();
+		conn.setAutoCommit(false);
+		
+		// STORE테이블에서 id가 회원id와 일치하는 가게들을 모두 지웁니다.
+		sql = " delete from store where id = ? " ;
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, id);
+		cnt = pstmt.executeUpdate();
+		
+		if(pstmt!=null) {pstmt.close();}
+		
+		conn.commit();
+		if(conn!=null) {conn.close();}
+		return cnt ;
+	}
 
 }
+

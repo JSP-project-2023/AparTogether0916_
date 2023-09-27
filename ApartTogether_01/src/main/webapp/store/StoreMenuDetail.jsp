@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="./../common/common.jsp" %>   
-
+<%-- <%@ include file="./../common/common.jsp"%> --%>
+<%@ include file="/common/common.jsp"%>
 <!DOCTYPE html>
 <html>
 	<head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/store/storeCSS/StoreMenuDetail.css" type="text/css">
-	<title>가게 주문 상세 화면</title>
+	
+	<%-- 사용자용 가게 정보 + 메뉴 detail 화면 --%>
+	<title>가게 상세 정보</title>
 	</head>
 <body>
 
@@ -15,7 +17,7 @@
 	<c:set var="bean" value="${requestScope.bean}"/>
 	<div class="store-container">
 	<div class="store-info">
-	<div class="store-body">
+	<div class="store-body" id="store-body">
 	<!-- 뱃지 카테고리 들어갈 부분. -->
 	<c:if test="${bean.category eq '양식'}">
 		<span class="badge rounded-pill" style="background-color: #51CEA1">양식</span>
@@ -84,7 +86,7 @@
 	</div>
 	
 	<hr style="margin-top: 100px;" size="10px">
-		<div class="menu-container">
+		<div class="menu-container" id="menu-container">
 		<!-- 메뉴1개 들어가야될 공간 시작-->
 			<c:forEach var="menubean" items="${requestScope.menuBean}">
 				<div class="one-menu-box">
@@ -92,9 +94,8 @@
 						<img alt="이미지" src="${pageContext.request.contextPath}/uploadStoreImage/${menubean.menuimage}" border="1px">
 					</div>
 					<div class="menu-details">
-						<span id="menu-title">${menubean.menuname}</span> 
+						<span id="menu-title">${menubean.menuname}</span>
 						<span id="menu-exp">${menubean.menudetail}</span>
-						<span id="menu-igrnt">${menubean.menudetail}</span>
 						<span id="menu-price">${menubean.price}원</span>
 					</div>
 				</div>
@@ -103,6 +104,6 @@
 		</div>
 	</div>
 	
-	<button id="orderBtn">주문</button>
+	<button class="orderBtn" id="orderBtn">주문</button>
 </body>
 </html>
