@@ -274,7 +274,7 @@
 		</c:if>
 		<c:if test="${accessMeUpdate == 1 }">
 			<%-- 열람가능 --%>
-			<h2>회원 정보 수정</h2>
+			<h2 class="mainTitle">회원 정보 수정</h2>
 			<p>특정 회원에 대하여 정보를 수정하는 페이지 입니다.</p>
 			<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data" onsubmit="mtypeChangeCheck()">
 			
