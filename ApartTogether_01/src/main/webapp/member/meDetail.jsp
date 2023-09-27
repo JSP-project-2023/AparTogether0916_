@@ -142,7 +142,7 @@
 		</c:if>
 		<c:if test="${accessMeDetail == 1 }">
 			<%-- 열람가능 --%>
-			<h2>${requestScope.bean.name}님의 회원 정보</h2>
+			<h2  class="mainTitle">${requestScope.bean.name}님의 회원 정보</h2>
 			<table class="table" >
 				<thead></thead>
 				<tbody>
