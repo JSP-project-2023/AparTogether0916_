@@ -26,23 +26,7 @@ meDetail=com.apartogether.controller.member.MemberDetailController
 meList=com.apartogether.controller.member.MemberListController
 meUpdate=com.apartogether.controller.member.MemberUpdateController
 meDelete=com.apartogether.controller.member.MemberDeleteController
-#meResetPassword=com.apartogether.controller.member.MemberResetPasswordController<<<<<<< HEAD
 #meResetPassword=com.apartogether.controller.member.MemberResetPasswordController
-=======
-#Store
-stList=com.apartogether.controller.store.StoreListController
-stInsert=com.apartogether.controller.store.StoreInsertController
-#stUpdate=com.apartogether.controller.store.StoreUpdateController
-#stDetail=com.apartogether.controller.store.StoreDetailController
-#stMuDetail=com.apartogether.controller.store.StoreMenuDetailController
-#stDelete=com.apartogether.controller.store.StoreDeleteController
-myStoreList=com.apartogether.controller.store.MyStoreListController
-#Munu
-#menuInsert=com.apartogether.controller.menu.MenuInsertController
-#menuUpdate=com.apartogether.controller.menu.MenuUpdateController
-#menuDelete=com.apartogether.controller.menu.MenuDeleteController
-#menuManage=com.apartogether.controller.menu.MenuManageController
 # 커뮤니티(vote)
 #voteAdd=com.apartogether.controller.vote.VoteAddController
 #voteBoard=com.apartogether.controller.vote.VoteController
->>>>>>> origin/member_merge03
