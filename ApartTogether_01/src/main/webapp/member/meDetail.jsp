@@ -10,12 +10,11 @@
 	<style type="text/css">
 		.table{ }
 		.tableHead{text-align: center; }
-		.container{margin:10px; width: 100%}
 		#backButton{margin: auto; }
 		.small_image{width:100px;height:100px;margin:2px;border-radius:5px;}
 	</style>
   	<style type="text/css">
-		.container {margin-top:;}
+		.container {margin-top:50px;}
 		
 		.input-group {
 			margin: 7px;

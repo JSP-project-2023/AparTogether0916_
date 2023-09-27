@@ -52,7 +52,6 @@
   	  			return false ;
   	  		}
   	    	
-  	    	<%-- 회원정보 수정에서 passwordquest는 수정할 수 없습니다. --%>
   	    	var passwordquest = $('#passwordquest').val();
   	  		if(passwordquest == "-"){
   	            alert("선택된 항목이 없습니다.");
