@@ -142,5 +142,7 @@ public class Member {
 		this.passwordanswer = passwordanswer;
 		this.passwordquest = passwordquest;
 	}
+
+
 }
 

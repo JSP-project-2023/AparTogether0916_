@@ -17,40 +17,111 @@
   			/* value 속성의 값이 일치하는 항목에 대하여 체크 on 시킵니다. */
 	  	  	$('input[value="${bean.gender}"]').attr('checked', true);
   			$('input[value="${bean.mtype}"]').attr('checked', true);
-	  	  	
+  			var pqnum = 0; // pqnum : Num for PasswordQuest
+  			switch("${bean.passwordquest}"){ //passwordquest를 위한 테이블을 만드는 대신 직접 입력합니다.
+  				case "초등학교 이름은": pqnum = 1 ; break;
+  				case "아버지 성함은": pqnum = 2 ; break;
+  				case "내가 좋아하는 동물은": pqnum = 3 ; break;
+  				case "내 애완동물의 이름은": pqnum = 4 ; break;
+  				default: pqnum = 0;
+  			} 
+  			$('select[name="passwordquest"] option').eq(pqnum).prop('selected', true); 
   		});
-  		function validCheck(){ /* form validation check */
-  			console.log('!!!!validCheck() function called');
-  			// 필수 항목(id, name, ) 중 미입력 항목이 존재하는지 체크합니다.
-  			var id = $('#id').val();
-  		}
-  		
-  		function mtypeChangeCheck(){
-  			// mtype에 따라 알럿창, 컨펌창 후 마이페이지 또는 내 가게 등록 화면으로 이동
-  	  		var oldmtype = $('#oldmtype').val();
-  			var mtype = $('input[name="mtype"]:checked').val();
+  		/* [st] submit 유효성 검사 */
+  	    function validCheck(){ /* form validation check */
+  	    	var member01 = $('input[type="radio"]:checked').val() ;
+  			if(member01 == null){
+  				alert('일반회원 / 사업자 는 반드시 선택이 되어야 합니다.');
+  				return false ; 
+  			}  
+  			
+  	    	var id01 = $('#id').val();
+  	    	var check_id = /^[a-z | A-Z]{1,18}[0-9]{1,18}$/; //정규식(a~z, A~Z, 0~9 만 입력가능) 4~18자까지
+  	  		var idresult = check_id.test(id01);
+  	  		if(idresult == false){
+  	  			alert('[아이디]는 영문 및 숫자 만 입력 가능합니다.(4~18자)');  				
+  	  			return false ; /* false이면 이벤트 전파 방지 */
+  	  		}
+  			
+  	  		var password01 = $('#password').val();
+  	    	var check_pw = /^[a-zA-Z0-9~!@#$%^&*()_]{6,20}$/; //정규식(a~z, A~Z, 0~9, 특문 만 입력가능)  6~20자까지
+  	  		var passwordresult = check_pw.test(password01)
+  	  		if(passwordresult == false){
+  	  			alert('[비밀번호]는 6자리 이상 20자리 이하로 입력해 주세요.');
+  	  			$('#password').focus();
+  	  			return false ;
+  	  		}
+  	    	
+  	    	<%-- 회원정보 수정에서 passwordquest는 수정할 수 없습니다. --%>
+  	    	var passwordquest = $('#passwordquest').val();
+  	  		if(passwordquest == "-"){
+  	            alert("선택된 항목이 없습니다.");
+  	            $('#passwordquest').focus();
+  	            return false;
+  	        } 
+  			
+  	  		var name01 = $('#name').val();
+  	    	var check_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{2,10}/; // 한글체크 + 2~10자까지
+  	  		var nameresult = check_kor.test(name01);
+  	  		if(nameresult == false){  				
+  	  			$('#name').focus();
+  	  			alert('이름은 2자리 이상 10자리 이하로 한글로 입력해 주세요.');
+  	  			return false ;
+  	  		}
   	  		
-  	  		if(oldmtype == "biz") { // 수정 전에 사업자 였음
-  				if(mtype == "biz") { // 사업자를 그대로 유지하면 알럿창(수정완료)띄우고 마이페이지로 이동
-  					//alert('수정완료');
-  				}else if(mtype == "user") { // 사업자가 일반회원으로 변경한 거면 컨펌창(내가게 다 사라집니다)
+  	  		/* 닉네임 필수 X */
+  	  		
+  	  		var phone = $('#phone').val();
+  	  		var check_phone= /^\d{3}-\d{3,4}-\d{4}$/; /* '010-1234-5678 */
+  	  		var phoneresult = check_phone.test(phone);
+  	  		if(phoneresult == false){
+  	  			alert('휴대폰 번호는 010-1234-5678 형식으로 적어주세요 ');  				
+  	  			return false ;
+  	  		}
+  	  		
+  	  		/* jqueryUI 플러그인 date picker */
+  	  		var birth = $('#birth').val();
+  	  		var regex = /^\d{4}\/[01]\d{1}\/[0123]\d{1}$/ ;
+  	  		var birthresult = regex.test(birth);
+  	  		if(birthresult == false){
+	  			alert('생일은 반드시 yyyy/mm/dd 형식으로 입력해 주세요.');  				
+  	  			return false ;
+  	  		}
+  	  		
+  	  	 	var address = $('#address').val();
+  	  		var address_detail = $('#address_detail').val();
+  	    	var check_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|0-9|a-z|A-Z]{1,100}/; // 한글체크 + 2~10자까지
+  	  		var resultad = check_kor.test(address);
+  	  		var resultadd = check_kor.test(address_detail);
+  	  		if(resultad == false || resultadd == false){  				
+  	  			$('#address').focus();
+  	  			alert('주소 및 상세 주소를 입력해주세요');
+  	  			return false ;
+  	  		}  
+  	  	}
+  		/* [ed] 유효성 검사 */
+  		
+  		 // 사용자가 입력한 mtype에 따라 컨펌창을 띄우고 결과값을 저장합니다.
+  		function mtypeChangeCheck(){  	  		
+  			var oldmtype = $('#oldmtype').val();
+  			var mtype = $('input[name="mtype"]:checked').val();
+  	  		if(oldmtype == "biz") {
+  				if(mtype == "biz") { // 사업자->사업자
+  				}else if(mtype == "user") { // 사업자->일반회원 : 컨펌창("내가게 다 사라집니다")
   					var returnValue1 = confirm("내가 등록한 가게 정보가 모두 사라집니다. \n정말 일반회원으로 변경하시겠습니까?");
-  					if(returnValue1 == true){// 컨펌창 yes 알럿창(수정완료)띄우고 마이페이지로 이동
+  					if(returnValue1 == true){
   						$('#changeBizToUser').val("yes");
-  						//alert('회원유형이 사업자로 변경되었습니다.');
-  					}else{// 컨펌창 no 사업자로 유지
-  						//alert('회원유형을 사업자로 유지합니다.');
-  						$('#changeBizToUser').val("no"); // Set the value of #yesorno to "no"
+  					}else{
+  						$('#changeBizToUser').val("no");
   					}
   				}
-  			}else if(oldmtype == "user") { // 수정 전에 일반회원 이었음
-  				if(mtype == "user") { // 일반회원을 그대로 유지하면 알럿창(수정완료)띄우고 마이페이지로 이동
-  					//alert('수정완료');
-  				}else if(mtype == "biz") { // 일반회원이 사업자로 변경한 거면 컨펌창(내가게 등록하러 가시겠습니까?)
+  			}else if(oldmtype == "user") {
+  				if(mtype == "user") { // 일반회원->일반회원
+  				}else if(mtype == "biz") { // 일반회원->사업자 : 컨펌창(내가게 등록하러 가시겠습니까?)
   					var returnValue2 = confirm("회원유형이 사업자로 변경되었습니다. \n내 가게를 등록하러 가시겠습니까?");
-  					if(returnValue2 == true){ // 컨펌창 yes '내 가게등록 페이지'로 이동
+  					if(returnValue2 == true){
   						$('#gotoStoreInsert').val("yes");
-  					}else{ // 컨펌창 no 마이페이지로 이동
+  					}else{
   						$('#gotoStoreInsert').val("no");
   					}
   				}
@@ -71,7 +142,7 @@
   		#buttonset{margin-top: 15px;}
   		.radio_gender{font-size: 1.1rem;}
   		.radio_mtype{font-size: 1.1rem;} /* 주위 글꼴의 1.1배 */
-  		.small_image{width:50px;height:50px;margin:2px;border-radius:5px;}
+  		.small_image{width:100px;height:100px;margin:2px;border-radius:5px;}
   	</style>
   	<style type="text/css">
 		.container {margin-top:;}
@@ -183,11 +254,11 @@
 		
 		<%-- accessMeUpdate : 회원정보수정 페이지 열람 가능 여부를 저장하는 변수입니다. 0(열람불가), 1(열람가능) --%>
 		<c:set var="accessMeUpdate" value="0"/>
-		<c:if test="${whologin_id != requestScope.bean.id}">
+		<c:if test="${sessionScope.loginfo.id != requestScope.bean.id}">
 			<%-- 일반회원, 사업자 : 다른 사람의 회원정보수정 페이지를 열람할 수 없습니다. --%>
 			<c:set var="accessMeUpdate" value="0"/>
 		</c:if>
-		<c:if test="${whologin_id == requestScope.bean.id}">
+		<c:if test="${sessionScope.loginfo.id == requestScope.bean.id}">
 			<%-- 일반회원, 사업자 : 본인의 회원정보수정 페이지만 열람할 수 있습니다. --%>
 			<c:set var="accessMeUpdate" value="1"/>
 		</c:if>
@@ -203,18 +274,17 @@
 		</c:if>
 		<c:if test="${accessMeUpdate == 1 }">
 			<%-- 열람가능 --%>
-			<h2>회원 정보 수정</h2>
+			<h2 class="mainTitle">회원 정보 수정</h2>
 			<p>특정 회원에 대하여 정보를 수정하는 페이지 입니다.</p>
 			<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data" onsubmit="mtypeChangeCheck()">
 			
 				<input type="hidden" name="command" value="meUpdate">
-				<%-- <input type="hidden" name="mtype" value="${requestScope.bean.mtype}"> --%>
 				<input type="hidden" id="oldmtype" name="oldmtype" value="${requestScope.bean.mtype}">
 				<input type="hidden" id="changeBizToUser" name="changeBizToUser" value="yes">
 				<input type="hidden" id="gotoStoreInsert" name="gotoStoreInsert" value="no">
 				
 				<div class="input-group">
-					<span class="input-group-text col-md-2">회원유형</span><!-- 수정불가항목 -->
+					<span class="input-group-text col-md-2">회원유형<font color="red">*</font></span>
 					<div class="form-control" >
 						<label class="radio-inline radio_mtype"> 
 							&nbsp;<input type="radio" id="mtype1" name="mtype" value="user">일반회원
@@ -231,12 +301,12 @@
 					<input type="text" id="id" name="id" value="${requestScope.bean.id}" hidden>
 				</div>
 				<div class="input-group"> 
-					<span class="input-group-text col-md-2">이름</span>
+					<span class="input-group-text col-md-2">이름<font color="red">*</font></span>
 					<input class="form-control" type="text" id="name" name="name" value="${requestScope.bean.name}">				
 				</div>
 				
 				<div class="input-group">
-					<span class="input-group-text col-md-2">닉네임</span>
+					<span class="input-group-text col-md-2">닉네임<font color="red">*</font></span>
 					<input class="form-control" type="text" id="nickname" name="nickname" value="${requestScope.bean.nickname }">				
 				</div>
 				<div class="input-group">
@@ -260,12 +330,12 @@
 				</div>
 				
 				<div class="input-group" >
-					<span class="input-group-text col-md-2">비밀 번호</span>
+					<span class="input-group-text col-md-2">비밀 번호<font color="red">*</font></span>
 					<input class="form-control" type="password" id="password" name="password"  value="${requestScope.bean.password}">		
 				</div>
 				
 				<div class="input-group">
-					<span class="input-group-text col-md-2">성별</span>
+					<span class="input-group-text col-md-2">성별<font color="red">*</font></span>
 					<div class="form-control">
 						<label class="radio-inline radio_gender"> 
 							&nbsp;<input type="radio" id="gender1" name="gender" value="male">남자
@@ -276,31 +346,37 @@
 					</div>
 				</div>
 				<div class="input-group">
-					<span class="input-group-text col-md-2">전화번호</span>
+					<span class="input-group-text col-md-2">전화번호<font color="red">*</font></span>
 					<input class="form-control" type="text" id="phone" name="phone" value="${requestScope.bean.phone }">			
 				</div>
 				
 				
 				<div class="input-group">
-					<span class="input-group-text col-md-2">생일</span>
-					<input class="form-control" type="datetime" id="birth" name="birth" value="${requestScope.bean.birth }">			
+					<span class="input-group-text col-md-2">생일<font color="red">*</font></span>
+					<input class="form-control" type="datetime" id="birth" name="birth" value="${requestScope.birthSet[0]}/${requestScope.birthSet[1]}/${requestScope.birthSet[2]}">			
 				</div> 
 				
 				<div class="input-group">
-					<span class="input-group-text col-md-2">주소</span>
+					<span class="input-group-text col-md-2">주소<font color="red">*</font></span>
 					<input class="form-control" type="text" id="address" name="address" value="${addressSet[0] }">			
 				</div>
 				<div class="input-group">
-					<span class="input-group-text col-md-2">주소</span>
+					<span class="input-group-text col-md-2">상세주소<font color="red">*</font></span>
 					<input class="form-control" type="text" id="address_detail" name="address_detail" value="${addressSet[1] }">			
 				</div>
 				
 				
 				<div class="input-group">
-					<span class="input-group-text col-md-2">비밀번호 질문</span>
-					<input disabled="disabled" class="form-control" type="text" id="fakepasswordquest" name="fakepasswordquest" value="${requestScope.bean.passwordquest}">			
-					<input class="form-control" type="text" id="passwordquest" name="passwordquest" value="${requestScope.bean.passwordquest}" hidden>			
-				
+					<span class="input-group-text col-md-2">비밀번호 질문<font color="red">*</font></span>
+					<%-- <input disabled="disabled" class="form-control" type="text" id="fakepasswordquest" name="fakepasswordquest" value="${requestScope.bean.passwordquest}">			
+					<input class="form-control" type="text" id="passwordquest" name="passwordquest" value="${requestScope.bean.passwordquest}" hidden>	 --%>		
+					<select class="form-select"	id="passwordquest" name="passwordquest" class="passwordquest">
+						<option value="-" selected>-- 선택해 주세요.
+						<option value="초등학교 이름은">초등학교 이름은?
+						<option value="아버지 성함은">아버지 성함은?
+						<option value="내가 좋아하는 동물은">내가 좋아하는 동물은?
+						<option value="내 애완동물의 이름은">내 애완동물의 이름은?
+					</select>
 				</div>
 				
 				<div class="input-group">
@@ -320,7 +396,7 @@
 		</c:if>
 		
 	 	<div id="backButton">
-			<button type="button"  class="btn btn-info" onclick="history.back();">돌아 가기</button>
+			<button type="button" class="btn button-18 " style=" padding-left:20px; padding-right:20px" onclick="history.back();">돌아 가기</button>
 		</div>
 	
 	</div>

@@ -80,7 +80,7 @@ public class MemberDao extends SuperDao {
 
 		String sql = " select id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest ";
 		sql += " from ";
-		sql += " (select id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest, rank() over(order by name asc) as ranking ";  
+		sql += " (select id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest, rank() over(order by id asc) as ranking ";  
 		sql += " from members) ";
 		sql += " where ranking between ? and ? ";
 
@@ -438,4 +438,30 @@ public class MemberDao extends SuperDao {
 
 		return lists;
 	}
+
+	public int deleteAllMyStore(String id) throws Exception{
+		// id회원이 가지고 있는 모든 가게들을 삭제한다.
+		// 회원탈퇴 시, 회원수정 시(사업자->일반회원 변경) 사용합니다.
+		// 성격 상 추후 StoreDao로 옮기는 게 나을 수도 있겠습니다.
+		int cnt = -1 ;
+		String sql = "" ;
+		PreparedStatement pstmt = null;
+ 		
+		conn = super.getConnection();
+		conn.setAutoCommit(false);
+		
+		// STORE테이블에서 id가 회원id와 일치하는 가게들을 모두 지웁니다.
+		sql = " delete from store where id = ? " ;
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, id);
+		cnt = pstmt.executeUpdate();
+		
+		if(pstmt!=null) {pstmt.close();}
+		
+		conn.commit();
+		if(conn!=null) {conn.close();}
+		return cnt ;
+	}
+
 }
+

@@ -273,6 +273,7 @@
 					</span>
 				</div>
 				<div class="input-group">
+					<%-- 패스워드 질문 목록 수정 시 meUpdateForm.jsp도 함께 수정해주세요.--%>
 					<span class="input-group-text col-md-4">패스워드 질문<font color="red">*</font></span>
 					<select class="form-select"	id="passwordquest" name="passwordquest" class="passwordquest">
 						<option value="-" selected>-- 선택해 주세요.

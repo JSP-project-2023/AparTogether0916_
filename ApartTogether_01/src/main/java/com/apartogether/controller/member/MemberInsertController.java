@@ -61,7 +61,7 @@ public class MemberInsertController extends SuperClass {
 			cnt = dao.InsertData(bean);
 			if (cnt == -1) { // 가입 실패
 				new MemberInsertController().doGet(request, response);
-
+/* merge 20230927 이성한 기존yh+lsh
 			} else { // 가입 성공
 				if (gotoStoreInsert.equals("yes")) {// yes이면 <내 가게 등록 화면>으로 이동합니다.
 					// 임시로 meList으로 가게 해두었습니다. 나중에 꼭 수정해주세요. @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -72,6 +72,22 @@ public class MemberInsertController extends SuperClass {
 					// 자동로그인이 되는지 꼭 확인해 주세요.@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 				} else {
 					new MemberLoginController().doPost(request, response);
+*/
+			}else { // 가입 성공
+				if(gotoStoreInsert.equals("yes")) {//  yes이면 <내 가게 등록 화면>으로 이동합니다.
+					// [ST]자동로그인기능
+					String id = mr.getParameter("id") ;
+					String password = mr.getParameter("password") ;
+					System.out.println(id + "/" + password);
+					try {bean = dao.getDataByPk(id, password);
+					} catch (Exception e) {e.printStackTrace();}
+					super.session.setAttribute("loginfo", bean);
+					// [ED]자동로그인기능
+					String gotopage = super.getUrlInfomation("stInsert"); 
+//					gotopage += "&id=" + mr.getParameter("id");
+					response.sendRedirect(gotopage);
+				}else {
+					new MemberLoginController().doPost(request, response); // 일반회원으로 가입했을경우, 컨펌창no
 				}
 			}
 		} catch (SQLIntegrityConstraintViolationException e) { /* member - pk(id)중복 발생 시 */
