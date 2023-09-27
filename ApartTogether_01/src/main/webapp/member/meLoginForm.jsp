@@ -133,9 +133,8 @@
 		<div class="col-lg-3"></div>
 		<div class="col-lg-6" align="center">
 			<div align="left">
-				<h2>로그인 페이지</h2>
+				<h2 style="padding: 20px">로그인 페이지</h2>
 			</div>
-
 			<form action="<%=withFormTag%>" method="post">
 				<input type="hidden" name="command" value="meLogin"> 
 				
@@ -177,11 +176,10 @@
 			</div>
 			<div class="col-lg-3"></div>
 	</div>
-</body>
+</body> 
 
-<!--  
 <!-- 카카오 스크립트 -->
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<!-- <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
 Kakao.init('ebeba8b3574c87b76521c3760bbf5ee6'); //발급받은 키 중 javascript키를 사용해준다.
 console.log(Kakao.isInitialized()); // sdk초기화여부판단
@@ -221,6 +219,5 @@ function kakaoLogout() {
   }
 /* 만약 계정 연동해제를 하고 싶으면 아래 주소에 가서 연동해제하면 된다. */
 /* accounts.kakao.com/weblogin/account/info */
-</script>
--->
+</script>  -->
 </html>

@@ -111,7 +111,7 @@
 	background="http://localhost:5214/ApartTogether_01
 	/image/background3.png">
 	<div class="container">
-		<h2>
+		<h2 style="padding: 20px;">
 			<b>아이디 찾기</b>
 		</h2>
 		<p>하기 정보를 입력해주세요.</p>

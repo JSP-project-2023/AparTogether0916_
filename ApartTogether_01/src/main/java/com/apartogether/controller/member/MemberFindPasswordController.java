@@ -44,7 +44,7 @@ private final String PREFIX = "member/" ;
 				// session 영역에 나의 로그인 정보를 저장합니다.
 				request.setAttribute("gotopage", gotopage);/* meFindResult.jsp에서 출력값, 분기처리를 위한 변수 */
 				String result = bean.getPassword();
-				super.setAlertMessage(bean.getId() + "님의 로그인 패스워드는 [ " + result + " ] 입니다.") ;
+				/* super.setAlertMessage(bean.getId() + "님의 로그인 패스워드는 [ " + result + " ] 입니다."); */
 				super.gotoPage(PREFIX + "meFindResult.jsp");
 			}
 			

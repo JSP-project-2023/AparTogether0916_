@@ -234,10 +234,10 @@
 	background="http://localhost:5214/ApartTogether_01
 	/image/background3.png">
 	<div class="container row">
-		<div class="col-lg-2">col-lg-2</div>
+		<div class="col-lg-2"></div>
 		<div class="col-lg-8">
-			<h2>회원 가입</h2>
-			<p>회원 가입하는 페이지 입니다.</p>
+			<h2 style="padding: 20px;">회원 가입</h2>
+			<p><font color="red">*</font> 표시는 반드시 기입해주세요</p>
 			<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data" onsubmit="mtypeCheck()">
 				<input type="hidden" name="command" value="meInsert">
 				<input type="hidden" id="gotoStoreInsert" name="gotoStoreInsert" value="no">
@@ -248,7 +248,7 @@
 
 					<div class="form-control">
 						<label class="radio-inline radio_membertype"> &nbsp;<input class="mtype"
-							type="radio" id="membertype" name="mtype" value="user">
+							type="radio" id="membertype" name="mtype" value="user" checked>
 							🙋‍♀️ ‍일반회원
 						</label> | <label class="radio-inline radio_membertype"> &nbsp;<input class="mtype"
 							type="radio" id="membertype" name="mtype" value="biz">
@@ -343,7 +343,7 @@
 			</form>
 		</div>
 		<!-- col-lg-8 -->
-		<div class="col-lg-2">col-lg-2</div>
+		<div class="col-lg-2"></div>
 	</div>
 </body>
 <!-- [st] 다음(카카오) 주소 검색 스크립트 -->

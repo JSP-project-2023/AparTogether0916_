@@ -29,6 +29,16 @@
 		<div class="col-lg-3" align="center"></div>
 		<!-- 넘어온 컨트롤러에 따라 분기처리로 보여지는 값이 달라진다. -->
 		<div class="col-lg-6" align="left">
+			<h2 style="padding: 20px">
+				<c:choose>
+					<c:when test="${requestScope.gotopage eq 'gotopageID'}">
+						<h2 style="padding: 20px"><b>ID 찾기</b></h2>
+					</c:when>
+					<c:when test="${requestScope.gotopage eq 'gotopagePW'}">
+						<h2 style="padding: 20px"><b>패스워드 찾기</b></h2>
+					</c:when>
+				</c:choose>
+			</h2>
 			<div class="card">
 	  			<div class="card-header">${requestScope.bean.name} 회원님</div>
   				<div class="card-body">
