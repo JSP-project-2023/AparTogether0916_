@@ -133,10 +133,8 @@
 			!!!-비정상적인 접근입니다. 회원목록 페이지에 접근하실 수 없습니다..-!!!
 		</c:if>
 		<c:if test="${accessThisPage == 1 }">
-			alert("count");
 			<%-- 열람가능 --%>
-			<h2>회원 목록</h2>
-			<p>회원 목록을 보여 주는 페이지입니다.</p>		
+			<h2 class="mainTitle">회원 목록</h2>	
 			<table class="table table-hover">
 				<thead class="table-dark">
 					<tr>
