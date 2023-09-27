@@ -12,14 +12,13 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- css파일 불러오기 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/store/storeCSS/InsertStore.css" type="text/css">
-<title>가게 등록 페이지 입니다.</title>
+<title>내 가게 등록</title>
 </head>
 <body>
 	<div class="container">
-	<span class="title">내가게 등록</span>
+	<div class="container_content"><!-- 컨테이너 -->
+	<h2 class="mainTitle">내 가게 등록</h2>
 
-	<hr>
-	<div class="container1"><!-- 컨테이너 -->
 		<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="command" value="stInsert">
 		<!-- 회원 아이디 -->
@@ -27,34 +26,37 @@
 		<!-- 가게 고유번호-->
 		<input type="hidden" value="가게 고유번호(시퀀스)" name="stno" placeholder="회원아이디">
 		
-		<div id="ctname">
-			<span>가게 이름</span>
+		<div class="info_items" id="ctname">
+			<span class="littleTitle">가게 이름</span>
 			<input name="stname" type="text" placeholder="가게 이름">
 		</div>
 		
-		<div id="category">
-		<span>카테고리</span>
-				<select name="category">
-				<option value="-">--선택--
-				<option value="양식">양식
-				<option value="중식">중식
-				<option value="일식">일식
-				<option value="한식">한식
-				<option value="패스트푸드">패스트푸드
-				<option value="치킨">치킨
-				<option value="피자">피자
-				<option value="카페">카페
-			</select>
+		<div class="info_items" id="category">
+		<span class="littleTitle cateselect">카테고리</span>
+		<select name="category">
+			<option value="-">--선택--
+			<option value="양식">양식
+			<option value="중식">중식
+			<option value="일식">일식
+			<option value="한식">한식
+			<option value="패스트푸드">패스트푸드
+			<option value="치킨">치킨
+			<option value="피자">피자
+			<option value="카페">카페
+		</select>
 		</div>
 			
-		<div id="stplace">
+		<div class="info_items titleDepth1" id="stplace">
 			<%--주소 api사용하여 주소지 받아옴.--%>
-			<span>가게 주소</span><input id="stplace1" name="stplace1" type="text" placeholder="가게 주소">
-		 	<span>가게 상세 주소</span><input id="stplace2" name="stplace2" type="text" placeholder="가게 상세 주소">
+			<span class="littleTitle">가게 주소</span><input name="stplace1" type="text" placeholder="클릭해서 주소찾기">
+		 </div>
+		 
+		 <div class="info_items" id="stplace2">	
+		 	<span class="littleTitle">가게 상세 주소</span><input name="stplace2" type="text" placeholder="가게 상세 주소">
 		</div>
 		
-		<div id="storeNumber">
-			<span>가게 전화번호</span>
+		<div class="info_items" id="storeNumber">
+			<span class="littleTitle">가게 전화번호</span>
 			<select name="areacode1">
 				<option value="-">-선택-</option>
 				<option value="010">010</option>
@@ -69,22 +71,24 @@
 		</div>
 		
 		<%//TODO 가게 소개 20글자로 제한.%>
-		<div id="content">
-			<span>가게 소개</span><textarea name="content" rows="2" cols="20" maxlength="20" placeholder="가게소개를 입력해주세요."></textarea>
+		<div class="info_items" id="content">
+			<span class="littleTitle">가게 소개</span>
+			<textarea name="content" rows="2" cols="30" maxlength="20" placeholder="가게소개를 입력해주세요. (20자 제한)"></textarea>
 		</div>
 		
-		<div id="ceofile">
-			<span>사업자 등록증</span><input name="ceofile" class="imagefile" type="file">
+		<div class="info_items" id="ceofile">
+			<span class="littleTitle">사업자 등록증</span>
+			<input name="ceofile" class="imagefile" type="file">
 		</div>
 		
-		<div id="shoptime">
-			<span>가게 운영시간</span>
+		<div class="info_items" id="shoptime">
+			<span class="littleTitle">가게 운영시간</span>
 				<!-- 시작시간 -->
-				<select name="startShopAmPm">
+				<select name="startShopAmPm" class="ShopAmPm">
 					<option value="am">오전</option>
 					<option value="pm">오후</option>
 				</select>
-				<select name="startShopTime">
+				<select name="startShopTime" class="ShopTime">
 					<option value="00:00">00:00</option>
 					<option value="00:30">00:30</option>
 					<option value="01:00">01:00</option>
@@ -113,11 +117,11 @@
 					<option value="12:30">12:30</option>
 				</select> ~
 				<!-- 종료시간 -->
-				<select name="endShopAmPm">
+				<select name="endShopAmPm" class="ShopAmPm">
 					<option value="am">오전</option>
 					<option value="pm">오후</option>
 				</select>
-				<select name="endShopTime">
+				<select name="endShopTime" class="ShopTime">
 					<option value="00:00">00:00</option>
 					<option value="00:30">00:30</option>
 					<option value="01:00">01:00</option>
@@ -147,35 +151,38 @@
 				</select>
 		</div>
 			
-		<div id="stlogo">
-			<span id="recommend-logo-size"> * 권장 크기 : 360*360 </span>
-			가게로고 <input name="stlogo" class="imagefile" type="file">
+		<div class="info_items" id="stlogo">
+			<span class="littleTitle">가게로고</span>
+			<input name="stlogo" class="imagefile" type="file"><br>
+			<span id="recommend-logo-size" class="recommend-logo-size">* 권장 크기 : 360*360 </span>
+			 
 		</div>
 		
-		<div id="fee">
-			<span>배달비</span>
+		<div class="info_items" id="fee">
+			<span class="littleTitle">배달비</span>
 			<input name="fee" type="number" placeholder="배달비">
 		</div>
 		
-		<div id="btime">
-			배달시간(분) <input name="btime" type="number"><br>
+		<div class="info_items" id="btime">
+			<span class="littleTitle">배달시간(분)</span>
+			<input name="btime" type="number"><br>
 		</div>
 		
-		<div id="redday">
-			<span>휴무일</span>
+		<div class="info_items" id="redday">
+			<span class="littleTitle">휴무일</span>
 			<input name="redday" type="text" placeholder="예시) 매주 월요일">
 		</div>
 		
-		<div id="ceono">
-			<span>사업자 등록번호</span>
+		<div class="info_items" id="ceono">
+			<span class="littleTitle">사업자 등록번호</span>
 			<input name="ceono" type="text" placeholder="사업자 등록번호">
 		</div>
 			
-		<div id="buttons">
-			<button type="submit" onclick="return validation()">등록</button>
-			<button type="button" onclick="history.go(-1)">취소</button>
+		<div class="info_items btnArea" id="buttons">
+			<button class="big_ctlbtn insert_bigbtn" type="submit" onclick="return validation()">등록</button>
+			<button class="big_ctlbtn else_bigbtn" type="button" onclick="history.go(-1)">취소</button>
 			<!-- 초기화 하기전에 컨펌창 출력 -->
-			<button type="reset">초기화</button>
+			<button class="big_ctlbtn else_bigbtn" type="reset">초기화</button>
 		</div>
 			
 		</form>	

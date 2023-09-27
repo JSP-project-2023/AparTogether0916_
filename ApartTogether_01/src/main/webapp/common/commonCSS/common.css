@@ -62,6 +62,14 @@ footer {
 	align-content: center
 }
 
+.underline {
+	border-bottom: 1px solid #d1d1d1;
+}
+
+.container_content {
+    padding-left: 50px;
+}
+
 /*small button 크기 (추가, 수정, 삭제)*/
 .sm_ctlbtn { /*div - a*/
 	width: 60px;
@@ -106,7 +114,7 @@ footer {
 	color: #fff;
 }
 .insert_bigbtn:hover {
-	background-color: #0032dd;
+	background-color: #006fc9;
 	color: #fff;
 }
 .update_bigbtn {
@@ -118,7 +126,7 @@ footer {
 	color: #fff;
 }
 .delete_bigbtn {
-	background-color: #ff1414;
+	background-color: #ff5252;
 	color: #fff;
 }
 .delete_bigbtn:hover {
@@ -139,6 +147,14 @@ footer {
 }
 .order_bigbtn:hover {
 	background-color: #00a0e6;
+	color: #000000;
+}
+.else_bigbtn {
+	background-color: #efefef;
+	color: #000000;
+}
+.else_bigbtn:hover {
+	background-color: #c5c5c5;
 	color: #000000;
 }
 

@@ -131,9 +131,13 @@ a {
 		display: none;
 	}
 	
+	.hamarea {
+		position: relative;
+    	top: -6px;
+	}
+	
 	.hamburger {
 		width: 2rem;
-		height: 2rem;
 		padding: 0;
 	}
 	

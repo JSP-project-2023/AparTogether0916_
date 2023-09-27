@@ -20,7 +20,7 @@
 <body>
 	<script type="text/javascript">
 		$('#store-body').on('mousewheel',function(e){ 
-		    var wheel = e.originalEvent.wheelDelta; 
+		    var wheel = e.originalEvent.wheelDelta;
 		
 		    if(wheel>0){ 
 		      //스크롤 올릴때 
