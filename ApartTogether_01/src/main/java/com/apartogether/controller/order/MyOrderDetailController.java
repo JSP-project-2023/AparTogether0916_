@@ -14,7 +14,13 @@ public class MyOrderDetailController extends SuperClass{
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doGet(request, response);
-
+		// 사람 수를 구하는 변수
+		int su = 0;
+		
+		// 배달료를 가져오는 변수
+		int fee = 0;
+		
+		
 		if(super.loginfo == null) {
 			super.youNeededLogin();
 			return;
@@ -26,6 +32,13 @@ public class MyOrderDetailController extends SuperClass{
 			Order order = dao.getDetailHistory(roomno,super.loginfo.getId());
 			List<CartItem> lists = dao.showDetail(roomno,super.loginfo.getId());
 			
+			fee = dao.getStorefee(roomno);
+			su = dao.getTotalMember(roomno);
+	
+			int suFee = fee/su;
+			request.setAttribute("su", su);
+			request.setAttribute("suFee", suFee);
+			request.setAttribute("fee", fee);
 			request.setAttribute("order", order); // 주문 정보
 			request.setAttribute("lists", lists); // 쇼핑 정보
 			

@@ -458,6 +458,28 @@ public class OrderDao extends SuperDao{
 		return bean;
 	}
 
+	public int getStorefee(int roomno) throws Exception{
+		String sql = " select fee from store st inner join room ro on ro.stno = st.stno ";
+		sql += " where roomno = ?";
+		int bean = 0;
+		
+		
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1,roomno);
+		ResultSet rs = pstmt.executeQuery();
+		
+		if (rs.next()) {
+			bean = rs.getInt("fee");
+		}
+		
+		if(rs != null) {rs.close();}
+		if(pstmt != null) {pstmt.close();}
+		if(conn != null) {conn.close();}
+		
+		return bean;
+	}
+
 	
 
 	

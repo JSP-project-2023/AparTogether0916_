@@ -65,6 +65,14 @@
 						</tr>					
 						</c:forEach>
 						<tr>
+							<td>배달료</td>
+							<td>${requestScope.fee}원</td>
+							<td>/${requestScope.su}명</td>
+							<td>${requestScope.suFee}원</td>
+							<c:set var="totalAmount" value="${requestScope.suFee+totalAmount}"/>
+						</tr>
+						
+						<tr>
 							<td colspan="5" align="right">
 								합계 : <fmt:formatNumber value="${totalAmount}" pattern="###,###"/> 원&nbsp;&nbsp;
 							</td>
