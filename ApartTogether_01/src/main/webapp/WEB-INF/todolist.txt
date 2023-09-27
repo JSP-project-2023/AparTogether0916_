@@ -11,3 +11,6 @@ meDetail=com.apartogether.controller.member.MemberDetailController
 meList=com.apartogether.controller.member.MemberListController
 meUpdate=com.apartogether.controller.member.MemberUpdateController
 meDelete=com.apartogether.controller.member.MemberDeleteController
+# 커뮤니티(vote)
+#voteAdd=com.apartogether.controller.vote.VoteAddController
+#voteBoard=com.apartogether.controller.vote.VoteController

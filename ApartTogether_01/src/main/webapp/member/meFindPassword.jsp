@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아파투게더 : ID 찾기</title>
+<title>아파투게더 : PW 찾기</title>
 <script type="text/javascript">
 	$(document).ready(function() {
 		

@@ -163,7 +163,6 @@ String notWithFormTag = appName + mappingName + "?command=";
 					
 					<c:if test="${whologin eq 2 }">
 						<li class=""><a class="">${sessionScope.loginfo.name} 사장님 </a></li>
-						<li class=""><a class="" href="meDetail&id=${sessionScope.loginfo.id}">마이페이지</a></li>
 						<li class=""><a class="" href="<%=notWithFormTag%>meDetail&id=${sessionScope.loginfo.id}">마이페이지</a></li>
 						<li class=""><a class="" href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
 					</c:if>
@@ -285,13 +284,13 @@ String notWithFormTag = appName + mappingName + "?command=";
 					
 					<c:if test="${whologin eq 2 }">
 						<li class=""><a class="">${sessionScope.loginfo.name} 사장님 </a></li>
-						<li class=""><a class="" href="meDetail&id=${sessionScope.loginfo.id}">마이페이지</a></li>
+						<li class=""><a class="" href="<%=notWithFormTag%>meDetail&id=${sessionScope.loginfo.id}">마이페이지</a></li>
 						<li class=""><a class="" href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
 					</c:if>
 					
 					<c:if test="${whologin eq 3 }">
 						<li class=""><a class="">${sessionScope.loginfo.name}님</a></li>
-						<li class=""><a class="" href="meDetail&id=${sessionScope.loginfo.id}">마이페이지</a></li>
+						<li class=""><a class="" href="<%=notWithFormTag%>meDetail&id=${sessionScope.loginfo.id}">마이페이지</a></li>
 						<li class=""><a class="" href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
 					</c:if>
 					<!-- [ed] 로그인 섹션 -->

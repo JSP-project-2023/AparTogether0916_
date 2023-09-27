@@ -39,6 +39,7 @@
         }
 		/* [ed] popup 창으로 열기 */
 		
+		
 	</script>
 	<style type="text/css">
 	.container{margin-top: ;}
@@ -52,6 +53,10 @@
   		margin-left: auto;
   		margin-right: auto;
   		
+  	}
+  	.h2{
+  		margin: auto;
+  		padding: 3rem;
   	}
   	#buttonset{margin-top: 15px;}
   	/* [st] flexbox */
@@ -123,12 +128,12 @@
 <body background="http://localhost:5214/ApartTogether_01
 	/image/background3.png">
 	<br/>
-	<h2><br/>로그인 페이지</h2>
+	<h2><br/></h2>
 	<div class="container row" >
-		<div class="col-lg-3">[포인터].col-lg-3</div>
-		<div class="col-lg-6" align="center">[포인터].col-lg-6<div>
-			<p>로그인을 위한 페이지입니다.</p>
-			<p>혹은 로고?</p>
+		<div class="col-lg-3"></div>
+		<div class="col-lg-6" align="center">
+			<div align="left">
+				<h2>로그인 페이지</h2>
 			</div>
 
 			<form action="<%=withFormTag%>" method="post">
@@ -147,6 +152,21 @@
 				<!-- contextual class : btn-primary, btn-info, btn-danger -->
 				<div align="center">
 					<button type="submit" class="btn button-wrapper button-18" >로그인</button><br/><br/>
+					<!--
+					<button type="" class="btn button-wrapper button-18" onclick="kakaoLogin();" >카카오 로그인</button><br/>
+					<ul>
+						<li onclick="kakaoLogin();">
+      						<a href="javascript:void(0)">
+          						<span>카카오 로그인</span>
+      						</a>
+						</li>
+						<li onclick="kakaoLogout();">
+      						<a href="javascript:void(0)">
+          						<span>카카오 로그아웃</span>
+      						</a>
+						</li>
+					</ul>
+					-->
 					<a type="button" href="<%=notWithFormTag%>meInsert" class="btn button-99">회원 가입</a>
 					|
 					<a type="popup" href="javascript:popupfindID()" class="btn button-99">아이디 찾기</a>
@@ -154,9 +174,53 @@
 					<a type="popup" href="javascript:popupfindPW()" class="btn button-99">비밀번호 찾기</a>
 				</div>
 			</form>
-
 			</div>
-			<div class="col-lg-3">[포인터].col-lg-3</div>
+			<div class="col-lg-3"></div>
 	</div>
 </body>
+
+<!--  
+<!-- 카카오 스크립트 -->
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+Kakao.init('ebeba8b3574c87b76521c3760bbf5ee6'); //발급받은 키 중 javascript키를 사용해준다.
+console.log(Kakao.isInitialized()); // sdk초기화여부판단
+//카카오로그인
+function kakaoLogin() {
+    Kakao.Auth.login({
+      success: function (response) {
+        Kakao.API.request({
+          url: '/v2/user/me',
+          success: function (response) {
+        	  console.log(response)
+          },
+          fail: function (error) {
+            console.log(error)
+          },
+        })
+      },
+      fail: function (error) {
+        console.log(error)
+      },
+    })
+  }
+//카카오로그아웃  
+function kakaoLogout() {
+    if (Kakao.Auth.getAccessToken()) {
+      Kakao.API.request({
+        url: '/v1/user/unlink',
+        success: function (response) {
+        	console.log(response)
+        },
+        fail: function (error) {
+          console.log(error)
+        },
+      })
+      Kakao.Auth.setAccessToken(undefined)
+    }
+  }
+/* 만약 계정 연동해제를 하고 싶으면 아래 주소에 가서 연동해제하면 된다. */
+/* accounts.kakao.com/weblogin/account/info */
+</script>
+-->
 </html>
