@@ -19,11 +19,10 @@ stInsert=com.apartogether.controller.store.StoreInsertController
 #stMuDetail=com.apartogether.controller.store.StoreMenuDetailController
 #stDelete=com.apartogether.controller.store.StoreDeleteController
 myStoreList=com.apartogether.controller.store.MyStoreListController
-#Munu
+#Menu
 #menuInsert=com.apartogether.controller.menu.MenuInsertController
 #menuUpdate=com.apartogether.controller.menu.MenuUpdateController
 #menuDelete=com.apartogether.controller.menu.MenuDeleteController
 #menuManage=com.apartogether.controller.menu.MenuManageController
 # 커뮤니티(vote)
-#voteAdd=com.apartogether.controller.vote.VoteAddController
-#voteBoard=com.apartogether.controller.vote.VoteController
+voteResult=com.apartogether.controller.vote.VoteResultController
