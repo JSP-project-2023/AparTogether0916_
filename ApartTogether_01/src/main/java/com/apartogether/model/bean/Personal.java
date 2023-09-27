@@ -5,6 +5,14 @@ public class Personal {
 	private int roomno;
 	private String id;
 	private int qty;
+	private String confirm;
+	
+	public String getConfirm() {
+		return confirm;
+	}
+	public void setConfirm(String confirm) {
+		this.confirm = confirm;
+	}
 	public int getMenuno() {
 		return menuno;
 	}
@@ -31,7 +39,8 @@ public class Personal {
 	}
 	@Override
 	public String toString() {
-		return "Personal [menuno=" + menuno + ", roomno=" + roomno + ", id=" + id + ", qty=" + qty + "]";
+		return "Personal [menuno=" + menuno + ", roomno=" + roomno + ", id=" + id + ", qty=" + qty + ", confirm="
+				+ confirm + "]";
 	}
 	
 }

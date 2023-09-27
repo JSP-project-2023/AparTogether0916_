@@ -19,7 +19,7 @@
 		.custom_skyblue{background-color: skyblue;}
 		.custom_blue{background-color: blue;}
 		.custom_puple{background-color: #9900ff;}
-		
+		#hidden{display: none;}
 	</style>	
 	
 	<script type="text/javascript">
@@ -100,40 +100,45 @@
 						</div>
 					</td>
 				</tr>
+				<c:set var="success" value="success"/>
 				<c:forEach var="bean" items="${requestScope.roomlist}">	
-				<tr>
-						<td>${bean.roomno}</td>
-						<!-- 카테고리 별 뱃지 색깔을 다르게 하기 위한 if 문 -->
-						<c:if test="${bean.category eq '양식' }">
-							<td><span class="badge rounded-pill custom_red"> ${bean.category} </span></td>
-						</c:if>
-						<c:if test="${bean.category eq '중식' }">
-							<td><span class="badge rounded-pill custom_grey"> ${bean.category} </span></td>
-						</c:if>
-						<c:if test="${bean.category eq '일식' }">
-							<td><span class="badge rounded-pill custom_orange"> ${bean.category} </span></td>
-						</c:if>
-						<c:if test="${bean.category eq '한식' }">
-							<td><span class="badge rounded-pill custom_green"> ${bean.category} </span></td>
-						</c:if>
-						<c:if test="${bean.category eq '패스트푸드' }">
-							<td><span class="badge rounded-pill custom_skyblue"> ${bean.category} </span></td>
-						</c:if>
-						<c:if test="${bean.category eq '치킨' }">
-							<td><span class="badge rounded-pill custom_blue"> ${bean.category} </span></td>
-						</c:if>
-						<c:if test="${bean.category eq '피자' }">
-							<td><span class="badge rounded-pill custom_puple"> ${bean.category} </span></td>
-						</c:if>
-						<c:if test="${bean.category eq '카페' }">
-							<td><span class="badge rounded-pill custom_brown"> ${bean.category} </span></td>
-						</c:if>
-						<td>${bean.stname}</td>
-						<td>${bean.place}</td>
-						<td><a href="<%=notWithFormTag%>roDetail&roomno=${bean.roomno}">${bean.roomname}</a></td>
-						<td>${bean.ordertime}</td>	
-						<td>${bean.row_count }</td>	
-				</tr>
+					
+				
+								
+								<tr>
+									<td>${bean.roomno}</td>
+									<!-- 카테고리 별 뱃지 색깔을 다르게 하기 위한 if 문 -->
+									<c:if test="${bean.category eq '양식' }">
+										<td><span class="badge rounded-pill custom_red"> ${bean.category} </span></td>
+									</c:if>
+									<c:if test="${bean.category eq '중식' }">
+										<td><span class="badge rounded-pill custom_grey"> ${bean.category} </span></td>
+									</c:if>
+									<c:if test="${bean.category eq '일식' }">
+										<td><span class="badge rounded-pill custom_orange"> ${bean.category} </span></td>
+									</c:if>
+									<c:if test="${bean.category eq '한식' }">
+										<td><span class="badge rounded-pill custom_green"> ${bean.category} </span></td>
+									</c:if>
+									<c:if test="${bean.category eq '패스트푸드' }">
+										<td><span class="badge rounded-pill custom_skyblue"> ${bean.category} </span></td>
+									</c:if>
+									<c:if test="${bean.category eq '치킨' }">
+										<td><span class="badge rounded-pill custom_blue"> ${bean.category} </span></td>
+									</c:if>
+									<c:if test="${bean.category eq '피자' }">
+										<td><span class="badge rounded-pill custom_puple"> ${bean.category} </span></td>
+									</c:if>
+									<c:if test="${bean.category eq '카페' }">
+										<td><span class="badge rounded-pill custom_brown"> ${bean.category} </span></td>
+									</c:if>
+									<td>${bean.stname}</td>
+									<td>${bean.place}</td>
+									<td><a href="<%=notWithFormTag%>roDetail&roomno=${bean.roomno}">${bean.roomname}</a></td>
+									<td>${bean.ordertime}</td>	
+									<td>${bean.row_count }</td>	
+								</tr>		
+						
 				</c:forEach>
 			</tbody>
 			

@@ -107,6 +107,7 @@ public class CompositDao extends SuperDao {
 		return bean;
 	}
 	public Combo01 getRoomDetailInfo(Integer roomno) throws Exception {
+
 		String sql = " select ro.orderplace ,st.stname ,st.fee,ro.roomname ";
 		sql += " from room ro ";
 		sql += " inner join store st on ro.stno = st.stno ";
@@ -235,12 +236,103 @@ public class CompositDao extends SuperDao {
 		return lists3;
 	}
 
-	public int InsertReady(Integer roomno,String id) {
-		String sql = "insert into room_sataus(roomno,id,ready) values(?,?,'not') ";
-		
-		
-		return 0;
+	public int UpdateReady(int roomno, String id, String ready) throws Exception {
+		String sql = " update room_status set ready = 'ready' ";
+		sql += " where roomno = ? and id = ? ";
+		PreparedStatement pstmt = null;
+
+		int cnt = -1;
+		conn = super.getConnection();
+		conn.setAutoCommit(false);
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, roomno);
+		pstmt.setString(2, id);
+
+		cnt = pstmt.executeUpdate();
+
+		conn.commit();
+
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+
+		return cnt;
 	}
+
+	public int DeleteReady(int roomno, String id) throws Exception {
+
+		PreparedStatement pstmt = null;
+		int cnt = -1;
+
+		conn = super.getConnection();
+		conn.setAutoCommit(false);
+
+		String sql = " delete from room_status where id = ? and roomno = ?";
+
+		pstmt = conn.prepareStatement(sql);
+
+		pstmt.setString(1, id);
+		pstmt.setInt(2, roomno);
+		
+		
+		cnt = pstmt.executeUpdate();
+
+		conn.commit();
+
+		
+		
+		sql = " delete from personal where id = ? and roomno = ?";
+
+		pstmt = conn.prepareStatement(sql);
+
+		pstmt.setString(1, id);
+		pstmt.setInt(2, roomno);
+		
+		cnt = pstmt.executeUpdate();
+
+		conn.commit();
+
+		
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+		return cnt;
+	}
+
+	public int UpdateReady2(int roomno, String id, String ready) throws Exception {
+		String sql = " update room_status set ready = 'not' ";
+		sql += " where roomno = ? and id = ? ";
+		PreparedStatement pstmt = null;
+
+		int cnt = -1;
+		conn = super.getConnection();
+		conn.setAutoCommit(false);
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, roomno);
+		pstmt.setString(2, id);
+
+		cnt = pstmt.executeUpdate();
+
+		conn.commit();
+
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+
+		return cnt;
+	}
+
+	
+	
 
 	public List<Combo01> getAllMenu(Integer roomno) throws Exception{
 		
@@ -277,6 +369,55 @@ public class CompositDao extends SuperDao {
 		bean.setMenuDetail(rs.getString("menudetail"));
 		bean.setPrice(rs.getInt("price"));
 		bean.setMenuno(rs.getInt("menuno"));
+		return bean;
+	}
+	
+
+	public int getMinOrderno(Integer roomno) throws Exception{
+		String sql = "select Min(orderno)from room ro  ";
+		sql +=" inner join personal pe on ro.roomno = pe.roomno  ";
+		sql +=" where ro.roomno = ?";
+
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, roomno);
+		ResultSet rs = pstmt.executeQuery();
+		
+		int bean = 0;
+		
+		if(rs.next()) {
+			bean = rs.getInt("Min(orderno)");
+		}
+		
+		if(rs != null) {rs.close();}
+		if(pstmt != null) {pstmt.close();}
+		if(conn != null) {conn.close();}
+		
+		return bean;
+	}
+
+	// 방장 아이디 구하기
+	public String getBangjang(Integer roomno, int minorderno) throws Exception{
+		String sql = "select id from room ro ";
+		sql +=" inner join personal pe on ro.roomno = pe.roomno  ";
+		sql +=" where ro.roomno = ? and pe.orderno = ?";
+
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, roomno);
+		pstmt.setInt(2, minorderno);
+		ResultSet rs = pstmt.executeQuery();
+		
+		String bean = null;
+		
+		if(rs.next()) {
+			bean = rs.getString("id");
+		}
+		
+		if(rs != null) {rs.close();}
+		if(pstmt != null) {pstmt.close();}
+		if(conn != null) {conn.close();}
+		
 		return bean;
 	}
 

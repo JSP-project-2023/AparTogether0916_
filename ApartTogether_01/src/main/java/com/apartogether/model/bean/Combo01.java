@@ -18,10 +18,32 @@ public class Combo01 {
 	private String menuImage;
 	private String menuDetail;
 	private int menuno;
+	private int orderno;
 	
 	
 	
 	
+	
+	public int getOrderno() {
+		return orderno;
+	}
+
+
+
+
+
+
+
+	public void setOrderno(int orderno) {
+		this.orderno = orderno;
+	}
+
+
+
+
+
+
+
 	public int getMenuno() {
 		return menuno;
 	}
@@ -96,7 +118,7 @@ public class Combo01 {
 				+ ", totalmenu=" + totalmenu + ", orderplace=" + orderplace + ", stname=" + stname + ", fee=" + fee
 				+ ", roomname=" + roomname + ", price=" + price + ", personalprice=" + personalprice + ", id=" + id
 				+ ", allprice=" + allprice + ", ready=" + ready + ", menuImage=" + menuImage + ", menuDetail="
-				+ menuDetail + ", menuno=" + menuno + "]";
+				+ menuDetail + ", menuno=" + menuno + ", orderno=" + orderno + "]";
 	}
 
 

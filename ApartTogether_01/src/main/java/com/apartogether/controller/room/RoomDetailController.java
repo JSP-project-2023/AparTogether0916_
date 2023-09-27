@@ -22,6 +22,8 @@ public class RoomDetailController extends SuperClass {
 		Combo01 bean = null ;
 		Combo01 bean2 = null ;
 		Combo01 bean3 = null ;
+		int minorderno = 0;
+		String name = null;
 		List<Combo01> lists = null;
 		List<Combo01> lists2 =null;
 		List<Combo01> lists3 =null;
@@ -34,7 +36,7 @@ public class RoomDetailController extends SuperClass {
 		
 		try {
 			lists = dao.View01(roomno,super.loginfo.getId());
-			
+			request.setAttribute("roomno", roomno);
 			bean = dao.getPrice(roomno,super.loginfo.getId());
 			request.setAttribute("lists", lists);
 			request.setAttribute("bean", bean) ;
@@ -47,22 +49,27 @@ public class RoomDetailController extends SuperClass {
 			lists3 = dao.selectNotReadyId(roomno);
 			request.setAttribute("lists3", lists3);
 			
+			
+			// 방장을 비교하기 위한 bean orderno로 순서 비교
+			minorderno = dao.getMinOrderno(roomno);
+
+			
+			name = dao.getBangjang(roomno,minorderno);
+			request.setAttribute("bangjang", name);
+			
 			// 메뉴 관련 리스트
 			lists4 = dao.getAllMenu(roomno);
 			request.setAttribute("lists4", lists4);
 			
+			
+			
 			super.gotoPage("room/roDetail.jsp");
+			
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	@Override
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		super.doPost(request, response);
-		
-		super.gotoPage("room/roomList.jsp");
 	}
 	
 }

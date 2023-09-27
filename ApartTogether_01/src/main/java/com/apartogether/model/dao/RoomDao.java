@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.apartogether.model.bean.Room;
-import com.apartogether.model.bean.Wishlist;
 import com.apartogether.utility.Paging;
 
 public class RoomDao extends SuperDao{
@@ -23,24 +22,29 @@ public class RoomDao extends SuperDao{
 		sql += " FROM ( ";
 		sql += "  SELECT ro.roomno, ro.ordertime, ro.roomname, ro.orderplace, st.stname, st.category, ";
 		sql += "  ROW_NUMBER() OVER (ORDER BY ro.roomno DESC) AS ranking ,";
-		sql += " COUNT(rs.roomno) AS row_count ";
+		sql += " COUNT(distinct rs.id) AS row_count ";
 		sql += "  FROM room ro ";
 		sql += "  INNER JOIN store st ON ro.stno = st.stno ";
 		sql += " INNER JOIN room_status rs ON ro.roomno = rs.roomno ";
+		
+		sql += " INNER JOIN personal pe ON ro.roomno = pe.roomno ";
 		String mode = pageInfo.getMode();
 		String keyword = pageInfo.getKeyword();
-
+		
+		sql += " WHERE pe.confirm != 'success'";
+		
+		
 		// 모드 및 키워드 이용 검색 하기
 		if (mode != null && !mode.equals("all")) { // 괄호 열기
 		    if (mode.equals("category")) {
-		        sql += " where st." + mode + " LIKE '%" + keyword + "%' ";
+		        sql += " and st." + mode + " LIKE '%" + keyword + "%' ";
 		    }  else if (mode.equals("stname")) {
-		        sql += " where st." + mode + " LIKE '%" + keyword + "%' ";
+		        sql += " and st." + mode + " LIKE '%" + keyword + "%' ";
 		    } else if (mode.equals("orderplace")) {
-		        sql += " where ro." + mode + " LIKE '%" + keyword + "%' ";
+		        sql += " and ro." + mode + " LIKE '%" + keyword + "%' ";
 		    }
 		} 
-
+			
 		sql += "GROUP BY ro.roomno, ro.ordertime, ro.roomname, ro.orderplace, st.stname, st.category";
 		sql += ") ";
 		sql += "WHERE ranking BETWEEN ? AND ? ";
@@ -82,21 +86,13 @@ public class RoomDao extends SuperDao{
 		
 		return bean;
 	}
-	private Wishlist getBeanWishList(ResultSet rs) throws Exception{
-		// 방목록 로딩할 떄 사용
-		Wishlist bean = new Wishlist();
-		// 데이터 불러오기
-		bean.setNickname(rs.getString("nickname"));
-		bean.setMenuname(rs.getString("menuname"));
-		bean.setMenuono(rs.getInt("menuono"));
-		bean.setFee(rs.getInt("fee"));
-		
-		return bean;
-	}
+	
 
 	public int GetTotalRecordCount() throws Exception {
 		// 테이블의 총 행개수를 구합니다.
 		String sql = " select count(*) as cnt from room ro" ;
+		sql += " inner join personal pe on ro.roomno = pe.roomno";
+		sql += " where pe.confirm != 'success'";
 		
 		
 		PreparedStatement pstmt = null ;
@@ -127,15 +123,17 @@ public class RoomDao extends SuperDao{
 		// 테이블의 총 행개수를 구합니다.
 		String sql = " select count(*) as cnt from room ro" ;
 		sql += " inner join store st ON ro.stno = st.stno";
+		sql += " inner join personal pe on ro.roomno = pe.roomno";
+		sql += " where pe.confirm != 'success'";
 
 		
 		if (mode != null && !mode.equals("all")) { // 괄호 열기
 		    if (mode.equals("category")) {
-		        sql += " where st." + mode + " LIKE '%" + keyword + "%' ";
+		        sql += " and st." + mode + " LIKE '%" + keyword + "%' ";
 		    }  else if (mode.equals("stname")) {
-		        sql += " where st." + mode + " LIKE '%" + keyword + "%' ";
+		        sql += " and st." + mode + " LIKE '%" + keyword + "%' ";
 		    } else if (mode.equals("orderplace")) {
-		        sql += " where ro." + mode + " LIKE '%" + keyword + "%' ";
+		        sql += " and ro." + mode + " LIKE '%" + keyword + "%' ";
 		    }
 		} 
 		
@@ -159,37 +157,8 @@ public class RoomDao extends SuperDao{
 		
 		return cnt;
 	}
-
-	public List<Wishlist> GetRoomWishList(int roomno) throws Exception {
-		String sql = " SELECT nickname,menu.menuname, pe.menuono, st.fee" ;
-		sql += "from menu inner join personal pe  on menu.menuno = pe.menuno";
-		sql += "inner join members me on pe.id = me.id";
-		sql += "inner join store st on menu.stno = st.stno";
-		sql += "where pe.roomno = ?";
-
-		PreparedStatement pstmt = null ;
-		ResultSet rs = null ;
-		
-		conn = super.getConnection();
-		pstmt=conn.prepareStatement(sql);
-
-		pstmt.setInt(1, roomno);
-		
-		rs= pstmt.executeQuery();
-		
-		List<Wishlist> lists = new ArrayList<Wishlist>();
-		
-		
-		while(rs.next()) {
-			lists.add(getBeanWishList(rs));
-		}
-		
-		if(rs != null) {rs.close();}
-		if(pstmt != null) {pstmt.close();}
-		if(conn != null) {conn.close();}
 	
-		return lists;
-	}
+	
 	
 	
 }

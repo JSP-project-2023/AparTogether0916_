@@ -20,7 +20,6 @@ public class RoomListController extends SuperClass{
 		String mode = request.getParameter("mode") ;
 		String keyword = request.getParameter("keyword") ;
 		
-		
 		RoomDao dao = new RoomDao();
 		try {
 			int totalCount = dao.GetTotalRecordCount(mode,keyword); 
@@ -28,7 +27,10 @@ public class RoomListController extends SuperClass{
 			boolean isGrid = false ;
 			Paging pageInfo = new Paging(pageNumber, pageSize, totalCount, url, mode, keyword, isGrid);
 			
+			// 전체 페이지를 보여주는 리스트
 			List<Room> lists = dao.selectInfo(pageInfo);
+			
+			
 			
 			request.setAttribute("pageInfo", pageInfo);
 			request.setAttribute("roomlist", lists);
@@ -37,5 +39,6 @@ public class RoomListController extends SuperClass{
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	
+}
 }
