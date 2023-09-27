@@ -12,6 +12,7 @@ import com.apartogether.controller.SuperClass;
 import com.apartogether.model.bean.Member;
 import com.apartogether.model.dao.MemberDao;
 import com.apartogether.utility.Paging;
+import com.apartogether.utility.PagingMember;
 
 
 public class MemberListController extends SuperClass{
@@ -23,14 +24,15 @@ public class MemberListController extends SuperClass{
 		String pageNumber = request.getParameter("pageNumber");
 		String pageSize = request.getParameter("pageSize") ;
 		String mode = request.getParameter("mode") ;
+		String keywordmtype = request.getParameter("keywordmtype") ;
 		String keyword = request.getParameter("keyword") ;
 		
 		MemberDao dao = new MemberDao();
 		try {
-			int totalCount = dao.GetTotalRecordCount();
+			int totalCount = dao.GetTotalRecordCount(mode, keywordmtype);
 			String url = super.getUrlInfomation("meList") ;
 			boolean isGrid = false;
-			Paging pageInfo = new Paging(pageNumber, pageSize, totalCount, url, mode, keyword, isGrid);
+			PagingMember pageInfo = new PagingMember(pageNumber, pageSize, totalCount, url, mode, keywordmtype, keyword, isGrid);
 			
 			List<Member> lists = dao.selectAll(pageInfo);
 			List<Map<String, String>> addressSetList = new ArrayList<>();

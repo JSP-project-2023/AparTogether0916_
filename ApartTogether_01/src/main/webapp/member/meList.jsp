@@ -116,6 +116,32 @@
 			font-weight: 600;
 		}
 </style>	
+<script type="text/javascript">
+		$(document).ready(function(){
+			/* 상세검색을 한 후 selected option을 보존하여 출력한다. */
+			var optionList = $('#mode option');
+			for(var i=0; i < optionList.length ; i++){
+				if(optionList[i].value == '${requestScope.pageInfo.mode}'){
+					optionList[i].selected = true ;
+				}
+			}
+			/* 상세검색을 한 후 selected option을 보존하여 출력한다. */
+			var optionList = $('#keywordmtype option');
+			for(var i=0; i < optionList.length ; i++){
+				if(optionList[i].value == '${requestScope.pageInfo.keywordmtype}'){
+					optionList[i].selected = true ;
+				}
+			}
+			/* 상세검색을 한 후 검색어(keyword)를 보존하여 출력한다. */
+			$('#keyword').val('${requestScope.pageInfo.keyword}');
+
+		});
+		
+		/* 전체검색 버튼 selectAll() */
+		function searchAll(){
+			location.href = '<%=notWithFormTag%>meList' ;
+		}
+	</script>
 </head>
 <body>
 	<div class="container">
@@ -135,6 +161,37 @@
 		<c:if test="${accessThisPage == 1 }">
 			<%-- 열람가능 --%>
 			<h2 class="mainTitle">회원 목록</h2>	
+			
+			
+			<div class="row">
+               		<div class="col-sm-12">               
+		                <form name="myform" action="<%=withFormTag%>" method="get">
+		                   <input type="hidden" name="command" value="meList">
+		                   <div class="row">
+		                      <div class="col-sm-12 mode" align="right">
+		                         <select class="form-control-sm" id="mode" name="mode">
+		                            <option value="all" selected="selected">--- 전체 ---
+		                            <option value="mtype">회원유형
+		                         </select>
+		                         
+		                         <select class="form-control-sm" id="keywordmtype" name="keywordmtype">
+		                            <option value="all" selected="selected">--- 전체 ---
+		                            <option value="user">일반회원
+		                            <option value="biz">사업자
+		                            <option value="admin">관리자
+		                         </select>
+		                         
+		                         <input class="form-control-sm" type="text" name="keyword" id="keyword"
+		                         		placeholder="키워드 입력">
+		                         <button type="submit" class="btn btn-warning form-control-sm" onclick="">검색</button>
+		                         <button type="button" class="btn btn-warning form-control-sm" onclick="searchAll();">전체 검색</button>
+		                         </div>  
+		                   </div>
+		                </form>                     
+               		</div>
+				</div>
+			
+			
 			<table class="table table-hover">
 				<thead class="table-dark">
 					<tr>

@@ -11,6 +11,7 @@ import java.util.List;
 import com.apartogether.model.bean.Member;
 import com.apartogether.utility.MyUtility;
 import com.apartogether.utility.Paging;
+import com.apartogether.utility.PagingMember;
 
 public class MemberDao extends SuperDao {
 
@@ -110,12 +111,60 @@ public class MemberDao extends SuperDao {
 
 		return lists;
 	}
+	
+	public List<Member> selectAll(PagingMember pageInfo) throws Exception {
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = " select id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest ";
+		sql += " from ";
+		sql += " (select id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest, rank() over(order by id asc) as ranking ";  
+		sql += " from members" ;
+		
+		String mode = pageInfo.getMode();
+		String keywordmtype = pageInfo.getKeywordmtype();
+		System.out.println("keywordmtype = " + keywordmtype);
+		if( mode == null || mode.equals("all") ) {
+		}else if(mode.equals("mtype")){ // 전체 모드가 아니면
+			sql += " where " + mode + " = '" + keywordmtype + "'" ;
+		}
+		sql += " ) ";
+		sql += " where ranking between ? and ? ";
+
+		conn = super.getConnection();
+
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, pageInfo.getKeywordmtype());
+		pstmt.setInt(1, pageInfo.getBeginRow());
+		pstmt.setInt(2, pageInfo.getEndRow());
+
+		rs = pstmt.executeQuery();
+
+		List<Member> lists = new ArrayList<Member>();
+
+		while (rs.next()) {
+			lists.add(getBeanData(rs));
+		}
+
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+
+		return lists;
+	}
 
 	/* [GetTotalRecordCount] 테이블의 총 행개수를 구합니다. */
 	public int GetTotalRecordCount() throws Exception {
 
 		String sql = " select count(*) as cnt from members ";
-
+		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
@@ -139,6 +188,36 @@ public class MemberDao extends SuperDao {
 		if (conn != null) {
 			conn.close();
 		}
+
+		return cnt;
+	}
+	
+	public int GetTotalRecordCount(String mode, String keywordmtype) throws Exception {
+
+		String sql = " select count(*) as cnt from members ";
+		
+		if( mode == null || mode.equals("all") ) {
+		}else { // 전체 모드가 아니면
+			sql += " where " + mode + " = '" + keywordmtype + "' " ;
+		}
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		conn = super.getConnection();
+		pstmt = conn.prepareStatement(sql);
+
+		rs = pstmt.executeQuery();
+
+		int cnt = -1;
+
+		if (rs.next()) {
+			cnt = rs.getInt("cnt");
+		}
+
+		if (rs != null) {rs.close();}
+		if (pstmt != null) {pstmt.close();}
+		if (conn != null) {conn.close();}
 
 		return cnt;
 	}
