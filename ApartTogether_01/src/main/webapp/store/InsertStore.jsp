@@ -46,7 +46,7 @@
 		</select>
 		</div>
 			
-		<div class="info_items titleDepth1" id="stplace">
+		<div class="info_items titleDepth1" id="stplace1">
 			<%--주소 api사용하여 주소지 받아옴.--%>
 			<span class="littleTitle">가게 주소</span><input name="stplace1" type="text" placeholder="클릭해서 주소찾기">
 		 </div>
