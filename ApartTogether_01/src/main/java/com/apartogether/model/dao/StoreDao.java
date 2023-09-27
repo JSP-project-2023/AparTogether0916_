@@ -6,7 +6,10 @@ import java.sql.SQLException;
 import java.util.*;
 
 import com.apartogether.model.bean.Menu;
+import com.apartogether.model.bean.OrderLog;
+import com.apartogether.model.bean.SaleMenu;
 import com.apartogether.model.bean.Store;
+import com.apartogether.utility.Paging;
 import com.apartogether.utility.PagingStore;
 
 public class StoreDao extends SuperDao {
@@ -493,4 +496,152 @@ public class StoreDao extends SuperDao {
 	
 		return bean;
 	}
+	
+	//매출현황 데이터 가져오기.
+	public List<SaleMenu> getcumSales(int stno) throws SQLException {
+		List<SaleMenu> lists = new ArrayList<SaleMenu>();
+		SaleMenu bean = null;
+		
+		String sql="select menu.menuname as menuname, sum(a.qty) as qty , sum(a.qty*menu.price) as total "
+				+ "from menu inner join(select * from room inner join personal on room.roomno=personal.roomno where room.stno=?) a "
+				+ "on menu.stno=a.stno and menu.menuno=a.menuno "
+				+ "group by menu.menuname ";
+		
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, stno);
+		ResultSet rs = pstmt.executeQuery();
+		
+		//메뉴 판매
+		while(rs.next()) {
+			bean = new SaleMenu();
+			
+			bean.setMenuname(rs.getString("menuname"));
+			bean.setCumqty(rs.getInt("qty"));
+			bean.setCumsale(rs.getInt("total"));		
+			lists.add(bean);
+		}
+		
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+		
+		return lists;
+	}
+	
+	//날짜별 판매량 가져오는 메소드
+	public Map<String, Integer> getSalePrice(int stno) throws SQLException{
+		Map<String, Integer> saleMonth = new HashMap<String, Integer>();
+		
+		String sql = "select sum(a.qty*menu.price) as total, to_char(a.ordertime, 'yy/mm') as ordertime "
+				+ "from menu inner join(select * from room inner join personal on room.roomno=personal.roomno where room.stno=?) a "
+				+ "on menu.stno=a.stno and menu.menuno=a.menuno "
+				+ "group by to_char(a.ordertime, 'yy/mm')";
+		
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, stno);
+		ResultSet rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			saleMonth.put(rs.getString("ordertime"), rs.getInt("total"));
+		}
+		
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+		
+		return saleMonth;
+	}
+
+	public int getTotalOrderCount(int stno) throws SQLException {
+		int cnt = 0;
+		
+		String sql="select count(*) as cnt "
+				+ "from menu inner join (select * from room inner join personal "
+				+ "on room.roomno=personal.roomno) a "
+				+ "on menu.menuno=a.menuno "
+				+ "where menu.stno=? ";
+		
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, stno);
+		ResultSet rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			cnt = rs.getInt("cnt");
+		}
+		
+		
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+		return cnt;
+	}
+	
+	//페이징을 통해 데이터 베이스에서 가져옴.
+	public List<OrderLog> getSelectAll(Paging pageInfo) throws SQLException {
+		List<OrderLog> lists = new ArrayList<OrderLog>();
+		OrderLog bean = null;
+		
+		String sql="select ranking, menu.menuname, a.orderplace, a.ordertime, a.qty, (a.qty*menu.price) as total , a.orderno "
+				+ "from menu inner join (select orderno, ordertime, qty, orderplace, menuno, rank() over(order by orderno desc) as ranking "
+				+ "from room inner join personal "
+				+ "on room.roomno=personal.roomno "
+				+ "where stno=?) a "
+				+ "on menu.menuno=a.menuno "
+				+ "where ranking between ? and ?";
+		
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setInt(1, pageInfo.getStno());
+		pstmt.setInt(2, pageInfo.getBeginRow());
+		pstmt.setInt(3, pageInfo.getEndRow());
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			bean = new OrderLog();
+			
+			bean.setMenuname(rs.getString("menuname"));
+			bean.setAddr(rs.getString("orderplace"));
+			bean.setOrdertime(rs.getString("ordertime"));
+			bean.setQty(rs.getInt("qty"));
+			bean.setSellprice(rs.getInt("total"));
+			bean.setOrderno(rs.getInt("orderno"));
+			
+			lists.add(bean);
+		}
+		
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+
+		return lists;
+	}	
 }

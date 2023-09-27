@@ -78,6 +78,7 @@
 </style>
 </head>
 <body>
+<<<<<<< HEAD
 	<div class="support-scrollsnap"></div>
 
 	<div class="scroll scroll-container">

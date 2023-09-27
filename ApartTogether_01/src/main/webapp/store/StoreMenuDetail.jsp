@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 <%-- <%@ include file="./../common/common.jsp"%> --%>
 <%@ include file="/common/common.jsp"%>
 <!-- 추후 삭제 -->
@@ -7,6 +8,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+=======
+<%@ include file="./../common/common.jsp" %>   
+>>>>>>> origin/lleebs
 
 <!DOCTYPE html>
 <html>
