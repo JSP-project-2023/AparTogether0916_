@@ -49,6 +49,7 @@ private final String PREFIX = "member/";
 		String mtype =  mr.getParameter("mtype"); // 사용자가 선택한 mtype
 		if(oldmtype.equals("biz")) { 
 			if(mtype.equals("biz")) { // 사업자->사업자
+				bean.setMtype(mr.getParameter("mtype"));
 				super.setSuccessAlertMessage("사장님! 수정 완료되었습니다.");
 			}else if(mtype.equals("user")) { // 사업자->일반회원
 				if(changeBizToUser.equals("yes")){
@@ -62,6 +63,7 @@ private final String PREFIX = "member/";
 			}
 		}else if(oldmtype.equals("user")) {
 			if(mtype.equals("user")) { // 일반회원->일반회원 : 알럿창(수정완료)띄우고 마이페이지로 이동
+				bean.setMtype(mr.getParameter("mtype"));
 				super.setSuccessAlertMessage("회원님! 수정 완료되었습니다.");
 			}else if(mtype.equals("biz")) { // 일반회원->사업자
 				if(gotoStoreInsert.equals("yes")){ // 컨펌창 yes '내 가게등록 페이지'로 이동
