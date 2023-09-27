@@ -71,12 +71,9 @@
           .button-18 {
             align-items: center;
             background-color: #d8e4d2;
-            border: 0;
-            box-sizing: border-box;
             color: #6f726e;
             cursor: pointer;
             display: inline-flex;
-            font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
             font-size: 20px;
             font-weight: 600;
             justify-content: center;
@@ -85,14 +82,11 @@
             min-height: 50px;
             min-width: 0px;
             overflow: hidden;
-            padding: 0px;
             padding-left: 190px;
             padding-right: 190px;
             text-align: center;
             touch-action: manipulation;
             transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-            user-select: none;
-            -webkit-user-select: none;
             vertical-align: middle;
           }
 
