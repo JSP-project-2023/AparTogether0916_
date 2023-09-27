@@ -82,7 +82,7 @@
 
 	<div class="scroll scroll-container">
 		<div class="scroll-area">
-			<div class="item">높아만 지는 <u>배달비</u> </br>어떻게 해야 할까요?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			<div class="item">높아만 지는! <u>배달비</u> </br>어떻게 해야 할까요?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
 			<div class="item">배달하는 곳을 한곳으로!</br> apartogether와 함께 하세요!</div>
 			<div class="item" align="center">예쁜그림 ㅎㅎ&nbsp;&nbsp;&nbsp;&nbsp;</div>
 		</div>
