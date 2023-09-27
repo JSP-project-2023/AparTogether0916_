@@ -25,14 +25,15 @@ public class MemberListController extends SuperClass{
 		String pageSize = request.getParameter("pageSize") ;
 		String mode = request.getParameter("mode") ;
 		String keywordmtype = request.getParameter("keywordmtype") ;
+		String keywordgender = request.getParameter("keywordgender") ;
 		String keyword = request.getParameter("keyword") ;
 		
 		MemberDao dao = new MemberDao();
 		try {
-			int totalCount = dao.GetTotalRecordCount(mode, keywordmtype);
+			int totalCount = dao.GetTotalRecordCount(mode, keywordmtype, keywordgender, keyword); // 회원 검색 시 페이지징에 사용
 			String url = super.getUrlInfomation("meList") ;
 			boolean isGrid = false;
-			PagingMember pageInfo = new PagingMember(pageNumber, pageSize, totalCount, url, mode, keywordmtype, keyword, isGrid);
+			PagingMember pageInfo = new PagingMember(pageNumber, pageSize, totalCount, url, mode, keywordmtype, keywordgender, keyword, isGrid);
 			
 			List<Member> lists = dao.selectAll(pageInfo);
 			List<Map<String, String>> addressSetList = new ArrayList<>();

@@ -18,13 +18,14 @@ public class PagingMember {
 	private String pagingHtml = "" ; // 하단의 이전/다음/숫자 목록 페이지 하이퍼 링크를 저장하고 있는 문자열
 	private String pagingStatus = "" ; // 상단 우측의 현재 페이지 현황(예시 : 총 295건[12/30])
 	
-	private String mode = "" ; // 검색 모드(예시 : 작성자, 글제목 등등)
+	private String mode = "" ; // 검색 모드(예시 : 회원유형, 아이디, 이름, 닉네임, 성별, 주소)
 	private String keywordmtype = "" ; // 회원유형 검색 모드(예시 : 작성자, 글제목 등등)
+	private String keywordgender = "" ; // 성별 검색 모드(예시 : 작성자, 글제목 등등)
 	private String keyword = "" ; // 검색할 단어	
 	
 	private String flowParameter = "" ; // 페이지 이동시 같이 수반되는 파라미터 리스트
 	
-	public PagingMember(String _pageNumber, String _pageSize, int totalCount, String url, String mode, String keywordmtype, String keyword, boolean isGrid) {
+	public PagingMember(String _pageNumber, String _pageSize, int totalCount, String url, String mode, String keywordmtype, String keywordgender, String keyword, boolean isGrid) {
 		if(_pageNumber==null || _pageNumber.equals("null") || _pageNumber.equals("")) {
 			_pageNumber = "1";
 		}
@@ -46,6 +47,7 @@ public class PagingMember {
 		// "all"이면 전체 검색
 		this.mode = mode==null ? "all" : mode ;
 		this.keywordmtype = keywordmtype==null ? "all" : keywordmtype ;
+		this.keywordgender = keywordgender==null ? "all" : keywordgender ;
 		this.keyword = keyword==null ? "" : keyword ;
 		
 		double _totalPage = Math.ceil((double)totalCount/pageSize) ;
@@ -68,6 +70,7 @@ public class PagingMember {
 		this.flowParameter += "&pageSize=" + pageSize ;
 		this.flowParameter += "&mode=" + mode ;
 		this.flowParameter += "&keywordmtype=" + keywordmtype ;
+		this.flowParameter += "&keywordgender=" + keywordgender ;
 		this.flowParameter += "&keyword=" + keyword ;
 		
 		this.pagingHtml = this.getMakePagingHtml() ;
@@ -122,6 +125,7 @@ public class PagingMember {
 		result += "&pageSize=" + this.pageSize;
 		result += "&mode=" + this.mode;
 		result += "&keywordmtype=" + this.keywordmtype;
+		result += "&keywordgender=" + this.keywordgender;
 		result += "&keyword=" + this.keyword;
 		result += "'>" ;
 		result += caption ;
@@ -238,8 +242,16 @@ public class PagingMember {
 		return keywordmtype;
 	}
 
-	public void setKeywordmtype(String keyword_mtype) {
+	public void setKeywordmtype(String keywordmtype) {
 		this.keywordmtype = keywordmtype;
+	}
+
+	public String getKeywordgender() {
+		return keywordgender;
+	}
+
+	public void setKeywordgender(String keywordgender) {
+		this.keywordgender = keywordgender;
 	}
 
 	public String getKeyword() {

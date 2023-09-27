@@ -124,14 +124,31 @@ public class MemberDao extends SuperDao {
 		
 		String mode = pageInfo.getMode();
 		String keywordmtype = pageInfo.getKeywordmtype();
-		System.out.println("keywordmtype = " + keywordmtype);
+		String keywordgender = pageInfo.getKeywordgender();
+		String keyword = pageInfo.getKeyword();
+		// [ST] 검색옵션(mode)에 따른 sql문장 처리 : 반드시 GetTotalRecordCount()과 같게 맞춰주세요.
 		if( mode == null || mode.equals("all") ) {
-		}else if(mode.equals("mtype")){ // 전체 모드가 아니면
-			sql += " where " + mode + " = '" + keywordmtype + "'" ;
+		}else if(mode.equals("mtype")){ // 회원유형으로 검색
+			if(keywordmtype == null || keywordmtype.equals("all") ) {
+			}else {
+				sql += " where " + mode + " = '" + keywordmtype + "'" ;
+			}
+		}else if(mode.equals("id") || mode.equals("name") || mode.equals("nickname") 
+				|| mode.equals("address")) { // 아이디,이름,닉네임,주소로 검색
+			if(keyword == null || keyword.equals("") ) {
+			}else {
+				sql += " where " + mode + " like '%" + keyword + "%' " ;
+			}
+		}else if(mode.equals("gender")) { // 성별로 검색
+			if(keywordgender == null || keywordgender.equals("all")) {
+			}else {
+				sql += " where " + mode + " = '" + keywordgender + "' " ;
+			}
 		}
+		// [ED] 검색옵션(mode)에 따른 sql문장 처리 : 반드시 GetTotalRecordCount()과 같게 맞춰주세요.
 		sql += " ) ";
 		sql += " where ranking between ? and ? ";
-
+		System.out.println(sql);
 		conn = super.getConnection();
 
 		pstmt = conn.prepareStatement(sql);
@@ -142,11 +159,11 @@ public class MemberDao extends SuperDao {
 		rs = pstmt.executeQuery();
 
 		List<Member> lists = new ArrayList<Member>();
+		
 
 		while (rs.next()) {
 			lists.add(getBeanData(rs));
 		}
-
 		if (rs != null) {
 			rs.close();
 		}
@@ -192,14 +209,30 @@ public class MemberDao extends SuperDao {
 		return cnt;
 	}
 	
-	public int GetTotalRecordCount(String mode, String keywordmtype) throws Exception {
+	public int GetTotalRecordCount(String mode, String keywordmtype, String keywordgender, String keyword) throws Exception {
 
 		String sql = " select count(*) as cnt from members ";
 		
+		// [ST] 검색옵션(mode)에 따른 sql문장 처리 : 반드시 sellectAll()과 같게 맞춰주세요.
 		if( mode == null || mode.equals("all") ) {
-		}else { // 전체 모드가 아니면
-			sql += " where " + mode + " = '" + keywordmtype + "' " ;
+		}else if(mode.equals("mtype")){ // 회원유형으로 검색
+			if(keywordmtype == null || keywordmtype.equals("all") ) {
+			}else {
+				sql += " where " + mode + " = '" + keywordmtype + "'" ;
+			}
+		}else if(mode.equals("id") || mode.equals("name") || mode.equals("nickname") 
+				|| mode.equals("address")) { // 아이디,이름,닉네임,주소로 검색
+			if(keyword == null || keyword.equals("") ) {
+			}else {
+				sql += " where " + mode + " like '%" + keyword + "%' " ;
+			}
+		}else if(mode.equals("gender")) { // 성별로 검색
+			if(keywordgender == null || keywordgender.equals("all") ) {
+			}else {
+				sql += " where " + mode + " = '" + keywordgender + "' " ;
+			}
 		}
+		// [ED] 검색옵션(mode)에 따른 sql문장 처리 : 반드시 sellectAll()과 같게 맞춰주세요.
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

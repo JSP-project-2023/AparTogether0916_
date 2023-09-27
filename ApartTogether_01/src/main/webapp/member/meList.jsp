@@ -123,8 +123,10 @@
 			for(var i=0; i < optionList.length ; i++){
 				if(optionList[i].value == '${requestScope.pageInfo.mode}'){
 					optionList[i].selected = true ;
+					
 				}
 			}
+			changeMode();
 			/* 상세검색을 한 후 selected option을 보존하여 출력한다. */
 			var optionList = $('#keywordmtype option');
 			for(var i=0; i < optionList.length ; i++){
@@ -136,6 +138,32 @@
 			$('#keyword').val('${requestScope.pageInfo.keyword}');
 
 		});
+		
+		function changeMode() {
+	        var modeDropdown = document.getElementById("mode");
+	        var keywordmtype = document.getElementById("keywordmtype");
+	        var keywordgender = document.getElementById("keywordgender");
+	        var keyword = document.getElementById("keyword");
+	        if (modeDropdown.value === "all"){ // 검색옵션 선택안함
+	        	keywordmtype.style.display = "none";
+	        	keywordgender.style.display = "none";
+	        	keyword.style.display = "none";
+	        }else if (modeDropdown.value === "mtype") { // 검색옵션: 회원유형
+	        	keywordmtype.style.display = "inline";
+	        	keywordgender.style.display = "none";
+	        	keyword.style.display = "none";
+	        } else if (modeDropdown.value === "gender") { // 검색옵션: 성별
+	        	keywordmtype.style.display = "none";
+	        	keywordgender.style.display = "inline";
+	        	keyword.style.display = "none";
+	        } else {                                      // 검색옵션: 아이디,이름,닉네임,주소
+	        	keywordmtype.style.display = "none";
+	        	keywordgender.style.display = "none";
+	        	keyword.style.display = "inline";
+	        	$('#keyword').focus(); // 바로 입력할 수 있도록 focus()
+	        }
+	    }
+		
 		
 		/* 전체검색 버튼 selectAll() */
 		function searchAll(){
@@ -169,9 +197,15 @@
 		                   <input type="hidden" name="command" value="meList">
 		                   <div class="row">
 		                      <div class="col-sm-12 mode" align="right">
-		                         <select class="form-control-sm" id="mode" name="mode">
-		                            <option value="all" selected="selected">--- 전체 ---
+		                      	
+		                         <select class="form-control-sm" id="mode" name="mode" onchange="changeMode()">
+		                            <option value="all" selected="selected">--- 검색옵션 ---
 		                            <option value="mtype">회원유형
+		                            <option value="id">아이디
+		                            <option value="name">이름
+		                            <option value="nickname">닉네임
+		                            <option value="gender">성별
+		                            <option value="address">주소
 		                         </select>
 		                         
 		                         <select class="form-control-sm" id="keywordmtype" name="keywordmtype">
@@ -181,10 +215,16 @@
 		                            <option value="admin">관리자
 		                         </select>
 		                         
-		                         <input class="form-control-sm" type="text" name="keyword" id="keyword"
-		                         		placeholder="키워드 입력">
-		                         <button type="submit" class="btn btn-warning form-control-sm" onclick="">검색</button>
-		                         <button type="button" class="btn btn-warning form-control-sm" onclick="searchAll();">전체 검색</button>
+		                         <select class="form-control-sm" id="keywordgender" name="keywordgender">
+		                            <option value="all" selected="selected">--- 전체 ---
+		                            <option value="male">남자
+		                            <option value="female">여자
+		                         </select>
+		                        
+		                         <input class="form-control-sm notShow" type="text" name="keyword" id="keyword"
+		                         		placeholder="검색어 입력">
+		                         <button type="submit" class="btn button-18 " style="padding: 7px; min-height: 0px" onclick="">검색</button>
+		                         <button type="button" class="btn button-18 " style="padding: 7px; min-height: 0px" onclick="searchAll();">전체 검색</button>
 		                         </div>  
 		                   </div>
 		                </form>                     
@@ -192,7 +232,7 @@
 				</div>
 			
 			
-			<table class="table table-hover">
+			<table class="table table-hover" style="margin-top: 5px;">
 				<thead class="table-dark">
 					<tr>
 						<th class=" col-md-1 text-center">회원유형</th>

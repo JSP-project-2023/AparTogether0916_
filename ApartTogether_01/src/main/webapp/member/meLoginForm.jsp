@@ -15,6 +15,7 @@
 			var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 				return new bootstrap.Tooltip(tooltipTriggerEl)
 			});		
+			$('#id').focus(); // 로그인페이지로 이동하자마자 id입력할 수 있게 추가했습니다. 9/27
 		});
 		function validCheck(){/* form validation check */
   			var id = $('#id').val();
