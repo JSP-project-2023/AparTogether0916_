@@ -30,8 +30,7 @@
 </c:if>
 
 <c:if test="${empty sessionScope.loginfo}">
-
-<c:set var="whologin" value="0" />
+	<c:set var="whologin" value="0" />
 </c:if>
 <%
 // appName : 애플리케이션 이름(프로젝트 이름_Teacher)

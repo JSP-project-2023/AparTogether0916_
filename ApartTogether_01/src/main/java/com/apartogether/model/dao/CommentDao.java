@@ -98,6 +98,29 @@ public class CommentDao extends SuperDao{
 		return bean;
 	}
 
+	public String getNickname(String id) throws Exception {
+		String sql = "select nickname from members where id = ? ";
+	
+
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, id);;
+		ResultSet rs = pstmt.executeQuery();
+		
+		String bean = null;
+		
+		if(rs.next()) {
+			bean = rs.getString("nickname");
+		}
+		
+		if(rs != null) {rs.close();}
+		if(pstmt != null) {pstmt.close();}
+		if(conn != null) {conn.close();}
+		
+		return bean;
+	}
+
+
 
 
 

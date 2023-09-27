@@ -25,6 +25,7 @@ public class RoomDetailController extends SuperClass {
 		Combo01 bean3 = null ;
 		int minorderno = 0;
 		String name = null;
+
 		List<Combo01> lists = null;
 		List<Combo01> lists2 =null;
 		List<Combo01> lists3 =null;
@@ -54,7 +55,7 @@ public class RoomDetailController extends SuperClass {
 			// 방장을 비교하기 위한 bean orderno로 순서 비교
 			minorderno = dao.getMinOrderno(roomno);
 
-			
+			// 방장의 이름을 찾기 위한 변수
 			name = dao.getBangjang(roomno,minorderno);
 			request.setAttribute("bangjang", name);
 			
@@ -63,10 +64,7 @@ public class RoomDetailController extends SuperClass {
 			request.setAttribute("lists4", lists4);
 			
 			
-			
 			super.gotoPage("room/roDetail.jsp");
-			
-			
 			
 		} catch (Exception e) {
 			e.printStackTrace();

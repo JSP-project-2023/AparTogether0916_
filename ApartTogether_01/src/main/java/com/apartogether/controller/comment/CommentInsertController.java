@@ -13,11 +13,18 @@ public class CommentInsertController extends SuperClass {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception {	
 		super.doPost(request, response);
 		
+		String nickname = null;
+		CommentDao dao = new CommentDao() ;
+		
+		nickname = dao.getNickname(super.loginfo.getId());
+		request.setAttribute("nickname", nickname);
+		
+		
 		Comment bean = new Comment() ;
 		bean.setRoomno(Integer.parseInt(request.getParameter("roomno"))); // 부모(게시물) 글번호
 		bean.setContent(request.getParameter("content")); // 내가 작성한 댓글 내용
-		bean.setId(request.getParameter("id")); // 나의 아이디
-		CommentDao dao = new CommentDao() ;
+		bean.setId(nickname); // 닉네임
+	
 		int cnt = -1 ; 
 		
 		try {

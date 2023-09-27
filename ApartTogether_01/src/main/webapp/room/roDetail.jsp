@@ -396,15 +396,13 @@
 				    <thead>
 				    </thead>
 				    <tbody>
-				      
 				      <tr>
-				      
-				      	<td>
-							<input type="hidden" name="roomno" value="${requestScope.roomno}" />
-							<input type="hidden" name="fakeid" id="fakeid" class="form-control" size="10" 
-								disabled="disabled" value="${sessionScope.loginfo.name}(${sessionScope.loginfo.id})님">									
-							<input type="hidden" name="id" id="id" value="${sessionScope.loginfo.id}">
-				        </td>
+					      <td>
+								<input type="hidden" name="roomno" value="${requestScope.roomno}" />
+								<input type="hidden" name="fakeid" id="fakeid" class="form-control" size="10" 
+									disabled="disabled" value="${sessionScope.loginfo.name}(${sessionScope.loginfo.id})님">									
+								<input type="hidden" name="id" id="id" value="${sessionScope.loginfo.id}">
+					        </td>
 				        <td>
 				        	<label for="content" class="col-xs-3 col-lg-3 control-label">댓글 내용</label>
 				        </td>

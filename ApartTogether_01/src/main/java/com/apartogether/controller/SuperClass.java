@@ -86,10 +86,4 @@ public class SuperClass implements SuperController{
 			e.printStackTrace();
 		}
 	}
-
-	public void setConfirmMessage(String message) {
-		// session 영역에서 "ConfirmMessage"라는 이름으로 사용자에게 의사를 묻습니다.
-		// in common.jsp 파일 상단 참조
-		session.setAttribute("confirmMessage", message);
-	}
 }

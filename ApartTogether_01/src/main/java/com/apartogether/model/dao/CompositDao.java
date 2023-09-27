@@ -421,6 +421,7 @@ public class CompositDao extends SuperDao {
 		return bean;
 	}
 
+
 	
 
 	
