@@ -1,6 +1,20 @@
 # 구현해야 할 목록들입니다.
 #main 컨트롤러
 home=com.apartogether.controller.HomeController
+#Store
+stList=com.apartogether.controller.store.StoreListController
+stInsert=com.apartogether.controller.store.StoreInsertController
+stUpdate=com.apartogether.controller.store.StoreUpdateController
+stDetail=com.apartogether.controller.store.StoreDetailController
+stMuDetail=com.apartogether.controller.store.StoreMenuDetailController
+stDelete=com.apartogether.controller.store.StoreDeleteController
+myStoreList=com.apartogether.controller.store.MyStoreListController
+stSales=com.apartogether.controller.store.StoreSalesController
+stOrLog=com.apartogether.controller.store.StoreOrderLogController
+#Munu
+menuInsert=com.apartogether.controller.menu.MenuInsertController
+menuUpdate=com.apartogether.controller.menu.MenuUpdateController
+menuManage=com.apartogether.controller.menu.MenuManageController
 # member 회원(biz / user / admin)
 meInsert=com.apartogether.controller.member.MemberInsertController
 meLogin=com.apartogether.controller.member.MemberLoginController

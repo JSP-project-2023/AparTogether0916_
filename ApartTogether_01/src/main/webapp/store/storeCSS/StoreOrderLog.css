@@ -1,0 +1,54 @@
+@charset "UTF-8";
+.title{
+	font-size: 40px;
+	font-weight: bold;
+}
+.title-2{
+	font-size: 25px;
+	display: inline;
+	white-space: nowrap;
+}
+.container-menu{
+	position: absolute;
+	display: flex;
+	transform: translate(-50%, -400px);
+	left: 50%;
+	top: 35em;
+	flex-direction: column;
+}
+.sale-header{
+	display: flex;
+	flex-direction: row;
+	margin-top: 20px;
+}
+.button-area{
+	white-space: nowrap;
+}
+.menu-header{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+/*테이블*/
+table{
+	border: none;
+	border-collapse: collapse;
+	border-bottom: 1px solid lightgray;
+}
+tbody > tr:hover{
+	background-color: rgb(232, 232, 232);
+}
+.sale-footer{
+	margin-top: 20px;
+	font-size: 30px;
+	text-align: right;
+}
+.one-menu > td{
+	height: 70px;
+}
+
+/*페이징 영역*/
+#paging{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}

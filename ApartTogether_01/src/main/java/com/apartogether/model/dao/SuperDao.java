@@ -11,6 +11,14 @@ public class SuperDao {
 		String id = "DBICTteam001" ;
 		String password = "ICT1q2w3e4r" ;
 		
+//		String url = "jdbc:oracle:thin:@localhost:1521:xe" ;
+//		String id = "sundori" ;
+//		String password = "oracle" ;
+		
+//		String url = "jdbc:oracle:thin:@localhost:1521:xe" ;
+//		String id = "lee" ;
+//		String password = "leebs" ;
+		
 		try {
 			this.conn = DriverManager.getConnection(url, id, password) ;
 		} catch (Exception e) {
