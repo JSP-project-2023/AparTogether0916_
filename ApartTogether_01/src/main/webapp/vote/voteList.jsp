@@ -14,7 +14,7 @@
 		.small_image{width:50px;height:50px;margin:2px;border-radius:5px;}
 	</style>
 	<style type="text/css">
-		.container {margin-top:;}
+		.container {width: 70%;}
 		
 		.input-group {
 			margin: 7px;
