@@ -71,7 +71,12 @@
 					</div>
 				</div>
 				<div class="order-button">
-					<button>주문하기</button>
+					<form action="<%=withFormTag%>" method="post">
+					 	<!-- 방 생성을 위해서 가게 정보를 불러옴 -->
+						<input type="hidden" name="command" value="roInsert">
+						<input type="hidden" name="stno" value ="${requestScope.stno}" >
+						<button type="submit">주문하기</button>
+					</form>
 				</div>
 			</div>
 		</div>

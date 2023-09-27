@@ -157,6 +157,59 @@ public class RoomDao extends SuperDao{
 		
 		return cnt;
 	}
+
+	public Integer getRoomNo() throws Exception{
+		String sql = " select seqroomno.nextval as seq from dual" ;
+		
+		
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
+		
+		conn = super.getConnection() ;
+		pstmt = conn.prepareStatement(sql) ;
+		
+		rs = pstmt.executeQuery() ; 
+		
+		int cnt = -1 ;
+		
+		if(rs.next()) {
+			cnt = rs.getInt("seq") ;
+		}
+		
+		if(rs!=null) {rs.close();}
+		if(pstmt!=null) {pstmt.close();}
+		if(conn!=null) {conn.close();}
+		
+		return cnt;
+	}
+
+	public int InsertData(Integer stno, Integer roomno, String orderplace, String roomname) throws Exception {
+		String sql = " insert into room(roomno,stno,roomname,orderplace,ordertime) " ;
+		sql += " values(?, ?, ? ,? ,sysdate)" ;
+		int cnt = -1 ;
+		PreparedStatement pstmt = null ;
+		
+		conn = super.getConnection() ;
+		conn.setAutoCommit(false);
+
+		pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setInt(1, roomno);
+		pstmt.setInt(2, stno);
+		
+		pstmt.setString(3,roomname);
+		pstmt.setString(4, orderplace);
+
+		cnt = pstmt.executeUpdate() ;
+
+		conn.commit();
+		
+		if(pstmt != null) {pstmt.close();}
+		if(conn != null) {conn.close();}
+		
+		return cnt ;
+		
+	}
 	
 	
 	

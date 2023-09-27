@@ -32,6 +32,7 @@ roDetail=com.apartogether.controller.room.RoomDetailController
 roReady=com.apartogether.controller.room.RoomReadyController
 roNotReady=com.apartogether.controller.room.RoomNotReadyController
 roOut=com.apartogether.controller.room.RoomOutController
+roInsert=com.apartogether.controller.room.RoomInsertController
 # comment section
 cmList=com.apartogether.controller.comment.CommentListController
 cmInsert=com.apartogether.controller.comment.CommentInsertController
