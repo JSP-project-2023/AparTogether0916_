@@ -113,10 +113,9 @@
 				<button type="submit" class="btn button-18 col-xs-6 col-sm-4 col-lg-2"> ID 확인 </button>
 			</div>
 			<div class="col-lg-3"></div> 
-<!-- 
-			인증번호 및 물음 미구현
-			[st] 인증번호 전송
-			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+
+			<!-- [st] 인증번호 전송 -->
+			<button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
 				인증 번호 전송
 			</button>
 			The Modal
@@ -145,8 +144,8 @@
 				    </div>
   				</div>
 			</div>
-			[ed] 인증번호 전송
--->
+			<!-- [ed] 인증번호 전송 -->
+
 		</form>
 	</div>
 </body>

@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Giants-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Giants-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* { /* 별도 지정 없는 태그 기본 font */
+ 	font-family: 'NanumSquareNeo-Variable';
+}
+
+.alert-dismissible {
+	margin: 10px;
+}
+
+.mainTitle {
+	margin: 5rem 0 2rem;
+	font-weight: bolder;
+}
+
+.subTitle {
+	margin-bottom: 2.5rem;
+}
+
+
+.body {
+	align-content: center
+}
+
+#small {
+	margin-top: -16px;
+}
+
+#behind {
+	display: none;
+}

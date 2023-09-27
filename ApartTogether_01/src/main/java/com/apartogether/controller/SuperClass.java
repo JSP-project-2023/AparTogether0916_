@@ -66,6 +66,11 @@ public class SuperClass implements SuperController{
 		session.setAttribute("alertMessage", message);
 	}	 
 	
+	public void setSuccessAlertMessage(String message) {
+		// 성공 알럿
+		session.setAttribute("successAlertMsg", message);
+	}	 
+	
 	public void gotoPage(String gotoPage) {
 		if(this.request == null) {
 			System.out.println("doGet/doPost() 메소드 호출 누락");

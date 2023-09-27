@@ -1,0 +1,91 @@
+@charset "UTF-8";
+.title{
+	font-size: 40px;
+	font-weight: bold;
+}
+.title-2{
+	font-size: 25px;
+	display: inline;
+	white-space: nowrap;
+}
+.container-menu{
+	visibility: hidden;
+	position: absolute;
+	display: flex;
+	transform: translate(-50%, -400px);
+	left: 50%;
+	top: 35em;
+	flex-direction: column;
+}
+.sale-header{
+	display: flex;
+	flex-direction: row;
+	margin-top: 20px;
+}
+.button-area{
+	white-space: nowrap;
+}
+.menu-header{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+/*월별, 메뉴별 버튼*/
+.buttons{
+	border: none;
+	border-radius: 3px;
+	width: 100px;
+	height: 30px;
+	font-size: 15px;
+}
+.btn-month{
+	background-color: #FFC0C0;
+	margin-right: 10px;
+}
+.btn-month:hover{
+	background-color: rgb(255, 119, 119);
+}
+.btn-menu{
+	background-color: #8DC2FF;
+}
+.btn-menu:hover{
+	background-color: rgb(9, 124, 253);
+}
+
+.button-area{
+	display: flex;
+	margin-left: auto;
+}
+
+/*테이블*/
+table{
+	border: none;
+	border-collapse: collapse;
+	border-bottom: 1px solid lightgray;
+}
+tr:hover{
+	background-color: rgb(232, 232, 232);
+}
+.sale-footer{
+	margin-top: 20px;
+	font-size: 30px;
+	text-align: right;
+}
+.one-menu > td{
+	height: 70px;
+}
+
+/*월별 판매량 css*/
+.container-month{
+	/*visibility: hidden;*/
+	position: absolute;
+	display: flex;
+	transform: translate(-50%, -400px);
+	left: 50%;
+	top: 35em;
+	flex-direction: column;
+}
+
+#chart-area{
+	margin-top: 40px;
+}

@@ -16,29 +16,12 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class MyUtility {
 	
-	public static void deleteOldProfileImageFile(String webPath, MultipartRequest mr) {
-		System.out.println("profile : " + mr.getFilesystemName("profile"));
-		System.out.println("deleteProfile : " + mr.getParameter("deleteProfile"));
-		// 회원정보 수정시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
-		if(mr.getFilesystemName("profile")!= null){ // 회원정보 수정에서 프로필사진을 선택한 경우(not null)에만 delete 실행
-			String deleteImages = mr.getParameter("deleteProfile") ;
-			if(deleteImages != null) {
-				String deleteFile = webPath + "/" + deleteImages ;
-				File target = new File(deleteFile) ;
-				if(target.delete()) {
-					System.out.println(deleteFile + " file delete success"); 
-				}
-			}
-		}
-	}
-	
 	public static void deleteOldImageFile(String webPath, MultipartRequest mr) {		
 		// 상품 수정시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
 		String[] deleteImages = 
 			{
-					mr.getParameter("deleteImage01"),
-					mr.getParameter("deleteImage02"),
-					mr.getParameter("deleteImage03")
+					mr.getParameter("ceofileUpdate"),
+					mr.getParameter("stlogoUpdate")
 			};
 		
 		for(String delFile : deleteImages) {
@@ -53,6 +36,7 @@ public class MyUtility {
 	}
 	
 	public static MultipartRequest getMultipartRequest(HttpServletRequest request, String uploadPath) {
+		System.out.println("업로드 경로 : "+ uploadPath);
 		// 이미지 업로드에 필요한 멀티 파트 객체를 생성하여 반환 합니다.
 		MultipartRequest mr = null ;
 		int maxPostSize = 10 * 1024 *1024 ;
@@ -83,7 +67,7 @@ public class MyUtility {
 			System.out.println(command + "/" + className);
 			
 			try {
-				Class<?> handleClass = Class.forName(className) ;
+				Class<?> handleClass = Class.forName(className);
 				SuperController instance = (SuperController)handleClass.newInstance() ;
 				
 				map.put(command, instance) ;
@@ -92,7 +76,6 @@ public class MyUtility {
 				e.printStackTrace();
 			}
 		}
-		
 		return map;
 	}	
 	
@@ -117,9 +100,7 @@ public class MyUtility {
 				e2.printStackTrace();
 			}
 		}
-		
-		System.out.println("prop.toString()");
-		System.out.println(prop.toString());
+		System.out.println("prop.toString() : " + prop.toString());
 		
 		return prop;
 	}
@@ -143,8 +124,29 @@ public class MyUtility {
 				e.printStackTrace();
 			}
 		}
-		
 		return map;
 	}
+	
+	//파일 삭제 메소드
+	public static void deleteFile(String oldFile, String newFile, MultipartRequest mr, String uploadImage) {
+		 if(newFile != null) { //새로운 파일이 있다면 해당 항목을 삭제
+			System.out.println("실행1");
+			MyUtility.deleteImageFile(oldFile, uploadImage, mr);
+		}
+	}
 
+	private static void deleteImageFile(String oldFile, String uploadImage, MultipartRequest mr) {
+		// 옛날 파일을 삭제하는 메소드
+		if (oldFile != null) {
+			String deleteFile = uploadImage + "/" + oldFile;
+			File target = new File(deleteFile);
+			if (target.delete()) {
+				System.out.println(deleteFile + " file delete success");
+			}
+		}
+	}
+
+	public static void deleteOldProfileImageFile(String uploadImage, MultipartRequest mr) {
+		
+	}
 }
