@@ -11,7 +11,7 @@ stDelete=com.apartogether.controller.store.StoreDeleteController
 myStoreList=com.apartogether.controller.store.MyStoreListController
 stSales=com.apartogether.controller.store.StoreSalesController
 stOrLog=com.apartogether.controller.store.StoreOrderLogController
-#Munu
+#Menu
 menuInsert=com.apartogether.controller.menu.MenuInsertController
 menuUpdate=com.apartogether.controller.menu.MenuUpdateController
 menuDelete=com.apartogether.controller.menu.MenuDeleteController
@@ -26,4 +26,6 @@ meDetail=com.apartogether.controller.member.MemberDetailController
 meList=com.apartogether.controller.member.MemberListController
 meUpdate=com.apartogether.controller.member.MemberUpdateController
 meDelete=com.apartogether.controller.member.MemberDeleteController
-#meResetPassword=com.apartogether.controller.member.MemberResetPasswordController
+meResetPassword=com.apartogether.controller.member.MemberResetPasswordController
+#Vote
+voteInsert=com.apartogether.controller.vote.VoteInsertController
