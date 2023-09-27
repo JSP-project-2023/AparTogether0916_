@@ -101,32 +101,27 @@
   	  	}
   		/* [ed] 유효성 검사 */
   		
-  		function mtypeChangeCheck(){
-  			// mtype에 따라 알럿창, 컨펌창 후 마이페이지 또는 내 가게 등록 화면으로 이동
-  	  		var oldmtype = $('#oldmtype').val();
+  		 // 사용자가 입력한 mtype에 따라 컨펌창을 띄우고 결과값을 저장합니다.
+  		function mtypeChangeCheck(){  	  		
+  			var oldmtype = $('#oldmtype').val();
   			var mtype = $('input[name="mtype"]:checked').val();
-  	  		
-  	  		if(oldmtype == "biz") { // 수정 전에 사업자 였음
-  				if(mtype == "biz") { // 사업자를 그대로 유지하면 알럿창(수정완료)띄우고 마이페이지로 이동
-  					//alert('수정완료');
-  				}else if(mtype == "user") { // 사업자가 일반회원으로 변경한 거면 컨펌창(내가게 다 사라집니다)
+  	  		if(oldmtype == "biz") {
+  				if(mtype == "biz") { // 사업자->사업자
+  				}else if(mtype == "user") { // 사업자->일반회원 : 컨펌창("내가게 다 사라집니다")
   					var returnValue1 = confirm("내가 등록한 가게 정보가 모두 사라집니다. \n정말 일반회원으로 변경하시겠습니까?");
-  					if(returnValue1 == true){// 컨펌창 yes 알럿창(수정완료)띄우고 마이페이지로 이동
+  					if(returnValue1 == true){
   						$('#changeBizToUser').val("yes");
-  						//alert('회원유형이 사업자로 변경되었습니다.');
-  					}else{// 컨펌창 no 사업자로 유지
-  						//alert('회원유형을 사업자로 유지합니다.');
-  						$('#changeBizToUser').val("no"); // Set the value of #yesorno to "no"
+  					}else{
+  						$('#changeBizToUser').val("no");
   					}
   				}
-  			}else if(oldmtype == "user") { // 수정 전에 일반회원 이었음
-  				if(mtype == "user") { // 일반회원을 그대로 유지하면 알럿창(수정완료)띄우고 마이페이지로 이동
-  					//alert('수정완료');
-  				}else if(mtype == "biz") { // 일반회원이 사업자로 변경한 거면 컨펌창(내가게 등록하러 가시겠습니까?)
+  			}else if(oldmtype == "user") {
+  				if(mtype == "user") { // 일반회원->일반회원
+  				}else if(mtype == "biz") { // 일반회원->사업자 : 컨펌창(내가게 등록하러 가시겠습니까?)
   					var returnValue2 = confirm("회원유형이 사업자로 변경되었습니다. \n내 가게를 등록하러 가시겠습니까?");
-  					if(returnValue2 == true){ // 컨펌창 yes '내 가게등록 페이지'로 이동
+  					if(returnValue2 == true){
   						$('#gotoStoreInsert').val("yes");
-  					}else{ // 컨펌창 no 마이페이지로 이동
+  					}else{
   						$('#gotoStoreInsert').val("no");
   					}
   				}
@@ -284,7 +279,6 @@
 			<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data" onsubmit="mtypeChangeCheck()">
 			
 				<input type="hidden" name="command" value="meUpdate">
-				<%-- <input type="hidden" name="mtype" value="${requestScope.bean.mtype}"> --%>
 				<input type="hidden" id="oldmtype" name="oldmtype" value="${requestScope.bean.mtype}">
 				<input type="hidden" id="changeBizToUser" name="changeBizToUser" value="yes">
 				<input type="hidden" id="gotoStoreInsert" name="gotoStoreInsert" value="no">
