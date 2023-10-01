@@ -3,6 +3,7 @@ package com.apartogether.controller.vote;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.apartogether.controller.HomeController;
 import com.apartogether.controller.SuperClass;
 import com.apartogether.model.bean.Vote;
 import com.apartogether.model.dao.VoteDao;
@@ -23,15 +24,16 @@ public class VoteInsertController extends SuperClass {
 		String id = request.getParameter("id");
 		Vote vote = new Vote();
 		
-		vote.setVoteno(Integer.parseInt(request.getParameter("voteno")));
+//		voteno: seqvote (시퀀스)
+//		votedate: sysdate
+//		endVote: 0 (default)
 		vote.setVotetitle(request.getParameter("votetitle"));
 		vote.setVotecol1(request.getParameter("votecol1"));
 		vote.setVotecol2(request.getParameter("votecol2"));
 		vote.setVotecol3(request.getParameter("votecol3"));
 		vote.setVotecol4(request.getParameter("votecol4"));
 		vote.setVotecol5(request.getParameter("votecol5"));
-		vote.setVotedate(request.getParameter("votedate"));
-		vote.setEndVote(Integer.parseInt(request.getParameter("endVote")));
+		System.out.println(vote);
 		
 		VoteDao dao = new VoteDao();
 		

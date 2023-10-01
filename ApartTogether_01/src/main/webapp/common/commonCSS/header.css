@@ -149,15 +149,16 @@ a {
 	}
 	
 	.ham_bg {
-		background-color: #f3f3f3;
-		min-width: fit-content;
-		max-width: 500px;
-		float: right;
-		padding: 40px 110px 30px;
-		margin-top: 16px;
-		position: absolute;
-		z-index: 1;
-		right: 100px;
+		background-color: #ffffff;
+	    min-width: fit-content;
+	    max-width: 500px;
+	    float: right;
+	    padding: 40px 110px 30px;
+	    margin-top: 16px;
+	    position: absolute;
+	    z-index: 1;
+	    right: 150px;
+	    border: 8px solid #fa6d35;
 	}
 	
 	.hamnav_hole {
@@ -180,6 +181,10 @@ a {
 		padding: 7px 10px;
 	}
 	
+	.sub_hamnav_menu > li:hover {
+		background-color: #f3f3f3;
+	}
+	
 	.hamnav_member {
 		margin-top: 30px;
 		display: block;
@@ -189,5 +194,9 @@ a {
 	
 	.hamnav_member > li {
 		margin-bottom: 15px;
+	}
+	
+	.hamnav_member > li:hover {
+		background-color: #f3f3f3;
 	}
 }
