@@ -11,6 +11,7 @@ public class Vote {
 	private String votecol5;
 	private String votedate;
 	private int endVote; // 투표 종류 여부
+	private String voteid;
 
 	public Vote() {
 	}
@@ -19,7 +20,7 @@ public class Vote {
 	public String toString() {
 		return "Vote [voteno=" + voteno + ", votetitle=" + votetitle + ", votecol1=" + votecol1 + ", votecol2="
 				+ votecol2 + ", votecol3=" + votecol3 + ", votecol4=" + votecol4 + ", votecol5=" + votecol5
-				+ ", votedate=" + votedate + ", endVote=" + endVote + "]";
+				+ ", votedate=" + votedate + ", endVote=" + endVote + ", voteid=" + voteid + "]";
 	}
 
 	public Integer getEndVote() {
@@ -37,6 +38,14 @@ public class Vote {
 
 	public void setVoteno(int voteno) {
 		this.voteno = voteno;
+	}
+	
+	public String getVoteid() {
+		return voteid;
+	}
+	
+	public void setVoteid(String voteid) {
+		this.voteid = voteid;
 	}
 
 	public String getVotetitle() {

@@ -26,6 +26,10 @@
  	font-size: 1rem;
 }
 
+.container {
+    margin-bottom: 100px;
+}
+
 footer {
 	background-color: #373737;
     width: 100%;
