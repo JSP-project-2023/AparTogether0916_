@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.apartogether.controller.SuperClass;
 import com.apartogether.model.bean.SaleMenu;
+import com.apartogether.model.bean.Store;
 import com.apartogether.model.dao.StoreDao;
 
 public class StoreSalesController extends SuperClass{
@@ -18,6 +19,10 @@ public class StoreSalesController extends SuperClass{
 		int stno = Integer.parseInt(request.getParameter("stno"));
 		
 		StoreDao dao = new StoreDao();
+		
+//		가게 정보
+		Store mystore = dao.getStorebyStno(stno);
+		request.setAttribute("mystore", mystore);
 		
 		List<SaleMenu> lists = null;
 		//가게 누적 매출 데이터 가져오기

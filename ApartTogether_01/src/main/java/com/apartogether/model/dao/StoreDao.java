@@ -81,6 +81,7 @@ public class StoreDao extends SuperDao {
 			bean.setSttime(rs.getString("sttime"));
 			bean.setStlogo(rs.getString("stlogo"));
 			bean.setRedday(rs.getString("redday"));
+			bean.setBtime(rs.getInt("btime"));
 		}
 		
 		if (rs != null) {
@@ -343,7 +344,7 @@ public class StoreDao extends SuperDao {
 		System.out.println("들어온 객체 : " + bean);
 		
 		int cnt = 0;
-		String sql ="update store set stname=?, fee=?, category=?, stplace=?, sttel=?, content=?, ceofile=?, ceono=?, sttime=?, stlogo=?, redday=?, btime=40 ";
+		String sql ="update store set stname=?, fee=?, category=?, stplace=?, sttel=?, content=?, ceofile=?, ceono=?, sttime=?, stlogo=?, redday=?, btime=? ";
 		sql += "where id=? and stno=? ";
 		conn = super.getConnection();
 		conn.setAutoCommit(false);
@@ -360,8 +361,9 @@ public class StoreDao extends SuperDao {
 		pstmt.setString(9, bean.getSttime());
 		pstmt.setString(10, bean.getStlogo());
 		pstmt.setString(11, bean.getRedday());
-		pstmt.setString(12, bean.getId());
-		pstmt.setInt(13, bean.getStno());
+		pstmt.setInt(12, bean.getBtime());
+		pstmt.setString(13, bean.getId());
+		pstmt.setInt(14, bean.getStno());
 		
 		cnt = pstmt.executeUpdate();
 		conn.commit();

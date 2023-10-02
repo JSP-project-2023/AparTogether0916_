@@ -60,6 +60,7 @@ public class StoreUpdateController extends SuperClass{
 		bean.setSttime(sttime);
 		
 		bean.setFee(Integer.parseInt(mr.getParameter("fee")));
+		bean.setBtime(Integer.parseInt(mr.getParameter("btime")));
 		bean.setRedday(mr.getParameter("redday"));
 		bean.setCeono(mr.getParameter("ceono"));
 		
@@ -97,7 +98,6 @@ public class StoreUpdateController extends SuperClass{
 		
 		//가게 전화번호
 		String[] sttel = bean.getSttel().split("-");
-		
 		
 		//가게 운영시간 split
 		String str = bean.getSttime().replace("~", " ");

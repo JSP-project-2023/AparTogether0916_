@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.apartogether.controller.SuperClass;
 import com.apartogether.model.bean.OrderLog;
+import com.apartogether.model.bean.Store;
 import com.apartogether.model.dao.StoreDao;
 import com.apartogether.utility.Paging;
 
@@ -21,6 +22,10 @@ public class StoreOrderLogController extends SuperClass{
 		//stno 무조건 받아야됨.
 		int stno = Integer.parseInt(request.getParameter("stno"));
 		StoreDao dao = new StoreDao();
+		
+//		가게 정보
+		Store mystore = dao.getStorebyStno(stno);
+		request.setAttribute("mystore", mystore);
 		
 		String url = super.getUrlInfomation("stOrLog");
 		//페이지 사이즈

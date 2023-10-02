@@ -39,6 +39,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 150px;
 }
 
 .footerArea {
@@ -46,6 +47,7 @@ footer {
     margin-left: 90px;
     font-size: 0.8rem;
     color: #fff;
+    text-align: center;
 }
 
 .alert-dismissible {

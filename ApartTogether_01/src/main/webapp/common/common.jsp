@@ -90,10 +90,10 @@ String notWithFormTag = appName + mappingName + "?command=";
 		
 							<c:if test="${whologin eq 2}">
 								<li>
-									<a class="" href="<%=notWithFormTag%>myStoreList&id=${sessionScope.loginfo.id}">내 가게 관리</a>
+									<a href="<%=notWithFormTag%>myStoreList&id=${sessionScope.loginfo.id}">내 가게 관리</a>
 								</li>
 								<li>
-									<a class="" href="<%=notWithFormTag%>menuManage">메뉴 관리</a>
+									<a href="<%=notWithFormTag%>menuManage">메뉴 관리</a>
 								</li>
 							</c:if>
 						</ul>
@@ -114,20 +114,20 @@ String notWithFormTag = appName + mappingName + "?command=";
 						</ul>
 					</li>
 					
-					<!-- Event section -->
+					<%-- <!-- Event section -->
 					<li class="">
 						<a class="" href="#" role="button">이벤트</a>
 						<ul class="subnavbar_menu">
 							<li>
-								<a class="" href="<%=notWithFormTag%>prList">이벤트(href : null)</a>
-							</li>
+ 								<a class="" href="<%=notWithFormTag%>prList">이벤트(href : null)</a>
+ 							</li>
 							<c:if test="${whologin eq 1}">
 								<li>
 									<a class="" href="<%=notWithFormTag%>prInsert">이벤트 등록(href : null)</a>
 								</li>
 							</c:if>
 						</ul>
-					</li>
+					</li> --%>
 					
 					<!-- Community section -->
 					<li class="">
@@ -235,20 +235,20 @@ String notWithFormTag = appName + mappingName + "?command=";
 						</ul>
 					</li>
 					
-					<!-- Event section -->
+					<%-- <!-- Event section -->
 					<li class="hamnav_menu">
 						<span>이벤트</span>
 						<ul class="sub_hamnav_menu">
 							<li>
 								<a class="" href="<%=notWithFormTag%>prList">이벤트(href : null)</a>
-							</li>
+							</li> 
 							<c:if test="${whologin eq 1}">
 								<li>
 									<a class="" href="<%=notWithFormTag%>prInsert">이벤트 등록(href : null)</a>
 								</li>
 							</c:if>
 						</ul>
-					</li>
+					</li> --%>
 					
 					<!-- Community section -->
 					<li class="hamnav_menu">

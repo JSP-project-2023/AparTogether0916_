@@ -17,13 +17,13 @@
 		<div class="container-menu" id="menu-target">
 			<span class="title">매출 현황</span>
 			<div class="sale-header">
-				<span class="title-2">김이박최 사장님의 파스타집 판매현황입니다.</span>
+				<span class="title-2">${sessionScope.loginfo.name} 사장님의 ${requestScope.mystore.stname} 판매현황입니다.</span>
 				<div class="button-area">
 					<button class="btn-month buttons" onclick="show_month()">월별</button>
 					<button class="btn-menu buttons" onclick="show_menu()">메뉴별</button>
 				</div>
 			</div>
-			<hr>
+<!-- 			<hr> -->
 			<div class="sale-menu">
 				<table>
 					<thead>
@@ -58,13 +58,13 @@
 		<div class="container-month" id="month-target">
 			<span class="title">매출 현황</span>
 			<div class="sale-header">
-				<span class="title-2">김이박최 사장님의 파스타집 판매현황입니다.</span>
+				<span class="title-2">${sessionScope.loginfo.name} 사장님의 ${requestScope.mystore.stname} 판매현황입니다.</span>
 				<div class="button-area">
 					<button class="btn-month buttons" onclick="show_month()">월별</button>
 					<button class="btn-menu buttons" onclick="show_menu()">메뉴별</button>
 				</div>
 			</div>
-			<hr>
+<!-- 			<hr> -->
 			
 			<!-- 1월부터 12월 데이터 -->
 			<c:forEach var="sales" items="${requestScope.sales}" varStatus="status">

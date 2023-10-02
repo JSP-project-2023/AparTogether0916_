@@ -4,7 +4,7 @@ body{
 }
 #stname{
 	font-weight: bold;
-	font-size: 2.5rem;
+	font-size: 2.4rem;
 	position: relative;
 	left: 20px;
 	bottom: 40px;
@@ -50,7 +50,7 @@ body{
 	width: 360px;
 }
 .store-delivery-span{
-	font-size: 25px;
+	font-size: 20px;
 }
 .title-bold{
 	font-weight: bold;
@@ -66,7 +66,7 @@ body{
 	display: flex;	
 }
 .store-subinfo > .store-intro-span{
-	font-size: 20px;
+	font-size: 15px;
 	margin-bottom: 5px;
 }
 .store-box{
@@ -122,7 +122,7 @@ body{
 	font-weight: bold;
 }
 .rounded-pill{
-	font-size: 20px;
+	font-size: 15px;
 	position: relative;
 	bottom: 45px;
 	left: 0px;

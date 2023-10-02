@@ -114,5 +114,6 @@
 			<div class="item" align="right"><img alt="CoinnWallet" src="${pageContext.request.contextPath}/image/Scene_4.png">&nbsp;&nbsp;&nbsp;&nbsp;</div>
 		</div>
 	</div>
+	<%@ include file="/common/footer.jsp"%>
 </body>
 </html>

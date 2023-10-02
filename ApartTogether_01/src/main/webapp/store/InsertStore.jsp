@@ -160,7 +160,7 @@
 		
 		<div class="info_items" id="fee">
 			<span class="littleTitle">배달비</span>
-			<input name="fee" type="number" placeholder="배달비">
+			<input name="fee" type="number" placeholder="금액 입력(숫자)">
 		</div>
 		
 		<div class="info_items" id="btime">

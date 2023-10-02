@@ -14,9 +14,9 @@
 		<div class="container-menu" id="menu-target">
 			<span class="title">주문내역</span>
 			<div class="sale-header">
-				<span class="title-2">김이박최 사장님의 파스타집 주문내역입니다.</span>
+				<span class="title-2">${sessionScope.loginfo.name} 사장님의 ${requestScope.mystore.stname} 가게 주문내역입니다.</span>
 			</div>
-			<hr>
+<!-- 			<hr> -->
 			<div class="sale-menu">
 				<table>
 					<thead>

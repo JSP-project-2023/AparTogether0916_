@@ -72,9 +72,6 @@ public class FrontController extends HttpServlet {
 					//파일삭제 유효성 검사
 					MyUtility.deleteFile(oldFile, newFile, mr, uploadImage);	
 					
-//				회원 수정
-				} else if(command.equals("meUpdate")) {
-					
 //				메뉴 수정
 				} else if (command.equals("menuUpdate")) {
 					String oldFile = mr.getParameter("menuimageUp");

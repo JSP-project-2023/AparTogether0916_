@@ -6,7 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.apartogether.controller.SuperClass;
+import com.apartogether.model.bean.Member;
 import com.apartogether.model.bean.Store;
+import com.apartogether.model.dao.MemberDao;
 import com.apartogether.model.dao.StoreDao;
 import com.apartogether.utility.PagingStore;
 
@@ -15,6 +17,24 @@ public class StoreListController extends SuperClass {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doGet(request, response);
 		
+//		현재 사용자 주소 출력
+		try {
+			Member mem = (Member) session.getAttribute("loginfo");
+			if (mem!=null) {
+				String id = mem.getId();
+				MemberDao memdao = new MemberDao();
+				Member myinfo = memdao.getDataByPrimaryKey(id);
+				String[] address = myinfo.getAddress().split("Δ");
+				
+				String myaddress = address[0] + " " + address[1];
+				
+				request.setAttribute("myaddress", myaddress);
+			}			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+//		StoreList 화면 처리
 		String pageNumber = request.getParameter("pageNumber") ;
 		String pageSize = request.getParameter("pageSize") ;
 		String mode = request.getParameter("mode") ;
