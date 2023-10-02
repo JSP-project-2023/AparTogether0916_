@@ -13,6 +13,7 @@
 <!-- [st] whologin 변수는 현재 로그인 상태를 알려 주는 변수입니다.  미로그인(0)  관리자 (1) 사업자 (2) 일반회원 (3) -->
 <c:if test="${not empty sessionScope.loginfo}">
 	<c:set var="whologin" value="0" />
+	<c:set var="whologin_id" value="${sessionScope.loginfo.id}"/>
 	<c:if test="${sessionScope.loginfo.mtype == 'admin'}">
 		<c:set var="whologin" value="1" />
 	</c:if>
@@ -163,13 +164,13 @@ String notWithFormTag = appName + mappingName + "?command=";
 					
 					<c:if test="${whologin eq 2 }">
 						<li class=""><a class="">${sessionScope.loginfo.name} 사장님 </a></li>
-						<li class=""><a class="" href="<%=notWithFormTag%>meDetail">마이페이지</a></li>
+						<li class=""><a class="" href="<%=notWithFormTag%>meDetail&id=${sessionScope.loginfo.id}">마이페이지</a></li>
 						<li class=""><a class="" href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
 					</c:if>
 					
 					<c:if test="${whologin eq 3 }">
 						<li class=""><a class="">${sessionScope.loginfo.name}님</a></li>
-						<li class=""><a class="" href="<%=notWithFormTag%>meDetail">마이페이지</a></li>
+						<li class=""><a class="" href="<%=notWithFormTag%>meDetail&id=${sessionScope.loginfo.id}">마이페이지</a></li>
 						<li class=""><a class="" href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
 					</c:if>
 					<!-- [ed] 로그인 섹션 -->
@@ -284,13 +285,13 @@ String notWithFormTag = appName + mappingName + "?command=";
 					
 					<c:if test="${whologin eq 2 }">
 						<li class=""><a class="">${sessionScope.loginfo.name} 사장님 </a></li>
-						<li class=""><a class="" href="<%=notWithFormTag%>meDetail">마이페이지</a></li>
+						<li class=""><a class="" href="<%=notWithFormTag%>meDetail&id=${sessionScope.loginfo.id}">마이페이지</a></li>
 						<li class=""><a class="" href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
 					</c:if>
 					
 					<c:if test="${whologin eq 3 }">
 						<li class=""><a class="">${sessionScope.loginfo.name}님</a></li>
-						<li class=""><a class="" href="<%=notWithFormTag%>meDetail">마이페이지</a></li>
+						<li class=""><a class="" href="<%=notWithFormTag%>meDetail&id=${sessionScope.loginfo.id}">마이페이지</a></li>
 						<li class=""><a class="" href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
 					</c:if>
 					<!-- [ed] 로그인 섹션 -->
@@ -322,9 +323,5 @@ String notWithFormTag = appName + mappingName + "?command=";
 	<%-- 보여준 Alert Box를 session 영역에서 제거합니다. --%>
 	<c:remove var="successAlertMsg" scope="session"/>
 	
-<!-- 	<footer> -->
-<!-- 		<div class="footerArea">Copyright 2023 AparTogether All Rights Reserved.</div> -->
-<!-- 	</footer> -->
-
 </body>
 </html>

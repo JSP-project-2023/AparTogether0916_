@@ -126,11 +126,6 @@ public class Member {
 
 	/* [ed.] getter&setter */
 
-	
-	
-
-
-
 	public Member(String id, String mtype, String name, String password, String phone, String birth, String gender,
 			String nickname, String address, String profile, String passwordanswer, String passwordquest) {
 		super();
@@ -147,7 +142,7 @@ public class Member {
 		this.passwordanswer = passwordanswer;
 		this.passwordquest = passwordquest;
 	}
-	
-	
+
 
 }
+

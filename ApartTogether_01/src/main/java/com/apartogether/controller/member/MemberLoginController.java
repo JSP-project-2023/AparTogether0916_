@@ -7,6 +7,7 @@ import com.apartogether.controller.HomeController;
 import com.apartogether.controller.SuperClass;
 import com.apartogether.model.bean.Member;
 import com.apartogether.model.dao.MemberDao;
+import com.oreilly.servlet.MultipartRequest;
 
 public class MemberLoginController extends SuperClass{
 	private final String PREFIX = "member/" ;
@@ -21,8 +22,18 @@ public class MemberLoginController extends SuperClass{
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doPost(request, response);
 		
-		String id = request.getParameter("id") ;
-		String password = request.getParameter("password") ;
+		// 회원인서트에서 프로필이미지 업로드때문에 MultipartRequest 로 바꿔서 여기도 바꿨습니다. //로그인동작확인 완료
+		MultipartRequest mr = (MultipartRequest)request.getAttribute("mr") ;
+		
+		String id = "";
+		String password = "";
+		if(mr == null) { 
+			id = request.getParameter("id") ;
+			password = request.getParameter("password") ;
+		}else {
+			id = mr.getParameter("id") ;
+			password = mr.getParameter("password") ;
+		}
 		System.out.println(id + "/" + password);
 		
 		MemberDao dao = new MemberDao() ;

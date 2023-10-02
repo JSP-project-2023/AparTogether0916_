@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.apartogether.controller.SuperController;
 import com.apartogether.utility.MyUtility;
 import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 
 @WebServlet(
@@ -32,10 +33,14 @@ public class FrontController extends HttpServlet {
 	// map for todolist.txt file
 	private Map<String, SuperController> todolistMap = null ;
 	
+	// imageUploadWebPath 변수 : 실제 이미지가 업로드 되는 경로
+	//private String imageUploadWebPath ; 
 	// 가게 이미지 업로드 경로변수 
 	private String uploadImage;
 	//이미지 경로 변수
 	ServletContext application = null;
+	// 프로필 이미지 업로드폴더 경로변수 
+	private String uploadImageProfile;
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8"); // 한글 깨짐 방지
@@ -50,6 +55,7 @@ public class FrontController extends HttpServlet {
 			MultipartRequest mr = MyUtility.getMultipartRequest(request, uploadImage);
 			
 			if(mr!=null) {
+				System.out.println("mr확인합니다");
 				command = mr.getParameter("command") ;
 				
 				if(command.equals("stUpdate")) {//가게 수정시 변경.
@@ -75,6 +81,17 @@ public class FrontController extends HttpServlet {
 					String newFile = mr.getFilesystemName("menuimage");
 					
 					MyUtility.deleteFile(oldFile, newFile, mr, uploadImage);
+				}
+				// MultipartRequest를 또하나 만드는 방법 대신
+				// uploadImage경로(/uploadStoreImage)로 일단 업로드 한 후 
+				// uploadImageProfile경로(/uploadProfileImage)로 파일이동 시키는 방법을 사용합니다.
+				if(command.equals("meUpdate")) { // 회원정보 수정
+					MyUtility.deleteOldProfileImageFile(uploadImageProfile, mr);
+					MyUtility.moveFolderProfileImage(uploadImage, uploadImageProfile, mr);
+				}
+				
+				if(command.equals("meInsert")) { // 회원가입
+					MyUtility.moveFolderProfileImage(uploadImage, uploadImageProfile, mr);
 				}
 				
 				// file upload object binding in request scope.
@@ -137,6 +154,20 @@ public class FrontController extends HttpServlet {
 		}
 		System.out.println("imageUploadWebPath is [" + uploadImage + "]");
 	
+		// 이미지 파일 업로드 경로 :: 프로필이미지 저장용 경로입니다. 폴더이름은 /uploadProfileImage 입니다.
+		uploadImageProfile = application.getRealPath("uploadProfileImage");
+		File fileProfile = new File(uploadImageProfile);
+		
+		//파일 유효성 검사 후, 존재하지 않으면 디렉터리 생성
+		if(!fileProfile.exists()) {
+			if(!fileProfile.isDirectory()) {
+				System.out.println("디렉토리가 존재하지 않아 생성합니다.");
+				fileProfile.mkdir();
+			}
+		}
+		System.out.println("프로필ImageUploadWebPath is [" + uploadImageProfile + "]");
+		
+		
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
