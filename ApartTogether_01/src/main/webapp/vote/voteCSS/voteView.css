@@ -1,0 +1,97 @@
+@charset "UTF-8";
+.container {
+	padding-left: 200px;
+	padding-right: 200px;
+	padding-top: 20px;
+	max-width: 1060px;
+	max-height:1000px;
+	margin: 0 auto;
+	margin-top: 118px;
+	background: #f1f1f1f1;
+	border-radius: 10px;
+	box-shadow: 2px 3px 5px rgb(192, 192, 192);
+}
+.title {
+	padding: 20px;
+	font-size: 3rem;
+	font-weight: 600;
+	white-space : nowrap;
+}
+.input-group-text {
+	min-width: 480px;
+	height: 90px;
+	text-align: center;
+	width: 80%;
+	padding: 16px;
+	margin-top: 10px;
+	border: 1px solid #000;
+}
+.input-group-text:hover:not(span) {
+	box-shadow: 2px 3px 10px rgb(148, 148, 148);
+}
+.votetitle {
+	text-align: center;
+	background-color: #dcdcdc;
+	font-size: 20px;
+	font-weight: 600;
+	padding: 16px;
+	margin: 5px;
+	border-radius: 25px;
+	border: 1px solid #000;
+	box-shadow: 3px 3px 3px #cbcbcb;
+}
+/*투표 주제 CSS*/
+.votetitle > span{
+	white-space : nowrap;
+	font-size: 30px;
+	position: relative;
+	top: 20%;
+}
+.btn {
+	padding: 16px;
+	min-width: 220px;
+	margin: 30px;
+	align-content: center;
+}
+/*투표 이미지 CSS*/
+.menu-box > img{
+	visibility: hidden;
+	margin-top: 20px;
+	margin-right: -350px;
+	float: right;
+	position: absolute;
+	width: 70px;
+	transform: rotate(-20deg);
+}
+
+/*메뉴 선택 박스*/
+.menu-box{
+	display: flex;
+	justify-content : center;
+}
+#buttons{
+	display: flex;
+}
+
+/*버튼 사이즈*/
+.btn{
+	min-width: 160px;
+}
+.boxs{
+	background-color: red;
+	width: 50%;
+}
+/*버튼 hover*/
+.else_bigbtn{
+	background-color: rgb(255, 128, 128);
+}
+.else_bigbtn:hover{
+	background-color: rgb(238, 0, 0);
+}
+#endVote{
+	background-color: #FF7426;
+}
+#endVote:hover{
+	background-color: rgb(221, 111, 0);
+}
+

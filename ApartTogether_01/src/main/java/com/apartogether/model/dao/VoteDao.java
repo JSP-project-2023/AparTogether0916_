@@ -2,6 +2,7 @@ package com.apartogether.model.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -18,10 +19,122 @@ public class VoteDao extends SuperDao {
 		String sql = "insert into vote(voteno, votetitle, votecol1, votecol2, votecol3, votecol4, votecol5, votedate, endvote, voteid)";
 		sql += " values(seqvote.nextval, ?, ?, ?, ?, ?, ?, sysdate, default, ?)";
 		
+=======
+import java.sql.SQLException;
+import java.util.*;
+
+import com.apartogether.model.bean.Vote;
+
+public class VoteDao extends SuperDao{
+
+	//기능 추가?
+	public Vote getVoteTitle(int voteno) throws SQLException {
+		String sql ="select * from vote where voteno=?";
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, voteno);
+		
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		Vote bean = new Vote();
+		if(rs.next()) {
+			bean.setVoteno(rs.getInt("voteno"));
+			bean.setVotetitle(rs.getString("votetitle"));
+
+			//bean.setVotedate((rs.getString(voteno));
+		}
+
+		if(rs != null) {
+			rs.close();
+		}
+		if(pstmt != null) {
+			pstmt.close();
+		}
+		if(conn != null) {
+			conn.close();
+		}
+		return bean;
+	}
+	
+	//투표 항목 가져오기
+	public List<String> getvotelist(int voteno) throws SQLException {
+		
+		List<String> votelist = new ArrayList<String>();
+		
+		String sql ="select * from vote where voteno=?";
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, voteno);
+		ResultSet rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			votelist.add(rs.getString("votecol1"));
+			votelist.add(rs.getString("votecol2"));
+			votelist.add(rs.getString("votecol3"));
+			votelist.add(rs.getString("votecol4"));
+			votelist.add(rs.getString("votecol5"));
+		}
+		
+		votelist = checkNull(votelist);
+		
+		if(rs != null) {
+			rs.close();
+		}
+		if(pstmt != null) {
+			pstmt.close();
+		}
+		if(conn != null) {
+			conn.close();
+		}
+		return votelist;
+	}
+	//투표 항목 null 체크
+	private List<String> checkNull(List<String> votelist) {
+		votelist.removeIf(vote -> vote == null);
+	    return votelist;
+	}
+	
+	//투표 여부 확인
+	public int voteVal(int voteno, String id) throws SQLException {
+		int val = 0;
+		
+		System.out.println(voteno + "// "+  id);
+		String sql = "select count(*) as val from votelog where voteid=? and voteno=? ";
+		
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, id);
+		pstmt.setInt(2, voteno);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			val = rs.getInt("val");
+		}
+		
+		if(rs != null) {
+			rs.close();
+		}
+		if(pstmt != null) {
+			pstmt.close();
+		}
+		if(conn != null) {
+			conn.close();
+		}
+		
+		return val;
+	}
+
+	public void doVote(String voteno, String id, String selectvotecol) throws SQLException {
+		String sql = "insert into votelog values (?, ?, ?)";
+
+>>>>>>> lleebs.v2
 		conn = super.getConnection();
 		conn.setAutoCommit(false);
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
+<<<<<<< HEAD
 		pstmt.setString(1, vote.getVotetitle());
 		pstmt.setString(2, vote.getVotecol1());
 		pstmt.setString(3, vote.getVotecol2());
@@ -39,3 +152,61 @@ public class VoteDao extends SuperDao {
 		return cnt;
 	}
 }
+=======
+		pstmt.setString(1, voteno);
+		pstmt.setString(2, id);
+		pstmt.setString(3, selectvotecol);
+		
+		pstmt.executeUpdate();
+		conn.commit();
+		
+		if(pstmt != null) {
+			pstmt.close();
+		}
+		if(conn != null) {
+			conn.close();
+		}
+	}
+
+	public void reVote(String voteno, String id, String selectvotecol) throws SQLException {
+		String sql = "update votelog set selectvotecol=? where voteno=? and voteid=?";
+
+		conn = super.getConnection();
+		conn.setAutoCommit(false);
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, selectvotecol);
+		pstmt.setString(2, voteno);
+		pstmt.setString(3, id);
+		
+		pstmt.executeUpdate();
+		conn.commit();
+		
+		if(pstmt != null) {
+			pstmt.close();
+		}
+		if(conn != null) {
+			conn.close();
+		}
+	}
+
+	//전에 투표한 항목 가져오기
+	public String selectVote(int voteno, String id) throws SQLException {
+		String sql = "select selectvotecol from votelog where voteno=? and voteid=? ";
+		String selectVote = "";
+		
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setInt(1, voteno);
+		pstmt.setString(2, id);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			selectVote = rs.getString("selectvotecol");
+		}
+		return selectVote;
+	}
+}
+>>>>>>> lleebs.v2

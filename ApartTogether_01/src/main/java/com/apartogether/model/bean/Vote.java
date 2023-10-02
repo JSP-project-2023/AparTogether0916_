@@ -1,25 +1,53 @@
 package com.apartogether.model.bean;
 
 public class Vote {
+<<<<<<< HEAD
 
 	private int voteno;
 	private String votetitle;
+=======
+//	private Integer stno; // 가게 고유 코드
+
+	// TODO 가게 고유 코드 Integer로 변경
+	private int voteno; // 가게 고유 코드
+	private String votetitle; // 회원(사업자) 아이디
+>>>>>>> lleebs.v2
 	private String votecol1;
 	private String votecol2;
 	private String votecol3;
 	private String votecol4;
 	private String votecol5;
 	private String votedate;
+<<<<<<< HEAD
 	private int endVote; // 투표 종류 여부
 	private String voteid;
 
 	public Vote() {
 	}
+=======
+
+	public Vote() {
+	}
+
+	public Vote(int voteno, String votetitle, String votecol1, String votecol2, String votecol3, String votecol4,
+			String votecol5, String votedate) {
+		super();
+		this.voteno = voteno;
+		this.votetitle = votetitle;
+		this.votecol1 = votecol1;
+		this.votecol2 = votecol2;
+		this.votecol3 = votecol3;
+		this.votecol4 = votecol4;
+		this.votecol5 = votecol5;
+		this.votedate = votedate;
+	}
+>>>>>>> lleebs.v2
 	
 	@Override
 	public String toString() {
 		return "Vote [voteno=" + voteno + ", votetitle=" + votetitle + ", votecol1=" + votecol1 + ", votecol2="
 				+ votecol2 + ", votecol3=" + votecol3 + ", votecol4=" + votecol4 + ", votecol5=" + votecol5
+<<<<<<< HEAD
 				+ ", votedate=" + votedate + ", endVote=" + endVote + ", voteid=" + voteid + "]";
 	}
 
@@ -29,6 +57,9 @@ public class Vote {
 
 	public void setEndVote(Integer endVote) {
 		this.endVote = endVote;
+=======
+				+ ", votedate=" + votedate + "]";
+>>>>>>> lleebs.v2
 	}
 
 	/* [st] getter&setter */
@@ -39,6 +70,7 @@ public class Vote {
 	public void setVoteno(int voteno) {
 		this.voteno = voteno;
 	}
+<<<<<<< HEAD
 	
 	public String getVoteid() {
 		return voteid;
@@ -47,6 +79,8 @@ public class Vote {
 	public void setVoteid(String voteid) {
 		this.voteid = voteid;
 	}
+=======
+>>>>>>> lleebs.v2
 
 	public String getVotetitle() {
 		return votetitle;
