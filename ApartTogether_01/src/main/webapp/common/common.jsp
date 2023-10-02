@@ -240,11 +240,11 @@ String notWithFormTag = appName + mappingName + "?command=";
 						<ul class="sub_hamnav_menu">
 							<c:if test="${whologin ne 0}">
 								<li>
-									<a class="" href="<%=notWithFormTag%>myorList">주문내역(href : null)</a>
+									<a class="" href="<%=notWithFormTag%>myorList">주문내역</a>
 								</li>
 							</c:if>
 							<li>
-								<a class="" href="<%=notWithFormTag%>roList">모집 중인 주문(href : null)</a>
+								<a class="" href="<%=notWithFormTag%>roList">모집 중인 주문</a>
 							</li>
 						</ul>
 					</li>

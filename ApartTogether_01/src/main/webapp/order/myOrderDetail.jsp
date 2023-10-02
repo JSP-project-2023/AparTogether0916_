@@ -11,11 +11,14 @@
 	<style type="text/css">
 		span {font-size:1.2rem;}
 		.dddmain_header{
-		background-color:LightGray;
+		 background-color:LightGray;
 		  border-top-left-radius: 2em 0.5em;
-  border-top-right-radius: 1em 3em;
-  border-bottom-right-radius: 4em 0.5em;
-  border-bottom-left-radius: 1em 3em;}
+		  border-top-right-radius: 1em 3em;
+		  border-bottom-right-radius: 4em 0.5em;
+		  border-bottom-left-radius: 1em 3em;}
+		  #red{color: red; font-weight: bold;}
+		  #jul{text-decoration: line-through; color: red; font-weight: bold; }
+		  #bold{font-weight: bold;}
 	</style>
 </head>
 <body>
@@ -66,26 +69,21 @@
 						</c:forEach>
 						<tr>
 							<td>배달료</td>
-							<td>${requestScope.fee}원</td>
+							<td id = "jul">${requestScope.fee}원</td>
 							<td>/${requestScope.su}명</td>
-							<td>${requestScope.suFee}원</td>
+							<td id = "red">${requestScope.suFee}원</td>
 							<c:set var="totalAmount" value="${requestScope.suFee+totalAmount}"/>
 						</tr>
 						
 						<tr>
-							<td colspan="5" align="right">
+							<td id = "bold">
+								<span>배달료를 ${requestScope.fee - requestScope.suFee}원 아끼셨어요!!</span>
+							</td>	
+							<td colspan="4" align="right">
 								합계 : <fmt:formatNumber value="${totalAmount}" pattern="###,###"/> 원&nbsp;&nbsp;
 							</td>
 						</tr>
-						
-						<%-- 운송비(shipExpense) 구하기 --%>
-						<tr>
-							<td colspan="5" align="right">
-								<c:set var="finalAmount" value="${totalAmount + shipExpense}"/>
-								
-								최종 금액 : <fmt:formatNumber value="${finalAmount}" pattern="###,###"/> 원&nbsp;&nbsp;
-							</td>
-						</tr>				
+							
 					</tbody>
 				</table>
 				
