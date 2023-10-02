@@ -4,50 +4,41 @@
 	margin:0;
 	padding:0;
 }
-
 .header_underline {
 	border-bottom: 1px solid #cdcdcd;
 }
-
 .header {
 	margin: 15px 150px 15px 150px; /*top right bottom left*/
 }
-
 .navbar_hole {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
 }
-
 .navbar_menu {
 	font-weight: 700;
 }
-
 ul, li {
 	list-style: none;
 	padding-left: 0;
 	margin-bottom: 0;
 }
-
 a {
 	text-decoration:none;
 	color:#333;
 }
-
 .navbar_menu:after {
 	display:block;
 	content:'';
 	clear:both;
 }
-
 .navbar_menu > li {
 	position:relative;
 	float:left;
 	margin-right:40px;
 	height: 60px;
 }
-
 .navbar_menu > li > a {
 	display:block;
 	padding:5px 15px;
@@ -56,11 +47,9 @@ a {
 	color:#333;
 	font-size: 1.2rem;
 }
-
 .navbar_menu > li:hover .subnavbar_menu {
 	display: block;
 }
-
 .navbar_menu .subnavbar_menu {
 	display: none;
 	position: absolute;
@@ -76,47 +65,31 @@ a {
 	background-color: #fff;
 	margin-top: 15px;
 }
-
 .navbar_menu .subnavbar_menu a {
 	display:block;
 	padding:15px 20px;
 }
-
 .subnavbar_menu > li {
 	white-space: nowrap;
 }
-
 .subnavbar_menu > li > a {
 	font-size: 1rem;
 }
-
 .navbar_member > li {
 	display: inline-block;
 	padding: 5px 10px;
 }
-
-/*.navbar_member {*/
-	
-/*}*/
-
-/*.navbar_member > li > a {*/
-	
-/*}*/
-
 .dontshow {
 	display: none;
 }
-
 
 @media screen and (min-width: 1281px) {
 	.hamnav {
 		display: none;
 	}
-	
 	.ham_bg {
 		display: none;
 	}
-	
 }
 
 @media screen and (max-width: 1280px) {
@@ -126,28 +99,23 @@ a {
 		align-items: center;
 		justify-content: space-between;
 	}
-	
 	.navbar_hole {
 		display: none;
 	}
-	
 	.hamarea {
 		position: relative;
     	top: -6px;
 	}
-	
 	.hamburger {
 		width: 2rem;
 		padding: 0;
 	}
-	
 	.hamline{
 		display: block;
 		height: 2px;
 		background-color: #666;
 		margin-top: 10px;
 	}
-	
 	.ham_bg {
 		background-color: #ffffff;
 	    min-width: fit-content;
@@ -159,13 +127,12 @@ a {
 	    z-index: 1;
 	    right: 150px;
 	    border: 8px solid #fa6d35;
+	    box-shadow: 2px 2px 11px #919191;
 	}
-	
 	.hamnav_hole {
 		font-size: 1.1rem;
 		font-weight: 700;
 	}
-	
 	.hamnav_menu {
 		margin-bottom: 30px;
 	}
@@ -176,26 +143,25 @@ a {
 		font-size: 1rem;
 		font-weight: normal;
 	}
-	
 	.sub_hamnav_menu > li {
 		padding: 7px 10px;
 	}
-	
 	.sub_hamnav_menu > li:hover {
 		background-color: #f3f3f3;
 	}
-	
+	.sub_hamnav_menu > li > a {
+		display: inline-block;
+    	width: 185px;
+	}
 	.hamnav_member {
 		margin-top: 30px;
 		display: block;
 		border-top: 1px solid #cacaca;
 		padding-top: 25px;
 	}
-	
 	.hamnav_member > li {
 		margin-bottom: 15px;
 	}
-	
 	.hamnav_member > li:hover {
 		background-color: #f3f3f3;
 	}
