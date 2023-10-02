@@ -161,7 +161,7 @@ String notWithFormTag = appName + mappingName + "?command=";
 				
 				<ul class="navbar_member">
 					<!-- [st] 로그인 섹션 -->							
-					<c:if test="${whologin eq null }">
+					<c:if test="${whologin eq 0 }">
 						<li class="">
 							<a class="" href="<%=notWithFormTag%>meLogin">로그인</a>
 						</li>

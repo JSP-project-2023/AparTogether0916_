@@ -159,9 +159,9 @@ public class RoomDao extends SuperDao{
 	}
 
 	public Integer getRoomNo() throws Exception{
+		// 다음 생성될 방 번호를 미리 구해놓음
 		String sql = " select seqroomno.nextval as seq from dual" ;
-		
-		
+
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
 		
@@ -184,6 +184,7 @@ public class RoomDao extends SuperDao{
 	}
 
 	public int InsertData(Integer stno, Integer roomno, String orderplace, String roomname) throws Exception {
+		// 방이 새로 만들어질 때 방의 주문 정보들을 넣음
 		String sql = " insert into room(roomno,stno,roomname,orderplace,ordertime) " ;
 		sql += " values(?, ?, ? ,? ,sysdate)" ;
 		int cnt = -1 ;

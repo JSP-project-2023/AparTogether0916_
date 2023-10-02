@@ -99,6 +99,7 @@ public class CommentDao extends SuperDao{
 	}
 
 	public String getNickname(String id) throws Exception {
+		// 댓글에서 닉네임으로 보여주기 위한 함수
 		String sql = "select nickname from members where id = ? ";
 	
 

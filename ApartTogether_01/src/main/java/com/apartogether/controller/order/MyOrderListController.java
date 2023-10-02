@@ -25,11 +25,11 @@ public class MyOrderListController extends SuperClass{
 			
 			List<Order> orderList = dao.GetHistory(super.loginfo.getId());
 
-			if(orderList.size()==0) {
+			if(orderList.size()==0) { // 주문내역이 없을시
 				super.setAlertMessage("이전 주문 내역이 존재하지 않습니다.");
 				new RoomListController().doGet(request, response);
 				
-			}else {
+			}else { // 주문 내역이 존재할 때
 				request.setAttribute("orderList", orderList);
 				super.gotoPage("order/myOrderList.jsp");
 			}

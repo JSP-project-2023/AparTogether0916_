@@ -35,6 +35,7 @@ public class MyOrderDetailController extends SuperClass{
 			fee = dao.getStorefee(roomno);
 			su = dao.getTotalMember(roomno);
 	
+			// 1인당 배달료
 			int suFee = fee/su;
 			request.setAttribute("su", su);
 			request.setAttribute("suFee", suFee);

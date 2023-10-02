@@ -336,6 +336,7 @@ public class CompositDao extends SuperDao {
 
 	public List<Combo01> getAllMenu(Integer roomno) throws Exception{
 		
+		// 한 가게에 대한 모든 메뉴 정보를 가져옴
 		String sql = "select menuname , menuimage, menudetail, price, menuno  ";
 		sql +=" from menu  ";
 		sql +=" inner join store st on menu.stno = st.stno";
@@ -374,6 +375,7 @@ public class CompositDao extends SuperDao {
 	
 
 	public int getMinOrderno(Integer roomno) throws Exception{
+		// 방장을 찾아내기 위해 가장 작은 주문번호를 얻어냄
 		String sql = "select Min(orderno)from room ro  ";
 		sql +=" inner join personal pe on ro.roomno = pe.roomno  ";
 		sql +=" where ro.roomno = ?";
@@ -398,6 +400,7 @@ public class CompositDao extends SuperDao {
 
 	// 방장 아이디 구하기
 	public String getBangjang(Integer roomno, int minorderno) throws Exception{
+		// 가장 작은 주문번호를 이용해 방장을 구해냄
 		String sql = "select id from room ro ";
 		sql +=" inner join personal pe on ro.roomno = pe.roomno  ";
 		sql +=" where ro.roomno = ? and pe.orderno = ?";

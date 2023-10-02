@@ -34,8 +34,8 @@ public class OrderConfirmController extends SuperClass{
 			// 레디를 한사람이랑 전체 멤버수같을 경우에만 주문이 진행됨
 			if(totalmember == readymember) {
 				cnt = dao.updatePersonal(roomno);
-				
-				super.setAlertMessage("주문이 완료되었습니다.");
+				// 주문 완료 시
+				super.setSuccessAlertMessage("주문이 완료되었습니다.");
 				new RoomListController().doGet(request, response);
 				
 			}else {

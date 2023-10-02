@@ -17,7 +17,7 @@ import com.apartogether.model.cart.CartItem;
 public class OrderDao extends SuperDao{
 
 	public List<Order> GetHistory(String id) throws Exception {
-		
+		// 방에서 주문한 주문 시간과 가게로고 가게 이름등을 구해옴
 		String sql = "SELECT DISTINCT ro.roomno, ro.ordertime, st.stname, st.stlogo  ";
 		sql +=" from room ro inner join store st on ro.stno = st.stno ";
 		sql +=" inner join personal pe on ro.roomno = pe.roomno where pe.id = ? and pe.confirm = 'success'" ;
@@ -56,7 +56,7 @@ public class OrderDao extends SuperDao{
 	}
 
 	public Order getDetailHistory(int roomno, String id) throws Exception{
-		
+		// 주문정보에 대한 개인 세부 내용을 불러옴
 		String sql = " select ordertime, stname, stlogo, roomno from room inner join store on room.stno = store.stno where roomno = ?";
 		sql += " and id = ?";
 		Order bean = null;
@@ -82,6 +82,7 @@ public class OrderDao extends SuperDao{
 	}
 	
 	public List<CartItem> showDetail(int roomno, String id) throws Exception {
+		// 디테일 정보를 카트에 담아 보여줌
 		String sql = " select menu.menuno, menu.menuname , pe.qty, menu.price " ;
 		sql += " from (room ro inner join personal pe " ;
 		sql += " on ro.roomno = pe.roomno) inner join menu   " ;
@@ -119,6 +120,7 @@ public class OrderDao extends SuperDao{
 	}
 
 	public int InsertData(Personal bean) throws Exception{
+		// 방에서 주문을 처음 접수했을 때 기본 정보들을 넣음 (주문 번호, 메뉴 번호, 방 번호, 아이디, 수량, 주문 확정 여부)
 		// 주문 정보를 입력하는 함수
 		
 		System.out.println(bean); 
@@ -149,6 +151,7 @@ public class OrderDao extends SuperDao{
 	}
 
 	public Map<Integer, Integer> getDatabyPk(int roomno, String id) throws Exception{
+		// 개인 별 메뉴 번호 수량을 맵형식으로 불러오는 함수
 		String sql = " select menuno, qty " ;
 		sql += " from personal" ;
 		sql += " where roomno = ?  " ;
@@ -175,7 +178,7 @@ public class OrderDao extends SuperDao{
 	}
 
 	public int UpdateData(Personal bean) throws Exception{
-
+		// 주문 정보에 같은 메뉴가 존재 -> 수량을 증가 시킴
 		System.out.println(bean); 
 		
 		String sql = " update personal set qty = qty + ?" ;
@@ -207,7 +210,7 @@ public class OrderDao extends SuperDao{
 	}
 
 	public Object findIdroomstatus(String id, int roomno) throws Exception{
-
+		// 방 안에 있는 사람의 레디 여부를 구하기 위해 room_status 테이블에서 정보를 가져옴
 		String sql = " select ready from room_status where id = ? and roomno = ?";
 		String bean = null;
 		
@@ -259,6 +262,7 @@ public class OrderDao extends SuperDao{
 	}
 
 	public int DeletePersonal(String id, int roomno) throws Exception{
+		// 방에서 나갈 때 기존에 있던 개인 주문 정보들을 삭제 시킴
 		String sql = " delete from personal" ;
 		sql += " where roomno = ? and id = ?" ;
 		int cnt = -1 ;
@@ -284,6 +288,7 @@ public class OrderDao extends SuperDao{
 	}
 
 	public int DeleteRoomStatus(String id, int roomno) throws Exception{
+		// 방에서 나갈 때 개인 방정보를 지움(ready 정보 삭제)
 		String sql = " delete from room_status" ;
 		sql += " where roomno = ? and id = ?" ;
 		int cnt = -1 ;
@@ -309,6 +314,7 @@ public class OrderDao extends SuperDao{
 	}
 
 	public int Deletemenu(String id, int roomno, int menuno) throws Exception{
+		// 개인이 메뉴하나를 완전히 지울 때 주문 정보 삭제 시킴;
 		String sql = " delete from personal" ;
 		sql += " where roomno = ? and id = ? and menuno = ?" ;
 		int cnt = -1 ;
@@ -334,6 +340,7 @@ public class OrderDao extends SuperDao{
 	}
 
 	public int getMenuno(String menuname) throws Exception{
+		// 메뉴 이름에 대해 메뉴 번호를 가져옴
 		String sql = " select menuno from menu where menuname = ?";
 		int bean = 0;
 		
@@ -356,6 +363,7 @@ public class OrderDao extends SuperDao{
 	}
 
 	public List<Personal> getPersonal(String id, int roomno) throws Exception {
+		// 개인주문 정보를 전체 다 불러옴
 		String sql = " select * from personal " ;
 		sql += " where roomno = ? and id = ?" ;
 		
@@ -390,6 +398,7 @@ public class OrderDao extends SuperDao{
 	}
 
 	public int updatePersonal(Integer roomno) throws Exception{
+		// 주문 확정이 되면 confirm 정보를 success 상태로 변경 시킴
 		
 		String sql = " update personal set confirm = 'success'" ;
 		sql += " where roomno = ?";
@@ -416,6 +425,7 @@ public class OrderDao extends SuperDao{
 	}
 
 	public int getTotalMember(Integer roomno) throws Exception{
+		// 방안에 있는 전체 인원수가 몇명인지 알아내는 sql
 		String sql = " select count(*) from room_status where roomno = ? ";
 		int bean = 0;
 		
@@ -437,6 +447,7 @@ public class OrderDao extends SuperDao{
 	}
 
 	public int getReadyMember(Integer roomno) throws Exception{
+		// READY 상태인 인원 수를 구함
 		String sql = " select count(*) from room_status where roomno = ? ";
 		sql += " and ready = 'ready'";
 		int bean = 0;
@@ -459,6 +470,7 @@ public class OrderDao extends SuperDao{
 	}
 
 	public int getStorefee(int roomno) throws Exception{
+		// 가게의 배달료를 구함
 		String sql = " select fee from store st inner join room ro on ro.stno = st.stno ";
 		sql += " where roomno = ?";
 		int bean = 0;
