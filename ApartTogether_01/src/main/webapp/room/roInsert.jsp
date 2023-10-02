@@ -92,14 +92,15 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 				<div id="callBackDiv">
 					<table>
 						<tr>
-							<td id = "subject"> 방제목 &nbsp;&nbsp;&nbsp; </td>
-							<td colspan="2"><input type="text" id = "roomname" name="roomname"  placeholder="방 제목을 입력해주세요"></td>
+							<td id = "subject" style="padding-top: 20px;"> 주소 &nbsp;&nbsp;&nbsp;</td>
+							<td ><input type="button" onClick="goPopup();" value="주소 검색하기"/></td>
+							<td ><input type="text"  style="width:400px;" id="roadFullAddr"  name="orderplace" placeholder="주소를 검색해주세요"/></td>
 						</tr>
 						<tr>
-							<td id = "subject"> 주소 &nbsp;&nbsp;&nbsp;</td>
-							<td><input type="button" onClick="goPopup();" value="주소 검색하기"/></td>
-							<td><input type="text"  style="width:500px;" id="roadFullAddr"  name="orderplace" placeholder="주소를 검색해주세요"/></td>
+							<td id = "subject" style="padding-top: 20px;"> 방제목 &nbsp;&nbsp;&nbsp; </td>
+							<td colspan="2" style="padding-top: 20px;"><input type="text" style="width:500px; id = "roomname" name="roomname"  placeholder="방 제목을 입력해주세요"></td>
 						</tr>
+						
 					</table>
 				</div>
 				<div style= "margin-top: 20px">

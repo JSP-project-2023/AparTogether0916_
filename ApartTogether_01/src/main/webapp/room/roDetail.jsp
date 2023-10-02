@@ -268,7 +268,7 @@
           		</td>
            </tr>
         </table>
-          <table class="table table-borderless" style="margin-top: 30px;">
+          <table class="table " style="margin-top: 30px;">
 	          <tr>
 	          <td style="font-weight: bold;">방 들어온 사람 아이디</td>
 	          <c:forEach items="${requestScope.lists2}" var="bean">
@@ -282,7 +282,6 @@
 	          </c:forEach>
 	          </tr>
 	          <tr>
-	          
 	          <td style="font-weight: bold;">레디 안한사람 아이디</td>
 	           <c:forEach items="${requestScope.lists3}" var="bean">
 	           			<td>
