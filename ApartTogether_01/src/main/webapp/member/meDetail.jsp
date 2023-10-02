@@ -118,14 +118,22 @@
 		}
 </style>
 	<script type="text/javascript">
-		function meDeleteCheck(){  	  		
-				var mtype = $('#mtype').val();
+		function meDeleteCheck(){
+			var returnValue1 = confirm("내가 등록한 모든 가게 및 주문정보가 사라집니다. \n정말 탈퇴하시겠습니까?");
+			if(returnValue1 == true){
+				$('#meDeleteCheck').val("yes");
+			}else{
+				$('#meDeleteCheck').val("no");
+				return false;
+			} 
+			//var mtype = ${requestScope.bean.mtype};
+			/* var returnValue1 = confirm("<>");
 				if(mtype == "biz") { 
 					var returnValue1 = confirm("내가 등록한 가게 정보가 모두 사라집니다. \n정말 탈퇴하시겠습니까?");
-					if(returnValue2 == true){
-						$('#deleteCheck').val("yes");
+					if(returnValue1 == true){
+						$('#meDeleteCheck').val("yes");
 					}else{
-						$('#deleteCheck').val("no");
+						$('#meDeleteCheck').val("no");
 						return false;
 					}
 				}
@@ -133,12 +141,12 @@
 				if(mtype == "user") { 
 					var returnValue2 = confirm("나의 주문 정보가 모두 사라집니다. \n정말 탈퇴하시겠습니까?");
 					if(returnValue2 == true){
-						$('#deleteCheck').val("yes");
+						$('#meDeleteCheck').val("yes");
 					}else{
-						$('#deleteCheck').val("no");
+						$('#meDeleteCheck').val("no");
 						return false;
 					}
-				}
+				} */
 				
 			}
 	</script>
@@ -169,7 +177,7 @@
 			<%-- 열람가능 --%>
 			<h2  class="mainTitle">${requestScope.bean.name}님의 회원 정보</h2>
 			
-			<input type="hidden" id="deleteCheck" name="deleteCheck" value="no">
+			<input type="hidden" id="meDeleteCheck" name="meDeleteCheck" value="no">
 			
 			<table class="table" >
 				<thead></thead>
@@ -177,7 +185,7 @@
 					<tr>
 						<th align="center" class="tableHead">회원유형</th>
 						<td>
-							<c:choose>
+							<c:choose >
 								<c:when test="${requestScope.bean.mtype == 'user' }">
 									<span>일반회원</span>
 								</c:when>
@@ -270,7 +278,7 @@
 					   style=" padding-left:50px; padding-right:50px;">회원정보 수정</a>
 					<a type="button" href="<%=notWithFormTag%>meDelete&id=${sessionScope.loginfo.id}" 
 					   class="btn button-18 "  style=" padding-left:50px; padding-right:50px" 
-					   onclick="meDeleteCheck()">회원탈퇴하기</a>
+					   onclick="return meDeleteCheck();">회원탈퇴하기</a>
 				</c:if>	
 			</div>
 		
