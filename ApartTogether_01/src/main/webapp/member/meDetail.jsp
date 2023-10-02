@@ -117,6 +117,31 @@
 			font-weight: 600;
 		}
 </style>
+	<script type="text/javascript">
+		function meDeleteCheck(){  	  		
+				var mtype = $('#mtype').val();
+				if(mtype == "biz") { 
+					var returnValue1 = confirm("내가 등록한 가게 정보가 모두 사라집니다. \n정말 탈퇴하시겠습니까?");
+					if(returnValue2 == true){
+						$('#deleteCheck').val("yes");
+					}else{
+						$('#deleteCheck').val("no");
+						return false;
+					}
+				}
+			
+				if(mtype == "user") { 
+					var returnValue2 = confirm("나의 주문 정보가 모두 사라집니다. \n정말 탈퇴하시겠습니까?");
+					if(returnValue2 == true){
+						$('#deleteCheck').val("yes");
+					}else{
+						$('#deleteCheck').val("no");
+						return false;
+					}
+				}
+				
+			}
+	</script>
 </head>
 <body>
 	<div class="container">
@@ -143,6 +168,9 @@
 		<c:if test="${accessMeDetail == 1 }">
 			<%-- 열람가능 --%>
 			<h2  class="mainTitle">${requestScope.bean.name}님의 회원 정보</h2>
+			
+			<input type="hidden" id="deleteCheck" name="deleteCheck" value="no">
+			
 			<table class="table" >
 				<thead></thead>
 				<tbody>
@@ -238,8 +266,11 @@
 			<div  align="center">
 				<c:if test="${whologin ne 1}">	
 					<!-- 일반회원(3),사업자(2)에게만 정보수정, 탈퇴하기 버튼 보이기 -->
-					<a type="button" href="<%=notWithFormTag%>meUpdate&id=${bean.id}" class="btn button-18 "  style=" padding-left:50px; padding-right:50px;">회원정보 수정</a>
-					<a type="button" href="<%=notWithFormTag%>meDelete&id=${sessionScope.loginfo.id}" class="btn button-18 "  style=" padding-left:50px; padding-right:50px">회원탈퇴하기</a>
+					<a type="button" href="<%=notWithFormTag%>meUpdate&id=${bean.id}" class="btn button-18 "  
+					   style=" padding-left:50px; padding-right:50px;">회원정보 수정</a>
+					<a type="button" href="<%=notWithFormTag%>meDelete&id=${sessionScope.loginfo.id}" 
+					   class="btn button-18 "  style=" padding-left:50px; padding-right:50px" 
+					   onclick="meDeleteCheck()">회원탈퇴하기</a>
 				</c:if>	
 			</div>
 		

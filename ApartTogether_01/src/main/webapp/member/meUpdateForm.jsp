@@ -17,8 +17,10 @@
   			/* value 속성의 값이 일치하는 항목에 대하여 체크 on 시킵니다. */
 	  	  	$('input[value="${bean.gender}"]').attr('checked', true);
   			$('input[value="${bean.mtype}"]').attr('checked', true);
+  			// originalPasswordQuest : 원래의 passwordquest 값을 저장합니다.
+  		    var originalPasswordQuest = "${bean.passwordquest}";
   			var pqnum = 0; // pqnum : Num for PasswordQuest
-  			switch("${bean.passwordquest}"){ //passwordquest를 위한 테이블을 만드는 대신 직접 입력합니다.
+  			switch(originalPasswordQuest){ //passwordquest를 위한 테이블을 만드는 대신 직접 입력합니다.
   				case "초등학교 이름은": pqnum = 1 ; break;
   				case "아버지 성함은": pqnum = 2 ; break;
   				case "내가 좋아하는 동물은": pqnum = 3 ; break;
@@ -26,6 +28,18 @@
   				default: pqnum = 0;
   			} 
   			$('select[name="passwordquest"] option').eq(pqnum).prop('selected', true); 
+  			 // 초기화 버튼을 눌렀을 때 원래의 passwordquest 값으로 다시 설정합니다.
+  		    $('button[type="reset"]').click(function() {
+  		    	console.log(originalPasswordQuest);
+  		    	switch(originalPasswordQuest){ //passwordquest를 위한 테이블을 만드는 대신 직접 입력합니다.
+	  				case "초등학교 이름은": pqnum = 1 ; break;
+	  				case "아버지 성함은": pqnum = 2 ; break;
+	  				case "내가 좋아하는 동물은": pqnum = 3 ; break;
+	  				case "내 애완동물의 이름은": pqnum = 4 ; break;
+	  				default: pqnum = 0;
+	  			} 
+	  			$('select[name="passwordquest"] option').eq(pqnum).prop('selected', true); 
+  		    });
   		});
   		/* [st] submit 유효성 검사 */
   	    function validCheck(){ /* form validation check */
@@ -34,14 +48,6 @@
   				alert('일반회원 / 사업자 는 반드시 선택이 되어야 합니다.');
   				return false ; 
   			}  
-  			
-  	    	var id01 = $('#id').val();
-  	    	var check_id = /^[a-z | A-Z]{1,18}[0-9]{1,18}$/; //정규식(a~z, A~Z, 0~9 만 입력가능) 4~18자까지
-  	  		var idresult = check_id.test(id01);
-  	  		if(idresult == false){
-  	  			alert('[아이디]는 영문 및 숫자 만 입력 가능합니다.(4~18자)');  				
-  	  			return false ; /* false이면 이벤트 전파 방지 */
-  	  		}
   			
   	  		var password01 = $('#password').val();
   	    	var check_pw = /^[a-zA-Z0-9~!@#$%^&*()_]{6,20}$/; //정규식(a~z, A~Z, 0~9, 특문 만 입력가능)  6~20자까지
@@ -58,6 +64,13 @@
   	            $('#passwordquest').focus();
   	            return false;
   	        } 
+  	  		
+	  	  	var passwordanswer = $('#passwordanswer').val();
+	  		if(passwordanswer == null || passwordanswer == ""){
+	  			alert('[비밀번호 답변]을 입력해 주세요');
+	  			$('#passwordanswer').focus();
+	  			return false ;
+	  		}
   			
   	  		var name01 = $('#name').val();
   	    	var check_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{2,10}/; // 한글체크 + 2~10자까지
@@ -379,7 +392,7 @@
 				</div>
 				
 				<div class="input-group">
-					<span class="input-group-text col-md-2">비밀번호 답변</span>
+					<span class="input-group-text col-md-2">비밀번호 답변<font color="red">*</font></span>
 					<input class="form-control" type="text" id="passwordanswer" name="passwordanswer" value="${requestScope.bean.passwordanswer }">			
 				</div>
 			
@@ -387,7 +400,8 @@
 				<div style="text-align: center;">
 				<button  type="submit" class="btn button-18 "  style=" padding-left:50px; padding-right:50px" 
 						 onclick="return validCheck();">수정</button>
-				<button type="reset" class="btn button-18 " style="padding-left:50px; padding-right:50px"  >
+				<button type="reset" class="btn button-18 " style="padding-left:50px; padding-right:50px"  
+				        onclick="">
 						초기화</button>
 				</div>
 			

@@ -97,6 +97,7 @@ private final String PREFIX = "member/";
 			cnt = dao.UpdateData(bean); // DB에 업데이트합니다.
 			
 			if(cnt == -1) { // DB 업데이트 실패
+				setAlertMessage("회원정보 수정에 실패하였습니다.");
 				super.gotoPage(PREFIX + "meUpdateForm.jsp");
 			}else { // DB 업데이트 성공
 				// session 영역에 나의 로그인 정보를 갱신합니다.

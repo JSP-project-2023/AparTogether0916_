@@ -53,12 +53,20 @@
   			return false ;
   		}
     	
+    	
     	var passwordquest = $('#passwordquest').val();
   		if(passwordquest == "-"){
             alert("선택된 항목이 없습니다.");
             $('#passwordquest').focus();
             return false;
         }
+  		
+  		var passwordanswer = $('#passwordanswer').val();
+  		if(passwordanswer == null || passwordanswer == ""){
+  			alert('[비밀번호 답변]을 입력해 주세요');
+  			$('#passwordanswer').focus();
+  			return false ;
+  		}
 		
   		var name01 = $('#name').val();
     	var check_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{2,10}/; // 한글체크 + 2~10자까지
@@ -238,7 +246,6 @@
 			<div class="col-lg-2"></div>
 			<div class="col-lg-8" align="center">
 				<h2  class="mainTitle">회원 가입</h2>
-				<p>회원 가입하는 페이지 입니다.</p>
 				<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data" onsubmit="mtypeCheck()">
 					<input type="hidden" name="command" value="meInsert">
 					<input type="hidden" id="gotoStoreInsert" name="gotoStoreInsert" value="no">

@@ -43,7 +43,7 @@
 		
 	</script>
 	<style type="text/css">
-	.container{margin-top: ;}
+	.container{margin-top:50px;}
 	.input-group{
 		margin: 7px;
 		max-width: 450px;
@@ -128,55 +128,56 @@
 </head>
 <body background="http://localhost:5214/ApartTogether_01
 	/image/background3.png">
-	<br/>
-	<h2><br/></h2>
-	<div class="container row" >
-		<div class="col-lg-3"></div>
-		<div class="col-lg-6" align="center">
-			<div align="left">
+	
+	<div class="container" >
+		<div class="row">
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6" align="center">
+				
 				<h2 class="mainTitle">로그인 페이지</h2>
-			</div>
-
-			<form action="<%=withFormTag%>" method="post">
-				<input type="hidden" name="command" value="meLogin"> 
 				
-				<div class="input-group" align="center">
-					<input type="text" class="form-control col-md-4" id="id" name="id" placeholder="아이디" 
-						data-bs-toggle="tooltip" data-bs-placement="right" title="아이디를 입력해 주세요">
-				</div>
-				
-				<div class="input-group" align="center">
-					<input class="form-control col-md-4" type="password" id="password" name="password" placeholder="비밀번호"
-					data-bs-toggle="tooltip" data-bs-placement="right" title="비밀번호는 영문, 숫자, 특문 포함입니다." >
-				</div>
-				<br/>
-				<!-- contextual class : btn-primary, btn-info, btn-danger -->
-				<div align="center">
-					<button type="submit" class="btn button-wrapper button-18" >로그인</button><br/><br/>
-					<!--
-					<button type="" class="btn button-wrapper button-18" onclick="kakaoLogin();" >카카오 로그인</button><br/>
-					<ul>
-						<li onclick="kakaoLogin();">
-      						<a href="javascript:void(0)">
-          						<span>카카오 로그인</span>
-      						</a>
-						</li>
-						<li onclick="kakaoLogout();">
-      						<a href="javascript:void(0)">
-          						<span>카카오 로그아웃</span>
-      						</a>
-						</li>
-					</ul>
-					-->
-					<a type="button" href="<%=notWithFormTag%>meInsert" class="btn button-99">회원 가입</a>
-					|
-					<a type="popup" href="javascript:popupfindID()" class="btn button-99">아이디 찾기</a>
-					|	
-					<a type="popup" href="javascript:popupfindPW()" class="btn button-99">비밀번호 찾기</a>
-				</div>
-			</form>
+	
+				<form action="<%=withFormTag%>" method="post">
+					<input type="hidden" name="command" value="meLogin"> 
+					
+					<div class="input-group" align="center">
+						<input type="text" class="form-control col-md-4" id="id" name="id" placeholder="아이디" 
+							data-bs-toggle="tooltip" data-bs-placement="right" title="아이디를 입력해 주세요">
+					</div>
+					
+					<div class="input-group" align="center">
+						<input class="form-control col-md-4" type="password" id="password" name="password" placeholder="비밀번호"
+						data-bs-toggle="tooltip" data-bs-placement="right" title="비밀번호는 영문, 숫자, 특문 포함입니다." >
+					</div>
+					<br/>
+					<!-- contextual class : btn-primary, btn-info, btn-danger -->
+					<div align="center">
+						<button type="submit" class="btn button-wrapper button-18" >로그인</button><br/><br/>
+						<!--
+						<button type="" class="btn button-wrapper button-18" onclick="kakaoLogin();" >카카오 로그인</button><br/>
+						<ul>
+							<li onclick="kakaoLogin();">
+	      						<a href="javascript:void(0)">
+	          						<span>카카오 로그인</span>
+	      						</a>
+							</li>
+							<li onclick="kakaoLogout();">
+	      						<a href="javascript:void(0)">
+	          						<span>카카오 로그아웃</span>
+	      						</a>
+							</li>
+						</ul>
+						-->
+						<a type="button" href="<%=notWithFormTag%>meInsert" class="btn button-99">회원 가입</a>
+						|
+						<a type="popup" href="javascript:popupfindID()" class="btn button-99">아이디 찾기</a>
+						|	
+						<a type="popup" href="javascript:popupfindPW()" class="btn button-99">비밀번호 찾기</a>
+					</div>
+				</form>
 			</div>
 			<div class="col-lg-3"></div>
+		</div>
 	</div>
 </body>
 

@@ -98,7 +98,7 @@ public class VoteDao extends SuperDao{
 		String sql = " select voteno, votetitle, votecol1, votecol2, votecol3, votecol4, votecol5, voteid, endvote, votedate ";
 		sql += " FROM " ;
 		sql += " ( " ;
-		sql += " SELECT voteno, votetitle, votecol1, votecol2, votecol3, votecol4, votecol5, voteid, votedate, endvote, rank() over(order by voteno asc) as ranking  " ;
+		sql += " SELECT voteno, votetitle, votecol1, votecol2, votecol3, votecol4, votecol5, voteid, votedate, endvote, rank() over(order by voteno desc) as ranking  " ;
 		sql += " FROM vote " ; ;
 		
 		String mode = pageInfo.getMode();
@@ -153,7 +153,7 @@ public class VoteDao extends SuperDao{
 		ResultSet rs = null;
 		
 		String sql = " select voteno, votetitle, votecol1, votecol2, votecol3, votecol4, votecol5, voteid, endvote, votedate ";
-		sql += " FROM ( SELECT voteno, votetitle, votecol1, votecol2, votecol3, votecol4, votecol5, voteid, votedate, endvote, rank() over(order by voteno asc) as ranking  " ;
+		sql += " FROM ( SELECT voteno, votetitle, votecol1, votecol2, votecol3, votecol4, votecol5, voteid, votedate, endvote, rank() over(order by voteno desc) as ranking  " ;
 		sql += " FROM vote " ;
 		
 		// 작성자 아이디 목록에 따른 SQL 문장 처리

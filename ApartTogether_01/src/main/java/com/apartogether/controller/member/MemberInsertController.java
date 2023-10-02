@@ -40,10 +40,8 @@ public class MemberInsertController extends SuperClass {
 		// 수정내용 : != 를 .equels()식으로 수정했습니다. // 정상작동 확인했습니다.
 		if (mr.getParameter("nickname").equals("")) {
 			bean.setNickname(MemberDao.RandomName());
-			setAlertMessage(bean.getNickname() + " 으로 닉네임이 랜덤 생성되었습니다. 환영합니다!");
 		} else {
 			bean.setNickname(mr.getParameter("nickname"));
-			setAlertMessage(bean.getName() + "님 환영합니다!");
 		} /* [ed] 닉네임 랜덤 생성 */
 
 		bean.setAddress(mr.getParameter("address") + "Δ" 
@@ -61,19 +59,12 @@ public class MemberInsertController extends SuperClass {
 			cnt = dao.InsertData(bean);
 			if (cnt == -1) { // 가입 실패
 				new MemberInsertController().doGet(request, response);
-/* merge 20230927 이성한 기존yh+lsh
-			} else { // 가입 성공
-				if (gotoStoreInsert.equals("yes")) {// yes이면 <내 가게 등록 화면>으로 이동합니다.
-					// 임시로 meList으로 가게 해두었습니다. 나중에 꼭 수정해주세요. @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-					new MemberLoginController().doPost(request, response);
-					String gotopage = super.getUrlInfomation("stInsert");
-//					gotopage += "&id=" + mr.getParameter("id");
-					response.sendRedirect(gotopage);
-					// 자동로그인이 되는지 꼭 확인해 주세요.@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-				} else {
-					new MemberLoginController().doPost(request, response);
-*/
 			}else { // 가입 성공
+				if (mr.getParameter("nickname").equals("")) {
+					setSuccessAlertMessage(bean.getNickname() + " 으로 닉네임이 랜덤 생성되었습니다. 환영합니다!");
+				} else {
+					setSuccessAlertMessage(bean.getName() + "님 환영합니다!");
+				}
 				if(gotoStoreInsert.equals("yes")) {//  yes이면 <내 가게 등록 화면>으로 이동합니다.
 					// [ST]자동로그인기능
 					String id = mr.getParameter("id") ;
@@ -84,7 +75,6 @@ public class MemberInsertController extends SuperClass {
 					super.session.setAttribute("loginfo", bean);
 					// [ED]자동로그인기능
 					String gotopage = super.getUrlInfomation("stInsert"); 
-//					gotopage += "&id=" + mr.getParameter("id");
 					response.sendRedirect(gotopage);
 				}else {
 					new MemberLoginController().doPost(request, response); // 일반회원으로 가입했을경우, 컨펌창no
