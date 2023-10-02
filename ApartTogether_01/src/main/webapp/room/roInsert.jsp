@@ -12,7 +12,7 @@
 function goPopup(){
 	// 주소검색을 수행할 팝업 페이지를 호출합니다.
 	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(https://business.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
-	var pop = window.open("/popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+	var pop = window.open("popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 	
 	// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(https://business.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
     //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
@@ -40,12 +40,11 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 				<input type="hidden" name="command" value="roDetail"> 
 				<input type="hidden" name="stno" value = "${requestScope.stno}">
 				<input type="text" id = "roomname" name="roomname" placeholder="방 제목을 입력해주세요">
-				<br/>
-				<input type="button" onClick="goPopup();" value="주소 검색하기"/>
 				<div id="list"></div>
 				<div id="callBackDiv">
 					<table>
-						<tr><td>도로명주소 전체(포멧)</td><td><input type="text"  style="width:500px;" id="roadFullAddr"  name="orderplace" /></td></tr>
+						<tr><td><input type="button" onClick="goPopup();" value="주소 검색하기"/></td>
+						<td><input type="text"  style="width:500px;" id="roadFullAddr"  name="orderplace" placeholder="주소를 검색해주세요"/></td></tr>
 					</table>
 				</div>
 				
