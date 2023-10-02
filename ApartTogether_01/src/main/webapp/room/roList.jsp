@@ -9,8 +9,8 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<style type="text/css">
-		.container{margin-top: 10px;}
-		tr{opacity: 0.7;}
+		.container{margin-top: 50px;}
+		
 		.custom_red{background-color: red;}
 		.custom_brown{background-color: brown;}
 		.custom_orange{background-color: orange;}
@@ -20,6 +20,8 @@
 		.custom_blue{background-color: blue;}
 		.custom_puple{background-color: #9900ff;}
 		#hidden{display: none;}
+		#liststart {margin-bottom: 2.5rem}
+		h2{font-weight: bold;margin-bottom:2.5rem;}
 	</style>	
 	
 	<script type="text/javascript">
@@ -56,9 +58,9 @@
 <body >
 	<div class="container">
 		<h2>현재 진행중인 주문 목록</h2>
-		<p>현재 진행중인 주문 목록을 보여 주는 페이지입니다.</p>		
+		<p id = "liststart">현재 진행중인 주문 목록을 보여 주는 페이지입니다.</p>		
 		<table class="table table-hover" style="text-align: center;">
-			<thead class="table-dark">
+			<thead class="table-danger">
 				<tr>
 					<th>주문 방 번호</th>
 					<th>카테고리</th>
@@ -80,7 +82,7 @@
 									<div class="row">
 										<div class="col-sm-12">
 											<select class="form-control-sm" id="mode" name="mode">
-												<option value="all" selected="selected">--- 선택해 주세요 ---
+												<option value="all" selected="selected">선택해 주세요
 												<option value="category">카테고리
 												<option value="stname">가게이름
 												<option value="orderplace">주문장소

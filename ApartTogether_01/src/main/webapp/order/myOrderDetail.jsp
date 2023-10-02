@@ -9,6 +9,8 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<style type="text/css">
+		.container{margin-top: 50px;}
+		h2{font-weight: bold;margin-bottom:2.5rem;}
 		span {font-size:1.2rem;}
 		.dddmain_header{
 		 background-color:LightGray;
@@ -20,9 +22,16 @@
 		  #jul{text-decoration: line-through; color: red; font-weight: bold; }
 		  #bold{font-weight: bold;}
 	</style>
+	
+	<script>
+        function goBack() {
+            // 브라우저의 이전 페이지로 이동합니다.
+            window.history.back();
+        }
+    </script>
 </head>
 <body>
-	<div class="container mt-3">
+	<div class="container">
 		<div class="row">
     		<div class="col-sm-2"></div>
     		<div class="col-sm-8">
@@ -36,7 +45,6 @@
 				</p>
 				
 				<br/>
-				<h3 class="main_header">주문 내역</h3>		
 				
 				<table class="table table-striped">
 					<thead>
@@ -77,7 +85,7 @@
 						
 						<tr>
 							<td id = "bold">
-								<span>배달료를 ${requestScope.fee - requestScope.suFee}원 아끼셨어요!!</span>
+								<span>배달료를 <span id="red">${requestScope.fee - requestScope.suFee}원</span> 아끼셨어요!!</span>
 							</td>	
 							<td colspan="4" align="right">
 								합계 : <fmt:formatNumber value="${totalAmount}" pattern="###,###"/> 원&nbsp;&nbsp;
@@ -86,7 +94,9 @@
 							
 					</tbody>
 				</table>
-				
+				<div style="text-align: right">
+					<button onclick="goBack()" class="btn btn-secondary">이전 화면</button>
+				</div>
  		
     		</div>
     		<div class="col-sm-2"></div>

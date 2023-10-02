@@ -77,11 +77,11 @@ public class RoomDetailController extends SuperClass {
 		RoomDao rdao= new RoomDao();
 
 		try {
-			if(request.getParameter("roomname")==null){
+			if(request.getParameter("roomname")== ""){
 				super.setAlertMessage("방제목을 입력해 주세요");
 				new RoomInsertController().doPost(request, response);			
 			}else {
-				if(request.getParameter("orderplace") == null) {
+				if(request.getParameter("orderplace") == "") {
 					super.setAlertMessage("배달 주소를 입력해 주세요");
 					new RoomInsertController().doPost(request, response);
 				}else {

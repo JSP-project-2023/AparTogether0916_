@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <title>주문 상세 정보</title>
     <style type="text/css">
-        .container { margin-top: 10px; }
+        .container { margin-top: 50px; }
         tr { opacity: 0.7; }
         .qty{width: 25px;}
         .custom_red{background-color: red;}
@@ -37,8 +37,8 @@
 		}
 
 		#insertComment textarea {
-			width: 450px;
-			height: 120px ;
+			width: 1000px;
+			height: 30px ;
 		}
 
 		.commentItem {
@@ -72,11 +72,14 @@
 			height: 25px;
 		}
 		.btn-primary{opacity: 0.8;}
+		
+		textarea{width:150px; height : 20px;}
+		
+		h4{font-weight: bold; margin-top: 30px;}
+		
     </style>
-    
-  
-   <script>
 
+   <script>
 
 		   var qty = 0;
 		   
@@ -219,12 +222,12 @@
 <body>
 
 
-    <div class="container mt-3">
-<h2>방이름:${requestScope.bean2.roomname}</h2> 
+    <div class="container">
+		<h2 style="font-weight: bold">방이름:${requestScope.bean2.roomname}</h2> 
         <table class="table">
             <tbody>
                 <tr>
-             <td>주문장소:${requestScope.bean2.orderplace}</td> 
+             <td>주문장소 : ${requestScope.bean2.orderplace}</td> 
                     <td>주문 마감까지 남은 시간: (값 넣을 예정)</td>
                 </tr>
             </tbody>
@@ -232,10 +235,9 @@
     </div>
 
     <div class="container">
-       <h5>가게명:${requestScope.bean2.stname}</h5> 
+       <h4>가게명:${requestScope.bean2.stname}</h4> 
         <table class="table table-hover">
             <tr>
-                <th>Room Number</th>
                 <th>Menu Name</th>
                 <th>Menu Price</th>
                 <th>Quantity</th>
@@ -244,7 +246,6 @@
             </tr>
             <c:forEach items="${requestScope.lists}" var="bean">
                 <tr>
-                    <td>${bean.roomno}</td>
                     <td>${bean.menuname}</td>
                     <td>${bean.price}</td>
                     <td>${bean.qty}</td>
@@ -253,23 +254,23 @@
                 </tr>
              </c:forEach>   
              <tr>
+             	<td></td>
              	 <td>배달비:${requestScope.bean2.fee}</td>  
              	<td>내 주문 금액:${requestScope.bean.personalprice}</td> 
              	<td>총 금액:${requestScope.bean3.allprice}</td>
-             	<td></td>
-             	<td></td>
+             	
 				<td>
 	             	<form action="<%=withFormTag%>" method="post">
-			          	<button type="submit">메뉴 전체 삭제</button>
+			          	<button type="submit" class="btn btn-danger">전체 삭제</button>
 			          	 <input type="hidden" name="command" value="orDelete">
 			          	<input type="hidden" name = "roomno" value="${requestScope.roomno}">
 	          		</form>
           		</td>
            </tr>
         </table>
-          <table class="table table-hover">
+          <table class="table table-borderless" style="margin-top: 30px;">
 	          <tr>
-	          <td>방 들어온 사람 아이디</td>
+	          <td style="font-weight: bold;">방 들어온 사람 아이디</td>
 	          <c:forEach items="${requestScope.lists2}" var="bean">
 	        
 	          				<td>
@@ -279,7 +280,10 @@
 	          		
 	                    ${bean.id}</td>   
 	          </c:forEach>
-	          <td>레디 안한사람 아이디</td>
+	          </tr>
+	          <tr>
+	          
+	          <td style="font-weight: bold;">레디 안한사람 아이디</td>
 	           <c:forEach items="${requestScope.lists3}" var="bean">
 	           			<td>
 	           			<c:if test="${requestScope.bangjang eq bean.id }">
@@ -293,25 +297,26 @@
 	           
 	           
           </table>
-          	<a class="ready" href="<%=notWithFormTag%>roReady&ready=ready&roomno=${requestScope.roomno}">
-				<button> ready</button>
-			</a>
-			<a class="notready" href="<%=notWithFormTag%>roNotReady&ready=ready&roomno=${requestScope.roomno}">
-				<button>not</button>
-			</a>
-			<a class="out" href="<%=notWithFormTag%>roOut&roomno=${requestScope.roomno}">
-				<button> 방 나가기</button>
-			</a>
-          
+          <div style="text-align: right">
+	          	<a class="ready" href="<%=notWithFormTag%>roReady&ready=ready&roomno=${requestScope.roomno}">
+					<button class="btn btn-primary"> ready</button>
+				</a>
+				<a class="notready" href="<%=notWithFormTag%>roNotReady&ready=ready&roomno=${requestScope.roomno}">
+					<button class ="btn btn-danger">not</button>
+				</a>
+				<a class="out" href="<%=notWithFormTag%>roOut&roomno=${requestScope.roomno}">
+					<button class="btn btn-secondary"> 방 나가기</button>
+				</a>
+          </div>
           
           <h4>메뉴 목록</h4>
-           <table class="table table-hover">
+           <table class="table table-hover" style="text-align: center;">
           <tr>
           	<th>Menu Image</th>
           	<th>Menu Name</th>
           	<th>Menu Description</th>
           	<th>Menu Price</th>
-          	<th>Quantity</th>
+          	<th style="text-align: left;">Quantity</th>
           	<th>Total Price</th>          
           </tr>
 	        
@@ -323,9 +328,9 @@
 		        <td>${bean.menuDetail}</td> 
 		        <td id = "${bean.menuno}price" >${bean.price}원</td>   
 		       
-			        <td>
+			        <td >
 			         	<form action="<%=withFormTag%>" method="post">
-			            <ul class="pagination">
+			            <ul class="pagination" style="align-items : center;"> 
 			                <!-- - 버튼 -->
 			                <li class="page-item">
 			                    <a class="page-link ${bean.menuno}minus" href="#" onclick="updateQuantity('${bean.menuno}', -1)"> - </a>
@@ -349,20 +354,16 @@
 				                    <a class="page-link ${bean.menuno}plus" href="#" onclick="updateQuantity('${bean.menuno}', 1)"> + </a>
 				                </li>
 			            </ul>
-			            
-			            	<button type="submit">메뉴 담기</button>
+			            	 <div style="text-align: left;">
+			            		<button type="submit" class = "btn btn-warning">메뉴 담기</button>
+			            	</div>
 			            </form>
+			            
 			        </td>
 			        <td>
 			        	 <p>
 			              <span class="totalprice" id="${bean.menuno}totalprice">0</span>원
 			            </p>
-			        </td>
-			        <td>
-			        
-			        	
-			        	
-			        
 			        </td>
 		        
 		    </tr>
@@ -371,9 +372,11 @@
 	</table>
 			<c:if test="${requestScope.bangjang eq sessionScope.loginfo.id}">
 				<form action="<%=withFormTag%>" method="post">
-					<input type="hidden" name="command" value = "orConfirm">
-					<input type="hidden" name="roomno" value="${requestScope.roomno}">
-					<button type="submit">주문 확정</button>
+					<div style="text-align: right">
+						<input type="hidden" name="command" value = "orConfirm">
+						<input type="hidden" name="roomno" value="${requestScope.roomno}">
+						<button type="submit" class="btn btn-info">주문 확정</button>
+					</div>
 				</form>
           	</c:if>
           
@@ -382,46 +385,51 @@
      
         ${requestScope.pageInfo.pagingHtml} 
         
-     <h2>방 채팅창</h2>
-     
-     	<div>
-			<%-- 댓글 영역(Comment Zone) --%>
-			<ul id="comment_list">
-				<%-- 여기에 동적으로 요소들을 추가합니다. --%>
-			</ul>
-		</div>
-        <div id="insertComment">
-			<form id="comment_form" method="post" role="form" class="form-horizontal" >
-				<table class="table">
-				    <thead>
-				    </thead>
-				    <tbody>
-				      <tr>
-					      <td>
-								<input type="hidden" name="roomno" value="${requestScope.roomno}" />
-								<input type="hidden" name="fakeid" id="fakeid" class="form-control" size="10" 
-									disabled="disabled" value="${sessionScope.loginfo.name}(${sessionScope.loginfo.id})님">									
-								<input type="hidden" name="id" id="id" value="${sessionScope.loginfo.id}">
+     <h4>방 채팅창</h4>
+     	<div style="border: medium;">
+	     	<div>
+				<%-- 댓글 영역(Comment Zone) --%>
+				<ul id="comment_list">
+					<%-- 여기에 동적으로 요소들을 추가합니다. --%>
+				</ul>
+			</div>
+	        <div id="insertComment">
+				<form id="comment_form" method="post" role="form" class="form-horizontal" >
+					<table class="table">
+					    <thead>
+					    </thead>
+					    <tbody>
+					      <tr>
+						      <td>
+									<input type="hidden" name="roomno" value="${requestScope.roomno}" />
+									<input type="hidden" name="fakeid" id="fakeid" class="form-control" size="10" 
+										disabled="disabled" value="${sessionScope.loginfo.name}(${sessionScope.loginfo.id})님">									
+									<input type="hidden" name="id" id="id" value="${sessionScope.loginfo.id}">
+						        </td>
+					        <td>
+					        	<label for="content" class="col-xs-3 col-lg-3 control-label">댓글 내용</label>
 					        </td>
-				        <td>
-				        	<label for="content" class="col-xs-3 col-lg-3 control-label">댓글 내용</label>
-				        </td>
-				        <td>
-				        	<textarea id="content" name="content" rows="3" cols="50"></textarea>
-				        </td>
-				      </tr>
-				      <tr>
-				        <td colspan="2">
-				        	<button type="submit" class="btn btn-info">작성하기</button> 
-						</td>
-				      </tr>
-				    </tbody>
-				</table>
-			</form>	
-		</div>	
-		<a href="<%=notWithFormTag%>roList">
-				<button> 주문 목록으로 돌아가기</button>
-			</a>	                 
+					        <td>
+					        	<textarea id="content" name="content" rows="1" cols="60"></textarea>
+					        </td>
+					        <td>
+					        	<button type="submit" class="btn btn-info">작성하기</button> 
+					        </td>
+					  
+					     
+					       
+					        	
+	
+					    </tbody>
+					</table>
+				</form>	
+			</div>
+			<div style="text-align: right">
+				<a href="<%=notWithFormTag%>roList">
+						<button class="btn btn-secondary"> 주문 목록으로 돌아가기</button>
+				</a>	
+			</div>                 
+	    </div>
     </div>
 </body>
 </html>
