@@ -24,7 +24,7 @@ public class VoteResultController extends SuperClass {
 				super.gotoPage("common/home.jsp");
 			}else {
 				request.setAttribute("bean", bean);
-				super.gotoPage("vote/voteresult.jsp");
+				super.gotoPage("vote/voteresultForm.jsp");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
