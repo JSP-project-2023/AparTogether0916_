@@ -119,15 +119,7 @@
 </style>
 	<script type="text/javascript">
 		function meDeleteCheck(){
-			var returnValue1 = confirm("내가 등록한 모든 가게 및 주문정보가 사라집니다. \n정말 탈퇴하시겠습니까?");
-			if(returnValue1 == true){
-				$('#meDeleteCheck').val("yes");
-			}else{
-				$('#meDeleteCheck').val("no");
-				return false;
-			} 
-			//var mtype = ${requestScope.bean.mtype};
-			/* var returnValue1 = confirm("<>");
+			var mtype = "${requestScope.bean.mtype}";
 				if(mtype == "biz") { 
 					var returnValue1 = confirm("내가 등록한 가게 정보가 모두 사라집니다. \n정말 탈퇴하시겠습니까?");
 					if(returnValue1 == true){
@@ -146,7 +138,7 @@
 						$('#meDeleteCheck').val("no");
 						return false;
 					}
-				} */
+				} 
 				
 			}
 	</script>
