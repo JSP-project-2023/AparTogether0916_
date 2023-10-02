@@ -14,7 +14,7 @@
 		.small_image{width:100px;height:100px;margin:2px;border-radius:5px;}
 	</style>
   	<style type="text/css">
-		.container {margin-top:50px;}
+		.container {margin-top:50px; width: 70%;}
 		
 		.input-group {
 			margin: 7px;
@@ -58,6 +58,7 @@
 		
 		/* [st] button-18 */
 		.button-18 {
+			margin:2px;
 			align-items: center;
 			background-color: #d8e4d2;
 			border: 0;
@@ -237,7 +238,7 @@
 			<div  align="center">
 				<c:if test="${whologin ne 1}">	
 					<!-- 일반회원(3),사업자(2)에게만 정보수정, 탈퇴하기 버튼 보이기 -->
-					<a type="button" href="<%=notWithFormTag%>meUpdate&id=${bean.id}" class="btn button-18 "  style=" padding-left:50px; padding-right:50px">회원정보 수정</a>
+					<a type="button" href="<%=notWithFormTag%>meUpdate&id=${bean.id}" class="btn button-18 "  style=" padding-left:50px; padding-right:50px;">회원정보 수정</a>
 					<a type="button" href="<%=notWithFormTag%>meDelete&id=${sessionScope.loginfo.id}" class="btn button-18 "  style=" padding-left:50px; padding-right:50px">회원탈퇴하기</a>
 				</c:if>	
 			</div>

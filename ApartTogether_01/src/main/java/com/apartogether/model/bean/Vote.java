@@ -12,20 +12,10 @@ public class Vote {
 	private String votecol4;
 	private String votecol5;
 	private String votedate;
-	private String voteid; //작성자
-	private int endvote; //작성자
+	private String voteid; //작성자아이디
+	private int endvote; //마감여부
 
-	private String nickname; //작성자 닉네임
 	
-	
-
-	public String getNickname() {
-		return nickname;
-	}
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
 
 	public Vote() {
 	}

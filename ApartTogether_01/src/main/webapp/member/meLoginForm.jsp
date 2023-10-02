@@ -134,7 +134,7 @@
 		<div class="col-lg-3"></div>
 		<div class="col-lg-6" align="center">
 			<div align="left">
-				<h2>로그인 페이지</h2>
+				<h2 class="mainTitle">로그인 페이지</h2>
 			</div>
 
 			<form action="<%=withFormTag%>" method="post">

@@ -6,12 +6,16 @@ import java.sql.SQLIntegrityConstraintViolationException; /*pk값 중복처리�
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.apartogether.model.bean.Member;
+import com.apartogether.model.bean.Vote;
 import com.apartogether.utility.MyUtility;
 import com.apartogether.utility.Paging;
 import com.apartogether.utility.PagingMember;
+import com.apartogether.utility.PagingVote;
 
 public class MemberDao extends SuperDao {
 
@@ -573,6 +577,57 @@ public class MemberDao extends SuperDao {
 		conn.commit();
 		if(conn!=null) {conn.close();}
 		return cnt ;
+	}
+
+	public Map<String, String> getIdNickMap() throws Exception{
+		// <투표 리스트> 페이지에서 닉네임을 표시하기 위해사용하는 메서드입니다.
+		// 모든 회원의 아이디(키)와 닉네임(값)을 가지는 맵을 반환합니다.
+		Map<String, String> map = new HashMap<String, String>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = " select id, nickname from members ";
+
+		conn = super.getConnection();
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+
+		while (rs.next()) {
+			map.put(rs.getString("id"), rs.getString("nickname"));
+		}
+
+		if (rs != null) {rs.close();}
+		if (pstmt != null) {pstmt.close();}
+		if (conn != null) {conn.close();}
+		
+		return map;
+	}
+
+	public List<String> getIdListByNick(String keyword) throws Exception {
+		// 투표 리스트에서 작성자 닉네임으로 검색할 때 사용하는 메서드입니다.
+		// 검색할 닉네임 키워드를 입력받아, 닉네임에 키워드를 포함하는 아이디의 리스트를 반환합니다.
+		List<String> lists_ID =  new ArrayList<String>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = " select id from members ";
+		sql += " where nickname like '%" + keyword + "%' " ;
+
+		conn = super.getConnection();
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+
+		while (rs.next()) {
+			lists_ID.add(rs.getString("id"));
+		}
+
+		if (rs != null) {rs.close();}
+		if (pstmt != null) {pstmt.close();}
+		if (conn != null) {conn.close();}
+		
+		return lists_ID;
 	}
 
 }

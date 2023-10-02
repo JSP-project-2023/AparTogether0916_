@@ -133,6 +133,12 @@
 				if(optionList[i].value == '${requestScope.pageInfo.keywordmtype}'){
 					optionList[i].selected = true ;
 				}
+			}/* 상세검색을 한 후 selected option을 보존하여 출력한다. */
+			var optionList = $('#keywordgender option');
+			for(var i=0; i < optionList.length ; i++){
+				if(optionList[i].value == '${requestScope.pageInfo.keywordgender}'){
+					optionList[i].selected = true ;
+				}
 			}
 			/* 상세검색을 한 후 검색어(keyword)를 보존하여 출력한다. */
 			$('#keyword').val('${requestScope.pageInfo.keyword}');
@@ -294,20 +300,20 @@
 						<td class=" col-md-1 text-center">
 							<c:if test="${bean.gender eq 'male'}">남자</c:if>
 							<c:if test="${bean.gender eq 'female'}">여자</c:if>	
-							<c:if test="${bean.gender == null}">X</c:if>	
+							<c:if test="${bean.gender == null}">x</c:if>	
 						</td>
 						
 						<td  class=" col-md-1 text-center">
-							<c:if test="${bean.phone == null }">X</c:if>
+							<c:if test="${bean.phone == null }">x</c:if>
 							<c:if test="${bean.phone != null }">${bean.phone}</c:if>
 						</td>
 						<td  class=" col-md-1 text-center">
-							<c:if test="${bean.birth == null }">X</c:if>
-							<c:if test="${bean.birth == 'null' }">X</c:if>
+							<c:if test="${bean.birth == null }">x</c:if>
+							<c:if test="${bean.birth == 'null' }">x</c:if>
 							<c:if test="${bean.birth != 'null' }">${bean.birth}</c:if>
 						</td>
 						<td  class=" col-md-2 text-center">
-							<c:if test="${bean.address == ' ' }">X</c:if>
+							<c:if test="${bean.address == ' ' }">x</c:if>
 							<%-- <c:if test="${bean.address != ' ' }">${bean.address}</c:if> --%>
 							<c:if test="${bean.address != ' ' }">${requestScope.addressSetList[cnt]['firstPart']} ${requestScope.addressSetList[cnt]['secondPart']}</c:if>
 						</td>					

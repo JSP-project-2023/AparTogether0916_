@@ -124,226 +124,227 @@
 <script	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 
 <style type="text/css">
-.container {
-	margin-top:;
-}
-
-.input-group {
-	margin: 7px;
-	max-width: 450px;
-	min-width: 0px;
-}
-
-.input-group-text {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#buttonset {
-	margin-top: 15px;
-}
-
-.radio-inline {
-	cursor: pointer;
-	justify-content: center;
-	margin-left: auto;
-	margin-right: auto;
-	font-size: 1.2em;
-}
-
-.form-check-input {
-	cursor: pointer;
-	justify-content: center;
-	margin-left: auto;
-	margin-right: auto;
-	size: 19px;
-}
-
-.form-select {
-	cursor: pointer;
-	justify-content: center;
-	margin-left: auto;
-	margin-right: auto;
-	size: 3px;
-}
-
-/* [st] button-18 */
-.button-18 {
-	align-items: center;
-	background-color: #d8e4d2;
-	border: 0;
-	box-sizing: border-box;
-	color: #6f726e;
-	cursor: pointer;
-	display: inline-flex;
-	font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,
-		"Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans",
-		Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji",
-		"Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-	font-size: 20px;
-	font-weight: 600;
-	justify-content: center;
-	line-height: 20px;
-	max-width: 1100px;
-	min-height: 50px;
-	min-width: 0px;
-	overflow: hidden;
-	padding: 0px;
-	padding-left: 200px;
-	padding-right: 200px;
-	text-align: center;
-	touch-action: manipulation;
-	transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
-		box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s
-		cubic-bezier(0.4, 0, 0.2, 1) 0s;
-	user-select: none;
-	-webkit-user-select: none;
-	vertical-align: middle;
-}
-
-.button-18:hover, .button-18:focus {
-	background-color: #8e998c;
-	color: #ffffff;
-}
-
-.button-18:active {
-	background: #09223b;
-	color: rgb(255, 255, 255, .7);
-}
-
-.button-18:disabled {
-	cursor: not-allowed;
-	background: rgba(0, 0, 0, .08);
-	color: rgba(0, 0, 0, .3);
-}
-/* [ed] button-18 */
-.button-99 { /* 무색 투명 버튼 */
-	cursor: pointer;
-	font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,
-		"Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans",
-		Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji",
-		"Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-	font-size: 12px;
-	font-weight: 600;
-}
+	.container {
+		margin-top:50px;
+	}
+	
+	.input-group {
+		margin: 7px;
+		max-width: 450px;
+		min-width: 0px;
+	}
+	
+	.input-group-text {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	#buttonset {
+		margin-top: 15px;
+	}
+	
+	.radio-inline {
+		cursor: pointer;
+		justify-content: center;
+		margin-left: auto;
+		margin-right: auto;
+		font-size: 1.2em;
+	}
+	
+	.form-check-input {
+		cursor: pointer;
+		justify-content: center;
+		margin-left: auto;
+		margin-right: auto;
+		size: 19px;
+	}
+	
+	.form-select {
+		cursor: pointer;
+		justify-content: center;
+		margin-left: auto;
+		margin-right: auto;
+		size: 3px;
+	}
+	
+	/* [st] button-18 */
+	.button-18 {
+		align-items: center;
+		background-color: #d8e4d2;
+		border: 0;
+		box-sizing: border-box;
+		color: #6f726e;
+		cursor: pointer;
+		display: inline-flex;
+		font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,
+			"Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans",
+			Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji",
+			"Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+		font-size: 20px;
+		font-weight: 600;
+		justify-content: center;
+		line-height: 20px;
+		max-width: 1100px;
+		min-height: 50px;
+		min-width: 0px;
+		overflow: hidden;
+		padding: 0px;
+		padding-left: 200px;
+		padding-right: 200px;
+		text-align: center;
+		touch-action: manipulation;
+		transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+			box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s
+			cubic-bezier(0.4, 0, 0.2, 1) 0s;
+		user-select: none;
+		-webkit-user-select: none;
+		vertical-align: middle;
+	}
+	
+	.button-18:hover, .button-18:focus {
+		background-color: #8e998c;
+		color: #ffffff;
+	}
+	
+	.button-18:active {
+		background: #09223b;
+		color: rgb(255, 255, 255, .7);
+	}
+	
+	.button-18:disabled {
+		cursor: not-allowed;
+		background: rgba(0, 0, 0, .08);
+		color: rgba(0, 0, 0, .3);
+	}
+	/* [ed] button-18 */
+	.button-99 { /* 무색 투명 버튼 */
+		cursor: pointer;
+		font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,
+			"Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans",
+			Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji",
+			"Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+		font-size: 12px;
+		font-weight: 600;
+	}
 </style>
 </head>
 
 <body
 	background="http://localhost:5214/ApartTogether_01
 	/image/background3.png">
-	<div class="container row">
-		<div class="col-lg-2">col-lg-2</div>
-		<div class="col-lg-8">
-			<h2>회원 가입</h2>
-			<p>회원 가입하는 페이지 입니다.</p>
-			<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data" onsubmit="mtypeCheck()">
-				<input type="hidden" name="command" value="meInsert">
-				<input type="hidden" id="gotoStoreInsert" name="gotoStoreInsert" value="no">
-
-				<div class="input-group" align="center">
-					<span class="input-group-text col-md-3">회원유형 <font
-						color="red">*</font></span>
-
-					<div class="form-control">
-						<label class="radio-inline radio_membertype"> &nbsp;<input class="mtype"
-							type="radio" id="membertype" name="mtype" value="user">
-							🙋‍♀️ ‍일반회원
-						</label> | <label class="radio-inline radio_membertype"> &nbsp;<input class="mtype"
-							type="radio" id="membertype" name="mtype" value="biz">
-							👨‍💼 사업자
-						</label>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-2"></div>
+			<div class="col-lg-8" align="center">
+				<h2  class="mainTitle">회원 가입</h2>
+				<p>회원 가입하는 페이지 입니다.</p>
+				<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data" onsubmit="mtypeCheck()">
+					<input type="hidden" name="command" value="meInsert">
+					<input type="hidden" id="gotoStoreInsert" name="gotoStoreInsert" value="no">
+	
+					<div class="input-group" align="center">
+						<span class="input-group-text col-md-3">회원유형 <font
+							color="red">*</font></span>
+	
+						<div class="form-control">
+							<label class="radio-inline radio_membertype"> &nbsp;<input class="mtype"
+								type="radio" id="membertype" name="mtype" value="user">
+								🙋‍♀️ ‍일반회원
+							</label> | <label class="radio-inline radio_membertype"> &nbsp;<input class="mtype"
+								type="radio" id="membertype" name="mtype" value="biz">
+								👨‍💼 사업자
+							</label>
+						</div>
+	
 					</div>
-
-				</div>
-				<div class="input-group">
-					<span class="input-group-text col-md-3">아이디 <font
-						color="red">*</font></span> <input class="form-control" type="text"
-						id="id" name="id" placeholder="아이디">
-				</div>
-				<div class="input-group">
-					<span class="input-group-text col-md-3">비밀번호 <font
-						color="red">*</font></span> <input class="form-control" type="password"
-						id="password" name="password" placeholder="비밀번호"> <span
-						class="input-group-text col-md-3"> <label
-						class="radio-inline"> <input class="form-check-input"
-							type="checkbox" onclick="viewPassword()">🔒👀
-					</label>
-					</span>
-				</div>
-				<div class="input-group">
-					<%-- 패스워드 질문 목록 수정 시 meUpdateForm.jsp도 함께 수정해주세요.--%>
-					<span class="input-group-text col-md-4">패스워드 질문<font color="red">*</font></span>
-					<select class="form-select"	id="passwordquest" name="passwordquest" class="passwordquest">
-						<option value="-" selected>-- 선택해 주세요.
-						<option value="초등학교 이름은">초등학교 이름은?
-						<option value="아버지 성함은">아버지 성함은?
-						<option value="내가 좋아하는 동물은">내가 좋아하는 동물은?
-						<option value="내 애완동물의 이름은">내 애완동물의 이름은?
-					</select>
-				</div>
-				<div class="input-group">
-					<input class="form-control" type="text" id="passwordanswer"
-						name="passwordanswer" placeholder="답변">
-				</div>
-				<div class="input-group">
-					<span class="input-group-text col-md-3">이름 <font color="red">*</font></span>
-					<input class="form-control" type="text" id="name" name="name"
-						placeholder="이름">
-				</div>
-				<div class="input-group">
-					<span class="input-group-text col-md-3">닉네임</span> 
-					<input class="form-control" type="text"
-						id="nickname" name="nickname"
-						placeholder="닉네임 / 공란 시 랜덤한 아이디가 생성!">
-				</div>
-				<div class="input-group">
-					<span class="input-group-text col-md-3">성별 <font color="red">*</font></span>
-					<div class="form-control" align="center">
-						<label class="radio-inline radio_gender"> &nbsp;<input
-							type="radio" id="gender" name="gender" value="male" checked> 👦
-							남자
-						</label> | <label class="radio-inline radio_gender"> &nbsp;<input
-							type="radio" id="gender" name="gender" value="female">
-							👧 여자
-						</label>
+					<div class="input-group">
+						<span class="input-group-text col-md-3">아이디 <font
+							color="red">*</font></span> <input class="form-control" type="text"
+							id="id" name="id" placeholder="아이디">
 					</div>
-				</div>
-				<div class="input-group row" align="center">
-					<span class="input-group-text col-md-3">전화번호 <font
-						color="red">*</font></span> <input class="form-control" type="text"
-						id="phone" name="phone" placeholder="ex) 010-4567-1234">
-				</div>
-				<div class="input-group">
-					<span class="input-group-text col-md-3">생일 <font color="red">*</font></span>
-					<input class="form-control" type="datetime" id="birth" name="birth"
-						placeholder="YYYY/MM/DD">
-				</div>
-				<div class="input-group">
-					<span class="input-group-text col-md-3">주소 <font color="red">*</font></span>
-					<input class="form-control" type="text" id="address" name="address"
-						placeholder="ex) 경기 성남시 분당구 판교로198번길">
-				</div>
-				<div class="input-group">
-					<span class="input-group-text col-md-3">상세 주소 <font
-						color="red">*</font></span> <input class="form-control" type="text"
-						id="address_detail" name="address_detail"
-						placeholder="상세 주소를 입력하세요">
-				</div>
-				<div class="input-group">
-					<span class="input-group-text col-md-3">프로필사진</span> <input
-						class="form-control" type="file" id="profile" name="profile"
-						placeholder=".jpg, .png 파일을 올려주세요">
-				</div>
-				<div id="buttonset" class="input-group">
-					<button type="submit" class="btn button-18"
-						onclick="return validCheck();">등록</button>
-				</div>
-			</form>
+					<div class="input-group">
+						<span class="input-group-text col-md-3">비밀번호 <font
+							color="red">*</font></span> <input class="form-control" type="password"
+							id="password" name="password" placeholder="비밀번호"> <span
+							class="input-group-text col-md-3"> <label
+							class="radio-inline"> <input class="form-check-input"
+								type="checkbox" onclick="viewPassword()">🔒👀
+						</label>
+						</span>
+					</div>
+					<div class="input-group">
+						<%-- 패스워드 질문 목록 수정 시 meUpdateForm.jsp도 함께 수정해주세요.--%>
+						<span class="input-group-text col-md-4">패스워드 질문<font color="red">*</font></span>
+						<select class="form-select"	id="passwordquest" name="passwordquest" class="passwordquest">
+							<option value="-" selected>-- 선택해 주세요.
+							<option value="초등학교 이름은">초등학교 이름은?
+							<option value="아버지 성함은">아버지 성함은?
+							<option value="내가 좋아하는 동물은">내가 좋아하는 동물은?
+							<option value="내 애완동물의 이름은">내 애완동물의 이름은?
+						</select>
+					</div>
+					<div class="input-group">
+						<input class="form-control" type="text" id="passwordanswer"
+							name="passwordanswer" placeholder="답변">
+					</div>
+					<div class="input-group">
+						<span class="input-group-text col-md-3">이름 <font color="red">*</font></span>
+						<input class="form-control" type="text" id="name" name="name"
+							placeholder="이름">
+					</div>
+					<div class="input-group">
+						<span class="input-group-text col-md-3">닉네임</span> 
+						<input class="form-control" type="text"
+							id="nickname" name="nickname"
+							placeholder="닉네임 / 공란 시 랜덤한 아이디가 생성!">
+					</div>
+					<div class="input-group">
+						<span class="input-group-text col-md-3">성별 <font color="red">*</font></span>
+						<div class="form-control" align="center">
+							<label class="radio-inline radio_gender"> &nbsp;<input
+								type="radio" id="gender" name="gender" value="male" checked> 👦
+								남자
+							</label> | <label class="radio-inline radio_gender"> &nbsp;<input
+								type="radio" id="gender" name="gender" value="female">
+								👧 여자
+							</label>
+						</div>
+					</div>
+					<div class="input-group row" align="center">
+						<span class="input-group-text col-md-3">전화번호 <font
+							color="red">*</font></span> <input class="form-control" type="text"
+							id="phone" name="phone" placeholder="ex) 010-4567-1234">
+					</div>
+					<div class="input-group">
+						<span class="input-group-text col-md-3">생일 <font color="red">*</font></span>
+						<input class="form-control" type="datetime" id="birth" name="birth"
+							placeholder="YYYY/MM/DD">
+					</div>
+					<div class="input-group">
+						<span class="input-group-text col-md-3">주소 <font color="red">*</font></span>
+						<input class="form-control" type="text" id="address" name="address"
+							placeholder="ex) 경기 성남시 분당구 판교로198번길">
+					</div>
+					<div class="input-group">
+						<span class="input-group-text col-md-3">상세 주소 <font
+							color="red">*</font></span> <input class="form-control" type="text"
+							id="address_detail" name="address_detail"
+							placeholder="상세 주소를 입력하세요">
+					</div>
+					<div class="input-group">
+						<span class="input-group-text col-md-3">프로필사진</span> <input
+							class="form-control" type="file" id="profile" name="profile"
+							placeholder=".jpg, .png 파일을 올려주세요">
+					</div>
+					<div id="buttonset" class="input-group">
+						<button type="submit" class="btn button-18"
+							onclick="return validCheck();">등록</button>
+					</div>
+				</form>
+			</div>
+			<div class="col-lg-2"></div>
 		</div>
-		<!-- col-lg-8 -->
-		<div class="col-lg-2">col-lg-2</div>
 	</div>
 </body>
 <!-- [st] 다음(카카오) 주소 검색 스크립트 -->

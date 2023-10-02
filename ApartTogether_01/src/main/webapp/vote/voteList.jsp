@@ -115,6 +115,14 @@
 			font-size: 12px;
 			font-weight: 600;
 		}
+		.bg-jinheng {
+		    background-color: #3DFFA2; /* 뱃지 색상 : 초록 */
+		    color: #000000; /* 새로운 폰트 색상 (검정) */
+		}
+		.bg-magam {
+		    background-color: #FF7394; /* 뱃지 색상 : 빨강 */
+		    color: #000000; /* 새로운 폰트 색상 (검정) */
+		}
 </style>	
 <script type="text/javascript">
 		$(document).ready(function(){
@@ -153,9 +161,13 @@
 	        } else if (modeDropdown.value === "endvote") { // 검색옵션: 마감여부
 	        	keywordEndVote.style.display = "inline";
 	        	keyword.style.display = "none";
-	        } else {                                      // 검색옵션: 작성자
-	        	keywordmtype.style.display = "none";
-	        	keywordgender.style.display = "none";
+	        	$('#keywordEndVote').focus();
+	        } else if (modeDropdown.value === "voteid"){ // 검색옵션: 작성자id
+	        	keywordEndVote.style.display = "none";
+	        	keyword.style.display = "inline";
+	        	$('#keyword').focus(); // 바로 입력할 수 있도록 focus()
+	        }else if (modeDropdown.value === "nickname"){ // 검색옵션: 작성자nickname
+	        	keywordEndVote.style.display = "none";
 	        	keyword.style.display = "inline";
 	        	$('#keyword').focus(); // 바로 입력할 수 있도록 focus()
 	        }
@@ -170,19 +182,20 @@
 </head>
 <body>
 	<div class="container">
-		<h2 class="mainTitle">투표 리스트</h2>	
+		<h2 class="mainTitle">투표</h2>	
 		
 		<div class="row">
               		<div class="col-sm-12">               
 	                <form name="myform" action="<%=withFormTag%>" method="get">
-	                   <input type="hidden" name="command" value="meList">
+	                   <input type="hidden" name="command" value="voteList">
 	                   <div class="row">
 	                      <div class="col-sm-12 mode" align="right">
 	                      	
 	                         <select class="form-control-sm" id="mode" name="mode" onchange="changeMode()">
 	                            <option value="all" selected="selected">--- 검색옵션 ---
 	                            <option value="votetitle">제목
-	                            <option value="voteid">작성자
+	                            <option value="voteid">작성자 아이디
+	                            <option value="nickname">작성자 닉네임
 	                            <option value="endvote">마감여부
 	                         </select>
 	                         
@@ -227,11 +240,16 @@
 						</td>
 						
 						<td class=" col-md-1 text-center">
-							<c:if test="${bean.nickname == null}">X</c:if>
-							<c:if test="${bean.nickname != null}">${bean.nickname}</c:if>
+							<c:if test="${bean.voteid == null}">x</c:if><%-- 작성자가 탈퇴해서 null이면 X로 표시 --%>
+							<%-- <c:if test="${bean.voteid != null}">${bean.votenickname}(${bean.voteid})</c:if> --%>
+							<c:if test="${bean.voteid != null}">${requestScope.idnickmap.get(bean.voteid)}(${bean.voteid})</c:if>
 						</td>
 						
-						<td class=" col-md-1 text-center">${bean.endvote}</td>
+						<td class=" col-md-1 text-center">
+							<c:if test="${bean.endvote == '1'}"><span class="badge rounded-pill bg-magam">마감</span></c:if>
+							<c:if test="${bean.endvote == '0'}"><span class="badge rounded-pill bg-jinheng">진행중</span>
+</c:if>
+						</td>
 					</tr>
 				</c:forEach>
 				

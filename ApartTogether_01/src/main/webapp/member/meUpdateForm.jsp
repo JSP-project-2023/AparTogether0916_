@@ -131,7 +131,6 @@
   	</script>
   	<style type="text/css">
   		/* box model에 대한 공부가 필요합니다. */
-  		.container{margin-top: 10px;}
   		.input-group{margin: 7px;}
   		.input-group-text{
   			display: block;
@@ -144,7 +143,7 @@
   		.small_image{width:100px;height:100px;margin:2px;border-radius:5px;}
   	</style>
   	<style type="text/css">
-		.container {margin-top:;}
+		.container {margin-top:10px; width: 70%;}
 		
 		.input-group {
 			margin: 7px;
@@ -188,6 +187,7 @@
 		
 		/* [st] button-18 */
 		.button-18 {
+			margin:2px;
 			align-items: center;
 			background-color: #d8e4d2;
 			border: 0;
