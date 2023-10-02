@@ -33,9 +33,10 @@
 	font-weight: 600;
 }
 
-.input-group-text {
+.votecol {
 	padding: 16px;
 	margin: 5px;
+	;
 }
 
 .votetitle {
@@ -43,6 +44,8 @@
 	font-weight: 600;
 	align-items: center;
 	border-radius: 25px;
+	padding: 16px;
+	margin: 5px;
 }
 
 .btn {
@@ -50,6 +53,24 @@
 	min-width: 220px;
 	margin: 30px;
 	align-content: center;
+}
+
+/* 퍼센테이지 */
+#myProgress {
+	width: 100%;
+	background-color: #ddd;
+	max-height: 40px;
+	min-height: 50px;
+}
+
+#myBar {
+	align-self : flex-end;
+	width: 90%;
+	height: 50px;
+	background-color: red;
+	text-align: right;
+	line-height: 50px;
+	color: black;
 }
 </style>
 </head>
@@ -63,31 +84,29 @@
 			<span class="input-group-text votetitle">${requestScope.bean.votetitle}</span>
 			<!-- votetitle -->
 			<br />
-			<div class="progress" style="height:20px">
-  				<div class="progress-bar" style="width:40%;"></div>
-			</div>
-
 			<!-- 항목1 -->
-			<div class="progress" style="height: 20px">
-				<div class="progress-bar" style="width: 40%;">${requestScope.bean.votecol1}</div>
-			</div>
+			<span class="input-group-text">
+				<div id="myProgress">
+					<div id="myBar">${requestScope.bean.votecol1} 10%</div>
+				</div>
+			</span>
 			<!-- or -->
-			<span class="input-group-text votecol1">${requestScope.bean.votecol1}</span>
+			<span class="input-group-text votecol">${requestScope.bean.votecol1}</span>
 			<!-- 항목2 -->
 			<c:if test="${requestScope.bean.votecol2 ne null}">
-				<span class="input-group-text votecol2">${requestScope.bean.votecol2}</span>
+				<span class="input-group-text votecol">${requestScope.bean.votecol2}</span>
 			</c:if>
 			<!-- 항목3 -->
 			<c:if test="${requestScope.bean.votecol3 ne null}">
-				<span class="input-group-text votecol3">${requestScope.bean.votecol3}</span>
+				<span class="input-group-text votecol">${requestScope.bean.votecol3}</span>
 			</c:if>
 			<!-- 항목4 -->
 			<c:if test="${requestScope.bean.votecol4 ne null}">
-				<span class="input-group-text votecol4">${requestScope.bean.votecol4}</span>
+				<span class="input-group-text votecol">${requestScope.bean.votecol4}</span>
 			</c:if>
 			<!-- 항목5 -->
 			<c:if test="${requestScope.bean.votecol5 ne null}">
-				<span class="input-group-text votecol5">${requestScope.bean.votecol5}</span>
+				<span class="input-group-text votecol">${requestScope.bean.votecol5}</span>
 			</c:if>
 
 			<div align="center">
@@ -99,6 +118,26 @@
 	</form>
 </body>
 <script type="text/javascript">
-	
+	<script>
+	var i = 0;
+	function move() {
+		if (i == 0) {
+			i = 1;
+			var elem = document.getElementById("myBar");
+			var width = 10;
+			var id = setInterval(frame, 10);
+			function frame() {
+				if (width >= 100) {
+					clearInterval(id);
+					i = 0;
+				} else {
+					width++;
+					elem.style.width = width + "%";
+					elem.innerHTML = width + "%";
+				}
+			}
+		}
+	}
+</script>
 </script>
 </html>
