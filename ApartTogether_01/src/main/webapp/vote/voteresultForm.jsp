@@ -80,10 +80,12 @@
 		<div class="container row">
 			<br />
 			<h2 class="title" align="center">투표 결과</h2>
+			alert(' ${requestScope.bean.voteCount}');
 
 			<span class="input-group-text votetitle">${requestScope.bean.votetitle}</span>
 			<!-- votetitle -->
 			<br />
+			<c:forEach var="bean" items="${requestScope.bean.voteCount}">
 			<!-- 항목1 -->
 			<span class="input-group-text">
 				<div id="myProgress">
@@ -108,6 +110,7 @@
 			<c:if test="${requestScope.bean.votecol5 ne null}">
 				<span class="input-group-text votecol">${requestScope.bean.votecol5}</span>
 			</c:if>
+			</c:forEach>
 
 			<div align="center">
 				<button type="" class="btn button-wrapper order_bigbtn" hidden>버튼1</button>
@@ -138,6 +141,5 @@
 			}
 		}
 	}
-</script>
 </script>
 </html>
