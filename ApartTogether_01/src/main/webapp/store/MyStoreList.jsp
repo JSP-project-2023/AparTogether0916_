@@ -292,5 +292,6 @@
 		</table>
 		${requestScope.pageInfo.pagingHtml}
 	</div>
+	<%@ include file="/common/footer.jsp"%>
 </body>
 </html>

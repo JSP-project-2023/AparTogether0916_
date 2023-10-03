@@ -26,10 +26,6 @@
  	font-size: 1rem;
 }
 
-.container {
-    margin-bottom: 100px;
-}
-
 footer {
 	background-color: #373737;
     width: 100%;
@@ -40,6 +36,7 @@ footer {
     align-items: center;
     justify-content: center;
     margin-top: 150px;
+    z-index: -99;
 }
 
 .footerArea {
