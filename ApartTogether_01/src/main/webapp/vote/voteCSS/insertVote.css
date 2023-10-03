@@ -2,11 +2,11 @@
 
 .voteBG { /*투표 등록 카드 영역 회색 바탕*/
 	padding: 50px;
-	max-width: 920px;
-	margin: 0 auto;
-	margin-top: 118px;
-	background: #f1f1f1;
-	border-radius: 10px;
+    max-width: 770px;
+    margin: 0 auto;
+    margin-top: 118px;
+    background: #f1f1f1;
+    border-radius: 10px;
     box-shadow: 3px 3px 5px #b7b7b7;
 }
 .boxTitle { /*투표등록 제목 텍스트*/
@@ -19,39 +19,40 @@
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
-	max-width: 700px;
-	max-height: 720px;
+	max-width: 570px;
 	margin: 30px auto;
 }
 .votetitle { /*투표 제목 input*/
 	text-align: center;
-	background-color: #dcdcdc;
-	font-size: 20px;
-	font-weight: 600;
-	padding: 16px;
-	margin: 5px;
-	border-radius: 25px;
-	border: 1px solid #000;
-	box-shadow: 3px 3px 3px #cbcbcb;
+    background-color: #dcdcdc;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 16px;
+    height: 70px;
+    margin: 5px;
+    border-radius: 25px;
+    border: 1px solid #000;
+    box-shadow: 3px 3px 3px #cbcbcb;
 }
 .inputArea{ /*항목 입력/추가 input 전체 영역*/
 	margin-top: 30px;
 }
 .voteInputArea { /*position 설정 위한 div - (각 input, a버튼 마다)*/
 	position: relative;
-    min-height: 70px;
-    max-width: 690px;
+    min-height: 90px;
+    max-width: 560px;
 }
 .voteInputItem { /*input 입력 항목 하나하나 설정*/
     display: inline-block;
 	padding: 16px;
-	padding-right: 60px;
+	padding-right: 70px;
 	margin: 5px;
 	background-color: #f1f1f1;
 	border: 1px solid #000;
     border-radius: 5px;
     position: absolute;
     width: 100%;
+    height: 70px;
 }
 .addItem { /*항목추가 버튼*/
 	color: #757575;
@@ -59,8 +60,8 @@
 }
 .itembtn { /*항목 삭제(X), 추가(+) 버튼 - 공통*/
 	display: inline-block;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     line-height: 40px;
     text-align: center;
     color: #fff;
@@ -68,16 +69,17 @@
     /*버튼 input박스 위에 고정*/
     position: relative;
     float: right; 
-    top: 14px;
+    top: 15px;
     right: 5px;
+    border: 0;
 }
 .deleteItemBtn { /*항목 삭제(X) 버튼*/
 	background-color: #FF6464;
-    font-size: 20px;
+    font-size: 25px;
 }
 .addItemBtn { /*항목 추가(+) 버튼*/
 	background-color: #7BB0FF;
-    font-size: 28px;
+    font-size: 34px;
 }
 .btnArea { /*등록, 취소 버튼 영역*/
 	margin-top: 50px;

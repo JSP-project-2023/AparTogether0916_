@@ -2,7 +2,6 @@ package com.apartogether.model.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -12,21 +11,14 @@ import com.apartogether.model.bean.Vote;
 import com.apartogether.utility.MyUtility;
 import com.apartogether.utility.Paging;
 
-public class VoteDao extends SuperDao {
-	private int cnt = -1;
-	
-	public int InsertVote(Vote vote) throws Exception{
-		String sql = "insert into vote(voteno, votetitle, votecol1, votecol2, votecol3, votecol4, votecol5, votedate, endvote, voteid)";
-		sql += " values(seqvote.nextval, ?, ?, ?, ?, ?, ?, sysdate, default, ?)";
-		
-=======
 import java.sql.SQLException;
 import java.util.*;
 
 import com.apartogether.model.bean.Vote;
 
 public class VoteDao extends SuperDao{
-
+	private int cnt = -1;
+	
 	//기능 추가?
 	public Vote getVoteTitle(int voteno) throws SQLException {
 		String sql ="select * from vote where voteno=?";
@@ -129,30 +121,10 @@ public class VoteDao extends SuperDao{
 	public void doVote(String voteno, String id, String selectvotecol) throws SQLException {
 		String sql = "insert into votelog values (?, ?, ?)";
 
->>>>>>> lleebs.v2
 		conn = super.getConnection();
 		conn.setAutoCommit(false);
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
-<<<<<<< HEAD
-		pstmt.setString(1, vote.getVotetitle());
-		pstmt.setString(2, vote.getVotecol1());
-		pstmt.setString(3, vote.getVotecol2());
-		pstmt.setString(4, vote.getVotecol3());
-		pstmt.setString(5, vote.getVotecol4());
-		pstmt.setString(6, vote.getVotecol5());
-		pstmt.setString(7, vote.getVoteid());
-		
-		cnt = pstmt.executeUpdate();
-		conn.commit();
-		
-		if (pstmt!=null) {pstmt.close();}
-		if (conn!=null) {conn.close();}
-		
-		return cnt;
-	}
-}
-=======
 		pstmt.setString(1, voteno);
 		pstmt.setString(2, id);
 		pstmt.setString(3, selectvotecol);
@@ -208,5 +180,29 @@ public class VoteDao extends SuperDao{
 		}
 		return selectVote;
 	}
+	
+//	voteInsert (투표 게시글 등록)
+	public int InsertVote(Vote vote) throws Exception {
+		String sql = "insert into vote(voteno, votetitle, votecol1, votecol2, votecol3, votecol4, votecol5, votedate, endvote, voteid)";
+		sql += " values(seqvote.nextval, ?, ?, ?, ?, ?, ?, sysdate, default, ?)";
+		conn = super.getConnection();
+		conn.setAutoCommit(false);
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, vote.getVotetitle());
+		pstmt.setString(2, vote.getVotecol1());
+		pstmt.setString(3, vote.getVotecol2());
+		pstmt.setString(4, vote.getVotecol3());
+		pstmt.setString(5, vote.getVotecol4());
+		pstmt.setString(6, vote.getVotecol5());
+		pstmt.setString(7, vote.getVoteid());
+		
+		cnt = pstmt.executeUpdate();
+		conn.commit();
+		
+		if (pstmt!=null) {pstmt.close();}
+		if (conn!=null) {conn.close();}
+		
+		return cnt;
+	}
 }
->>>>>>> lleebs.v2
