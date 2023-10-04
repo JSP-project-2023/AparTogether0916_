@@ -48,11 +48,11 @@
 			
 		<div class="info_items titleDepth1" id="stplace">
 			<%--주소 api사용하여 주소지 받아옴.--%>
-			<span class="littleTitle">가게 주소</span><input id="stplace1" type="text" placeholder="클릭해서 주소찾기">
+			<span class="littleTitle">가게 주소</span><input id="stplace1" name="stplace1" type="text" placeholder="클릭해서 주소찾기">
 		 </div>
 		 
 		 <div class="info_items" id="stplace2">	
-		 	<span class="littleTitle">가게 상세 주소</span><input id="stplace2" type="text" placeholder="가게 상세 주소">
+		 	<span class="littleTitle">가게 상세 주소</span><input name="stplace2" type="text" placeholder="가게 상세 주소">
 		</div>
 		
 		<div class="info_items" id="storeNumber">
@@ -160,7 +160,7 @@
 		
 		<div class="info_items" id="fee">
 			<span class="littleTitle">배달비</span>
-			<input name="fee" type="number" placeholder="배달비">
+			<input name="fee" type="number" placeholder="금액 입력(숫자)">
 		</div>
 		
 		<div class="info_items" id="btime">
@@ -188,5 +188,6 @@
 		</form>	
 	</div>
 	</div>
+	<%@ include file="/common/footer.jsp"%>
 </body>
 </html>

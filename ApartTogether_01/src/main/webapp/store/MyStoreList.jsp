@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>내 가게 보기</title>
 <script type="text/javascript">
-
 	$(document).ready(function(){
 		
 		/*  페이징 - 가게명, 카테고리 mode 선택  */
@@ -110,56 +109,41 @@
 	function addStore() {
 		location.href='<%=notWithFormTag%>stInsert&id=${sessionScope.loginfo.id}';
 	}
-	
 </script>
-
-
 <style type="text/css">
-	.container {
-		margin-top: 50px;
-		
-	}
-
 	.myAddress {
 		margin-bottom: 2.5rem;
 	}
-	
 	.setSpace {
 		boarder-collapse: seperate;
 		boarder-spacing: 0 30px;
 	}
-	
 	.searchbar {
 		margin: 20 auto;
-		
 	}
-	
 	.notShow {
 		display: none;
 	}
-	
 	a {
 		text-decoration: none;
 	}
-	
 	.card-img-top {
 		width: 300px;
 		height: 300px;
 	}
-	
 	.text_dark {
 		color: #484848;
 	}
-	
 	.card-title {
 		font-weight: 600;
 		margin: 10px auto;
 	}
-	
 	.buttonList {
 		margin: 15px auto;
 	}
-	
+	.salesSplit {
+		margin-bottom: 5px;
+	}
 </style>
 
 
@@ -228,7 +212,7 @@
 						<div class="card" style="width: 19rem;">
 							<%-- 사용자가 볼 Detail 화면 링크 --%>
 							<a class="removeUnderLine" href="<%=notWithFormTag%>stMuDetail&stno=${myStoreList.stno}">
-								<img class="card-img-top" alt="${myStoreList.stname}" src="upload/${myStoreList.stlogo}">
+								<img class="card-img-top" alt="${myStoreList.stname}" src="uploadStoreImage/${myStoreList.stlogo}">
 								
 								<div class="card-body">
 									<!-- 카테고리 별 색상 부여 -->
@@ -304,7 +288,6 @@
 									</p>
 									
 <!-- 								수정, 삭제 버튼 항상 노출 -->
-									<%-- 링크 추후 확인 필요 --%>
 									<div id="buttonList" class="buttonList">
 										
 										<c:if test="${myStoreList.ststatus eq null || myStoreList.ststatus eq 'close' }">
@@ -320,11 +303,16 @@
 										<a id="updateAnchor" class="btn btn-outline-primary" href="<%=notWithFormTag%>stUpdate&id=${myStoreList.id}&stno=${myStoreList.stno}${requestScope.pageInfo.flowParameter}">
 											가게수정
 										</a>
-										
 										<a id="deleteAnchor" class="btn btn-outline-danger" onclick="deleteStore(${myStoreList.stno});">
 											삭제
 										</a>
-										
+										<div class="salesSplit"></div>
+										<a class="btn btn-outline-info" href="<%=notWithFormTag%>stSales&stno=${myStoreList.stno}">
+											매출현황
+										</a>
+										<a class="btn btn-outline-warning" href="<%=notWithFormTag%>stOrLog&id=${myStoreList.id}&stno=${myStoreList.stno}">
+											주문내역
+										</a>
 									</div>
 								</div> <!-- card-body -->
 								
@@ -339,5 +327,6 @@
 		</table>
 		${requestScope.pageInfo.pagingHtml}
 	</div>
+	<%@ include file="/common/footer.jsp"%>
 </body>
 </html>

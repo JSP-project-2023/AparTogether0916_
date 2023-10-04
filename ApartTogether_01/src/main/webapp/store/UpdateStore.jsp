@@ -183,6 +183,11 @@
 				<input name="fee" type="number" value="${bean.fee}">
 			</div>
 			
+			<div class="info_items" id="btime">
+				<span class="littleTitle">배달시간(분)</span>
+				<input name="btime" type="number" value="${bean.btime}">
+			</div>
+		
 			<div class="info_items" id="redday">
 				<span class="littleTitle">휴무일</span>
 				<input name="redday" type="text" value="${bean.redday}">

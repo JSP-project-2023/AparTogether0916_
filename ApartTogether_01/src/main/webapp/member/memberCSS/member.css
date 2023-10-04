@@ -1,0 +1,117 @@
+@font-face {
+    font-family: 'Giants-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Giants-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* { /* 별도 지정 없는 태그 기본 font */
+ 	font-family: 'NanumSquareNeo-Variable';
+ 	font-size: 1rem;
+}
+
+footer {
+	background-color: #373737;
+    width: 100%;
+    min-height: 150px;
+    position: relative;
+    transform: translateY(0%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footerArea {
+	width: 100%;
+    margin-left: 90px;
+    font-size: 0.8rem;
+    color: #fff;
+}
+
+.alert-dismissible {
+	margin: 10px;
+}
+
+.mainTitle {
+	margin: 6rem 0 3rem;
+	font-size: 2rem;
+	font-weight: bolder;
+}
+
+.subTitle {
+	margin-bottom: 4rem;
+	font-size: 1.1rem;
+}
+.body {
+	align-content: center
+}
+
+.underline {
+	border-bottom: 1px solid #d1d1d1;
+}
+
+.container_content {
+    padding-left: 50px;
+}
+
+/* [st] button-18 */
+          .button-18 {
+            align-items: center;
+            background-color: #d8e4d2;
+            color: #6f726e;
+            cursor: pointer;
+            display: inline-flex;
+            font-size: 20px;
+            font-weight: 600;
+            justify-content: center;
+            line-height: 20px;
+            max-width: 900px;
+            min-height: 50px;
+            min-width: 0px;
+            overflow: hidden;
+            padding-left: 190px;
+            padding-right: 190px;
+            text-align: center;
+            touch-action: manipulation;
+            transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+            vertical-align: middle;
+          }
+
+          .button-18:hover, .button-18:focus { 
+            background-color: #8e998c;
+            color: #ffffff;
+          }
+
+          .button-18:active {
+            background: #09223b;
+            color: rgb(255, 255, 255, .7);
+          }
+
+          .button-18:disabled { 
+            cursor: not-allowed;
+            background: rgba(0, 0, 0, .08);
+            color: rgba(0, 0, 0, .3);
+          }
+  	/* [ed] button-18 */
+  	
+  	.button-99 {
+         	cursor: pointer;
+         	font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+          }
+

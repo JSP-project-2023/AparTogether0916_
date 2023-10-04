@@ -11,9 +11,13 @@ stDelete=com.apartogether.controller.store.StoreDeleteController
 myStoreList=com.apartogether.controller.store.MyStoreListController
 stSales=com.apartogether.controller.store.StoreSalesController
 stOrLog=com.apartogether.controller.store.StoreOrderLogController
+<<<<<<< HEAD
 stOpen=com.apartogether.controller.store.StoreOpenController
 stClose=com.apartogether.controller.store.StoreCloseController
 #Munu
+=======
+#Menu
+>>>>>>> refs/remotes/origin/머지
 menuInsert=com.apartogether.controller.menu.MenuInsertController
 menuUpdate=com.apartogether.controller.menu.MenuUpdateController
 menuDelete=com.apartogether.controller.menu.MenuDeleteController
@@ -47,5 +51,10 @@ orInsert=com.apartogether.controller.order.OrderInsertController
 orDelete=com.apartogether.controller.order.OrderDeleteController
 orConfirm=com.apartogether.controller.order.OrderConfirmController
 # 커뮤니티(vote)
+voteDo=com.apartogether.controller.vote.VoteDoController
+voteView=com.apartogether.controller.vote.VoteViewController
 #voteAdd=com.apartogether.controller.vote.VoteAddController
 #voteBoard=com.apartogether.controller.vote.VoteController
+voteInsert=com.apartogether.controller.vote.VoteInsertController
+voteResult=com.apartogether.controller.vote.VoteResultController
+

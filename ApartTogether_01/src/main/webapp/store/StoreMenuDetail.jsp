@@ -12,7 +12,7 @@
 	<title>가게 상세 정보</title>
 	</head>
 <body>
-
+	<div class="container">
 	<%--가게명 변수--%>
 	<c:set var="bean" value="${requestScope.bean}"/>
 	<div class="store-container">
@@ -109,5 +109,7 @@
 			<input type="hidden" name="stno" value ="${requestScope.stno}" >
 			<button type="submit"  class="orderBtn" id="orderBtn">주문</button>
 	</form>
-</body>	
+	</div>
+</body>
+<%@ include file="/common/footer.jsp"%>
 </html>

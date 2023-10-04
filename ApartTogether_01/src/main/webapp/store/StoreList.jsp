@@ -10,7 +10,6 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-	
 	/*  페이징 - 가게명, 카테고리 mode 선택  */
 	var modeOption = $('#mode option');
 	
@@ -98,47 +97,33 @@ function addStore() {
 </script>
 
 <style type="text/css">
-	.container {
-		margin-top: 50px;
-		
-	}
-	
 	.myAddress {
 		margin-bottom: 2.5rem;
 	}
-
 	.searchbar {
 		margin: 20 auto;
-		
 	}
-	
 	.notShow {
 		display: none;
 	}
-	
 	a {
 		text-decoration: none;
 	}
-	
 	.card-img-top {
 		width: 300px;
 		height: 300px;
 	}
-	
 	.text_dark {
 		color: #484848;
 	}
-	
 	.card-title {
 		font-weight: 600;
 		margin: 10px auto;
 	}
-	
 	.buttonList {
 		margin: 15px auto;
 	}
 </style>
-
 
 </head>
 <body>
@@ -146,7 +131,7 @@ function addStore() {
 		<h2 class="mainTitle">우리 동네 맛집 리스트</h2>
 		
 		<c:if test="${sessionScope.loginfo ne null}">
-			<p class="subTitle">내 현재 주소 | ${sessionScope.loginfo.address}</p>
+			<p class="subTitle">내 현재 주소 | ${requestScope.myaddress}</p>
 		</c:if>
 
 		<table class="table table-borderless">
@@ -215,7 +200,7 @@ function addStore() {
 					
 						
 							<a class="removeUnderLine" href="<%=notWithFormTag%>stMuDetail&stno=${storeList.stno}">
-								<img class="card-img-top" alt="${storeList.stname}" src="upload/${storeList.stlogo}">
+								<img class="card-img-top" alt="${storeList.stname}" src="uploadStoreImage/${storeList.stlogo}">
 								
 								<div class="card-body">
 									<!-- 카테고리 별 색상 부여 -->
@@ -295,5 +280,7 @@ function addStore() {
 		</table>
 		${requestScope.pageInfo.pagingHtml}	
 	</div>
+
 </body>
+<%@ include file="/common/footer.jsp"%>
 </html>

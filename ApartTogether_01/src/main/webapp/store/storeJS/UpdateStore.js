@@ -93,6 +93,15 @@ function validation(){
 			$("input[name=areacode2]").focus();
 			return false;
 		}
+	
+	
+	if (confirm("가게 정보를 수정하시겠습니까?")) {
+		alert("수정되었습니다.");
+		return true;
+	} else {
+		return false;
+	}
+		
 			
 	}
 
@@ -142,6 +151,9 @@ $(document).ready(function() {
 	selectedBox(el, str);
 	
 	/*가게운영시간 코드 종료*/
+	
+
+	
 });
 
 // select 조건 찾는 함수

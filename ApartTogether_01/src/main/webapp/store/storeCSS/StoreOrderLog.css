@@ -4,7 +4,7 @@
 	font-weight: bold;
 }
 .title-2{
-	font-size: 25px;
+	font-size: 20px;
 	display: inline;
 	white-space: nowrap;
 }
@@ -20,6 +20,7 @@
 	display: flex;
 	flex-direction: row;
 	margin-top: 20px;
+	margin-bottom: 60px;
 }
 .button-area{
 	white-space: nowrap;

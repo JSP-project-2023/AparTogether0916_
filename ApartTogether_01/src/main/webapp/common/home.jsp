@@ -96,6 +96,16 @@
 		<div class="scroll-area">
 			<div class="item">높아만 지는 <u>배달비</u> </br>어떻게 해야 할까요?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
 			<div class="item">배달하는 곳을 한곳으로!</br> apartogether와 함께 하세요!</div>
+			
+			<form action="<%=withFormTag%>" method="post">
+				<input name="command" value="voteView">
+				<!-- 게시물 번호 -->
+				<input type="text" name="voteno" value="5">
+				<!-- 회원 아이디 -->
+				<input type="text" name="id" value="${sessionScope.loginfo.id}">
+				<button type="submit">투표 임시 버튼</button>
+			</form>
+			
 			<div class="item" align="center"><img alt="CoinnWallet" src="${pageContext.request.contextPath}/image/CoinnWallet.png">&nbsp;&nbsp;&nbsp;&nbsp;</div>
 		</div>
 		<div class="scroll-area">
@@ -114,5 +124,6 @@
 			<div class="item" align="right"><img alt="CoinnWallet" src="${pageContext.request.contextPath}/image/Scene_4.png">&nbsp;&nbsp;&nbsp;&nbsp;</div>
 		</div>
 	</div>
+	<%@ include file="/common/footer.jsp"%>
 </body>
 </html>

@@ -4,9 +4,10 @@
 	font-weight: bold;
 }
 .title-2{
-	font-size: 25px;
-	display: inline;
-	white-space: nowrap;
+    font-size: 20px;
+    display: inline;
+    white-space: nowrap;
+    margin-right: 25px;
 }
 .container-menu{
 	visibility: hidden;
@@ -55,6 +56,9 @@
 .button-area{
 	display: flex;
 	margin-left: auto;
+}
+.sale-menu {
+	margin-top: 50px;
 }
 
 /*테이블*/

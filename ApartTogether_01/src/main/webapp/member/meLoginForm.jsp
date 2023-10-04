@@ -141,12 +141,12 @@
 				
 				<div class="input-group" align="center">
 					<input type="text" class="form-control col-md-4" id="id" name="id" placeholder="아이디" 
-						data-bs-toggle="tooltip" data-bs-placement="right" title="아이디를 입력해 주세요">
+						data-bs-toggle="tooltip" data-bs-placement="right" title="아이디를 입력해 주세요" value="uiui">
 				</div>
 				
 				<div class="input-group" align="center">
 					<input class="form-control col-md-4" type="password" id="password" name="password" placeholder="비밀번호"
-					data-bs-toggle="tooltip" data-bs-placement="right" title="비밀번호는 영문, 숫자, 특문 포함입니다." >
+					data-bs-toggle="tooltip" data-bs-placement="right" title="비밀번호는 영문, 숫자, 특문 포함입니다." value="abc123">
 				</div>
 				<br/>
 				<!-- contextual class : btn-primary, btn-info, btn-danger -->
@@ -221,4 +221,3 @@ function kakaoLogout() {
 /* 만약 계정 연동해제를 하고 싶으면 아래 주소에 가서 연동해제하면 된다. */
 /* accounts.kakao.com/weblogin/account/info */
 </script>  -->
-</html>
