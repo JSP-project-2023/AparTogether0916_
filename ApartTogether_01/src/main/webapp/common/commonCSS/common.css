@@ -23,9 +23,16 @@
 
 * { /* 별도 지정 없는 태그 기본 font */
  	font-family: 'NanumSquareNeo-Variable';
- 	font-size: 1rem;
+ 	font-size: 16px;
 }
 
+body {
+	min-width: 561px;
+}
+.container {
+	/*footer 화면 height 적용*/
+	min-height: calc(100vh - 341px);
+}
 footer {
 	background-color: #373737;
     width: 100%;
@@ -35,7 +42,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 150px;
+    margin-top: 100px;
     z-index: -99;
 }
 
@@ -52,13 +59,13 @@ footer {
 }
 
 .mainTitle {
-	margin: 6rem 0 3rem;
+	padding: 6rem 0 3rem;
 	font-size: 2rem;
 	font-weight: bolder;
 }
 
 .subTitle {
-	margin-bottom: 4rem;
+	padding-bottom: 4rem;
 	font-size: 1.1rem;
 }
 .body {

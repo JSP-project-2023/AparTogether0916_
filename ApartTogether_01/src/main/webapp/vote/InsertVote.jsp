@@ -88,5 +88,6 @@ var nowItem = 2; /* 현재 입력 항목 개수 (카운팅) */
 			</form>
 		</div>
 	</div>
+	<%@ include file="/common/footer.jsp"%>
 </body>
 </html>
