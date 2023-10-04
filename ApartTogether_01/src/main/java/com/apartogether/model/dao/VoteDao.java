@@ -2,20 +2,14 @@ package com.apartogether.model.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-<<<<<<< HEAD
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
+import java.util.*;
 import com.apartogether.model.bean.Vote;
+import com.apartogether.model.bean.VoteCount;
+import com.apartogether.model.bean.Votelog;
 import com.apartogether.utility.MyUtility;
 import com.apartogether.utility.Paging;
-
 import java.sql.SQLException;
-import java.util.*;
 
-import com.apartogether.model.bean.Vote;
 
 public class VoteDao extends SuperDao{
 	private int cnt = -1;
@@ -35,7 +29,7 @@ public class VoteDao extends SuperDao{
 			bean.setVoteno(rs.getInt("voteno"));
 			bean.setVotetitle(rs.getString("votetitle"));
 			bean.setVoteid(rs.getString("voteid"));
-			bean.setEndVote(Integer.parseInt( rs.getString("endvote")));
+			bean.setEndvote(Integer.parseInt( rs.getString("endvote")));
 			//bean.setVotedate((rs.getString(voteno));
 		}
 
@@ -232,18 +226,7 @@ public class VoteDao extends SuperDao{
 		//문제의 코드
 		pstmt.executeUpdate();
 		conn.commit();
-		
-=======
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.apartogether.model.bean.Store;
-import com.apartogether.model.bean.Vote;
-import com.apartogether.model.bean.VoteCount;
-import com.apartogether.model.bean.Votelog;
-
-public class VoteDao extends SuperDao {
+	}
 	/* voteno 값으로만 vote 테이블 조회 */
 	public Vote getDataByPrimaryKey(int voteno) throws Exception {
 		// 기본 키 정보를 이용하여 Bean 객체를 구합니다.
@@ -268,21 +251,15 @@ public class VoteDao extends SuperDao {
 		if (rs != null) {
 			rs.close();
 		}
->>>>>>> member_merge03_lsh
+
 		if (pstmt != null) {
 			pstmt.close();
 		}
 		if (conn != null) {
 			conn.close();
 		}
-<<<<<<< HEAD
-	}
-}
-=======
-
 		return bean;
 	}
-	
 	/* voteno 값만으로 votelog 조회 */
 	public Votelog getVotelogBypk(int voteno) throws Exception {
 		// voteno 값만으로 votelog를 조회
@@ -420,7 +397,6 @@ public class VoteDao extends SuperDao {
 	}
 	
 	
-	
 	/* [getBeanData] ResultSet의 데이터를 읽어서 Bean에 기록한 다음, 반환해 줍니다. */
 	private Vote getBeanData(ResultSet rs) throws Exception {
 		Vote bean = new Vote(); /* DB순으로 생성 */
@@ -433,7 +409,7 @@ public class VoteDao extends SuperDao {
 		bean.setVotecol4(rs.getString("votecol4")); /* 투표컬럼4  */
 		bean.setVotecol5(rs.getString("votecol5")); /* 투표컬럼5  */
 		bean.setVotedate(rs.getString("votedate")); /* 투표 시작 시각 */
-		bean.setEndvote(rs.getBoolean("endvote")); /* 투표 종료 시각 */
+		bean.setEndvote(Integer.parseInt(rs.getString("endvote"))  ); /* 투표 종료 시각 */
 		bean.setVoteid(rs.getString("voteid")); /* 투표 계시한 사람 */
 
 		return bean;
@@ -457,7 +433,4 @@ public class VoteDao extends SuperDao {
 
 		return bean;
 	}
-	
-	
 }
->>>>>>> member_merge03_lsh

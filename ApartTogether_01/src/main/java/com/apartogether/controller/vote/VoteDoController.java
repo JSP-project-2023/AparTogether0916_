@@ -3,6 +3,7 @@ package com.apartogether.controller.vote;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.apartogether.controller.HomeController;
 import com.apartogether.controller.SuperClass;
 import com.apartogether.model.dao.VoteDao;
 
@@ -29,18 +30,24 @@ public class VoteDoController extends SuperClass {
 		if(voteEnd != null) {
 			if (voteEnd.equals("endvote")) {
 				dao.endVote(voteno);
-				//투표 결과 컨트롤러로 이동
+			}
+		}
+		// 처음 투표라면 삽입
+		if (voteVal.equals("0")) {
+			try {
+				dao.doVote(voteno, id, selectvotecol);
+			} catch (Exception e) {
+				super.setAlertMessage("잘못된 접근입니다.");
+			}
+		}
+		else {// 처음이 아니라면 업데이트
+			try {
+				dao.reVote(voteno, id, selectvotecol);
+			} catch (Exception e) {
+				super.setAlertMessage("잘못된 접근입니다.");
 			}
 		}
 		
-		// 처음 투표라면 삽입
-		if (voteVal.equals("0")) {
-			dao.doVote(voteno, id, selectvotecol);
-		}
-		else {// 처음이 아니라면 업데이트
-			dao.reVote(voteno, id, selectvotecol);
-		}
-
 		//투표 화면으로 이동.
 		new VoteViewController().doPost(request, response);
 	}

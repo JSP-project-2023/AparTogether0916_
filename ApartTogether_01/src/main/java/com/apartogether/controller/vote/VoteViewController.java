@@ -26,12 +26,13 @@ public class VoteViewController extends SuperClass{
 			// 투표 정보 가져오기
 			Vote voteinfo = dao.getVoteTitle(voteno);
 			request.setAttribute("voteinfo", voteinfo);
-			int resultVote = voteinfo.getEndVote();
+			int resultVote = voteinfo.getEndvote();
 			
 			
 			//투표 결과로 이동
 			if(resultVote == 1) {
 				//결과 이동 컨트롤러 추가
+				new VoteResultController().doGet(request, response);
 			}
 			else {
 				// 투표 항목 가져오기
@@ -48,13 +49,12 @@ public class VoteViewController extends SuperClass{
 					String selectVote = dao.selectVote(voteno, id);
 					request.setAttribute("selectVote", selectVote);
 				}
+				super.gotoPage("vote/voteView.jsp");
 			}
 			
 		} catch (Exception e) {
 			super.setAlertMessage("올바르지 않은 접근입니다.");
 			super.gotoPage("common/home.jsp");
 		}
-
-		super.gotoPage("vote/voteView.jsp");
 	}
 }
