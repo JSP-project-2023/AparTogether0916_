@@ -31,7 +31,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
  		
  		.container{margin-top: 50px;}
 		h2{font-weight: bold;margin-bottom:2.5rem;}
-		#subject{font-size: 20px; text-align: center;}
+		#subject{font-size: 25px; text-align: center; font-weight: bolder;}
 		.button-18 {
             align-items: center;
             background-color: #d8e4d2;
@@ -76,37 +76,49 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
             background: rgba(0, 0, 0, .08);
             color: rgba(0, 0, 0, .3);
           }
+           .bordered-div {
+            border: 1px solid grey; /* 테두리 두께와 색상을 지정합니다. */
+            border-radius: 10px;
+            padding: 30px; 
+            margin-bottom: 8px;
+            text-align: center; /* 내용을 가로로 가운데 정렬합니다. */
+		    display: flex;
+		    flex-direction: column; /* 내용을 수직으로 정렬합니다. */
+		    align-items: center; /* 수직 정렬을 가운데로 설정합니다. */
+		    justify-content: center; /* 수평 정렬을 가운데로 설정합니다. */
+            }
 </style>
 
 </head>
 <body>
 	<div class = "container">
-		<div>
 			<h2>주문 방 정보 입력</h2>
 			<p> 방 제목, 배달 위치를 입력하는 페이지 입니다. </p>
-			<form action="<%=withFormTag%>" method="post" name="form" id="form" method="post" >
-				<input type="hidden" name="command" value="roDetail"> 
-				<input type="hidden" name="stno" value = "${requestScope.stno}">
-				
-				<div id="list"></div>
-				<div id="callBackDiv">
-					<table>
-						<tr>
-							<td id = "subject" style="padding-top: 20px;"> 주소 &nbsp;&nbsp;&nbsp;</td>
-							<td ><input type="text"  onClick="goPopup();" style="width:400px;" id="roadFullAddr"  name="orderplace" placeholder="주소를 검색해주세요"/></td>
-						</tr>
-						<tr>
-							<td id = "subject" style="padding-top: 20px;"> 방제목 &nbsp;&nbsp;&nbsp; </td>
-							<td style="padding-top: 20px;"><input type="text" style="width:400px; id = "roomname" name="roomname"  placeholder="방 제목을 입력해주세요"></td>
-						</tr>
-						
-					</table>
-				</div>
-				<div style= "margin-top: 20px">
-					<button type="submit" class="button-18" >입력 완료</button>
-				</div>
-			</form>
-		</div>
+			
+			<div class="bordered-div">
+				<form action="<%=withFormTag%>" method="post" name="form" id="form" method="post" >
+					<input type="hidden" name="command" value="roDetail"> 
+					<input type="hidden" name="stno" value = "${requestScope.stno}">
+					
+					<div id="list"></div>
+					<div id="callBackDiv">
+						<table>
+							<tr>
+								<td id = "subject" style="padding-top: 20px;"> 주소 &nbsp;&nbsp;&nbsp;</td>
+								<td ><input type="text"  onClick="goPopup();" style="width:400px;" id="roadFullAddr"  name="orderplace" placeholder="주소를 검색해주세요"/></td>
+							</tr>
+							<tr>
+								<td id = "subject" style="padding-top: 20px;"> 방제목 &nbsp;&nbsp;&nbsp; </td>
+								<td style="padding-top: 20px;"><input type="text" style="width:400px; id = "roomname" name="roomname"  placeholder="방 제목을 입력해주세요"></td>
+							</tr>
+							
+						</table>
+					</div>
+					<div style= "margin-top: 20px">
+						<button type="submit" class="button-18" >입력 완료</button>
+					</div>
+				</form>
+			</div>
 		</div>
 </body>
 </html>
