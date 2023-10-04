@@ -46,8 +46,16 @@ public class PagingStore {
 		
 		// "all"이면 전체 검색
 		this.mode = mode==null ? "all" : mode ;
-		this.keyword = keyword==null ? "" : keyword ;
-		this.category = category==null ? "" : category ;
+//		this.keyword = keyword==null ? "" : keyword ;
+//		this.category = category==null ? "" : category ;
+		
+		if (keyword==null) {
+			this.keyword = "";
+			this.category = category;
+		} else {
+			this.keyword = keyword;
+			this.category = "";
+		}
 		
 		double _totalPage = Math.ceil((double)totalCount/pageSize) ;
 		totalPage = (int)_totalPage ;
@@ -261,27 +269,27 @@ public class PagingStore {
 		this.flowParameter = flowParameter;
 	}
 
-	@Override
-	public String toString() {
-		String imsi = "" ;
-		imsi += "totalCount=" + totalCount  + "<br/>";
-		imsi += "totalPage=" + totalPage  + "<br/>";
-		imsi += "pageNumber=" + pageNumber  + "<br/>";
-		imsi += "pageSize=" + pageSize  + "<br/>";
-		imsi += "beginRow=" + beginRow  + "<br/>";
-		imsi += "endRow=" + endRow  + "<br/>";
-		imsi += "pageCount=" + pageCount  + "<br/>";
-		imsi += "beginPage=" + beginPage  + "<br/>";
-		imsi += "endPage=" + endPage  + "<br/>";
-		imsi += "url=" + url  + "<br/>";
-		imsi += "pagingStatus=" + pagingStatus  + "<br/>";
-		imsi += "mode=" + mode  + "<br/>";
-		imsi += "keyword=" + keyword  + "<br/>";
-		imsi += "category=" + category + "<br/>";
-		imsi += "flowParameter=" + flowParameter  + "<br/>";
-		imsi += "<br/><br/>";
-		imsi += "pagingHtml=" + pagingHtml  + "<br/>";
-		return imsi ;
-	}	
+//	@Override
+//	public String toString() {
+//		String imsi = "" ;
+//		imsi += "totalCount=" + totalCount  + "<br/>";
+//		imsi += "totalPage=" + totalPage  + "<br/>";
+//		imsi += "pageNumber=" + pageNumber  + "<br/>";
+//		imsi += "pageSize=" + pageSize  + "<br/>";
+//		imsi += "beginRow=" + beginRow  + "<br/>";
+//		imsi += "endRow=" + endRow  + "<br/>";
+//		imsi += "pageCount=" + pageCount  + "<br/>";
+//		imsi += "beginPage=" + beginPage  + "<br/>";
+//		imsi += "endPage=" + endPage  + "<br/>";
+//		imsi += "url=" + url  + "<br/>";
+//		imsi += "pagingStatus=" + pagingStatus  + "<br/>";
+//		imsi += "mode=" + mode  + "<br/>";
+//		imsi += "keyword=" + keyword  + "<br/>";
+//		imsi += "category=" + category + "<br/>";
+//		imsi += "flowParameter=" + flowParameter  + "<br/>";
+//		imsi += "<br/><br/>";
+//		imsi += "pagingHtml=" + pagingHtml  + "<br/>";
+//		return imsi ;
+//	}	
 	
 }

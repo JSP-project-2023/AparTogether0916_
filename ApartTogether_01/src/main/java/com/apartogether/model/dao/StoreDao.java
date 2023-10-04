@@ -271,10 +271,11 @@ public class StoreDao extends SuperDao {
 		if (mode == null || mode.equals("all") || keyword == null || keyword.equals("all") || categoryItem == null || categoryItem.equals("all")) { // 전체 검색 일때는 조건 부여 x
 			System.out.println("alll!!!!");
 		} else if (!(categoryItem == null || categoryItem.equals("all")) && mode.equals("category")){
-			System.out.println("not all");
-			sql += " where " + mode + " like '%" + categoryItem + "%'";
+			System.out.println("category search");
+			sql += " where category like '%" + categoryItem + "%'";
 		} else {
-			sql += " where " + mode + " like '%" + keyword + "%'";
+			System.out.println("stname search");
+			sql += " where stname like '%" + keyword + "%'";
 		}
 		
 		conn = super.getConnection();
@@ -301,10 +302,11 @@ public class StoreDao extends SuperDao {
 		if (mode == null || mode.equals("all") || keyword == null || keyword.equals("all") || categoryItem == null || categoryItem.equals("all")) { // 전체 검색 일때는 조건 부여 x
 			System.out.println("alll!!!!");
 		} else if (!(categoryItem == null || categoryItem.equals("all")) && mode.equals("category")){
-			System.out.println("not all");
-			sql += " and " + mode + " like '%" + categoryItem + "%'";
+			System.out.println("category search");
+			sql += " and category like '%" + categoryItem + "%'";
 		} else {
-			sql += " and " + mode + " like '%" + keyword + "%'";
+			System.out.println("stname search");
+			sql += " and stname like '%" + keyword + "%'";
 		}
 		
 		conn = super.getConnection();

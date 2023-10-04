@@ -50,7 +50,7 @@ public class StoreListController extends SuperClass {
 			String url = super.getUrlInfomation("stList"); // 전체 가게 리스트 목록
 			boolean isGrid = true;
 			PagingStore pageInfo = new PagingStore(pageNumber, pageSize, totalCount, url, mode, storeName, category, isGrid);
-			
+			System.out.println();
 //			id 조건 없이 모든 가게 리스트 불러오기
 			List<Store> stList = dao.selectAll(pageInfo);
 			
