@@ -39,33 +39,39 @@ String notWithFormTag = appName + mappingName + "?command=";
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/common.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/header.css" type="text/css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
-	rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
-	rel="stylesheet">
-
-<script src="/js/sweetalert.js"></script>
-<script type="text/javascript">
-	function openHam() {
-		if ($('#ham_bg').hasClass('dontshow') == true) {
-			$('#ham_bg').removeClass('dontshow');
-			
-		} else {
-			$('#ham_bg').addClass('dontshow');
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/common.css" type="text/css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/header.css" type="text/css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
+		rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
+		rel="stylesheet">
+	
+	<script src="/js/sweetalert.js"></script>
+	
+	<!-- // SHA-256 해싱을 위해 jsSHA 라이브러리를 추가 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/2.0.2/sha256.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+	
+	<script type="text/javascript">
+		function openHam() {
+			if ($('#ham_bg').hasClass('dontshow') == true) {
+				$('#ham_bg').removeClass('dontshow');
+				
+			} else {
+				$('#ham_bg').addClass('dontshow');
+			}
 		}
-	}
-</script>
+	</script>
+	
 </head>
 
 <body>

@@ -83,7 +83,7 @@ private final String PREFIX = "member/";
 		}else {
 			bean.setProfile(mr.getFilesystemName("profile"));
 		}
-		bean.setPassword(mr.getParameter("password"));
+		bean.setPassword(mr.getParameter("hashedPassword"));
 		bean.setGender(mr.getParameter("gender"));
 		bean.setPhone(mr.getParameter("phone"));
 		bean.setBirth(mr.getParameter("birth"));

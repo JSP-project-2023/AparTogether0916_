@@ -23,12 +23,11 @@ public class MemberDeleteController extends SuperClass {
 			String mtype = bean.getMtype();
 			
 			
-				if(mtype.equals("biz")) { // 사업자가 탈퇴할 때 실행한다.
-					cnt = mdao.deleteAllMyStore(id) ; // 가게테이블에서 탈퇴하는 회원의 "가게"를 모두 삭제하는 메서드
-				}
-				cnt = mdao.deleteData(id) ; // 회원테이블에서 회원 본인을 삭제하는 메서드
+			if(mtype.equals("biz")) { // 사업자가 탈퇴할 때 실행한다.
+				cnt = mdao.deleteAllMyStore(id) ; // 가게테이블에서 탈퇴하는 회원의 "가게"를 모두 삭제하는 메서드
+			}
+			cnt = mdao.deleteData(id) ; // 회원테이블에서 회원 본인을 삭제하는 메서드
 			
-				
 			super.session.invalidate(); // 세션에 저장된 로그인 정보를 삭제한다.
 			new MemberLoginController().doGet(request, response); // 로그인페이지로 이동한다.
 		} catch (Exception e) {

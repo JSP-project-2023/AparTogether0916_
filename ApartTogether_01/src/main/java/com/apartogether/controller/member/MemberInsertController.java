@@ -30,7 +30,13 @@ public class MemberInsertController extends SuperClass {
 		bean.setId(mr.getParameter("id"));
 		bean.setMtype(mr.getParameter("mtype"));
 		bean.setName(mr.getParameter("name"));
-		bean.setPassword(mr.getParameter("password"));
+	    
+		//bean.setPassword(mr.getParameter("password"));
+		//bean.setPassword(mr.getParameter("encryptedPassword"));
+		bean.setPassword(mr.getParameter("hashedPassword"));
+		//System.out.println(mr.getParameter("password"));
+		//System.out.println(mr.getParameter("encryptedPassword"));
+		
 		bean.setPhone(mr.getParameter("phone"));
 		bean.setBirth(mr.getParameter("birth"));
 		bean.setGender(mr.getParameter("gender"));

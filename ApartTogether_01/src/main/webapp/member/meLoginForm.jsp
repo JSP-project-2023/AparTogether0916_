@@ -9,6 +9,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>아파투게더:로그인</title>
+	<!-- // SHA-256 해싱을 위해 jsSHA 라이브러리를 추가 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/2.0.2/sha256.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {	
 			var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -40,10 +42,54 @@
         }
 		/* [ed] popup 창으로 열기 */
 		
+		function cryptPassword(){
+			 // 비밀번호를 SHA-256을 사용하여 해싱
+	        var passwordInput = document.getElementById("password");
+	        var password = passwordInput.value;
+	        var hashedPassword = sha256(password);
+
+	        // 해싱된 비밀번호를 숨겨진 필드에 설정
+	        var hashedPasswordField = document.getElementById("hashedPassword");
+	        hashedPasswordField.value = hashedPassword;
+			
+			/* // 테스트용 비밀키
+	        const secretKey = 'mySecretKey';
+	     	// 암호화할 비밀번호
+	       // const password = $('#password').val();
+	        const password = 'abc123';
+
+	        // 비밀번호를 AES로 암호화
+	        const encryptedPassword = encryptAES(password, secretKey);
+	        var encryptedPasswordField = document.getElementById("encryptedPassword");
+	        encryptedPasswordField.value = encryptedPassword; */
+	        //console.log('암호화된 비밀번호:', encryptedPassword);
+
+	        // 암호화된 비밀번호를 복호화
+	        //const decryptedPassword = decryptAES(encryptedPassword, secretKey);
+	        //console.log('복호화된 비밀번호:', decryptedPassword);
+		    return true;
+		}
+		function sha256(input) {
+		    var shaObj = new jsSHA("SHA-256", "TEXT");
+		    shaObj.update(input);
+		    return shaObj.getHash("HEX");
+		}
+		// AES 암호화 함수
+		function encryptAES(plainText, secretKey) {
+		    const cipherText = CryptoJS.AES.encrypt(plainText, secretKey).toString();
+		    return cipherText;
+		}
+
+		// AES 복호화 함수
+		function decryptAES(cipherText, secretKey) {
+		    const bytes = CryptoJS.AES.decrypt(cipherText, secretKey);
+		    const plainText = bytes.toString(CryptoJS.enc.Utf8);
+		    return plainText;
+		}
 		
 	</script>
 	<style type="text/css">
-	.container{margin-top:50px;}
+	.container{margin-top:0px;}
 	.input-group{
 		margin: 7px;
 		max-width: 450px;
@@ -138,7 +184,7 @@
 				
 	
 				<form action="<%=withFormTag%>" method="post">
-					<input type="hidden" name="command" value="meLogin"> 
+					<input type="hidden" name="command" value="meLogin" onsubmit="return validCheck();"> 
 					
 					<div class="input-group" align="center">
 						<input type="text" class="form-control col-md-4" id="id" name="id" placeholder="아이디" 
@@ -149,10 +195,12 @@
 						<input class="form-control col-md-4" type="password" id="password" name="password" placeholder="비밀번호"
 						data-bs-toggle="tooltip" data-bs-placement="right" title="비밀번호는 영문, 숫자, 특문 포함입니다." >
 					</div>
+					<input type="hidden" id="encryptedPassword" name="encryptedPassword" value="...">
+					<input type="hidden" id="hashedPassword" name="hashedPassword" value="...">
 					<br/>
-					<!-- contextual class : btn-primary, btn-info, btn-danger -->
+					
 					<div align="center">
-						<button type="submit" class="btn button-wrapper button-18" >로그인</button><br/><br/>
+						<button type="submit" class="btn button-wrapper button-18" onclick="return cryptPassword();">로그인</button><br/><br/>
 						<!--
 						<button type="" class="btn button-wrapper button-18" onclick="kakaoLogin();" >카카오 로그인</button><br/>
 						<ul>

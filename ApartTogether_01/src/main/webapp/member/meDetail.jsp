@@ -120,27 +120,25 @@
 	<script type="text/javascript">
 		function meDeleteCheck(){
 			var mtype = "${requestScope.bean.mtype}";
+			var returnValue1 = confirm("정말로 탈퇴하시겠습니까?");
+			if(returnValue1 == true){
 				if(mtype == "biz") { 
-					var returnValue1 = confirm("내가 등록한 가게 정보가 모두 사라집니다. \n정말 탈퇴하시겠습니까?");
-					if(returnValue1 == true){
+					var returnValue2 = confirm("등록하신 가게의 정보가 모두 사라집니다. \n탈퇴하시겠습니까?");
+					if(returnValue2 == true){
 						$('#meDeleteCheck').val("yes");
+						alert("다음에 또 만나요~");
 					}else{
 						$('#meDeleteCheck').val("no");
 						return false;
 					}
 				}
-			
 				if(mtype == "user") { 
-					var returnValue2 = confirm("나의 주문 정보가 모두 사라집니다. \n정말 탈퇴하시겠습니까?");
-					if(returnValue2 == true){
-						$('#meDeleteCheck').val("yes");
-					}else{
-						$('#meDeleteCheck').val("no");
-						return false;
-					}
+					alert("다음에 또 만나요~");
 				} 
-				
+			}else{
+				return false;
 			}
+		}
 	</script>
 </head>
 <body>

@@ -119,7 +119,21 @@
   					}
   				}
   			}
+  	  		
+  	  		// 비밀번호를 SHA-256을 사용하여 해싱
+	        var passwordInput = document.getElementById("password");
+	        var password = passwordInput.value;
+	        var hashedPassword = sha256(password);
+
+	        // 해싱된 비밀번호를 숨겨진 필드에 설정
+	        var hashedPasswordField = document.getElementById("hashedPassword");
+	        hashedPasswordField.value = hashedPassword;
   		}
+  		function sha256(input) {
+		    var shaObj = new jsSHA("SHA-256", "TEXT");
+		    shaObj.update(input);
+		    return shaObj.getHash("HEX");
+		}
   		
   		
   	</script>
@@ -268,7 +282,6 @@
 		<c:if test="${accessMeUpdate == 1 }">
 			<%-- 열람가능 --%>
 			<h2 class="mainTitle">회원 정보 수정</h2>
-			<p>특정 회원에 대하여 정보를 수정하는 페이지 입니다.</p>
 			<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data" onsubmit="mtypeChangeCheck()">
 			
 				<input type="hidden" name="command" value="meUpdate">
@@ -324,7 +337,8 @@
 				
 				<div class="input-group" >
 					<span class="input-group-text col-md-2">비밀 번호<font color="red">*</font></span>
-					<input class="form-control" type="password" id="password" name="password"  value="${requestScope.bean.password}">		
+					<input class="form-control" type="password" id="password" name="password"  value="${requestScope.bean.password}">
+					<input type="hidden" id="hashedPassword" name="hashedPassword" value="...">
 				</div>
 				
 				<div class="input-group">
@@ -381,8 +395,8 @@
 				<div style="text-align: center;">
 					<button  type="submit" class="btn button-18 "  style=" padding-left:50px; padding-right:50px" 
 							 onclick="return validCheck();">수정</button>
-					<button type="reset" class="btn button-18 " style="padding-left:50px; padding-right:50px">초기화</button>
-			        <a href="javascript:history.go(0)" class="btn button-18 "  style=" padding-left:50px; padding-right:50px" >새로고침</a>
+					<!-- <button type="reset" class="btn button-18 " style="padding-left:50px; padding-right:50px">초기화</button> -->
+			        <a href="javascript:history.go(0)" class="btn button-18 "  style=" padding-left:50px; padding-right:50px" >초기화</a>
 				</div>
 			
 			</form>

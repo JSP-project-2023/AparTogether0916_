@@ -35,7 +35,7 @@ private final String PREFIX = "member/" ;
 			
 			
 			if(bean == null) { // 찾기 실패
-				String message = "사용자 정보가 잘못 되었습니다. 분실시 관리자에게 연락바랍니다.";
+				String message = "입력하신 정보와 일치하는 회원정보를 찾을 수 없습니다. 비밀번호 분실시 관리자에게 연락바랍니다.";
 				super.setAlertMessage(message) ;
 				super.gotoPage(PREFIX + "meFindPassword.jsp");
 				
@@ -44,7 +44,7 @@ private final String PREFIX = "member/" ;
 				// session 영역에 나의 로그인 정보를 저장합니다.
 				request.setAttribute("gotopage", gotopage);/* meFindResult.jsp에서 출력값, 분기처리를 위한 변수 */
 				String result = bean.getPassword();
-				super.setAlertMessage(bean.getId() + "님의 로그인 패스워드는 [ " + result + " ] 입니다.") ;
+				//super.setAlertMessage(bean.getId() + "님의 로그인 패스워드는 [ " + result + " ] 입니다.") ;
 				super.gotoPage(PREFIX + "meFindResult.jsp");
 			}
 			

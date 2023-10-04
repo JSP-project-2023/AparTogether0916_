@@ -37,7 +37,7 @@ public class MemberFindIdController extends SuperClass{
 			
 			
 			if(bean == null) { // 찾기 실패
-				String message = "사용자 정보가 잘못 되었습니다.";
+				String message = "입력하신 정보와 일치하는 회원정보를 찾을 수 없습니다.";
 				super.setAlertMessage(message) ;
 				super.gotoPage(PREFIX + "meFindId.jsp");
 				
@@ -47,7 +47,7 @@ public class MemberFindIdController extends SuperClass{
 				request.setAttribute("gotopage", gotopage);/* meFindResult.jsp에서 출력값, 분기처리를 위한 변수 */
 				String result = bean.getId();
 				request.setAttribute("result", result);
-				super.setAlertMessage(bean.getName() + "님의 로그인 id는 " + result + " 입니다.") ;
+				//super.setAlertMessage(bean.getName() + "님의 로그인 id는 " + result + " 입니다.") ;
 				super.gotoPage(PREFIX + "meFindResult.jsp");
 			}
 			
