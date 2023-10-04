@@ -9,7 +9,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script type="text/javascript">
-	$(document).ready(function() {
+/* 막대 그래프 움직이는거 할려고 했는데 구현 안됨 */
+	/* $(document).ready(function() {
 		var i = 0;
 		function move() {
 			if (i == 0) {
@@ -30,7 +31,7 @@
 			}
 		}
 		
-	});
+	}); */
 </script>
 
 <style type="text/css">
