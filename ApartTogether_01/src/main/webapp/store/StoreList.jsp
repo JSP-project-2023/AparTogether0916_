@@ -204,7 +204,16 @@ function addStore() {
 						<tr>
 					</c:if>
 					<td>
-						<div class="card" style="width: 19rem; ">
+					<c:choose>
+							<c:when test="${storeList.ststatus eq 'open'}">
+								<div class="card" style="width: 19rem;">
+							</c:when>		
+							<c:when test="${storeList.ststatus eq 'close'}">
+								<div class="card" style="width: 19rem; opacity: 0.35;">
+							</c:when>
+					</c:choose>
+					
+						
 							<a class="removeUnderLine" href="<%=notWithFormTag%>stMuDetail&stno=${storeList.stno}">
 								<img class="card-img-top" alt="${storeList.stname}" src="upload/${storeList.stlogo}">
 								
@@ -261,21 +270,11 @@ function addStore() {
 									</c:choose>
 									
 									<h5 class="card-title text_dark">${storeList.stname}
-									
-										<c:choose>
-											<c:when test="${storeList.ststatus eq 'open'}">
-												<span class="badge rounded-pill" style='background-color:#0000ff;'>
-													${storeList.ststatus}
-												</span>
-											</c:when>
-											
-											<c:when test="${storeList.ststatus eq 'close'}">
+											<c:if test="${storeList.ststatus eq 'close'}">
 												<span class="badge rounded-pill" style='background-color:#ff0000;'>
 													${storeList.ststatus}
 												</span>
-											</c:when>
-										</c:choose>
-									
+											</c:if>
 									</h5>
 									<input type="hidden" name="stno" value="${storeList.stno}">
 									

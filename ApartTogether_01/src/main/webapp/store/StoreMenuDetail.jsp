@@ -103,7 +103,11 @@
 			<!-- 메뉴 들어가야될 공간 끝 -->
 		</div>
 	</div>
-	
-	<button class="orderBtn" id="orderBtn">주문</button>
-</body>
+	<form action="<%=withFormTag%>" method="post">
+			<!-- 방 생성을 위해서 가게 정보를 불러옴 -->
+			<input type="hidden" name="command" value="roInsert">
+			<input type="hidden" name="stno" value ="${requestScope.stno}" >
+			<button type="submit"  class="orderBtn" id="orderBtn">주문</button>
+	</form>
+</body>	
 </html>
