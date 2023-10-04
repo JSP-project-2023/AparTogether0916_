@@ -1,36 +1,23 @@
 @charset "UTF-8";
 .container {
-	padding-left: 200px;
-	padding-right: 200px;
-	padding-top: 20px;
-	max-width: 1060px;
-	max-height: 720px;
-	margin: 0 auto;
-	margin-top: 118px;
-	background: #f1f1f1f1;
-	border-radius: 10px;
-	box-shadow: 2px 3px grey;
+	padding: 50px;
+	padding-bottom: 80px;
+    max-width: 770px;
+    margin: 0 auto;
+    margin-top: 118px;
+    background: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #b7b7b7;
 }
 .title {
 	padding: 20px;
 	font-size: 3rem;
 	font-weight: 600;
 }
-.input-group-text {
-	padding: 16px;
-	margin: 5px;
-}
 
 .votecol {
 	padding: 16px;
 	margin: 5px;
-}
-
-.votetitle {
-	background-color: #dcdcdc;
-	font-weight: 600;
-	align-items: center;
-	border-radius: 25px;
 }
 
 .btn {
@@ -40,20 +27,44 @@
 	align-content: center;
 }
 
+.votetitle {
+	text-align: center;
+    background-color: #dcdcdc;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 16px;
+    height: 70px;
+    margin: 5px;
+    border-radius: 25px;
+    border: 1px solid #000;
+    box-shadow: 3px 3px 3px #cbcbcb;
+}
+
+.input-group-text {
+	padding: 10px;
+	margin: 5px;
+	border: 1px solid #000;
+    border-radius: 5px;
+}
 /* 퍼센테이지 뒷 배경*/
 #percentage_back {
 	width: 100%;
 	background-color: #f8f9fa;
-	max-height: 20px;
-	min-height: 30px;
+	max-height: 50px;
+	min-height: 50px;
 }
 
 /* 각 항목들 퍼센테이지 */
-#percentage_each {
-	align-self : flex-end;
-	height: 30px;
-		background-color: #ff9e9e;
-	text-align: justify;
+#percentage_each {		
+	min-height: 50px;
+	font-size: 20px;
+	font-weight: 600;
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+	background-color: #ff9e9e;
+	padding: 10px;
+	text-align: right;
 	line-height: 30px;
 	color: black;
+	
 }
