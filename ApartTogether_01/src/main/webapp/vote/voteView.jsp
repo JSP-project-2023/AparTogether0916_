@@ -57,6 +57,7 @@
 									<label class="input-group-text">${votelist}
 										<input type="radio" id="after-vote" name="choice" value="${votelist}" onclick="show_image()" hidden="hidden">
 									</label>
+									<span class="inputVline"></span>
 									<img class="choice-img" src="${pageContext.request.contextPath}/vote/voteCSS/vote.png">
 								</div>
 							</c:forEach>
