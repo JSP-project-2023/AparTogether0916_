@@ -33,7 +33,8 @@ public class VoteDao extends SuperDao{
 		if(rs.next()) {
 			bean.setVoteno(rs.getInt("voteno"));
 			bean.setVotetitle(rs.getString("votetitle"));
-
+			bean.setVoteid(rs.getString("voteid"));
+			bean.setEndVote(Integer.parseInt( rs.getString("endvote")));
 			//bean.setVotedate((rs.getString(voteno));
 		}
 
@@ -91,7 +92,6 @@ public class VoteDao extends SuperDao{
 	public int voteVal(int voteno, String id) throws SQLException {
 		int val = 0;
 		
-		System.out.println(voteno + "// "+  id);
 		String sql = "select count(*) as val from votelog where voteid=? and voteno=? ";
 		
 		conn = super.getConnection();
@@ -151,6 +151,7 @@ public class VoteDao extends SuperDao{
 		pstmt.setString(2, voteno);
 		pstmt.setString(3, id);
 		
+		
 		pstmt.executeUpdate();
 		conn.commit();
 		
@@ -178,6 +179,17 @@ public class VoteDao extends SuperDao{
 		if(rs.next()) {
 			selectVote = rs.getString("selectvotecol");
 		}
+		
+		if(rs != null) {
+			rs.close();
+		}
+		if(pstmt != null) {
+			pstmt.close();
+		}
+		if(conn != null) {
+			conn.close();
+		}
+		
 		return selectVote;
 	}
 	
@@ -204,5 +216,27 @@ public class VoteDao extends SuperDao{
 		if (conn!=null) {conn.close();}
 		
 		return cnt;
+	}
+	
+	//투표 마감 여부 업데이트
+	public void endVote(String voteno) throws Exception {
+		String sql ="update vote set endvote=1 where voteno=? ";
+		
+		conn = super.getConnection();
+		conn.setAutoCommit(false);
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, voteno);	
+		
+		//문제의 코드
+		pstmt.executeUpdate();
+		conn.commit();
+		
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
 	}
 }

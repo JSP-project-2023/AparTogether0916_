@@ -20,7 +20,13 @@ function alertInfo(){
 }
 /*마감 컨펌창*/
 function endVote(){
-	alert("투표 되었습니다!");
+	if(confirm("투표 마감하시겠습니까?")){
+		//$('input[name=endVote]').val('voteIsEnd');
+		alert('마감되었습니다!😊');
+	}
+	else{
+		alert('실패😅');
+	}
 }
 
 $(document).ready(function() {

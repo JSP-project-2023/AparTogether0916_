@@ -14,6 +14,8 @@ public class VoteDoController extends SuperClass {
 		
 		VoteDao dao = new VoteDao();
 		
+		//투표 마감 파라미터
+		String voteEnd = request.getParameter("sendEndVote");
 		// 투표 게시물 번호
 		String voteno = request.getParameter("voteno");
 		// 투표한 사람
@@ -23,7 +25,13 @@ public class VoteDoController extends SuperClass {
 		// 투표 여부
 		String voteVal = request.getParameter("voteVal");
 		
-		System.out.println(voteVal);
+		// 투표 마감 여부 업데이트
+		if(voteEnd != null) {
+			if (voteEnd.equals("endvote")) {
+				dao.endVote(voteno);
+				//투표 결과 컨트롤러로 이동
+			}
+		}
 		
 		// 처음 투표라면 삽입
 		if (voteVal.equals("0")) {

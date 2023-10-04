@@ -2,7 +2,7 @@
 
 .voteBG { /*투표 등록 카드 영역 회색 바탕*/
 	padding: 50px;
-    padding-bottom: 70px;
+    padding-bottom: 20px;
     min-width: 538px;
     max-width: 770px;
     margin: 0 auto;
@@ -100,10 +100,10 @@
 .else_bigbtn:hover{
 	background-color: rgb(238, 0, 0);
 }
-#endVote{
+.endVote{
 	background-color: #FF7426;
 }
-#endVote:hover{
+.endVote:hover{
 	background-color: rgb(221, 111, 0);
 }
 
