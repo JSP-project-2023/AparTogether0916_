@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.apartogether.model.bean.Store;
 import com.apartogether.model.bean.Vote;
 import com.apartogether.model.bean.VoteCount;
 import com.apartogether.model.bean.Votelog;
@@ -80,10 +81,42 @@ public class VoteDao extends SuperDao {
 		return bean;
 	}
 	
+	/* 투표자 퍼센트를 구하기 위한 총 참여자 확인 */
+	public VoteCount getTotalvote(int voteno) throws Exception {
+		VoteCount bean = new VoteCount();
+		
+		String sql = " SELECT COUNT(*) as total FROM votelog WHERE voteno=? ";
+		
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setInt(1, voteno);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			bean.setTotal(rs.getInt("total"));
+		}
+		
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if(conn != null) {
+			conn.close();
+		}
+		
+		System.out.println(bean);
+		return bean;
+	}
+	
+	
 	public HashMap<String, Integer> voteCnt(int voteno) throws Exception {
 		// 기본 키 정보를 이용하여 Bean 객체를 구합니다.
 		HashMap<String, Integer> result = new HashMap<String, Integer>();
-		String sql = " SELECT COUNT(*) as cnt, selectvotecol FROM votelog WHERE voteno='?' " ;
+		String sql = " SELECT COUNT(*) as cnt, selectvotecol FROM votelog WHERE voteno=? " ;
 		sql += "group by selectvotecol; ";
 
 		PreparedStatement pstmt = null;
@@ -112,6 +145,41 @@ public class VoteDao extends SuperDao {
 		if (conn != null) {conn.close();}
 
 		return result;
+		/* return bean; */
+	}
+	
+	public List<VoteCount> voteCnt2(int voteno) throws Exception {
+		// 기본 키 정보를 이용하여 Bean 객체를 구합니다.
+		String sql = " SELECT COUNT(*) as cnt, selectvotecol FROM votelog WHERE voteno=? group by selectvotecol ";
+		
+		List<VoteCount> voteResult = new ArrayList<VoteCount>();
+		VoteCount bean = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		conn = super.getConnection();
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, voteno);
+
+		rs = pstmt.executeQuery();
+
+		/* VoteCount bean = null; */
+		
+		
+		while(rs.next()) {
+			bean = getvoteCountData(rs);
+			voteResult.add(getvoteCountData(rs));
+		}
+		
+		/*
+		 * if (rs.next()) { bean = this.getvoteCountData(rs); }
+		 */
+		if (rs != null) {rs.close();}
+		if (pstmt != null) {pstmt.close();}
+		if (conn != null) {conn.close();}
+
+		return voteResult;
 		/* return bean; */
 	}
 	

@@ -1,5 +1,6 @@
 package com.apartogether.controller.vote;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,20 +21,28 @@ public class VoteResultController extends SuperClass {
 		int voteno = Integer.parseInt(request.getParameter("voteno"));
 		VoteDao dao = new VoteDao();
 		Vote bean = null;
-		Map<String, Integer> result = null;
 		
+		/* HashMap<String, Integer> voteResult = new */
 		try {
-			bean = dao.getDataByPrimaryKey(voteno);
-			result = dao.voteCnt(voteno);
 			
-			if(bean == null || result == null) {
-				super.setAlertMessage("잘못된 투표 게시판의 정보입니다.");
-				super.gotoPage("common/home.jsp");
-			}else {
-				request.setAttribute("bean", bean);
-				request.setAttribute("voteCount", result);
-				super.gotoPage("vote/voteresultForm.jsp");
-			}
+			
+			VoteCount votetotal = dao.getTotalvote(voteno);
+			request.setAttribute("voteTotal", votetotal);
+			
+			
+			List<VoteCount> voteResult = dao.voteCnt2(voteno);
+			bean = dao.getDataByPrimaryKey(voteno);
+			voteResult = dao.voteCnt2(voteno);
+			
+			/* voteResult = dao.voteCnt(voteno); */
+			request.setAttribute("bean", bean);
+			/* request.setAttribute("voteCount", result); */
+			request.setAttribute("voteResult", voteResult);
+			
+			
+			
+			super.gotoPage("vote/voteresultForm.jsp");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

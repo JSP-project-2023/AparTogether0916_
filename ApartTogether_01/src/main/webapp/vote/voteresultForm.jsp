@@ -10,6 +10,26 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		var i = 0;
+		function move() {
+			if (i == 0) {
+				i = 1;
+				var elem = document.getElementById("percentage_each");
+				var width = 10;
+				var id = setInterval(frame, 10);
+				function frame() {
+					if (width >= 100) {
+						clearInterval(id);
+						i = 0;
+					} else {
+						width++;
+						elem.style.width = width + "%";
+						elem.innerHTML = width + "%";
+					}
+				}
+			}
+		}
+		
 	});
 </script>
 
@@ -55,23 +75,25 @@
 	align-content: center;
 }
 
-/* 퍼센테이지 */
-#myProgress {
+/* 퍼센테이지 뒷 배경*/
+#percentage_back {
 	width: 100%;
-	background-color: #ddd;
-	max-height: 40px;
-	min-height: 50px;
+	background-color: #f8f9fa;
+	max-height: 20px;
+	min-height: 30px;
 }
 
-#myBar {
+/* 각 항목들 퍼센테이지 */
+#percentage_each {
 	align-self : flex-end;
-	width: 90%;
-	height: 50px;
-	background-color: red;
-	text-align: right;
-	line-height: 50px;
+	height: 30px;
+		background-color: #ff9e9e;
+	text-align: justify;
+	line-height: 30px;
 	color: black;
-}
+	}
+
+	
 </style>
 </head>
 
@@ -80,36 +102,18 @@
 		<div class="container row">
 			<br />
 			<h2 class="title" align="center">투표 결과</h2>
-			alert(' ${requestScope.bean.voteCount}');
-
-			<span class="input-group-text votetitle">${requestScope.bean.votetitle}</span>
-			<!-- votetitle -->
+			
+			<span class="input-group-text votetitle">${requestScope.bean.votetitle}</span><!-- votetitle -->
 			<br />
-			<c:forEach var="bean" items="${requestScope.bean.voteCount}">
-			<!-- 항목1 -->
-			<span class="input-group-text">
-				<div id="myProgress">
-					<div id="myBar">${requestScope.bean.votecol1} 10%</div>
-				</div>
-			</span>
-			<!-- or -->
-			<span class="input-group-text votecol">${requestScope.bean.votecol1}</span>
-			<!-- 항목2 -->
-			<c:if test="${requestScope.bean.votecol2 ne null}">
-				<span class="input-group-text votecol">${requestScope.bean.votecol2}</span>
-			</c:if>
-			<!-- 항목3 -->
-			<c:if test="${requestScope.bean.votecol3 ne null}">
-				<span class="input-group-text votecol">${requestScope.bean.votecol3}</span>
-			</c:if>
-			<!-- 항목4 -->
-			<c:if test="${requestScope.bean.votecol4 ne null}">
-				<span class="input-group-text votecol">${requestScope.bean.votecol4}</span>
-			</c:if>
-			<!-- 항목5 -->
-			<c:if test="${requestScope.bean.votecol5 ne null}">
-				<span class="input-group-text votecol">${requestScope.bean.votecol5}</span>
-			</c:if>
+			<c:forEach var="voteResult" items="${requestScope.voteResult}">
+				<span class="input-group-text votecol">
+					<div id="percentage_back">
+						<div id="percentage_each"
+						style="width: ${Math.round((voteResult.cnt/requestScope.voteTotal.total)*100)}%;"> <!-- list로 반복되는 값에 따라 그래프 넓이가 변해서 style로 지정  -->
+							<dt>${voteResult.selectvotecol} / ${voteResult.cnt}명 ${Math.round((voteResult.cnt/requestScope.voteTotal.total)*100)}%</dt> 
+						</div>
+					</div>
+				</span>
 			</c:forEach>
 
 			<div align="center">
@@ -121,25 +125,6 @@
 	</form>
 </body>
 <script type="text/javascript">
-	<script>
-	var i = 0;
-	function move() {
-		if (i == 0) {
-			i = 1;
-			var elem = document.getElementById("myBar");
-			var width = 10;
-			var id = setInterval(frame, 10);
-			function frame() {
-				if (width >= 100) {
-					clearInterval(id);
-					i = 0;
-				} else {
-					width++;
-					elem.style.width = width + "%";
-					elem.innerHTML = width + "%";
-				}
-			}
-		}
-	}
+
 </script>
 </html>
