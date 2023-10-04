@@ -91,6 +91,15 @@
 			location.href='<%=notWithFormTag%>stDelete&stno=' + storeno + '&id=${sessionScope.loginfo.id}';
 		}
 	}
+	/* 가게 영업 시작 버튼 클릭시 영업 중으로 변경 */
+	function OpenStore(storeno) {
+			location.href='<%=notWithFormTag%>stOpen&stno=' + storeno + '&id=${sessionScope.loginfo.id}';
+	}
+	
+	/* 가게 영업 종료 버튼 클릭시 영업 종료로 변경 */
+	function CloseStore(storeno) {
+			location.href='<%=notWithFormTag%>stClose&stno=' + storeno + '&id=${sessionScope.loginfo.id}';
+	}
 	
 	/*  전체 선택 버튼 클릭  */
 	function searchAll() {
@@ -273,15 +282,41 @@
 										</c:when>
 									</c:choose>
 									
-									<h5 class="card-title text_dark">${myStoreList.stname}</h5>
+									<h5 class="card-title text_dark">${myStoreList.stname}
+									<c:choose>
+										<c:when test="${myStoreList.ststatus eq 'open'}">
+											<span class="badge rounded-pill" style='background-color:#0000ff;'>
+												${myStoreList.ststatus}
+											</span>
+										</c:when>
+										
+										<c:when test="${myStoreList.ststatus eq 'close'}">
+											<span class="badge rounded-pill" style='background-color:#ff0000;'>
+												${myStoreList.ststatus}
+											</span>
+										</c:when>
+									</c:choose>
+									</h5>
 									<p class="card-text text_dark">
 										배달 시간 : ${myStoreList.btime}분 <br>
 										배달팁 : <fmt:formatNumber value="${myStoreList.fee}" pattern="#,###"></fmt:formatNumber>원
+										<c:if test="${myStoreList.ststatus eq null}"> null</c:if>
 									</p>
 									
 <!-- 								수정, 삭제 버튼 항상 노출 -->
 									<%-- 링크 추후 확인 필요 --%>
 									<div id="buttonList" class="buttonList">
+										
+										<c:if test="${myStoreList.ststatus eq null || myStoreList.ststatus eq 'close' }">
+											<a id="updateAnchor" class="btn btn-outline-primary" onclick="OpenStore(${myStoreList.stno});">
+												영업시작
+											</a>
+										</c:if>
+										<c:if test="${myStoreList.ststatus eq 'open'}">
+											<a id="updateAnchor" class="btn btn-outline-danger" onclick="CloseStore(${myStoreList.stno});">
+												영업종료
+											</a>
+										</c:if>
 										<a id="updateAnchor" class="btn btn-outline-primary" href="<%=notWithFormTag%>stUpdate&id=${myStoreList.id}&stno=${myStoreList.stno}${requestScope.pageInfo.flowParameter}">
 											가게수정
 										</a>
@@ -289,6 +324,7 @@
 										<a id="deleteAnchor" class="btn btn-outline-danger" onclick="deleteStore(${myStoreList.stno});">
 											삭제
 										</a>
+										
 									</div>
 								</div> <!-- card-body -->
 								

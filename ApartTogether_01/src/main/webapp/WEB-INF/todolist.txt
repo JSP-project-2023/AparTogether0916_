@@ -11,6 +11,8 @@ stDelete=com.apartogether.controller.store.StoreDeleteController
 myStoreList=com.apartogether.controller.store.MyStoreListController
 stSales=com.apartogether.controller.store.StoreSalesController
 stOrLog=com.apartogether.controller.store.StoreOrderLogController
+stOpen=com.apartogether.controller.store.StoreOpenController
+stClose=com.apartogether.controller.store.StoreCloseController
 #Munu
 menuInsert=com.apartogether.controller.menu.MenuInsertController
 menuUpdate=com.apartogether.controller.menu.MenuUpdateController

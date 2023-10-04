@@ -84,7 +84,7 @@
 											<select class="form-control-sm" id="mode" name="mode">
 												<option value="all" selected="selected">선택해 주세요
 												<option value="category">카테고리
-												<option value="stname">가게이름
+												<option value="stname">가게명
 												<option value="orderplace">주문장소
 												
 												

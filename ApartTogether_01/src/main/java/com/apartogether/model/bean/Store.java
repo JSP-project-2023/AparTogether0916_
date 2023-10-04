@@ -18,10 +18,23 @@ public class Store {
 	private String stlogo; // 가게 로고 이미지(업로드)
 	private String redday; // 휴무일
 	private Integer btime; // 배달 시간 ex) 65분
+	private String ststatus; // 영업 상태 ex) open, close
+	
 	
 	public Store() {
 	}
 	
+	
+	public String getststatus() {
+		return ststatus;
+	}
+
+
+	public void setststatus(String ststatus) {
+		this.ststatus = ststatus;
+	}
+
+
 	public int getStno() {
 		return stno;
 	}
@@ -108,10 +121,39 @@ public class Store {
 	}
 	@Override
 	public String toString() {
-		return "Store [stno=" + stno + ", id=" + id + ", stname=" + stname + ", fee=" + fee + ", category=" + category
-				+ ", stplace=" + stplace + ", sttel=" + sttel + ", content=" + content + ", ceofile=" + ceofile
-				+ ", ceono=" + ceono + ", sttime=" + sttime + ", stlogo=" + stlogo + ", redday=" + redday + ", btime="
-				+ btime + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Store [stno=");
+		builder.append(stno);
+		builder.append(", id=");
+		builder.append(id);
+		builder.append(", stname=");
+		builder.append(stname);
+		builder.append(", fee=");
+		builder.append(fee);
+		builder.append(", category=");
+		builder.append(category);
+		builder.append(", stplace=");
+		builder.append(stplace);
+		builder.append(", sttel=");
+		builder.append(sttel);
+		builder.append(", content=");
+		builder.append(content);
+		builder.append(", ceofile=");
+		builder.append(ceofile);
+		builder.append(", ceono=");
+		builder.append(ceono);
+		builder.append(", sttime=");
+		builder.append(sttime);
+		builder.append(", stlogo=");
+		builder.append(stlogo);
+		builder.append(", redday=");
+		builder.append(redday);
+		builder.append(", btime=");
+		builder.append(btime);
+		builder.append(", ststatus=");
+		builder.append(ststatus);
+		builder.append("]");
+		return builder.toString();
 	}
 	
 }
