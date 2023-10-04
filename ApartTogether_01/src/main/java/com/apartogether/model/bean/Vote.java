@@ -2,6 +2,10 @@ package com.apartogether.model.bean;
 
 public class Vote {
 //	private Integer stno; // 가게 고유 코드
+<<<<<<< HEAD
+=======
+
+>>>>>>> member_merge03_lsh
 	// TODO 가게 고유 코드 Integer로 변경
 	private int voteno; // 가게 고유 코드
 	private String votetitle; // 회원(사업자) 아이디
@@ -11,6 +15,7 @@ public class Vote {
 	private String votecol4;
 	private String votecol5;
 	private String votedate;
+<<<<<<< HEAD
 	private int endVote; // 투표 종류 여부
 	private String voteid; // 투표 게시글 작성자
 
@@ -19,6 +24,16 @@ public class Vote {
 	
 	public Vote(int voteno, String votetitle, String votecol1, String votecol2, String votecol3, String votecol4,
 			String votecol5, String votedate, int endVote, String voteid) {
+=======
+	private boolean endvote;
+	private String voteid;
+
+	public Vote() {
+	}
+
+	public Vote(int voteno, String votetitle, String votecol1, String votecol2, String votecol3, String votecol4,
+			String votecol5, String votedate, Boolean endvote, String voteid) {
+>>>>>>> member_merge03_lsh
 		super();
 		this.voteno = voteno;
 		this.votetitle = votetitle;
@@ -28,7 +43,11 @@ public class Vote {
 		this.votecol4 = votecol4;
 		this.votecol5 = votecol5;
 		this.votedate = votedate;
+<<<<<<< HEAD
 		this.endVote = endVote;
+=======
+		this.endvote = endvote;
+>>>>>>> member_merge03_lsh
 		this.voteid = voteid;
 	}
 
@@ -36,6 +55,7 @@ public class Vote {
 	public String toString() {
 		return "Vote [voteno=" + voteno + ", votetitle=" + votetitle + ", votecol1=" + votecol1 + ", votecol2="
 				+ votecol2 + ", votecol3=" + votecol3 + ", votecol4=" + votecol4 + ", votecol5=" + votecol5
+<<<<<<< HEAD
 				+ ", votedate=" + votedate + ", endVote=" + endVote + ", voteid=" + voteid + "]";
 	}
 
@@ -45,6 +65,9 @@ public class Vote {
 
 	public void setEndVote(Integer endVote) {
 		this.endVote = endVote;
+=======
+				+ ", votedate=" + votedate + ", ednvote=" + endvote + ", voteid=" + voteid + "]";
+>>>>>>> member_merge03_lsh
 	}
 
 	/* [st] getter&setter */
@@ -55,6 +78,7 @@ public class Vote {
 	public void setVoteno(int voteno) {
 		this.voteno = voteno;
 	}
+<<<<<<< HEAD
 	public String getVoteid() {
 		return voteid;
 	}
@@ -62,6 +86,8 @@ public class Vote {
 	public void setVoteid(String voteid) {
 		this.voteid = voteid;
 	}
+=======
+>>>>>>> member_merge03_lsh
 
 	public String getVotetitle() {
 		return votetitle;
@@ -118,5 +144,25 @@ public class Vote {
 	public void setVotedate(String votedate) {
 		this.votedate = votedate;
 	}
+<<<<<<< HEAD
+=======
+
+	public boolean getEndvote() {
+		return endvote;
+	}
+
+	public void setEndvote(Boolean endvote) {
+		this.endvote = endvote;
+	}
+
+	public String getVoteid() {
+		return voteid;
+	}
+
+	public void setVoteid(String voteid) {
+		this.voteid = voteid;
+	}
+
+>>>>>>> member_merge03_lsh
 	/* [ed] getter&setter */
 }

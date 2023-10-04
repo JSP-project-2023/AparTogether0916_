@@ -33,3 +33,4 @@ voteView=com.apartogether.controller.vote.VoteViewController
 #voteAdd=com.apartogether.controller.vote.VoteAddController
 #voteBoard=com.apartogether.controller.vote.VoteController
 voteInsert=com.apartogether.controller.vote.VoteInsertController
+voteResult=com.apartogether.controller.vote.VoteResultController
