@@ -17,25 +17,9 @@
   			/* value 속성의 값이 일치하는 항목에 대하여 체크 on 시킵니다. */
 	  	  	$('input[value="${bean.gender}"]').attr('checked', true);
   			$('input[value="${bean.mtype}"]').attr('checked', true);
-  			 $('select[name="passwordquest"]').val("${bean.passwordquest}"); 
-  			 // 초기화 버튼을 눌렀을 때 원래의 passwordquest 값으로 다시 설정합니다.
+  			$('select[name="passwordquest"]').val("${bean.passwordquest}"); 
   		    $('button[type="reset"]').click(function() {
-  		    	//var originalPasswordQuest = "${bean.passwordquest}"; // 원래의 passwordquest 값
-  		       	/* $('select[name="passwordquest"]').val(originalPasswordQuest); */
-  		    	//console.log(originalPasswordQuest);
-  		    	/* 	switch(originalPasswordQuest){ //passwordquest를 위한 테이블을 만드는 대신 직접 입력합니다.
-	  				case "초등학교 이름은": pqnum = 1 ; break;
-	  				case "아버지 성함은": pqnum = 2 ; break;
-	  				case "내가 좋아하는 동물은": pqnum = 3 ; break;
-	  				case "내 애완동물의 이름은": pqnum = 4 ; break;
-	  				default: pqnum = 0;
-	  			} 
-  		    	console.log(pqnum); */
-  		    	/* console.log("${bean.passwordquest}");
-  		    	$('select[name="passwordquest"]').val(originalPasswordQuest);
-  		    	console.log("${bean.passwordquest}");
-  		    	var selectedValue = $('select[name="passwordquest"]').val();
-  		    	console.log(selectedValue); */
+  		    	
   		    });
   		});
   		/* [st] submit 유효성 검사 */
