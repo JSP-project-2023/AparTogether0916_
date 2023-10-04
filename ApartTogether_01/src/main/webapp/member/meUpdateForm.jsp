@@ -17,28 +17,25 @@
   			/* value 속성의 값이 일치하는 항목에 대하여 체크 on 시킵니다. */
 	  	  	$('input[value="${bean.gender}"]').attr('checked', true);
   			$('input[value="${bean.mtype}"]').attr('checked', true);
-  			// originalPasswordQuest : 원래의 passwordquest 값을 저장합니다.
-  		    var originalPasswordQuest = "${bean.passwordquest}";
-  			var pqnum = 0; // pqnum : Num for PasswordQuest
-  			switch(originalPasswordQuest){ //passwordquest를 위한 테이블을 만드는 대신 직접 입력합니다.
-  				case "초등학교 이름은": pqnum = 1 ; break;
-  				case "아버지 성함은": pqnum = 2 ; break;
-  				case "내가 좋아하는 동물은": pqnum = 3 ; break;
-  				case "내 애완동물의 이름은": pqnum = 4 ; break;
-  				default: pqnum = 0;
-  			} 
-  			$('select[name="passwordquest"] option').eq(pqnum).prop('selected', true); 
+  			 $('select[name="passwordquest"]').val("${bean.passwordquest}"); 
   			 // 초기화 버튼을 눌렀을 때 원래의 passwordquest 값으로 다시 설정합니다.
   		    $('button[type="reset"]').click(function() {
-  		    	console.log(originalPasswordQuest);
-  		    	switch(originalPasswordQuest){ //passwordquest를 위한 테이블을 만드는 대신 직접 입력합니다.
+  		    	//var originalPasswordQuest = "${bean.passwordquest}"; // 원래의 passwordquest 값
+  		       	/* $('select[name="passwordquest"]').val(originalPasswordQuest); */
+  		    	//console.log(originalPasswordQuest);
+  		    	/* 	switch(originalPasswordQuest){ //passwordquest를 위한 테이블을 만드는 대신 직접 입력합니다.
 	  				case "초등학교 이름은": pqnum = 1 ; break;
 	  				case "아버지 성함은": pqnum = 2 ; break;
 	  				case "내가 좋아하는 동물은": pqnum = 3 ; break;
 	  				case "내 애완동물의 이름은": pqnum = 4 ; break;
 	  				default: pqnum = 0;
 	  			} 
-	  			$('select[name="passwordquest"] option').eq(pqnum).prop('selected', true); 
+  		    	console.log(pqnum); */
+  		    	/* console.log("${bean.passwordquest}");
+  		    	$('select[name="passwordquest"]').val(originalPasswordQuest);
+  		    	console.log("${bean.passwordquest}");
+  		    	var selectedValue = $('select[name="passwordquest"]').val();
+  		    	console.log(selectedValue); */
   		    });
   		});
   		/* [st] submit 유효성 검사 */
@@ -398,11 +395,10 @@
 			
 			
 				<div style="text-align: center;">
-				<button  type="submit" class="btn button-18 "  style=" padding-left:50px; padding-right:50px" 
-						 onclick="return validCheck();">수정</button>
-				<button type="reset" class="btn button-18 " style="padding-left:50px; padding-right:50px"  
-				        onclick="">
-						초기화</button>
+					<button  type="submit" class="btn button-18 "  style=" padding-left:50px; padding-right:50px" 
+							 onclick="return validCheck();">수정</button>
+					<button type="reset" class="btn button-18 " style="padding-left:50px; padding-right:50px">초기화</button>
+			        <a href="javascript:history.go(0)" class="btn button-18 "  style=" padding-left:50px; padding-right:50px" >새로고침</a>
 				</div>
 			
 			</form>
