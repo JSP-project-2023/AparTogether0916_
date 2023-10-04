@@ -14,6 +14,9 @@ public class VoteViewController extends SuperClass{
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doPost(request, response);
 		
+		
+		//투표 결과 controller가져오기
+		
 		// 투표 게시물 가져오기
 		int voteno = Integer.parseInt(request.getParameter("voteno"));
 
