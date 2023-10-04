@@ -84,6 +84,8 @@
             margin-bottom: 8px;
          
             /* 내부 여백을 추가합니다. */
+            
+            
         }
         #insertComment {border-bottom : none;}
     </style>
