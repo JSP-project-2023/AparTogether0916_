@@ -116,6 +116,7 @@ footer {
     height: 50px;
     font-size: 1rem;
     border: 0;
+    border-radius: 25px;
 }
 
 /*big button 색상 (추가, 수정, 삭제)*/
@@ -168,3 +169,60 @@ footer {
 	color: #000000;
 }
 
+.cardArea {
+	display: flex;
+}
+.card-content{
+    max-width: 800px;
+    margin: 0 auto;
+    flex-direction: column;
+/*    justify-content: center;*/
+    margin-bottom: 0;
+    padding: 68px 60px;
+    display: flex;
+    background-color: #fff;
+    border-radius: 20px;
+    /* overflow: hidden; */
+    box-shadow: 0 2px 12px rgba(3, 3, 3, .08);
+}
+.inputArea {
+	margin-bottom: 40px;
+	width: fit-content;
+}
+.mustInput {
+	color: #ff6000;
+    font-weight: 500;
+}
+.input-field-label {
+	color: #303030;
+    font-weight: 700;
+    line-height: 1.111em;
+    display: block;
+    margin-bottom: 10px;
+}
+.input_text {
+    min-height: 65px;
+    min-width: 600px;
+    filter: none;
+    color: #454545;
+    cursor: auto;
+    background-color: #fff;
+    border: 1px solid #ededed;
+    border-radius: 100px;
+    margin-bottom: 0;
+    padding: 16px 24px;
+    font-size: 16px;
+    line-height: 1.111em;
+    transition: box-shadow .3s, color .3s, border-color .3s;
+    box-shadow: 0 1px 8px rgba(3, 3, 3, .06);
+}
+.input_text:hover {
+    border-color: #ff6000;
+    box-shadow: 0 2px 12px rgba(3, 3, 3, .1);
+}
+.input_text:focus {
+	color: #0b0b0b;
+	outline: none !important;
+    border-color: #ff6000;
+    box-shadow: 0 2px 12px rgba(3, 3, 3, .1);
+}
