@@ -46,11 +46,11 @@ public class VoteInsertController extends SuperClass {
 			if (cnt == -1) {
 //				실패
 				super.setAlertMessage("투표 등록에 실패하였습니다.");
-//				new VoteListController 이동
+				new VoteListController().doGet(request, response);
 				
 			} else { // 성공
 				super.setSuccessAlertMessage("투표 등록이 완료되었습니다.");
-//				new VoteListController 이동
+				new VoteListController().doGet(request, response);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

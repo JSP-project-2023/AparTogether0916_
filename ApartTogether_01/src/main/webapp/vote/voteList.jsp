@@ -268,14 +268,13 @@
 		</table>	
 		${requestScope.pageInfo.pagingHtml}
 		
-		
+		<%--
 		<div id="backButton">
 			<button type="button"  class="btn button-18 "  style=" padding-left:20px; padding-right:20px" onclick="history.back();">
 				돌아 가기
 			</button>
 		</div>
-	
-	
+	 --%>
 		
 	</div>	 
 </body>

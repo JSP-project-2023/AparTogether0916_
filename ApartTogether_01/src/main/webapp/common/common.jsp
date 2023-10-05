@@ -139,7 +139,7 @@ String notWithFormTag = appName + mappingName + "?command=";
 							<li>
 								<a class="" href="<%=notWithFormTag%>voteList">투표</a>
 							</li>
-							<c:if test="${whologin eq 1}">
+							<c:if test="${whologin ne 0}">
 								<li>
 									<a class="" href="<%=notWithFormTag%>voteInsert">투표 등록</a>
 								</li>
