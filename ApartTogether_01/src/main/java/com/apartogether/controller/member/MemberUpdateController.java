@@ -1,7 +1,11 @@
 package com.apartogether.controller.member;
 
+import java.util.Base64;
 import java.util.List;
 
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,6 +27,15 @@ private final String PREFIX = "member/";
 		Member bean = dao.getDataByPrimaryKey(id);
 		request.setAttribute("bean", bean);
 		System.out.println(bean.toString());
+		
+		//[ST]비밀번호 복호화
+			// AES 암호화를 위한 키와 IV
+	        String key = "mySecretKey12345"; // 16, 24 또는 32 바이트
+	        String iv = "myInitialization"; // 16 바이트
+			String password = bean.getPassword();
+			String decryptedPassword = decryptAES(password, key, iv);
+			request.setAttribute("decryptedPassword", decryptedPassword) ;
+		//[ED]비밀번호 복호화
 		
 		// Δ를 기준으로 주소를 나눈다.
 		String[] addressSet = bean.getAddress().split("Δ");
@@ -83,7 +96,17 @@ private final String PREFIX = "member/";
 		}else {
 			bean.setProfile(mr.getFilesystemName("profile"));
 		}
-		bean.setPassword(mr.getParameter("hashedPassword"));
+		
+		//[ST]비밀번호 암호화
+			// AES 암호화를 위한 키와 IV
+	        String key = "mySecretKey12345"; // 16, 24 또는 32 바이트
+	        String iv = "myInitialization"; // 16 바이트
+			String password = mr.getParameter("password");
+			String encryptedPassword = encryptAES(password, key, iv);
+		//[ED]비밀번호 암호화
+			
+		bean.setPassword(encryptedPassword);
+		
 		bean.setGender(mr.getParameter("gender"));
 		bean.setPhone(mr.getParameter("phone"));
 		bean.setBirth(mr.getParameter("birth"));
@@ -117,4 +140,22 @@ private final String PREFIX = "member/";
 			e.printStackTrace();
 		}
 	}
+	public static String encryptAES(String plaintext, String key, String iv) throws Exception {
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes("UTF-8"), "AES");
+        IvParameterSpec ivParameterSpec = new IvParameterSpec(iv.getBytes("UTF-8"));
+        cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec, ivParameterSpec);
+        byte[] encryptedBytes = cipher.doFinal(plaintext.getBytes("UTF-8"));
+        return Base64.getEncoder().encodeToString(encryptedBytes);
+    }
+
+    public static String decryptAES(String encryptedText, String key, String iv) throws Exception {
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes("UTF-8"), "AES");
+        IvParameterSpec ivParameterSpec = new IvParameterSpec(iv.getBytes("UTF-8"));
+        cipher.init(Cipher.DECRYPT_MODE, secretKeySpec, ivParameterSpec);
+        byte[] encryptedBytes = Base64.getDecoder().decode(encryptedText);
+        byte[] decryptedBytes = cipher.doFinal(encryptedBytes);
+        return new String(decryptedBytes, "UTF-8");
+    }
 }

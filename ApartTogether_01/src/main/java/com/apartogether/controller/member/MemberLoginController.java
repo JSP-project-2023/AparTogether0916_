@@ -42,18 +42,14 @@ public class MemberLoginController extends SuperClass{
 			//password = mr.getParameter("hashedPassword") ;
 		}
 		
-		// AES 암호화를 위한 키와 IV
-        String key = "mySecretKey12345"; // 16, 24 또는 32 바이트
-        String iv = "myInitialization"; // 16 바이트
-
-        // AES 암호화
-        String encryptedPassword = encryptAES(password, key, iv);
-
-        // AES 복호화
-        //String decryptedPassword = decryptAES(encryptedPassword, key, iv);
-        //System.out.println("복호화된 비밀번호: " + decryptedPassword);
-		
-		//System.out.println(id + "/" + password);
+		//[ST]비밀번호 암호화
+			// AES 암호화를 위한 키와 IV
+	        String key = "mySecretKey12345"; // 16, 24 또는 32 바이트
+	        String iv = "myInitialization"; // 16 바이트
+	        // AES 암호화
+	        String encryptedPassword = encryptAES(password, key, iv);
+        //[ED]비밀번호 암호화
+        
         System.out.println(id + "/" + encryptedPassword);
 		
 		MemberDao dao = new MemberDao() ;

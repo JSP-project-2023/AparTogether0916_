@@ -35,13 +35,15 @@ public class MemberInsertController extends SuperClass {
 		bean.setMtype(mr.getParameter("mtype"));
 		bean.setName(mr.getParameter("name"));
 		
-	    String password = mr.getParameter("password");
-	    // AES 암호화를 위한 키와 IV
-        String key = "mySecretKey12345"; // 16, 24 또는 32 바이트
-        String iv = "myInitialization"; // 16 바이트
-        // AES 암호화
-        String encryptedPassword = encryptAES(password, key, iv);
-		bean.setPassword(encryptedPassword);
+		//[ST]비밀번호 암호화
+		    String password = mr.getParameter("password");
+		    // AES 암호화를 위한 키와 IV
+	        String key = "mySecretKey12345"; // 16, 24 또는 32 바이트
+	        String iv = "myInitialization"; // 16 바이트
+	        // AES 암호화
+	        String encryptedPassword = encryptAES(password, key, iv);
+			bean.setPassword(encryptedPassword);
+		//[ED]비밀번호 암호화
 		
 		bean.setPhone(mr.getParameter("phone"));
 		bean.setBirth(mr.getParameter("birth"));

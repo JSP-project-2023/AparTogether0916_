@@ -119,21 +119,7 @@
   					}
   				}
   			}
-  	  		
-  	  		// 비밀번호를 SHA-256을 사용하여 해싱
-	        var passwordInput = document.getElementById("password");
-	        var password = passwordInput.value;
-	        var hashedPassword = sha256(password);
-
-	        // 해싱된 비밀번호를 숨겨진 필드에 설정
-	        var hashedPasswordField = document.getElementById("hashedPassword");
-	        hashedPasswordField.value = hashedPassword;
   		}
-  		function sha256(input) {
-		    var shaObj = new jsSHA("SHA-256", "TEXT");
-		    shaObj.update(input);
-		    return shaObj.getHash("HEX");
-		}
   		
   		
   	</script>
@@ -321,7 +307,7 @@
 					<%-- profile가 null인 상태라면 기본이미지(default.jpg)를 보여줍니다. --%>
 					<c:if test="${requestScope.bean.profile == null}">
 						<img class="card-img-top  small_image rounded" alt="기본이미지" 
-						src="./../upload/defaultprofile.jpg"  >
+								src="image/defaultProfile.jpeg"  >
 					</c:if>
 					<c:if test="${requestScope.bean.profile != null}">
 						<img class="card-img-top  small_image rounded" alt="${requestScope.bean.profile}" 
@@ -337,8 +323,7 @@
 				
 				<div class="input-group" >
 					<span class="input-group-text col-md-2">비밀 번호<font color="red">*</font></span>
-					<input class="form-control" type="password" id="password" name="password"  value="${requestScope.bean.password}">
-					<input type="hidden" id="hashedPassword" name="hashedPassword" value="...">
+					<input class="form-control" type="password" id="password" name="password"  value="${requestScope.decryptedPassword}">
 				</div>
 				
 				<div class="input-group">
