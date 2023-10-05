@@ -9,7 +9,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<<<<<<< HEAD
  
+=======
+>>>>>>> origin/sup_new_branch02
 <!-- [st] whologin 변수는 현재 로그인 상태를 알려 주는 변수입니다.  미로그인(0)  관리자 (1) 사업자 (2) 일반회원 (3) -->
 <c:if test="${empty sessionScope.loginfo}">
 	<c:set var="whologin" value="0" />
@@ -29,8 +32,10 @@
 	</c:if>
 	
 </c:if>
-<!-- [ed] whologin 변수는 현재 로그인 상태를 알려 주는 변수입니다.  미로그인(0)  관리자 (1) 사업자 (2) 일반회원 (3) -->
 
+<c:if test="${empty sessionScope.loginfo}">
+	<c:set var="whologin" value="0" />
+</c:if>
 <%
 // appName : 애플리케이션 이름(프로젝트 이름_Teacher)
 String appName = request.getContextPath();
@@ -40,11 +45,17 @@ String withFormTag = appName + mappingName;
 
 // form 태그가 아닌 영역에서 사용할 변수
 String notWithFormTag = appName + mappingName + "?command=";
+
+//out.print("프로젝트 이름 : " + appName + "<br/>") ;
+//out.print("mappingName : " + mappingName + "<br/>") ;
+//out.print("withFormTag : " + withFormTag + "<br/>") ;
+//out.print("notWithFormTag : " + notWithFormTag + "<br/>") ;
 %>
 
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/common.css" type="text/css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/header.css" type="text/css">
@@ -73,6 +84,35 @@ String notWithFormTag = appName + mappingName + "?command=";
 				$('#ham_bg').addClass('dontshow');
 			}
 		}
+=======
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 이 파일은 모든 문서에서 공용으로 참조할 파일입니다.  -->
+<!-- 자바 관련 변수 및 패키지 임포트, 네비게이션 바, jstl 등등 -->
+<!-- for sweet alert -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/common.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/header.css" type="text/css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
+	rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
+	rel="stylesheet">
+<script src="/js/sweetalert.js"></script>
+<script type="text/javascript">
+	function openHam() {
+		if ($('#ham_bg').hasClass('dontshow') == true) {
+			$('#ham_bg').removeClass('dontshow');
+			
+		} else {
+			$('#ham_bg').addClass('dontshow');
+>>>>>>> origin/sup_new_branch02
 	</script>
 	
 </head>
@@ -113,12 +153,10 @@ String notWithFormTag = appName + mappingName + "?command=";
 						<ul class="subnavbar_menu">
 							<c:if test="${whologin ne 0}">
 								<li>
-									<a class="" href="<%=notWithFormTag%>myorList">주문내역(href : null)</a>
 									<a class="" href="<%=notWithFormTag%>myorList">주문내역</a>
 								</li>
 							</c:if>
 							<li>
-								<a class="" href="<%=notWithFormTag%>roList">모집 중인 주문(href : null)</a>
 								<a class="" href="<%=notWithFormTag%>roList">모집 중인 주문</a>
 							</li>
 						</ul>
@@ -244,12 +282,10 @@ String notWithFormTag = appName + mappingName + "?command=";
 						<ul class="sub_hamnav_menu">
 							<c:if test="${whologin ne 0}">
 								<li>
-									<a class="" href="<%=notWithFormTag%>myorList">주문내역(href : null)</a>
 									<a class="" href="<%=notWithFormTag%>myorList">주문내역</a>
 								</li>
 							</c:if>
 							<li>
-								<a class="" href="<%=notWithFormTag%>roList">모집 중인 주문(href : null)</a>
 								<a class="" href="<%=notWithFormTag%>roList">모집 중인 주문</a>
 							</li>
 						</ul>
@@ -264,7 +300,11 @@ String notWithFormTag = appName + mappingName + "?command=";
 							</li>
 							<c:if test="${whologin ne 0}">
 								<li>
+<<<<<<< HEAD
 									<a class="" href="<%=notWithFormTag%>voteInsert">투표 등록</a>
+=======
+									<a class="" href="<%=notWithFormTag%>voteInsert">투표 등록(href : null)</a>
+>>>>>>> origin/sup_new_branch02
 								</li>
 							</c:if>
 						</ul>

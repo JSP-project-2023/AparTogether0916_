@@ -26,11 +26,11 @@ public class MemberDao extends SuperDao {
 		String sql = " update members set mtype = ? , name = ? ,  phone = ? , birth = ? , gender = ? , nickname = ? , address = ? , profile = ? , passwordanswer = ? , passwordquest = ?, password = ? " ;
 		sql += " where id = ? " ;
 		int cnt = -1 ;
-		
+
 		conn = super.getConnection();
 		conn.setAutoCommit(false);
 		pstmt = conn.prepareStatement(sql);
-		
+
 		pstmt.setString(1, bean.getMtype());
 		pstmt.setString(2, bean.getName());
 		pstmt.setString(3, bean.getPhone());
@@ -43,41 +43,43 @@ public class MemberDao extends SuperDao {
 		pstmt.setString(10, bean.getPasswordquest());
 		pstmt.setString(11, bean.getPassword());
 		pstmt.setString(12, bean.getId());
-		
 		cnt = pstmt.executeUpdate();
 		conn.commit();
-		
+
 		if(pstmt != null) {pstmt.close();}
 		if(conn != null) {conn.close();}
-		
+
 		return cnt;
 	}
-	
-	public int deleteData(String id)  throws Exception{ 
+
+	public int deleteData(String id)  throws Exception{
 		// MemberDeleteController.doGet에서 사용합니다.
 		// id 회원이 탈퇴합니다.
 		int cnt = -1 ;
 		String sql = "" ;
 		Member bean = this.getDataByPrimaryKey(id);
 		PreparedStatement pstmt = null;
- 		
+
 		conn = super.getConnection();
 		conn.setAutoCommit(false);
-		
+
 		// 회원 테이블의 id 행을 삭제
 		sql = " delete from members where id = ? " ;
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, id);
 		cnt = pstmt.executeUpdate();
-		
+
 		if(pstmt!=null) {pstmt.close();}
-		
+
 		conn.commit();
 		if(conn!=null) {conn.close();}
 		return cnt ;
 	}
+<<<<<<< HEAD
   
 	/* [selectAll(pageinfo를 위함)] TopN 구문을 사용하여 페이징 처리된 게시물 목록을 반환합니다. */
+=======
+>>>>>>> origin/sup_new_branch02
 	public List<Member> selectAll(Paging pageInfo) throws Exception {
 
 		PreparedStatement pstmt = null;
@@ -85,7 +87,7 @@ public class MemberDao extends SuperDao {
 
 		String sql = " select id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest ";
 		sql += " from ";
-		sql += " (select id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest, rank() over(order by id asc) as ranking ";  
+		sql += " (select id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest, rank() over(order by id asc) ";
 		sql += " from members) ";
 		sql += " where ranking between ? and ? ";
 
@@ -279,31 +281,27 @@ public class MemberDao extends SuperDao {
 		if (rs.next()) {
 			bean = this.getBeanData(rs);
 		}
-
-		if (rs != null) {
-			rs.close();
-		}
-		if (pstmt != null) {
-			pstmt.close();
-		}
-		if (conn != null) {
-			conn.close();
-		}
-
+		
+		if(rs!=null) {rs.close();}
+		if(pstmt!=null) {pstmt.close();}
+		if(conn!=null) {conn.close();}
+		
 		return bean;
 	}
-
+	
+	
+	
 	/* [getDataByPk] id,pw값으로 member 조회 */
-	public Member getDataByPk(String id, String password) throws Exception {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		String sql = " select * from members ";
-		sql += " where id = ? and password = ? ";
-
-		conn = super.getConnection(); // 단계 02
-		pstmt = conn.prepareStatement(sql); // 단계 03
-
+	public Member getDataByPk(String id, String password) throws Exception {		
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
+		
+		String sql = " select * from members" ;
+		sql += " where id = ? and password = ?" ;
+		
+		conn = super.getConnection() ; // 단계 02		
+		pstmt = conn.prepareStatement(sql) ; // 단계 03
+		
 		pstmt.setString(1, id);
 		pstmt.setString(2, password);
 
@@ -390,36 +388,32 @@ public class MemberDao extends SuperDao {
 	}
 
 	/* [getBeanData] ResultSet의 데이터를 읽어서 Bean에 기록한 다음, 반환해 줍니다. */
-	private Member getBeanData(ResultSet rs) throws Exception {
-		Member bean = new Member(); /* DB순으로 생성 */
-
-		bean.setId(rs.getString("id")); /* 멤버 아이디 */
-		bean.setMtype(rs.getString("mtype")); /* admin / user / biz | 3종류 */
-		bean.setName(rs.getString("name")); /* 이름 */
-		bean.setPassword(rs.getString("password")); /* 패스워드 */
-		bean.setPhone(rs.getString("phone")); /* 휴대폰번호(String형식) */
+	private Member getBeanData(ResultSet rs) throws Exception{
+		Member bean = new Member()  ;				/* DB순으로 생성 */
+													
+		bean.setId(rs.getString("id"));				/* 멤버 아이디 */
+		bean.setMtype(rs.getString("mtype")); 		/* admin / user / biz | 3종류 */
+		bean.setName(rs.getString("name"));			/* 이름 */
+		bean.setPassword(rs.getString("password"));	/* 패스워드 */
+		bean.setPhone(rs.getString("phone"));		/* 휴대폰번호(String형식) */
 		bean.setBirth(String.valueOf(rs.getDate("birth")));
 		bean.setGender(rs.getString("gender")); /* male / female | 성별 */
 		bean.setNickname(rs.getString("nickname")); /* 닉네임 */
-		
-		
 		bean.setAddress(rs.getString("address")); /* 주소 */
-		
-		
 		bean.setProfile(rs.getString("profile")); /* 프로필 이미지 */
 		bean.setPasswordanswer(rs.getString("passwordanswer")); /* 패스워드 질문, 답변 */
 		bean.setPasswordquest(rs.getString("passwordquest")); /* 패스워드 질문, 질문란 */
 
 		return bean;
 	}
-
+	
 	/* [InsertData] Member bean에 기록한 다음, 반환해 줍니다. */
 	public int InsertData(Member bean) throws Exception {
 		System.out.println("MD.InsertData : " + bean);
 
 		// Bean 객체 정보를 이용하여 데이터 베이스에 추가합니다.
 		String sql = " insert into members(id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest) " ;
-		sql += " values(					?,	   ?,	 ?,	       ?,	  ?,     ?,	     ?, 	   ?,	    ?,	     ?,              ?,             ?) " ; 
+		sql += " values(					?,	   ?,	 ?,	       ?,	  ?,     ?,	     ?, 	   ?,	    ?,	     ?,              ?,             ?) " ;
 		int cnt = -1 ;
 		PreparedStatement pstmt = null ;
 		
@@ -439,52 +433,43 @@ public class MemberDao extends SuperDao {
 		pstmt.setString(10, bean.getProfile());
 		pstmt.setString(11, bean.getPasswordanswer());
 		pstmt.setString(12, bean.getPasswordquest());
-			
-		cnt = pstmt.executeUpdate() ; 
+
+		cnt = pstmt.executeUpdate() ;
 
 		conn.commit();
-
-		if (pstmt != null) {
-			pstmt.close();
-		}
-		if (conn != null) {
-			conn.close();
-		}
-
-		return cnt;
+		
+		if(pstmt != null) {pstmt.close();}
+		if(conn != null) {conn.close();}
+		
+		return cnt ;
 	}
-
+	
+	
 	/* [selectAll] member List객체에 담아서 '모든 정보' 조회 */
-	public List<Member> selectAll() throws Exception {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
+	public List<Member> selectAll() throws Exception{
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
+		
 		String sql = " select * from members order by name asc";
-
+		
 		conn = super.getConnection();
-		pstmt = conn.prepareStatement(sql);
-
-		rs = pstmt.executeQuery();
-
+		pstmt = conn.prepareStatement(sql) ;
+		
+		rs = pstmt.executeQuery() ;
+		
 		List<Member> lists = new ArrayList<Member>();
-
-		while (rs.next()) {
-			lists.add(getBeanData(rs));
+		
+		while(rs.next()) {
+			lists.add(getBeanData(rs)) ;
 		}
-
-		if (rs != null) {
-			rs.close();
-		}
-		if (pstmt != null) {
-			pstmt.close();
-		}
-		if (conn != null) {
-			conn.close();
-		}
-
+		
+		if(rs != null) {rs.close();}
+		if(pstmt != null) {pstmt.close();}
+		if(conn != null) {conn.close();}
+		
 		return lists;
 	}
-  
+
   /* [st] 아이디 랜덤 생성 */
 	public static String RandomName() {
 		List<String> firstname = Arrays.asList("빛나는", "눈부시게웃는", "떠들썩한", "소리치는", "들떠있는", "찾는", "발견하는", "차마시는", "햇볕에맞는",

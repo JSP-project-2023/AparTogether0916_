@@ -3,6 +3,7 @@ package com.apartogether.controller.vote;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.apartogether.controller.HomeController;
 import com.apartogether.controller.SuperClass;
 import com.apartogether.model.dao.VoteDao;
 
@@ -46,6 +47,10 @@ public class VoteDoController extends SuperClass {
 				super.setAlertMessage("잘못된 접근입니다.");
 			}
 		}
+<<<<<<< HEAD
+=======
+		
+>>>>>>> origin/sup_new_branch02
 		//투표 화면으로 이동.
 //		new VoteViewController().doPost(request, response);
 		new VoteListController().doGet(request, response);

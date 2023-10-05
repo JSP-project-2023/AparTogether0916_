@@ -13,6 +13,7 @@ public class VoteViewController extends SuperClass{
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doPost(request, response);
+				
 		
 		try {
 			// 투표 게시물 가져오기
@@ -27,6 +28,10 @@ public class VoteViewController extends SuperClass{
 			request.setAttribute("voteinfo", voteinfo);
 			int resultVote = voteinfo.getEndvote();
 			
+<<<<<<< HEAD
+=======
+			
+>>>>>>> origin/sup_new_branch02
 			//투표 결과로 이동
 			if(resultVote == 1) {
 				//결과 이동 컨트롤러 추가
