@@ -1,7 +1,11 @@
 package com.apartogether.controller.member;
 
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.Base64;
 
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -30,20 +34,20 @@ public class MemberInsertController extends SuperClass {
 		bean.setId(mr.getParameter("id"));
 		bean.setMtype(mr.getParameter("mtype"));
 		bean.setName(mr.getParameter("name"));
-	    
-		//bean.setPassword(mr.getParameter("password"));
-		//bean.setPassword(mr.getParameter("encryptedPassword"));
-		bean.setPassword(mr.getParameter("hashedPassword"));
-		//System.out.println(mr.getParameter("password"));
-		//System.out.println(mr.getParameter("encryptedPassword"));
+		
+	    String password = mr.getParameter("password");
+	    // AES 암호화를 위한 키와 IV
+        String key = "mySecretKey12345"; // 16, 24 또는 32 바이트
+        String iv = "myInitialization"; // 16 바이트
+        // AES 암호화
+        String encryptedPassword = encryptAES(password, key, iv);
+		bean.setPassword(encryptedPassword);
 		
 		bean.setPhone(mr.getParameter("phone"));
 		bean.setBirth(mr.getParameter("birth"));
 		bean.setGender(mr.getParameter("gender"));
 
 		/* [st] 닉네임 랜덤 생성 */
-		// meInsertForm에서 멀티파트로 바꿨기 때문에 닉네임 생성부분을 수정했습니다.
-		// 수정내용 : != 를 .equels()식으로 수정했습니다. // 정상작동 확인했습니다.
 		if (mr.getParameter("nickname").equals("")) {
 			bean.setNickname(MemberDao.RandomName());
 		} else {
@@ -74,7 +78,6 @@ public class MemberInsertController extends SuperClass {
 				if(gotoStoreInsert.equals("yes")) {//  yes이면 <내 가게 등록 화면>으로 이동합니다.
 					// [ST]자동로그인기능
 					String id = mr.getParameter("id") ;
-					String password = mr.getParameter("password") ;
 					System.out.println(id + "/" + password);
 					try {bean = dao.getDataByPk(id, password);
 					} catch (Exception e) {e.printStackTrace();}
@@ -97,4 +100,22 @@ public class MemberInsertController extends SuperClass {
 			new MemberInsertController().doGet(request, response);
 		}
 	}
+	public static String encryptAES(String plaintext, String key, String iv) throws Exception {
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes("UTF-8"), "AES");
+        IvParameterSpec ivParameterSpec = new IvParameterSpec(iv.getBytes("UTF-8"));
+        cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec, ivParameterSpec);
+        byte[] encryptedBytes = cipher.doFinal(plaintext.getBytes("UTF-8"));
+        return Base64.getEncoder().encodeToString(encryptedBytes);
+    }
+
+    public static String decryptAES(String encryptedText, String key, String iv) throws Exception {
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes("UTF-8"), "AES");
+        IvParameterSpec ivParameterSpec = new IvParameterSpec(iv.getBytes("UTF-8"));
+        cipher.init(Cipher.DECRYPT_MODE, secretKeySpec, ivParameterSpec);
+        byte[] encryptedBytes = Base64.getDecoder().decode(encryptedText);
+        byte[] decryptedBytes = cipher.doFinal(encryptedBytes);
+        return new String(decryptedBytes, "UTF-8");
+    }
 }

@@ -88,7 +88,7 @@
 						ID는 [<b> ${requestScope.bean.id} </b>]입니다.
 					</c:when>
 					<c:when test="${requestScope.gotopage eq 'gotopagePW'}">
-						비밀번호는 [<b> ${requestScope.bean.password} </b>] 입니다.
+						비밀번호는 [<b> ${requestScope.decryptedPassword} </b>] 입니다.
 					</c:when>
 					</c:choose>
   				</div>

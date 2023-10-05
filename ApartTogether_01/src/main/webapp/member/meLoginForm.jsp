@@ -43,14 +43,14 @@
 		/* [ed] popup 창으로 열기 */
 		
 		function cryptPassword(){
-			 // 비밀번호를 SHA-256을 사용하여 해싱
+			 /* // 비밀번호를 SHA-256을 사용하여 해싱
 	        var passwordInput = document.getElementById("password");
 	        var password = passwordInput.value;
 	        var hashedPassword = sha256(password);
 
 	        // 해싱된 비밀번호를 숨겨진 필드에 설정
 	        var hashedPasswordField = document.getElementById("hashedPassword");
-	        hashedPasswordField.value = hashedPassword;
+	        hashedPasswordField.value = hashedPassword; */
 			
 			/* // 테스트용 비밀키
 	        const secretKey = 'mySecretKey';
@@ -67,25 +67,18 @@
 	        // 암호화된 비밀번호를 복호화
 	        //const decryptedPassword = decryptAES(encryptedPassword, secretKey);
 	        //console.log('복호화된 비밀번호:', decryptedPassword);
+	        
+	        
+	        
 		    return true;
 		}
-		function sha256(input) {
+		/* function sha256(input) {
 		    var shaObj = new jsSHA("SHA-256", "TEXT");
 		    shaObj.update(input);
 		    return shaObj.getHash("HEX");
-		}
-		// AES 암호화 함수
-		function encryptAES(plainText, secretKey) {
-		    const cipherText = CryptoJS.AES.encrypt(plainText, secretKey).toString();
-		    return cipherText;
-		}
-
-		// AES 복호화 함수
-		function decryptAES(cipherText, secretKey) {
-		    const bytes = CryptoJS.AES.decrypt(cipherText, secretKey);
-		    const plainText = bytes.toString(CryptoJS.enc.Utf8);
-		    return plainText;
-		}
+		} */
+		
+		
 		
 	</script>
 	<style type="text/css">
@@ -195,8 +188,8 @@
 						<input class="form-control col-md-4" type="password" id="password" name="password" placeholder="비밀번호"
 						data-bs-toggle="tooltip" data-bs-placement="right" title="비밀번호는 영문, 숫자, 특문 포함입니다." >
 					</div>
-					<input type="hidden" id="encryptedPassword" name="encryptedPassword" value="...">
-					<input type="hidden" id="hashedPassword" name="hashedPassword" value="...">
+					
+					<!-- <input type="hidden" id="hashedPassword" name="hashedPassword" value="..."> -->
 					<br/>
 					
 					<div align="center">

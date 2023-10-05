@@ -129,13 +129,13 @@
 	  		}
 	  		
 	  		 // 비밀번호를 SHA-256을 사용하여 해싱
-	        var passwordInput = document.getElementById("password");
+	       /*  var passwordInput = document.getElementById("password");
 	        var password = passwordInput.value;
 	        var hashedPassword = sha256(password);
 
 	        // 해싱된 비밀번호를 숨겨진 필드에 설정
 	        var hashedPasswordField = document.getElementById("hashedPassword");
-	        hashedPasswordField.value = hashedPassword;
+	        hashedPasswordField.value = hashedPassword; */
 	  		
 	        
 	     	/* // 테스트용 비밀키
@@ -155,7 +155,7 @@
 	        
 		    return true;
 	  	}
-		function sha256(input) {
+		/* function sha256(input) {
 		    var shaObj = new jsSHA("SHA-256", "TEXT");
 		    shaObj.update(input);
 		    return shaObj.getHash("HEX");
@@ -171,7 +171,7 @@
 		    const bytes = CryptoJS.AES.decrypt(cipherText, secretKey);
 		    const plainText = bytes.toString(CryptoJS.enc.Utf8);
 		    return plainText;
-		}
+		} */
 		
 		
 		
@@ -330,7 +330,7 @@
 								type="checkbox" onclick="viewPassword()">🔒👀
 						</label>
 						</span>
-						<input type="hidden" id="hashedPassword" name="hashedPassword" value="...">
+						<!-- <input type="hidden" id="hashedPassword" name="hashedPassword" value="..."> -->
 					</div>
 					<div class="input-group">
 						<%-- 패스워드 질문 목록 수정 시 meUpdateForm.jsp도 함께 수정해주세요.--%>

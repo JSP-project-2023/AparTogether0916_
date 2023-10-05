@@ -57,9 +57,6 @@ String notWithFormTag = appName + mappingName + "?command=";
 	
 	<script src="/js/sweetalert.js"></script>
 	
-	<!-- // SHA-256 해싱을 위해 jsSHA 라이브러리를 추가 -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/2.0.2/sha256.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
 	
 	<script type="text/javascript">
 		function openHam() {
