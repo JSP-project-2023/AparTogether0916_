@@ -27,6 +27,7 @@
 				</tr>
 			</thead>
 			<tbody>
+			
 				<c:forEach var="bean" items="${requestScope.orderList}">
 				<tr style="text-align: center;">
 					<form name="myform" action="<%=withFormTag%>" method="get">

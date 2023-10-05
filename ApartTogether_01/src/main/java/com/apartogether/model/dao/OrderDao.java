@@ -11,22 +11,44 @@ import com.apartogether.model.bean.Combo01;
 import com.apartogether.model.bean.Order;
 import com.apartogether.model.bean.Personal;
 import com.apartogether.model.cart.CartItem;
+import com.apartogether.utility.Paging;
 
 
 
 public class OrderDao extends SuperDao{
 
-	public List<Order> GetHistory(String id) throws Exception {
+	public List<Order> GetHistory(String id, Paging pageInfo) throws Exception {
 		// 방에서 주문한 주문 시간과 가게로고 가게 이름등을 구해옴
-		String sql = "SELECT DISTINCT ro.roomno, ro.ordertime, st.stname, st.stlogo  ";
+		String sql = "SELECT distinct roomno, ordertime, stname, stlogo  ";
+		sql += " from ( ";
+		sql += " select distinct ro.roomno, ro.ordertime, st.stname, stlogo,";
+		sql += " RANK() OVER (ORDER BY ro.ordertime DESC) AS ranking";
 		sql +=" from room ro inner join store st on ro.stno = st.stno ";
 		sql +=" inner join personal pe on ro.roomno = pe.roomno where pe.id = ? and pe.confirm = 'success'" ;
+		
+		String mode = pageInfo.getMode();
+		String keyword = pageInfo.getKeyword();
+		
+		if (mode != null && !mode.equals("all")) { // 괄호 열기
+		    if (mode.equals("category")) {
+		        sql += " and st." + mode + " LIKE '%" + keyword + "%' ";
+		    }  else if (mode.equals("stname")) {
+		        sql += " and st." + mode + " LIKE '%" + keyword + "%' ";
+		    } else if (mode.equals("orderplace")) {
+		        sql += " and ro." + mode + " LIKE '%" + keyword + "%' ";
+		    }
+		} 
+		sql += ") ";
+		sql += "WHERE ranking BETWEEN ? AND ? ";
 		sql +=" order by ordertime desc";
 		
 		
 		conn = super.getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, id);
+		pstmt.setInt(2, pageInfo.getBeginRow());
+		pstmt.setInt(3, pageInfo.getEndRow());
+		
 		ResultSet rs = pstmt.executeQuery();
 		
 		List<Order> orderList = new ArrayList<Order>();
@@ -491,6 +513,51 @@ public class OrderDao extends SuperDao{
 		
 		return bean;
 	}
+
+	public int GetTotalRecordCount(String id, String mode, String keyword) throws Exception{
+		System.out.print("검색할 필드명 : " + mode);
+		System.out.println(", 검색할 키워드 : " + keyword);
+		
+		// 테이블의 총 행개수를 구합니다.
+		String sql = " select count(*) as cnt from room ro" ;
+		sql += " inner join store st ON ro.stno = st.stno";
+		sql += " inner join personal pe on ro.roomno = pe.roomno";
+		sql += " where pe.confirm != 'success'";
+		sql += " and pe.id = ? ";
+
+		
+		if (mode != null && !mode.equals("all")) { // 괄호 열기
+		    if (mode.equals("category")) {
+		        sql += " and st." + mode + " LIKE '%" + keyword + "%' ";
+		    }  else if (mode.equals("stname")) {
+		        sql += " and st." + mode + " LIKE '%" + keyword + "%' ";
+		    } else if (mode.equals("orderplace")) {
+		        sql += " and ro." + mode + " LIKE '%" + keyword + "%' ";
+		    }
+		} 
+		
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
+		
+		conn = super.getConnection() ;
+		pstmt = conn.prepareStatement(sql) ;
+		pstmt.setString(1,id);
+		rs = pstmt.executeQuery() ; 
+		
+		int cnt = -1 ;
+		
+		if(rs.next()) {
+			cnt = rs.getInt("cnt") ;
+		}
+		
+		if(rs!=null) {rs.close();}
+		if(pstmt!=null) {pstmt.close();}
+		if(conn!=null) {conn.close();}
+		
+		return cnt;
+	}
+
+	
 
 	
 

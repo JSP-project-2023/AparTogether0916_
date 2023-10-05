@@ -22,6 +22,11 @@
 		#hidden{display: none;}
 		#liststart {margin-bottom: 2.5rem}
 		h2{font-weight: bold;margin-bottom:2.5rem;}
+		
+		.orange {
+        background-color: #FFA559 !important; /* 원하는 배경색으로 설정 */
+    	}
+		
 	</style>	
 	
 	<script type="text/javascript">
@@ -55,12 +60,12 @@
 		
 	</script>
 </head>
-<body >
+<body>
 	<div class="container">
 		<h2>현재 진행중인 주문 목록</h2>
 		<p id = "liststart">현재 진행중인 주문 목록을 보여 주는 페이지입니다.</p>		
 		<table class="table table-hover" style="text-align: center;">
-			<thead class="table-danger">
+			<thead class = "table-orange">
 				<tr>
 					<th>주문 방 번호</th>
 					<th>카테고리</th>
@@ -91,8 +96,8 @@
 											</select>
 											<input class="form-control-sm" type="text" 
 												name="keyword" id="keyword" placeholder="키워드 입력">
-											<button type="submit" class="btn btn-warning form-control-sm" onclick="">검색</button>
-											<button type="button" class="btn btn-warning form-control-sm" onclick="searchAll();">전체 검색</button>
+											<button type="submit" class="btn orange form-control-sm" onclick="">검색</button>
+											<button type="button" class="btn orange form-control-sm" onclick="searchAll();">전체 검색</button>
 											<span class="label label-default">${requestScope.pageInfo.pagingStatus}</span>
 										</div>
 									</div>

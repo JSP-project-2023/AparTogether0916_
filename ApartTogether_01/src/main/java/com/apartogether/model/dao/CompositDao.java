@@ -99,6 +99,7 @@ public class CompositDao extends SuperDao {
 		bean.setFee(rs.getInt("fee"));
 		bean.setStname(rs.getString("stname"));
 		bean.setRoomname(rs.getString("roomname"));
+		bean.setSttime(rs.getString("sttime"));
 		return bean;
 	}
 	private Combo01 getBeanData3(ResultSet rs) throws Exception {
@@ -108,7 +109,7 @@ public class CompositDao extends SuperDao {
 	}
 	public Combo01 getRoomDetailInfo(Integer roomno) throws Exception {
 
-		String sql = " select ro.orderplace ,st.stname ,st.fee,ro.roomname ";
+		String sql = " select ro.orderplace ,st.stname ,st.fee,ro.roomname,st.sttime";
 		sql += " from room ro ";
 		sql += " inner join store st on ro.stno = st.stno ";
 		sql += " where ro.roomno = ? "; 

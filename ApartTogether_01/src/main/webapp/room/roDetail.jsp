@@ -239,7 +239,7 @@
             <tbody>
                 <tr>
              <td>주문장소 : ${requestScope.bean2.orderplace}</td> 
-                    <td>주문 마감까지 남은 시간: (값 넣을 예정)</td>
+                    <td>가게영업시간: ${requestScope.bean2.sttime}</td>
                 </tr>
             </tbody>
         </table>

@@ -19,11 +19,84 @@ public class Combo01 {
 	private String menuDetail;
 	private int menuno;
 	private int orderno;
+	private String sttime;
 	
 	
 	
 	
 	
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Combo01 [roomno=");
+		builder.append(roomno);
+		builder.append(", menuname=");
+		builder.append(menuname);
+		builder.append(", qty=");
+		builder.append(qty);
+		builder.append(", roomprice=");
+		builder.append(roomprice);
+		builder.append(", totalmenu=");
+		builder.append(totalmenu);
+		builder.append(", orderplace=");
+		builder.append(orderplace);
+		builder.append(", stname=");
+		builder.append(stname);
+		builder.append(", fee=");
+		builder.append(fee);
+		builder.append(", roomname=");
+		builder.append(roomname);
+		builder.append(", price=");
+		builder.append(price);
+		builder.append(", personalprice=");
+		builder.append(personalprice);
+		builder.append(", id=");
+		builder.append(id);
+		builder.append(", allprice=");
+		builder.append(allprice);
+		builder.append(", ready=");
+		builder.append(ready);
+		builder.append(", menuImage=");
+		builder.append(menuImage);
+		builder.append(", menuDetail=");
+		builder.append(menuDetail);
+		builder.append(", menuno=");
+		builder.append(menuno);
+		builder.append(", orderno=");
+		builder.append(orderno);
+		builder.append(", sttime=");
+		builder.append(sttime);
+		builder.append("]");
+		return builder.toString();
+	}
+
+
+
+
+
+
+
+	public String getSttime() {
+		return sttime;
+	}
+
+
+
+
+
+
+
+	public void setSttime(String sttime) {
+		this.sttime = sttime;
+	}
+
+
+
+
+
+
+
 	public int getOrderno() {
 		return orderno;
 	}
@@ -111,15 +184,6 @@ public class Combo01 {
 
 
 
-
-	@Override
-	public String toString() {
-		return "Combo01 [roomno=" + roomno + ", menuname=" + menuname + ", qty=" + qty + ", roomprice=" + roomprice
-				+ ", totalmenu=" + totalmenu + ", orderplace=" + orderplace + ", stname=" + stname + ", fee=" + fee
-				+ ", roomname=" + roomname + ", price=" + price + ", personalprice=" + personalprice + ", id=" + id
-				+ ", allprice=" + allprice + ", ready=" + ready + ", menuImage=" + menuImage + ", menuDetail="
-				+ menuDetail + ", menuno=" + menuno + ", orderno=" + orderno + "]";
-	}
 
 
 
