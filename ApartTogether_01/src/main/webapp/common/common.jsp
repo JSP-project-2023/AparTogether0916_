@@ -122,21 +122,6 @@ String notWithFormTag = appName + mappingName + "?command=";
 						</ul>
 					</li>
 					
-					<%-- <!-- Event section -->
-					<li class="">
-						<a class="" href="#" role="button">이벤트</a>
-						<ul class="subnavbar_menu">
-							<li>
- 								<a class="" href="<%=notWithFormTag%>prList">이벤트(href : null)</a>
- 							</li>
-							<c:if test="${whologin eq 1}">
-								<li>
-									<a class="" href="<%=notWithFormTag%>prInsert">이벤트 등록(href : null)</a>
-								</li>
-							</c:if>
-						</ul>
-					</li> --%>
-					
 					<!-- Community section -->
 					<li class="">
 						<a class="" href="#" role="button">커뮤니티</a>
@@ -265,21 +250,6 @@ String notWithFormTag = appName + mappingName + "?command=";
 							</li>
 						</ul>
 					</li>
-					
-					<%-- <!-- Event section -->
-					<li class="hamnav_menu">
-						<span>이벤트</span>
-						<ul class="sub_hamnav_menu">
-							<li>
-								<a class="" href="<%=notWithFormTag%>prList">이벤트(href : null)</a>
-							</li> 
-							<c:if test="${whologin eq 1}">
-								<li>
-									<a class="" href="<%=notWithFormTag%>prInsert">이벤트 등록(href : null)</a>
-								</li>
-							</c:if>
-						</ul>
-					</li> --%>
 					
 					<!-- Community section -->
 					<li class="hamnav_menu">

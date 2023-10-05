@@ -171,7 +171,6 @@ footer {
 	color: #000000;
 }
 
-<<<<<<< HEAD
 .cardArea {
 	display: flex;
 }
@@ -228,12 +227,10 @@ footer {
 	outline: none !important;
     border-color: #ff6000;
     box-shadow: 0 2px 12px rgba(3, 3, 3, .1);
-=======
-
+}
 .profile_image {/* common 상단 프로필 이미지 */
 	width: 45px;
 	height: 45px;
 	margin: 2px;
 	border-radius: 50px;
->>>>>>> origin/llebs.v3_add.ProfileIMG_lsh
 }
