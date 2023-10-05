@@ -1,9 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <%@ include file="./../common/common.jsp" %>
-
     
 <!DOCTYPE html>
 <html>
@@ -16,6 +14,7 @@
 			var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 				return new bootstrap.Tooltip(tooltipTriggerEl)
 			});		
+			$('#id').focus(); // 로그인페이지로 이동하자마자 id입력할 수 있게 추가했습니다. 9/27
 		});
 		function validCheck(){/* form validation check */
   			var id = $('#id').val();
@@ -40,10 +39,10 @@
         }
 		/* [ed] popup 창으로 열기 */
 		
-		
 	</script>
 	<style type="text/css">
-	.container{margin-top: ;}
+	
+	.container{margin-top:0px;}
 	.input-group{
 		margin: 7px;
 		max-width: 450px;
@@ -71,10 +70,11 @@
   	/* [st] button-18 */
           .button-18 {
             align-items: center;
-            background-color: #d8e4d2;
+            background-color: #FFA559; /* 버튼배경 색상 설정 */
             border: 0;
             box-sizing: border-box;
-            color: #6f726e;
+           /*  color: #6f726e; */
+            color: #252525; /* 텍스트 색상 설정 */
             cursor: pointer;
             display: inline-flex;
             font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -95,12 +95,14 @@
             user-select: none;
             -webkit-user-select: none;
             vertical-align: middle;
+            border-radius: 25px; /* 모서리를 둥글게 만듦 */
           }
 
           .button-18:hover,
           .button-18:focus { 
-            background-color: #8e998c;
-            color: #ffffff;
+            background-color: #FF6000;
+            color: #252525;
+            /* color: #ffffff; */
           }
 
           .button-18:active {
@@ -118,69 +120,78 @@
          	font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
             font-size: 12px;
             font-weight: 600;
+            
           }
-
-          
-  	/* [ed] button-18 */
+  		/* [ed] button-18 */
+  	
+  		.myInputText{
+  		min-height: 40px;
+  			border-radius: 20px; /* 모서리를 둥글게 만듦 */
+  		}
 		
   	
 	</style>
 </head>
 <body background="http://localhost:5214/ApartTogether_01
 	/image/background3.png">
-	<br/>
-	<h2><br/></h2>
-	<div class="container row" >
-		<div class="col-lg-3"></div>
-		<div class="col-lg-6" align="center">
-			<div align="left">
-				<h2 style="padding: 20px">로그인 페이지</h2>
-			</div>
-			<form action="<%=withFormTag%>" method="post">
-				<input type="hidden" name="command" value="meLogin"> 
+	
+	<div class="container" >
+		<div class="row">
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6" align="center">
 				
-				<div class="input-group" align="center">
-					<input type="text" class="form-control col-md-4" id="id" name="id" placeholder="아이디" 
-						data-bs-toggle="tooltip" data-bs-placement="right" title="아이디를 입력해 주세요" value="uiui">
-				</div>
+				<h2 class="mainTitle">로그인 페이지</h2>
 				
-				<div class="input-group" align="center">
-					<input class="form-control col-md-4" type="password" id="password" name="password" placeholder="비밀번호"
-					data-bs-toggle="tooltip" data-bs-placement="right" title="비밀번호는 영문, 숫자, 특문 포함입니다." value="abc123">
-				</div>
-				<br/>
-				<!-- contextual class : btn-primary, btn-info, btn-danger -->
-				<div align="center">
-					<button type="submit" class="btn button-wrapper button-18" >로그인</button><br/><br/>
-					<!--
-					<button type="" class="btn button-wrapper button-18" onclick="kakaoLogin();" >카카오 로그인</button><br/>
-					<ul>
-						<li onclick="kakaoLogin();">
-      						<a href="javascript:void(0)">
-          						<span>카카오 로그인</span>
-      						</a>
-						</li>
-						<li onclick="kakaoLogout();">
-      						<a href="javascript:void(0)">
-          						<span>카카오 로그아웃</span>
-      						</a>
-						</li>
-					</ul>
-					-->
-					<a type="button" href="<%=notWithFormTag%>meInsert" class="btn button-99">회원 가입</a>
-					|
-					<a type="popup" href="javascript:popupfindID()" class="btn button-99">아이디 찾기</a>
-					|	
-					<a type="popup" href="javascript:popupfindPW()" class="btn button-99">비밀번호 찾기</a>
-				</div>
-			</form>
+	
+				<form action="<%=withFormTag%>" method="post">
+					<input type="hidden" name="command" value="meLogin" onsubmit="return validCheck();"> 
+					
+					<div class="input-group" align="center">
+						<input type="text" class="form-control col-md-4 myInputText" id="id" name="id" placeholder="아이디" 
+							data-bs-toggle="tooltip" data-bs-placement="right" title="아이디를 입력해 주세요">
+					</div>
+					
+					<div class="input-group" align="center">
+						<input class="form-control col-md-4 myInputText" type="password" id="password" name="password" placeholder="비밀번호"
+						data-bs-toggle="tooltip" data-bs-placement="right" title="비밀번호는 영문, 숫자, 특문 포함입니다." >
+					</div>
+					
+					<!-- <input type="hidden" id="hashedPassword" name="hashedPassword" value="..."> -->
+					<br/>
+					
+					<div align="center">
+						<button type="submit" class="btn button-wrapper button-18" onclick="return cryptPassword();">로그인</button><br/><br/>
+						<!--
+						<button type="" class="btn button-wrapper button-18" onclick="kakaoLogin();" >카카오 로그인</button><br/>
+						<ul>
+							<li onclick="kakaoLogin();">
+	      						<a href="javascript:void(0)">
+	          						<span>카카오 로그인</span>
+	      						</a>
+							</li>
+							<li onclick="kakaoLogout();">
+	      						<a href="javascript:void(0)">
+	          						<span>카카오 로그아웃</span>
+	      						</a>
+							</li>
+						</ul>
+						-->
+						<a type="button" href="<%=notWithFormTag%>meInsert" class="btn button-99">회원 가입</a>
+						|
+						<a type="popup" href="javascript:popupfindID()" class="btn button-99">아이디 찾기</a>
+						|	
+						<a type="popup" href="javascript:popupfindPW()" class="btn button-99">비밀번호 찾기</a>
+					</div>
+				</form>
 			</div>
 			<div class="col-lg-3"></div>
+		</div>
 	</div>
-</body> 
+</body>
 
+<!--  
 <!-- 카카오 스크립트 -->
-<!-- <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
 Kakao.init('ebeba8b3574c87b76521c3760bbf5ee6'); //발급받은 키 중 javascript키를 사용해준다.
 console.log(Kakao.isInitialized()); // sdk초기화여부판단
@@ -220,4 +231,6 @@ function kakaoLogout() {
   }
 /* 만약 계정 연동해제를 하고 싶으면 아래 주소에 가서 연동해제하면 된다. */
 /* accounts.kakao.com/weblogin/account/info */
-</script>  -->
+</script>
+</html>
+

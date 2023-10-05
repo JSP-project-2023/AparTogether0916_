@@ -12,12 +12,14 @@
 <meta charset="UTF-8">
 <title>가게 매출 내역</title>
 </head>
-	<body>
+<body>
+	<div class="container">
 		<!-- 메뉴 별 판매량 시작 -->
+		<div class="middleContainer">
 		<div class="container-menu" id="menu-target">
-			<span class="title">매출 현황</span>
 			<div class="sale-header">
-				<span class="title-2">${sessionScope.loginfo.name} 사장님의 ${requestScope.mystore.stname} 판매현황입니다.</span>
+				<h2 class="mainTitle">매출 현황</h2>
+				<span class="subTitle">${sessionScope.loginfo.name} 사장님의 ${requestScope.mystore.stname} 판매현황입니다.</span>
 				<div class="button-area">
 					<button class="btn-month buttons" onclick="show_month()">월별</button>
 					<button class="btn-menu buttons" onclick="show_menu()">메뉴별</button>
@@ -47,18 +49,18 @@
 					</c:forEach>
 					</tbody>
 				</table>
-			</div>
-			
-			<div class="sale-footer">
-				<span><strong>누적 판매 금액</strong> : <fmt:formatNumber pattern="###,###,###" value="${total_sales}"/><strong>원</strong></span>
+		
+				<div class="sale-footer">
+					<span><strong>누적 판매 금액</strong> : <fmt:formatNumber pattern="###,###,###" value="${total_sales}"/><strong>원</strong></span>
+				</div>
 			</div>
 		</div>
 		<!-- 메뉴 별 판매량 끝 -->		
 		<!-- 월별 판매량 그래프 시작 -->
 		<div class="container-month" id="month-target">
-			<span class="title">매출 현황</span>
 			<div class="sale-header">
-				<span class="title-2">${sessionScope.loginfo.name} 사장님의 ${requestScope.mystore.stname} 판매현황입니다.</span>
+				<h2 class="mainTitle">매출 현황</h2>
+				<span class="subTitle">${sessionScope.loginfo.name} 사장님의 ${requestScope.mystore.stname} 판매현황입니다.</span>
 				<div class="button-area">
 					<button class="btn-month buttons" onclick="show_month()">월별</button>
 					<button class="btn-menu buttons" onclick="show_menu()">메뉴별</button>
@@ -75,15 +77,19 @@
 			
 			<!-- 그래프 영역 -->
 			<div id="chart-area">
-	  			<canvas id="myChart"></canvas>
-			</div>
-			<div class="sale-footer">
-				<span><strong>올해 매출</strong> : <fmt:formatNumber pattern="###,###,###" value="${thisyearSell}"/><strong>원</strong></span>
+	  			<canvas id="myChart" class="myChartCanvas"></canvas>
+	  			
+	  			<div class="sale-footer">
+					<span><strong>올해 매출</strong> : <fmt:formatNumber pattern="###,###,###" value="${thisyearSell}"/><strong>원</strong></span>
+				</div>
 			</div>
 			<!-- 그래프 영역 끝-->
 		</div>
+	</div>
+	</div>
+	<%@ include file="/common/footer.jsp"%>
 		<!-- 월별 판매량 그래프 -->
-	</body>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-	<script src="${pageContext.request.contextPath}/store/storeJS/StoreSalesChart.js"></script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="${pageContext.request.contextPath}/store/storeJS/StoreSalesChart.js"></script>
 </html>

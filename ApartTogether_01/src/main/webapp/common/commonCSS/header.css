@@ -8,13 +8,13 @@
 	border-bottom: 1px solid #cdcdcd;
 }
 .header {
-	margin: 15px 150px 15px 150px; /*top right bottom left*/
+    padding: 15px 120px 15px 120px; /*top right bottom left*/
 }
 .navbar_hole {
 	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 }
 .navbar_menu {
 	font-weight: 700;
@@ -69,24 +69,12 @@ a {
 	display:block;
 	padding:15px 20px;
 }
-<<<<<<< HEAD
 .subnavbar_menu > li {
 	white-space: nowrap;
 }
 .subnavbar_menu > li > a {
 	font-size: 1rem;
 }
-=======
-
-.subnavbar_menu > li {
-	white-space: nowrap;
-}
-
-.subnavbar_menu > li > a {
-	font-size: 1rem;
-}
-
->>>>>>> member_merge03_lsh
 .navbar_member > li {
 	display: inline-block;
 	padding: 5px 10px;
@@ -95,16 +83,19 @@ a {
 	display: none;
 }
 
-@media screen and (min-width: 978px) {
+@media screen and (min-width: 1081px) {
 	.hamnav {
 		display: none;
 	}
 	.ham_bg {
 		display: none;
 	}
+	.navbar_toggleBtn {
+		display: none;
+	}
 }
 
-@media screen and (max-width: 977px) {
+@media screen and (max-width: 1080px) {
 	.hamnav {
 		display: flex;
 		flex-wrap: wrap;
@@ -114,18 +105,10 @@ a {
 	.navbar_hole {
 		display: none;
 	}
-<<<<<<< HEAD
-=======
-	
->>>>>>> member_merge03_lsh
 	.hamarea {
 		position: relative;
     	top: -6px;
 	}
-<<<<<<< HEAD
-=======
-	
->>>>>>> member_merge03_lsh
 	.hamburger {
 		width: 2rem;
 		padding: 0;
@@ -137,19 +120,6 @@ a {
 		margin-top: 10px;
 	}
 	.ham_bg {
-<<<<<<< HEAD
-		background-color: #ffffff;
-	    min-width: fit-content;
-	    max-width: 500px;
-	    float: right;
-	    padding: 40px 110px 30px;
-	    margin-top: 16px;
-	    position: absolute;
-	    z-index: 1;
-	    right: 150px;
-	    border: 8px solid #fa6d35;
-	    box-shadow: 2px 2px 11px #919191;
-=======
 		background-color: #f3f3f3;
 		min-width: fit-content;
 		max-width: 500px;
@@ -159,7 +129,6 @@ a {
 		position: absolute;
 		z-index: 1;
 		right: 100px;
->>>>>>> member_merge03_lsh
 	}
 	.hamnav_hole {
 		font-size: 1.1rem;
@@ -194,10 +163,12 @@ a {
 	.hamnav_member > li {
 		margin-bottom: 15px;
 	}
-<<<<<<< HEAD
-	.hamnav_member > li:hover {
-		background-color: #f3f3f3;
-	}
-=======
->>>>>>> member_merge03_lsh
-}
+
+@media screen and (max-width: 577px) {
+	.ham_bg {
+	    float: left;
+	    left: 0;
+	    position: absolute;
+	    z-index: 1;
+    }
+}}

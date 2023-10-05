@@ -1,33 +1,31 @@
 @charset "UTF-8";
-.title{
-	font-size: 40px;
-	font-weight: bold;
-}
+/*.title{*/
+/*	font-size: 40px;*/
+/*	font-weight: bold;*/
+/*}*/
 .title-2{
 	font-size: 20px;
 	display: inline;
 	white-space: nowrap;
 }
 .container-menu{
-	position: absolute;
 	display: flex;
-	transform: translate(-50%, -400px);
-	left: 50%;
-	top: 35em;
 	flex-direction: column;
 }
-.sale-header{
-	display: flex;
-	flex-direction: row;
-	margin-top: 20px;
-	margin-bottom: 60px;
-}
+/*.sale-header{*/
+/*	display: flex;*/
+/*	flex-direction: row;*/
+/*	margin-top: 20px;*/
+/*	margin-bottom: 60px;*/
+/*}*/
 .button-area{
 	white-space: nowrap;
 }
 .menu-header{
 	font-size: 20px;
 	font-weight: bold;
+	height: 50px;
+    background-color: #ffc39a;
 }
 
 /*테이블*/
@@ -50,6 +48,6 @@ tbody > tr:hover{
 
 /*페이징 영역*/
 #paging{
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-top: 60px;
+    margin-bottom: 0px;
 }

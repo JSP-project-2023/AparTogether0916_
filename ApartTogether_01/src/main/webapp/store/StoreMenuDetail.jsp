@@ -83,20 +83,20 @@
 			</div>
 		</div>
 	</div>
-	</div>
-	
-	<hr style="margin-top: 100px;" size="10px">
-		<div class="menu-container" id="menu-container">
-		<!-- 메뉴1개 들어가야될 공간 시작-->
-			<c:forEach var="menubean" items="${requestScope.menuBean}">
-				<div class="one-menu-box">
-					<div class="memu-img">
-						<img alt="이미지" src="${pageContext.request.contextPath}/uploadStoreImage/${menubean.menuimage}" border="1px">
-					</div>
-					<div class="menu-details">
-						<span id="menu-title">${menubean.menuname}</span>
-						<span id="menu-exp">${menubean.menudetail}</span>
-						<span id="menu-price">${menubean.price}원</span>
+	</div>		
+			<hr style="margin-top: 100px;" size="10px">
+			<div class="menu-container" id="menu-container">
+			<!-- 메뉴1개 들어가야될 공간 시작-->
+				<c:forEach var="menubean" items="${requestScope.menuBean}">
+					<div class="one-menu-box">
+						<div class="memu-img">
+							<img alt="이미지" src="${pageContext.request.contextPath}/uploadStoreImage/${menubean.menuimage}" border="1px">
+						</div>
+						<div class="menu-details">
+							<span id="menu-title">${menubean.menuname}</span>
+							<span id="menu-exp">${menubean.menudetail}</span>
+							<span id="menu-price">${menubean.price}원</span>
+						</div>
 					</div>
 				</div>
 			</c:forEach>
@@ -111,6 +111,8 @@
 	</form>
 	</div>
 	
+	<%@ include file="/common/footer.jsp"%>
+
 </body>
 
 

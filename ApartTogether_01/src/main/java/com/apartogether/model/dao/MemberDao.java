@@ -6,11 +6,16 @@ import java.sql.SQLIntegrityConstraintViolationException; /*pk값 중복처리�
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.apartogether.model.bean.Member;
+import com.apartogether.model.bean.Vote;
 import com.apartogether.utility.MyUtility;
 import com.apartogether.utility.Paging;
+import com.apartogether.utility.PagingMember;
+import com.apartogether.utility.PagingVote;
 
 public class MemberDao extends SuperDao {
 
@@ -70,8 +75,6 @@ public class MemberDao extends SuperDao {
 		if(conn!=null) {conn.close();}
 		return cnt ;
 	}
-
-/* [selectAll(pageinfo를 위함)] TopN 구문을 사용하여 페이징 처리된 게시물 목록을 반환합니다. */
 	public List<Member> selectAll(Paging pageInfo) throws Exception {
 
 		PreparedStatement pstmt = null;
@@ -109,12 +112,77 @@ public class MemberDao extends SuperDao {
 
 		return lists;
 	}
+	/* [selectAll(pageinfo를 위함)] TopN 구문을 사용하여 페이징 처리된 게시물 목록을 반환합니다. */
+	public List<Member> selectAll(PagingMember pageInfo) throws Exception {
+		// <회원목록> 페이지에서 사용합니다.
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = " select id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest ";
+		sql += " from ";
+		sql += " (select id, mtype, name, password, phone, birth, gender, nickname, address, profile, passwordanswer, passwordquest, rank() over(order by id asc) as ranking ";  
+		sql += " from members" ;
+		
+		String mode = pageInfo.getMode();
+		String keywordmtype = pageInfo.getKeywordmtype();
+		String keywordgender = pageInfo.getKeywordgender();
+		String keyword = pageInfo.getKeyword();
+		// [ST] 검색옵션(mode)에 따른 sql문장 처리 : 반드시 GetTotalRecordCount()과 같게 맞춰주세요.
+		if( mode == null || mode.equals("all") ) {
+		}else if(mode.equals("mtype")){ // 회원유형으로 검색
+			if(keywordmtype == null || keywordmtype.equals("all") ) {
+			}else {
+				sql += " where " + mode + " = '" + keywordmtype + "'" ;
+			}
+		}else if(mode.equals("id") || mode.equals("name") || mode.equals("nickname") 
+				|| mode.equals("address")) { // 아이디,이름,닉네임,주소로 검색
+			if(keyword == null || keyword.equals("") ) {
+			}else {
+				sql += " where " + mode + " like '%" + keyword + "%' " ;
+			}
+		}else if(mode.equals("gender")) { // 성별로 검색
+			if(keywordgender == null || keywordgender.equals("all")) {
+			}else {
+				sql += " where " + mode + " = '" + keywordgender + "' " ;
+			}
+		}
+		// [ED] 검색옵션(mode)에 따른 sql문장 처리 : 반드시 GetTotalRecordCount()과 같게 맞춰주세요.
+		sql += " ) ";
+		sql += " where ranking between ? and ? ";
+		
+		conn = super.getConnection();
+
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, pageInfo.getKeywordmtype());
+		pstmt.setInt(1, pageInfo.getBeginRow());
+		pstmt.setInt(2, pageInfo.getEndRow());
+
+		rs = pstmt.executeQuery();
+
+		List<Member> lists = new ArrayList<Member>();
+		
+
+		while (rs.next()) {
+			lists.add(getBeanData(rs));
+		}
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+
+		return lists;
+	}
 
 	/* [GetTotalRecordCount] 테이블의 총 행개수를 구합니다. */
 	public int GetTotalRecordCount() throws Exception {
 
 		String sql = " select count(*) as cnt from members ";
-
+		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
@@ -138,6 +206,52 @@ public class MemberDao extends SuperDao {
 		if (conn != null) {
 			conn.close();
 		}
+
+		return cnt;
+	}
+	
+	public int GetTotalRecordCount(String mode, String keywordmtype, String keywordgender, String keyword) throws Exception {
+
+		String sql = " select count(*) as cnt from members ";
+		
+		// [ST] 검색옵션(mode)에 따른 sql문장 처리 : 반드시 sellectAll()과 같게 맞춰주세요.
+		if( mode == null || mode.equals("all") ) {
+		}else if(mode.equals("mtype")){ // 회원유형으로 검색
+			if(keywordmtype == null || keywordmtype.equals("all") ) {
+			}else {
+				sql += " where " + mode + " = '" + keywordmtype + "'" ;
+			}
+		}else if(mode.equals("id") || mode.equals("name") || mode.equals("nickname") 
+				|| mode.equals("address")) { // 아이디,이름,닉네임,주소로 검색
+			if(keyword == null || keyword.equals("") ) {
+			}else {
+				sql += " where " + mode + " like '%" + keyword + "%' " ;
+			}
+		}else if(mode.equals("gender")) { // 성별로 검색
+			if(keywordgender == null || keywordgender.equals("all") ) {
+			}else {
+				sql += " where " + mode + " = '" + keywordgender + "' " ;
+			}
+		}
+		// [ED] 검색옵션(mode)에 따른 sql문장 처리 : 반드시 sellectAll()과 같게 맞춰주세요.
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		conn = super.getConnection();
+		pstmt = conn.prepareStatement(sql);
+
+		rs = pstmt.executeQuery();
+
+		int cnt = -1;
+
+		if (rs.next()) {
+			cnt = rs.getInt("cnt");
+		}
+
+		if (rs != null) {rs.close();}
+		if (pstmt != null) {pstmt.close();}
+		if (conn != null) {conn.close();}
 
 		return cnt;
 	}
@@ -443,6 +557,57 @@ public class MemberDao extends SuperDao {
 		conn.commit();
 		if(conn!=null) {conn.close();}
 		return cnt ;
+	}
+
+	public Map<String, String> getIdNickMap() throws Exception{
+		// <투표 리스트> 페이지에서 닉네임을 표시하기 위해사용하는 메서드입니다.
+		// 모든 회원의 아이디(키)와 닉네임(값)을 가지는 맵을 반환합니다.
+		Map<String, String> map = new HashMap<String, String>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = " select id, nickname from members ";
+
+		conn = super.getConnection();
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+
+		while (rs.next()) {
+			map.put(rs.getString("id"), rs.getString("nickname"));
+		}
+
+		if (rs != null) {rs.close();}
+		if (pstmt != null) {pstmt.close();}
+		if (conn != null) {conn.close();}
+		
+		return map;
+	}
+
+	public List<String> getIdListByNick(String keyword) throws Exception {
+		// 투표 리스트에서 작성자 닉네임으로 검색할 때 사용하는 메서드입니다.
+		// 검색할 닉네임 키워드를 입력받아, 닉네임에 키워드를 포함하는 아이디의 리스트를 반환합니다.
+		List<String> lists_ID =  new ArrayList<String>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = " select id from members ";
+		sql += " where nickname like '%" + keyword + "%' " ;
+
+		conn = super.getConnection();
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+
+		while (rs.next()) {
+			lists_ID.add(rs.getString("id"));
+		}
+
+		if (rs != null) {rs.close();}
+		if (pstmt != null) {pstmt.close();}
+		if (conn != null) {conn.close();}
+		
+		return lists_ID;
 	}
 
 }

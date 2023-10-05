@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-
 <%@ include file="./../common/common.jsp" %>
-
 <%@ page import="com.apartogether.model.dao.MemberDao" %>
 <%@ page import="com.apartogether.model.bean.Member"%>
     
@@ -17,15 +14,10 @@
   			/* value 속성의 값이 일치하는 항목에 대하여 체크 on 시킵니다. */
 	  	  	$('input[value="${bean.gender}"]').attr('checked', true);
   			$('input[value="${bean.mtype}"]').attr('checked', true);
-  			var pqnum = 0; // pqnum : Num for PasswordQuest
-  			switch("${bean.passwordquest}"){ //passwordquest를 위한 테이블을 만드는 대신 직접 입력합니다.
-  				case "초등학교 이름은": pqnum = 1 ; break;
-  				case "아버지 성함은": pqnum = 2 ; break;
-  				case "내가 좋아하는 동물은": pqnum = 3 ; break;
-  				case "내 애완동물의 이름은": pqnum = 4 ; break;
-  				default: pqnum = 0;
-  			} 
-  			$('select[name="passwordquest"] option').eq(pqnum).prop('selected', true); 
+  			$('select[name="passwordquest"]').val("${bean.passwordquest}"); 
+  		    $('button[type="reset"]').click(function() {
+  		    	
+  		    });
   		});
   		/* [st] submit 유효성 검사 */
   	    function validCheck(){ /* form validation check */
@@ -34,14 +26,6 @@
   				alert('일반회원 / 사업자 는 반드시 선택이 되어야 합니다.');
   				return false ; 
   			}  
-  			
-  	    	var id01 = $('#id').val();
-  	    	var check_id = /^[a-z | A-Z]{1,18}[0-9]{1,18}$/; //정규식(a~z, A~Z, 0~9 만 입력가능) 4~18자까지
-  	  		var idresult = check_id.test(id01);
-  	  		if(idresult == false){
-  	  			alert('[아이디]는 영문 및 숫자 만 입력 가능합니다.(4~18자)');  				
-  	  			return false ; /* false이면 이벤트 전파 방지 */
-  	  		}
   			
   	  		var password01 = $('#password').val();
   	    	var check_pw = /^[a-zA-Z0-9~!@#$%^&*()_]{6,20}$/; //정규식(a~z, A~Z, 0~9, 특문 만 입력가능)  6~20자까지
@@ -58,6 +42,13 @@
   	            $('#passwordquest').focus();
   	            return false;
   	        } 
+  	  		
+	  	  	var passwordanswer = $('#passwordanswer').val();
+	  		if(passwordanswer == null || passwordanswer == ""){
+	  			alert('[비밀번호 답변]을 입력해 주세요');
+	  			$('#passwordanswer').focus();
+	  			return false ;
+	  		}
   			
   	  		var name01 = $('#name').val();
   	    	var check_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{2,10}/; // 한글체크 + 2~10자까지
@@ -131,7 +122,6 @@
   	</script>
   	<style type="text/css">
   		/* box model에 대한 공부가 필요합니다. */
-  		.container{margin-top: 10px;}
   		.input-group{margin: 7px;}
   		.input-group-text{
   			display: block;
@@ -144,7 +134,7 @@
   		.small_image{width:100px;height:100px;margin:2px;border-radius:5px;}
   	</style>
   	<style type="text/css">
-		.container {margin-top:;}
+		.container {margin-top:10px; width: 70%;}
 		
 		.input-group {
 			margin: 7px;
@@ -187,55 +177,62 @@
 		}
 		
 		/* [st] button-18 */
-		.button-18 {
-			align-items: center;
-			background-color: #d8e4d2;
-			border: 0;
-			box-sizing: border-box;
-			color: #6f726e;
-			cursor: pointer;
-			display: inline-flex;
-			font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,
-				"Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans",
-				Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji",
-				"Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-			font-size: 20px;
-			font-weight: 600;
-			justify-content: center;
-			line-height: 20px;
-			max-width: 1100px;
-			min-height: 50px;
-			min-width: 0px;
-			overflow: hidden;
-			padding: 0px;
-			padding-left: 200px;
-			padding-right: 200px;
-			text-align: center;
-			touch-action: manipulation;
-			transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
-				box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s
-				cubic-bezier(0.4, 0, 0.2, 1) 0s;
-			user-select: none;
-			-webkit-user-select: none;
-			vertical-align: middle;
-		}
-		
-		.button-18:hover, .button-18:focus {
-			background-color: #8e998c;
-			color: #ffffff;
-		}
-		
-		.button-18:active {
-			background: #09223b;
-			color: rgb(255, 255, 255, .7);
-		}
-		
-		.button-18:disabled {
-			cursor: not-allowed;
-			background: rgba(0, 0, 0, .08);
-			color: rgba(0, 0, 0, .3);
-		}
-		/* [ed] button-18 */
+          .button-18 {
+            align-items: center;
+            background-color: #FFA559; /* 버튼배경 색상 설정 */
+            border: 0;
+            box-sizing: border-box;
+           /*  color: #6f726e; */
+            color: #252525; /* 텍스트 색상 설정 */
+            cursor: pointer;
+            display: inline-flex;
+            font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            justify-content: center;
+            line-height: 20px;
+            max-width: 900px;
+            min-height: 50px;
+            min-width: 0px;
+            overflow: hidden;
+            padding: 0px;
+            padding-left: 190px;
+            padding-right: 190px;
+            text-align: center;
+            touch-action: manipulation;
+            transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+            user-select: none;
+            -webkit-user-select: none;
+            vertical-align: middle;
+            border-radius: 25px; /* 모서리를 둥글게 만듦 */
+          }
+
+          .button-18:hover,
+          .button-18:focus { 
+            background-color: #FF6000;
+            color: #252525;
+            /* color: #ffffff; */
+          }
+
+          .button-18:active {
+            background: #09223b;
+            color: rgb(255, 255, 255, .7);
+          }
+
+          .button-18:disabled { 
+            cursor: not-allowed;
+            background: rgba(0, 0, 0, .08);
+            color: rgba(0, 0, 0, .3);
+          }
+          .button-99 {
+         	cursor: pointer;
+         	font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: #FFE6C7; /* 텍스트 색상 설정 */
+            
+          }
+  		/* [ed] button-18 */
 		.button-99 { /* 무색 투명 버튼 */
 			cursor: pointer;
 			font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,
@@ -274,7 +271,6 @@
 		<c:if test="${accessMeUpdate == 1 }">
 			<%-- 열람가능 --%>
 			<h2 class="mainTitle">회원 정보 수정</h2>
-			<p>특정 회원에 대하여 정보를 수정하는 페이지 입니다.</p>
 			<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data" onsubmit="mtypeChangeCheck()">
 			
 				<input type="hidden" name="command" value="meUpdate">
@@ -305,19 +301,20 @@
 				</div>
 				
 				<div class="input-group">
-					<span class="input-group-text col-md-2">닉네임<font color="red">*</font></span>
-					<input class="form-control" type="text" id="nickname" name="nickname" value="${requestScope.bean.nickname }">				
+					<span class="input-group-text col-md-2">닉네임</span><!-- <font color="red">*</font> -->
+					<input class="form-control" type="text" id="nickname" name="nickname" 
+					       value="${requestScope.bean.nickname }" placeholder="닉네임 / 공란 시 랜덤한 아이디가 생성!">				
 				</div>
 				<div class="input-group">
 					<span class="input-group-text col-md-2">프로필사진</span>
 					
 					<%-- profile가 null인 상태라면 기본이미지(default.jpg)를 보여줍니다. --%>
 					<c:if test="${requestScope.bean.profile == null}">
-						<img class="card-img-top  small_image rounded" alt="기본이미지" 
-						src="./../upload/defaultprofile.jpg"  >
+						<img class="card-img-top  small_image rounded-circle" alt="기본이미지" 
+								src="image/defaultProfile.jpeg"  >
 					</c:if>
 					<c:if test="${requestScope.bean.profile != null}">
-						<img class="card-img-top  small_image rounded" alt="${requestScope.bean.profile}" 
+						<img class="card-img-top  small_image rounded-circle" alt="${requestScope.bean.profile}" 
 				         src="uploadProfileImage/${requestScope.bean.profile}"  >
 					</c:if>
 					<br>
@@ -330,7 +327,7 @@
 				
 				<div class="input-group" >
 					<span class="input-group-text col-md-2">비밀 번호<font color="red">*</font></span>
-					<input class="form-control" type="password" id="password" name="password"  value="${requestScope.bean.password}">		
+					<input class="form-control" type="password" id="password" name="password"  value="${requestScope.decryptedPassword}">
 				</div>
 				
 				<div class="input-group">
@@ -379,16 +376,16 @@
 				</div>
 				
 				<div class="input-group">
-					<span class="input-group-text col-md-2">비밀번호 답변</span>
+					<span class="input-group-text col-md-2">비밀번호 답변<font color="red">*</font></span>
 					<input class="form-control" type="text" id="passwordanswer" name="passwordanswer" value="${requestScope.bean.passwordanswer }">			
 				</div>
 			
 			
 				<div style="text-align: center;">
-				<button  type="submit" class="btn button-18 "  style=" padding-left:50px; padding-right:50px" 
-						 onclick="return validCheck();">수정</button>
-				<button type="reset" class="btn button-18 " style="padding-left:50px; padding-right:50px"  >
-						초기화</button>
+					<button  type="submit" class="btn button-18 "  style=" padding-left:50px; padding-right:50px" 
+							 onclick="return validCheck();">수정</button>
+					<!-- <button type="reset" class="btn button-18 " style="padding-left:50px; padding-right:50px">초기화</button> -->
+			        <a href="javascript:history.go(0)" class="btn button-18 "  style=" padding-left:50px; padding-right:50px" >초기화</a>
 				</div>
 			
 			</form>
@@ -419,5 +416,4 @@ window.onload = function(){ /* 창이 켜졌을때 로드되는 function들 */
 }
 </script>
 <!-- [ed] 다음(카카오) 주소 검색 스크립트 -->
-
 </html>

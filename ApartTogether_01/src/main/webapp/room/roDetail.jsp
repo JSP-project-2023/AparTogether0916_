@@ -231,8 +231,6 @@
 
 </head>
 <body>
-
-
     <div class="container">
 		<h2 style="font-weight: bold">방이름:${requestScope.bean2.roomname}</h2> 
         <table class="table">
@@ -243,9 +241,9 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+   
 
-    <div class="container">
+    <div>
        <h4>가게명:${requestScope.bean2.stname}</h4> 
         <div class ="bordered-div">
 		          <h4>메뉴 목록</h4>
@@ -262,7 +260,7 @@
 				<c:forEach items="${requestScope.lists4}" var="bean">
 				    <tr> 
 				    	
-				        <td>${bean.menuImage}</td>
+				        <td><img alt="이미지" src="${pageContext.request.contextPath}/uploadStoreImage/${bean.menuImage}" border="1px" width="100px" height="100px"></td>
 				        <td>${bean.menuname}</td> 
 				        <td>${bean.menuDetail}</td> 
 				        <td id = "${bean.menuno}price" >${bean.price}원</td>   
@@ -433,9 +431,7 @@
 				        <button class="btn btn-secondary">주문 목록으로 돌아가기</button>
 				    </a>
 				</div>
-          
-		   
-		    
-    </div>
+   		 </div>
+     </div>
 </body>
 </html>

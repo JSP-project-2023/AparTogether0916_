@@ -424,6 +424,57 @@ public class CompositDao extends SuperDao {
 		
 		return bean;
 	}
+	
+	// 방에 남아있는 사람수를 세기위함
+	public int getCountRoomMember(int roomno) throws Exception{
+				String sql = "select count(*) from personal ";
+				sql +=" where roomno = ?";
+
+				conn = super.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, roomno);
+				ResultSet rs = pstmt.executeQuery();
+				
+				int su = 0;
+				
+				if(rs.next()) {
+					su = rs.getInt("count(*)");
+				}
+				
+				if(rs != null) {rs.close();}
+				if(pstmt != null) {pstmt.close();}
+				if(conn != null) {conn.close();}
+				
+				return su;
+	}
+	// 방을 지움
+	public int DeleteRoom(int roomno) throws Exception {
+		PreparedStatement pstmt = null;
+		int cnt = -1;
+
+		conn = super.getConnection();
+		conn.setAutoCommit(false);
+
+		String sql = " delete from room where roomno = ?";
+
+		pstmt = conn.prepareStatement(sql);
+
+		pstmt.setInt(1, roomno);
+		
+		
+		cnt = pstmt.executeUpdate();
+
+		conn.commit();
+
+		
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+		return cnt;
+	}
 
 
 	

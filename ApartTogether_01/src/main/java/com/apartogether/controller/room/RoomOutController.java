@@ -17,8 +17,12 @@ public class RoomOutController extends SuperClass {
 		
 		try {
 			cnt = dao.DeleteReady(roomno,super.loginfo.getId());
-			new RoomListController().doGet(request, response); 
 			
+			// 방에 남아있는 사람이 없으면 방을 데이터 베이스에서 지움
+			if(dao.getCountRoomMember(roomno)== 0) {
+				cnt = dao.DeleteRoom(roomno);
+			}
+			new RoomListController().doGet(request, response); 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

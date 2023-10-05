@@ -1,8 +1,6 @@
 package com.apartogether.model.bean;
 
 public class Vote {
-	//	private Integer stno; // 가게 고유 코드
-	// TODO 가게 고유 코드 Integer로 변경
 	private int voteno; // 가게 고유 코드
 	private String votetitle; // 회원(사업자) 아이디
 	private String votecol1;
@@ -16,7 +14,6 @@ public class Vote {
 
 	public Vote() {
 	}
-
 
 	public Vote(int voteno, String votetitle, String votecol1, String votecol2, String votecol3, String votecol4,
 			String votecol5, String votedate, int endvote, String voteid) {
@@ -34,23 +31,53 @@ public class Vote {
 		this.voteid = voteid;
 	}
 
+	
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Vote [voteno=");
+		builder.append(voteno);
+		builder.append(", votetitle=");
+		builder.append(votetitle);
+		builder.append(", votecol1=");
+		builder.append(votecol1);
+		builder.append(", votecol2=");
+		builder.append(votecol2);
+		builder.append(", votecol3=");
+		builder.append(votecol3);
+		builder.append(", votecol4=");
+		builder.append(votecol4);
+		builder.append(", votecol5=");
+		builder.append(votecol5);
+		builder.append(", votedate=");
+		builder.append(votedate);
+		builder.append(", endvote=");
+		builder.append(endvote);
+		builder.append(", voteid=");
+		builder.append(voteid);
+		builder.append("]");
+		return builder.toString();
+	}
+
 	public int getVoteno() {
 		return voteno;
 	}
 
 
-	@Override
-	public String toString() {
-		return "Vote [voteno=" + voteno + ", votetitle=" + votetitle + ", votecol1=" + votecol1 + ", votecol2="
-				+ votecol2 + ", votecol3=" + votecol3 + ", votecol4=" + votecol4 + ", votecol5=" + votecol5
-				+ ", votedate=" + votedate + ", endvote=" + endvote + ", voteid=" + voteid + "]";
+
+	public Integer getEndVote() {
+		return endvote;
+	}
+
+	public void setEndVote(Integer endvote) {
+		this.endvote = endvote;
 	}
 
 
 	public void setVoteno(int voteno) {
 		this.voteno = voteno;
 	}
-
 
 	public String getVotetitle() {
 		return votetitle;
