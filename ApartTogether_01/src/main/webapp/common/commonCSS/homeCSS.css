@@ -6,7 +6,11 @@
 /*공통 CSS*/
 /*글자 굵기*/
 .coment-bold {
+<<<<<<< HEAD
 	font-weight: border;
+=======
+	font-weight: bolder;
+>>>>>>> origin/lleebs.v3
 }
 .coment-thin {
 	color: #C7C7C7;
@@ -20,7 +24,11 @@
 
 body{
 	background-color: #252525;
+<<<<<<< HEAD
 	height: 6000px;
+=======
+	height: 5500px;
+>>>>>>> origin/lleebs.v3
 	min-width: 1000px;
 	overflow-x: hidden;
 }
@@ -28,7 +36,10 @@ body{
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+<<<<<<< HEAD
 	background-color: blue;
+=======
+>>>>>>> origin/lleebs.v3
 }
 
 /*첫번째 화면에 들어갈 요소들*/
@@ -101,7 +112,10 @@ body{
 	display: flex;
 	flex-direction: row;
 	width: 100%;
+<<<<<<< HEAD
 	background-color: red;
+=======
+>>>>>>> origin/lleebs.v3
 }
 .second-screen-coment{
 	padding-top: 50px;
@@ -113,6 +127,7 @@ body{
 /*세번째 화면에 들어갈 CSS*/
 .third-screen{
 	justify-content: center;
+<<<<<<< HEAD
 	margin-top: 750px;
 	display: flex;
 	flex-direction: row;
@@ -122,6 +137,16 @@ body{
 .third-screen-coment{
 	padding-top: 50px;
 	padding-left: 30px;
+=======
+	margin-top: 400px;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+.third-screen-coment{
+	margin-left: -190px;
+	padding-top: 50px;
+>>>>>>> origin/lleebs.v3
 	text-align: left;
 	display: flex;
 	flex-direction: column;
@@ -136,3 +161,61 @@ body{
 	left: -250px;
 	bottom: -65px;
 }
+<<<<<<< HEAD
+=======
+/*네번째 화면에 들어갈 CSS*/
+.fourth-screen{
+	justify-content: center;
+	margin-top: 400px;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+.fourth-screen-coment{
+	padding-top: 50px;
+	padding-right: 30px;
+	text-align: right;
+	display: flex;
+	flex-direction: column;
+}
+/*다섯번째 화면에 들어갈 CSS*/
+.fifth-screen{
+	justify-content: center;
+	margin-top: 400px;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+.fifth-screen-coment{
+	padding-left: 30px;
+	padding-top: 50px;
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+}
+#cross-icon{
+	position: absolute;
+	right: 20px;
+	bottom: 15px;
+}
+/*중간 여백 css*/
+.empty-space{
+	width: 100%;
+	height: 300px;
+}
+/*여섯번째 화면에 들어갈 CSS*/
+.sixth-screen{
+	width: 100%;
+	text-align: center;
+}
+.end-coment{
+	top: 350px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	z-index: 1;
+}
+.end-img{
+	filter: brightness(20%);
+}
+>>>>>>> origin/lleebs.v3
