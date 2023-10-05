@@ -11,6 +11,8 @@ stDelete=com.apartogether.controller.store.StoreDeleteController
 myStoreList=com.apartogether.controller.store.MyStoreListController
 stSales=com.apartogether.controller.store.StoreSalesController
 stOrLog=com.apartogether.controller.store.StoreOrderLogController
+stOpen=com.apartogether.controller.store.StoreOpenController
+stClose=com.apartogether.controller.store.StoreCloseController
 #Menu
 menuInsert=com.apartogether.controller.menu.MenuInsertController
 menuUpdate=com.apartogether.controller.menu.MenuUpdateController
@@ -26,6 +28,7 @@ meDetail=com.apartogether.controller.member.MemberDetailController
 meList=com.apartogether.controller.member.MemberListController
 meUpdate=com.apartogether.controller.member.MemberUpdateController
 meDelete=com.apartogether.controller.member.MemberDeleteController
+<<<<<<< HEAD
 #meResetPassword=com.apartogether.controller.member.MemberResetPasswordController
 # 커뮤니티(vote)
 voteDo=com.apartogether.controller.vote.VoteDoController
@@ -33,3 +36,31 @@ voteView=com.apartogether.controller.vote.VoteViewController
 voteInsert=com.apartogether.controller.vote.VoteInsertController
 voteList=com.apartogether.controller.vote.VoteListController
 voteResult=com.apartogether.controller.vote.VoteResultController
+=======
+meResetPassword=com.apartogether.controller.member.MemberResetPasswordController
+#room 컨트롤러
+roList=com.apartogether.controller.room.RoomListController
+roDetail=com.apartogether.controller.room.RoomDetailController
+roReady=com.apartogether.controller.room.RoomReadyController
+roNotReady=com.apartogether.controller.room.RoomNotReadyController
+roOut=com.apartogether.controller.room.RoomOutController
+roInsert=com.apartogether.controller.room.RoomInsertController
+# comment section
+cmList=com.apartogether.controller.comment.CommentListController
+cmInsert=com.apartogether.controller.comment.CommentInsertController
+cmDelete=com.apartogether.controller.comment.CommentDeleteController
+#order 컨트롤러
+myorList=com.apartogether.controller.order.MyOrderListController
+myOrDetail=com.apartogether.controller.order.MyOrderDetailController
+orInsert=com.apartogether.controller.order.OrderInsertController
+orDelete=com.apartogether.controller.order.OrderDeleteController
+orConfirm=com.apartogether.controller.order.OrderConfirmController
+# 커뮤니티(vote)
+voteDo=com.apartogether.controller.vote.VoteDoController
+voteView=com.apartogether.controller.vote.VoteViewController
+#voteAdd=com.apartogether.controller.vote.VoteAddController
+#voteBoard=com.apartogether.controller.vote.VoteController
+voteInsert=com.apartogether.controller.vote.VoteInsertController
+voteResult=com.apartogether.controller.vote.VoteResultController
+voteList=com.apartogether.controller.vote.VoteListController
+>>>>>>> origin/sup_new_branch02

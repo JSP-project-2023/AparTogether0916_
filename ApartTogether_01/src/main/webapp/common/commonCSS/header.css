@@ -141,6 +141,7 @@ a {
 	}
 	.ham_bg {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		background-color: #ffffff;
 	    min-width: fit-content;
 	    max-width: 500px;
@@ -153,6 +154,8 @@ a {
 	    border: 8px solid #fa6d35;
 	    box-shadow: 2px 2px 11px #919191;
 =======
+=======
+>>>>>>> origin/sup_new_branch02
 		background-color: #f3f3f3;
 		min-width: fit-content;
 		max-width: 500px;
@@ -162,7 +165,10 @@ a {
 		position: absolute;
 		z-index: 1;
 		right: 100px;
+<<<<<<< HEAD
 >>>>>>> member_merge03_lsh
+=======
+>>>>>>> origin/sup_new_branch02
 	}
 	.hamnav_hole {
 		font-size: 1.1rem;
@@ -198,12 +204,15 @@ a {
 		margin-bottom: 15px;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.hamnav_member > li:hover {
 		background-color: #f3f3f3;
 	}
 <<<<<<< HEAD
 <<<<<<< HEAD
 }
+=======
+>>>>>>> origin/sup_new_branch02
 
 @media screen and (max-width: 577px) {
 	.ham_bg {
@@ -212,6 +221,7 @@ a {
 	    position: absolute;
 	    z-index: 1;
     }
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> member_merge03_lsh
@@ -221,3 +231,6 @@ a {
 >>>>>>> member_merge03_lsh
 >>>>>>> origin/llebs.v3_add.ProfileIMG_lsh
 }
+=======
+}}
+>>>>>>> origin/sup_new_branch02

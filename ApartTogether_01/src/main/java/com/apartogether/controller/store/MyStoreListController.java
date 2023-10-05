@@ -24,6 +24,7 @@ public class MyStoreListController extends SuperClass {
 		String category = request.getParameter("categoryList"); // 카테고리 선택했을 때
 		String id = null;
 		
+		
 		if (request.getParameter("id") == null || request.getParameter("id").equals(null)) {
 			Member mem = (Member) session.getAttribute("loginfo");
 			id = mem.getId();
@@ -52,7 +53,8 @@ public class MyStoreListController extends SuperClass {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
+	
+	
+	
 }

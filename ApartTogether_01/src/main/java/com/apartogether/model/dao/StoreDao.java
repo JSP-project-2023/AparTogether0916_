@@ -98,14 +98,14 @@ public class StoreDao extends SuperDao {
 		return bean;
 	}
 	
-//	전체 가게 리스트 목록 화면에 출력 (페이징 처리, mode / keyword 검색 기능) - 이리수
+//	전체 가게 리스트 목록 화면에 출력 (페이징 처리, mode / keyword 검색 기능) + open 중인 가게를 우선적으로 보여줌- 이리수
 	public List<Store> selectAll(PagingStore pageInfo) throws Exception {
 		/* TopN 구문 사용해서 페이징 처리된 목록 반환 */
 		
 		/* 페이징 처리할 부분 ranking 으로 순서 정렬 */
-		String sql = "select stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, redday, btime ";
-		sql += " from (select stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, redday, btime, ";
-		sql += " rank() over(order by stno desc) as ranking from store ";
+		String sql = "SELECT stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, ststatus, redday, btime ";
+		sql += "FROM (SELECT stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, ststatus, redday, btime, ";
+		sql += "RANK() OVER(ORDER BY CASE WHEN ststatus = 'open' THEN 0 ELSE 1 END, stno DESC) AS ranking FROM store ";
 		
 		/* 키워드 검색 */
 		String mode = pageInfo.getMode();
@@ -172,8 +172,8 @@ public class StoreDao extends SuperDao {
 		/* TopN 구문 사용해서 페이징 처리된 목록 반환 */
 		
 		/* 페이징 처리할 부분 ranking 으로 순서 정렬 */
-		String sql = "select stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, redday, btime ";
-		sql += " from (select stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, redday, btime, ";
+		String sql = "select stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, ststatus, redday, btime ";
+		sql += " from (select stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, ststatus, redday, btime, ";
 		sql += " rank() over(order by stno desc) as ranking from store where id=?";
 		
 		/* 키워드 검색 */
@@ -281,7 +281,7 @@ public class StoreDao extends SuperDao {
 		storeBean.setStplace(rs.getString("stplace")); // 가게 위치
 		storeBean.setSttel(rs.getString("sttel")); // 가게 전화번호
 		storeBean.setSttime(rs.getString("sttime")); // 가게 운영 시간
-		
+		storeBean.setststatus(rs.getString("ststatus")); // 가게 운영 시간
 		return storeBean;
 	}
 
@@ -586,6 +586,7 @@ public class StoreDao extends SuperDao {
 	
 	//날짜별 판매량 가져오는 메소드
 	public Map<String, Integer> getSalePrice(int stno) throws SQLException{
+
 		Map<String, Integer> saleMonth = new HashMap<String, Integer>();
 		
 		String sql = "select sum(a.qty*menu.price) as total, to_char(a.ordertime, 'yy/mm') as ordertime "
@@ -692,5 +693,89 @@ public class StoreDao extends SuperDao {
 		}
 
 		return lists;
-	}	
+	}
+
+	// 가게 영업 상태를 open으로 바꿈.
+	public int StoreOpen(int stno, String id) throws Exception {
+		String sql = " update store set ststatus = 'open' ";
+		sql += " where stno = ? and id = ? ";
+		PreparedStatement pstmt = null;
+
+		int cnt = -1;
+		conn = super.getConnection();
+		conn.setAutoCommit(false);
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, stno);
+		pstmt.setString(2, id);
+
+		cnt = pstmt.executeUpdate();
+
+		conn.commit();
+
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+
+		return cnt;
+	}
+
+	// 가게 영업 상태를 close로 바꿈
+	public int StoreClose(int stno, String id) throws Exception {
+
+		String sql = " update store set ststatus = 'close' ";
+		sql += " where stno = ? and id = ? ";
+		PreparedStatement pstmt = null;
+
+		int cnt = -1;
+		conn = super.getConnection();
+		conn.setAutoCommit(false);
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, stno);
+		pstmt.setString(2, id);
+
+		cnt = pstmt.executeUpdate();
+
+		conn.commit();
+
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+
+		return cnt;
+	}
+	// 가게의 영업상태를 확인함
+
+	public String StoreStatuss(int stno) throws Exception{
+		String sql = "select ststatus from store where stno = ? ";
+
+		String bean = null;
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setInt(1,stno);
+		ResultSet rs = pstmt.executeQuery();
+		
+		if (rs.next()) {
+			bean =rs.getString("ststatus") ;
+		}
+		
+		if (rs != null) {
+			rs.close();
+		}
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+
+		return bean;
+	}
+
 }

@@ -37,6 +37,7 @@ public class Vote {
 		return "Vote [voteno=" + voteno + ", votetitle=" + votetitle + ", votecol1=" + votecol1 + ", votecol2="
 				+ votecol2 + ", votecol3=" + votecol3 + ", votecol4=" + votecol4 + ", votecol5=" + votecol5
 				+ ", votedate=" + votedate + ", endVote=" + endvote + ", voteid=" + voteid + "]";
+>>>>>>> origin/sup_new_branch02
 	}
 
 	public int getVoteno() {

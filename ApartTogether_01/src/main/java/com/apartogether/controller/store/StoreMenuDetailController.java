@@ -22,6 +22,7 @@ public class StoreMenuDetailController extends SuperClass{
 		bean = dao.getStorebyStno(stno);
 		
 		request.setAttribute("bean", bean);
+		request.setAttribute("stno", stno);
 		
 		//메뉴 정보 받아옴
 		List<Menu> lists = null;

@@ -189,7 +189,16 @@ function addStore() {
 						<tr>
 					</c:if>
 					<td>
-						<div class="card" style="width: 19rem;">
+					<c:choose>
+							<c:when test="${storeList.ststatus eq 'open'}">
+								<div class="card" style="width: 19rem;">
+							</c:when>		
+							<c:when test="${storeList.ststatus eq 'close'}">
+								<div class="card" style="width: 19rem; opacity: 0.35;">
+							</c:when>
+					</c:choose>
+					
+						
 							<a class="removeUnderLine" href="<%=notWithFormTag%>stMuDetail&stno=${storeList.stno}">
 								<img class="card-img-top" alt="${storeList.stname}" src="uploadStoreImage/${storeList.stlogo}">
 								
@@ -245,7 +254,13 @@ function addStore() {
 										</c:when>
 									</c:choose>
 									
-									<h5 class="card-title text_dark">${storeList.stname}</h5>
+									<h5 class="card-title text_dark">${storeList.stname}
+											<c:if test="${storeList.ststatus eq 'close'}">
+												<span class="badge rounded-pill" style='background-color:#ff0000;'>
+													${storeList.ststatus}
+												</span>
+											</c:if>
+									</h5>
 									<input type="hidden" name="stno" value="${storeList.stno}">
 									
 									<p class="card-text text_dark">
@@ -265,6 +280,7 @@ function addStore() {
 		</table>
 		${requestScope.pageInfo.pagingHtml}	
 	</div>
-	<%@ include file="/common/footer.jsp"%>
+
 </body>
+<%@ include file="/common/footer.jsp"%>
 </html>
