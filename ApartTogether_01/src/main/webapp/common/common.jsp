@@ -9,7 +9,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-
+ 
 <!-- [st] whologin 변수는 현재 로그인 상태를 알려 주는 변수입니다.  미로그인(0)  관리자 (1) 사업자 (2) 일반회원 (3) -->
 <c:if test="${empty sessionScope.loginfo}">
 	<c:set var="whologin" value="0" />
@@ -17,6 +17,7 @@
 
 <c:if test="${not empty sessionScope.loginfo}">
 	<c:set var="whologin_id" value="${sessionScope.loginfo.id}"/>
+	<c:set var="profileimg" value="${sessionScope.loginfo.profile}" />
 	<c:if test="${sessionScope.loginfo.mtype == 'admin'}">
 		<c:set var="whologin" value="1" />
 	</c:if>
@@ -26,6 +27,7 @@
 	<c:if test="${sessionScope.loginfo.mtype == 'user'}">
 		<c:set var="whologin" value="3" />
 	</c:if>
+	
 </c:if>
 <!-- [ed] whologin 변수는 현재 로그인 상태를 알려 주는 변수입니다.  미로그인(0)  관리자 (1) 사업자 (2) 일반회원 (3) -->
 
@@ -150,7 +152,6 @@ String notWithFormTag = appName + mappingName + "?command=";
 						</ul>
 					</li>
 				</ul>
-				
 				<ul class="navbar_member">
 					<!-- [st] 로그인 섹션 -->							
 					<c:if test="${whologin eq 0 }">
@@ -161,21 +162,45 @@ String notWithFormTag = appName + mappingName + "?command=";
 							<a class="" href="<%=notWithFormTag%>meInsert">회원 가입</a>
 						</li>
 					</c:if>
-					
+
 					<c:if test="${whologin eq 1 }">
-						<li class=""><a class="">주인님 !</a></li>
+						<li class=""><a class="">주인님 !
+							<c:if test="${profileimg != null}">
+								<img class="profile_image" alt="${requestScope.loginfo.profile}" 
+							    src="${pageContext.request.contextPath}/uploadProfileImage/${profileimg}">
+							</c:if>
+							<c:if test="${profileimg == null}">
+								<img class="profile_image" alt="기본이미지" src="${pageContext.request.contextPath}/image/defaultProfile.jpeg">
+							</c:if>
+						</a></li>
 						<li class=""><a class="" href="<%=notWithFormTag%>meList">회원 목록</a></li>
 						<li class=""><a class="" href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
 					</c:if>
 					
 					<c:if test="${whologin eq 2 }">
-						<li class=""><a class="">${sessionScope.loginfo.name} 사장님 </a></li>
+						<li class=""><a class="">${sessionScope.loginfo.name} 사장님
+							<c:if test="${profileimg != null}"><!-- requestScope.loginfo.profile = profileimg -->
+								<img class="profile_image" alt="${requestScope.loginfo.profile}" 
+							    src="${pageContext.request.contextPath}/uploadProfileImage/${profileimg}">
+							</c:if>
+							<c:if test="${profileimg == null}">
+								<img class="profile_image" alt="기본이미지" src="${pageContext.request.contextPath}/image/defaultProfile.jpeg">
+							</c:if>
+						</a></li>
 						<li class=""><a class="" href="<%=notWithFormTag%>meDetail&id=${sessionScope.loginfo.id}">마이페이지</a></li>
 						<li class=""><a class="" href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
 					</c:if>
 					
 					<c:if test="${whologin eq 3 }">
-						<li class=""><a class="">${sessionScope.loginfo.name}님</a></li>
+						<li class=""><a class="">${sessionScope.loginfo.name}님
+							<c:if test="${profileimg != null}"><!-- requestScope.loginfo.profile = profileimg -->
+								<img class="profile_image" alt="${requestScope.loginfo.profile}" 
+							    src="${pageContext.request.contextPath}/uploadProfileImage/${profileimg}">
+							</c:if>
+							<c:if test="${profileimg == null}">
+								<img class="profile_image" alt="기본이미지" src="${pageContext.request.contextPath}/image/defaultProfile.jpeg">
+							</c:if>
+						</a></li>
 						<li class=""><a class="" href="<%=notWithFormTag%>meDetail&id=${sessionScope.loginfo.id}">마이페이지</a></li>
 						<li class=""><a class="" href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
 					</c:if>

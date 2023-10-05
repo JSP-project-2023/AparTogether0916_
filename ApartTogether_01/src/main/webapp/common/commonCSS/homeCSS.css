@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+<<<<<<< HEAD
 *{
 	color: white;
 }
@@ -34,12 +35,40 @@ body{
 
 /*첫번째 화면에 들어갈 요소들*/
 .first-screen{
+=======
+* {
+	color: white;
+}
+
+body {
+	background-color: #252525;
+	height: 5500px;
+	min-width: 520px;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	background-color: blue;
+}
+
+/*첫번째 화면에 들어갈 요소들*/
+.first-screen {
+>>>>>>> origin/llebs.v3_add.ProfileIMG_lsh
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 }
+<<<<<<< HEAD
 #main-title{
 	width: 100%;
+=======
+
+#main-title {
+	width: 100%;
+	background-color: red;
+>>>>>>> origin/llebs.v3_add.ProfileIMG_lsh
 	font-size: 50px;
 	position: relative;
 	transition: 0.3s;
@@ -47,6 +76,7 @@ body{
 	animation: fadein 3s;
 	-webkit-animation: fadein 3s;
 }
+<<<<<<< HEAD
 @keyframes fadein {
     from {
         opacity:0;
@@ -190,3 +220,24 @@ body{
 .end-img{
 	filter: brightness(20%);
 }
+=======
+
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1.5;
+	}
+}
+
+/*로고 박스들*/
+.logo-box {
+	width: 100%;
+	white-space: nowrap;
+	background-color: greenyellow;
+	position: relative;
+	top: 10em;
+}
+>>>>>>> origin/llebs.v3_add.ProfileIMG_lsh
