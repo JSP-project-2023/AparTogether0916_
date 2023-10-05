@@ -40,33 +40,36 @@ String notWithFormTag = appName + mappingName + "?command=";
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/common.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/header.css" type="text/css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
-	rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
-	rel="stylesheet">
-
-<script src="/js/sweetalert.js"></script>
-<script type="text/javascript">
-	function openHam() {
-		if ($('#ham_bg').hasClass('dontshow') == true) {
-			$('#ham_bg').removeClass('dontshow');
-			
-		} else {
-			$('#ham_bg').addClass('dontshow');
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/common.css" type="text/css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/header.css" type="text/css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
+		rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
+		rel="stylesheet">
+	
+	<script src="/js/sweetalert.js"></script>
+	
+	
+	<script type="text/javascript">
+		function openHam() {
+			if ($('#ham_bg').hasClass('dontshow') == true) {
+				$('#ham_bg').removeClass('dontshow');
+				
+			} else {
+				$('#ham_bg').addClass('dontshow');
+			}
 		}
-	}
-</script>
+	</script>
+	
 </head>
 
 <body>
@@ -134,11 +137,11 @@ String notWithFormTag = appName + mappingName + "?command=";
 						<a class="" href="#" role="button">커뮤니티</a>
 						<ul class="subnavbar_menu">
 							<li>
-								<a class="" href="<%=notWithFormTag%>vwList">투표(href : null)</a>
+								<a class="" href="<%=notWithFormTag%>voteList">투표</a>
 							</li>
 							<c:if test="${whologin eq 1}">
 								<li>
-									<a class="" href="<%=notWithFormTag%>prInsert">투표 등록(href : null)</a>
+									<a class="" href="<%=notWithFormTag%>voteInsert">투표 등록</a>
 								</li>
 							</c:if>
 						</ul>
@@ -255,11 +258,11 @@ String notWithFormTag = appName + mappingName + "?command=";
 						<span>커뮤니티</span>
 						<ul class="sub_hamnav_menu">
 							<li>
-								<a class="" href="<%=notWithFormTag%>vwList">투표(href : null)</a>
+								<a class="" href="<%=notWithFormTag%>voteList">투표</a>
 							</li>
 							<c:if test="${whologin eq 1}">
 								<li>
-									<a class="" href="<%=notWithFormTag%>prInsert">투표 등록(href : null)</a>
+									<a class="" href="<%=notWithFormTag%>voteInsert">투표 등록(href : null)</a>
 								</li>
 							</c:if>
 						</ul>

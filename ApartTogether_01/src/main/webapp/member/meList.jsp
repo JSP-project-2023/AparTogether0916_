@@ -116,6 +116,66 @@
 			font-weight: 600;
 		}
 </style>	
+<script type="text/javascript">
+		$(document).ready(function(){
+			/* 상세검색을 한 후 selected option을 보존하여 출력한다. */
+			var optionList = $('#mode option');
+			for(var i=0; i < optionList.length ; i++){
+				if(optionList[i].value == '${requestScope.pageInfo.mode}'){
+					optionList[i].selected = true ;
+					
+				}
+			}
+			changeMode();
+			/* 상세검색을 한 후 selected option을 보존하여 출력한다. */
+			var optionList = $('#keywordmtype option');
+			for(var i=0; i < optionList.length ; i++){
+				if(optionList[i].value == '${requestScope.pageInfo.keywordmtype}'){
+					optionList[i].selected = true ;
+				}
+			}/* 상세검색을 한 후 selected option을 보존하여 출력한다. */
+			var optionList = $('#keywordgender option');
+			for(var i=0; i < optionList.length ; i++){
+				if(optionList[i].value == '${requestScope.pageInfo.keywordgender}'){
+					optionList[i].selected = true ;
+				}
+			}
+			/* 상세검색을 한 후 검색어(keyword)를 보존하여 출력한다. */
+			$('#keyword').val('${requestScope.pageInfo.keyword}');
+
+		});
+		
+		function changeMode() {
+	        var modeDropdown = document.getElementById("mode");
+	        var keywordmtype = document.getElementById("keywordmtype");
+	        var keywordgender = document.getElementById("keywordgender");
+	        var keyword = document.getElementById("keyword");
+	        if (modeDropdown.value === "all"){ // 검색옵션 선택안함
+	        	keywordmtype.style.display = "none";
+	        	keywordgender.style.display = "none";
+	        	keyword.style.display = "none";
+	        }else if (modeDropdown.value === "mtype") { // 검색옵션: 회원유형
+	        	keywordmtype.style.display = "inline";
+	        	keywordgender.style.display = "none";
+	        	keyword.style.display = "none";
+	        } else if (modeDropdown.value === "gender") { // 검색옵션: 성별
+	        	keywordmtype.style.display = "none";
+	        	keywordgender.style.display = "inline";
+	        	keyword.style.display = "none";
+	        } else {                                      // 검색옵션: 아이디,이름,닉네임,주소
+	        	keywordmtype.style.display = "none";
+	        	keywordgender.style.display = "none";
+	        	keyword.style.display = "inline";
+	        	$('#keyword').focus(); // 바로 입력할 수 있도록 focus()
+	        }
+	    }
+		
+		
+		/* 전체검색 버튼 selectAll() */
+		function searchAll(){
+			location.href = '<%=notWithFormTag%>meList' ;
+		}
+	</script>
 </head>
 <body>
 	<div class="container">
@@ -133,11 +193,52 @@
 			!!!-비정상적인 접근입니다. 회원목록 페이지에 접근하실 수 없습니다..-!!!
 		</c:if>
 		<c:if test="${accessThisPage == 1 }">
-			alert("count");
 			<%-- 열람가능 --%>
-			<h2>회원 목록</h2>
-			<p>회원 목록을 보여 주는 페이지입니다.</p>		
-			<table class="table table-hover">
+			<h2 class="mainTitle">회원 목록</h2>	
+			
+			
+			<div class="row">
+               		<div class="col-sm-12">               
+		                <form name="myform" action="<%=withFormTag%>" method="get">
+		                   <input type="hidden" name="command" value="meList">
+		                   <div class="row">
+		                      <div class="col-sm-12 mode" align="right">
+		                      	
+		                         <select class="form-control-sm" id="mode" name="mode" onchange="changeMode()">
+		                            <option value="all" selected="selected">--- 검색옵션 ---
+		                            <option value="mtype">회원유형
+		                            <option value="id">아이디
+		                            <option value="name">이름
+		                            <option value="nickname">닉네임
+		                            <option value="gender">성별
+		                            <option value="address">주소
+		                         </select>
+		                         
+		                         <select class="form-control-sm" id="keywordmtype" name="keywordmtype">
+		                            <option value="all" selected="selected">--- 전체 ---
+		                            <option value="user">일반회원
+		                            <option value="biz">사업자
+		                            <option value="admin">관리자
+		                         </select>
+		                         
+		                         <select class="form-control-sm" id="keywordgender" name="keywordgender">
+		                            <option value="all" selected="selected">--- 전체 ---
+		                            <option value="male">남자
+		                            <option value="female">여자
+		                         </select>
+		                        
+		                         <input class="form-control-sm notShow" type="text" name="keyword" id="keyword"
+		                         		placeholder="검색어 입력">
+		                         <button type="submit" class="btn button-18 " style="padding: 7px; min-height: 0px" onclick="">검색</button>
+		                         <button type="button" class="btn button-18 " style="padding: 7px; min-height: 0px" onclick="searchAll();">전체 검색</button>
+		                         </div>  
+		                   </div>
+		                </form>                     
+               		</div>
+				</div>
+			
+			
+			<table class="table table-hover" style="margin-top: 5px;">
 				<thead class="table-dark">
 					<tr>
 						<th class=" col-md-1 text-center">회원유형</th>
@@ -199,20 +300,20 @@
 						<td class=" col-md-1 text-center">
 							<c:if test="${bean.gender eq 'male'}">남자</c:if>
 							<c:if test="${bean.gender eq 'female'}">여자</c:if>	
-							<c:if test="${bean.gender == null}">X</c:if>	
+							<c:if test="${bean.gender == null}">x</c:if>	
 						</td>
 						
 						<td  class=" col-md-1 text-center">
-							<c:if test="${bean.phone == null }">X</c:if>
+							<c:if test="${bean.phone == null }">x</c:if>
 							<c:if test="${bean.phone != null }">${bean.phone}</c:if>
 						</td>
 						<td  class=" col-md-1 text-center">
-							<c:if test="${bean.birth == null }">X</c:if>
-							<c:if test="${bean.birth == 'null' }">X</c:if>
+							<c:if test="${bean.birth == null }">x</c:if>
+							<c:if test="${bean.birth == 'null' }">x</c:if>
 							<c:if test="${bean.birth != 'null' }">${bean.birth}</c:if>
 						</td>
 						<td  class=" col-md-2 text-center">
-							<c:if test="${bean.address == ' ' }">X</c:if>
+							<c:if test="${bean.address == ' ' }">x</c:if>
 							<%-- <c:if test="${bean.address != ' ' }">${bean.address}</c:if> --%>
 							<c:if test="${bean.address != ' ' }">${requestScope.addressSetList[cnt]['firstPart']} ${requestScope.addressSetList[cnt]['secondPart']}</c:if>
 						</td>					

@@ -19,6 +19,8 @@ public class Vote {
 	
 	public Vote(int voteno, String votetitle, String votecol1, String votecol2, String votecol3, String votecol4,
 			String votecol5, String votedate, int endVote, String voteid) {
+	public Vote() {
+	}
 		super();
 		this.voteno = voteno;
 		this.votetitle = votetitle;
@@ -117,6 +119,21 @@ public class Vote {
 
 	public void setVotedate(String votedate) {
 		this.votedate = votedate;
+	}
+	public String getVoteid() {
+		return voteid;
+	}
+
+	public void setVoteid(String voteid) {
+		this.voteid = voteid;
+	}
+
+	public int getEndvote() {
+		return endvote;
+	}
+
+	public void setEndvote(int endvote) {
+		this.endvote = endvote;
 	}
 	/* [ed] getter&setter */
 }

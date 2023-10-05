@@ -32,4 +32,6 @@ voteDo=com.apartogether.controller.vote.VoteDoController
 voteView=com.apartogether.controller.vote.VoteViewController
 #voteAdd=com.apartogether.controller.vote.VoteAddController
 #voteBoard=com.apartogether.controller.vote.VoteController
-voteInsert=com.apartogether.controller.vote.VoteInsertController
+<<<<<<< HEAD
+voteList=com.apartogether.controller.vote.VoteListController
+>>>>>>> origin/member_merge_01_yh33
