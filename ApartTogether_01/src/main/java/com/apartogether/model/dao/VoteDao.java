@@ -2,20 +2,10 @@ package com.apartogether.model.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-<<<<<<< HEAD
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
-import com.apartogether.model.bean.Vote;
-import com.apartogether.utility.MyUtility;
-import com.apartogether.utility.Paging;
-
-import java.sql.SQLException;
 import java.util.*;
-
 import com.apartogether.model.bean.Vote;
+import java.sql.SQLException;
+import com.apartogether.utility.PagingVote;
 
 public class VoteDao extends SuperDao{
 	private int cnt = -1;
@@ -206,15 +196,7 @@ public class VoteDao extends SuperDao{
 		
 		return cnt;
 	}
-}
-=======
-import java.util.List;
-
-import com.apartogether.model.bean.Vote;
-import com.apartogether.utility.PagingVote;
-
-public class VoteDao extends SuperDao{
-
+	
 	// 검색 조건에 따른 총 레코드 수를 반환하는 메서드
 	public int GetTotalRecordCount(String mode, String keywordEndVote, String keyword) throws Exception{
 		String sql = " select count(*) as cnt from vote ";
@@ -408,7 +390,4 @@ public class VoteDao extends SuperDao{
 		bean.setVoteid(rs.getString("voteid"));
 		return bean;
 	}
-
-	
 }
->>>>>>> origin/member_merge_01_yh33

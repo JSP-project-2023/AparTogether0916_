@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ include file="./../common/common.jsp" %>
-
-
 
 <!DOCTYPE html>
 <html>
@@ -109,13 +106,8 @@
 	background="http://localhost:5214/ApartTogether_01
 	/image/background3.png">
 	<div class="container">
-<<<<<<< HEAD
-		<h2 style="padding: 20px;">
-			<b>패스워드 찾기</b>
-=======
 		<h2 class="mainTitle">
 			패스워드 찾기
->>>>>>> origin/member_merge_01_yh33
 		</h2>
 		<p>하기 정보를 입력해주세요.</p>
 
@@ -152,7 +144,6 @@
 				<button type="submit"
 					class="btn button-18 "  >Password 확인</button>
 			</div>
-			
 		</form>
 	</div>
 </body>

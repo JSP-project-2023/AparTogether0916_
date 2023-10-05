@@ -1,12 +1,6 @@
 package com.apartogether.model.bean;
 
 public class Vote {
-//	private Integer stno; // 가게 고유 코드
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/member_merge_01_yh33
-	// TODO 가게 고유 코드 Integer로 변경
 	private int voteno; // 가게 고유 코드
 	private String votetitle; // 회원(사업자) 아이디
 	private String votecol1;
@@ -15,27 +9,11 @@ public class Vote {
 	private String votecol4;
 	private String votecol5;
 	private String votedate;
-<<<<<<< HEAD
-	private int endVote; // 투표 종류 여부
-	private String voteid; // 투표 게시글 작성자
-
-	public Vote() {
-	}
+	private String voteid; //작성자아이디
+	private int endvote; //마감여부
 	
 	public Vote(int voteno, String votetitle, String votecol1, String votecol2, String votecol3, String votecol4,
 			String votecol5, String votedate, int endVote, String voteid) {
-=======
-	private String voteid; //작성자아이디
-	private int endvote; //마감여부
-
-	
-
-	public Vote() {
-	}
-
-	public Vote(int voteno, String votetitle, String votecol1, String votecol2, String votecol3, String votecol4,
-			String votecol5, String votedate) {
->>>>>>> origin/member_merge_01_yh33
 		super();
 		this.voteno = voteno;
 		this.votetitle = votetitle;
@@ -45,32 +23,26 @@ public class Vote {
 		this.votecol4 = votecol4;
 		this.votecol5 = votecol5;
 		this.votedate = votedate;
-<<<<<<< HEAD
-		this.endVote = endVote;
+		this.endvote = endVote;
 		this.voteid = voteid;
 	}
-
-=======
+	
+	public Vote() {
 	}
 	
->>>>>>> origin/member_merge_01_yh33
 	@Override
 	public String toString() {
 		return "Vote [voteno=" + voteno + ", votetitle=" + votetitle + ", votecol1=" + votecol1 + ", votecol2="
 				+ votecol2 + ", votecol3=" + votecol3 + ", votecol4=" + votecol4 + ", votecol5=" + votecol5
-<<<<<<< HEAD
-				+ ", votedate=" + votedate + ", endVote=" + endVote + ", voteid=" + voteid + "]";
+				+ ", votedate=" + votedate + ", endVote=" + endvote + ", voteid=" + voteid + "]";
 	}
 
 	public Integer getEndVote() {
-		return endVote;
+		return endvote;
 	}
 
-	public void setEndVote(Integer endVote) {
-		this.endVote = endVote;
-=======
-				+ ", votedate=" + votedate + "]";
->>>>>>> origin/member_merge_01_yh33
+	public void setEndVote(Integer endvote) {
+		this.endvote = endvote;
 	}
 
 	/* [st] getter&setter */
@@ -81,7 +53,7 @@ public class Vote {
 	public void setVoteno(int voteno) {
 		this.voteno = voteno;
 	}
-<<<<<<< HEAD
+
 	public String getVoteid() {
 		return voteid;
 	}
@@ -89,8 +61,6 @@ public class Vote {
 	public void setVoteid(String voteid) {
 		this.voteid = voteid;
 	}
-=======
->>>>>>> origin/member_merge_01_yh33
 
 	public String getVotetitle() {
 		return votetitle;
@@ -147,16 +117,6 @@ public class Vote {
 	public void setVotedate(String votedate) {
 		this.votedate = votedate;
 	}
-<<<<<<< HEAD
-=======
-
-	public String getVoteid() {
-		return voteid;
-	}
-
-	public void setVoteid(String voteid) {
-		this.voteid = voteid;
-	}
 
 	public int getEndvote() {
 		return endvote;
@@ -165,9 +125,5 @@ public class Vote {
 	public void setEndvote(int endvote) {
 		this.endvote = endvote;
 	}
-
-	
-	
->>>>>>> origin/member_merge_01_yh33
 	/* [ed] getter&setter */
 }

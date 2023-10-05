@@ -331,9 +331,6 @@
 				돌아 가기
 			</button>
 		</div>
-	
-	
-		
 	</div>	 
 </body>
 </html>

@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-
 <%@ include file="./../common/common.jsp" %>
-
 <%@ page import="com.apartogether.model.dao.MemberDao" %>
 <%@ page import="com.apartogether.model.bean.Member"%>
     
@@ -304,7 +301,7 @@
 				</div>
 				
 				<div class="input-group">
-					<span class="input-group-text col-md-2">닉네임<font color="red">*</font></span>
+					<span class="input-group-text col-md-2">닉네임</span><!-- <font color="red">*</font> -->
 					<input class="form-control" type="text" id="nickname" name="nickname" value="${requestScope.bean.nickname }">				
 				</div>
 				<div class="input-group">
@@ -418,5 +415,4 @@ window.onload = function(){ /* 창이 켜졌을때 로드되는 function들 */
 }
 </script>
 <!-- [ed] 다음(카카오) 주소 검색 스크립트 -->
-
 </html>

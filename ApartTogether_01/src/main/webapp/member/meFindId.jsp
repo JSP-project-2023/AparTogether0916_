@@ -126,20 +126,12 @@
 <body
 	background="http://localhost:5214/ApartTogether_01
 	/image/background3.png">
-<<<<<<< HEAD
-	<div class="container">
-		<h2 style="padding: 20px;">
-			<b>아이디 찾기</b>
-		</h2>
-=======
 	
 	<div class="container" >
 	
 		<h2 class="mainTitle">아이디 찾기</h2>
->>>>>>> origin/member_merge_01_yh33
 		<p>하기 정보를 입력해주세요.</p>
 		
-
 		<form action="<%=withFormTag%>" method="post" >
 			<input type="hidden" name="command" value="meFindId">
 			
@@ -163,10 +155,7 @@
 				<button type="submit"
 					class="btn button-18"  >ID 확인</button>
 			</div>
-			
-			
 		</form>
-			
 	</div>
 </body>
 </html>
