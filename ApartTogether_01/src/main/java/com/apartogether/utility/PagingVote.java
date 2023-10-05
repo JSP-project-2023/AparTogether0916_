@@ -87,8 +87,8 @@ public class PagingVote {
 		for(int i = beginPage ; i <= endPage ; i++) {
 			
 			if(i == pageNumber) {
-				// active 속성으로 활성화시키고, 빨간 색으로 진하게 표현하기
-				html += "<li class=\"page-item active\">";
+				// active 속성으로 활성화시키고, white 색으로 진하게 표현하기
+				html += "<li class=\"page-item active active-page\" >";
 				html += "<a class=\"page-link\" href=\"#\">";
 				html += "<b><font color='white'>" + i + "</font></b>" ;
 				html += "</a></li>";

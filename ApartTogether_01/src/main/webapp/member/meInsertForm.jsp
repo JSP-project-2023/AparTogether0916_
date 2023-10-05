@@ -29,11 +29,6 @@
 	  		
 	    /* [st] submit 유효성 검사 */
 	    function validCheck(){ /* form validation check */
-	    	/* var isFormValid = hashPasswordAndSubmit();
-		    if (!isFormValid) {
-		        // 양식이 유효하지 않으면 양식 제출을 중단
-		        return false;
-		    } */
 	      	
 	    	var member01 = $('input[type="radio"]:checked').val() ;
 			if(member01 == null){
@@ -128,58 +123,13 @@
 				}
 	  		}
 	  		
-	  		 // 비밀번호를 SHA-256을 사용하여 해싱
-	       /*  var passwordInput = document.getElementById("password");
-	        var password = passwordInput.value;
-	        var hashedPassword = sha256(password);
-
-	        // 해싱된 비밀번호를 숨겨진 필드에 설정
-	        var hashedPasswordField = document.getElementById("hashedPassword");
-	        hashedPasswordField.value = hashedPassword; */
-	  		
-	        
-	     	/* // 테스트용 비밀키
-	        const secretKey = 'mySecretKey';
-	     	// 암호화할 비밀번호
-	        const password = $('#password').val();
-
-	        // 비밀번호를 AES로 암호화
-	        const encryptedPassword = encryptAES(password, secretKey);
-	        var encryptedPasswordField = document.getElementById("encryptedPassword");
-	        encryptedPasswordField.value = encryptedPassword; */
-	        //console.log('암호화된 비밀번호:', encryptedPassword);
-
-	        // 암호화된 비밀번호를 복호화
-	        //const decryptedPassword = decryptAES(encryptedPassword, secretKey);
-	        //console.log('복호화된 비밀번호:', decryptedPassword);
-	        
 		    return true;
 	  	}
-		/* function sha256(input) {
-		    var shaObj = new jsSHA("SHA-256", "TEXT");
-		    shaObj.update(input);
-		    return shaObj.getHash("HEX");
-		}
-		// AES 암호화 함수
-		function encryptAES(plainText, secretKey) {
-		    const cipherText = CryptoJS.AES.encrypt(plainText, secretKey).toString();
-		    return cipherText;
-		}
-
-		// AES 복호화 함수
-		function decryptAES(cipherText, secretKey) {
-		    const bytes = CryptoJS.AES.decrypt(cipherText, secretKey);
-		    const plainText = bytes.toString(CryptoJS.enc.Utf8);
-		    return plainText;
-		} */
-		
-		
 		
 	</script>
 	
 	<script	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
-	<!-- // SHA-256 해싱을 위해 jsSHA 라이브러리를 추가 -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/2.0.2/sha256.js"></script>
+
 	<style type="text/css">
 	.container {
 		margin-top:0px;
@@ -225,57 +175,63 @@
 		size: 3px;
 	}
 	
-	/* [st] button-18 */
-	.button-18 {
-		align-items: center;
-		background-color: #d8e4d2;
-		border: 0;
-		box-sizing: border-box;
-		color: #6f726e;
-		cursor: pointer;
-		display: inline-flex;
-		font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,
-			"Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans",
-			Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji",
-			"Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-		font-size: 20px;
-		font-weight: 600;
-		justify-content: center;
-		line-height: 20px;
-		width:100%;
-		max-width: 1100px;
-		min-height: 50px;
-		min-width: 0px;
-		overflow: hidden;
-		padding: 0px;
-		padding-left: 200px;
-		padding-right: 200px;
-		text-align: center;
-		touch-action: manipulation;
-		transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
-			box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s
-			cubic-bezier(0.4, 0, 0.2, 1) 0s;
-		user-select: none;
-		-webkit-user-select: none;
-		vertical-align: middle;
-	}
-	
-	.button-18:hover, .button-18:focus {
-		background-color: #8e998c;
-		color: #ffffff;
-	}
-	
-	.button-18:active {
-		background: #09223b;
-		color: rgb(255, 255, 255, .7);
-	}
-	
-	.button-18:disabled {
-		cursor: not-allowed;
-		background: rgba(0, 0, 0, .08);
-		color: rgba(0, 0, 0, .3);
-	}
-	/* [ed] button-18 */
+	  	/* [st] button-18 */
+          .button-18 {
+            align-items: center;
+            background-color: #FFA559; /* 버튼배경 색상 설정 */
+            border: 0;
+            box-sizing: border-box;
+           /*  color: #6f726e; */
+            color: #252525; /* 텍스트 색상 설정 */
+            cursor: pointer;
+            display: inline-flex;
+            font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            justify-content: center;
+            line-height: 20px;
+            /* max-width: 900px; */
+            width:100%;
+            min-height: 50px;
+            min-width: 0px;
+            overflow: hidden;
+            padding: 0px;
+            padding-left: 190px;
+            padding-right: 190px;
+            text-align: center;
+            touch-action: manipulation;
+            transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+            user-select: none;
+            -webkit-user-select: none;
+            vertical-align: middle;
+            border-radius: 25px; /* 모서리를 둥글게 만듦 */
+          }
+
+          .button-18:hover,
+          .button-18:focus { 
+            background-color: #FF6000;
+            color: #252525;
+            /* color: #ffffff; */
+          }
+
+          .button-18:active {
+            background: #09223b;
+            color: rgb(255, 255, 255, .7);
+          }
+
+          .button-18:disabled { 
+            cursor: not-allowed;
+            background: rgba(0, 0, 0, .08);
+            color: rgba(0, 0, 0, .3);
+          }
+          .button-99 {
+         	cursor: pointer;
+         	font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            
+          }
+  		/* [ed] button-18 */
 	.button-99 { /* 무색 투명 버튼 */
 		cursor: pointer;
 		font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,

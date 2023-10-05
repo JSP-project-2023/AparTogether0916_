@@ -9,8 +9,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>아파투게더:로그인</title>
-	<!-- // SHA-256 해싱을 위해 jsSHA 라이브러리를 추가 -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/2.0.2/sha256.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {	
 			var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -42,46 +40,9 @@
         }
 		/* [ed] popup 창으로 열기 */
 		
-		function cryptPassword(){
-			 /* // 비밀번호를 SHA-256을 사용하여 해싱
-	        var passwordInput = document.getElementById("password");
-	        var password = passwordInput.value;
-	        var hashedPassword = sha256(password);
-
-	        // 해싱된 비밀번호를 숨겨진 필드에 설정
-	        var hashedPasswordField = document.getElementById("hashedPassword");
-	        hashedPasswordField.value = hashedPassword; */
-			
-			/* // 테스트용 비밀키
-	        const secretKey = 'mySecretKey';
-	     	// 암호화할 비밀번호
-	       // const password = $('#password').val();
-	        const password = 'abc123';
-
-	        // 비밀번호를 AES로 암호화
-	        const encryptedPassword = encryptAES(password, secretKey);
-	        var encryptedPasswordField = document.getElementById("encryptedPassword");
-	        encryptedPasswordField.value = encryptedPassword; */
-	        //console.log('암호화된 비밀번호:', encryptedPassword);
-
-	        // 암호화된 비밀번호를 복호화
-	        //const decryptedPassword = decryptAES(encryptedPassword, secretKey);
-	        //console.log('복호화된 비밀번호:', decryptedPassword);
-	        
-	        
-	        
-		    return true;
-		}
-		/* function sha256(input) {
-		    var shaObj = new jsSHA("SHA-256", "TEXT");
-		    shaObj.update(input);
-		    return shaObj.getHash("HEX");
-		} */
-		
-		
-		
 	</script>
 	<style type="text/css">
+	
 	.container{margin-top:0px;}
 	.input-group{
 		margin: 7px;
@@ -110,10 +71,11 @@
   	/* [st] button-18 */
           .button-18 {
             align-items: center;
-            background-color: #d8e4d2;
+            background-color: #FFA559; /* 버튼배경 색상 설정 */
             border: 0;
             box-sizing: border-box;
-            color: #6f726e;
+           /*  color: #6f726e; */
+            color: #252525; /* 텍스트 색상 설정 */
             cursor: pointer;
             display: inline-flex;
             font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -134,12 +96,14 @@
             user-select: none;
             -webkit-user-select: none;
             vertical-align: middle;
+            border-radius: 25px; /* 모서리를 둥글게 만듦 */
           }
 
           .button-18:hover,
           .button-18:focus { 
-            background-color: #8e998c;
-            color: #ffffff;
+            background-color: #FF6000;
+            color: #252525;
+            /* color: #ffffff; */
           }
 
           .button-18:active {
@@ -157,10 +121,14 @@
          	font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
             font-size: 12px;
             font-weight: 600;
+            
           }
-
-          
-  	/* [ed] button-18 */
+  		/* [ed] button-18 */
+  	
+  		.myInputText{
+  		min-height: 40px;
+  			border-radius: 20px; /* 모서리를 둥글게 만듦 */
+  		}
 		
   	
 	</style>
@@ -180,12 +148,12 @@
 					<input type="hidden" name="command" value="meLogin" onsubmit="return validCheck();"> 
 					
 					<div class="input-group" align="center">
-						<input type="text" class="form-control col-md-4" id="id" name="id" placeholder="아이디" 
+						<input type="text" class="form-control col-md-4 myInputText" id="id" name="id" placeholder="아이디" 
 							data-bs-toggle="tooltip" data-bs-placement="right" title="아이디를 입력해 주세요">
 					</div>
 					
 					<div class="input-group" align="center">
-						<input class="form-control col-md-4" type="password" id="password" name="password" placeholder="비밀번호"
+						<input class="form-control col-md-4 myInputText" type="password" id="password" name="password" placeholder="비밀번호"
 						data-bs-toggle="tooltip" data-bs-placement="right" title="비밀번호는 영문, 숫자, 특문 포함입니다." >
 					</div>
 					
