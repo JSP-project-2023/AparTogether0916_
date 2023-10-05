@@ -4,14 +4,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.*;
 import com.apartogether.model.bean.Vote;
+<<<<<<< HEAD
 import java.sql.SQLException;
 import com.apartogether.utility.PagingVote;
+=======
 import com.apartogether.model.bean.VoteCount;
 import com.apartogether.model.bean.Votelog;
 import com.apartogether.utility.MyUtility;
 import com.apartogether.utility.Paging;
 import java.sql.SQLException;
 
+>>>>>>> origin/lleebs.v3
 
 public class VoteDao extends SuperDao{
 	private int cnt = -1;

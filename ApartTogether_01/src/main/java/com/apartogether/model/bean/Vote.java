@@ -1,6 +1,11 @@
 package com.apartogether.model.bean;
 
 public class Vote {
+<<<<<<< HEAD
+=======
+	//	private Integer stno; // 가게 고유 코드
+	// TODO 가게 고유 코드 Integer로 변경
+>>>>>>> origin/lleebs.v3
 	private int voteno; // 가게 고유 코드
 	private String votetitle; // 회원(사업자) 아이디
 	private String votecol1;
@@ -9,11 +14,19 @@ public class Vote {
 	private String votecol4;
 	private String votecol5;
 	private String votedate;
+<<<<<<< HEAD
 	private String voteid; //작성자아이디
 	private int endvote; //마감여부
 	
+=======
 	private int endvote; // 투표 종류 여부
 	private String voteid; // 투표 게시글 작성자
+
+	public Vote() {
+	}
+
+
+>>>>>>> origin/lleebs.v3
 	public Vote(int voteno, String votetitle, String votecol1, String votecol2, String votecol3, String votecol4,
 			String votecol5, String votedate, int endvote, String voteid) {
 
