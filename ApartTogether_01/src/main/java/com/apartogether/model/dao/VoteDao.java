@@ -3,6 +3,7 @@ package com.apartogether.model.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -207,6 +208,7 @@ public class VoteDao extends SuperDao{
 	}
 }
 =======
+import java.util.List;
 
 import com.apartogether.model.bean.Vote;
 import com.apartogether.utility.PagingVote;

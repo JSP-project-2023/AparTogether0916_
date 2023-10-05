@@ -47,7 +47,11 @@ public class MemberFindIdController extends SuperClass{
 				request.setAttribute("gotopage", gotopage);/* meFindResult.jsp에서 출력값, 분기처리를 위한 변수 */
 				String result = bean.getId();
 				request.setAttribute("result", result);
+<<<<<<< HEAD
 				/* super.setAlertMessage(bean.getName() + "님의 로그인 id는 " + result + " 입니다.") ; */
+=======
+				//super.setAlertMessage(bean.getName() + "님의 로그인 id는 " + result + " 입니다.") ;
+>>>>>>> origin/member_merge_01_yh33
 				super.gotoPage(PREFIX + "meFindResult.jsp");
 			}
 			
