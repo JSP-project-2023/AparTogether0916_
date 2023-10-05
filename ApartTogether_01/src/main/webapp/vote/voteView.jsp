@@ -72,7 +72,7 @@
 							<input name="sendEndVote" value="endvote" hidden="hidden">
 							<button type="submit" onclick="return endVote();" class="endVote btn button-wrapper">투표마감</button>
 						</c:if>
-						<a type="button" href="vote/voteList.jsp" class="btn button-wrapper else_bigbtn">취소</a>
+						<a type="button" href="<%=notWithFormTag%>voteList" class="btn button-wrapper else_bigbtn">취소</a>
 					</div>
 				</form>
 			</div>

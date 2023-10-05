@@ -230,9 +230,5 @@ function kakaoLogout() {
   }
 /* 만약 계정 연동해제를 하고 싶으면 아래 주소에 가서 연동해제하면 된다. */
 /* accounts.kakao.com/weblogin/account/info */
-<<<<<<< HEAD
 </script>
 </html>
-=======
-</script>  -->
->>>>>>> origin/lleebs.v3
