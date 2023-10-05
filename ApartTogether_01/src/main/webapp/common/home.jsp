@@ -7,13 +7,9 @@
 <meta charset="UTF-8">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<<<<<<< HEAD
-<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/homeCSS.css" type="text/css">
-=======
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/homeCSS.css" type="text/css">
 
->>>>>>> origin/lleebs.v3
 <title>Apart together</title>
 </head>
 <body>
@@ -64,32 +60,6 @@
 			<div class="third-screen-coment coments-size" data-aos="fade-up" data-aos-delay="400" data-aos-duration="500">
 				<span class="coment-thin">모이는 만큼</span>
 				<span class="coment-bold">저렴해지는</span>
-<<<<<<< HEAD
-				<span class="coment-bold">배달비</span>
-			</div>	
-		</div>
-		<div class="fourth-screen">
-			정산
-			편하게,
-			깔끔하게 처리
-		</div>
-		<div class="fifth-screen">
-		</div>
-		<div class="sixth-screen">
-			배달앱
-			더 이상
-			구독하지 마세요.
-		</div>
-		<div class="seventh-screen">
-			다양한 프렌차이즈를
-			지금 아파투게더에서 만나보세요!
-		</div>
-	</div>
- 
- <script>AOS.init();</script>
-</body>
-<%-- <%@ include file="/common/footer.jsp"%> --%>
-=======
 				<span class="coment-bold">배달비.</span>
 			</div>	
 		</div>
@@ -130,5 +100,4 @@
  <script>AOS.init();</script>
 </body>
 <%@ include file="/common/footer.jsp"%>
->>>>>>> origin/lleebs.v3
 </html>	

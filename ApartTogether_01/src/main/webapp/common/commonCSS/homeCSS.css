@@ -6,11 +6,7 @@
 /*공통 CSS*/
 /*글자 굵기*/
 .coment-bold {
-<<<<<<< HEAD
-	font-weight: border;
-=======
 	font-weight: bolder;
->>>>>>> origin/lleebs.v3
 }
 .coment-thin {
 	color: #C7C7C7;
@@ -20,15 +16,13 @@
 .coments-size > span{
 	font-size: 70px;
 }
-
+footer{
+	background-color: #252525 !important;
+}
 
 body{
 	background-color: #252525;
-<<<<<<< HEAD
-	height: 6000px;
-=======
-	height: 5500px;
->>>>>>> origin/lleebs.v3
+	height: 5400px;
 	min-width: 1000px;
 	overflow-x: hidden;
 }
@@ -36,10 +30,6 @@ body{
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-<<<<<<< HEAD
-	background-color: blue;
-=======
->>>>>>> origin/lleebs.v3
 }
 
 /*첫번째 화면에 들어갈 요소들*/
@@ -112,10 +102,6 @@ body{
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-<<<<<<< HEAD
-	background-color: red;
-=======
->>>>>>> origin/lleebs.v3
 }
 .second-screen-coment{
 	padding-top: 50px;
@@ -127,17 +113,6 @@ body{
 /*세번째 화면에 들어갈 CSS*/
 .third-screen{
 	justify-content: center;
-<<<<<<< HEAD
-	margin-top: 750px;
-	display: flex;
-	flex-direction: row;
-	width: 100%;
-	background-color: red;
-}
-.third-screen-coment{
-	padding-top: 50px;
-	padding-left: 30px;
-=======
 	margin-top: 400px;
 	display: flex;
 	flex-direction: row;
@@ -146,7 +121,6 @@ body{
 .third-screen-coment{
 	margin-left: -190px;
 	padding-top: 50px;
->>>>>>> origin/lleebs.v3
 	text-align: left;
 	display: flex;
 	flex-direction: column;
@@ -161,8 +135,6 @@ body{
 	left: -250px;
 	bottom: -65px;
 }
-<<<<<<< HEAD
-=======
 /*네번째 화면에 들어갈 CSS*/
 .fourth-screen{
 	justify-content: center;
@@ -218,4 +190,3 @@ body{
 .end-img{
 	filter: brightness(20%);
 }
->>>>>>> origin/lleebs.v3
