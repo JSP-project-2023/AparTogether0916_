@@ -85,6 +85,10 @@ public class RoomDetailController extends SuperClass {
 					super.setAlertMessage("배달 주소를 입력해 주세요");
 					new RoomInsertController().doPost(request, response);
 				}else {
+					if(super.loginfo==null) {
+						super.youNeededLogin(); 
+						return ;
+					}
 					
 					Integer stno = Integer.parseInt(request.getParameter("stno"));
 					String roomname = request.getParameter("roomname");
@@ -107,10 +111,7 @@ public class RoomDetailController extends SuperClass {
 					List<Combo01> lists3 =null;
 					List<Combo01> lists4 =null;
 					
-					if(super.loginfo==null) {
-						super.youNeededLogin(); 
-						return ;
-					}
+					
 					
 						lists = dao.View01(roomno,super.loginfo.getId());
 						request.setAttribute("roomno", roomno);

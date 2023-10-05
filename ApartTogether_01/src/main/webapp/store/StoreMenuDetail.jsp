@@ -110,6 +110,8 @@
 			<button type="submit"  class="orderBtn" id="orderBtn">주문</button>
 	</form>
 	</div>
+	
 </body>
-<%@ include file="/common/footer.jsp"%>
+
+
 </html>

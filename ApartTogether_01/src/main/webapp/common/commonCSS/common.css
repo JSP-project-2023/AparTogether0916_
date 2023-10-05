@@ -35,11 +35,9 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-<<<<<<< HEAD
     margin-top: 150px;
     z-index: -99;
-=======
->>>>>>> member_merge03_lsh
+
 }
 
 .footerArea {
@@ -47,10 +45,7 @@ footer {
     margin-left: 90px;
     font-size: 0.8rem;
     color: #fff;
-<<<<<<< HEAD
     text-align: center;
-=======
->>>>>>> member_merge03_lsh
 }
 
 .alert-dismissible {

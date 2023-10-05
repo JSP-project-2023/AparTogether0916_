@@ -120,5 +120,8 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 				</form>
 			</div>
 		</div>
+		
 </body>
+<%@ include file="/common/footer.jsp"%>
+
 </html>
