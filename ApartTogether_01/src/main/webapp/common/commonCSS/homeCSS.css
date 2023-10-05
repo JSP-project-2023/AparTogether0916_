@@ -1,0 +1,138 @@
+@charset "UTF-8";
+
+*{
+	color: white;
+}
+/*공통 CSS*/
+/*글자 굵기*/
+.coment-bold {
+	font-weight: border;
+}
+.coment-thin {
+	color: #C7C7C7;
+	font-weight: 10;
+}
+/*글자 크기*/
+.coments-size > span{
+	font-size: 70px;
+}
+
+
+body{
+	background-color: #252525;
+	height: 6000px;
+	min-width: 1000px;
+	overflow-x: hidden;
+}
+.container{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	background-color: blue;
+}
+
+/*첫번째 화면에 들어갈 요소들*/
+.first-screen{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+#main-title{
+	width: 100%;
+	font-size: 50px;
+	position: relative;
+	transition: 0.3s;
+	top: 1em;
+	animation: fadein 3s;
+	-webkit-animation: fadein 3s;
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1.5;
+    }
+}
+/*로고 박스들*/
+.logo-box{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	white-space: nowrap;
+	position: relative;
+	top: 10em;
+}
+.logo-box > div{
+	margin-right: 60px;
+}
+/*로고 박스 움직임*/
+@keyframes logo-ani1 {
+	0% {top: 0px; }
+	100% {top: 100px;}
+
+}
+@keyframes logo-ani2 {
+	0% {top: 100px; }
+	100% {top: 0px;}
+
+}
+.logo-items-odd{
+	position: relative;
+	animation: logo-ani1 1.5s alternate infinite;
+
+}
+.logo-items-even{
+	position: relative;
+	animation: logo-ani2 1.5s alternate infinite;
+
+}
+@keyframes logo-ani3 {
+    0% { left: 0px; }
+    100% { left: -1000%; }
+}
+.logo-box{
+    animation: logo-ani3 60s linear 0s infinite;
+}
+/*두번째 화면에 들어갈 CSS*/
+.second-screen{
+	justify-content: center;
+	margin-top: 700px;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	background-color: red;
+}
+.second-screen-coment{
+	padding-top: 50px;
+	padding-right: 30px;
+	text-align: right;
+	display: flex;
+	flex-direction: column;
+}
+/*세번째 화면에 들어갈 CSS*/
+.third-screen{
+	justify-content: center;
+	margin-top: 750px;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	background-color: red;
+}
+.third-screen-coment{
+	padding-top: 50px;
+	padding-left: 30px;
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+}
+#coins1{
+	position: relative;
+	left: -130px;
+	bottom: -89px;
+}
+#coins2{
+	position: relative;
+	left: -250px;
+	bottom: -65px;
+}

@@ -26,11 +26,15 @@ meDetail=com.apartogether.controller.member.MemberDetailController
 meList=com.apartogether.controller.member.MemberListController
 meUpdate=com.apartogether.controller.member.MemberUpdateController
 meDelete=com.apartogether.controller.member.MemberDeleteController
-meResetPassword=com.apartogether.controller.member.MemberResetPasswordController
+#meResetPassword=com.apartogether.controller.member.MemberResetPasswordController
 # 커뮤니티(vote)
 voteDo=com.apartogether.controller.vote.VoteDoController
 voteView=com.apartogether.controller.vote.VoteViewController
 #voteAdd=com.apartogether.controller.vote.VoteAddController
 #voteBoard=com.apartogether.controller.vote.VoteController
 voteInsert=com.apartogether.controller.vote.VoteInsertController
+<<<<<<< HEAD
 voteList=com.apartogether.controller.vote.VoteListController
+=======
+voteResult=com.apartogether.controller.vote.VoteResultController
+>>>>>>> origin/lleebs.v3

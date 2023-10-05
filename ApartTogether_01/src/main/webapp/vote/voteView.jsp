@@ -19,7 +19,7 @@
 			<h2 class="title" align="center">투표</h2>
 			<div class="content-box">
 				<div class="votetitle">
-					<span>${requestScope.title.votetitle}</span>
+					<span>${requestScope.voteinfo.votetitle}</span>
 				</div>
 				
 				<form action="<%=withFormTag%>" method="post">
@@ -27,10 +27,12 @@
 					<!-- 사용자 id -->
 					<input type="hidden" name="id" value="${sessionScope.loginfo.id}">
 					<!--게시물 번호-->
-					<input type="hidden" name="voteno" value="${requestScope.title.voteno}">
+					<input type="hidden" name="voteno" value="${requestScope.voteinfo.voteno}">
 					<!-- 투표 여부 변수 -->
 					<c:set var="voteVal" value="${requestScope.voteVal}"/>
 					<input type="hidden" name="voteVal" value="${voteVal}">
+					<!-- 투표 마감 여부 -->
+					<input type="hidden" name="voteEnd" value="">
 					<!-- 처음 투표를 했을 경우. -->
 					<c:if test="${voteVal eq '0'}">
 						<!-- 투표 리스트 반복-->
@@ -63,14 +65,17 @@
 							</c:forEach>
 						<!-- 투표 리스트 반복 끝-->
 					</c:if>
+					<div id="buttons" align="center">
+						<button type="submit" class="btn button-wrapper order_bigbtn" onclick="alertInfo()">투표하기</button>
+						<!-- 투표 등록한 사람만 보이게. -->
+						<c:if test="${sessionScope.loginfo.id eq requestScope.voteinfo.voteid}">
+							<input name="sendEndVote" value="endvote" hidden="hidden">
+							<button type="submit" onclick="return endVote();" class="endVote btn button-wrapper">투표마감</button>
+						</c:if>
+						<a type="button" href="vote/voteList.jsp" class="btn button-wrapper else_bigbtn">취소</a>
+					</div>
 				</form>
 			</div>
-		</div>
-		
-		<div id="buttons" align="center">
-			<button type="submit" class="btn button-wrapper order_bigbtn" onclick="alertInfo()">투표하기</button>
-			<button type="submit" id="endVote" class="btn button-wrapper" onclick="alertInfo()">투표마감</button>
-			<a type="button" href="vote/voteList.jsp" class="btn button-wrapper else_bigbtn">취소</a>
 		</div>
 	</div>
 </body>

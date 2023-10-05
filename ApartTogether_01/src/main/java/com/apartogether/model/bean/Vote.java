@@ -12,8 +12,11 @@ public class Vote {
 	private String voteid; //작성자아이디
 	private int endvote; //마감여부
 	
+	private int endvote; // 투표 종류 여부
+	private String voteid; // 투표 게시글 작성자
 	public Vote(int voteno, String votetitle, String votecol1, String votecol2, String votecol3, String votecol4,
-			String votecol5, String votedate, int endVote, String voteid) {
+			String votecol5, String votedate, int endvote, String voteid) {
+
 		super();
 		this.voteno = voteno;
 		this.votetitle = votetitle;
@@ -23,6 +26,7 @@ public class Vote {
 		this.votecol4 = votecol4;
 		this.votecol5 = votecol5;
 		this.votedate = votedate;
+<<<<<<< HEAD
 		this.endvote = endVote;
 		this.voteid = voteid;
 	}
@@ -30,10 +34,22 @@ public class Vote {
 	public Vote() {
 	}
 	
+=======
+		this.endvote = endvote;
+		this.voteid = voteid;
+	}
+
+	public int getVoteno() {
+		return voteno;
+	}
+
+
+>>>>>>> origin/lleebs.v3
 	@Override
 	public String toString() {
 		return "Vote [voteno=" + voteno + ", votetitle=" + votetitle + ", votecol1=" + votecol1 + ", votecol2="
 				+ votecol2 + ", votecol3=" + votecol3 + ", votecol4=" + votecol4 + ", votecol5=" + votecol5
+<<<<<<< HEAD
 				+ ", votedate=" + votedate + ", endVote=" + endvote + ", voteid=" + voteid + "]";
 	}
 
@@ -49,11 +65,17 @@ public class Vote {
 	public int getVoteno() {
 		return voteno;
 	}
+=======
+				+ ", votedate=" + votedate + ", endvote=" + endvote + ", voteid=" + voteid + "]";
+	}
+
+>>>>>>> origin/lleebs.v3
 
 	public void setVoteno(int voteno) {
 		this.voteno = voteno;
 	}
 
+<<<<<<< HEAD
 	public String getVoteid() {
 		return voteid;
 	}
@@ -61,69 +83,106 @@ public class Vote {
 	public void setVoteid(String voteid) {
 		this.voteid = voteid;
 	}
+=======
+>>>>>>> origin/lleebs.v3
 
 	public String getVotetitle() {
 		return votetitle;
 	}
 
+
 	public void setVotetitle(String votetitle) {
 		this.votetitle = votetitle;
 	}
+
 
 	public String getVotecol1() {
 		return votecol1;
 	}
 
+
 	public void setVotecol1(String votecol1) {
 		this.votecol1 = votecol1;
 	}
+
 
 	public String getVotecol2() {
 		return votecol2;
 	}
 
+
 	public void setVotecol2(String votecol2) {
 		this.votecol2 = votecol2;
 	}
+
 
 	public String getVotecol3() {
 		return votecol3;
 	}
 
+
 	public void setVotecol3(String votecol3) {
 		this.votecol3 = votecol3;
 	}
+
 
 	public String getVotecol4() {
 		return votecol4;
 	}
 
+
 	public void setVotecol4(String votecol4) {
 		this.votecol4 = votecol4;
 	}
+
 
 	public String getVotecol5() {
 		return votecol5;
 	}
 
+
 	public void setVotecol5(String votecol5) {
 		this.votecol5 = votecol5;
 	}
+
 
 	public String getVotedate() {
 		return votedate;
 	}
 
+
 	public void setVotedate(String votedate) {
 		this.votedate = votedate;
 	}
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/lleebs.v3
 	public int getEndvote() {
 		return endvote;
 	}
 
+<<<<<<< HEAD
 	public void setEndvote(int endvote) {
 		this.endvote = endvote;
 	}
 	/* [ed] getter&setter */
+=======
+
+	public void setEndvote(int endvote) {
+		this.endvote = endvote;
+	}
+
+
+	public String getVoteid() {
+		return voteid;
+	}
+
+
+	public void setVoteid(String voteid) {
+		this.voteid = voteid;
+	}
+	
+>>>>>>> origin/lleebs.v3
 }

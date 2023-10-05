@@ -18,9 +18,18 @@ function show_image() {
 function alertInfo(){
 	alert("투표 되었습니다!");
 }
+
 /*마감 컨펌창*/
 function endVote(){
-	alert("투표 되었습니다!");
+	if(confirm("투표 마감하시겠습니까?")){
+		//$('input[name=endVote]').val('voteIsEnd');
+		alert('마감되었습니다!😊');
+		return true;
+	}
+	else{
+		alert('실패😅');
+		return false;
+	}
 }
 
 $(document).ready(function() {
