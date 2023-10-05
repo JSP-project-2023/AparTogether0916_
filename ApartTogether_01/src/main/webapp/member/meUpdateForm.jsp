@@ -302,7 +302,8 @@
 				
 				<div class="input-group">
 					<span class="input-group-text col-md-2">닉네임</span><!-- <font color="red">*</font> -->
-					<input class="form-control" type="text" id="nickname" name="nickname" value="${requestScope.bean.nickname }">				
+					<input class="form-control" type="text" id="nickname" name="nickname" 
+					       value="${requestScope.bean.nickname }" placeholder="닉네임 / 공란 시 랜덤한 아이디가 생성!">				
 				</div>
 				<div class="input-group">
 					<span class="input-group-text col-md-2">프로필사진</span>

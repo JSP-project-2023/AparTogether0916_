@@ -134,6 +134,9 @@
 		    background-color: #FF7394; /* 뱃지 색상 : 빨강 */
 		    color: #000000; /* 새로운 폰트 색상 (검정) */
 		}
+		.mySelect{
+			border-radius: 25px; /* 모서리를 둥글게 만듦 */
+		}
 </style>	
 <script type="text/javascript">
 		$(document).ready(function(){
@@ -202,7 +205,7 @@
 	                   <div class="row">
 	                      <div class="col-sm-12 mode" align="right">
 	                      	
-	                         <select class="form-control-sm" id="mode" name="mode" onchange="changeMode()">
+	                         <select class="form-control-sm mySelect" id="mode" name="mode" onchange="changeMode()">
 	                            <option value="all" selected="selected">--- 검색옵션 ---
 	                            <option value="votetitle">제목
 	                            <option value="voteid">작성자 아이디
@@ -210,13 +213,13 @@
 	                            <option value="endvote">마감여부
 	                         </select>
 	                         
-	                         <select class="form-control-sm" id="keywordEndVote" name="keywordEndVote">
+	                         <select class="form-control-sm mySelect" id="keywordEndVote" name="keywordEndVote">
 	                            <option value="all" selected="selected">--- 전체 ---
 	                            <option value="0">진행중
 	                            <option value="1">마감
 	                         </select>
 	                        
-	                         <input class="form-control-sm notShow" type="text" name="keyword" id="keyword"
+	                         <input class="form-control-sm mySelect" type="text" name="keyword" id="keyword"
 	                         		placeholder="검색어 입력">
 	                         <button type="submit" class="btn button-18 " style="padding: 7px; min-height: 0px" onclick="">검색</button>
 	                         <button type="button" class="btn button-18 " style="padding: 7px; min-height: 0px" onclick="searchAll();">전체 검색</button>
@@ -258,8 +261,7 @@
 						
 						<td class=" col-md-1 text-center">
 							<c:if test="${bean.endvote == '1'}"><span class="badge rounded-pill bg-magam">마감</span></c:if>
-							<c:if test="${bean.endvote == '0'}"><span class="badge rounded-pill bg-jinheng">진행중</span>
-</c:if>
+							<c:if test="${bean.endvote == '0'}"><span class="badge rounded-pill bg-jinheng">진행중</span></c:if>
 						</td>
 					</tr>
 				</c:forEach>

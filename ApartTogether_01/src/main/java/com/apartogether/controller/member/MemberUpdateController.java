@@ -90,7 +90,14 @@ private final String PREFIX = "member/";
 		
 		bean.setId(mr.getParameter("id"));
 		bean.setName(mr.getParameter("name"));
-		bean.setNickname(mr.getParameter("nickname"));
+
+		/* [st] 닉네임 랜덤 생성 */
+		if (mr.getParameter("nickname").equals("")) {
+			bean.setNickname(MemberDao.RandomName());
+		} else {
+			bean.setNickname(mr.getParameter("nickname"));
+		} /* [ed] 닉네임 랜덤 생성 */
+		
 		if(mr.getFilesystemName("profile")==null) { // 회원정보 수정시 프로필사진을 건들이지 않았으면 그대로 유지한다. 
 			bean.setProfile(mr.getParameter("deleteProfile"));
 		}else {
