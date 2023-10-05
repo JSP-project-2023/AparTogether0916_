@@ -44,17 +44,30 @@ public class PagingStore {
 		this.totalCount = totalCount ;
 		this.url = url ;
 		
+		System.out.println("pagingStore : " + mode + " is keyword : " + keyword + " / cate : " + category);
+		
 		// "all"이면 전체 검색
-		this.mode = mode==null ? "all" : mode ;
+//		this.mode = mode==null ? "all" : mode ;
 //		this.keyword = keyword==null ? "" : keyword ;
 //		this.category = category==null ? "" : category ;
 		
-		if (keyword==null) {
+		if (mode==null || mode.equals(null)) {
+			System.out.println("널이다ㅣ");
+			this.mode="all";
 			this.keyword = "";
-			this.category = category;
-		} else {
-			this.keyword = keyword;
 			this.category = "";
+			
+		} else {
+			this.mode = mode;
+			
+			if (mode.equals("stname")) {
+				this.keyword = keyword;
+				this.category = "";
+
+			} else if (mode.equals("category")) {
+				this.keyword = "";
+				this.category = category;
+			}
 		}
 		
 		double _totalPage = Math.ceil((double)totalCount/pageSize) ;

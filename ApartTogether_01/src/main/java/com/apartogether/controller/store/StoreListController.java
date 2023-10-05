@@ -41,7 +41,7 @@ public class StoreListController extends SuperClass {
 		
 		String storeName = request.getParameter("keyword"); // 가게명 검색했을 때
 		String category = request.getParameter("categoryList"); // 카테고리 선택했을 때
-		
+		System.out.println("request category : " + category);
 		
 		StoreDao dao = new StoreDao();
 		
@@ -49,6 +49,7 @@ public class StoreListController extends SuperClass {
 			int totalCount = dao.GetTotalStoreCount(mode, storeName, category); // 키워드 검색 시 mode, keyword 로 조건 검색한 총 결과 개수 count
 			String url = super.getUrlInfomation("stList"); // 전체 가게 리스트 목록
 			boolean isGrid = true;
+			System.out.println("totalC : " + totalCount);
 			PagingStore pageInfo = new PagingStore(pageNumber, pageSize, totalCount, url, mode, storeName, category, isGrid);
 			System.out.println();
 //			id 조건 없이 모든 가게 리스트 불러오기
