@@ -34,7 +34,7 @@ body {
 	min-height: calc(100vh - 341px);
 }
 footer {
-	background-color: #ffffff;
+	background-color: #252525;
     width: 100%;
     min-height: 150px;
     position: relative;
@@ -228,12 +228,9 @@ footer {
     border-color: #ff6000;
     box-shadow: 0 2px 12px rgba(3, 3, 3, .1);
 }
-<<<<<<< HEAD
 .profile_image {/* common 상단 프로필 이미지 */
 	width: 45px;
 	height: 45px;
 	margin: 2px;
 	border-radius: 50px;
 }
-=======
->>>>>>> origin/sup_new_branch02

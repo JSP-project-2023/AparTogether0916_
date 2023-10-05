@@ -75,11 +75,8 @@ public class MemberDao extends SuperDao {
 		if(conn!=null) {conn.close();}
 		return cnt ;
 	}
-<<<<<<< HEAD
   
 	/* [selectAll(pageinfo를 위함)] TopN 구문을 사용하여 페이징 처리된 게시물 목록을 반환합니다. */
-=======
->>>>>>> origin/sup_new_branch02
 	public List<Member> selectAll(Paging pageInfo) throws Exception {
 
 		PreparedStatement pstmt = null;

@@ -24,17 +24,12 @@ public class Store {
 	public Store() {
 	}
 	
-	
 	public String getststatus() {
 		return ststatus;
 	}
-
-
 	public void setststatus(String ststatus) {
 		this.ststatus = ststatus;
 	}
-
-
 	public int getStno() {
 		return stno;
 	}

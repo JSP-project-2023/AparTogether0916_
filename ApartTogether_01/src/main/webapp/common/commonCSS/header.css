@@ -69,24 +69,12 @@ a {
 	display:block;
 	padding:15px 20px;
 }
-<<<<<<< HEAD
 .subnavbar_menu > li {
 	white-space: nowrap;
 }
 .subnavbar_menu > li > a {
 	font-size: 1rem;
 }
-=======
-
-.subnavbar_menu > li {
-	white-space: nowrap;
-}
-
-.subnavbar_menu > li > a {
-	font-size: 1rem;
-}
-
->>>>>>> member_merge03_lsh
 .navbar_member > li {
 	display: inline-block;
 	padding: 5px 10px;
@@ -117,18 +105,11 @@ a {
 	.navbar_hole {
 		display: none;
 	}
-<<<<<<< HEAD
-=======
-	
->>>>>>> member_merge03_lsh
+
 	.hamarea {
 		position: relative;
     	top: -6px;
 	}
-<<<<<<< HEAD
-=======
-	
->>>>>>> member_merge03_lsh
 	.hamburger {
 		width: 2rem;
 		padding: 0;
@@ -140,8 +121,6 @@ a {
 		margin-top: 10px;
 	}
 	.ham_bg {
-<<<<<<< HEAD
-<<<<<<< HEAD
 		background-color: #ffffff;
 	    min-width: fit-content;
 	    max-width: 500px;
@@ -153,22 +132,6 @@ a {
 	    right: 120px;
 	    border: 8px solid #fa6d35;
 	    box-shadow: 2px 2px 11px #919191;
-=======
-=======
->>>>>>> origin/sup_new_branch02
-		background-color: #f3f3f3;
-		min-width: fit-content;
-		max-width: 500px;
-		float: right;
-		padding: 40px 110px 30px;
-		margin-top: 16px;
-		position: absolute;
-		z-index: 1;
-		right: 100px;
-<<<<<<< HEAD
->>>>>>> member_merge03_lsh
-=======
->>>>>>> origin/sup_new_branch02
 	}
 	.hamnav_hole {
 		font-size: 1.1rem;
@@ -203,16 +166,10 @@ a {
 	.hamnav_member > li {
 		margin-bottom: 15px;
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
 	.hamnav_member > li:hover {
 		background-color: #f3f3f3;
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
 }
-=======
->>>>>>> origin/sup_new_branch02
 
 @media screen and (max-width: 577px) {
 	.ham_bg {
@@ -221,16 +178,4 @@ a {
 	    position: absolute;
 	    z-index: 1;
     }
-<<<<<<< HEAD
-=======
-=======
->>>>>>> member_merge03_lsh
->>>>>>> origin/lleebs.v3
-=======
-=======
->>>>>>> member_merge03_lsh
->>>>>>> origin/llebs.v3_add.ProfileIMG_lsh
 }
-=======
-}}
->>>>>>> origin/sup_new_branch02

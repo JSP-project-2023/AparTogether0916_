@@ -89,7 +89,6 @@ var nowItem = 2; /* 현재 입력 항목 개수 (카운팅) */
 		});
 	});
 	
-<<<<<<< HEAD
 	function contentChk() {
 		var title = $('#votetitle').val();
 		var items = $('#voteInputItem').val();
@@ -105,24 +104,4 @@ var nowItem = 2; /* 현재 입력 항목 개수 (카운팅) */
 		}
 	};
 </script>
-=======
-					<div>
-						<!-- 항목 추가 칸 -->
-						<div class="voteInputArea">
-							<input type="button" name="addItem" class="voteInputItem addItem" value="항목 추가">
-							<input type="button" name="addItem" class="itembtn addItemBtn" value="+">
-						</div>
-					</div>
-				</div>
-				
-				<div class="btnArea" align="center">
-					<button type="submit" class="btn order_bigbtn">등록</button>
-					<button type="button" class="btn else_bigbtn voteCancle" onClick="history.go(-1)">취소</button>
-				</div>
-			</form>
-		</div>
-	</div>
-	<%@ include file="/common/footer.jsp"%>
-</body>
->>>>>>> origin/sup_new_branch02
 </html>

@@ -28,7 +28,6 @@ meDetail=com.apartogether.controller.member.MemberDetailController
 meList=com.apartogether.controller.member.MemberListController
 meUpdate=com.apartogether.controller.member.MemberUpdateController
 meDelete=com.apartogether.controller.member.MemberDeleteController
-<<<<<<< HEAD
 #meResetPassword=com.apartogether.controller.member.MemberResetPasswordController
 # 커뮤니티(vote)
 voteDo=com.apartogether.controller.vote.VoteDoController
@@ -36,8 +35,6 @@ voteView=com.apartogether.controller.vote.VoteViewController
 voteInsert=com.apartogether.controller.vote.VoteInsertController
 voteList=com.apartogether.controller.vote.VoteListController
 voteResult=com.apartogether.controller.vote.VoteResultController
-=======
-meResetPassword=com.apartogether.controller.member.MemberResetPasswordController
 #room 컨트롤러
 roList=com.apartogether.controller.room.RoomListController
 roDetail=com.apartogether.controller.room.RoomDetailController
@@ -55,12 +52,3 @@ myOrDetail=com.apartogether.controller.order.MyOrderDetailController
 orInsert=com.apartogether.controller.order.OrderInsertController
 orDelete=com.apartogether.controller.order.OrderDeleteController
 orConfirm=com.apartogether.controller.order.OrderConfirmController
-# 커뮤니티(vote)
-voteDo=com.apartogether.controller.vote.VoteDoController
-voteView=com.apartogether.controller.vote.VoteViewController
-#voteAdd=com.apartogether.controller.vote.VoteAddController
-#voteBoard=com.apartogether.controller.vote.VoteController
-voteInsert=com.apartogether.controller.vote.VoteInsertController
-voteResult=com.apartogether.controller.vote.VoteResultController
-voteList=com.apartogether.controller.vote.VoteListController
->>>>>>> origin/sup_new_branch02

@@ -70,15 +70,9 @@
 						<!-- 투표 등록한 사람만 보이게. -->
 						<c:if test="${sessionScope.loginfo.id eq requestScope.voteinfo.voteid}">
 							<input name="sendEndVote" value="endvote" hidden="hidden">
-<<<<<<< HEAD
 							<button type="submit" onclick="return endVote();" class="endVote btn button-wrapper">투표마감</button>
 						</c:if>
 						<a type="button" href="<%=notWithFormTag%>voteList" class="btn button-wrapper else_bigbtn">취소</a>
-=======
-							<button type="submit" class="endVote btn button-wrapper" onclick="endVote()">투표마감</button>
-						</c:if>
-						<a type="button" href="vote/voteList.jsp" class="btn button-wrapper else_bigbtn">취소</a>
->>>>>>> origin/sup_new_branch02
 					</div>
 				</form>
 			</div>

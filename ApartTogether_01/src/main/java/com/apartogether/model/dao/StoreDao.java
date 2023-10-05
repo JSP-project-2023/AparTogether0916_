@@ -174,7 +174,8 @@ public class StoreDao extends SuperDao {
 		/* 페이징 처리할 부분 ranking 으로 순서 정렬 */
 		String sql = "select stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, ststatus, redday, btime ";
 		sql += " from (select stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, ststatus, redday, btime, ";
-		sql += " rank() over(order by stno desc) as ranking from store where id=?";
+		sql += " RANK() OVER(ORDER BY CASE WHEN ststatus = 'open' THEN 0 ELSE 1 END, stno DESC) AS ranking FROM store where id=?";
+		
 		
 		/* 키워드 검색 */
 		String mode = pageInfo.getMode();
@@ -451,7 +452,7 @@ public class StoreDao extends SuperDao {
 			bean.setStlogo(rs.getString("stlogo"));
 			bean.setRedday(nullChecking(rs.getString("redday")));
 			bean.setBtime(rs.getInt("btime"));
-
+			bean.setststatus(rs.getString("ststatus"));
 		}
 
 		if (rs != null) {

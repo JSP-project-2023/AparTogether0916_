@@ -224,11 +224,7 @@
 		                   <div class="row">
 		                      <div class="col-sm-12 mode" align="right">
 		                      	
-<<<<<<< HEAD
 		                         <select class="form-control-sm mySelect" id="mode" name="mode" onchange="changeMode()">
-=======
-		                         <select class="form-control-sm" id="mode" name="mode" onchange="changeMode()">
->>>>>>> origin/sup_new_branch02
 		                            <option value="all" selected="selected">--- 검색옵션 ---
 		                            <option value="mtype">회원유형
 		                            <option value="id">아이디
@@ -238,32 +234,20 @@
 		                            <option value="address">주소
 		                         </select>
 		                         
-<<<<<<< HEAD
 		                         <select class="form-control-sm mySelect" id="keywordmtype" name="keywordmtype">
-=======
-		                         <select class="form-control-sm" id="keywordmtype" name="keywordmtype">
->>>>>>> origin/sup_new_branch02
 		                            <option value="all" selected="selected">--- 전체 ---
 		                            <option value="user">일반회원
 		                            <option value="biz">사업자
 		                            <option value="admin">관리자
 		                         </select>
 		                         
-<<<<<<< HEAD
 		                         <select class="form-control-sm mySelect" id="keywordgender" name="keywordgender">
-=======
-		                         <select class="form-control-sm" id="keywordgender" name="keywordgender">
->>>>>>> origin/sup_new_branch02
 		                            <option value="all" selected="selected">--- 전체 ---
 		                            <option value="male">남자
 		                            <option value="female">여자
 		                         </select>
 		                        
-<<<<<<< HEAD
 		                         <input class="form-control-sm notShow mySelect" type="text" name="keyword" id="keyword"
-=======
-		                         <input class="form-control-sm notShow" type="text" name="keyword" id="keyword"
->>>>>>> origin/sup_new_branch02
 		                         		placeholder="검색어 입력">
 		                         <button type="submit" class="btn button-18 " style="padding: 7px; min-height: 0px" onclick="">검색</button>
 		                         <button type="button" class="btn button-18 " style="padding: 7px; min-height: 0px" onclick="searchAll();">전체 검색</button>
@@ -360,17 +344,6 @@
 			</table>	
 			${requestScope.pageInfo.pagingHtml}
 		</c:if>
-<<<<<<< HEAD
-		<%--
-		<div id="backButton">
-			<button type="button"  class="btn button-18 "  style=" padding-left:20px; padding-right:20px" onclick="history.back();">
-				돌아 가기
-			</button>
-		</div>--%>
-=======
-		
-		
->>>>>>> origin/sup_new_branch02
 	</div>	 
 </body>
 </html>

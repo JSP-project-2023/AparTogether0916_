@@ -24,17 +24,11 @@ function endVote(){
 	if(confirm("투표 마감하시겠습니까?")){
 		//$('input[name=endVote]').val('voteIsEnd');
 		alert('마감되었습니다!😊');
-<<<<<<< HEAD
 		return true;
 	}
 	else{
 		alert('실패😅');
 		return false;
-=======
-	}
-	else{
-		alert('실패😅');
->>>>>>> origin/sup_new_branch02
 	}
 }
 
