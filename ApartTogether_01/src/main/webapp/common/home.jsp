@@ -1,129 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ include file="/common/common.jsp"%>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>아파투게더::환영합니다!</title>
-<style>
-@import	url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"); /* 스크롤 관련 */
-
-.scroll::-webkit-scrollbar {
-	display: none;
-	scroll-behavior: smooth
-}
-
-.scroll-container, .scroll-area {
-	max-width: 2560px;
-	height: 700px;
-	/* font-size: 60px; */
-}
-
-.scroll-container {
-	overflow: auto;
-	scroll-snap-type: y mandatory;
-}
-
-.scroll-area {
-	scroll-snap-align: start;
-}
-
-.scroll-container, .scroll-area {
-	margin: auto;
-}
-
-.scroll-area { /* 스크롤 내용 부분 css */
-	display: flex;
-	margin: 110px;
-	flex-direction: column;
-	flex-wrap: wrap;
-	/* align-content: flex-start; */
-	padding: 3rem;
-	/* justify-content: flex-start; */
-	color: black;
-}
-.item {max-height: 1080px;}
-.scroll-container .item:nth-child(1) { flex-grow: 1; font-size: 2rem; 
-	animation-duration: 1s; animation-name: slidein;}
-.scroll-container .item:nth-child(2) { flex-grow: 3; font-size: 1rem; margin-left: 2rem;}
-.scroll-container .item:nth-child(3) { flex-grow: 1; font-size: 2rem;}
-@keyframes slidein {
-  from {
-    margin-right: 100%;
-    width: 300%
-  }
-
-  to {
-    margin-right: 0%;
-    width: 100%;
-  }
-}
-
-.scroll-area:nth-of-type(1) {
-	/* background: #49b293; */
-	background-image: url(${pageContext.request.contextPath}/image/background3.png);
-	background-size: cover;
-}
-
-.scroll-area:nth-of-type(2) {
-	/* background: #c94e4b; */
-	background-image: url(${pageContext.request.contextPath}/image/background3.png);
-	background-size: cover;
-}
-
-.scroll-area:nth-of-type(3) {
-	/* background: #4cc1be; */
-	background-image: url(${pageContext.request.contextPath}/image/background3.png);
-	background-size: cover;
-}
-
-.scroll-area:nth-of-type(4) {
-	/* background: #8360A6; */
-	background-image: url(${pageContext.request.contextPath}/image/background3.png);
-	background-size: cover;
-}
-
-</style>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/homeCSS.css" type="text/css">
+<title>Apart together</title>
 </head>
 <body>
-	<div class="support-scrollsnap"></div>
 
-	<div class="scroll scroll-container">
-		<div class="scroll-area">
-			<div class="item">높아만 지는 <u>배달비</u> </br>어떻게 해야 할까요?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-			<div class="item">배달하는 곳을 한곳으로!</br> apartogether와 함께 하세요!</div>
-			
-			<form action="<%=withFormTag%>" method="post">
-				<input name="command" value="voteView">
-				<!-- 게시물 번호 -->
-				<input type="text" name="voteno" value="5">
-				<!-- 회원 아이디 -->
-				<input type="text" name="id" value="${sessionScope.loginfo.id}">
-				<button type="submit">투표 임시 버튼</button>
-			</form>
-			
-			<div class="item" align="center"><img alt="CoinnWallet" src="${pageContext.request.contextPath}/image/CoinnWallet.png">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+	<div class="container">
+		<div class="first-screen">
+			<div id="main-title">
+				모두에게 적용되는<br>
+				배달비 혜택!
+			</div>
+			<!-- 아이콘 -->
+			<div class="logo-box">
+				<img src="${pageContext.request.contextPath}/common/homeIMG/g1.png" width="200px">
+				<img src="${pageContext.request.contextPath}/common/homeIMG/g2.png" width="200px">
+				<img src="${pageContext.request.contextPath}/common/homeIMG/g3.png" width="200px">
+				<img src="${pageContext.request.contextPath}/common/homeIMG/g4.png" width="200px">
+				<img src="${pageContext.request.contextPath}/common/homeIMG/g5.png" width="200px">
+				<img src="${pageContext.request.contextPath}/common/homeIMG/g6.png" width="200px">
+				<img src="${pageContext.request.contextPath}/common/homeIMG/g7.png" width="200px">
+			</div>
 		</div>
-		<div class="scroll-area">
-			<div class="item"><del>혼자내는 배달비!</del><Strong><br/>배달비 / 사람수만큼 절약</Strong></div>
-			<div class="item">함께하는 사람이 많을수록 더욱 싸게! 배달비 절감!</div>
-			<div class="item" align="right"><img alt="CoinnWallet" src="${pageContext.request.contextPath}/image/Male_In_Shir.png">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class="second-screen">
 		</div>
-		<div class="scroll-area">
-			<div class="item">test1</div>
-			<div class="item">test2</div>
-			<div class="item" align="right"><img alt="CoinnWallet" src="${pageContext.request.contextPath}/image/Scene_3.png">&nbsp;&nbsp;&nbsp;&nbsp;</div>
-		</div>
-		<div class="scroll-area">
-			<div class="item">test1</div>
-			<div class="item">test2</div>
-			<div class="item" align="right"><img alt="CoinnWallet" src="${pageContext.request.contextPath}/image/Scene_4.png">&nbsp;&nbsp;&nbsp;&nbsp;</div>
-		</div>
+		
 	</div>
-	<%@ include file="/common/footer.jsp"%>
+ 
+ <script>AOS.init();</script>
 </body>
-</html>
+<%-- <%@ include file="/common/footer.jsp"%> --%>
+</html>	

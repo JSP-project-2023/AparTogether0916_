@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+*{
+	color: white;
+}
+
+body{
+	background-color: #252525;
+	height: 5500px;
+	min-width: 520px;
+}
+.container{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	background-color: blue;
+}
+
+/*첫번째 화면에 들어갈 요소들*/
+.first-screen{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+#main-title{
+	width: 100%;
+	background-color: red;
+	font-size: 50px;
+	position: relative;
+	transition: 0.3s;
+	top: 1em;
+	animation: fadein 3s;
+	-webkit-animation: fadein 3s;
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1.5;
+    }
+}
+/*로고 박스들*/
+.logo-box{
+	width: 100%;
+	white-space: nowrap;
+	background-color: greenyellow;
+	position: relative;
+	top: 10em;
+}
+
