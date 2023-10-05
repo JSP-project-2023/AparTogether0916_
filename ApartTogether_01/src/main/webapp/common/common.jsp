@@ -11,8 +11,11 @@
 
 
 <!-- [st] whologin 변수는 현재 로그인 상태를 알려 주는 변수입니다.  미로그인(0)  관리자 (1) 사업자 (2) 일반회원 (3) -->
-<c:if test="${not empty sessionScope.loginfo}">
+<c:if test="${empty sessionScope.loginfo}">
 	<c:set var="whologin" value="0" />
+</c:if>
+
+<c:if test="${not empty sessionScope.loginfo}">
 	<c:set var="whologin_id" value="${sessionScope.loginfo.id}"/>
 	<c:if test="${sessionScope.loginfo.mtype == 'admin'}">
 		<c:set var="whologin" value="1" />
@@ -150,7 +153,7 @@ String notWithFormTag = appName + mappingName + "?command=";
 				
 				<ul class="navbar_member">
 					<!-- [st] 로그인 섹션 -->							
-					<c:if test="${whologin eq null }">
+					<c:if test="${whologin eq 0 }">
 						<li class="">
 							<a class="" href="<%=notWithFormTag%>meLogin">로그인</a>
 						</li>
@@ -260,9 +263,9 @@ String notWithFormTag = appName + mappingName + "?command=";
 							<li>
 								<a class="" href="<%=notWithFormTag%>voteList">투표</a>
 							</li>
-							<c:if test="${whologin eq 1}">
+							<c:if test="${whologin ne 0}">
 								<li>
-									<a class="" href="<%=notWithFormTag%>voteInsert">투표 등록(href : null)</a>
+									<a class="" href="<%=notWithFormTag%>voteInsert">투표 등록</a>
 								</li>
 							</c:if>
 						</ul>
@@ -271,7 +274,7 @@ String notWithFormTag = appName + mappingName + "?command=";
 				
 				<ul class="hamnav_member">
 					<!-- [st] 로그인 섹션 -->							
-					<c:if test="${whologin eq null }">
+					<c:if test="${whologin eq 0 }">
 						<li class="">
 							<a class="" href="<%=notWithFormTag%>meLogin">로그인</a>
 						</li>
