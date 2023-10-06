@@ -245,13 +245,13 @@
 					<div class="input-group">
 						<span class="input-group-text col-md-3">이름 <font color="red">*</font></span>
 						<input class="form-control" type="text" id="name" name="name"
-							placeholder="이름">
+							placeholder="이름" maxlength="10">
 					</div>
 					<div class="input-group">
 						<span class="input-group-text col-md-3">닉네임</span> 
 						<input class="form-control" type="text"
 							id="nickname" name="nickname"
-							placeholder="닉네임 / 공란 시 랜덤한 아이디가 생성!">
+							placeholder="닉네임 / 공란 시 랜덤한 아이디가 생성!" maxlength="85">
 					</div>
 					<div class="input-group">
 						<span class="input-group-text col-md-3">성별 <font color="red">*</font></span>
