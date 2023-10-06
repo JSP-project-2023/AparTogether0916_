@@ -80,8 +80,8 @@ public class MemberInsertController extends SuperClass {
 				if(gotoStoreInsert.equals("yes")) {//  yes이면 <내 가게 등록 화면>으로 이동합니다.
 					// [ST]자동로그인기능
 					String id = mr.getParameter("id") ;
-					System.out.println(id + "/" + password);
-					try {bean = dao.getDataByPk(id, password);
+					System.out.println(id + "/" + encryptedPassword);
+					try {bean = dao.getDataByPk(id, encryptedPassword);
 					} catch (Exception e) {e.printStackTrace();}
 					super.session.setAttribute("loginfo", bean);
 					// [ED]자동로그인기능
