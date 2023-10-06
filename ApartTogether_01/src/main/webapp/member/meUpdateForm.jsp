@@ -235,13 +235,13 @@
 				</div>
 				<div class="input-group"> 
 					<span class="input-group-text col-md-2">이름<font color="red">*</font></span>
-					<input class="form-control" type="text" id="name" name="name" value="${requestScope.bean.name}">				
+					<input class="form-control" type="text" id="name" name="name" value="${requestScope.bean.name}" maxlength="10">				
 				</div>
 				
 				<div class="input-group">
 					<span class="input-group-text col-md-2">닉네임</span><!-- <font color="red">*</font> -->
 					<input class="form-control" type="text" id="nickname" name="nickname" 
-					       value="${requestScope.bean.nickname }" placeholder="닉네임 / 공란 시 랜덤한 아이디가 생성!">				
+					       value="${requestScope.bean.nickname }" placeholder="닉네임 / 공란 시 랜덤한 아이디가 생성!" maxlength="85">				
 				</div>
 				<div class="input-group">
 					<span class="input-group-text col-md-2">프로필사진</span>
@@ -265,7 +265,8 @@
 				
 				<div class="input-group" >
 					<span class="input-group-text col-md-2">비밀 번호<font color="red">*</font></span>
-					<input class="form-control" type="password" id="password" name="password"  value="${requestScope.decryptedPassword}">
+					<input class="form-control" type="password" id="password" name="password"  
+					       value="${requestScope.decryptedPassword}" maxlength="20">
 				</div>
 				
 				<div class="input-group">
@@ -315,7 +316,8 @@
 				
 				<div class="input-group">
 					<span class="input-group-text col-md-2">비밀번호 답변<font color="red">*</font></span>
-					<input class="form-control" type="text" id="passwordanswer" name="passwordanswer" value="${requestScope.bean.passwordanswer }">			
+					<input class="form-control" type="text" id="passwordanswer" name="passwordanswer" 
+					       value="${requestScope.bean.passwordanswer }" maxlength="85">			
 				</div>
 			
 			

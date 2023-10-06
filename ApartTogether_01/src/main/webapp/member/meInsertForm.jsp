@@ -240,7 +240,7 @@
 					</div>
 					<div class="input-group">
 						<input class="form-control" type="text" id="passwordanswer"
-							name="passwordanswer" placeholder="답변">
+							name="passwordanswer" placeholder="답변" maxlength="85">
 					</div>
 					<div class="input-group">
 						<span class="input-group-text col-md-3">이름 <font color="red">*</font></span>
