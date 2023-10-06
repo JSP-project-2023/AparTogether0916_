@@ -73,7 +73,6 @@
 	<div class="container" >
 	
 		<h2 class="mainTitle">아이디 찾기</h2>
-		<p>하기 정보를 입력해주세요.</p>
 		
 		<form action="<%=withFormTag%>" method="post" >
 			<input type="hidden" name="command" value="meFindId">

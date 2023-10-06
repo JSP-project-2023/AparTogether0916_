@@ -51,10 +51,7 @@
 	background="http://localhost:5214/ApartTogether_01
 	/image/background3.png">
 	<div class="container">
-		<h2 class="mainTitle">
-			패스워드 찾기
-		</h2>
-		<p>하기 정보를 입력해주세요.</p>
+		<h2 class="mainTitle">패스워드 찾기</h2>
 
 		<form action="<%=withFormTag%>" method="post">
 			<input type="hidden" name="command" value="meFindPassword">
