@@ -52,7 +52,7 @@ String notWithFormTag = appName + mappingName + "?command=";
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/common.css" type="text/css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/header.css" type="text/css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/headerDark.css" type="text/css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,7 +88,7 @@ String notWithFormTag = appName + mappingName + "?command=";
 			<nav class="navibar_hole">
 				<div class="navbar_logo">
 					<a class="navbar-logo" href="<%=notWithFormTag%>home">
-						<img width="200px" alt="logoIMG" src="${pageContext.request.contextPath}/image/logo.png">
+						<img width="200px" alt="logoIMG" src="${pageContext.request.contextPath}/image/logo_black.png">
 					</a>
 				</div>
 				
@@ -220,7 +220,7 @@ String notWithFormTag = appName + mappingName + "?command=";
 			<nav class="hamnav">
 				<div class="navbar_logo">
 					<a class="navbar-logo" href="<%=notWithFormTag%>home">
-						<img width="200px" alt="logoIMG" src="${pageContext.request.contextPath}/image/logo.png">
+						<img width="200px" alt="logoIMG" src="${pageContext.request.contextPath}/image/logo_black.png">
 					</a>
 				</div>
 				<div class="hamarea">

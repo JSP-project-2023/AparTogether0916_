@@ -7,123 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>가게 목록</title>
-<script type="text/javascript">
-
-$(document).ready(function(){
-	/*  페이징 - 가게명, 카테고리 mode 선택  */
-	var modeOption = $('#mode option');
-	
-	for (var i=0; i<modeOption.length; i++) {
-		if (modeOption[i].value == '${requestScope.pageInfo.mode}') {
-			modeOption[i].selected = true;
-			
-			$('#categoryList').addClass('notShow');
-			$('#keyword').removeClass('notShow');
-			/*  검색했던 가게명 input에 값 유지  */
-			$('#keyword').val('${requestScope.pageInfo.keyword}');
-			$('#keyword').attr('disabled', false);
-		}
-	}
-	
-	/*  페이징 - 카테고리 리스트에 값 유지  */
-	var cateOption = $('#categoryList option');
-	
-	for (var i=0; i<cateOption.length; i++) {
-		if (cateOption[i].value == '${requestScope.pageInfo.category}') {
-			cateOption[i].selected = true;
-			
-			$('#keyword').addClass('notShow');
-			$('#categoryList').removeClass('notShow');
-			$('#categoryList').attr('disabled', false);
-		}
-	}
-	
-	
-	/*  검색 방법 바꿀 때  */
-	$('#mode').change(function() {
-		if ($(this).val() == 'all') {
-			$('#keyword').val('');
-			$('#keyword').attr('disabled', true);
-			$('#categoryList').attr('disabled', true);
-			
-		/*  가게명으로 검색 시 카테고리 검색 드롭박스 안보이게  */
-		} else if ($(this).val() == 'stname') {
-			$('#keyword').val('');
-			$('#categoryList').addClass('notShow');
-			$('#keyword').removeClass('notShow');
-			$('#keyword').attr('disabled', false);
-		
-		/*  카테고리로 검색 시 가게명 검색 input 박스 안보이게  */
-		} else if ($(this).val() == 'category') {
-			console.log('category change');
-			
-			$('#keyword').val('');
-			$('#keyword').addClass('notShow');
-			$('#categoryList').removeClass('notShow');
-			$('#categoryList').attr('disabled', false);
-		}
-	});
-
-	/*  화면 진입 시 셋팅  */
-	if ($('#mode').val() == 'all' || $('#mode').val() == '') {
-		$('#keyword').attr('disabled', true);
-		$('#categoryList').attr('disabled', true);
-		
- 	/*	  가게명으로 검색 시 카테고리 검색 드롭박스 안보이게  */
-	} else if ($('#mode').val() == 'stname') {
-		$('#categoryList').addClass('notShow');
-		$('#keyword').removeClass('notShow');
-		$('#keyword').attr('disabled', false);
-	
-	/*  카테고리로 검색 시 가게명 검색 input 박스 안보이게  */
-	} else if ($('#mode').val() == 'category') {
-		console.log('category change');
-		
-		$('#keyword').addClass('notShow');
-		$('#categoryList').removeClass('notShow');
-		$('#categoryList').attr('disabled', false);
-	}
-});
-
-/*  전체 선택 버튼 클릭  */
-function searchAll() {
-	location.href='<%=notWithFormTag%>stList';
-}
-
-/*  가게 등록 버튼 클릭  */
-function addStore() {
-	location.href='<%=notWithFormTag%>stInsert&id=${sessionScope.loginfo.id}';
-}
-</script>
-
-<style type="text/css">
-	.myAddress {
-		margin-bottom: 2.5rem;
-	}
-	.searchbar {
-		margin: 20 auto;
-	}
-	.notShow {
-		display: none;
-	}
-	a {
-		text-decoration: none;
-	}
-	.card-img-top {
-		width: 300px;
-		height: 300px;
-	}
-	.text_dark {
-		color: #484848;
-	}
-	.card-title {
-		font-weight: 600;
-		margin: 10px auto;
-	}
-	.buttonList {
-		margin: 15px auto;
-	}
-</style>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/store/storeCSS/StoreList.css" type="text/css">
 
 </head>
 <body>
@@ -139,48 +23,42 @@ function addStore() {
 				<c:set var="colsu" value="3"/>
 				<tr>
 					<td colspan="${colsu}" align="center">
-						<div class="row">
-							<div class="col-sm-1"></div>
-							<div class="col-sm-10">
-								<form name="myform" action="<%=withFormTag%>" method="get">
+						<form name="myform" action="<%=withFormTag%>" method="get">
+							<div class="whole-searchArea">
+								<div class="searchArea">
 									<input type="hidden" name="command" value="stList">
-									<div class="row">
-										<div class="col-sm-12">
-											
-											<select class="form-control-sm" id="mode" name="mode">
-												<option value="all" selected="selected">선택해 주세요
-												<option value="stname">가게명
-												<option value="category">카테고리
-											</select> 
-											
-											<select class="form-control-sm" id="categoryList" name="categoryList">
-												<option value="all" selected="selected">카테고리 리스트
-												<option value="양식">양식
-												<option value="중식">중식
-												<option value="일식">일식
-												<option value="한식">한식
-												<option value="패스트푸드">패스트푸드
-												<option value="치킨">치킨
-												<option value="피자">피자
-												<option value="카페">카페
-											</select>
-											
-											<input class="form-control-sm" type="text" name="keyword" id="keyword" placeholder="키워드 입력">
-											<button type="submit" class="btn btn-warning form-control-sm">검색</button>
-											
-											<button type="button" class="btn btn-warning form-control-sm" onclick="searchAll();">전체 검색</button>
-											
-											<c:if test="${sessionScope.loginfo.mtype eq 'biz'}">
-												<button type="button" class="btn btn-info form-control-sm" onclick="addStore();">내 가게 등록</button>
-											</c:if>
-											
-											<span class="label label-default">${requestScope.pageInfo.pagingStatus}</span>
-										</div>
-									</div>
-								</form>
+									
+									<select class="select-mode round-orange-hover" id="mode" name="mode">
+										<option value="all" selected="selected">선택해 주세요
+										<option value="stname">가게명
+										<option value="category">카테고리
+									</select> 
+									
+									<select class="select-cate round-orange-hover" id="categoryList" name="categoryList">
+										<option value="all" selected="selected">카테고리 리스트
+										<option value="양식">양식
+										<option value="중식">중식
+										<option value="일식">일식
+										<option value="한식">한식
+										<option value="패스트푸드">패스트푸드
+										<option value="치킨">치킨
+										<option value="피자">피자
+										<option value="카페">카페
+									</select>
+									
+									<input class="select-keyword round-orange-hover" type="text" name="keyword" id="keyword" placeholder="키워드 입력">
+									<button type="submit" class="normal_bigbtn">검색</button>
+									
+									<button type="button" class="else_bigbtn" onclick="searchAll();">전체 검색</button>
+									
+									<c:if test="${sessionScope.loginfo.mtype eq 'biz'}">
+										<button type="button" class="insert_bigbtn" onclick="addStore();">내 가게 등록</button>
+									</c:if>
+								</div>
+								
+								<span class="label label-default">${requestScope.pageInfo.pagingStatus}</span>
 							</div>
-							<div class="col-sm-1"></div>
-						</div>
+						</form>
 					</td>
 				</tr>
 				
@@ -191,7 +69,7 @@ function addStore() {
 					<td>
 					<c:choose>
 							<c:when test="${storeList.ststatus eq 'open'}">
-								<div class="card" style="width: 19rem;">
+								<div class="card hover-back" style="width: 19rem;">
 							</c:when>		
 							<c:when test="${storeList.ststatus eq 'close'}">
 								<div class="card" style="width: 19rem; opacity: 0.35;">
@@ -283,4 +161,94 @@ function addStore() {
 
 </body>
 <%@ include file="/common/footer.jsp"%>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	/*  페이징 - 가게명, 카테고리 mode 선택  */
+	var modeOption = $('#mode option');
+	
+	for (var i=0; i<modeOption.length; i++) {
+		if (modeOption[i].value == '${requestScope.pageInfo.mode}') {
+			modeOption[i].selected = true;
+			
+			$('#categoryList').addClass('notShow');
+			$('#keyword').removeClass('notShow');
+			
+			/*  검색했던 가게명 input에 값 유지  */
+			$('#keyword').val('${requestScope.pageInfo.keyword}');
+			$('#keyword').attr('disabled', false);
+		}
+	}
+	
+	/*  페이징 - 카테고리 리스트에 값 유지  */
+	var cateOption = $('#categoryList option');
+	
+	for (var i=0; i<cateOption.length; i++) {
+		if (cateOption[i].value == '${requestScope.pageInfo.category}') {
+			cateOption[i].selected = true;
+			
+			$('#keyword').addClass('notShow');
+			$('#categoryList').removeClass('notShow');
+			$('#categoryList').attr('disabled', false);
+		}
+	}
+	
+	
+	/*  검색 방법 바꿀 때  */
+	$('#mode').change(function() {
+		if ($(this).val() == 'all') {
+			$('#keyword').val('');
+			$('#keyword').attr('disabled', true);
+			$('#categoryList').attr('disabled', true);
+			
+		/*  가게명으로 검색 시 카테고리 검색 드롭박스 안보이게  */
+		} else if ($(this).val() == 'stname') {
+			$('#keyword').val('');
+			$('#categoryList').addClass('notShow');
+			$('#keyword').removeClass('notShow');
+			$('#keyword').attr('disabled', false);
+		
+		/*  카테고리로 검색 시 가게명 검색 input 박스 안보이게  */
+		} else if ($(this).val() == 'category') {
+			console.log('category change');
+			
+			$('#keyword').val('');
+			$('#keyword').addClass('notShow');
+			$('#categoryList').removeClass('notShow');
+			$('#categoryList').attr('disabled', false);
+		}
+	});
+
+	/*  화면 진입 시 셋팅  */
+	if ($('#mode').val() == 'all' || $('#mode').val() == '') {
+		$('#keyword').attr('disabled', true);
+		$('#categoryList').attr('disabled', true);
+		
+ 	/*	  가게명으로 검색 시 카테고리 검색 드롭박스 안보이게  */
+	} else if ($('#mode').val() == 'stname') {
+		$('#categoryList').addClass('notShow');
+		$('#keyword').removeClass('notShow');
+		$('#keyword').attr('disabled', false);
+	
+	/*  카테고리로 검색 시 가게명 검색 input 박스 안보이게  */
+	} else if ($('#mode').val() == 'category') {
+		console.log('category change');
+		
+		$('#keyword').addClass('notShow');
+		$('#categoryList').removeClass('notShow');
+		$('#categoryList').attr('disabled', false);
+	}
+});
+
+/*  전체 선택 버튼 클릭  */
+function searchAll() {
+	location.href='<%=notWithFormTag%>stList';
+}
+
+/*  가게 등록 버튼 클릭  */
+function addStore() {
+	location.href='<%=notWithFormTag%>stInsert&id=${sessionScope.loginfo.id}';
+}
+</script>
 </html>

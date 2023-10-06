@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+.myAddress {
+	margin-bottom: 2.5rem;
+}
+.searchbar {
+	margin: 20 auto;
+}
+.notShow {
+	display: none;
+}
+a {
+	text-decoration: none;
+}
+.card-img-top {
+	width: 300px;
+	height: 300px;
+}
+.text_dark {
+	color: #484848;
+}
+.card-title {
+	font-weight: 600;
+	margin: 10px auto;
+}
+.buttonList {
+	margin: 15px auto;
+}
+.whole-searchArea {
+	display: flex;
+	justify-content: space-between;
+}
+.searchArea {
+	display: flex;
+	justify-content: space-between;
+	width: 940px;
+}
+.searchArea > button {
+	width: 130px;
+}
+
+.select-mode {
+	width: 150px;
+    height: 50px;
+    padding: 10px;
+}
+.select-cate {
+	width: 300px;
+    height: 50px;
+    padding: 10px;
+}
+.select-keyword {
+	width: 300px;
+    height: 50px;
+    padding: 10px;
+}
+.not-round-orange-hover {
+    filter: none;
+    color: #454545;
+    cursor: auto;
+    background-color: #fff;
+    border: 1px solid #dfdfdf;
+    border-radius: 100px;
+    margin-bottom: 0;
+    transition: box-shadow .3s, color .3s, border-color .3s;
+    box-shadow: 0 1px 8px rgba(3, 3, 3, .06);
+}
+.label-default {
+	line-height: 50px;
+}

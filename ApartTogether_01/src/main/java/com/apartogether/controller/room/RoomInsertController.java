@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.apartogether.controller.SuperClass;
 import com.apartogether.controller.store.StoreListController;
-import com.apartogether.model.bean.Store;
 import com.apartogether.model.dao.StoreDao;
 
 

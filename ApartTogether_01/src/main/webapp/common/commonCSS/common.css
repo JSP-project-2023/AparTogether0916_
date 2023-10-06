@@ -42,18 +42,19 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-/*    margin-top: 100px;*/
     z-index: -99;
-
 }
 
 .footerArea {
 	width: 100%;
-    margin-left: 90px;
     font-size: 0.8rem;
     color: #fff;
     text-align: center;
 
+}
+.hover-back:hover {
+	box-shadow: 1px 1px 15px #bbbbbb;
+	transition: box-shadow .3s, color .3s, border-color .3s;
 }
 
 .alert-dismissible {
@@ -125,6 +126,8 @@ footer {
 .insert_bigbtn {
 	background-color: #ff6000;
 	color: #fff;
+    border: 0;
+    border-radius: 25px;
 }
 .insert_bigbtn:hover {
 	background-color: #c94c00;
@@ -133,6 +136,8 @@ footer {
 .update_bigbtn {
 	background-color: #ffa559;
 	color: #fff;
+    border: 0;
+    border-radius: 25px;
 }
 .update_bigbtn:hover {
 	background-color: #df8b43;
@@ -141,6 +146,8 @@ footer {
 .delete_bigbtn {
 	background-color: #ff2e00;
 	color: #fff;
+    border: 0;
+    border-radius: 25px;
 }
 .delete_bigbtn:hover {
 	background-color: #c32300;
@@ -150,6 +157,7 @@ footer {
 	background-color: #ffffff;
     border: 1px solid #0143ff;
     color: #0143ff;
+    border-radius: 25px;
 }
 .select_bigbtn:hover {
 	background-color: #fff7ed;
@@ -159,6 +167,8 @@ footer {
 .reset_bigbtn {
 	background-color: #ffe6c7;
 	color: #000000;
+    border: 0;
+    border-radius: 25px;
 }
 .reset_bigbtn:hover {
 	background-color: #ffd49f;
@@ -168,6 +178,7 @@ footer {
     background-color: #ffffff;
     border: 1px solid #252525;
     color: #252525;
+    border-radius: 25px;
 }
 .normal_bigbtn:hover {
     background-color: #fff7ed;
@@ -177,6 +188,8 @@ footer {
 .else_bigbtn {
 	background-color: #252525;
 	color: #fff;
+    border: 0;
+    border-radius: 25px;
 }
 .else_bigbtn:hover {
 	background-color: #454545;
@@ -185,6 +198,8 @@ footer {
 .cancle_bigbtn {
 	background-color: #d9d9d9;
 	color: #000000;
+    border: 0;
+    border-radius: 25px;
 }
 .cancle_bigbtn:hover {
 	background-color: #c5c5c5;
@@ -243,6 +258,27 @@ footer {
     box-shadow: 0 2px 12px rgba(3, 3, 3, .1);
 }
 .input_text:focus {
+	color: #0b0b0b;
+	outline: none !important;
+    border-color: #ff6000;
+    box-shadow: 0 2px 12px rgba(3, 3, 3, .1);
+}
+.round-orange-hover {
+    filter: none;
+    color: #454545;
+    cursor: auto;
+    background-color: #fff;
+    border: 1px solid #dfdfdf;
+    border-radius: 100px;
+    margin-bottom: 0;
+    transition: box-shadow .3s, color .3s, border-color .3s;
+    box-shadow: 0 1px 8px rgba(3, 3, 3, .06);
+}
+.round-orange-hover:hover {
+	border-color: #ff6000;
+    box-shadow: 0 2px 12px rgba(3, 3, 3, .1);
+}
+.round-orange-hover:focus {
 	color: #0b0b0b;
 	outline: none !important;
     border-color: #ff6000;
