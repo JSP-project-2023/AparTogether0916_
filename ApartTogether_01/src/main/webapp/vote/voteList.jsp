@@ -141,47 +141,41 @@
 </head>
 <body>
 	<div class="container">
-		<h2 class="mainTitle">투표</h2>	
-		
-		<div class="row">
-       		<div class="col-sm-12">               
-               <form name="myform" action="<%=withFormTag%>" method="get">
-                  <input type="hidden" name="command" value="voteList">
-                  <div class="row">
-                     <div class="col-sm-12 mode" align="right">
-                        <select class="form-control-sm mySelect" id="mode" name="mode" onchange="changeMode()">
-                           <option value="all" selected="selected">--- 검색옵션 ---
-                           <option value="votetitle">제목
-                           <option value="voteid">작성자 아이디
-                           <option value="nickname">작성자 닉네임
-                           <option value="endvote">마감여부
-                        </select>
-                        
-                        <select class="form-control-sm mySelect" id="keywordEndVote" name="keywordEndVote">
-                           <option value="all" selected="selected">--- 전체 ---
-                           <option value="0">진행중
-                           <option value="1">마감
-                        </select>
-                       
-                        <input class="form-control-sm mySelect" type="text" name="keyword" id="keyword"
-                        		placeholder="검색어 입력">
-                        <button type="submit" class="big_ctlbtn select_bigbtn" style="height: 33px; width:60px;" onclick="">검색</button>
-                        <button type="button" class="big_ctlbtn select_bigbtn" style="height: 33px; width:100px;" onclick="searchAll();">전체 검색</button>
-                      </div>  
-                  </div>
-               </form>                     
-       		</div>
-		</div>
+		<h2 class="mainTitle">투표</h2>
+           
+		<form name="myform" action="<%=withFormTag%>" method="get">
+			<input type="hidden" name="command" value="voteList">
+			<div align="right">
+				<select class="form-control-sm mySelect" id="mode" name="mode" onchange="changeMode()">
+				   <option value="all" selected="selected">--- 검색옵션 ---
+				   <option value="votetitle">제목
+				   <option value="voteid">작성자 아이디
+				   <option value="nickname">작성자 닉네임
+				   <option value="endvote">마감여부
+				</select>
+				
+				<select class="form-control-sm mySelect" id="keywordEndVote" name="keywordEndVote">
+				   <option value="all" selected="selected">--- 전체 ---
+				   <option value="0">진행중
+				   <option value="1">마감
+				</select>
+				
+				<input class="form-control-sm mySelect" type="text" name="keyword" id="keyword"
+						placeholder="검색어 입력">
+				<button type="submit" class="big_ctlbtn select_bigbtn" style="height: 33px; width:60px;" onclick="">검색</button>
+				<button type="button" class="big_ctlbtn select_bigbtn" style="height: 33px; width:100px;" onclick="searchAll();">전체 검색</button>
+			</div>
+		</form>                     
+
 		
 		<table class="table table-hover" style="margin-top: 5px;">
 			<thead class="">
 				<tr>
-					<th class=" col-md-1 text-center">글번호</th>
-					<th class=" col-md-1 text-center">제목</th>
-					<th class=" col-md-1 text-center">작성자</th>
-					<th class=" col-md-1 text-center">마감여부</th>		
+					<th class=" col-md-2 text-center">글번호</th>
+					<th class=" col-md-4 text-center">제목</th>
+					<th class=" col-md-4 text-center">작성자</th>
+					<th class=" col-md-2 text-center">마감여부</th>		
 				</tr>
-				
 			</thead>
 			<tbody>
 				<tr>
@@ -190,20 +184,20 @@
 				 
 				<c:forEach var="bean" items="${datalist}">
 					<tr>
-						<td  class=" col-md-1 text-center">${bean.voteno}</td>
+						<td  class=" col-md-2 text-center">${bean.voteno}</td>
 						
-						<td class=" col-md-1 text-center">
+						<td class=" col-md-4 text-center">
 							<a href="javascript:void(0)" onClick="gotoDetail('${bean.voteno}', '${bean.voteid}')">${bean.votetitle}</a>
 <%-- 							<a href="<%=notWithFormTag%>voteDetail&id=${bean.voteno}">${bean.votetitle}</a> --%>
 						</td>
 						
-						<td class=" col-md-1 text-center">
+						<td class=" col-md-4 text-center">
 							<c:if test="${bean.voteid == null}">-</c:if><%-- 작성자가 탈퇴해서 null이면 X로 표시 --%>
 							<%-- <c:if test="${bean.voteid != null}">${bean.votenickname}(${bean.voteid})</c:if> --%>
 							<c:if test="${bean.voteid != null}">${requestScope.idnickmap.get(bean.voteid)}(${bean.voteid})</c:if>
 						</td>
 						
-						<td class=" col-md-1 text-center">
+						<td class=" col-md-2 text-center">
 							<c:if test="${bean.endvote == '1'}"><span class="badge rounded-pill bg-magam">마감</span></c:if>
 							<c:if test="${bean.endvote == '0'}"><span class="badge rounded-pill bg-jinheng">진행중</span></c:if>
 						</td>
