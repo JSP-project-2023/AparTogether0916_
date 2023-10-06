@@ -15,7 +15,6 @@
 			width: 70%;
 		}
 		
-		tr{opacity: 0.7;}
 		
 		.small_image{width:50px;height:50px;margin:2px;border-radius:5px;}
 
