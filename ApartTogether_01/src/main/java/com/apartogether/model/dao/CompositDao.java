@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.apartogether.model.bean.Combo01;
 import com.apartogether.model.bean.Member;
+import com.apartogether.model.bean.Menu;
 import com.apartogether.model.bean.Order;
 
 public class CompositDao extends SuperDao {
@@ -350,9 +351,21 @@ public class CompositDao extends SuperDao {
 		ResultSet rs = pstmt.executeQuery();
 		
 		List<Combo01> menuList = new ArrayList<Combo01>();
-		
+		Combo01 menuBean = new Combo01(); 
 		while(rs.next()) {
-			menuList.add(this.makeMenuBean(rs));
+			menuBean = this.makeMenuBean(rs);
+			
+			String detail = menuBean.getMenuDetail();
+			String str[] = null;
+			
+//			메뉴 설명 구분자 처리
+			if (detail.indexOf("Δ") < 0) { // 구분자가 없으면 그래도 입력
+				menuBean.setMenuDetail(detail);
+			} else {
+				str = detail.split("Δ");
+				menuBean.setMenuDetail(str[0] + "<br>" + str[1]); // 화면에 보여줄 때는 한 칸에 다 넣기
+			}
+			menuList.add(menuBean);
 		}
 		
 		if(rs != null) {rs.close();}
