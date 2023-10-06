@@ -20,15 +20,18 @@ public class VoteDoController extends SuperClass {
 		// 투표 게시물 번호
 		String voteno = request.getParameter("voteno");
 		// 투표한 사람
-		String id = request.getParameter("id");
+		String id = request.getParameter("loginID");
 		// 투표 내용
 		String selectvotecol = request.getParameter("choice");
 		// 투표 여부
 		String voteVal = request.getParameter("voteVal");
 		
+		
+		System.out.println("vote End is : " + voteEnd);
 		// 투표 마감 여부 업데이트
 		if(voteEnd != null) {
-			if (voteEnd.equals("endvote")) {
+			if(voteEnd.equals("voteIsEnd")) {
+				System.out.println("voteEnd.");
 				dao.endVote(voteno);
 			}
 		}
@@ -48,7 +51,6 @@ public class VoteDoController extends SuperClass {
 			}
 		}
 		//투표 화면으로 이동.
-//		new VoteViewController().doPost(request, response);
-		new VoteListController().doGet(request, response);
+		new VoteViewController().doPost(request, response); 
 	}
 }

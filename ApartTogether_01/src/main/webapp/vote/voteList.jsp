@@ -194,8 +194,8 @@
 						<td  class=" col-md-1 text-center">${bean.voteno}</td>
 						
 						<td class=" col-md-1 text-center">
-							<a href="javascript:void(0)" onClick="gotoDetail('${bean.voteno}', '${bean.voteid}')">${bean.votetitle}</a>
-<%-- 							<a href="<%=notWithFormTag%>voteDetail&id=${bean.voteno}">${bean.votetitle}</a> --%>
+							<a href="javascript:void(0)" onClick="gotoDetail('${bean.voteno}', '${bean.voteid}', '${sessionScope.loginfo.id}')">${bean.votetitle}</a>
+							<%--<a href="<%=notWithFormTag%>voteDetail&id=${bean.voteno}">${bean.votetitle}</a> --%>
 						</td>
 						
 						<td class=" col-md-1 text-center">
@@ -271,8 +271,13 @@
 			location.href = '<%=notWithFormTag%>voteList' ;
 		}
 		
+<<<<<<< HEAD
 		function gotoDetail(vno, userid) {
 // 			alert(vno + ' / ' + userid);
+=======
+		function gotoDetail(vno, userid, loginid) {
+			//alert(vno + ' / ' + userid);
+>>>>>>> origin/lleebs.v4
 			let f = document.createElement('form');
 			
 			let command = document.createElement('input');
@@ -285,14 +290,21 @@
 			no.setAttribute('name', 'voteno');
 			no.setAttribute('value', vno);
 			
+			//유저 아이디 넘겨줌.
 			let uid = document.createElement('input');
 			uid.setAttribute('type', 'hidden');
 			uid.setAttribute('name', 'id');
 			uid.setAttribute('value', userid);
 			
+			let loginID = document.createElement('input');
+			loginID.setAttribute('type', 'hidden');
+			loginID.setAttribute('name', 'loginID');
+			loginID.setAttribute('value', loginid);
+			
 			f.appendChild(command);
 			f.appendChild(no);
 			f.appendChild(uid);
+			f.appendChild(loginID);
 			f.setAttribute('method', 'post');
 			f.setAttribute('action', '<%=withFormTag%>');
 			

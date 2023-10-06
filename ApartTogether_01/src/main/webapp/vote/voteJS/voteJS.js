@@ -22,7 +22,6 @@ function alertInfo(){
 /*마감 컨펌창*/
 function endVote(){
 	if(confirm("투표 마감하시겠습니까?")){
-		//$('input[name=endVote]').val('voteIsEnd');
 		alert('마감되었습니다!😊');
 		return true;
 	}
@@ -31,7 +30,6 @@ function endVote(){
 		return false;
 	}
 }
-
 $(document).ready(function() {
 	//투표 항목 체크
 	
@@ -46,5 +44,4 @@ $(document).ready(function() {
 			show_image();
 		}
 	});
-	
 });

@@ -25,18 +25,18 @@
 				<form action="<%=withFormTag%>" method="post">
 					<input name="command" value="voteDo" hidden="hidden">
 					<!-- 사용자 id -->
-					<input type="hidden" name="id" value="${sessionScope.loginfo.id}">
+					<input type="hidden" name="loginID" value="${sessionScope.loginfo.id}">
 					<!--게시물 번호-->
 					<input type="hidden" name="voteno" value="${requestScope.voteinfo.voteno}">
 					<!-- 투표 여부 변수 -->
 					<c:set var="voteVal" value="${requestScope.voteVal}"/>
-					<input type="hidden" name="voteVal" value="${voteVal}">
+					<input type="text" name="voteVal" value="${voteVal}">
 					<!-- 투표 마감 여부 -->
 					<input type="hidden" name="voteEnd" value="">
 					<!-- 처음 투표를 했을 경우. -->
-					<c:if test="${voteVal eq '0'}">
+					<c:if test="${voteVal eq 0}">
 						<!-- 투표 리스트 반복-->
-						<c:forEach var="votelist" items="${requestScope.votelist}">
+						<c:forEach var="votelist" items="${requestScope.votelists}">
 							<div class="menu-box">
 								<label class="input-group-text">${votelist}
 									<!-- //TODO: 투표 안하고 투표 눌렀을시 삭제. -->
@@ -50,11 +50,11 @@
 					</c:if>
 					
 					<!-- 전에 투표를 등록했을 경우. -->
-					<c:if test="${voteVal eq '1'}">
+					<c:if test="${voteVal eq 1}">
 					<!-- 전에 투표한 항목 -->
 					<input type="hidden" id="selectVote" value="${requestScope.selectVote}">
 					<!-- 투표 리스트 반복-->
-						<c:forEach var="votelist" items="${requestScope.votelist}">
+						<c:forEach var="votelist" items="${requestScope.votelists}">
 								<div class="menu-box">
 									<label class="input-group-text">${votelist}
 										<input type="radio" id="after-vote" name="choice" value="${votelist}" onclick="show_image()" hidden="hidden">
@@ -69,8 +69,7 @@
 						<button type="submit" class="btn button-wrapper order_bigbtn" onclick="alertInfo()">투표하기</button>
 						<!-- 투표 등록한 사람만 보이게. -->
 						<c:if test="${sessionScope.loginfo.id eq requestScope.voteinfo.voteid}">
-							<input name="sendEndVote" value="endvote" hidden="hidden">
-							<button type="submit" onclick="return endVote();" class="endVote btn button-wrapper">투표마감</button>
+							<button type="submit" name="sendEndVote" value="voteIsEnd" onclick="return endVote(); " class="endVote btn button-wrapper">투표마감</button>
 						</c:if>
 						<a type="button" href="<%=notWithFormTag%>voteList" class="btn button-wrapper else_bigbtn">취소</a>
 					</div>
