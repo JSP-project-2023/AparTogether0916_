@@ -9,6 +9,7 @@ public class Room {
 	private String place;
 	private String category;
 	private int row_count;
+	private int pointtime;
 	
 	
 	public int getRow_count() {
@@ -54,11 +55,18 @@ public class Room {
 	public void setStname(String stname) {
 		this.stname = stname;
 	}
+	public int getPointtime() {
+		return pointtime;
+	}
+	public void setPointtime(int pointtime) {
+		this.pointtime = pointtime;
+	}
 	@Override
 	public String toString() {
 		return "Room [roomno=" + roomno + ", stname=" + stname + ", ordertime=" + ordertime + ", roomname=" + roomname
-				+ ", place=" + place + ", category=" + category + ", row_count=" + row_count + "]";
+				+ ", place=" + place + ", category=" + category + ", row_count=" + row_count + ", pointtime="
+				+ pointtime + "]";
 	}
-
+	
 	
 }

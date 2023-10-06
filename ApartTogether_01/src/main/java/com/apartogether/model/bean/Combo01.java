@@ -20,55 +20,48 @@ public class Combo01 {
 	private int menuno;
 	private int orderno;
 	private String sttime;
+	private String roomtime;
 	
 	
 	
-	
-	
-	
+
+
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Combo01 [roomno=");
-		builder.append(roomno);
-		builder.append(", menuname=");
-		builder.append(menuname);
-		builder.append(", qty=");
-		builder.append(qty);
-		builder.append(", roomprice=");
-		builder.append(roomprice);
-		builder.append(", totalmenu=");
-		builder.append(totalmenu);
-		builder.append(", orderplace=");
-		builder.append(orderplace);
-		builder.append(", stname=");
-		builder.append(stname);
-		builder.append(", fee=");
-		builder.append(fee);
-		builder.append(", roomname=");
-		builder.append(roomname);
-		builder.append(", price=");
-		builder.append(price);
-		builder.append(", personalprice=");
-		builder.append(personalprice);
-		builder.append(", id=");
-		builder.append(id);
-		builder.append(", allprice=");
-		builder.append(allprice);
-		builder.append(", ready=");
-		builder.append(ready);
-		builder.append(", menuImage=");
-		builder.append(menuImage);
-		builder.append(", menuDetail=");
-		builder.append(menuDetail);
-		builder.append(", menuno=");
-		builder.append(menuno);
-		builder.append(", orderno=");
-		builder.append(orderno);
-		builder.append(", sttime=");
-		builder.append(sttime);
-		builder.append("]");
-		return builder.toString();
+		return "Combo01 [roomno=" + roomno + ", menuname=" + menuname + ", qty=" + qty + ", roomprice=" + roomprice
+				+ ", totalmenu=" + totalmenu + ", orderplace=" + orderplace + ", stname=" + stname + ", fee=" + fee
+				+ ", roomname=" + roomname + ", price=" + price + ", personalprice=" + personalprice + ", id=" + id
+				+ ", allprice=" + allprice + ", ready=" + ready + ", menuImage=" + menuImage + ", menuDetail="
+				+ menuDetail + ", menuno=" + menuno + ", orderno=" + orderno + ", sttime=" + sttime + ", roomtime="
+				+ roomtime + ", getRoomtime()=" + getRoomtime() + ", getSttime()=" + getSttime() + ", getOrderno()="
+				+ getOrderno() + ", getMenuno()=" + getMenuno() + ", getMenuImage()=" + getMenuImage()
+				+ ", getMenuDetail()=" + getMenuDetail() + ", getReady()=" + getReady() + ", getAllprice()="
+				+ getAllprice() + ", getId()=" + getId() + ", getOrderplace()=" + getOrderplace()
+				+ ", getPersonalprice()=" + getPersonalprice() + ", getPrice()=" + getPrice() + ", getRoomname()="
+				+ getRoomname() + ", getStname()=" + getStname() + ", getFee()=" + getFee() + ", getRoomno()="
+				+ getRoomno() + ", getMenuname()=" + getMenuname() + ", getQty()=" + getQty() + ", getRoomprice()="
+				+ getRoomprice() + ", getTotalmenu()=" + getTotalmenu() + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
+	}
+
+
+
+
+
+
+
+	public String getRoomtime() {
+		return roomtime;
+	}
+
+
+
+
+
+
+
+	public void setRoomtime(String roomtime) {
+		this.roomtime = roomtime;
 	}
 
 

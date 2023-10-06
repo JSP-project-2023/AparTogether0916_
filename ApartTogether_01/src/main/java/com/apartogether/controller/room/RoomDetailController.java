@@ -93,12 +93,12 @@ public class RoomDetailController extends SuperClass {
 					Integer stno = Integer.parseInt(request.getParameter("stno"));
 					String roomname = request.getParameter("roomname");
 					String orderplace = request.getParameter("orderplace");
-					
+					Integer pointtime = Integer.parseInt(request.getParameter("pointtime"));
 					int cnt = -1;
 					
 					Integer roomno = rdao.getRoomNo();
 					request.setAttribute("roomno", roomno );
-					cnt = rdao.InsertData(stno,roomno,orderplace,roomname);
+					cnt = rdao.InsertData(stno,roomno,orderplace,roomname,pointtime);
 					
 					CompositDao dao = new CompositDao() ;
 					Combo01 bean = null ;

@@ -183,10 +183,9 @@ public class RoomDao extends SuperDao{
 		return cnt;
 	}
 
-	public int InsertData(Integer stno, Integer roomno, String orderplace, String roomname) throws Exception {
-		// 방이 새로 만들어질 때 방의 주문 정보들을 넣음
-		String sql = " insert into room(roomno,stno,roomname,orderplace,ordertime) " ;
-		sql += " values(?, ?, ? ,? ,sysdate)" ;
+	public int InsertData(Integer stno, Integer roomno, String orderplace, String roomname,Integer pointtime) throws Exception {
+		String sql = " insert into room(roomno,stno,roomname,orderplace,ordertime,pointtime) " ;
+		sql += " values(?, ?, ? ,? ,sysdate,?)" ;
 		int cnt = -1 ;
 		PreparedStatement pstmt = null ;
 		
@@ -200,6 +199,7 @@ public class RoomDao extends SuperDao{
 		
 		pstmt.setString(3,roomname);
 		pstmt.setString(4, orderplace);
+		pstmt.setInt(5, pointtime);
 
 		cnt = pstmt.executeUpdate() ;
 

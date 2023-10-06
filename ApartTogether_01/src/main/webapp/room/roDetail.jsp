@@ -88,11 +88,86 @@
         
          
 		    #insertComment {border-bottom : none;}
-        
+         /* 모달 팝업 스타일 */
+        .modal {
+            display: none; /* 초기에는 숨겨진 상태 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 배경을 반투명하게 만듭니다. */
+            z-index: 1; /* 다른 요소 위에 표시 */
+        }
+
+        /* 모달 팝업 컨테이너 스타일 */
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto; /* 화면 중앙에 위치하도록 설정 */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px; /* 최대 너비 설정 */
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* 모달 닫기 버튼 스타일 */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* 모달 내용 스타일 */
+        .modal-content p {
+            margin: 0;
+        }
 
     </style>
-
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=68360aa380de6b0a608b66a185c82859&libraries=services"></script>
    <script>
+   var timer;
+   $(document).ready(function() {
+       function updateRemainingTime() {
+
+           $.ajax({
+               url: "<%=notWithFormTag%>roTime",
+               data:'roomno=' + '${requestScope.bean2.roomno}',
+               method: "GET",
+               dataType: "text",
+               success: function(roomtime) {
+                   $("#roomtime").text("roomtime: " + roomtime);
+                   if (roomtime == "00:00:00") {
+                       // "00:00:00"인 경우 타이머 중지
+                       stopTimer();
+                       
+                       // roList.jsp로 이동
+                       window.location.href = "<%=notWithFormTag%>roList";
+                   }
+                   var numericRoomtime =parseInt(roomtime.replace(/:/g,''),10);
+                   if (numericRoomtime <= "500"){
+                   	$("#roomtime").css("color", "red");
+                   }else{
+                   	$("#roomtime").css("color", "");
+                   }
+               },
+               error: function(xhr, status, error) {
+                   console.error("Error fetching remaining time: " + error);
+               }
+              
+           });
+       }
+       startTimer();
+       
+       function startTimer() {
+           timer = setInterval(updateRemainingTime, 1000);
+       }
+       function stopTimer() {
+           clearInterval(timer);
+       }
+   });
 
 		   var qty = 0;
 		   
@@ -227,23 +302,77 @@
 			return false ;
 		});
 	});
+	
+	// 모달 팝업 열기
+	function openModal() {
+	    var modal = document.getElementById("myModal");
+	    modal.style.display = "block";
+
+	    // 모달 팝업이 열릴 때 지도 초기화 및 생성
+	    initializeMap();
+	}
+
+	// 모달 팝업 닫기
+	function closeModal() {
+	    var modal = document.getElementById("myModal");
+	    modal.style.display = "none";
+	}
+
+	// 지도 초기화 및 생성 함수
+	function initializeMap() {
+	    var mapContainer = document.getElementById('map');
+	    var mapOption = {
+	        center: new kakao.maps.LatLng(33.450701, 126.570667),
+	        level: 3
+	    };
+
+	    var map = new kakao.maps.Map(mapContainer, mapOption);
+
+	    // 주소-좌표 변환 객체를 생성합니다
+	    var geocoder = new kakao.maps.services.Geocoder();
+
+	    // 주소로 좌표를 검색합니다
+	    geocoder.addressSearch('${requestScope.bean2.orderplace}', function(result, status) {
+	        if (status === kakao.maps.services.Status.OK) {
+	            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	            var marker = new kakao.maps.Marker({
+	                map: map,
+	                position: coords
+	            });
+
+	            var infowindow = new kakao.maps.InfoWindow({
+	                content: '<div style="width:150px;text-align:center;padding:6px 0;">배달 장소</div>'
+	            });
+	            infowindow.open(map, marker);
+
+	            map.setCenter(coords);
+	        }
+	    });
+	}
 
 
 	</script>
 
 </head>
 <body>
+
+	<div id="myModal" class="modal">
+	    <div class="modal-content">
+	        <span class="close" onclick="closeModal()">&times;</span>
+	        <h2>배달 장소 지도</h2>
+	       <div id="map" style="width:100%;height:350px;"></div>
+	    </div>
+	</div>
     <div class="container">
 		<h2 style="font-weight: bold">방이름:${requestScope.bean2.roomname}</h2> 
         <table class="table table-borderless">
             <tbody>
                 <tr>
-             		<td>주문장소 : ${requestScope.bean2.orderplace}</td> 
-                    <td>가게영업시간: ${requestScope.bean2.sttime}</td>
+             		<td>주문장소 : ${requestScope.bean2.orderplace}<a onclick="openModal()" style="font-size: 0.8rem;">&nbsp;&nbsp;(지도보기)</a></td> 
                 </tr>
             </tbody>
         </table>
-   
+   	<p id="roomtime">roomtime: Loading...</p>
 
     <div>
        <h3 style="font-weight: bold;">${requestScope.bean2.stname}</h3> 

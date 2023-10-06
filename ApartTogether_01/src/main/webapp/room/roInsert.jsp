@@ -26,7 +26,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 
 </script>
 
-<title>Insert title here</title>
+<title>방 기본 정보 입력</title>
  <style>
  		
  		.container{margin-top: 50px;}
@@ -67,6 +67,12 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 							<tr>
 								<td id = "subject" style="padding-top: 20px;"> 방제목 &nbsp;&nbsp;&nbsp; </td>
 								<td style="padding-top: 20px;"><input class="input_text" type="text" style="width:400px; id = "roomname" name="roomname"  placeholder="방 제목을 입력해주세요"></td>
+							</tr>
+							<tr>
+							    <td id="subject" style="padding-top: 20px;">방 유지 시간</td>
+							    <td style="padding-top: 20px;">
+							        <input class="input_text" type="number" style="width: 400px;" id="pointtime" name="pointtime" placeholder="최대 60분까지 가능" min="0" max="60">
+							    </td>
 							</tr>
 							
 						</table>
