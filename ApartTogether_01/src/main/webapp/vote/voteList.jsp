@@ -271,13 +271,8 @@
 			location.href = '<%=notWithFormTag%>voteList' ;
 		}
 		
-<<<<<<< HEAD
-		function gotoDetail(vno, userid) {
-// 			alert(vno + ' / ' + userid);
-=======
 		function gotoDetail(vno, userid, loginid) {
 			//alert(vno + ' / ' + userid);
->>>>>>> origin/lleebs.v4
 			let f = document.createElement('form');
 			
 			let command = document.createElement('input');
