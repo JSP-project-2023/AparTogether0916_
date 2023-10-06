@@ -38,7 +38,7 @@ public class MemberInsertController extends SuperClass {
 		//[ST]비밀번호 암호화
 		    String password = mr.getParameter("password");
 		    // AES 암호화를 위한 키와 IV
-	        String key = "mySecretKey12345"; // 16, 24 또는 32 바이트
+	        String key = "mySecretKey12345"; // 16 바이트(128비트)
 	        String iv = "myInitialization"; // 16 바이트
 	        // AES 암호화
 	        String encryptedPassword = encryptAES(password, key, iv);

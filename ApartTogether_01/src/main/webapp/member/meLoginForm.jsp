@@ -77,7 +77,7 @@
 					<div class="inputArea">
 						<input class="input_text" type="text" id="id" name="id"
 							placeholder="아이디를 입력해 주세요" data-bs-placement="right" data-bs-toggle="tooltip"
-							title="아이디를 입력해 주세요">
+							title="아이디를 입력해 주세요" maxlength="18">
 					</div>
 					<!-- [ed] 아이디 입력 공간 -->
 
@@ -85,7 +85,7 @@
 					<div class="inputArea">
 						 <input class="input_text" type="password" id="password"
 							name="password" placeholder="비밀번호" data-bs-toggle="tooltip"
-							data-bs-placement="right" title="비밀번호는 영문, 숫자, 특문 포함입니다.">
+							data-bs-placement="right" title="비밀번호는 영문, 숫자, 특문 포함입니다." maxlength="20">
 					</div>
 					<!-- [ed] 패스워드 입력 공간 -->
 

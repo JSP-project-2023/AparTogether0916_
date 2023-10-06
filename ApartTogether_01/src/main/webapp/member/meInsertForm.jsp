@@ -214,12 +214,12 @@
 					<div class="input-group">
 						<span class="input-group-text col-md-3">아이디 <font
 							color="red">*</font></span> <input class="form-control" type="text"
-							id="id" name="id" placeholder="아이디">
+							id="id" name="id" placeholder="아이디" maxlength="18">
 					</div>
 					<div class="input-group">
 						<span class="input-group-text col-md-3">비밀번호 <font
 							color="red">*</font></span> <input class="form-control" type="password"
-							id="password" name="password" placeholder="비밀번호"> <span
+							id="password" name="password" placeholder="비밀번호" maxlength="20"> <span
 							class="input-group-text col-md-3"> <label
 							class="radio-inline"> <input class="form-check-input"
 								type="checkbox" onclick="viewPassword()">🔒👀
