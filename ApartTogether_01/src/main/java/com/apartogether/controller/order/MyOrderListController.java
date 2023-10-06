@@ -32,7 +32,7 @@ public class MyOrderListController extends SuperClass{
 			Paging pageInfo = new Paging(pageNumber, pageSize, totalCount, mode, keyword,url, isGrid);
 			
 			List<Order> orderList = dao.GetHistory(super.loginfo.getId(),pageInfo);
-
+		
 			
 			if(orderList.size()==0) { // 주문내역이 없을시
 				super.setAlertMessage("이전 주문 내역이 존재하지 않습니다.");

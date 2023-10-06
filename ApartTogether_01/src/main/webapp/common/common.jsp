@@ -88,7 +88,7 @@ String notWithFormTag = appName + mappingName + "?command=";
 			<nav class="navbar_hole">
 				<div class="navbar_logo">
 					<a class="navbar-logo" href="<%=notWithFormTag%>home">
-						<img width="150px" alt="logoIMG" src="${pageContext.request.contextPath}/image/logo.png">
+						<img width="150px" alt="logoIMG" src="${pageContext.request.contextPath}/image/newLogo.png">
 					</a>
 				</div>
 				
@@ -204,7 +204,7 @@ String notWithFormTag = appName + mappingName + "?command=";
 			<nav class="hamnav">
 				<div class="navbar_logo">
 					<a class="navbar-logo" href="<%=notWithFormTag%>home">
-						<img width="150px" alt="logoIMG" src="${pageContext.request.contextPath}/image/logo.png">
+						<img width="150px" alt="logoIMG" src="${pageContext.request.contextPath}/image/newLogo.png">
 					</a>
 				</div>
 				<div class="hamarea">

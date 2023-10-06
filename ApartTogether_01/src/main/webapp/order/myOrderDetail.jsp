@@ -46,7 +46,7 @@
 				
 				<br/>
 				
-				<table class="table table-striped">
+				<table class="table">
 					<thead>
 						<tr>
 							<th>메뉴 이름</th>
@@ -95,13 +95,14 @@
 					</tbody>
 				</table>
 				<div style="text-align: right">
-					<button onclick="goBack()" class="btn btn-secondary">이전 화면</button>
+					<button onclick="goBack()" class="big_ctlbtn cancle_bigbtn" style="width: 100px; height: 30px;">이전 화면</button>
 				</div>
  		
     		</div>
     		<div class="col-sm-2"></div>
   		</div>		
 	</div>
+	<%@ include file="/common/footer.jsp"%>
 </body>
 </html>
 

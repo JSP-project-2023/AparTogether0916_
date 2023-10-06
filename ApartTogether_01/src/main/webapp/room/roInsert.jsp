@@ -32,52 +32,9 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
  		.container{margin-top: 50px;}
 		h2{font-weight: bold;margin-bottom:2.5rem;}
 		#subject{font-size: 25px; text-align: center; font-weight: bolder;}
-		.button-18 {
-            align-items: center;
-            background-color: #d8e4d2;
-            border: 0;
-            box-sizing: border-box;
-            color: #6f726e;
-            cursor: pointer;
-            display: inline-flex;
-            font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-            font-size: 20px;
-            font-weight: 600;
-            justify-content: center;
-            line-height: 20px;
-            max-width: 900px;
-            min-height: 50px;
-            min-width: 0px;
-            overflow: hidden;
-            padding: 0px;
-            padding-left: 190px;
-            padding-right: 190px;
-            text-align: center;
-            touch-action: manipulation;
-            transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-            user-select: none;
-            -webkit-user-select: none;
-            vertical-align: middle;
-          }
-
-          .button-18:hover,
-          .button-18:focus { 
-            background-color: #8e998c;
-            color: #ffffff;
-          }
-
-          .button-18:active {
-            background: #09223b;
-            color: rgb(255, 255, 255, .7);
-          }
-
-          .button-18:disabled { 
-            cursor: not-allowed;
-            background: rgba(0, 0, 0, .08);
-            color: rgba(0, 0, 0, .3);
-          }
+		
            .bordered-div {
-            border: 1px solid grey; /* 테두리 두께와 색상을 지정합니다. */
+            border: 2px solid #ffa559; /* 테두리 두께와 색상을 지정합니다. */
             border-radius: 10px;
             padding: 30px; 
             margin-bottom: 8px;
@@ -105,17 +62,17 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 						<table>
 							<tr>
 								<td id = "subject" style="padding-top: 20px;"> 주소 &nbsp;&nbsp;&nbsp;</td>
-								<td ><input type="text"  onClick="goPopup();" style="width:400px;" id="roadFullAddr"  name="orderplace" placeholder="주소를 검색해주세요"/></td>
+								<td style="padding-top: 20px;"><input class="input_text" type="text"  onClick="goPopup();" style="width:400px;" id="roadFullAddr"  name="orderplace" placeholder="주소를 검색해주세요"/></td>
 							</tr>
 							<tr>
 								<td id = "subject" style="padding-top: 20px;"> 방제목 &nbsp;&nbsp;&nbsp; </td>
-								<td style="padding-top: 20px;"><input type="text" style="width:400px; id = "roomname" name="roomname"  placeholder="방 제목을 입력해주세요"></td>
+								<td style="padding-top: 20px;"><input class="input_text" type="text" style="width:400px; id = "roomname" name="roomname"  placeholder="방 제목을 입력해주세요"></td>
 							</tr>
 							
 						</table>
 					</div>
 					<div style= "margin-top: 20px">
-						<button type="submit" class="button-18" >입력 완료</button>
+						<button type="submit" class="big_ctlbtn insert_bigbtn" >입력 완료</button>
 					</div>
 				</form>
 			</div>

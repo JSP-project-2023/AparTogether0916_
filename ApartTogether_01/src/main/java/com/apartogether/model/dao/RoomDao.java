@@ -121,7 +121,7 @@ public class RoomDao extends SuperDao{
 		System.out.println(", 검색할 키워드 : " + keyword);
 		
 		// 테이블의 총 행개수를 구합니다.
-		String sql = " select count(*) as cnt from room ro" ;
+		String sql = " select count(distinct ro.roomno) as cnt from room ro" ;
 		sql += " inner join store st ON ro.stno = st.stno";
 		sql += " inner join personal pe on ro.roomno = pe.roomno";
 		sql += " where pe.confirm != 'success'";
