@@ -342,4 +342,5 @@
 		</c:if>
 	</div>	 
 </body>
+<%@ include file="/common/footer.jsp"%>
 </html>

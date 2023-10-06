@@ -300,4 +300,5 @@
 		    f.submit();
 		}
 </script>
+<%@ include file="/common/footer.jsp"%>
 </html>

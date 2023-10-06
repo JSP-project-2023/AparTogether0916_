@@ -355,4 +355,5 @@ window.onload = function(){ /* 창이 켜졌을때 로드되는 function들 */
 }
 </script>
 <!-- [ed] 다음(카카오) 주소 검색 스크립트 -->
+<%@ include file="/common/footer.jsp"%>
 </html>
