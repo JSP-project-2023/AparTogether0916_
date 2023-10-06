@@ -190,11 +190,7 @@
 		function searchAll(){
 			location.href = '<%=notWithFormTag%>meList' ;
 		}
-<<<<<<< HEAD
-		
-		
-=======
->>>>>>> origin/sup_new_branch02
+
 	</script>
 </head>
 <body>
