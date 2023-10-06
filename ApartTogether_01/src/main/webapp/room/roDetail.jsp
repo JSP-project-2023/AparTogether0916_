@@ -138,7 +138,7 @@
                method: "GET",
                dataType: "text",
                success: function(roomtime) {
-                   $("#roomtime").text("roomtime: " + roomtime);
+                   $("#roomtime").text("방 삭제까지 남은 시간 : " + roomtime);
                    if (roomtime == "00:00:00") {
                        // "00:00:00"인 경우 타이머 중지
                        stopTimer();
@@ -370,9 +370,12 @@
                 <tr>
              		<td>주문장소 : ${requestScope.bean2.orderplace}<a onclick="openModal()" style="font-size: 0.8rem;">&nbsp;&nbsp;(지도보기)</a></td> 
                 </tr>
+                <tr>
+                	<td id="roomtime">방 삭제까지 남은 시간 : Loading...<td>
+                </tr>
             </tbody>
         </table>
-   	<p id="roomtime">roomtime: Loading...</p>
+   	
 
     <div>
        <h3 style="font-weight: bold;">${requestScope.bean2.stname}</h3> 
