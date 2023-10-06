@@ -48,8 +48,8 @@
 				</div>
 				
 				<div class="btnArea" align="center">
-					<button type="submit" class="btn order_bigbtn" name="subBtn" onclick="return contentChk();">등록</button> <!-- onclick="return contentChk()" -->
-					<button type="button" class="btn else_bigbtn voteCancle" onClick="history.go(-1)">취소</button>
+					<button type="submit" class="btn insert_bigbtn" name="subBtn" onclick="return contentChk();">등록</button> <!-- onclick="return contentChk()" -->
+					<button type="button" class="btn cancle_bigbtn voteCancle" onClick="history.go(-1)">취소</button>
 				</div>
 			</form>
 		</div>
