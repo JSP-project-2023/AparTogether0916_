@@ -167,7 +167,7 @@
 									</c:choose>
 									</td>
 									<td>${bean.stname}</td>
-									<td>${bean.place}</td>
+									<td><a href="<%=notWithFormTag%>roDetail&roomno=${bean.roomno}">${bean.place}</a></td>
 									<td><a href="<%=notWithFormTag%>roDetail&roomno=${bean.roomno}">${bean.roomname}</a></td>
 									<td>${bean.ordertime}</td>	
 									<td>${bean.row_count }</td>	
