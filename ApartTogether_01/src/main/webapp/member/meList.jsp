@@ -245,8 +245,8 @@
 		                        
 		                         <input class="form-control-sm notShow mySelect" type="text" name="keyword" id="keyword"
 		                         		placeholder="검색어 입력">
-		                         <button type="submit" class="btn button-18 " style="padding: 7px; min-height: 0px" onclick="">검색</button>
-		                         <button type="button" class="btn button-18 " style="padding: 7px; min-height: 0px" onclick="searchAll();">전체 검색</button>
+		                         <button type="submit" class="big_ctlbtn select_bigbtn" style="height: 33px; width:60px;" onclick="">검색</button>
+		                         <button type="button" class="big_ctlbtn select_bigbtn" style="height: 33px; width:100px;" onclick="searchAll();">전체 검색</button>
 		                         </div>  
 		                   </div>
 		                </form>                     

@@ -128,13 +128,13 @@
   			margin-left: auto;
   			margin-right: auto;
   		}
-  		#buttonset{margin-top: 15px;}
-  		.radio_gender{font-size: 1.1rem;}
-  		.radio_mtype{font-size: 1.1rem;} /* 주위 글꼴의 1.1배 */
+  		
   		.small_image{width:100px;height:100px;margin:2px;border-radius:5px;}
-  	</style>
-  	<style type="text/css">
-		.container {margin-top:10px; width: 70%;}
+  		
+		.container {
+			width: 95%;
+			max-width: 750px;
+		}
 		
 		.input-group {
 			margin: 7px;
@@ -159,7 +159,7 @@
 			margin-right: auto;
 			font-size: 1.2em;
 		}
-		
+  		
 		.form-check-input {
 			cursor: pointer;
 			justify-content: center;
@@ -175,73 +175,11 @@
 			margin-right: auto;
 			size: 3px;
 		}
-		
-		/* [st] button-18 */
-          .button-18 {
-            align-items: center;
-            background-color: #FFA559; /* 버튼배경 색상 설정 */
-            border: 0;
-            box-sizing: border-box;
-           /*  color: #6f726e; */
-            color: #252525; /* 텍스트 색상 설정 */
-            cursor: pointer;
+		.btnAlign{
+  			align-items: center;
             display: inline-flex;
-            font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-            font-size: 20px;
-            font-weight: 600;
             justify-content: center;
-            line-height: 20px;
-            max-width: 900px;
-            min-height: 50px;
-            min-width: 0px;
-            overflow: hidden;
-            padding: 0px;
-            padding-left: 190px;
-            padding-right: 190px;
-            text-align: center;
-            touch-action: manipulation;
-            transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-            user-select: none;
-            -webkit-user-select: none;
-            vertical-align: middle;
-            border-radius: 25px; /* 모서리를 둥글게 만듦 */
-          }
-
-          .button-18:hover,
-          .button-18:focus { 
-            background-color: #FF6000;
-            color: #252525;
-            /* color: #ffffff; */
-          }
-
-          .button-18:active {
-            background: #09223b;
-            color: rgb(255, 255, 255, .7);
-          }
-
-          .button-18:disabled { 
-            cursor: not-allowed;
-            background: rgba(0, 0, 0, .08);
-            color: rgba(0, 0, 0, .3);
-          }
-          .button-99 {
-         	cursor: pointer;
-         	font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-            font-size: 12px;
-            font-weight: 600;
-            color: #FFE6C7; /* 텍스트 색상 설정 */
-            
-          }
-  		/* [ed] button-18 */
-		.button-99 { /* 무색 투명 버튼 */
-			cursor: pointer;
-			font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,
-				"Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans",
-				Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji",
-				"Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-			font-size: 12px;
-			font-weight: 600;
-		}
+  		}
 </style>
 </head>
 <body>
@@ -281,10 +219,10 @@
 				<div class="input-group">
 					<span class="input-group-text col-md-2">회원유형<font color="red">*</font></span>
 					<div class="form-control" >
-						<label class="radio-inline radio_mtype"> 
+						<label class="radio-inline"> 
 							&nbsp;<input type="radio" id="mtype1" name="mtype" value="user">일반회원
 						</label>
-						<label class="radio-inline radio_mtype"> 
+						<label class="radio-inline"> 
 							&nbsp;<input type="radio" id="mtype2" name="mtype" value="biz">사업자
 						</label>
 					</div>
@@ -333,10 +271,10 @@
 				<div class="input-group">
 					<span class="input-group-text col-md-2">성별<font color="red">*</font></span>
 					<div class="form-control">
-						<label class="radio-inline radio_gender"> 
+						<label class="radio-inline"> 
 							&nbsp;<input type="radio" id="gender1" name="gender" value="male">남자
 						</label>
-						<label class="radio-inline radio_gender"> 
+						<label class="radio-inline"> 
 							&nbsp;<input type="radio" id="gender2" name="gender" value="female">여자
 						</label>
 					</div>
@@ -382,17 +320,18 @@
 			
 			
 				<div style="text-align: center;">
-					<button  type="submit" class="btn button-18 "  style=" padding-left:50px; padding-right:50px" 
+					<button  type="submit" class="btnAlign big_ctlbtn update_bigbtn"
 							 onclick="return validCheck();">수정</button>
-					<!-- <button type="reset" class="btn button-18 " style="padding-left:50px; padding-right:50px">초기화</button> -->
-			        <a href="javascript:history.go(0)" class="btn button-18 "  style=" padding-left:50px; padding-right:50px" >초기화</a>
+					&nbsp;
+					<a href="javascript:history.go(0)" class="btnAlign big_ctlbtn reset_bigbtn"  
+					   style=" padding-left:50px; padding-right:50px" >초기화</a><%-- 실제로는 새로고침(F5)하는 기능입니다. --%>
 				</div>
 			
 			</form>
 		</c:if>
 		
 	 	<div id="backButton">
-			<button type="button" class="btn button-18 " style=" padding-left:20px; padding-right:20px" onclick="history.back();">돌아 가기</button>
+			<button type="button" class="big_ctlbtn cancle_bigbtn " style=" padding-left:20px; padding-right:20px" onclick="history.back();">돌아 가기</button>
 		</div>
 	
 	</div>

@@ -59,63 +59,6 @@
 		font-size: 30px;
 	}
 	
-	/* [st] button-18 */
-          .button-18 {
-            align-items: center;
-            background-color: #FFA559; /* 버튼배경 색상 설정 */
-            border: 0;
-            box-sizing: border-box;
-           /*  color: #6f726e; */
-            color: #252525; /* 텍스트 색상 설정 */
-            cursor: pointer;
-            display: inline-flex;
-            font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-            font-size: 20px;
-            font-weight: 600;
-            justify-content: center;
-            line-height: 20px;
-            width: 100%;
-            min-height: 50px;
-            min-width: 0px;
-            overflow: hidden;
-            padding: 0px;
-            
-            text-align: center;
-            touch-action: manipulation;
-            transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-            user-select: none;
-            -webkit-user-select: none;
-            vertical-align: middle;
-            border-radius: 25px; /* 모서리를 둥글게 만듦 */
-          }
-
-          .button-18:hover,
-          .button-18:focus { 
-            background-color: #FF6000;
-            color: #252525;
-            /* color: #ffffff; */
-          }
-
-          .button-18:active {
-            background: #09223b;
-            color: rgb(255, 255, 255, .7);
-          }
-
-          .button-18:disabled { 
-            cursor: not-allowed;
-            background: rgba(0, 0, 0, .08);
-            color: rgba(0, 0, 0, .3);
-          }
-          .button-99 {
-         	cursor: pointer;
-         	font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-            font-size: 12px;
-            font-weight: 600;
-            color: #FFE6C7; /* 텍스트 색상 설정 */
-            
-          }
-  		/* [ed] button-18 */
-	
 	#collapse {
 		visibility: hidden;
 	}
@@ -153,7 +96,7 @@
 			</div>
 			<div align="center">
 				<button type="submit"
-					class="btn button-18"  >ID 확인</button>
+					class="big_ctlbtn else_bigbtn" style="width:100%;" >ID 확인</button>
 			</div>
 		</form>
 	</div>

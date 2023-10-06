@@ -44,16 +44,17 @@
 		
 		<div style="margin-top:20px">
 			<button class="big_ctlbtn insert_bigbtn">등록</button>
-			<button class="big_ctlbtn insert_bigbtn">수정</button>
-			<button class="big_ctlbtn insert_bigbtn">삭제</button>
-			<button class="big_ctlbtn insert_bigbtn">취소</button>
-			<button class="big_ctlbtn insert_bigbtn">초기화</button>
+			<button class="big_ctlbtn update_bigbtn">수정</button>
+			<button class="big_ctlbtn delete_bigbtn">삭제</button>
+			<button class="big_ctlbtn cancle_bigbtn">취소</button>
+			<button class="big_ctlbtn reset_bigbtn">초기화</button>
 			
 			<br>
 			
-			<button class="big_ctlbtn insert_bigbtn">로그인</button>
-			<button class="big_ctlbtn insert_bigbtn">회원가입</button>
-			<button class="big_ctlbtn insert_bigbtn">기타버튼</button>
+			<button class="big_ctlbtn normal_bigbtn">로그인</button>
+			<button class="big_ctlbtn normal_bigbtn">회원가입</button>
+			<button class="big_ctlbtn else_bigbtn">기타버튼</button>
+			<button class="big_ctlbtn select_bigbtn">선택버튼</button>
 		</div>
 	</div>
 </body>

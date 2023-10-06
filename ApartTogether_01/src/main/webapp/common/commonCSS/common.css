@@ -123,50 +123,70 @@ footer {
 
 /*big button 색상 (추가, 수정, 삭제)*/
 .insert_bigbtn {
-	background-color: #008dff;
+	background-color: #ff6000;
 	color: #fff;
 }
 .insert_bigbtn:hover {
-	background-color: #006fc9;
+	background-color: #c94c00;
 	color: #fff;
 }
 .update_bigbtn {
-	background-color: #00ad07;
+	background-color: #ffa559;
 	color: #fff;
 }
 .update_bigbtn:hover {
-	background-color: #006404;
+	background-color: #df8b43;
 	color: #fff;
 }
 .delete_bigbtn {
-	background-color: #ff5252;
+	background-color: #ff2e00;
 	color: #fff;
 }
 .delete_bigbtn:hover {
-	background-color: #ff1414;
+	background-color: #c32300;
 	color: #fff;
 }
 .select_bigbtn {
-	background-color: #ffd181;
-	color: #000000;
+	background-color: #ffffff;
+    border: 1px solid #0143ff;
+    color: #0143ff;
 }
 .select_bigbtn:hover {
-	background-color: #ffa100;
+	background-color: #fff7ed;
+    border: 1px solid #0143ff;
+    color: #0143ff;
+}
+.reset_bigbtn {
+	background-color: #ffe6c7;
 	color: #000000;
 }
-.order_bigbtn {
-	background-color: #7BD7FF;
+.reset_bigbtn:hover {
+	background-color: #ffd49f;
 	color: #000000;
 }
-.order_bigbtn:hover {
-	background-color: #00a0e6;
-	color: #000000;
+.normal_bigbtn {
+    background-color: #ffffff;
+    border: 1px solid #252525;
+    color: #252525;
+}
+.normal_bigbtn:hover {
+    background-color: #fff7ed;
+    border: 1px solid #252525;
+    color: #252525;
 }
 .else_bigbtn {
-	background-color: #efefef;
-	color: #000000;
+	background-color: #252525;
+	color: #fff;
 }
 .else_bigbtn:hover {
+	background-color: #454545;
+    color: #fff;
+}
+.cancle_bigbtn {
+	background-color: #d9d9d9;
+	color: #000000;
+}
+.cancle_bigbtn:hover {
 	background-color: #c5c5c5;
 	color: #000000;
 }
