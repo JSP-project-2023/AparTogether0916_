@@ -80,7 +80,7 @@ var nowItem = 2; /* 현재 입력 항목 개수 (카운팅) */
 				return;
 				
 			} else {
-				$('.inputArea').append('<div class="voteInputArea">' + 
+				$('.inputArea-vote').append('<div class="voteInputArea">' + 
 						'<input type="text" class="voteInputItem" placeholder="항목 입력" name="votecol">' + 
 						'<input type="button" name="remove" class="itembtn deleteItemBtn cursor" value="X"> </div>'
 					);

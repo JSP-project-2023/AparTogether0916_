@@ -30,7 +30,7 @@
 <!-- <<<<<<< HEAD -->
 <%-- 							${voteResult.selectvotecol}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${Math.round((voteResult.cnt/requestScope.voteTotal.total)*100)}% (${voteResult.cnt}명)  --%>
 <!-- ======= -->
-							<dt>${voteResult.selectvotecol} / ${voteResult.cnt}명 ${Math.round((voteResult.cnt/requestScope.voteTotal.total)*100)}%</dt> 
+							<dt>${voteResult.selectvotecol} / ${voteResult.cnt}명 ${Math.round((voteResult.cnt/requestScope.voteTotal.total)*100)}%</dt>
 <!-- >>>>>>> origin/sup_new_branch02 -->
 						</div>
 					</div>

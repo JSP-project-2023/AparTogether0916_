@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>가게 목록</title>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/store/storeCSS/StoreList.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/store/storeCSS/StoreList.css" type="text/css">
 
 </head>
 <body>
@@ -25,37 +25,38 @@
 					<td colspan="${colsu}" align="center">
 						<form name="myform" action="<%=withFormTag%>" method="get">
 							<div class="whole-searchArea">
-								<div class="searchArea">
-									<input type="hidden" name="command" value="stList">
-									
-									<select class="select-mode round-orange-hover" id="mode" name="mode">
-										<option value="all" selected="selected">선택해 주세요
-										<option value="stname">가게명
-										<option value="category">카테고리
-									</select> 
-									
-									<select class="select-cate round-orange-hover" id="categoryList" name="categoryList">
-										<option value="all" selected="selected">카테고리 리스트
-										<option value="양식">양식
-										<option value="중식">중식
-										<option value="일식">일식
-										<option value="한식">한식
-										<option value="패스트푸드">패스트푸드
-										<option value="치킨">치킨
-										<option value="피자">피자
-										<option value="카페">카페
-									</select>
-									
-									<input class="select-keyword round-orange-hover" type="text" name="keyword" id="keyword" placeholder="키워드 입력">
-									<button type="submit" class="normal_bigbtn">검색</button>
-									
-									<button type="button" class="else_bigbtn" onclick="searchAll();">전체 검색</button>
+								<div class="searchArea-mystbtn">
+									<div class="searchArea">
+										<input type="hidden" name="command" value="stList">
+										
+										<select class="select-mode round-orange-hover" id="mode" name="mode">
+											<option value="all" selected="selected">선택해 주세요
+											<option value="stname">가게명
+											<option value="category">카테고리
+										</select>
+										
+										<select class="select-cate round-orange-hover" id="categoryList" name="categoryList">
+											<option value="all" selected="selected">카테고리 리스트
+											<option value="양식">양식
+											<option value="중식">중식
+											<option value="일식">일식
+											<option value="한식">한식
+											<option value="패스트푸드">패스트푸드
+											<option value="치킨">치킨
+											<option value="피자">피자
+											<option value="카페">카페
+										</select>
+										
+										<input class="select-keyword round-orange-hover" type="text" name="keyword" id="keyword" placeholder="키워드 입력">
+										<button type="submit" class="normal_bigbtn">검색</button>
+										
+										<button type="button" class="else_bigbtn" onclick="searchAll();">전체 검색</button>
+									</div>
 									
 									<c:if test="${sessionScope.loginfo.mtype eq 'biz'}">
-										<button type="button" class="insert_bigbtn" onclick="addStore();">내 가게 등록</button>
+										<button type="button" class="insert_bigbtn mystbtn" onclick="addStore();">내 가게 등록</button>
 									</c:if>
 								</div>
-								
 								<span class="label label-default">${requestScope.pageInfo.pagingStatus}</span>
 							</div>
 						</form>
@@ -69,10 +70,10 @@
 					<td>
 					<c:choose>
 							<c:when test="${storeList.ststatus eq 'open'}">
-								<div class="card hover-back" style="width: 19rem;">
+								<div class="card hover-back"><!--  style="width: 19rem;" -->
 							</c:when>		
 							<c:when test="${storeList.ststatus eq 'close'}">
-								<div class="card" style="width: 19rem; opacity: 0.35;">
+								<div class="card hover-back" style="opacity: 0.35;"><!--  width: 19rem; -->
 							</c:when>
 					</c:choose>
 					

@@ -33,6 +33,13 @@ body {
 	/*footer 화면 height 적용*/
 	min-height: calc(100vh - 341px);
 }
+.page-link {
+	color: #9d9d9d;
+}
+.active>.page-link, .page-link.active {
+	background-color: #ff670c;
+	border-color: #ff670c;
+}
 footer {
 	background-color: #252525;
     width: 100%;
