@@ -27,13 +27,13 @@
 		<input type="hidden" value="가게 고유번호(시퀀스)" name="stno" placeholder="회원아이디">
 		
 		<div class="info_items" id="ctname">
-			<span class="littleTitle">가게 이름</span>
-			<input name="stname" type="text" placeholder="가게 이름">
+			<span class="mustInput">*</span><span class="input-field-label">가게 이름</span>
+			<input class="input_text" name="stname" type="text" placeholder="가게 이름">
 		</div>
 		
 		<div class="info_items" id="category">
-		<span class="littleTitle cateselect">카테고리</span>
-		<select name="category">
+		<span class="mustInput">*</span><span class="input-field-label">카테고리</span><br>
+		<select name="category" class="input_text cateselect">
 			<option value="-">--선택--
 			<option value="양식">양식
 			<option value="중식">중식
@@ -48,16 +48,18 @@
 			
 		<div class="info_items titleDepth1" id="stplace">
 			<%--주소 api사용하여 주소지 받아옴.--%>
-			<span class="littleTitle">가게 주소</span><input id="stplace1" name="stplace1" type="text" placeholder="클릭해서 주소찾기">
+			<span class="mustInput">*</span><span class="input-field-label">가게 주소</span>
+			<input id="stplace1" name="stplace1" type="text" placeholder="클릭해서 주소찾기" class="input_text">
 		 </div>
 		 
 		 <div class="info_items" id="stplace2">	
-		 	<span class="littleTitle">가게 상세 주소</span><input name="stplace2" type="text" placeholder="가게 상세 주소">
+		 	<span class="mustInput">*</span><span class="input-field-label">가게 상세 주소</span>
+		 	<input name="stplace2" type="text" placeholder="가게 상세 주소" class="input_text">
 		</div>
 		
 		<div class="info_items" id="storeNumber">
-			<span class="littleTitle">가게 전화번호</span>
-			<select name="areacode1">
+			<span class="mustInput">*</span><span class="input-field-label">가게 전화번호</span><br>
+			<select name="areacode1" class="input_text snumber">
 				<option value="-">-선택-</option>
 				<option value="010">010</option>
 				<option value="02">02</option>
@@ -66,29 +68,29 @@
 				<option value="041">041</option>
 				<option value="513">513</option>
 			</select>
-			- <input class="snumber" name="areacode2" type="number" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-			- <input class="snumber" name="areacode3" type="number" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+			- <input class="snumber input_text" name="areacode2" type="number" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+			- <input class="snumber input_text" name="areacode3" type="number" maxlength="4" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 		</div>
 		
 		<%//TODO 가게 소개 20글자로 제한.%>
 		<div class="info_items" id="content">
-			<span class="littleTitle">가게 소개</span>
-			<textarea name="content" rows="2" cols="30" maxlength="20" placeholder="가게소개를 입력해주세요. (20자 제한)"></textarea>
+			<span class="input-field-label">가게 소개</span>
+			<textarea class="input_text input-textArea" name="content" rows="2" cols="30" maxlength="20" placeholder="가게소개를 입력해주세요. (20자 제한)"></textarea>
 		</div>
 		
 		<div class="info_items" id="ceofile">
-			<span class="littleTitle">사업자 등록증</span>
-			<input name="ceofile" class="imagefile" type="file">
+			<span class="mustInput">*</span><span class="input-field-label">사업자 등록증</span>
+			<input name="ceofile" class="input_text input-file" type="file">
 		</div>
 		
 		<div class="info_items" id="shoptime">
-			<span class="littleTitle">가게 운영시간</span>
+			<span class="input-field-label">가게 운영시간</span><br>
 				<!-- 시작시간 -->
-				<select name="startShopAmPm" class="ShopAmPm">
+				<select name="startShopAmPm" class="ShopAmPm input_text">
 					<option value="am">오전</option>
 					<option value="pm">오후</option>
 				</select>
-				<select name="startShopTime" class="ShopTime">
+				<select name="startShopTime" class="ShopTime input_text">
 					<option value="00:00">00:00</option>
 					<option value="00:30">00:30</option>
 					<option value="01:00">01:00</option>
@@ -117,11 +119,11 @@
 					<option value="12:30">12:30</option>
 				</select> ~
 				<!-- 종료시간 -->
-				<select name="endShopAmPm" class="ShopAmPm">
+				<select name="endShopAmPm" class="ShopAmPm input_text">
 					<option value="am">오전</option>
 					<option value="pm">오후</option>
 				</select>
-				<select name="endShopTime" class="ShopTime">
+				<select name="endShopTime" class="ShopTime input_text">
 					<option value="00:00">00:00</option>
 					<option value="00:30">00:30</option>
 					<option value="01:00">01:00</option>
@@ -152,37 +154,37 @@
 		</div>
 			
 		<div class="info_items" id="stlogo">
-			<span class="littleTitle">가게로고</span>
-			<input name="stlogo" class="imagefile" type="file"><br>
+			<span class="mustInput">*</span><span class="input-field-label">가게로고</span>
+			<input name="stlogo" class="input_text input-file" type="file" class="input_text"><br>
 			<span id="recommend-logo-size" class="recommend-logo-size">* 권장 크기 : 360*360 </span>
 			 
 		</div>
 		
 		<div class="info_items" id="fee">
-			<span class="littleTitle">배달비</span>
-			<input name="fee" type="number" placeholder="금액 입력(숫자)">
+			<span class="mustInput">*</span><span class="input-field-label">배달비</span>
+			<input name="fee" type="number" placeholder="금액 입력(숫자)" class="input_text">
 		</div>
 		
 		<div class="info_items" id="btime">
-			<span class="littleTitle">배달시간(분)</span>
-			<input name="btime" type="number"><br>
+			<span class="input-field-label">배달시간(분)</span>
+			<input name="btime" type="number" class="input_text"><br>
 		</div>
 		
 		<div class="info_items" id="redday">
-			<span class="littleTitle">휴무일</span>
-			<input name="redday" type="text" placeholder="예시) 매주 월요일">
+			<span class="input-field-label">휴무일</span>
+			<input name="redday" type="text" placeholder="예시) 매주 월요일" class="input_text">
 		</div>
 		
 		<div class="info_items" id="ceono">
-			<span class="littleTitle">사업자 등록번호</span>
-			<input name="ceono" type="text" placeholder="사업자 등록번호">
+			<span class="mustInput">*</span><span class="input-field-label">사업자 등록번호</span>
+			<input name="ceono" type="text" placeholder="사업자 등록번호" class="input_text">
 		</div>
 			
 		<div class="info_items btnArea" id="buttons">
 			<button class="big_ctlbtn insert_bigbtn" type="submit" onclick="return validation()">등록</button>
-			<button class="big_ctlbtn else_bigbtn" type="button" onclick="history.go(-1)">취소</button>
+			<button class="big_ctlbtn cancle_bigbtn" type="button" onclick="history.go(-1)">취소</button>
 			<!-- 초기화 하기전에 컨펌창 출력 -->
-			<button class="big_ctlbtn else_bigbtn" type="reset">초기화</button>
+			<button class="big_ctlbtn reset_bigbtn" type="reset">초기화</button>
 		</div>
 			
 		</form>	

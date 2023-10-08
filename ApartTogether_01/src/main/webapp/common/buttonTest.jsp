@@ -23,9 +23,6 @@
 	<div class="container">
 		<div class="title-area">
 			
-			
-			
-			
 		</div>
 		
 		<div class="cardArea">
@@ -55,6 +52,15 @@
 			<button class="big_ctlbtn normal_bigbtn">회원가입</button>
 			<button class="big_ctlbtn else_bigbtn">기타버튼</button>
 			<button class="big_ctlbtn select_bigbtn">선택버튼</button>
+		</div>
+		
+		<div style="margin-top:20px">
+			<button class="sm_ctlbtn insert_smbtn">등록</button>
+			<button class="sm_ctlbtn update_smbtn">수정</button>
+			<button class="sm_ctlbtn delete_smbtn">삭제</button>
+			<button class="sm_ctlbtn cancle_smbtn">취소</button>
+			<button class="sm_ctlbtn reset_smbtn">기타</button>
+<!-- 			<button class="sm_ctlbtn reset_bigbtn">선택</button> -->
 		</div>
 	</div>
 </body>

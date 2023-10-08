@@ -1,8 +1,23 @@
 @charset "UTF-8";
-
+body {
+	background-color: #fffcf9;
+}
+form {
+	width: fit-content;
+    min-width: 900px;
+    padding: 80px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px rgba(3, 3, 3, .08);
+    margin: 0 auto;
+}
 hr {
 	width: 50%;
 	margin: 1vh auto;
+}
+.mainTitle {
+	text-align: center;
+	color: #ff6000;
 }
 input {
 	border-radius: 5px;
@@ -20,11 +35,10 @@ select {
 }
 
 .cateselect {
-	width: 200px;
+    width: 400px;
 }
-
 .info_items {
-	padding-bottom: 25px;
+	padding-bottom: 40px;
 }
 
 .info_items > button {
@@ -38,28 +52,20 @@ select {
     text-align: center;
     margin-right: 10px;
 }
-
-textarea {
-	padding: 10px 15px;
-}
-
-.imagefile {
-	padding-left: 0;
-}
 .snumber{
-	width: 100px;
+	width: 140px;
 }
 
 .ShopAmPm {
-	width: 70px;
+	width: 110px;
 }
 
 .ShopTime {
-	width: 100px;
+	width: 140px;
 }
 
 .recommend-logo-size {
-	 margin-left: 165px;
+	 margin-left: 25px;
  }
 
 input::-webkit-inner-spin-button {
@@ -69,7 +75,7 @@ input::-webkit-inner-spin-button {
 }
 
 .titleDepth1 {
-    padding-bottom: 5px;
+    padding-bottom: 10px;
 }
 
 .title{

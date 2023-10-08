@@ -41,6 +41,20 @@
 		
 </script>
 
+<style type="text/css">
+	.center {
+		text-align: center;
+	}
+	.header1 {
+		font-size: 25px;
+		font-weight: 600;
+		margin-top: 30px;
+	}
+	.inputArea {
+		width: 100%;
+	}
+</style>
+
 </head>
 <body>
 	<div class="container">
@@ -57,11 +71,13 @@
 				<div class="card-content">
 				<table>
 				<tr>
-					<th>
-						<div class="header1" style="font-size: 25px; font-weight: 600">로그인해서 배달비를 아껴보세요</div>
-					</th>
-					<th>
+					<th class="center">
 						<img alt="자물쇠"	src="${pageContext.request.contextPath}/image/자물쇠_열쇠.png" height="25%" width="25%">
+					</th>
+				</tr>
+				<tr>
+					<th>
+						<div class="header1 center">로그인해서 배달비를 아껴보세요</div>
 					</th>
 				</tr>
 				</table>
@@ -84,7 +100,7 @@
 
 					<!-- [st] 버튼 공간 -->
 					<div align="center">
-						<button type="submit" class="btn button-wrapper button-18">로그인</button>
+						<button type="submit" class="big_ctlbtn insert_bigbtn">로그인</button>
 						<br /> <br /> <a type="button"
 							href="<%=notWithFormTag%>meInsert" class="btn button-99">회원
 							가입</a> | <a type="popup" href="javascript:popupfindID()"

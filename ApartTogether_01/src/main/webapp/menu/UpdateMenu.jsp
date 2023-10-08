@@ -62,9 +62,9 @@
 				
 				
 				<div class="info_items btnArea" id="buttons">
-					<button class="big_ctlbtn insert_bigbtn" type="submit" onclick="return validation()">수정</button>
-					<button class="big_ctlbtn else_bigbtn" type="button" onclick="history.go(-1)">취소</button> <!-- 이전 화면 그대로 이동 -->
-					<button class="big_ctlbtn else_bigbtn" type="reset">초기화</button>
+					<button class="big_ctlbtn update_bigbtn" type="submit" onclick="return validation()">수정</button>
+					<button class="big_ctlbtn cancle_bigbtn" type="button" onclick="history.go(-1)">취소</button> <!-- 이전 화면 그대로 이동 -->
+					<button class="big_ctlbtn reset_bigbtn" type="reset">초기화</button>
 				</div>
 			</form>
 		</div>
