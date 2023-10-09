@@ -90,7 +90,7 @@
 				
 				<div class="info_items" id="ceofile">
 					<span class="input-field-label">기존에 업로드 된 파일</span>
-					<input class="inputbg input_text" name="ceofileUpdate" type="text" value="${bean.ceofile}">
+					<input disabled="disabled" class="inputbg input_text" name="ceofileUpdate" type="text" value="${bean.ceofile}">
 				</div>
 				
 				<div class="info_items" id="shoptime">
@@ -175,7 +175,7 @@
 				
 				<div class="info_items" id="stlogo">
 					<span class="input-field-label">기존에 업로드 된 파일</span>
-					<input class="inputbg input_text" name="stlogoUpdate" type="text" value="${bean.stlogo}"><br>
+					<input disabled="disabled" class="inputbg input_text" name="stlogoUpdate" type="text" value="${bean.stlogo}"><br>
 					<span id="recommend-logo-size" class="recommend-logo-size">* 권장 크기 : 360*360 </span>
 				</div>
 				

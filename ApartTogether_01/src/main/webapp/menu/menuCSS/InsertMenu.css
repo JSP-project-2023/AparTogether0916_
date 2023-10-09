@@ -1,28 +1,25 @@
 @charset "UTF-8";
-
+form {
+	width: fit-content;
+    min-width: 900px;
+    padding: 80px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px rgba(3, 3, 3, .08);
+    margin: 0 auto;
+}
+.mainTitle {
+	text-align: center;
+	color: #ff6000;
+}
+.subTitle {
+	text-align: center;
+    color: #252525;
+}
 hr {
 	width: 50%;
 	margin: 1vh auto;
 }
-input {
-	border-radius: 5px;
-    width: 700px;
-    height: 50px;
-    border: 1px solid black;
-    vertical-align: middle;
-    line-height: 46px;
-    padding-left: 15px;
-}
-
-select {
-	height: 50px;
-    border-radius: 5px;
-}
-
-.cateselect {
-	width: 200px;
-}
-
 .info_items {
 	padding-bottom: 25px;
 }
@@ -32,53 +29,23 @@ select {
     margin-top: 50px;
 }
 
-.littleTitle {
-	display: inline-block;
-    width: 150px;
-    text-align: center;
-    margin-right: 10px;
-}
-
 textarea {
 	padding: 10px 15px;
 }
-
-.imagefile {
-	padding-left: 0;
-}
-.snumber{
-	width: 100px;
-}
-
-.ShopAmPm {
-	width: 70px;
-}
-
-.ShopTime {
-	width: 100px;
-}
-
 .recommend-logo-size {
 	 margin-left: 165px;
  }
-
 input::-webkit-inner-spin-button {
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
 }
-
 .titleDepth1 {
     padding-bottom: 5px;
-}
-
-.title{
-	text-align: center;
 }
 .btnArea {
 	text-align: center;
 }
-
 .inputbg {
 	background-color: #bdbdbd;
 	height: 40px;
