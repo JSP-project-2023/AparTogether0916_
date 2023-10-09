@@ -169,22 +169,15 @@ footer {
 	background-color: #ffffff;
     border: 1px solid #0143ff;
     color: #0143ff;
-<<<<<<< HEAD
     border-radius: 25px;
 }
 .select_bigbtn:hover {
 	background-color: #f0f4ff;
-=======
-}
-.select_bigbtn:hover {
-	background-color: #fff7ed;
->>>>>>> origin/sup_merge_all_01
     border: 1px solid #0143ff;
     color: #0143ff;
 }
 .reset_bigbtn {
 	background-color: #ffe6c7;
-<<<<<<< HEAD
 	color: #000000;
     border: 0;
     border-radius: 25px;
@@ -201,32 +194,13 @@ footer {
 }
 .normal_bigbtn:hover {
     background-color: rgb(235, 235, 235);
-=======
 	color: #000000;
-}
-.reset_bigbtn:hover {
-	background-color: #ffd49f;
-	color: #000000;
-}
-.normal_bigbtn {
-    background-color: #ffffff;
-    border: 1px solid #252525;
-    color: #252525;
-}
-.normal_bigbtn:hover {
-    background-color: #fff7ed;
->>>>>>> origin/sup_merge_all_01
-    border: 1px solid #252525;
-    color: #252525;
 }
 .else_bigbtn {
 	background-color: #252525;
 	color: #fff;
-<<<<<<< HEAD
     border: 0;
     border-radius: 25px;
-=======
->>>>>>> origin/sup_merge_all_01
 }
 .else_bigbtn:hover {
 	background-color: #454545;
@@ -235,11 +209,8 @@ footer {
 .cancle_bigbtn {
 	background-color: #d9d9d9;
 	color: #000000;
-<<<<<<< HEAD
     border: 0;
     border-radius: 25px;
-=======
->>>>>>> origin/sup_merge_all_01
 }
 .cancle_bigbtn:hover {
 	background-color: #c5c5c5;
