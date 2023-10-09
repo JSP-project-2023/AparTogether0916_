@@ -40,6 +40,9 @@ body {
 	background-color: #ff670c;
 	border-color: #ff670c;
 }
+.page-link:hover {
+	color: #ff6000;
+}
 footer {
 	background-color: #252525;
     width: 100%;

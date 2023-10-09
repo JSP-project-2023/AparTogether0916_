@@ -15,7 +15,8 @@ body{
 	width: 70px;
 	height: 70px;
 	font-size: 17px;
-	background-color: #c4edff;
+    color: #fff;
+    background-color: #ff6000;
 	box-shadow: 0 0 0 1px #dadcdf, 0 4px 8px 0 rgba(0,0,0,.3);
 	border: none;
 }
@@ -53,11 +54,16 @@ body{
 	display: flex;	
 }
 .store-subinfo > .store-intro-span{
-	font-size: 15px;
 	margin-bottom: 5px;
 }
 .store-box{
 	margin-left: 50px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+}
+.btnForm {
+	float: left;
 }
 .order-button{
 	margin-top: 10px;

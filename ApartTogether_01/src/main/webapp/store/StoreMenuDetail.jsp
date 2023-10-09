@@ -75,11 +75,11 @@
 							</div>
 						</div>
 						<div class="order-button" align="right">
-							<form action="<%=withFormTag%>" method="post">
+							<form action="<%=withFormTag%>" method="post" class="btnForm">
 							 	<!-- 방 생성을 위해서 가게 정보를 불러옴 -->
 								<input type="hidden" name="command" value="roInsert">
 								<input type="hidden" name="stno" value ="${requestScope.stno}" >
-								<button type="submit" class="btn btn-primary">주문하기</button>
+								<button type="submit" class="big_ctlbtn insert_bigbtn">주문하기</button>
 							</form>
 						</div>
 					</div>
@@ -97,7 +97,10 @@
 						<div class="menu-details">
 							<span id="menu-title">${menubean.menuname}</span>
 							<span id="menu-exp">${menubean.menudetail}</span>
-							<span id="menu-price">${menubean.price}원</span>
+							<span id="menu-price">
+								<fmt:formatNumber value="${menubean.price}" pattern="###,###"/> 원
+							</span>
+							
 						</div>
 					</div>
 				</c:forEach>
@@ -109,7 +112,7 @@
 			<!-- 방 생성을 위해서 가게 정보를 불러옴 -->
 			<input type="hidden" name="command" value="roInsert">
 			<input type="hidden" name="stno" value ="${requestScope.stno}" >
-			<button type="submit"  class="orderBtn" id="orderBtn">주문</button>
+<!-- 			<button type="submit"  class="orderBtn" id="orderBtn">주문</button> -->
 		</form>
 	</div>
 	
