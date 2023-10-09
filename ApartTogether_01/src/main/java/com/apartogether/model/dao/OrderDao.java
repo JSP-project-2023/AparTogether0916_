@@ -18,8 +18,12 @@ import com.apartogether.utility.Paging;
 public class OrderDao extends SuperDao{
 
 	public List<Order> GetHistory(String id, Paging pageInfo) throws Exception {
+		
+		List<Order> orderList = new ArrayList<Order>();
+		
+		
 		// 방에서 주문한 주문 시간과 가게로고 가게 이름등을 구해옴
-		String sql = "SELECT distinct roomno, ordertime, stname, stlogo  ";
+		String sql = "SELECT  distinct roomno, ordertime, stname, stlogo  ";
 		sql += " from ( ";
 		sql += " select distinct ro.roomno, ro.ordertime, st.stname, stlogo,";
 		sql += " RANK() OVER (ORDER BY ro.ordertime DESC) AS ranking";
@@ -29,6 +33,7 @@ public class OrderDao extends SuperDao{
 		String mode = pageInfo.getMode();
 		String keyword = pageInfo.getKeyword();
 		
+		System.out.println(id);
 		if (mode != null && !mode.equals("all")) { // 괄호 열기
 		    if (mode.equals("category")) {
 		        sql += " and st." + mode + " LIKE '%" + keyword + "%' ";
@@ -45,15 +50,14 @@ public class OrderDao extends SuperDao{
 		
 		conn = super.getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
 		pstmt.setString(1, id);
 		pstmt.setInt(2, pageInfo.getBeginRow());
 		pstmt.setInt(3, pageInfo.getEndRow());
 		
 		ResultSet rs = pstmt.executeQuery();
-		
-		List<Order> orderList = new ArrayList<Order>();
-		
-		while(rs.next()) {
+
+		while(rs.next()) { 
 			orderList.add(this.makeOrderBean(rs));
 		}
 		
@@ -67,8 +71,6 @@ public class OrderDao extends SuperDao{
 	private Order makeOrderBean(ResultSet rs) throws Exception {
 		
 		Order bean = new Order();
-		
-
 		bean.setOrdertime(rs.getString("ordertime"));
 		bean.setStlogo(rs.getString("stlogo"));
 		bean.setStname(rs.getString("stname"));
@@ -522,7 +524,7 @@ public class OrderDao extends SuperDao{
 		String sql = " select count(*) as cnt from room ro" ;
 		sql += " inner join store st ON ro.stno = st.stno";
 		sql += " inner join personal pe on ro.roomno = pe.roomno";
-		sql += " where pe.confirm != 'success'";
+		sql += " where pe.confirm = 'success'";
 		sql += " and pe.id = ? ";
 
 		
@@ -549,7 +551,6 @@ public class OrderDao extends SuperDao{
 		if(rs.next()) {
 			cnt = rs.getInt("cnt") ;
 		}
-		
 		if(rs!=null) {rs.close();}
 		if(pstmt!=null) {pstmt.close();}
 		if(conn!=null) {conn.close();}

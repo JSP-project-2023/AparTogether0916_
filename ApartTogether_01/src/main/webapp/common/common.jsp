@@ -88,7 +88,11 @@ String notWithFormTag = appName + mappingName + "?command=";
 			<nav class="navibar_hole">
 				<div class="navbar_logo">
 					<a class="navbar-logo" href="<%=notWithFormTag%>home">
+<<<<<<< HEAD
 						<img width="200px" alt="logoIMG" src="${pageContext.request.contextPath}/image/logo.png">
+=======
+						<img width="150px" alt="logoIMG" src="${pageContext.request.contextPath}/image/newLogo.png">
+>>>>>>> origin/sup_merge_all_01
 					</a>
 				</div>
 				
@@ -220,7 +224,11 @@ String notWithFormTag = appName + mappingName + "?command=";
 			<nav class="hamnav">
 				<div class="navbar_logo">
 					<a class="navbar-logo" href="<%=notWithFormTag%>home">
+<<<<<<< HEAD
 						<img width="200px" alt="logoIMG" src="${pageContext.request.contextPath}/image/logo.png">
+=======
+						<img width="150px" alt="logoIMG" src="${pageContext.request.contextPath}/image/newLogo.png">
+>>>>>>> origin/sup_merge_all_01
 					</a>
 				</div>
 				<div class="hamarea">

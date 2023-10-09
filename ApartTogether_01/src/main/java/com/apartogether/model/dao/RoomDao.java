@@ -121,7 +121,7 @@ public class RoomDao extends SuperDao{
 		System.out.println(", 검색할 키워드 : " + keyword);
 		
 		// 테이블의 총 행개수를 구합니다.
-		String sql = " select count(*) as cnt from room ro" ;
+		String sql = " select count(distinct ro.roomno) as cnt from room ro" ;
 		sql += " inner join store st ON ro.stno = st.stno";
 		sql += " inner join personal pe on ro.roomno = pe.roomno";
 		sql += " where pe.confirm != 'success'";
@@ -183,10 +183,9 @@ public class RoomDao extends SuperDao{
 		return cnt;
 	}
 
-	public int InsertData(Integer stno, Integer roomno, String orderplace, String roomname) throws Exception {
-		// 방이 새로 만들어질 때 방의 주문 정보들을 넣음
-		String sql = " insert into room(roomno,stno,roomname,orderplace,ordertime) " ;
-		sql += " values(?, ?, ? ,? ,sysdate)" ;
+	public int InsertData(Integer stno, Integer roomno, String orderplace, String roomname,Integer pointtime) throws Exception {
+		String sql = " insert into room(roomno,stno,roomname,orderplace,ordertime,pointtime) " ;
+		sql += " values(?, ?, ? ,? ,sysdate,?)" ;
 		int cnt = -1 ;
 		PreparedStatement pstmt = null ;
 		
@@ -200,6 +199,7 @@ public class RoomDao extends SuperDao{
 		
 		pstmt.setString(3,roomname);
 		pstmt.setString(4, orderplace);
+		pstmt.setInt(5, pointtime);
 
 		cnt = pstmt.executeUpdate() ;
 

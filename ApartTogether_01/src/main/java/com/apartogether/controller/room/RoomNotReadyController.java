@@ -18,6 +18,7 @@ public class RoomNotReadyController extends SuperClass{
 		
 		try {
 			cnt = dao.UpdateReady2(roomno,super.loginfo.getId(),ready) ;
+			super.setAlertMessage("not ready");
 			new RoomDetailController().doGet(request, response); 
 			
 		} catch (Exception e) {

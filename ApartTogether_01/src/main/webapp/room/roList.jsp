@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>현재 진행중인 주문 목록</title>
 	<style type="text/css">
 		.container{margin-top: 50px;}
 		
@@ -65,7 +65,7 @@
 		<h2>현재 진행중인 주문 목록</h2>
 		<p id = "liststart">현재 진행중인 주문 목록을 보여 주는 페이지입니다.</p>		
 		<table class="table table-hover" style="text-align: center;">
-			<thead class = "table-orange">
+			<thead>
 				<tr>
 					<th>주문 방 번호</th>
 					<th>카테고리</th>
@@ -96,8 +96,8 @@
 											</select>
 											<input class="form-control-sm" type="text" 
 												name="keyword" id="keyword" placeholder="키워드 입력">
-											<button type="submit" class="btn orange form-control-sm" onclick="">검색</button>
-											<button type="button" class="btn orange form-control-sm" onclick="searchAll();">전체 검색</button>
+											<button type="submit" class="big_ctlbtn insert_bigbtn" style="width: 50px; height: 30px;" onclick="">검색</button>
+											<button type="button" class="big_ctlbtn insert_bigbtn" style="width: 85px; height: 30px;" onclick="searchAll();">전체 검색</button>
 											<span class="label label-default">${requestScope.pageInfo.pagingStatus}</span>
 										</div>
 									</div>
@@ -167,7 +167,7 @@
 									</c:choose>
 									</td>
 									<td>${bean.stname}</td>
-									<td>${bean.place}</td>
+									<td><a href="<%=notWithFormTag%>roDetail&roomno=${bean.roomno}">${bean.place}</a></td>
 									<td><a href="<%=notWithFormTag%>roDetail&roomno=${bean.roomno}">${bean.roomname}</a></td>
 									<td>${bean.ordertime}</td>	
 									<td>${bean.row_count }</td>	

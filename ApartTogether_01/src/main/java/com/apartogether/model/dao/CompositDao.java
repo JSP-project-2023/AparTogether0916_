@@ -100,6 +100,7 @@ public class CompositDao extends SuperDao {
 		bean.setStname(rs.getString("stname"));
 		bean.setRoomname(rs.getString("roomname"));
 		bean.setSttime(rs.getString("sttime"));
+		bean.setRoomno(rs.getInt("roomno"));
 		return bean;
 	}
 	private Combo01 getBeanData3(ResultSet rs) throws Exception {
@@ -109,7 +110,7 @@ public class CompositDao extends SuperDao {
 	}
 	public Combo01 getRoomDetailInfo(Integer roomno) throws Exception {
 
-		String sql = " select ro.orderplace ,st.stname ,st.fee,ro.roomname,st.sttime";
+		String sql = " select ro.orderplace ,st.stname ,st.fee,ro.roomname,st.sttime,ro.roomno";
 		sql += " from room ro ";
 		sql += " inner join store st on ro.stno = st.stno ";
 		sql += " where ro.roomno = ? "; 
@@ -350,9 +351,22 @@ public class CompositDao extends SuperDao {
 		ResultSet rs = pstmt.executeQuery();
 		
 		List<Combo01> menuList = new ArrayList<Combo01>();
-		
+		Combo01 menuBean = new Combo01();
 		while(rs.next()) {
-			menuList.add(this.makeMenuBean(rs));
+			menuBean = this.makeMenuBean(rs);
+			
+			String detail = menuBean.getMenuDetail();
+			String str[] = null;
+			
+//			메뉴 설명 구분자 처리
+			if (detail.indexOf("Δ") < 0) { // 구분자가 없으면 그래도 입력
+				menuBean.setMenuDetail(detail);
+			} else {
+				str = detail.split("Δ");
+				menuBean.setMenuDetail(str[0] + "<br>" + str[1]); // 화면에 보여줄 때는 한 칸에 다 넣기
+			}
+			
+			menuList.add(menuBean);
 		}
 		
 		if(rs != null) {rs.close();}
@@ -475,7 +489,82 @@ public class CompositDao extends SuperDao {
 		}
 		return cnt;
 	}
+	public String getRemainingTime(Integer roomno) throws Exception{
+		String roomtime = "";
+		
+		String sql =" SELECT "; 
+		sql+= "		CASE  ";
+		sql+= "			 WHEN ordertime + NUMTODSINTERVAL(pointtime,'MINUTE') - SYSDATE < 0   ";
+		sql+= "		 THEN TO_CHAR(  ";
+		sql+= "		 TO_DATE('1970-01-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS'),'HH24:MI:SS')  ";
+		sql+= "			  ELSE TO_CHAR(  ";
+		sql+= "			  TO_DATE('1970-01-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS')  ";
+		sql+= "		 + (ordertime + NUMTODSINTERVAL(pointtime,'MINUTE') - SYSDATE), ' HH24:MI:SS')  ";
+		sql+= "		  END AS roomtime ";
+		sql+= "		 FROM room where roomno=? ";
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, roomno);
+		ResultSet rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			roomtime = rs.getString("roomtime");
+		
+		}
+		
+		if(rs != null) {rs.close();}
+		if(pstmt != null) {pstmt.close();}
+		if(conn != null) {conn.close();}
+		
+		return roomtime;
 
+	}
+
+	public int DeleteRoomInfo(Integer roomno) throws Exception{
+		PreparedStatement pstmt = null;
+		int cnt = -1;
+
+		conn = super.getConnection();
+		conn.setAutoCommit(false);
+
+		String sql = " delete from personal where roomno = ?";
+
+		pstmt = conn.prepareStatement(sql);
+
+		pstmt.setInt(1, roomno);
+		
+		cnt = pstmt.executeUpdate();
+
+		
+		
+		sql = " delete from room_status where roomno = ?";
+
+		pstmt = conn.prepareStatement(sql);
+
+		pstmt.setInt(1, roomno);
+		
+		cnt = pstmt.executeUpdate();
+		
+		sql = " delete from room where roomno = ?";
+		
+		pstmt = conn.prepareStatement(sql);
+
+		pstmt.setInt(1, roomno);
+		
+		
+		cnt = pstmt.executeUpdate();
+
+
+		conn.commit();
+		
+		if (pstmt != null) {
+			pstmt.close();
+		}
+		if (conn != null) {
+			conn.close();
+		}
+		return cnt;
+	}
 
 	
 

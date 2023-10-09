@@ -12,6 +12,7 @@
 		#liststart {margin-bottom: 2.5rem}
 		h2{font-weight: bold;margin-bottom:2.5rem;}
 		.container{margin-top: 50px;}
+		.img_size{width:50xp; height: 50px;}
 	</style>
 </head>
 <body>
@@ -19,7 +20,7 @@
 		<h2>주문 내역</h2>
 		<p id="liststart">개인이 주문했던 내역을 보여 주는 페이지입니다.</p>		
 		<table class="table table-hover">
-			<thead class="table-danger">
+			<thead>
 				<tr align="center">
 					<th>주문 일자</th>
 					<th>가게 이름</th>
@@ -34,7 +35,7 @@
 						<input type="hidden" name="command" value="myorList">
 					</form>		
 					<td>${bean.ordertime}</td>
-					<td>${bean.stlogo}<br/>${bean.stname}</td>
+					<td><img class = "img_size"alt="${bean.stname}" src="uploadStoreImage/${bean.stlogo}"><br/>${bean.stname}</td>
 					<td><a href="<%=notWithFormTag%>myOrDetail&roomno=${bean.roomno}">상세 보기</a></td>
 					
 				</tr>					
@@ -46,5 +47,6 @@
 		</table>	
 		${requestScope.pageInfo.pagingHtml} 	 
 	</div>	 
+	<%@ include file="/common/footer.jsp"%>
 </body>
 </html>

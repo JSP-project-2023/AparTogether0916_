@@ -69,6 +69,8 @@ public class MenuDao extends SuperDao {
 		if (conn!=null) {conn.close();}
 		
 		return menuList;
+		
+
 	}
 	
 //	bean에 하나씩 값 셋팅

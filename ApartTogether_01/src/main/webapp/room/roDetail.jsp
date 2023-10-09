@@ -75,22 +75,99 @@
 		
 
 		
-		h4{font-weight: bold; margin-top: 30px;}
+		h4{font-weight: bold; margin-top:15px; margin-bottom: 15px; color:#ff6000;}
 		
 		 .bordered-div {
-            border: 1px solid grey; /* 테두리 두께와 색상을 지정합니다. */
+            border: 2px solid #ffa559; /* 테두리 두께와 색상을 지정합니다. */
             border-radius: 10px;
             padding: 30px; 
+            margin-top : 8px;
             margin-bottom: 8px;
          
-            /* 내부 여백을 추가합니다. */
-            
-            
         }
-        #insertComment {border-bottom : none;}
-    </style>
+        
+         
+		    #insertComment {border-bottom : none;}
+         /* 모달 팝업 스타일 */
+        .modal {
+            display: none; /* 초기에는 숨겨진 상태 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 배경을 반투명하게 만듭니다. */
+            z-index: 1; /* 다른 요소 위에 표시 */
+        }
 
+        /* 모달 팝업 컨테이너 스타일 */
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto; /* 화면 중앙에 위치하도록 설정 */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px; /* 최대 너비 설정 */
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* 모달 닫기 버튼 스타일 */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* 모달 내용 스타일 */
+        .modal-content p {
+            margin: 0;
+        }
+
+    </style>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=68360aa380de6b0a608b66a185c82859&libraries=services"></script>
    <script>
+   var timer;
+   $(document).ready(function() {
+       function updateRemainingTime() {
+
+           $.ajax({
+               url: "<%=notWithFormTag%>roTime",
+               data:'roomno=' + '${requestScope.bean2.roomno}',
+               method: "GET",
+               dataType: "text",
+               success: function(roomtime) {
+                   $("#roomtime").text("방 삭제까지 남은 시간 : " + roomtime);
+                   if (roomtime == "00:00:00") {
+                       // "00:00:00"인 경우 타이머 중지
+                       stopTimer();
+                       
+                       // roList.jsp로 이동
+                       window.location.href = "<%=notWithFormTag%>roList";
+                   }
+                   var numericRoomtime =parseInt(roomtime.replace(/:/g,''),10);
+                   if (numericRoomtime <= "500"){
+                   	$("#roomtime").css("color", "red");
+                   }else{
+                   	$("#roomtime").css("color", "");
+                   }
+               },
+               error: function(xhr, status, error) {
+                   console.error("Error fetching remaining time: " + error);
+               }
+              
+           });
+       }
+       startTimer();
+       
+       function startTimer() {
+           timer = setInterval(updateRemainingTime, 1000);
+       }
+       function stopTimer() {
+           clearInterval(timer);
+       }
+   });
 
 		   var qty = 0;
 		   
@@ -225,26 +302,83 @@
 			return false ;
 		});
 	});
+	
+	// 모달 팝업 열기
+	function openModal() {
+	    var modal = document.getElementById("myModal");
+	    modal.style.display = "block";
+
+	    // 모달 팝업이 열릴 때 지도 초기화 및 생성
+	    initializeMap();
+	}
+
+	// 모달 팝업 닫기
+	function closeModal() {
+	    var modal = document.getElementById("myModal");
+	    modal.style.display = "none";
+	}
+
+	// 지도 초기화 및 생성 함수
+	function initializeMap() {
+	    var mapContainer = document.getElementById('map');
+	    var mapOption = {
+	        center: new kakao.maps.LatLng(33.450701, 126.570667),
+	        level: 3
+	    };
+
+	    var map = new kakao.maps.Map(mapContainer, mapOption);
+
+	    // 주소-좌표 변환 객체를 생성합니다
+	    var geocoder = new kakao.maps.services.Geocoder();
+
+	    // 주소로 좌표를 검색합니다
+	    geocoder.addressSearch('${requestScope.bean2.orderplace}', function(result, status) {
+	        if (status === kakao.maps.services.Status.OK) {
+	            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	            var marker = new kakao.maps.Marker({
+	                map: map,
+	                position: coords
+	            });
+
+	            var infowindow = new kakao.maps.InfoWindow({
+	                content: '<div style="width:150px;text-align:center;padding:6px 0;">배달 장소</div>'
+	            });
+	            infowindow.open(map, marker);
+
+	            map.setCenter(coords);
+	        }
+	    });
+	}
 
 
 	</script>
 
 </head>
 <body>
+
+	<div id="myModal" class="modal">
+	    <div class="modal-content">
+	        <span class="close" onclick="closeModal()">&times;</span>
+	        <h2>배달 장소 지도</h2>
+	       <div id="map" style="width:100%;height:350px;"></div>
+	    </div>
+	</div>
     <div class="container">
 		<h2 style="font-weight: bold">방이름:${requestScope.bean2.roomname}</h2> 
-        <table class="table">
+        <table class="table table-borderless">
             <tbody>
                 <tr>
-             <td>주문장소 : ${requestScope.bean2.orderplace}</td> 
-                    <td>가게영업시간: ${requestScope.bean2.sttime}</td>
+             		<td>주문장소 : ${requestScope.bean2.orderplace}<a onclick="openModal()" style="font-size: 0.8rem;">&nbsp;&nbsp;(지도보기)</a></td> 
+                </tr>
+                <tr>
+                	<td id="roomtime">방 삭제까지 남은 시간 : Loading...<td>
                 </tr>
             </tbody>
         </table>
-   
+   	
 
     <div>
-       <h4>가게명:${requestScope.bean2.stname}</h4> 
+       <h3 style="font-weight: bold;">${requestScope.bean2.stname}</h3> 
         <div class ="bordered-div">
 		          <h4>메뉴 목록</h4>
 		           <table class="table table-hover" style="text-align: center;">
@@ -253,29 +387,29 @@
 		          	<th>Menu Name</th>
 		          	<th>Menu Description</th>
 		          	<th>Menu Price</th>
-		          	<th style="text-align: left;">Quantity</th>
+		          	<th>Quantity</th>
 		          	<th>Total Price</th>          
 		          </tr>
 			        
 				<c:forEach items="${requestScope.lists4}" var="bean">
-				    <tr> 
+				    <tr style="vertical-align: middle;"> 
 				    	
-				        <td><img alt="이미지" src="${pageContext.request.contextPath}/uploadStoreImage/${bean.menuImage}" border="1px" width="100px" height="100px"></td>
-				        <td>${bean.menuname}</td> 
-				        <td>${bean.menuDetail}</td> 
-				        <td id = "${bean.menuno}price" >${bean.price}원</td>   
+				        <td style="vertical-align: middle;"><img alt="이미지" src="${pageContext.request.contextPath}/uploadStoreImage/${bean.menuImage}" border="1px" width="100px" height="100px"></td>
+				        <td style="vertical-align: middle;">${bean.menuname}</td> 
+				        <td style="vertical-align: middle;">${bean.menuDetail}</td> 
+				        <td style="vertical-align: middle;" id = "${bean.menuno}price" >${bean.price}원</td>   
 				       
-					        <td >
+					        <td style="vertical-align: middle;">
+					        	
 					         	<form action="<%=withFormTag%>" method="post">
-					            <ul class="pagination" style="align-items : center;"> 
+					            <ul class="pagination" style="justify-content: center; "> 
 					                <!-- - 버튼 -->
-					                <li class="page-item">
-					                    <a class="page-link ${bean.menuno}minus" href="#" onclick="updateQuantity('${bean.menuno}', -1)"> - </a>
+					                <li class="page-item" >
+					                    <a  style="height: 40px;" class="page-link ${bean.menuno}minus" href="#" onclick="updateQuantity('${bean.menuno}', -1)"> - </a>
 					                </li>
 					               
 						                <li class="page-item">
-						                    <a class="page-link" href="#" data-bs-toggle="popover" data-bs-trigger="hover"
-						                       data-bs-content="기존 카트에 품목이 이미 존재하면 수량을 누적합니다." data-bs-title="${bean.menuno}qty">
+						                    <a class="page-link" style="height: 40px;" data-bs-title="${bean.menuno}qty">
 						                       
 						                        <input type="text"  name="qty" id="${bean.menuno}qty" class="qty" value="0">
 		
@@ -288,16 +422,17 @@
 						                </li>
 						                <!-- + 버튼 -->
 						                <li class="page-item">
-						                    <a class="page-link ${bean.menuno}plus" href="#" onclick="updateQuantity('${bean.menuno}', 1)"> + </a>
+						                    <a  style="height: 40px;" class="page-link ${bean.menuno}plus" href="#" onclick="updateQuantity('${bean.menuno}', 1)"> + </a>
 						                </li>
 					            </ul>
-					            	 <div style="text-align: left;">
-					            		<button type="submit" class = "btn btn-warning">메뉴 담기</button>
+					            	 <div>
+					            		<button type="submit" class="big_ctlbtn insert_bigbtn" style="width: 85px; height: 30px; margin-top: 10px;">메뉴 담기</button>
 					            	</div>
 					            </form>
 					            
+					            
 					        </td>
-					        <td>
+					        <td style="vertical-align: middle;">
 					        	 <p>
 					              <span class="totalprice" id="${bean.menuno}totalprice">0</span>원
 					            </p>
@@ -310,7 +445,8 @@
           </div>
     
 	       <div class="bordered-div">
-		        <table class="table table-hover">
+	       		<h4>내 주문 현황</h4>
+		        <table class="table table-hover" style="text-align: center;">
 		            <tr>
 		                <th>Menu Name</th>
 		                <th>Menu Price</th>
@@ -335,7 +471,7 @@
 		             	
 						<td>
 			             	<form action="<%=withFormTag%>" method="post">
-					          	<button type="submit" class="btn btn-danger">전체 삭제</button>
+					          	<button type="submit" class = "big_ctlbtn delete_bigbtn" style="width: 85px; height: 30px; min-height: 0px">전체 삭제</button>
 					          	 <input type="hidden" name="command" value="orDelete">
 					          	<input type="hidden" name = "roomno" value="${requestScope.roomno}">
 			          		</form>
@@ -344,7 +480,8 @@
 		        </table>
 	        </div>
         <div class = "bordered-div">
-	          <table class="table table-borderless" style="margin-top: 30px;">
+        	<h4>Ready 현황</h4>
+	          <table class="table table-borderless">
 		          <tr>
 			          <td style="font-weight: bold;">레디한 사람 아이디</td>
 			          <c:forEach items="${requestScope.lists2}" var="bean">
@@ -356,6 +493,14 @@
 			          		
 			                    ${bean.id}</td>   
 			          </c:forEach>
+		          </tr>
+		          <tr>
+		          	<td></td>
+		          	<td></td>
+		          </tr>
+		           <tr>
+		          	<td></td>
+		          	<td></td>
 		          </tr>
 		          <tr>
 		          <td style="font-weight: bold;">레디 안한사람 아이디</td>
@@ -370,13 +515,13 @@
 	          </table>
 	          <div style="text-align: right">
 		          	<a class="ready" href="<%=notWithFormTag%>roReady&ready=ready&roomno=${requestScope.roomno}">
-						<button class="btn btn-primary"> ready</button>
+						<button class="big_ctlbtn select_bigbtn" style="width: 85px; height: 30px; min-height: 0px"> ready</button>
 					</a>
 					<a class="notready" href="<%=notWithFormTag%>roNotReady&ready=ready&roomno=${requestScope.roomno}">
-						<button class ="btn btn-danger">not</button>
+						<button class ="big_ctlbtn delete_bigbtn" style="width: 85px; height: 30px; min-height: 0px">not</button>
 					</a>
 					<a class="out" href="<%=notWithFormTag%>roOut&roomno=${requestScope.roomno}">
-						<button class="btn btn-secondary"> 방 나가기</button>
+						<button class="big_ctlbtn cancle_bigbtn" style="width: 85px; height: 30px;"> 방 나가기</button>
 					</a>
 	          </div>
           </div>
@@ -409,7 +554,7 @@
 						        	<textarea id="content" name="content" rows="1" cols="30"></textarea>
 						        </td>
 						        <td>
-						        	<button type="submit" class="btn btn-info">전송</button> 
+						        	<button type="submit" class="big_ctlbtn delete_bigbtn" style="width: 85px; height: 30px; min-height: 0px">전송</button> 
 
 						    </tbody>
 						</table>
@@ -422,16 +567,18 @@
 				        <form action="<%=withFormTag%>" method="post">
 				            <input type="hidden" name="command" value="orConfirm">
 				            <input type="hidden" name="roomno" value="${requestScope.roomno}">
-				            <button type="submit" class="btn btn-info">주문 확정 </button>
+				            <button type="submit" class="big_ctlbtn insert_bigbtn" style="width: 85px; height: 30px;">주문 확정 </button>
 				        </form>
 				    </c:if>
 				    &nbsp;&nbsp;&nbsp;
 				    
 				    <a class="removeUnderLine" href="<%=notWithFormTag%>roList">
-				        <button class="btn btn-secondary">주문 목록으로 돌아가기</button>
+				        <button class="big_ctlbtn cancle_bigbtn" style="width: 180px; height: 30px;">주문 목록으로 돌아가기</button>
 				    </a>
 				</div>
    		 </div>
      </div>
+     
+     <%@ include file="/common/footer.jsp"%>
 </body>
 </html>
