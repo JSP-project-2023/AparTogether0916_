@@ -9,11 +9,10 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/common/commonCSS/homeCSS.css" type="text/css">
-
+<script src="${pageContext.request.contextPath}/common/homeJS.js"></script>
 <title>Apart together</title>
 </head>
 <body>
-
 	<div class="container">
 		<div class="first-screen">
 			<div id="main-title">
@@ -42,6 +41,7 @@
 			</div>
 			<div class="scroll-info">
 				<span>스크롤</span>
+				<img id="scroll-img" src="${pageContext.request.contextPath}/common/homeIMG/arrow.png">
 			</div>
 		</div>
 		<div class="second-screen">

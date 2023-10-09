@@ -8,7 +8,11 @@
 	border-bottom: 1px solid #f7f7f7;
 }
 .header {
+<<<<<<< HEAD
     padding: 15px 50px 15px 50px; /*top right bottom left */
+=======
+    padding: 15px 50px 15px 50px; /*top right bottom left  */
+>>>>>>> origin/lleebs.v7
 }
 .navibar_hole {
 	display: flex;

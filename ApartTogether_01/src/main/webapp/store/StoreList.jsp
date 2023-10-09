@@ -71,14 +71,12 @@
 					<c:choose>
 							<c:when test="${storeList.ststatus eq 'open'}">
 								<div class="card hover-back"><!--  style="width: 19rem;" -->
+								<a class="removeUnderLine" href="<%=notWithFormTag%>stMuDetail&stno=${storeList.stno}">
 							</c:when>		
 							<c:when test="${storeList.ststatus eq 'close'}">
-								<div class="card hover-back" style="opacity: 0.35;"><!--  width: 19rem; -->
+								<div class="card hover-back" style="opacity: 0.35; " ><!--  width: 19rem; -->
 							</c:when>
 					</c:choose>
-					
-						
-							<a class="removeUnderLine" href="<%=notWithFormTag%>stMuDetail&stno=${storeList.stno}">
 								<img class="card-img-top" alt="${storeList.stname}" src="uploadStoreImage/${storeList.stlogo}">
 								
 								<div class="card-body">
