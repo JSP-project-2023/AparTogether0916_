@@ -10,7 +10,6 @@
 
 <!-- CSS파일 import -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/vote/voteCSS/voteResult.css" type="text/css">
-
 </head>
 
 <body>
@@ -28,10 +27,7 @@
 					<div id="percentage_back">
 						<div id="percentage_each"
 						style="width: ${Math.round((voteResult.cnt/requestScope.voteTotal.total)*100)}%;"> <!-- list로 반복되는 값에 따라 그래프 넓이가 변해서 style로 지정  -->
-
-<%-- 							${voteResult.selectvotecol}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${Math.round((voteResult.cnt/requestScope.voteTotal.total)*100)}% (${voteResult.cnt}명)  --%>
 							<dt>${voteResult.selectvotecol} / ${voteResult.cnt}명 ${Math.round((voteResult.cnt/requestScope.voteTotal.total)*100)}%</dt>
-
 						</div>
 					</div>
 				</span>
