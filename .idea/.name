@@ -1,12 +1,1 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-MemberDao.java
-=======
-VoteResultController.class
->>>>>>> origin/lleebs.v3
-=======
-VoteDao.class
-=======
-MemberDao.java
->>>>>>> refs/remotes/origin/yh55_Merged_1
->>>>>>> origin/sup_new_branch02
+.gitignore

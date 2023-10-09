@@ -8,7 +8,11 @@
 /*	border-bottom: 1px solid #cdcdcd;*/
 }
 .header {
+<<<<<<< HEAD
     padding: 15px 50px 15px 50px; /*top right bottom left*/
+=======
+    padding: 15px 120px 15px 120px; /*top right bottom left*/
+>>>>>>> origin/lleebs.v6
 }
 .navibar_hole {
 	display: flex;
@@ -43,7 +47,11 @@ a {
 .main-nav-li {
 	position:relative;
 	float:left;
+<<<<<<< HEAD
 	margin:0 20px;
+=======
+	margin-right:40px;
+>>>>>>> origin/lleebs.v6
 	height: 60px;
 }
 .member-nav-li {
@@ -70,7 +78,11 @@ a {
 	display: none;
 	position: absolute;
 	z-index: 1;
+<<<<<<< HEAD
 	left:3px;
+=======
+	left:8px;
+>>>>>>> origin/lleebs.v6
 	right:0;
 	text-align:left;
 	font-weight: normal;
@@ -102,7 +114,11 @@ a {
 	display: none;
 }
 
+<<<<<<< HEAD
 @media screen and (min-width: 841px) {
+=======
+@media screen and (min-width: 981px) {
+>>>>>>> origin/lleebs.v6
 	.hamnav {
 		display: none;
 	}
@@ -114,7 +130,11 @@ a {
 	}
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 840px) {
+=======
+@media screen and (max-width: 980px) {
+>>>>>>> origin/lleebs.v6
 	.hamnav {
 		display: flex;
 		flex-wrap: wrap;
@@ -130,12 +150,17 @@ a {
     	top: -6px;
 	}
 	.hamburger {
+<<<<<<< HEAD
 		width: 1.6rem;
+=======
+		width: 2rem;
+>>>>>>> origin/lleebs.v6
 		padding: 0;
 	}
 	.hamline{
 		display: block;
 		height: 2px;
+<<<<<<< HEAD
 		background-color: #fff;
 		margin-top: 6px;
 	}
@@ -151,6 +176,23 @@ a {
 	    right: 20px;
 	    border-radius: 80px;
 	    box-shadow: 2px 2px 11px #212121;
+=======
+		background-color: #666;
+		margin-top: 10px;
+	}
+	.ham_bg {
+		background-color: #ffffff;
+	    min-width: fit-content;
+	    max-width: 500px;
+	    float: right;
+	    padding: 40px 110px 30px;
+	    margin-top: 16px;
+	    position: absolute;
+	    z-index: 1;
+	    right: 120px;
+	    border: 8px solid #fa6d35;
+	    box-shadow: 2px 2px 11px #919191;
+>>>>>>> origin/lleebs.v6
 	}
 	.hamnav_hole {
 		font-size: 1.1rem;
@@ -169,13 +211,21 @@ a {
 	.sub_hamnav_menu > li {
 		padding: 7px 10px;
 	}
+<<<<<<< HEAD
 	.sub_hamnav_menu > li > a:hover {
 		color: #ff6000;
+=======
+	.sub_hamnav_menu > li:hover {
+		background-color: #f3f3f3;
+>>>>>>> origin/lleebs.v6
 	}
 	.sub_hamnav_menu > li > a {
 		display: inline-block;
     	width: 185px;
+<<<<<<< HEAD
     	color: #a9a9a9;
+=======
+>>>>>>> origin/lleebs.v6
 	}
 	.hamnav_member {
 		margin-top: 30px;
@@ -186,6 +236,7 @@ a {
 	.hamnav_member > li {
 		margin-bottom: 15px;
 	}
+<<<<<<< HEAD
 	.hamnav_member > li > a {
 		color: #fff;
 	}
@@ -195,6 +246,14 @@ a {
 }
 
 @media screen and (max-width: 450px) {
+=======
+	.hamnav_member > li:hover {
+		background-color: #f3f3f3; 
+	}
+}
+
+@media screen and (max-width: 577px) {
+>>>>>>> origin/lleebs.v6
 	.ham_bg {
 	    float: left;
 	    left: 0;

@@ -17,8 +17,8 @@
 	<div class="container">
 		<div class="first-screen">
 			<div id="main-title">
-				모두에게 적용되는<br>
-				배달비 혜택!
+				모두에게 적용되는 배달비 혜택!<br>
+				아파투게더!
 			</div>
 			<!-- 아이콘 -->
 			<div class="logo-box">
@@ -39,6 +39,9 @@
 						<c:set var="logo" value="${logo=1}"/>
 					</c:if>
 				</c:forEach>
+			</div>
+			<div class="scroll-info">
+				<span>스크롤</span>
 			</div>
 		</div>
 		<div class="second-screen">
@@ -95,6 +98,22 @@
  		</div>
  		<div class="end-img">
  			<img id="last-img" src="${pageContext.request.contextPath}/common/homeImage/end-img.png" width="650px">
+ 		</div>
+ 		<div class="goButton">
+ 			<a type="button" id="btn1" href="/ApartTogether_01/Apartogether?command=meInsert" data-aos="zoom-in-up" data-aos-delay="900">
+ 				<span>&lt;&lt; together하러가기!</span>
+ 			</a>
+ 			<a type="button" id="btn2" href="/ApartTogether_01/Apartogether?command=stList" data-aos="zoom-in-up" data-aos-delay="900">
+ 				<span>가게 구경하러 가기 >></span>
+ 			</a>
+ 		</div>
+ 		<div class="move-up" data-aos="zoom-in-up" data-aos-delay="1100">
+ 			<span id="arrow">
+ 				<a type="button" href="#">
+ 					<span>⬆</span>
+ 					<span>위로 올라가기</span>
+ 				</a>
+ 			</span>
  		</div>
 	</div>
  <script>AOS.init();</script>

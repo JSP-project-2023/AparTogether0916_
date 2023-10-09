@@ -95,6 +95,11 @@ body{
 .logo-box{
     animation: logo-ani3 60s linear 0s infinite;
 }
+/*스크롤 CSS*/
+.scroll-info{
+	text-align: center;
+}
+
 /*두번째 화면에 들어갈 CSS*/
 .second-screen{
 	justify-content: center;
@@ -181,7 +186,7 @@ body{
 	text-align: center;
 }
 .end-coment{
-	top: 350px;
+	top: 300px;
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -189,4 +194,63 @@ body{
 }
 .end-img{
 	filter: brightness(20%);
+}
+.goButton{
+	position: relative;
+	bottom: 150px;
+}
+#btn1, #btn2{
+	width: 300px;
+	height: 80px;
+	border-radius: 60px;
+}
+/*together하러가기 버튼*/
+#btn1 > span{
+	color: #FF9656;
+}
+#btn1{
+	border: 1px solid #FF9656;
+	margin-right: 15px;
+}
+#btn1:hover{
+	transition: 0.5s;
+	border: 1px solid #FF9656;
+	background-color: rgba(255, 150, 86, 0.4);
+	color: white;
+}
+/*가게 구경하러가기 버튼*/
+#btn2{
+	margin-left: 15px;
+	border: 1px solid white;
+}
+#btn2:hover{
+	transition: 0.5s;
+	border: 1px solid white;
+	background-color: rgba(255, 255, 255, 0.4);
+	color: white;
+}
+
+.goButton > a > span{
+	position: relative;
+	top: 30%;
+	font-size: 20px;
+}
+/*위로가기 버튼*/
+.move-up{
+	animation: arrowAnimation 1s linear infinite;
+}
+#arrow > a > span{
+	color: white;
+	font-size: 50px;
+}
+@keyframes arrowAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px); /* 위로 이동 */
+  }
+  100% {
+    transform: translateY(0); /* 다시 원래 위치로 돌아옴 */
+  }
 }
