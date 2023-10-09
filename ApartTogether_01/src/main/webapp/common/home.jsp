@@ -40,7 +40,7 @@
 				</c:forEach>
 			</div>
 			<div class="scroll-info">
-				<span>스크롤</span>
+				<span id="scroll-text" style="font-size: 25px;">스크롤</span>
 				<img id="scroll-img" src="${pageContext.request.contextPath}/common/homeIMG/arrow.png">
 			</div>
 		</div>

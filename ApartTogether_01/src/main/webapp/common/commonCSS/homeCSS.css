@@ -259,7 +259,7 @@ body{
 #scroll-img{
 	width: 70px;
 	transform: rotate(-45deg);
-	opacity: 0.1;
+	opacity: 1;
 }
 .scroll-info{
 	position: relative;
@@ -270,3 +270,7 @@ body{
 	animation: arrowAnimation 1.5s linear infinite; 
 }
 
+/*로고에 마우스 올려놨을시 반응*/
+.logo-items-even > img:hover, .logo-items-odd > img:hover{
+	width: 250px;
+}
