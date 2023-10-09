@@ -34,7 +34,6 @@
 .votetitle {
 	text-align: center;
     background-color: #dcdcdc;
-    font-size: 20px;
     font-weight: 600;
     padding: 16px;
     margin: 5px;
@@ -46,7 +45,7 @@
 /*투표 주제 CSS*/
 .votetitle > span{
 	white-space: nowrap;
-    font-size: 25px;
+    font-size: 20px;
     position: relative;
     top: 20%;
 }

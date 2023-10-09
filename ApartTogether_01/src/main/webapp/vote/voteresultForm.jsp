@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아파투게더:투표등록</title>
+<title>아파투게더:투표결과</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- CSS파일 import -->
@@ -15,7 +15,8 @@
 
 <body>
 	<form>
-		<div class="container row">
+<!-- 		<div class="container row"> -->
+		<div class="voteBG">
 			<br />
 			<h2 class="title" align="center">투표 결과</h2>
 			<div class=votetitle>
@@ -36,6 +37,10 @@
 					</div>
 				</span>
 			</c:forEach>
+			
+			<div class="btnArea">
+				<button type="button" onclick="history.go(-1)" class="big_ctlbtn else_bigbtn">뒤로가기</button>
+			</div>
 		</div>
 	</form>
 </body>
