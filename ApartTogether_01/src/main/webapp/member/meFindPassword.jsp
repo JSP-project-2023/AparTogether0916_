@@ -54,8 +54,6 @@
             color: #252525; /* 텍스트 색상 설정 */
             cursor: pointer;
             display: inline-flex;
-            font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-            font-size: 20px;
             font-weight: 600;
             justify-content: center;
             line-height: 20px;
@@ -93,7 +91,6 @@
           }
           .button-99 {
          	cursor: pointer;
-         	font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
             font-size: 12px;
             font-weight: 600;
             color: #FFE6C7; /* 텍스트 색상 설정 */

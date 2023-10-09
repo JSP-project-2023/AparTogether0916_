@@ -28,13 +28,13 @@
 		function popupfindID(){
             var url = "<%=notWithFormTag%>meFindId";
             var name = "popup test";
-            var option = "width = 700, height = 500, top = 100, left = 200, location = no"
+            var option = "width = 700, height = 600, top = 100, left = 200, location = no"
             window.open(url, name, option);
         }
 		function popupfindPW(){
             var url = "<%=notWithFormTag%>meFindPassword";
             var name = "popup test";
-            var option = "width = 700, height = 590, top = 100, left = 200, location = no"
+            var option = "width = 700, height = 620, top = 100, left = 200, location = no"
             window.open(url, name, option);
         }
 		/* [ed] popup 창으로 열기 */
@@ -112,5 +112,6 @@
 			</div>
 		</form>
 	</div>
+	<%@ include file="/common/footer.jsp"%>
 </body>
 </html>
