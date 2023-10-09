@@ -28,18 +28,17 @@
 					<div id="percentage_back">
 						<div id="percentage_each"
 						style="width: ${Math.round((voteResult.cnt/requestScope.voteTotal.total)*100)}%;"> <!-- list로 반복되는 값에 따라 그래프 넓이가 변해서 style로 지정  -->
-<!-- <<<<<<< HEAD -->
+
 <%-- 							${voteResult.selectvotecol}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${Math.round((voteResult.cnt/requestScope.voteTotal.total)*100)}% (${voteResult.cnt}명)  --%>
-<!-- ======= -->
 							<dt>${voteResult.selectvotecol} / ${voteResult.cnt}명 ${Math.round((voteResult.cnt/requestScope.voteTotal.total)*100)}%</dt>
-<!-- >>>>>>> origin/sup_new_branch02 -->
+
 						</div>
 					</div>
 				</span>
 			</c:forEach>
 			
 			<div class="btnArea">
-				<button type="button" onclick="history.go(-1)" class="big_ctlbtn else_bigbtn">뒤로가기</button>
+				<a type="button" href="<%=notWithFormTag%>voteList" class="big_ctlbtn else_bigbtn">뒤로가기</a>
 			</div>
 		</div>
 	</form>

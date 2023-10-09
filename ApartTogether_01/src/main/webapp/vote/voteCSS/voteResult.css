@@ -36,7 +36,10 @@
 	margin: 30px;
 	align-content: center;
 }
-
+.else_bigbtn {
+	text-align: center;
+    line-height: 50px;
+}
 .votetitle {
 	text-align: center;
     background-color: #dcdcdc;

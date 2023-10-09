@@ -97,12 +97,24 @@
 	background-color: rgb(255, 128, 128);
 }
 .else_bigbtn:hover{
-	background-color: rgb(238, 0, 0);
+	background-color: rgb(255, 57, 57);
+}
+.doVote{
+	background-color: #ffa559;
+	border-radius: 25px;
+	color: white;
+}
+.doVote:hover{
+	background-color: rgb(255, 126, 21);
+	color: white;
 }
 .endVote{
-	background-color: #FF7426;
+	border-radius: 25px;
+	color: white;
+	background-color: rgb(103, 193, 248);
 }
 .endVote:hover{
-	background-color: rgb(221, 111, 0);
+	color: white;
+	background-color: rgb(32, 165, 244);
 }
 

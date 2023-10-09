@@ -30,7 +30,7 @@
 					<input type="hidden" name="voteno" value="${requestScope.voteinfo.voteno}">
 					<!-- 투표 여부 변수 -->
 					<c:set var="voteVal" value="${requestScope.voteVal}"/>
-					<input type="text" name="voteVal" value="${voteVal}">
+					<input type="hidden" name="voteVal" value="${voteVal}">
 					<!-- 투표 마감 여부 -->
 					<input type="hidden" name="voteEnd" value="">
 					<!-- 처음 투표를 했을 경우. -->
@@ -66,7 +66,7 @@
 						<!-- 투표 리스트 반복 끝-->
 					</c:if>
 					<div id="buttons" align="center">
-						<button type="submit" class="btn button-wrapper order_bigbtn" onclick="alertInfo()">투표하기</button>
+						<button type="submit" class="btn button-wrapper doVote" onclick="alertInfo()">투표하기</button>
 						<!-- 투표 등록한 사람만 보이게. -->
 						<c:if test="${sessionScope.loginfo.id eq requestScope.voteinfo.voteid}">
 							<button type="submit" name="sendEndVote" value="voteIsEnd" onclick="return endVote(); " class="endVote btn button-wrapper">투표마감</button>
@@ -77,5 +77,6 @@
 			</div>
 		</div>
 	</div>
+<%@ include file="/common/footer.jsp"%>
 </body>
 </html>
