@@ -194,12 +194,8 @@ footer {
 }
 .normal_bigbtn:hover {
     background-color: rgb(235, 235, 235);
-<<<<<<< HEAD
-	color: #000000;
-=======
     border: 1px solid #252525;
     color: #252525;
->>>>>>> origin/lleebs.v7
 }
 .else_bigbtn {
 	background-color: #252525;
