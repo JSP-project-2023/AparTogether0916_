@@ -8,11 +8,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>아파투게더:투표리스트</title>
-		
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/vote/voteCSS/voteList.css" type="text/css">
 </head>
 <body>
 	<div class="container">
-		<h2 class="mainTitle">투표</h2>	
+		<h2 class="mainTitle">투표</h2>
 		
 		<div class="row">
        		<div class="col-sm-12">               
@@ -84,7 +84,8 @@
 			</tbody>
 		</table>	
 		${requestScope.pageInfo.pagingHtml}
-	</div>	 
+	</div>
+	<%@ include file="/common/footer.jsp"%>
 </body>
 
 <script type="text/javascript">

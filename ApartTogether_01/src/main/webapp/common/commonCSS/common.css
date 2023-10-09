@@ -282,7 +282,7 @@ footer {
 	border-radius: 20px;
     line-height: 24px;
 }
-.round-orange-hover { /*store List -  keyword, category 검색 시*/
+.round-orange-hover { /*store List - keyword, category 검색 시*/
     filter: none;
     color: #454545;
     cursor: auto;
