@@ -42,12 +42,12 @@
 				</div>
 				
 				<div class="info_items">
-					<span class="input-field-label">메뉴 설명</span>
+					<span class="mustInput">*</span><span class="input-field-label">메뉴 설명</span>
 					<textarea class="input_text input-textArea" name="menudetail" rows="5" cols="50" placeholder="메뉴 설명을 입력해주세요"></textarea>
 				</div>
 				
 				<div class="info_items">
-					<span class="input-field-label">재료 | 기본옵션</span>
+					<span class="mustInput">*</span><span class="input-field-label">재료 | 기본옵션</span>
 					<textarea class="input_text input-textArea" name="detailPlus" rows="5" cols="50" placeholder="해당 메뉴의 재료 또는 기본으로 제공되는 옵션을 입력해주세요"></textarea>
 				</div>
 
