@@ -156,9 +156,12 @@ String notWithFormTag = appName + mappingName + "?command=";
 					<c:if test="${whologin eq 1 }">
 						<li class="member-nav-li">
 							<a class="member_menu">주인님 !
-								<c:if test="${profileimg != null}">
-									<img class="profile_image" alt="${requestScope.loginfo.profile}"
+								<c:if test="${profileimg != null  && profileimg != ''}"><!-- requestScope.loginfo.profile = profileimg -->
+									<img class="profile_image" alt="${requestScope.loginfo.profile}" 
 								    src="${pageContext.request.contextPath}/uploadProfileImage/${profileimg}">
+								</c:if>
+								<c:if test="${profileimg != null && profileimg == ''}">
+									<img class="profile_image" alt="기본이미지" src="${pageContext.request.contextPath}/image/defaultProfile.jpeg">
 								</c:if>
 								<c:if test="${profileimg == null}">
 									<img class="profile_image" alt="기본이미지" src="${pageContext.request.contextPath}/image/defaultProfile.jpeg">
@@ -175,9 +178,12 @@ String notWithFormTag = appName + mappingName + "?command=";
 					<c:if test="${whologin eq 2 }">
 						<li class="member-nav-li">
 							<a class="member_menu">${sessionScope.loginfo.name} 사장님
-								<c:if test="${profileimg != null}"><!-- requestScope.loginfo.profile = profileimg -->
+								<c:if test="${profileimg != null  && profileimg != ''}"><!-- requestScope.loginfo.profile = profileimg -->
 									<img class="profile_image" alt="${requestScope.loginfo.profile}" 
 								    src="${pageContext.request.contextPath}/uploadProfileImage/${profileimg}">
+								</c:if>
+								<c:if test="${profileimg != null && profileimg == ''}">
+									<img class="profile_image" alt="기본이미지" src="${pageContext.request.contextPath}/image/defaultProfile.jpeg">
 								</c:if>
 								<c:if test="${profileimg == null}">
 									<img class="profile_image" alt="기본이미지" src="${pageContext.request.contextPath}/image/defaultProfile.jpeg">
@@ -195,9 +201,12 @@ String notWithFormTag = appName + mappingName + "?command=";
 					<c:if test="${whologin eq 3 }">
 						<li class="member-nav-li">
 							<a class="member_menu">${sessionScope.loginfo.name}님
-								<c:if test="${profileimg != null}"><!-- requestScope.loginfo.profile = profileimg -->
+								<c:if test="${profileimg != null  && profileimg != ''}"><!-- requestScope.loginfo.profile = profileimg -->
 									<img class="profile_image" alt="${requestScope.loginfo.profile}" 
 								    src="${pageContext.request.contextPath}/uploadProfileImage/${profileimg}">
+								</c:if>
+								<c:if test="${profileimg != null && profileimg == ''}">
+									<img class="profile_image" alt="기본이미지" src="${pageContext.request.contextPath}/image/defaultProfile.jpeg">
 								</c:if>
 								<c:if test="${profileimg == null}">
 									<img class="profile_image" alt="기본이미지" src="${pageContext.request.contextPath}/image/defaultProfile.jpeg">
