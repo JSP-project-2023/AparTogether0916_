@@ -373,7 +373,7 @@
 	    </div>
 	</div>
     <div class="container">
-		<h2 style="font-weight: bold">방이름:${requestScope.bean2.roomname}</h2> 
+		<h2 style="font-weight: bold">방이름 : ${requestScope.bean2.roomname}</h2> 
         <table class="table table-borderless">
             <tbody>
                 <tr>
