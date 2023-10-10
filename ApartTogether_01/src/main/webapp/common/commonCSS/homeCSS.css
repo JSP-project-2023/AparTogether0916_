@@ -61,8 +61,8 @@ body{
 	flex-direction: row;
 	width: 100%;
 	white-space: nowrap;
-	position: relative;
-	top: 7em;
+	position: absolute;
+	top: 20em;
 }
 .logo-box > div{
 	margin-right: 60px;
@@ -90,10 +90,11 @@ body{
 }
 @keyframes logo-ani3 {
     0% { left: 0px; }
-    100% { left: -1000%; }
+    100% { left: -90%; }
 }
 .logo-box{
-    animation: logo-ani3 60s linear 0s infinite;
+	animation-iteration-count: infinite;
+    animation: logo-ani3 10s linear 0s infinite;
 }
 /*스크롤 CSS*/
 .scroll-info{
@@ -262,8 +263,9 @@ body{
 	opacity: 1;
 }
 .scroll-info{
-	position: relative;
-	top: 300px;
+	margin-top: 550px;
+	/*position: static;
+	top: 300px;*/
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -272,5 +274,11 @@ body{
 
 /*로고에 마우스 올려놨을시 반응*/
 .logo-items-even > img:hover, .logo-items-odd > img:hover{
+	transition: width 0.5s ease;
 	width: 250px;
+}
+/*마우스에서 벗어났을 경우*/
+.logo-items-even > img, .logo-items-odd > img{
+	transition: width 0.5s ease;
+	width: 200px;
 }
