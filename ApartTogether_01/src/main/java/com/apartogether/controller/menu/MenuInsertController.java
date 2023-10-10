@@ -50,15 +50,11 @@ public class MenuInsertController extends SuperClass {
 		menu.setMenuname(mr.getParameter("menuname"));
 		menu.setPrice(Integer.parseInt(mr.getParameter("price")));
 		menu.setMenuimage(mr.getFilesystemName("menuimage"));
-<<<<<<< HEAD
-		menu.setMenudetail(mr.getParameter("menudetail") + "Δ" + mr.getParameter("detailPlus")); // 메뉴 설명 + 재료 | 기본옵션
-=======
 		if (mr.getParameter("detailPlus").equals(null) || mr.getParameter("detailPlus") == null) {
 			menu.setMenudetail(mr.getParameter("menudetail"));
 		} else {
 			menu.setMenudetail(mr.getParameter("menudetail") + "Δ" + mr.getParameter("detailPlus")); // 메뉴 설명 + 재료 | 기본옵션
 		}
->>>>>>> LISU_Merge_2_addOrder
 		
 		MenuDao dao = new MenuDao();
 		int cnt = -1;
