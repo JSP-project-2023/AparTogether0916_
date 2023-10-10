@@ -19,7 +19,10 @@
 			margin:2px;
 			border-radius:5px;
 		}
-
+		.thead-bg {
+			background-color: #454545;
+	    	color: #fff;
+    	}
 		
 		.input-group {
 			margin: 7px;
@@ -71,7 +74,7 @@
             color: #252525; /* 텍스트 색상 설정 */
             cursor: pointer;
             display: inline-flex;
-            font-size: 20px;
+/*             font-size: 20px; */
             font-weight: 600;
             justify-content: center;
             line-height: 20px;
@@ -253,8 +256,8 @@
 			
 			
 			<table class="table table-hover" style="margin-top: 5px;">
-				<thead class="table-dark">
-					<tr>
+				<thead><!-- class="table-dark" -->
+					<tr class="thead-bg">
 						<th class=" col-md-1 text-center">회원유형</th>
 						<th class=" col-md-1 text-center">아이디</th>
 						<th class=" col-md-1 text-center">이름</th>
@@ -339,5 +342,6 @@
 			${requestScope.pageInfo.pagingHtml}
 		</c:if>
 	</div>	 
+	<%@ include file="/common/footer.jsp"%>
 </body>
 </html>
