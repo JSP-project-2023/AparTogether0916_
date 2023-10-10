@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+.alert-dismissible {
+	margin: 10px;
+}
+
+.mainTitle {
+	margin: 6rem 0 3rem;
+	font-size: 2rem;
+	font-weight: bolder;
+}
+
+.subTitle {
+	margin-bottom: 4rem;
+	font-size: 1.1rem;
+}
+.body {
+	align-content: center
+}
+
+.underline {
+	border-bottom: 1px solid #d1d1d1;
+}
+
+.container_content {
+    padding-left: 50px;
+}
+
+/* [st] button-18 */
+  .button-18 {
+    align-items: center;
+    background-color: #d8e4d2;
+    color: #6f726e;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 20px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 900px;
+    min-height: 50px;
+    min-width: 0px;
+    overflow: hidden;
+    padding-left: 190px;
+    padding-right: 190px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    vertical-align: middle;
+  }
+
+  .button-18:hover, .button-18:focus { 
+    background-color: #8e998c;
+    color: #ffffff;
+  }
+
+  .button-18:active {
+    background: #09223b;
+    color: rgb(255, 255, 255, .7);
+  }
+
+  .button-18:disabled { 
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, .08);
+    color: rgba(0, 0, 0, .3);
+  }
+/* [ed] button-18 */
+
+.button-99 {
+	cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+}
+

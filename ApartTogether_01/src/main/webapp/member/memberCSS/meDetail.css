@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+body {
+    background-color: #fffcf9;
+}
+.mainTitle {
+	color: #ff6000;
+    text-align: center;
+}
+.main-contents {
+	width: fit-content;
+    min-width: 900px;
+    padding: 80px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px rgba(3, 3, 3, .08);
+    margin: 0 auto;
+}
+.btnArea{
+    width: fit-content;
+    min-width: 580px;
+    display: flex;
+    justify-content: space-between;
+    margin: 50px auto 0;
+    text-align: center;
+    line-height: 50px;
+}
+.small_image{
+	width:100px;
+	height:100px;
+	margin:2px;
+	border-radius:5px;
+}
+.input-group {
+	margin: 7px;
+	max-width: 1280px;
+	min-width: 0px;
+}
+.input-group-text {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+#buttonset {
+	margin-top: 15px;
+}
+.radio-inline {
+	cursor: pointer;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 1.2em;
+}
+
+.form-check-input {
+	cursor: pointer;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
+	size: 19px;
+}
+
+.form-select {
+	cursor: pointer;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
+	size: 3px;
+}

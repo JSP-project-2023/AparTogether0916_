@@ -20,8 +20,11 @@ public class Paging {
 	
 	private String mode = "" ; // 검색 모드(예시 : 작성자, 글제목 등등)
 	private String keyword = "" ; // 검색할 단어	
-	
+
+
 	private String flowParameter = "" ; // 페이지 이동시 같이 수반되는 파라미터 리스트
+	
+	private int stno = 0; //가게번호
 	
 	public Paging(String _pageNumber, String _pageSize, int totalCount, String url, String mode, String keyword, boolean isGrid) {
 		if(_pageNumber==null || _pageNumber.equals("null") || _pageNumber.equals("")) {
@@ -68,7 +71,58 @@ public class Paging {
 		this.flowParameter += "&keyword=" + keyword ;
 		
 		this.pagingHtml = this.getMakePagingHtml() ;
-	}	
+	}
+	
+	
+	// 주문이력 paging
+	public Paging(String _pageNumber, String _pageSize, int totalCount, String url, int stno, boolean isGrid) {
+		this.stno = stno;
+		if (_pageNumber == null || _pageNumber.equals("null") || _pageNumber.equals("")) {
+			_pageNumber = "1";
+		}
+		this.pageNumber = Integer.parseInt(_pageNumber);
+
+		// isGrid=true이면 상품 목록 보기, false이면 일반 형식(회원, 게시물 목록 등등)
+		if (_pageSize == null || _pageSize.equals("null") || _pageSize.equals("")) {
+			if (isGrid) { // 격자 형식으로 보기
+				_pageSize = "6"; // 2행 3열의 격자 구조
+			} else {
+				_pageSize = "10";
+			}
+		}
+		this.pageSize = Integer.parseInt(_pageSize);
+
+		this.totalCount = totalCount;
+		this.url = url;
+
+		double _totalPage = Math.ceil((double) totalCount / pageSize);
+		totalPage = (int) _totalPage;
+
+		beginRow = (pageNumber - 1) * pageSize + 1;
+
+		endRow = pageNumber * pageSize;
+		if (endRow > totalCount) {
+			endRow = totalCount;
+		}
+
+		beginPage = (pageNumber - 1) / pageCount * pageCount + 1;
+
+		endPage = beginPage + pageCount - 1;
+		if (endPage > totalPage) {
+			endPage = totalPage;
+		}
+
+		this.pagingStatus = "총 " + totalCount + "건[" + pageNumber + "/" + totalPage + "]";
+
+		this.flowParameter = "";
+		this.flowParameter = "&stno=" + stno;
+		this.flowParameter += "&pageNumber=" + pageNumber;
+		this.flowParameter += "&pageSize=" + pageSize;
+
+		this.pagingHtml = this.getMakePagingHtml();
+	}
+	
+	
 
 	private String getMakePagingHtml() {
 		String html = "" ;		
@@ -87,7 +141,7 @@ public class Paging {
 				// active 속성으로 활성화시키고, 빨간 색으로 진하게 표현하기
 				html += "<li class=\"page-item active\">";
 				html += "<a class=\"page-link\" href=\"#\">";
-				html += "<b><font color='red'>" + i + "</font></b>" ;
+				html += "<b><font color='white'>" + i + "</font></b>" ;
 				html += "</a></li>";
 				
 			}else {
@@ -115,6 +169,12 @@ public class Paging {
 		result += "<li class='page-item'>";
 		result += "<a class='page-link' href='" ;
 		result += this.url ;
+		
+		//command가 stOrLog이라면 stno 인자값을 넘겨줌.
+		if(this.url.contains("stOrLog")) {
+			result += "&stno=" + this.stno;
+		}
+		
 		result += "&pageNumber=" + currPageNumber;
 		result += "&pageSize=" + this.pageSize;
 		result += "&mode=" + this.mode;
@@ -244,6 +304,14 @@ public class Paging {
 
 	public void setFlowParameter(String flowParameter) {
 		this.flowParameter = flowParameter;
+	}
+	
+	public int getStno() {
+		return stno;
+	}
+
+	public void setStno(int stno) {
+		this.stno = stno;
 	}
 
 	@Override

@@ -1,21 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<%@ include file="./../common/bootstrap5.jsp" %>
-<%@ include file="./../common/common.jsp" %>
 
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<%@ include file="/common/common.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>아파투게더:로그인</title>
-	<script type="text/javascript">
+<meta charset="UTF-8">
+<title>아파투게더:로그인</title>
+<script type="text/javascript">
 		$(document).ready(function() {	
 			var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 			var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 				return new bootstrap.Tooltip(tooltipTriggerEl)
 			});		
+			$('#id').focus(); // 로그인페이지로 이동하자마자 id입력할 수 있게 추가했습니다. 9/27
 		});
 		function validCheck(){/* form validation check */
   			var id = $('#id').val();
@@ -25,33 +24,94 @@
   				return false ; /* false이면 이벤트 전파 방지 */
   			}
 		}
-	</script>
+		/* [st] popup 창으로 열기 */
+		function popupfindID(){
+            var url = "<%=notWithFormTag%>meFindId";
+            var name = "popup test";
+            var option = "width = 700, height = 600, top = 100, left = 200, location = no"
+            window.open(url, name, option);
+        }
+		function popupfindPW(){
+            var url = "<%=notWithFormTag%>meFindPassword";
+            var name = "popup test";
+            var option = "width = 700, height = 620, top = 100, left = 200, location = no"
+            window.open(url, name, option);
+        }
+		/* [ed] popup 창으로 열기 */
+		
+</script>
+
+<style type="text/css">
+	.center {
+		text-align: center;
+	}
+	.header1 {
+		font-size: 25px;
+		font-weight: 600;
+		margin-top: 30px;
+	}
+	.inputArea {
+		width: 100%;
+	}
+</style>
+
 </head>
 <body>
-	<br/>
 	<div class="container">
-		<h2>로그인 페이지</h2>
-		<p>로그인을 위한 페이지입니다.</p>
+		<div class="title-area"></div>
 		<form action="<%=withFormTag%>" method="post">
-			<input type="hidden" name="command" value="meLogin"> 
-			<div> 
-				<label for="id" class="form-label">아이디 :</label> 
-				<input type="text" class="form-control" id="id" name="id" 
-					placeholder="아이디를 입력해 주세요."
-					data-bs-toggle="tooltip" title="아이디는 3글자 이상 10글자 이하이어야 합니다."
-					data-bs-placement="top">
+			<input type="hidden" name="command" value="meLogin">
+			<div align="left">
+				<h3 style="padding: 20px">
+				</h3>
 			</div>
-			<div>
-				<label for="password" class="form-label">비밀 번호 :</label> 
-				<input class="form-control" type="password" id="password" name="password">
+
+			<div class="cardArea">
+	
+				<div class="card-content">
+				<table>
+				<tr>
+					<th class="center">
+						<img alt="자물쇠"	src="${pageContext.request.contextPath}/image/자물쇠_열쇠.png" height="25%" width="25%">
+					</th>
+				</tr>
+				<tr>
+					<th>
+						<div class="header1 center">로그인해서 배달비를 아껴보세요</div>
+					</th>
+				</tr>
+				</table>
+				<br/><br/><br/>
+					<!-- [st] 아이디 입력 공간 -->
+					<div class="inputArea">
+						<input class="input_text" type="text" id="id" name="id"
+							placeholder="아이디를 입력해 주세요" data-bs-placement="right" data-bs-toggle="tooltip"
+							title="아이디를 입력해 주세요">
+					</div>
+					<!-- [ed] 아이디 입력 공간 -->
+
+					<!-- [st] 패스워드 입력 공간 -->
+					<div class="inputArea">
+						 <input class="input_text" type="password" id="password"
+							name="password" placeholder="비밀번호" data-bs-toggle="tooltip"
+							data-bs-placement="right" title="비밀번호는 영문, 숫자, 특문 포함입니다.">
+					</div>
+					<!-- [ed] 패스워드 입력 공간 -->
+
+					<!-- [st] 버튼 공간 -->
+					<div align="center">
+						<button type="submit" class="big_ctlbtn insert_bigbtn">로그인</button>
+						<br /> <br /> <a type="button"
+							href="<%=notWithFormTag%>meInsert" class="btn button-99">회원
+							가입</a> | <a type="popup" href="javascript:popupfindID()"
+							class="btn button-99">아이디 찾기</a> | <a type="popup"
+							href="javascript:popupfindPW()" class="btn button-99">비밀번호 찾기</a>
+					</div>
+					<!-- [ed] 버튼 공간 -->
+				</div>
 			</div>
-			
-			<!-- contextual class : btn-primary, btn-info, btn-danger -->
-			<button type="submit" class="btn btn-primary">로그인</button> 
-			<a type="button" href="meInsertForm.jsp" class="btn btn-info">회원 가입</a>	
-			<a type="button" href="meFindId.jsp" class="btn btn-info">아이디 찾기</a>	
-			<a type="button" href="meFindPassword.jsp" class="btn btn-info">비밀번호 찾기</a>						
 		</form>
 	</div>
+	<%@ include file="/common/footer.jsp"%>
 </body>
 </html>

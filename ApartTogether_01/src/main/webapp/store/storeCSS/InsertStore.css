@@ -1,0 +1,91 @@
+@charset "UTF-8";
+body {
+	background-color: #fffcf9;
+}
+form {
+	width: fit-content;
+    min-width: 900px;
+    padding: 80px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px rgba(3, 3, 3, .08);
+    margin: 0 auto;
+}
+hr {
+	width: 50%;
+	margin: 1vh auto;
+}
+.mainTitle {
+	text-align: center;
+	color: #ff6000;
+}
+input {
+	border-radius: 5px;
+    width: 700px;
+    height: 50px;
+    border: 1px solid black;
+    vertical-align: middle;
+    line-height: 46px;
+    padding-left: 15px;
+}
+
+select {
+	height: 50px;
+    border-radius: 5px;
+}
+
+.cateselect {
+    width: 400px;
+}
+.info_items {
+	padding-bottom: 40px;
+}
+
+.info_items > button {
+	margin-right: 10px;
+    margin-top: 50px;
+}
+
+.littleTitle {
+	display: inline-block;
+    width: 150px;
+    text-align: center;
+    margin-right: 10px;
+}
+.snumber{
+	width: 140px;
+}
+
+.ShopAmPm {
+	width: 110px;
+}
+
+.ShopTime {
+	width: 140px;
+}
+
+.recommend-logo-size {
+	 margin-left: 25px;
+ }
+
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.titleDepth1 {
+    padding-bottom: 10px;
+}
+
+.title{
+	text-align: center;
+}
+.btnArea {
+	text-align: center;
+}
+
+.inputbg {
+	background-color: #dddddd;
+	height: 40px;
+}

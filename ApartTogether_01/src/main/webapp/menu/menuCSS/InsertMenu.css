@@ -1,0 +1,52 @@
+@charset "UTF-8";
+form {
+	width: fit-content;
+    min-width: 900px;
+    padding: 80px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px rgba(3, 3, 3, .08);
+    margin: 0 auto;
+}
+.mainTitle {
+	text-align: center;
+	color: #ff6000;
+}
+.subTitle {
+	text-align: center;
+    color: #252525;
+}
+hr {
+	width: 50%;
+	margin: 1vh auto;
+}
+.info_items {
+	padding-bottom: 25px;
+}
+
+.info_items > button {
+	margin-right: 10px;
+    margin-top: 50px;
+}
+
+textarea {
+	padding: 10px 15px;
+}
+.recommend-logo-size {
+	 margin-left: 165px;
+ }
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.titleDepth1 {
+    padding-bottom: 5px;
+}
+.btnArea {
+	text-align: center;
+}
+.inputbg {
+	background-color: #bdbdbd;
+	height: 40px;
+}

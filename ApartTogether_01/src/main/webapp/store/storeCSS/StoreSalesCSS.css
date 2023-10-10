@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+.middleContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.container-menu{
+	visibility: hidden;
+    position: absolute;
+    display: flex;
+    left: 0;
+    top: 0;
+    right: 0;
+    flex-direction: column;
+    bottom: 0;
+}
+.sale-header{
+	max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 70px;
+}
+.button-area{
+	display: inline;
+    float: right;
+}
+.menu-header{
+	font-size: 20px;
+	font-weight: bold;
+	height: 50px;
+    background-color: #ffc39a;
+}
+
+/*월별, 메뉴별 버튼*/
+.buttons{
+	border: none;
+	border-radius: 3px;
+	width: 100px;
+	height: 30px;
+	font-size: 15px;
+}
+.btn-month{
+	background-color: #FFC0C0;
+	margin-right: 10px;
+}
+.btn-month:hover{
+	background-color: rgb(255, 119, 119);
+}
+.btn-menu{
+	background-color: #8DC2FF;
+}
+.btn-menu:hover{
+	background-color: rgb(9, 124, 253);
+}
+
+.button-area{
+	display: flex;
+	margin-left: auto;
+}
+.sale-menu {
+	width: 900px;
+    margin: 0 auto;
+}
+
+/*테이블*/
+table{
+	border: none;
+	border-collapse: collapse;
+	border-bottom: 1px solid lightgray;
+	margin: 0 auto;
+	text-align: center;
+}
+tbody > tr:hover{
+	background-color: rgb(232, 232, 232);
+}
+.sale-footer{
+	margin-top: 20px;
+	font-size: 30px;
+	text-align: right;
+	width: fit-content;
+    float: right;
+    margin-right: 20px;
+}
+.one-menu > td{
+	height: 70px;
+}
+
+/*월별 판매량 css*/
+.container-month{
+    /* visibility: hidden; */
+    position: static;
+    display: flex;
+    left: 0;
+    top: 0;
+    flex-direction: column;
+    right: 0;
+    bottom: 0;
+}
+
+#chart-area{
+	max-width: 1080px;
+    margin: 0 auto;
+}
+.myChartCanvas {
+	height: 450px;
+    width: 900px;
+}

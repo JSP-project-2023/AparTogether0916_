@@ -1,0 +1,80 @@
+body {
+	background-color: #fffcf9;
+}
+.input-box:first-child{
+	padding-top: 80px;
+}
+.input-box{
+	width: 80%;
+	padding-bottom: 40px;
+}
+.container{
+	display: flex;
+  	flex-direction: column;
+  	justify-content: center;
+  	align-items: center;
+}
+.input-big-box{
+	width: 70%;
+	margin-top: 20px;
+	margin-bottom: 50px;
+	border-radius: 20px;
+	box-shadow: 0 2px 12px rgba(3, 3, 3, .08);
+	background-color: #ffff;
+	display: flex;
+  	justify-content: center;
+  	height: 70%;
+}
+.mainTitle{
+    color: #ff6000;
+}
+/*입력 제목*/
+.span-input{
+	text-align: left;
+}
+
+.password-box{
+	display: flex;
+	flex-direction: row;
+}
+/*패스워드 보기 버튼*/
+.see-icon{
+	position: relative;
+	top: -45px;
+	left: 240px;
+}
+.input-radio-btn{
+	padding-top: 23px;
+}
+/*등록버튼*/
+.insert-btn-member{
+	margin-right: 20px;
+	color: white;
+	background-color: #ff6000;
+	border: 0;
+	border-radius: 25px;
+	width: 180px;
+    height: 50px;
+    font-size: 1rem;
+}
+.insert-btn-member:hover{
+	color: white;
+	background-color: #c94c00;
+}
+/*돌아가기 버튼*/
+.back-btn-member{
+	margin-left: 20px;
+	line-height: 50px;
+	color: white;
+	background-color: #d9d9d9;
+	border: 0;
+	border-radius: 25px;
+	width: 180px;
+    height: 50px;
+    font-size: 1rem;
+}
+.back-btn-member:hover{
+	color: white;
+	background-color: #c5c5c5;
+}
+

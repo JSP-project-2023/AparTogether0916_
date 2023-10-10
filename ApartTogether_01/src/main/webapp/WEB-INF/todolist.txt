@@ -1,3 +1,55 @@
 # 구현해야 할 목록들입니다.
 #main 컨트롤러
 home=com.apartogether.controller.HomeController
+#Store
+stList=com.apartogether.controller.store.StoreListController
+stInsert=com.apartogether.controller.store.StoreInsertController
+stUpdate=com.apartogether.controller.store.StoreUpdateController
+stDetail=com.apartogether.controller.store.StoreDetailController
+stMuDetail=com.apartogether.controller.store.StoreMenuDetailController
+stDelete=com.apartogether.controller.store.StoreDeleteController
+myStoreList=com.apartogether.controller.store.MyStoreListController
+stSales=com.apartogether.controller.store.StoreSalesController
+stOrLog=com.apartogether.controller.store.StoreOrderLogController
+stOpen=com.apartogether.controller.store.StoreOpenController
+stClose=com.apartogether.controller.store.StoreCloseController
+#Menu
+menuInsert=com.apartogether.controller.menu.MenuInsertController
+menuUpdate=com.apartogether.controller.menu.MenuUpdateController
+menuDelete=com.apartogether.controller.menu.MenuDeleteController
+menuManage=com.apartogether.controller.menu.MenuManageController
+# member 회원(biz / user / admin)
+meInsert=com.apartogether.controller.member.MemberInsertController
+meLogin=com.apartogether.controller.member.MemberLoginController
+meLogout=com.apartogether.controller.member.MemberLogoutController
+meFindId=com.apartogether.controller.member.MemberFindIdController
+meFindPassword=com.apartogether.controller.member.MemberFindPasswordController
+meDetail=com.apartogether.controller.member.MemberDetailController
+meList=com.apartogether.controller.member.MemberListController
+meUpdate=com.apartogether.controller.member.MemberUpdateController
+meDelete=com.apartogether.controller.member.MemberDeleteController
+#meResetPassword=com.apartogether.controller.member.MemberResetPasswordController
+# 커뮤니티(vote)
+voteDo=com.apartogether.controller.vote.VoteDoController
+voteView=com.apartogether.controller.vote.VoteViewController
+voteInsert=com.apartogether.controller.vote.VoteInsertController
+voteList=com.apartogether.controller.vote.VoteListController
+voteResult=com.apartogether.controller.vote.VoteResultController
+#room 컨트롤러
+roList=com.apartogether.controller.room.RoomListController
+roDetail=com.apartogether.controller.room.RoomDetailController
+roReady=com.apartogether.controller.room.RoomReadyController
+roNotReady=com.apartogether.controller.room.RoomNotReadyController
+roOut=com.apartogether.controller.room.RoomOutController
+roInsert=com.apartogether.controller.room.RoomInsertController
+roTime=com.apartogether.controller.room.RoomTimeController
+# comment section
+cmList=com.apartogether.controller.comment.CommentListController
+cmInsert=com.apartogether.controller.comment.CommentInsertController
+cmDelete=com.apartogether.controller.comment.CommentDeleteController
+#order 컨트롤러
+myorList=com.apartogether.controller.order.MyOrderListController
+myOrDetail=com.apartogether.controller.order.MyOrderDetailController
+orInsert=com.apartogether.controller.order.OrderInsertController
+orDelete=com.apartogether.controller.order.OrderDeleteController
+orConfirm=com.apartogether.controller.order.OrderConfirmController
