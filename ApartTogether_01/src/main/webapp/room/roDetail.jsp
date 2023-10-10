@@ -389,7 +389,7 @@
     <div>
        <h3 style="font-weight: bold;">${requestScope.bean2.stname}</h3> 
         <div class ="bordered-div">
-<<<<<<< HEAD
+
 		          <h4>메뉴 목록</h4>
 		           <table class="table table-hover" style="text-align: center;">
 		          <tr>
