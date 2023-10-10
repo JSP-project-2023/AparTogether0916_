@@ -71,7 +71,7 @@
 						<div class="menu-details">
 							<span id="menu-title">${menuList.menuname}</span> <!-- 메뉴 이름 -->
 							<span id="menu-exp">${menuList.menudetail}</span> <!-- 메뉴 설명 -->
-							<span id="menu-price">${menuList.price}</span> <!-- 가격 -->
+							<span id="menu-price"><fmt:formatNumber value="${menuList.price}" pattern="###,###"/>원</span> <!-- 가격 -->				
 						</div>
 						
 						<div class="menu-control">
