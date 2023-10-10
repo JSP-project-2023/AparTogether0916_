@@ -47,7 +47,7 @@ private final String PREFIX = "member/" ;
 				//[ST]비밀번호 복호화
 					String password = bean.getPassword();
 					// AES 암호화를 위한 키와 IV
-			        String key = "mySecretKey12345"; // 16, 24 또는 32 바이트(AES 128, 192, 256)
+			        String key = "mySecretKey12345"; // 16 바이트
 			        String iv = "myInitialization"; // 16 바이트
 			        // AES 복호화
 			        String decryptedPassword = decryptAES(password, key, iv);

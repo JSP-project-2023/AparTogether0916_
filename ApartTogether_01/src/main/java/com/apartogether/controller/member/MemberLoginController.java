@@ -56,7 +56,6 @@ public class MemberLoginController extends SuperClass{
 		Member bean = null ; 
 		
 		try {
-			//bean = dao.getDataByPk(id, password);
 			bean = dao.getDataByPk(id, encryptedPassword);
 			
 		} catch (Exception e) {
