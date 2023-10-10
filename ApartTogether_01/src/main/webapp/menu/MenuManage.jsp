@@ -65,7 +65,11 @@
 				<c:forEach var="menuList" items="${requestScope.myMenuList}">
 					<div class="one-menu-box"> 
 						<div class="memu-img">
+<<<<<<< HEAD
 							<img alt="이미지" src="${pageContext.request.contextPath}/upload/${menuList.menuimage}" border="1px">
+=======
+							<img alt="이미지" src="${pageContext.request.contextPath}/uploadStoreImage/${menuList.menuimage}" border="1px">
+>>>>>>> LISU_Merge_2_addOrder
 						</div>
 						
 						<div class="menu-details">
