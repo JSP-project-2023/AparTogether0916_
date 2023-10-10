@@ -67,6 +67,8 @@ public class MenuUpdateController extends SuperClass {
 		String menudetail = mr.getParameter("menudetail");
 		String detailPlus = mr.getParameter("detailPlus");
 		
+		System.out.println("새로운 이미지 : " + mr.getFilesystemName("menuimage") + " 옛날 : " + mr.getParameter("menuimageUp"));
+		
 //		새로운 메뉴 이미지 등록 여부에 따라 어떤 파일로 저장할건지 결정 
 		String menuimage = dao.changeFile(mr.getFilesystemName("menuimage"), mr.getParameter("menuimageUp")); // new, old 순서
 		

@@ -47,7 +47,8 @@
 			
 				<div class="info_items" id="ceofile">
 					<span class="input-field-label">기존에 업로드 된 파일</span>
-					<input disabled="disabled" class="inputbg input_text" type="text" name="menuimageUp" value="${bean.menuimage}">
+					<input disabled="disabled" class="inputbg input_text" type="text" name="fakemenuimageUp" value="${bean.menuimage}">
+					<input type="hidden" name="menuimageUp" value="${bean.menuimage}">
 				</div>
 				
 				<div class="info_items">
