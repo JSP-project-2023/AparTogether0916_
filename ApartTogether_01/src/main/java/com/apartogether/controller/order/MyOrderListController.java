@@ -27,9 +27,9 @@ public class MyOrderListController extends SuperClass{
 		
 		try {
 			int totalCount = dao.GetTotalRecordCount(super.loginfo.getId(),mode,keyword); 
-			String url = super.getUrlInfomation("roList") ;
+			String url = super.getUrlInfomation("myorList") ;
 			boolean isGrid = false ;
-			Paging pageInfo = new Paging(pageNumber, pageSize, totalCount, mode, keyword,url, isGrid);
+			Paging pageInfo = new Paging(pageNumber, pageSize, totalCount, url, mode, keyword, isGrid);
 			
 			List<Order> orderList = dao.GetHistory(super.loginfo.getId(),pageInfo);
 		
