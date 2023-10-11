@@ -415,7 +415,7 @@
 					            <ul class="pagination" style="justify-content: center; "> 
 					                <!-- - 버튼 -->
 					                <li class="page-item" >
-					                    <a  style="height: 40px;" class="page-link ${bean.menuno}minus" href="#" onclick="updateQuantity('${bean.menuno}', -1)"> - </a>
+					                    <a  style="height: 40px;cursor: pointer;" class="page-link ${bean.menuno}minus" onclick="updateQuantity('${bean.menuno}', -1)"> - </a>
 					                </li>
 					               
 						                <li class="page-item">
@@ -432,7 +432,7 @@
 						                </li>
 						                <!-- + 버튼 -->
 						                <li class="page-item">
-						                    <a  style="height: 40px;" class="page-link ${bean.menuno}plus" href="#" onclick="updateQuantity('${bean.menuno}', 1)"> + </a>
+						                    <a  style="height: 40px;cursor: pointer;" class="page-link ${bean.menuno}plus" onclick="updateQuantity('${bean.menuno}', 1)"> + </a>
 						                </li>
 					            </ul>
 					            	 <div>
