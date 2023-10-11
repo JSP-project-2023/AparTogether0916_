@@ -29,20 +29,6 @@ public class OrderDao extends SuperDao{
 		sql += " RANK() OVER (ORDER BY ro.ordertime DESC) AS ranking";
 		sql +=" from room ro inner join store st on ro.stno = st.stno ";
 		sql +=" inner join personal pe on ro.roomno = pe.roomno where pe.id = ? and pe.confirm = 'success'" ;
-		
-		String mode = pageInfo.getMode();
-		String keyword = pageInfo.getKeyword();
-		
-		System.out.println(id);
-		if (mode != null && !mode.equals("all")) { // 괄호 열기
-		    if (mode.equals("category")) {
-		        sql += " and st." + mode + " LIKE '%" + keyword + "%' ";
-		    }  else if (mode.equals("stname")) {
-		        sql += " and st." + mode + " LIKE '%" + keyword + "%' ";
-		    } else if (mode.equals("orderplace")) {
-		        sql += " and ro." + mode + " LIKE '%" + keyword + "%' ";
-		    }
-		} 
 		sql += ") ";
 		sql += "WHERE ranking BETWEEN ? AND ? ";
 		sql +=" order by ordertime desc";
