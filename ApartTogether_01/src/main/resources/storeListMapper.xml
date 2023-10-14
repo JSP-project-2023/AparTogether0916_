@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="st">
+  	<select id="selectAllWhole" resultType="com.apartogether.model.bean" parameterType="com.apartogether.utility.PagingStore">
+  		SELECT stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, ststatus, redday, btime 
+	  		FROM (SELECT stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, ststatus, redday, btime,
+	  		RANK() OVER(ORDER BY CASE WHEN ststatus = 'open' THEN 0 ELSE 1 END, stno DESC) AS ranking FROM store) 
+	  		where ranking between #{getBeginRow} and #{getEndRow}
+  	</select>
+  	
+  	<select id="selectAllCategory" resultType="com.apartogether.model.bean" parameterType="com.apartogether.utility.PagingStore">
+  		SELECT stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, ststatus, redday, btime 
+	  		FROM (SELECT stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, ststatus, redday, btime,
+	  		RANK() OVER(ORDER BY CASE WHEN ststatus = 'open' THEN 0 ELSE 1 END, stno DESC) AS ranking FROM store) 
+	  		where ranking between #{getBeginRow} and #{getEndRow}
+  	</select>
+  	
+  	<select id="selectAllStname" resultType="com.apartogether.model.bean" parameterType="com.apartogether.utility.PagingStore">
+  		SELECT stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, ststatus, redday, btime 
+	  		FROM (SELECT stno, id, stname, fee, category, stplace, sttel, content, ceofile, ceono, sttime, stlogo, ststatus, redday, btime,
+	  		RANK() OVER(ORDER BY CASE WHEN ststatus = 'open' THEN 0 ELSE 1 END, stno DESC) AS ranking FROM store) 
+	  		where ranking between #{getBeginRow} and #{getEndRow}
+  	</select>
+  </mapper>
