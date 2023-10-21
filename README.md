@@ -48,5 +48,5 @@ AparTogether0916 프로젝트는 배달 서비스와 커뮤니티 기능을 결�
 
 ### 웹사이트 구동 방법
 1. Apartogether0916.sql파일로 DDL문 생성.
-2. 프로젝트 import
+2. 프로젝트 압축 해제 후import
 3. \src\main\webapp\start.jsp 실행
