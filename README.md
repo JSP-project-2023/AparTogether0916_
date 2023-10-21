@@ -47,6 +47,6 @@ AparTogether0916 프로젝트는 배달 서비스와 커뮤니티 기능을 결�
 * 랜덤 닉네임 생성
 
 ### 웹사이트 구동 방법
-1. .sql파일 DDL문 생성.
+1. Apartogether0916.sql파일로 DDL문 생성.
 2. 프로젝트 import
 3. \src\main\webapp\start.jsp 실행
