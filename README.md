@@ -48,5 +48,6 @@ AparTogether0916 프로젝트는 배달 서비스와 커뮤니티 기능을 결�
 
 ### 웹사이트 구동 방법
 1. Github에서 프로젝트 Clone 또는 DownloadZip 클릭
-1. 카페에 업로드 된 Apartogether0916.sql파일로 DDL문 생성.
-3. \src\main\webapp\start.jsp 실행
+2. 카페에 업로드 된 Apartogether0916.sql파일로 DDL문 생성.
+3. ApartogetherDBdata.zip 내의 DB데이터 csv파일 임포트.(인코딩 UTF-8 확인)
+4. \src\main\webapp\start.jsp 실행
